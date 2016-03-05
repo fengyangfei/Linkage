@@ -1,0 +1,20 @@
+//
+//  YGTravelPrefix.pch
+//  YGTravel
+//
+//  Created by Mac mini on 15/7/16.
+//  Copyright (c) 2015年 ygsoft. All rights reserved.
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <QuartzCore/QuartzCore.h>
+    #define MAS_SHORTHAND
+    #define MAS_SHORTHAND_GLOBALS
+    #import <Masonry.h>
+    #import <MagicalRecord/MagicalRecord.h>
+    #import "TRConstants.h"
+    #import "GlobalSetting.h"
+    #import "TRThemeManager.h"
+#endif
