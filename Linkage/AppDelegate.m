@@ -20,6 +20,7 @@ static NSString *const kStoreName = @"linkage.sqlite";
 
 @end
 
+
 @implementation AppDelegate
 
 
