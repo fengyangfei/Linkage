@@ -7,8 +7,10 @@
 //
 
 #import "MainViewController.h"
+#import "MainDataSource.h"
 
 @interface MainViewController ()
+@property (nonatomic, strong) MainDataSource *dataSource;
 
 @end
 
@@ -18,6 +20,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupData];
+}
+
+-(void)setupData
+{
+    self.dataSource = [[FactoryDataSource alloc]init];
+    self.tableView.dataSource = self.dataSource;
+    self.tableView.delegate = self.dataSource;
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
