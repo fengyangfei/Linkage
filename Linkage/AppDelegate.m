@@ -44,6 +44,8 @@ static NSString *const kStoreName = @"linkage.sqlite";
     [self.window makeKeyAndVisible];
     [self setupGlobalAppearance];
     
+    [TRThemeManager shareInstance].themeType = TRThemeTypeStaff;
+    
     return YES;
 }
 
