@@ -12,6 +12,8 @@
 #import "UIColor+BFPaperColors.h"
 #import "MobClick.h"
 #import "UIImage+ImageWithColor.h"
+#import "LoginUser.h"
+#import "LoginViewController.h"
 
 
 static NSString *const kStoreName = @"linkage.sqlite";
@@ -37,7 +39,12 @@ static NSString *const kStoreName = @"linkage.sqlite";
     if (kNeedShowIntroduce) {
         rooViewController = [TutorialController shareViewController];
     }else{
-        rooViewController = [[LATabBarController alloc]init];
+        if ([LoginUser shareInstance]) {
+            rooViewController = [[LATabBarController alloc]init];
+        }else{
+            LoginViewController *loginVC = [[LoginViewController alloc]init];
+            rooViewController = [[UINavigationController alloc]initWithRootViewController:loginVC];
+        }
     }
     self.window.rootViewController = rooViewController;
     

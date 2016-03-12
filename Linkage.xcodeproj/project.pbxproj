@@ -129,6 +129,7 @@
 		8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F266F1C89C83D001B187E /* RegisterViewController.m */; };
 		8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */; };
 		8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26761C89DD89001B187E /* ForgotPasswordController.m */; };
+		8BB039DE1C94591900A3BCF9 /* LoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB039DD1C94591900A3BCF9 /* LoginUser.m */; };
 		8BB4FB131C7A0884003389F1 /* GTMStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB0D1C7A0884003389F1 /* GTMStackTrace.m */; };
 		8BB4FB141C7A0884003389F1 /* iConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB101C7A0884003389F1 /* iConsole.m */; };
 		8BB4FB151C7A0884003389F1 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB111C7A0884003389F1 /* LICENSE.md */; };
@@ -170,7 +171,6 @@
 		9A95FF151C891CFB00C5F492 /* BillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF141C891CFB00C5F492 /* BillViewController.m */; };
 		9A95FF191C89221C00C5F492 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF181C89221C00C5F492 /* UIImage+ImageWithColor.m */; };
 		9A95FF211C8931F400C5F492 /* BaseBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF201C8931F400C5F492 /* BaseBillViewController.m */; };
-		9A95FF251C8963A200C5F492 /* TRLoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF241C8963A200C5F492 /* TRLoginUser.m */; };
 		9A95FF281C896B9E00C5F492 /* TodoDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF271C896B9E00C5F492 /* TodoDataSource.m */; };
 		9A95FF2B1C896BD000C5F492 /* DoneDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF2A1C896BD000C5F492 /* DoneDataSource.m */; };
 		9A95FF331C89731100C5F492 /* TRPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF2E1C89731100C5F492 /* TRPopButton.m */; };
@@ -419,6 +419,8 @@
 		8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRFormTextFieldCell.m; sourceTree = "<group>"; };
 		8B8F26751C89DD88001B187E /* ForgotPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordController.h; sourceTree = "<group>"; };
 		8B8F26761C89DD89001B187E /* ForgotPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordController.m; sourceTree = "<group>"; };
+		8BB039DC1C94591900A3BCF9 /* LoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUser.h; sourceTree = "<group>"; };
+		8BB039DD1C94591900A3BCF9 /* LoginUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUser.m; sourceTree = "<group>"; };
 		8BB4FB0C1C7A0884003389F1 /* GTMStackTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMStackTrace.h; sourceTree = "<group>"; };
 		8BB4FB0D1C7A0884003389F1 /* GTMStackTrace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMStackTrace.m; sourceTree = "<group>"; };
 		8BB4FB0F1C7A0884003389F1 /* iConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iConsole.h; sourceTree = "<group>"; };
@@ -484,8 +486,6 @@
 		9A95FF181C89221C00C5F492 /* UIImage+ImageWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithColor.m"; sourceTree = "<group>"; };
 		9A95FF1F1C8931F400C5F492 /* BaseBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseBillViewController.h; sourceTree = "<group>"; };
 		9A95FF201C8931F400C5F492 /* BaseBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseBillViewController.m; sourceTree = "<group>"; };
-		9A95FF231C8963A200C5F492 /* TRLoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRLoginUser.h; sourceTree = "<group>"; };
-		9A95FF241C8963A200C5F492 /* TRLoginUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRLoginUser.m; sourceTree = "<group>"; };
 		9A95FF261C896B9E00C5F492 /* TodoDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoDataSource.h; sourceTree = "<group>"; };
 		9A95FF271C896B9E00C5F492 /* TodoDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoDataSource.m; sourceTree = "<group>"; };
 		9A95FF291C896BD000C5F492 /* DoneDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneDataSource.h; sourceTree = "<group>"; };
@@ -1317,8 +1317,8 @@
 		9A95FF221C8963A200C5F492 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				9A95FF231C8963A200C5F492 /* TRLoginUser.h */,
-				9A95FF241C8963A200C5F492 /* TRLoginUser.m */,
+				8BB039DC1C94591900A3BCF9 /* LoginUser.h */,
+				8BB039DD1C94591900A3BCF9 /* LoginUser.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1381,6 +1381,7 @@
 				TargetAttributes = {
 					8B5DC5611C7992E900D29292 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 29KSEG6E57;
 					};
 				};
 			};
@@ -1514,7 +1515,6 @@
 			files = (
 				9A95FF021C83E3C600C5F492 /* MenuItem.m in Sources */,
 				9A23A2B51C7AB3A300FB5EB6 /* MainBaseViewController.m in Sources */,
-				9A95FF251C8963A200C5F492 /* TRLoginUser.m in Sources */,
 				8B5DC63D1C79B8A700D29292 /* UIViewController+TRTheme.m in Sources */,
 				8B5DC6261C79B8A700D29292 /* IFTTTInterpolatable.m in Sources */,
 				8B44451D1C7C9EFE00160DC2 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1558,6 +1558,7 @@
 				8B5DC62A1C79B8A700D29292 /* IFTTTMaskAnimation.m in Sources */,
 				8B4445191C7C9EFE00160DC2 /* UIButton+WebCache.m in Sources */,
 				9A95FF211C8931F400C5F492 /* BaseBillViewController.m in Sources */,
+				8BB039DE1C94591900A3BCF9 /* LoginUser.m in Sources */,
 				8BB4FB131C7A0884003389F1 /* GTMStackTrace.m in Sources */,
 				9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */,
 				8B5DC6331C79B8A700D29292 /* IFTTTViewAnimation.m in Sources */,
@@ -1725,6 +1726,7 @@
 			baseConfigurationReference = BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1753,6 +1755,7 @@
 			baseConfigurationReference = B30457667634636F561BC865 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

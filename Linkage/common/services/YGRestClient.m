@@ -816,6 +816,7 @@ NSString* __GetMethodName(HTTPRequestMethod method) {
 @interface NSURL (YGRestClient)
 - (NSString *)baseUrl;
 @end
+
 @implementation NSURL (YGRestClient)
 - (NSString *)baseUrl {
     NSString *baseUrl = [NSString stringWithFormat:@"%@//%@", self.scheme, self.host];

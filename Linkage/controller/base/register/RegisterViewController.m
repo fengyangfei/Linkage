@@ -7,6 +7,7 @@
 //
 
 #import "RegisterViewController.h"
+#import "YGRestClient.h"
 
 @interface RegisterViewController ()
 
@@ -26,31 +27,14 @@
 
 - (void)initializeForm
 {
+    WeakSelf
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
     
-    form = [XLFormDescriptor formDescriptorWithTitle:@"厂商注册"];
+    form = [XLFormDescriptor formDescriptorWithTitle:@"注册"];
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"companyName" rowType:XLFormRowDescriptorTypeText title:@"公司名称"];
-    row.required = YES;
-    [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"companyNum" rowType:XLFormRowDescriptorTypeText title:@"企业号"];
-    [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"register" rowType:XLFormRowDescriptorTypeText title:@"注册人姓名"];
-    [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sex" rowType:XLFormRowDescriptorTypeSelectorPush title:@"性别"];
-    row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"男"];
-    row.selectorTitle = @"性别";
-    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"女"],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"男"]
-                            ];
-    [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeText title:@"手机"];
     [section addFormRow:row];
@@ -66,6 +50,7 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"注册"];
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        [weakSelf registerAction];
     };
     [section addFormRow:row];
     
@@ -75,6 +60,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
+
+- (void)registerAction
+{
+    NSDictionary *paramter = @{@"mobile":@"12345678901",@"password":@"123",@"ctype":@0, @"invite_code":@"1234"};
+    [[YGRestClient sharedInstance] postForObjectWithUrl:Register4InviteUrl form:paramter success:^(id responseObject) {
+        NSLog(@"sucss%@",responseObject);
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error.localizedDescription);
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
