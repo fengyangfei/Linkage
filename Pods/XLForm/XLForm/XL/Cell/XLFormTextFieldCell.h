@@ -34,5 +34,6 @@ extern NSString *const XLFormTextFieldLengthPercentage;
 @property (nonatomic, readonly) UITextField * textField;
 
 @property (nonatomic) NSNumber *textFieldLengthPercentage;
+@property (nonatomic, strong) NSMutableArray * dynamicCustomConstraints;
 
 @end

@@ -33,8 +33,6 @@ NSString *const XLFormTextFieldLengthPercentage = @"textFieldLengthPercentage";
 
 @interface XLFormTextFieldCell() <UITextFieldDelegate>
 
-@property NSMutableArray * dynamicCustomConstraints;
-
 @end
 
 @implementation XLFormTextFieldCell

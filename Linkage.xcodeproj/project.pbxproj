@@ -30,6 +30,7 @@
 		8B10AD4C1C887D3F00F5B0D6 /* side_yellow_page@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B10AD3D1C887D3F00F5B0D6 /* side_yellow_page@2x.png */; };
 		8B3302911C8BC0D70088DAE2 /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3302901C8BC0D70088DAE2 /* MainTableViewCell.m */; };
 		8B3302941C8BC7510088DAE2 /* MainDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3302931C8BC7510088DAE2 /* MainDataSource.m */; };
+		8B3C31921C956EEB00FC6323 /* FormTextFieldAndButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C31901C9568B900FC6323 /* FormTextFieldAndButtonCell.m */; };
 		8B4445091C7C9EFE00160DC2 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4444DA1C7C9EFE00160DC2 /* TAAbstractDotView.m */; };
 		8B44450A1C7C9EFE00160DC2 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4444DC1C7C9EFE00160DC2 /* TAAnimatedDotView.m */; };
 		8B44450B1C7C9EFE00160DC2 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4444DE1C7C9EFE00160DC2 /* TADotView.m */; };
@@ -208,6 +209,8 @@
 		8B3302901C8BC0D70088DAE2 /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
 		8B3302921C8BC7510088DAE2 /* MainDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainDataSource.h; sourceTree = "<group>"; };
 		8B3302931C8BC7510088DAE2 /* MainDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainDataSource.m; sourceTree = "<group>"; };
+		8B3C318F1C9568B900FC6323 /* FormTextFieldAndButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormTextFieldAndButtonCell.h; sourceTree = "<group>"; };
+		8B3C31901C9568B900FC6323 /* FormTextFieldAndButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormTextFieldAndButtonCell.m; sourceTree = "<group>"; };
 		8B4444D91C7C9EFE00160DC2 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
 		8B4444DA1C7C9EFE00160DC2 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
 		8B4444DB1C7C9EFE00160DC2 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
@@ -615,6 +618,8 @@
 		8B3C318B1C9527BF00FC6323 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8B3C318F1C9568B900FC6323 /* FormTextFieldAndButtonCell.h */,
+				8B3C31901C9568B900FC6323 /* FormTextFieldAndButtonCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1521,6 +1526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3C31921C956EEB00FC6323 /* FormTextFieldAndButtonCell.m in Sources */,
 				9A95FF021C83E3C600C5F492 /* MenuItem.m in Sources */,
 				9A23A2B51C7AB3A300FB5EB6 /* MainBaseViewController.m in Sources */,
 				8B5DC63D1C79B8A700D29292 /* UIViewController+TRTheme.m in Sources */,
