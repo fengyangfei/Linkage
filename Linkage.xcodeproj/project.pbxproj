@@ -612,6 +612,13 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		8B3C318B1C9527BF00FC6323 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		8B4444D71C7C9EFE00160DC2 /* SDCycleScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1046,6 +1053,7 @@
 		8B8F266D1C89C806001B187E /* register */ = {
 			isa = PBXGroup;
 			children = (
+				8B3C318B1C9527BF00FC6323 /* view */,
 				8B8F266E1C89C83D001B187E /* RegisterViewController.h */,
 				8B8F266F1C89C83D001B187E /* RegisterViewController.m */,
 			);

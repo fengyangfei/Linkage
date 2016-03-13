@@ -22,6 +22,7 @@
 #define ModMobileUrl [NSString stringWithFormat:@"%@/api/profile/modmobile", BaseUrl]
 #define InfomationUrl [NSString stringWithFormat:@"%@/api/profile/information", BaseUrl]
 #define ModInfomationUrl [NSString stringWithFormat:@"%@/api/profile/modinformation",BaseUrl]
+#define VerifycodeUrl [NSString stringWithFormat:@"%@/api/code/verifycode",BaseUrl]
 #define InvitecodeUrl [NSString stringWithFormat:@"%@/api/code/invitecode",BaseUrl]//生成邀请码
 #define GenInvitecodeUrl [NSString stringWithFormat:@"%@/api/code/inviteurl",BaseUrl]//生成邀请链接
 #define ModCompanyUrl [NSString stringWithFormat:@"%@/api/company/modcompany",BaseUrl]

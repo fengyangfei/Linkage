@@ -8,6 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "YGRestClient.h"
+#import "FormTextFieldAndButtonCell.h"
 
 @interface RegisterViewController ()
 
@@ -32,11 +33,14 @@
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
     
-    form = [XLFormDescriptor formDescriptorWithTitle:@"注册"];
+    form = [XLFormDescriptor formDescriptor];
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeText title:@"手机"];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"inviteCode" rowType:XLFormRowDescriptorTypePassword title:@"验证码"];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"password" rowType:XLFormRowDescriptorTypePassword title:@"密码"];
@@ -54,6 +58,12 @@
     };
     [section addFormRow:row];
     
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"生成验证码"];
+    row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        [weakSelf genInviteCode];
+    };
+    [section addFormRow:row];
+    
     self.form = form;
 }
 
@@ -63,7 +73,11 @@
 
 - (void)registerAction
 {
-    NSDictionary *paramter = @{@"mobile":@"12345678901",@"password":@"123",@"ctype":@0, @"invite_code":@"1234"};
+    NSDictionary *formValues = [self.form formValues];
+    NSDictionary *paramter = @{@"mobile":formValues[@"phoneNum"],
+                               @"password":formValues[@"password"],
+                               @"ctype":@0,
+                               @"invite_code":formValues[@"inviteCode"]};
     [[YGRestClient sharedInstance] postForObjectWithUrl:Register4InviteUrl form:paramter success:^(id responseObject) {
         NSLog(@"sucss%@",responseObject);
     } failure:^(NSError *error) {
@@ -71,6 +85,16 @@
     }];
 }
 
+-(void)genInviteCode
+{
+    NSDictionary *formValues = [self.form formValues];
+    NSDictionary *paramter = @{@"mobile":formValues[@"phoneNum"]};
+    [[YGRestClient sharedInstance] postForObjectWithUrl:VerifycodeUrl form:paramter success:^(id responseObject) {
+        NSLog(@"sucss%@",responseObject);
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error.localizedDescription);
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
