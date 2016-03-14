@@ -1755,7 +1755,7 @@
 			baseConfigurationReference = BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: xiang wen (AQDGX6QJU2)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1776,7 +1776,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ygsoft.Linkage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8ac0d244-0e19-4df0-ae42-ae4052aadbf5";
+				PROVISIONING_PROFILE = "86a7c418-a369-45a9-a9ba-2620bd7071af";
 			};
 			name = Debug;
 		};
@@ -1785,7 +1785,7 @@
 			baseConfigurationReference = B30457667634636F561BC865 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
