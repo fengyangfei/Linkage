@@ -1394,7 +1394,7 @@
 				TargetAttributes = {
 					8B5DC5611C7992E900D29292 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 29KSEG6E57;
+						DevelopmentTeam = WKSMSBBC3K;
 					};
 				};
 			};
@@ -1761,6 +1761,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ygsoft.Linkage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "86a7c418-a369-45a9-a9ba-2620bd7071af";
 			};
 			name = Debug;
 		};
