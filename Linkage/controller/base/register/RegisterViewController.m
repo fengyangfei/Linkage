@@ -38,6 +38,9 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeTextAndButton title:@"手机"];
+    row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        [weakSelf genInviteCode];
+    };
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"inviteCode" rowType:XLFormRowDescriptorTypePassword title:@"验证码"];
@@ -55,12 +58,6 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"注册"];
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf registerAction];
-    };
-    [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"生成验证码"];
-    row.action.formBlock = ^(XLFormRowDescriptor *sender){
-        [weakSelf genInviteCode];
     };
     [section addFormRow:row];
     
