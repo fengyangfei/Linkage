@@ -74,7 +74,7 @@ NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
     if (!_button) {
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         _button.translatesAutoresizingMaskIntoConstraints = NO;
-        [_button setTitle:@"测试" forState:UIControlStateNormal];
+        [_button setTitle:@"获取验证码" forState:UIControlStateNormal];
         [_button setBackgroundColor:[UIColor grayColor]];
     }
     return _button;

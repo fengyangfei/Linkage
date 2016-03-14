@@ -33,7 +33,7 @@
         make.top.equalTo(self.view.top);
         make.left.equalTo(self.view.left);
         make.right.equalTo(self.view.right);
-        make.height.equalTo(250);
+        make.height.equalTo(150);
     }];
     
     [self.view addSubview:self.centerView];
