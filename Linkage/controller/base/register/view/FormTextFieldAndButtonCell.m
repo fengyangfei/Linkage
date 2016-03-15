@@ -7,6 +7,7 @@
 //
 
 #import "FormTextFieldAndButtonCell.h"
+#import <BlocksKit/BlocksKit+UIKit.h>
 NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
 
 @interface XLFormTextFieldCell(TextFiledAndButton)
@@ -71,11 +72,17 @@ NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
 
 -(UIButton *)button
 {
+    WeakSelf
     if (!_button) {
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         _button.translatesAutoresizingMaskIntoConstraints = NO;
-        [_button setTitle:@"测试" forState:UIControlStateNormal];
+        [_button setTitle:@"获取验证码" forState:UIControlStateNormal];
         [_button setBackgroundColor:[UIColor grayColor]];
+        [_button bk_addEventHandler:^(id sender) {
+            if (weakSelf.rowDescriptor.action.formBlock) {
+                weakSelf.rowDescriptor.action.formBlock(weakSelf.rowDescriptor);
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _button;
 }
@@ -95,7 +102,6 @@ NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
         _textField = [UITextField autolayoutView];
         _textField.textAlignment = NSTextAlignmentRight;
         [_textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-        _textField.backgroundColor = [UIColor yellowColor];
     }
     return _textField;
 }

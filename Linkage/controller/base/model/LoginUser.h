@@ -12,7 +12,6 @@
 + (void)set##attr:(attrType)attr;
 
 @interface LoginUser : NSObject<NSCoding,RMMapping>
-
 @property (nonatomic,copy) NSString *email;
 @property (nonatomic,copy) NSString *phoneNumber;
 @property (nonatomic,copy) NSString *tokenId;
@@ -28,7 +27,10 @@
 
 @interface LoginUser (Extensions)
 LoginUser_Attr(currentLocation, NSString *)//用户所在地
-
 @end
 
 AS_RMMapperModel(LoginUser)
+
+@interface  : <#superclass#>
+
+@end

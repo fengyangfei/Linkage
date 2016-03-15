@@ -25,8 +25,8 @@
     }
     
     cell.iconView.image = [UIImage imageNamed:@"logo"];
-    cell.titleLabel.text = @"供货商";
-    cell.subTitleLabel.text  = @"日期";
+    cell.titleLabel.text = @"承运商";
+    cell.subTitleLabel.text  = @"已接123单";
     return cell;
 }
 

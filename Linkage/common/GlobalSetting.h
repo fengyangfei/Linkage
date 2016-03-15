@@ -12,6 +12,7 @@
 #define GlobalSetting_h
 
 #define HeaderColor UIColorFromRGB(0x272727)
+#define ButtonColor UIColorFromRGB(0x0080FF)
 
 #define BaseUrl @"http://120.25.82.122:8000"
 #define Register4AdminUrl [NSString stringWithFormat:@"%@/api/session/register4admin", BaseUrl]

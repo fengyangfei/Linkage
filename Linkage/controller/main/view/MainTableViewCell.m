@@ -7,6 +7,7 @@
 //
 
 #import "MainTableViewCell.h"
+#import "AXRatingView.h"
 
 @implementation MainTableViewCell
 
@@ -50,11 +51,26 @@
         make.top.equalTo(self.iconView.top);
     }];
     
-    [self.contentView addSubview:self.subTitleLabel];
-    [self.subTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+    [self.contentView addSubview:self.ratingView];
+    [self.ratingView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconView.right).offset(5);
         make.right.equalTo(self.contentView.right);
         make.bottom.equalTo(self.iconView.bottom);
+        make.height.equalTo(@30);
+    }];
+    
+    [self.contentView addSubview:self.button];
+    [self.button makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView.right).offset(-8);
+        make.centerY.equalTo(self.contentView.centerY);
+        make.height.equalTo(@44);
+        make.width.equalTo(@80);
+    }];
+    
+    [self.contentView addSubview:self.subTitleLabel];
+    [self.subTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.button.left).offset(-5);
+        make.bottom.equalTo(self.button.bottom);
     }];
 }
 
@@ -80,7 +96,31 @@
     if (!_subTitleLabel) {
         _subTitleLabel = [UILabel new];
         _subTitleLabel.font = [UIFont systemFontOfSize:14];
+        _subTitleLabel.textAlignment = NSTextAlignmentRight;
+        _subTitleLabel.textColor =[UIColor grayColor];
     }
     return _subTitleLabel;
+}
+
+-(UIView *)ratingView
+{
+    if (!_ratingView) {
+        _ratingView = ({
+            AXRatingView *axRatinView = [[AXRatingView alloc]initWithFrame:CGRectZero];
+            [axRatinView setStepInterval:1.0];
+            axRatinView;
+        });
+    }
+    return _ratingView;
+}
+
+-(UIButton *)button
+{
+    if (!_button) {
+        _button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_button setTitle:@"下单" forState:UIControlStateNormal];
+        [_button setBackgroundColor:ButtonColor];
+    }
+    return _button;
 }
 @end

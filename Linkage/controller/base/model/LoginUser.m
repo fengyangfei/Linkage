@@ -107,16 +107,6 @@ static LoginUser *user;
     return [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSArray *)rm_excludedProperties
-{
-    return @[];
-}
-
-- (Class)rm_itemClassForArrayProperty:(NSString*)property
-{
-    return nil;
-}
-
 @end
 
 @implementation LoginUser(Extensions)
