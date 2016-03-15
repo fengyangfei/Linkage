@@ -57,10 +57,8 @@
     UIViewController *messageController = ({
         NSString *title = @"消息";
         UIViewController *viewController = [[UIViewController alloc]init];
-        viewController.view.backgroundColor = [UIColor paperColorBlue];
         viewController.title = title;
         viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"icon_tab_fujin_normal"] selectedImage:[UIImage imageNamed:@"icon_tab_fujin_normal_light"]];
-
         viewController;
     });
     
@@ -73,20 +71,12 @@
     });
     
     //司机的只有三个页签
-    if([TRThemeManager shareInstance].themeType == TRThemeTypeDriver){
-        self.viewControllers = @[
-                                 [[UINavigationController alloc]initWithRootViewController:mainViewController],
-                                 [[UINavigationController alloc]initWithRootViewController:messageController],
-                                 [[UINavigationController alloc]initWithRootViewController:mineController]
-                                 ];
-    }else{
-        self.viewControllers = @[
-                                 [[UINavigationController alloc]initWithRootViewController:mainViewController],
-                                 [[UINavigationController alloc]initWithRootViewController:billController],
-                                 [[UINavigationController alloc]initWithRootViewController:messageController],
-                                 [[UINavigationController alloc]initWithRootViewController:mineController]
-                                 ];
-    }
+    self.viewControllers = @[
+                             [[UINavigationController alloc]initWithRootViewController:mainViewController],
+                             [[UINavigationController alloc]initWithRootViewController:billController],
+                             [[UINavigationController alloc]initWithRootViewController:messageController],
+                             [[UINavigationController alloc]initWithRootViewController:mineController]
+                             ];
     
     self.tabBar.translucent = NO;
 }

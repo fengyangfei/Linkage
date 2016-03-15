@@ -129,13 +129,11 @@
 
 -(void)updateUI:(MenuItem *)item
 {
-    
     [super updateUI:item];
-    if ([TRThemeManager shareInstance].themeType == TRThemeTypeFactory) {
-        self.iconView.image = [UIImage imageNamed:@"logo"];
-        self.titleLabel.text = @"小明";
-        self.subTitleLabel.text = @"电话:150111111111";
-    }
+    self.iconView.image = [UIImage imageNamed:@"logo"];
+    self.titleLabel.text = @"小明";
+    self.subTitleLabel.text = @"电话:150111111111";
+
 }
 
 -(UILabel *)subTitleLabel

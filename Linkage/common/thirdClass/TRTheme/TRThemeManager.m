@@ -23,10 +23,10 @@ static NSDictionary *themeBundleMapping;
 +(void)load
 {
     themeBundleMapping = @{
-                           [NSNumber numberWithInt:TRThemeTypeFactory] : @"Factory",
-                           [NSNumber numberWithInt:TRThemeTypeMerchant] :@"Merchant",
-                           [NSNumber numberWithInt:TRThemeTypeStaff] :@"Staff",
-                           [NSNumber numberWithInt:TRThemeTypeDriver] :@"Driver"
+                           [NSNumber numberWithInt:TRThemeTypeCompany] : @"Company",
+                           [NSNumber numberWithInt:TRThemeTypeSubCompany] :@"SubCompany",
+                           [NSNumber numberWithInt:TRThemeTypeContact] :@"Contact",
+                           [NSNumber numberWithInt:TRThemeTypeSubContact] :@"SubContact"
                            };
 }
 

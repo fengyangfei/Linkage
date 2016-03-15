@@ -115,3 +115,9 @@ LoginUser_AttrImpl(currentLocation, NSString *)
 @end
 
 DEF_RMMapperModel(LoginUser)
+
+#pragma mark - 公司
+@implementation Company
+
+
+@end

@@ -14,10 +14,10 @@
         NSLocalizedStringFromTableInBundle(key, nil, [TRThemeManager shareInstance].themeBundle, nil)
 
 typedef NS_ENUM(NSUInteger, TRThemeType) {
-    TRThemeTypeFactory,//厂商
-    TRThemeTypeMerchant,//承运商
-    TRThemeTypeStaff,//员工
-    TRThemeTypeDriver//司机
+    TRThemeTypeCompany,//厂商
+    TRThemeTypeSubCompany,//承运商
+    TRThemeTypeContact,//厂商员工
+    TRThemeTypeSubContact//承运商员工
 };
 
 extern NSString *const kTRThemeChangeNofication;

@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		473829019982DB6ABCA449C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C81D54C57DCA2DBC162EE98 /* libPods.a */; };
-		8B0D50971C8ADDFF00EB6B3A /* Driver.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0D50961C8ADDFF00EB6B3A /* Driver.bundle */; };
-		8B10AD231C885B8C00F5B0D6 /* Factory.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B10AD201C885B8C00F5B0D6 /* Factory.bundle */; };
-		8B10AD241C885B8C00F5B0D6 /* Merchant.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B10AD211C885B8C00F5B0D6 /* Merchant.bundle */; };
-		8B10AD251C885B8C00F5B0D6 /* Staff.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B10AD221C885B8C00F5B0D6 /* Staff.bundle */; };
 		8B10AD2D1C88744E00F5B0D6 /* PersonalSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */; };
 		8B10AD3E1C887D3F00F5B0D6 /* side_backup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B10AD2F1C887D3F00F5B0D6 /* side_backup@2x.png */; };
 		8B10AD3F1C887D3F00F5B0D6 /* side_company_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B10AD301C887D3F00F5B0D6 /* side_company_logo@2x.png */; };
@@ -135,6 +131,9 @@
 		8BB4FB141C7A0884003389F1 /* iConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB101C7A0884003389F1 /* iConsole.m */; };
 		8BB4FB151C7A0884003389F1 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB111C7A0884003389F1 /* LICENSE.md */; };
 		8BB4FB161C7A0884003389F1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB121C7A0884003389F1 /* README.md */; };
+		8BDBB7CA1C98509D00D60207 /* Company.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8BDBB7C91C98509D00D60207 /* Company.bundle */; };
+		8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */; };
+		8BDBB7D11C9859CD00D60207 /* BillDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7D01C9859CD00D60207 /* BillDataSource.m */; };
 		8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE996511C96EBFF008B4B13 /* AXRatingView.m */; };
 		9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */; };
 		9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A81C7A91D400FB5EB6 /* UIColor+BFPaperColors.m */; };
@@ -173,8 +172,6 @@
 		9A95FF151C891CFB00C5F492 /* BillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF141C891CFB00C5F492 /* BillViewController.m */; };
 		9A95FF191C89221C00C5F492 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF181C89221C00C5F492 /* UIImage+ImageWithColor.m */; };
 		9A95FF211C8931F400C5F492 /* BaseBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF201C8931F400C5F492 /* BaseBillViewController.m */; };
-		9A95FF281C896B9E00C5F492 /* TodoDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF271C896B9E00C5F492 /* TodoDataSource.m */; };
-		9A95FF2B1C896BD000C5F492 /* DoneDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF2A1C896BD000C5F492 /* DoneDataSource.m */; };
 		9A95FF331C89731100C5F492 /* TRPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF2E1C89731100C5F492 /* TRPopButton.m */; };
 		9A95FF341C89731100C5F492 /* TRPopManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF301C89731100C5F492 /* TRPopManager.m */; };
 		9A95FF351C89731100C5F492 /* TRPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF321C89731100C5F492 /* TRPopView.m */; };
@@ -185,10 +182,6 @@
 
 /* Begin PBXFileReference section */
 		2C81D54C57DCA2DBC162EE98 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B0D50961C8ADDFF00EB6B3A /* Driver.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Driver.bundle; sourceTree = "<group>"; };
-		8B10AD201C885B8C00F5B0D6 /* Factory.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Factory.bundle; sourceTree = "<group>"; };
-		8B10AD211C885B8C00F5B0D6 /* Merchant.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Merchant.bundle; sourceTree = "<group>"; };
-		8B10AD221C885B8C00F5B0D6 /* Staff.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Staff.bundle; sourceTree = "<group>"; };
 		8B10AD2B1C88744E00F5B0D6 /* PersonalSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalSettingController.h; sourceTree = "<group>"; };
 		8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalSettingController.m; sourceTree = "<group>"; };
 		8B10AD2F1C887D3F00F5B0D6 /* side_backup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "side_backup@2x.png"; sourceTree = "<group>"; };
@@ -431,6 +424,11 @@
 		8BB4FB101C7A0884003389F1 /* iConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iConsole.m; sourceTree = "<group>"; };
 		8BB4FB111C7A0884003389F1 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		8BB4FB121C7A0884003389F1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8BDBB7C91C98509D00D60207 /* Company.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Company.bundle; sourceTree = "<group>"; };
+		8BDBB7CC1C9854B700D60207 /* BillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTableViewCell.h; sourceTree = "<group>"; };
+		8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTableViewCell.m; sourceTree = "<group>"; };
+		8BDBB7CF1C9859CD00D60207 /* BillDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillDataSource.h; sourceTree = "<group>"; };
+		8BDBB7D01C9859CD00D60207 /* BillDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillDataSource.m; sourceTree = "<group>"; };
 		8BE996501C96EBFF008B4B13 /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
 		8BE996511C96EBFF008B4B13 /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
 		9A23A2A51C7A91D400FB5EB6 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
@@ -492,10 +490,6 @@
 		9A95FF181C89221C00C5F492 /* UIImage+ImageWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithColor.m"; sourceTree = "<group>"; };
 		9A95FF1F1C8931F400C5F492 /* BaseBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseBillViewController.h; sourceTree = "<group>"; };
 		9A95FF201C8931F400C5F492 /* BaseBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseBillViewController.m; sourceTree = "<group>"; };
-		9A95FF261C896B9E00C5F492 /* TodoDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoDataSource.h; sourceTree = "<group>"; };
-		9A95FF271C896B9E00C5F492 /* TodoDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoDataSource.m; sourceTree = "<group>"; };
-		9A95FF291C896BD000C5F492 /* DoneDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneDataSource.h; sourceTree = "<group>"; };
-		9A95FF2A1C896BD000C5F492 /* DoneDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneDataSource.m; sourceTree = "<group>"; };
 		9A95FF2D1C89731100C5F492 /* TRPopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRPopButton.h; sourceTree = "<group>"; };
 		9A95FF2E1C89731100C5F492 /* TRPopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRPopButton.m; sourceTree = "<group>"; };
 		9A95FF2F1C89731100C5F492 /* TRPopManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRPopManager.h; sourceTree = "<group>"; };
@@ -852,10 +846,7 @@
 		8B5DC5BE1C79B8A700D29292 /* TRTheme */ = {
 			isa = PBXGroup;
 			children = (
-				8B0D50961C8ADDFF00EB6B3A /* Driver.bundle */,
-				8B10AD201C885B8C00F5B0D6 /* Factory.bundle */,
-				8B10AD211C885B8C00F5B0D6 /* Merchant.bundle */,
-				8B10AD221C885B8C00F5B0D6 /* Staff.bundle */,
+				8BDBB7C91C98509D00D60207 /* Company.bundle */,
 				8B5DC5BF1C79B8A700D29292 /* TRTheme.h */,
 				8B5DC5C01C79B8A700D29292 /* TRTheme.m */,
 				8B5DC5C11C79B8A700D29292 /* TRThemeBaseViewController.h */,
@@ -1107,6 +1098,15 @@
 			path = iConsole;
 			sourceTree = "<group>";
 		};
+		8BDBB7CB1C98547B00D60207 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8BDBB7CC1C9854B700D60207 /* BillTableViewCell.h */,
+				8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		8BE9964F1C96EBFF008B4B13 /* AXRatingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1312,6 +1312,7 @@
 		9A95FF121C891CDA00C5F492 /* bill */ = {
 			isa = PBXGroup;
 			children = (
+				8BDBB7CB1C98547B00D60207 /* view */,
 				9A95FF1E1C8931BB00C5F492 /* baseController */,
 				9A95FF1A1C892C8F00C5F492 /* dataSource */,
 				9A95FF131C891CFB00C5F492 /* BillViewController.h */,
@@ -1323,10 +1324,8 @@
 		9A95FF1A1C892C8F00C5F492 /* dataSource */ = {
 			isa = PBXGroup;
 			children = (
-				9A95FF261C896B9E00C5F492 /* TodoDataSource.h */,
-				9A95FF271C896B9E00C5F492 /* TodoDataSource.m */,
-				9A95FF291C896BD000C5F492 /* DoneDataSource.h */,
-				9A95FF2A1C896BD000C5F492 /* DoneDataSource.m */,
+				8BDBB7CF1C9859CD00D60207 /* BillDataSource.h */,
+				8BDBB7D01C9859CD00D60207 /* BillDataSource.m */,
 			);
 			path = dataSource;
 			sourceTree = "<group>";
@@ -1444,20 +1443,17 @@
 				8B5DC5721C7992E900D29292 /* Assets.xcassets in Resources */,
 				8B10AD441C887D3F00F5B0D6 /* side_group@2x.png in Resources */,
 				9A23A3141C7E8E7500FB5EB6 /* tutorial_background_01@2x.jpg in Resources */,
-				8B10AD251C885B8C00F5B0D6 /* Staff.bundle in Resources */,
 				9A23A3101C7E8E7500FB5EB6 /* Default-568h@2x.png in Resources */,
 				9A23A3151C7E8E7500FB5EB6 /* tutorial_background_02@2x.jpg in Resources */,
 				9A23A3121C7E8E7500FB5EB6 /* Default@2x.png in Resources */,
 				9A23A30D1C7E8E7500FB5EB6 /* background-gradient@2x.png in Resources */,
 				8B10AD451C887D3F00F5B0D6 /* side_local@2x.png in Resources */,
-				8B10AD241C885B8C00F5B0D6 /* Merchant.bundle in Resources */,
+				8BDBB7CA1C98509D00D60207 /* Company.bundle in Resources */,
 				8B10AD491C887D3F00F5B0D6 /* side_qrcode@2x.png in Resources */,
 				8B10AD431C887D3F00F5B0D6 /* side_favourite@2x.png in Resources */,
 				9A23A30F1C7E8E7500FB5EB6 /* button-background@2x.png in Resources */,
 				9A23A3171C7E8E7500FB5EB6 /* tutorial_background_04@2x.jpg in Resources */,
-				8B10AD231C885B8C00F5B0D6 /* Factory.bundle in Resources */,
 				8B5DC6421C79B8A700D29292 /* UMSCommentInputController.xib in Resources */,
-				8B0D50971C8ADDFF00EB6B3A /* Driver.bundle in Resources */,
 				8B10AD421C887D3F00F5B0D6 /* side_enterprise@2x.png in Resources */,
 				8B5DC6481C79B8A700D29292 /* UMSShareListController.xib in Resources */,
 				8B10AD401C887D3F00F5B0D6 /* side_debug@2x.png in Resources */,
@@ -1559,6 +1555,7 @@
 				8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */,
 				8B44451B1C7C9EFE00160DC2 /* UIImage+MultiFormat.m in Sources */,
 				9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */,
+				8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */,
 				9A23A2C41C7AE1B100FB5EB6 /* LoginViewController.m in Sources */,
 				9A23A3201C7E8EA900FB5EB6 /* ICETutorialPage.m in Sources */,
 				9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */,
@@ -1568,7 +1565,6 @@
 				8B5DC6341C79B8A700D29292 /* UIView+IFTTTJazzHands.m in Sources */,
 				9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */,
 				8B44451F1C7C9EFE00160DC2 /* UIView+WebCacheOperation.m in Sources */,
-				9A95FF281C896B9E00C5F492 /* TodoDataSource.m in Sources */,
 				9A95FF351C89731100C5F492 /* TRPopView.m in Sources */,
 				8B4445161C7C9EFE00160DC2 /* SDWebImageDownloaderOperation.m in Sources */,
 				8B44450E1C7C9EFE00160DC2 /* SDCycleScrollView.m in Sources */,
@@ -1595,7 +1591,6 @@
 				8B5DC62F1C79B8A700D29292 /* IFTTTShapeLayerAnimation.m in Sources */,
 				8B44450B1C7C9EFE00160DC2 /* TADotView.m in Sources */,
 				8B5DC6191C79B8A700D29292 /* IFTTTAlphaAnimation.m in Sources */,
-				9A95FF2B1C896BD000C5F492 /* DoneDataSource.m in Sources */,
 				8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */,
 				8B5DC62E1C79B8A700D29292 /* IFTTTScrollViewPageConstraintAnimation.m in Sources */,
 				8B5DC61F1C79B8A700D29292 /* IFTTTConstraintConstantAnimation.m in Sources */,
@@ -1632,6 +1627,7 @@
 				9A23A2FD1C7DAA2500FB5EB6 /* UIViewController+Extensions.m in Sources */,
 				9A95FF401C89824F00C5F492 /* TRImagePickerDelegate.m in Sources */,
 				9A95FF191C89221C00C5F492 /* UIImage+ImageWithColor.m in Sources */,
+				8BDBB7D11C9859CD00D60207 /* BillDataSource.m in Sources */,
 				8B5DC6231C79B8A700D29292 /* IFTTTFilmstrip.m in Sources */,
 				8B5DC6211C79B8A700D29292 /* IFTTTCornerRadiusAnimation.m in Sources */,
 				8B44450A1C7C9EFE00160DC2 /* TAAnimatedDotView.m in Sources */,
