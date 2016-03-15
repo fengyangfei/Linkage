@@ -38,6 +38,9 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeTextAndButton title:@"手机"];
+    row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        [weakSelf genInviteCode];
+    };
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"inviteCode" rowType:XLFormRowDescriptorTypePassword title:@"验证码"];
@@ -53,14 +56,9 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"注册"];
+    row.disabled = @YES;
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf registerAction];
-    };
-    [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"生成验证码"];
-    row.action.formBlock = ^(XLFormRowDescriptor *sender){
-        [weakSelf genInviteCode];
     };
     [section addFormRow:row];
     
@@ -73,6 +71,8 @@
 
 - (void)registerAction
 {
+    NSLog(@"注册");
+    [self.tableView endEditing:YES];
     NSDictionary *formValues = [self.form formValues];
     NSDictionary *paramter = @{@"mobile":formValues[@"phoneNum"],
                                @"password":formValues[@"password"],
@@ -87,6 +87,7 @@
 
 -(void)genInviteCode
 {
+    NSLog(@"生成验证码");
     NSDictionary *formValues = [self.form formValues];
     NSDictionary *paramter = @{@"mobile":formValues[@"phoneNum"]};
     [[YGRestClient sharedInstance] postForObjectWithUrl:VerifycodeUrl form:paramter success:^(id responseObject) {
@@ -94,6 +95,13 @@
     } failure:^(NSError *error) {
         NSLog(@"%@",error.localizedDescription);
     }];
+}
+
+#pragma mark - XLFormDescriptorDelegate
+
+-(void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)rowDescriptor oldValue:(id)oldValue newValue:(id)newValue
+{
+    [super formRowDescriptorValueHasChanged:rowDescriptor oldValue:oldValue newValue:newValue];
 }
 
 - (void)didReceiveMemoryWarning {
