@@ -7,22 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenuItem.h"
-@class MineViewController;
+#import <XLForm/XLForm.h>
 
-@interface MenuBaseTableViewCell : UITableViewCell
-@property (nonatomic, strong) UIImageView *iconView;
-@property (nonatomic, strong) UILabel *titleLabel;
+extern NSString *const FormRowDescriptorTypeMine;
+extern NSString *const FormRowDescriptorTypeMineHeader;
 
-- (void)updateUI:(MenuItem *)item;
-- (void)cellDidSelectedWithController:(MineViewController *)controller;
+@interface MenuBaseTableViewCell : XLFormBaseCell
+@property (nonatomic, readonly) UIImageView *iconView;
+@property (nonatomic, readonly) UILabel *titleLabel;
 
 @end
 
 @interface MenuTableViewCell : MenuBaseTableViewCell
 
 @end
-
 
 @interface MenuHeaderTableViewCell : MenuBaseTableViewCell
 @end

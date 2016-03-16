@@ -7,40 +7,48 @@
 //
 
 #import "MenuTableViewCell.h"
-#import "MineViewController.h"
-
-@interface MenuBaseTableViewCell()
-@property (nonatomic, readonly) MenuItem *item;
-@end
-
+#import "MenuItem.h"
+NSString *const FormRowDescriptorTypeMine = @"mineRowCell";
+NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 @implementation MenuBaseTableViewCell
-@synthesize item= _item;
+@synthesize iconView = _iconView;
+@synthesize titleLabel = _titleLabel;
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(nullable NSString *)reuseIdentifier
++(void)load
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        [self setupUI];
-    }
-    return self;
+    NSDictionary *dic = @{
+                          FormRowDescriptorTypeMine:[MenuTableViewCell class],
+                          FormRowDescriptorTypeMineHeader:[MenuHeaderTableViewCell class]
+                          };
+    [XLFormViewController.cellClassesForRowDescriptorTypes addEntriesFromDictionary:dic];
 }
 
--(void)setupUI
+-(void)configure
 {
+    [super configure];
     [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 }
 
-- (void)updateUI:(MenuItem *)item
+- (void)update
 {
-    _item = item;
+    [super update];
 }
 
-- (void)cellDidSelectedWithController:(MineViewController *)controller
+-(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
 {
-    if (_item) {
-        UIViewController *viewController = [[self.item.viewControllerClass alloc] init];
-        viewController.hidesBottomBarWhenPushed = YES;
-        [controller.navigationController pushViewController:viewController animated:YES];
+    if (self.rowDescriptor.action.viewControllerClass) {
+        UIViewController * controllerToPresent = [[self.rowDescriptor.action.viewControllerClass alloc] init];
+        if (controllerToPresent){
+            if ([controllerToPresent conformsToProtocol:@protocol(XLFormRowDescriptorViewController)]){
+                ((UIViewController<XLFormRowDescriptorViewController> *)controllerToPresent).rowDescriptor = self.rowDescriptor;
+            }
+            if (controller.navigationController == nil || [controllerToPresent isKindOfClass:[UINavigationController class]] || self.rowDescriptor.action.viewControllerPresentationMode == XLFormPresentationModePresent){
+                [controller presentViewController:controllerToPresent animated:YES completion:nil];
+            }
+            else{
+                [controller.navigationController pushViewController:controllerToPresent animated:YES];
+            }
+        }
     }
 }
 
@@ -62,12 +70,11 @@
 }
 @end
 
-
 @implementation MenuTableViewCell
 
--(void)setupUI
+-(void)configure
 {
-    [super setupUI];
+    [super configure];
     [self.contentView addSubview:self.iconView];
     [self.iconView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.left).offset(8);
@@ -85,13 +92,18 @@
     }];
 }
 
-- (void)updateUI:(MenuItem *)item
+- (void)update
 {
-    [super updateUI:item];
+    [super update];
+    MenuItem *item = self.rowDescriptor.value;
     self.iconView.image = item.icon;
     self.titleLabel.text = item.title;
 }
 
++(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    return 45;
+}
 
 @end
 
@@ -101,9 +113,9 @@
 
 @implementation MenuHeaderTableViewCell
 
--(void)setupUI
+-(void)configure
 {
-    [super setupUI];
+    [super configure];
     [self.contentView addSubview:self.iconView];
     [self.iconView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.left).offset(8);
@@ -127,13 +139,18 @@
     }];
 }
 
--(void)updateUI:(MenuItem *)item
+-(void)update
 {
-    [super updateUI:item];
+    [super update];
+    MenuItem *item = self.rowDescriptor.value;
     self.iconView.image = [UIImage imageNamed:@"logo"];
-    self.titleLabel.text = @"小明";
+    self.titleLabel.text = item.title;
     self.subTitleLabel.text = @"电话:150111111111";
+}
 
++(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    return 65;
 }
 
 -(UILabel *)subTitleLabel

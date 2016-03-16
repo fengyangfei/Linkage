@@ -6,8 +6,7 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <XLForm/XLForm.h>
 
-@interface MineViewController : UIViewController
-@property (nonatomic, strong) UITableView *tableView;
+@interface MineViewController : XLFormViewController
 @end
