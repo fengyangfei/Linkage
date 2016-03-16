@@ -178,6 +178,8 @@
 		9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3A1C897EE800C5F492 /* TRFloatingModel.m */; };
 		9A95FF401C89824F00C5F492 /* TRImagePickerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3D1C89824F00C5F492 /* TRImagePickerDelegate.m */; };
 		9A95FF411C89824F00C5F492 /* UIViewController+TRImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3F1C89824F00C5F492 /* UIViewController+TRImagePicker.m */; };
+		9ACEBC701C99492A0000ACBF /* CargoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6C1C99492A0000ACBF /* CargoModel.m */; };
+		9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -502,6 +504,10 @@
 		9A95FF3D1C89824F00C5F492 /* TRImagePickerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRImagePickerDelegate.m; sourceTree = "<group>"; };
 		9A95FF3E1C89824F00C5F492 /* UIViewController+TRImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TRImagePicker.h"; sourceTree = "<group>"; };
 		9A95FF3F1C89824F00C5F492 /* UIViewController+TRImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TRImagePicker.m"; sourceTree = "<group>"; };
+		9ACEBC6B1C99492A0000ACBF /* CargoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoModel.h; sourceTree = "<group>"; };
+		9ACEBC6C1C99492A0000ACBF /* CargoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoModel.m; sourceTree = "<group>"; };
+		9ACEBC6E1C99492A0000ACBF /* CargoFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoFormCell.h; sourceTree = "<group>"; };
+		9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoFormCell.m; sourceTree = "<group>"; };
 		B30457667634636F561BC865 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1312,6 +1318,7 @@
 		9A95FF121C891CDA00C5F492 /* bill */ = {
 			isa = PBXGroup;
 			children = (
+				9ACEBC691C99492A0000ACBF /* apply */,
 				8BDBB7CB1C98547B00D60207 /* view */,
 				9A95FF1E1C8931BB00C5F492 /* baseController */,
 				9A95FF1A1C892C8F00C5F492 /* dataSource */,
@@ -1361,6 +1368,33 @@
 				9A95FF321C89731100C5F492 /* TRPopView.m */,
 			);
 			path = PopButton;
+			sourceTree = "<group>";
+		};
+		9ACEBC691C99492A0000ACBF /* apply */ = {
+			isa = PBXGroup;
+			children = (
+				9ACEBC6A1C99492A0000ACBF /* model */,
+				9ACEBC6D1C99492A0000ACBF /* view */,
+			);
+			path = apply;
+			sourceTree = "<group>";
+		};
+		9ACEBC6A1C99492A0000ACBF /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9ACEBC6B1C99492A0000ACBF /* CargoModel.h */,
+				9ACEBC6C1C99492A0000ACBF /* CargoModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		9ACEBC6D1C99492A0000ACBF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				9ACEBC6E1C99492A0000ACBF /* CargoFormCell.h */,
+				9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		A0DDFB85B826F36604928232 /* Pods */ = {
@@ -1557,6 +1591,7 @@
 				9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */,
 				8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */,
 				9A23A2C41C7AE1B100FB5EB6 /* LoginViewController.m in Sources */,
+				9ACEBC701C99492A0000ACBF /* CargoModel.m in Sources */,
 				9A23A3201C7E8EA900FB5EB6 /* ICETutorialPage.m in Sources */,
 				9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */,
 				9A95FF341C89731100C5F492 /* TRPopManager.m in Sources */,
@@ -1597,6 +1632,7 @@
 				8B5DC6311C79B8A700D29292 /* IFTTTTransform3DAnimation.m in Sources */,
 				9A23A2F91C7D9FE100FB5EB6 /* LoginBaseViewController.m in Sources */,
 				8B44450D1C7C9EFE00160DC2 /* SDCollectionViewCell.m in Sources */,
+				9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */,
 				8B5DC61B1C79B8A700D29292 /* IFTTTAnimatedScrollViewController.m in Sources */,
 				8B5DC6361C79B8A700D29292 /* TRTheme.m in Sources */,
 				8B44450F1C7C9EFE00160DC2 /* UIView+SDExtension.m in Sources */,
