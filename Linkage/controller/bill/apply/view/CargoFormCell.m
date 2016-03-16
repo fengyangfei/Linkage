@@ -8,6 +8,7 @@
 
 #import "CargoFormCell.h"
 #import "CargoModel.h"
+#import <BlocksKit/UIView+BlocksKit.h>
 
 NSString * const kCargoRowDescriptroType = @"cargoRowType";
 @implementation CargoFormCell
@@ -47,19 +48,28 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
 
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
 {
+    [self gotoOptionsViewController];
+}
+
+-(void)gotoOptionsViewController
+{
     CargoModel *model = self.rowDescriptor.value;
-    XLFormOptionsViewController * optionsViewController = [[XLFormOptionsViewController alloc]  initWithStyle:UITableViewStyleGrouped];
+    UIViewController<XLFormRowDescriptorViewController> *optionsViewController = [[self.rowDescriptor.action.viewControllerClass alloc]init];
     optionsViewController.title = [model formDisplayText];
     optionsViewController.rowDescriptor = self.rowDescriptor;
-    [controller.navigationController pushViewController:optionsViewController animated:YES];
+    [self.formViewController.navigationController pushViewController:optionsViewController animated:YES];
 }
 
 #pragma mark - 各种属性
 -(UIButton *)leftButton
 {
+    WeakSelf
     if (_leftButton) return _leftButton;
     _leftButton = [[XLFormRightImageButton alloc] init];
     [_leftButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_leftButton bk_whenTapped:^{
+        [weakSelf gotoOptionsViewController];
+    }];
     UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"XLForm.bundle/forwardarrow.png"]];
     [imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_leftButton addSubview:imageView];

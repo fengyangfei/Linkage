@@ -180,6 +180,7 @@
 		9A95FF411C89824F00C5F492 /* UIViewController+TRImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3F1C89824F00C5F492 /* UIViewController+TRImagePicker.m */; };
 		9ACEBC701C99492A0000ACBF /* CargoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6C1C99492A0000ACBF /* CargoModel.m */; };
 		9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */; };
+		9ACEBC751C9950E90000ACBF /* CargoTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC741C9950E90000ACBF /* CargoTypeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -508,6 +509,8 @@
 		9ACEBC6C1C99492A0000ACBF /* CargoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoModel.m; sourceTree = "<group>"; };
 		9ACEBC6E1C99492A0000ACBF /* CargoFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoFormCell.h; sourceTree = "<group>"; };
 		9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoFormCell.m; sourceTree = "<group>"; };
+		9ACEBC731C9950E90000ACBF /* CargoTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoTypeViewController.h; sourceTree = "<group>"; };
+		9ACEBC741C9950E90000ACBF /* CargoTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoTypeViewController.m; sourceTree = "<group>"; };
 		B30457667634636F561BC865 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1373,6 +1376,7 @@
 		9ACEBC691C99492A0000ACBF /* apply */ = {
 			isa = PBXGroup;
 			children = (
+				9ACEBC721C9950C10000ACBF /* controller */,
 				9ACEBC6A1C99492A0000ACBF /* model */,
 				9ACEBC6D1C99492A0000ACBF /* view */,
 			);
@@ -1395,6 +1399,15 @@
 				9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		9ACEBC721C9950C10000ACBF /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				9ACEBC731C9950E90000ACBF /* CargoTypeViewController.h */,
+				9ACEBC741C9950E90000ACBF /* CargoTypeViewController.m */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 		A0DDFB85B826F36604928232 /* Pods */ = {
@@ -1612,6 +1625,7 @@
 				8B5DC6351C79B8A700D29292 /* JRToast.m in Sources */,
 				8B4445101C7C9EFE00160DC2 /* MKAnnotationView+WebCache.m in Sources */,
 				8B5DC6391C79B8A700D29292 /* TRThemeManager.m in Sources */,
+				9ACEBC751C9950E90000ACBF /* CargoTypeViewController.m in Sources */,
 				8B5DC62A1C79B8A700D29292 /* IFTTTMaskAnimation.m in Sources */,
 				8B4445191C7C9EFE00160DC2 /* UIButton+WebCache.m in Sources */,
 				9A95FF211C8931F400C5F492 /* BaseBillViewController.m in Sources */,
