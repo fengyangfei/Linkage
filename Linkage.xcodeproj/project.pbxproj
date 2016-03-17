@@ -127,6 +127,7 @@
 		8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */; };
 		8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26761C89DD89001B187E /* ForgotPasswordController.m */; };
 		8BB039DE1C94591900A3BCF9 /* LoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB039DD1C94591900A3BCF9 /* LoginUser.m */; };
+		8BB17AB71C9AF60D002708C4 /* BillApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB17AB61C9AF60D002708C4 /* BillApplyViewController.m */; };
 		8BB4FB131C7A0884003389F1 /* GTMStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB0D1C7A0884003389F1 /* GTMStackTrace.m */; };
 		8BB4FB141C7A0884003389F1 /* iConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB101C7A0884003389F1 /* iConsole.m */; };
 		8BB4FB151C7A0884003389F1 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB111C7A0884003389F1 /* LICENSE.md */; };
@@ -421,6 +422,8 @@
 		8B8F26761C89DD89001B187E /* ForgotPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordController.m; sourceTree = "<group>"; };
 		8BB039DC1C94591900A3BCF9 /* LoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUser.h; sourceTree = "<group>"; };
 		8BB039DD1C94591900A3BCF9 /* LoginUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUser.m; sourceTree = "<group>"; };
+		8BB17AB51C9AF60D002708C4 /* BillApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillApplyViewController.h; sourceTree = "<group>"; };
+		8BB17AB61C9AF60D002708C4 /* BillApplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillApplyViewController.m; sourceTree = "<group>"; };
 		8BB4FB0C1C7A0884003389F1 /* GTMStackTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMStackTrace.h; sourceTree = "<group>"; };
 		8BB4FB0D1C7A0884003389F1 /* GTMStackTrace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMStackTrace.m; sourceTree = "<group>"; };
 		8BB4FB0F1C7A0884003389F1 /* iConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iConsole.h; sourceTree = "<group>"; };
@@ -1379,6 +1382,8 @@
 				9ACEBC721C9950C10000ACBF /* controller */,
 				9ACEBC6A1C99492A0000ACBF /* model */,
 				9ACEBC6D1C99492A0000ACBF /* view */,
+				8BB17AB51C9AF60D002708C4 /* BillApplyViewController.h */,
+				8BB17AB61C9AF60D002708C4 /* BillApplyViewController.m */,
 			);
 			path = apply;
 			sourceTree = "<group>";
@@ -1673,6 +1678,7 @@
 				8B5DC6301C79B8A700D29292 /* IFTTTTextColorAnimation.m in Sources */,
 				8B4445171C7C9EFE00160DC2 /* SDWebImageManager.m in Sources */,
 				9A23A3211C7E8EA900FB5EB6 /* ICETutorialStyle.m in Sources */,
+				8BB17AB71C9AF60D002708C4 /* BillApplyViewController.m in Sources */,
 				8B5DC61E1C79B8A700D29292 /* IFTTTBackgroundColorAnimation.m in Sources */,
 				9A23A2FD1C7DAA2500FB5EB6 /* UIViewController+Extensions.m in Sources */,
 				9A95FF401C89824F00C5F492 /* TRImagePickerDelegate.m in Sources */,

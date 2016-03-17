@@ -71,6 +71,7 @@
 {
     if (!_detailLable) {
         _detailLable = [UILabel new];
+        _detailLable.font = [UIFont systemFontOfSize:10];
     }
     return _detailLable;
 }
@@ -79,6 +80,8 @@
 {
     if (!_ratingLable) {
         _ratingLable = [UILabel new];
+        _ratingLable.font = [UIFont systemFontOfSize:10];
+        _ratingLable.textColor = [UIColor grayColor];
     }
     return _ratingLable;
 }

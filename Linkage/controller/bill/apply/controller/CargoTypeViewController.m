@@ -19,7 +19,7 @@
 {
     NSMutableArray *options = [NSMutableArray array];
     for (int i = 0; i < 5; i++) {
-        NSString *title = [NSString stringWithFormat:@"标题%d",i];
+        NSString *title = [NSString stringWithFormat:@"货柜类型%d",i+1];
         XLFormOptionsObject *option = [XLFormOptionsObject formOptionsObjectWithValue:@(i) displayText:title];
         [options addObject:option];
     }

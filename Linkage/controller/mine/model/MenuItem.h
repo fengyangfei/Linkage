@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, MenuItemType) {
+    MenuItemTypeNormal,
+    MenuItemTypeHeader
+};
 @interface MenuItem : NSObject
 
 @property (nonatomic, strong) NSString *title;
@@ -15,6 +19,7 @@
 @property (nonatomic, strong) UIImage *icon;
 @property (nonatomic, strong) NSString *className;
 @property (nonatomic, strong) Class viewControllerClass;
+@property (nonatomic, assign) MenuItemType type;
 
 - (instancetype)initWithTitle:(NSString *)title andIconName:(NSString *)iconName andClass:(Class)viewControllerClass;
 

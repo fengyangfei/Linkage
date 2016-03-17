@@ -31,8 +31,7 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
     
     NSDictionary *views = @{@"leftButton":self.leftButton, @"rightTextFileld":self.rightTextField, @"separatorView": separatorView};
     NSMutableArray *constraints = [NSMutableArray array];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[leftButton]-[separatorView(1)]-[rightTextFileld]-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[leftButton]-|" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[leftButton(100)]-[separatorView(1)]-[rightTextFileld]-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[rightTextFileld]-0-|" options:0 metrics:nil views:views]];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[separatorView(20)]" options:0 metrics:nil views:views]];
     [self.contentView addConstraints:constraints];
@@ -58,6 +57,11 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
     optionsViewController.title = [model formDisplayText];
     optionsViewController.rowDescriptor = self.rowDescriptor;
     [self.formViewController.navigationController pushViewController:optionsViewController animated:YES];
+}
+
++(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    return 45.0;
 }
 
 #pragma mark - 各种属性
@@ -96,7 +100,6 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
         [_rightTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_rightTextField setTextColor:[UIColor grayColor]];
         [_rightTextField setTextAlignment:NSTextAlignmentRight];
-        [_rightTextField setBackgroundColor:[UIColor yellowColor]];
     }
     return _rightTextField;
 }

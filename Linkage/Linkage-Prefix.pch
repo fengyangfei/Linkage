@@ -14,6 +14,7 @@
     #define MAS_SHORTHAND_GLOBALS
     #import <Masonry.h>
     #import <MagicalRecord/MagicalRecord.h>
+    #import <BlocksKit/BlocksKit+UIKit.h>
     #import "TRConstants.h"
     #import "GlobalSetting.h"
     #import "TRThemeManager.h"

@@ -38,18 +38,20 @@
         section = [XLFormSectionDescriptor formSection];
         [form addFormSection:section];
         for (MenuItem *menu in subArray) {
-            row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMineHeader];
+            NSString *rowTypeIndentifier = menu.type == MenuItemTypeHeader ? FormRowDescriptorTypeMineHeader: FormRowDescriptorTypeMine;
+            row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowTypeIndentifier];
             row.value = menu;
             row.action.viewControllerClass = menu.viewControllerClass;
             [section addFormRow:row];
         }
     }
-    
     self.form = form;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.sectionHeaderHeight = 8;
+    self.tableView.sectionFooterHeight = 0;
 }
 
 @end
