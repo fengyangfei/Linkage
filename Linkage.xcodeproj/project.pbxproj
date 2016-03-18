@@ -1828,7 +1828,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ygsoft.Linkage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "86a7c418-a369-45a9-a9ba-2620bd7071af";
+				PROVISIONING_PROFILE = "a1d1d637-89d5-4d33-9e07-45c2b2d22ce3";
 			};
 			name = Debug;
 		};
