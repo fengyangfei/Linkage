@@ -75,8 +75,12 @@ NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
 {
     WeakSelf
     [TimerUtil shareInstance].block = ^(NSInteger second){
-        NSString *title = [NSString stringWithFormat:@"获取验证码%ld", (long)second];
-        [weakSelf.button setTitle:title forState:UIControlStateNormal];
+        if (second > 0) {
+            NSString *title = [NSString stringWithFormat:@"获取验证码(%ld)", (long)second];
+            [weakSelf.button setTitle:title forState:UIControlStateNormal];
+        }else{
+            [weakSelf.button setTitle:@"获取验证码" forState:UIControlStateNormal];
+        }
     };
     [[TimerUtil shareInstance] fire];
 }

@@ -8,6 +8,7 @@
 
 #import "TimerUtil.h"
 
+#define kTotalSecond 60
 @interface TimerUtil()
 @property (nonatomic,readonly) NSTimer *timer;
 
@@ -26,21 +27,21 @@
     return instance;
 }
 
-static NSInteger totalSecond;
+static NSInteger currentSecond;
 -(void)timeFire:(NSTimer *)timer
 {
-    if (totalSecond <= 0) {
-        totalSecond = 60;
+    if (currentSecond <= 0) {
+        currentSecond = kTotalSecond;
     }
-    totalSecond--;
-    if (totalSecond == 0) {
+    currentSecond--;
+    if (currentSecond == 0) {
         [timer invalidate];
         if (_timer) {
             _timer = nil;
         }
     }
     if (self.block) {
-        self.block(totalSecond);
+        self.block(currentSecond);
     }
 }
 
@@ -58,6 +59,7 @@ static NSInteger totalSecond;
         if (_timer) {
             _timer = nil;
         }
+        currentSecond = kTotalSecond;
     }
 }
 

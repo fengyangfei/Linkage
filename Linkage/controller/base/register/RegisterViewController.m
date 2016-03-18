@@ -9,12 +9,18 @@
 #import "RegisterViewController.h"
 #import "YGRestClient.h"
 #import "FormTextFieldAndButtonCell.h"
+#import "TimerUtil.h"
 
 @interface RegisterViewController ()
 
 @end
 
 @implementation RegisterViewController
+
+-(void)dealloc
+{
+    [[TimerUtil shareInstance] invalidate];
+}
 
 - (instancetype)init
 {

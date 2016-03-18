@@ -38,13 +38,7 @@
 
 -(void)configureUI
 {
-    [self.view addSubview:self.addButton];
-    [self.addButton makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view.right).offset(-10);
-        make.bottom.equalTo(self.view.bottom).offset(-40);
-        make.width.equalTo(@50);
-        make.height.equalTo(@50);
-    }];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
 }
 
 -(void)refreshData
@@ -63,6 +57,12 @@
     
 }
 
+-(void)pushBillApplyViewController
+{
+    BillImportApplyViewController *importApplyVC = [[BillImportApplyViewController alloc]init];
+    [self.navigationController pushViewController:importApplyVC animated:YES];
+}
+
 #pragma mark - 属性
 -(UIButton *)addButton
 {
@@ -74,8 +74,7 @@
         _addButton.backgroundColor = ButtonColor;
         [_addButton setImage:[UIImage imageNamed:@"add_icon"] forState:UIControlStateNormal];
         [_addButton bk_addEventHandler:^(id sender) {
-            BillImportApplyViewController *importApplyVC = [[BillImportApplyViewController alloc]init];
-            [weakSelf.navigationController pushViewController:importApplyVC animated:YES];
+            [weakSelf pushBillApplyViewController];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _addButton;
