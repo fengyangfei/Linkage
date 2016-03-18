@@ -182,6 +182,7 @@
 		9ACEBC701C99492A0000ACBF /* CargoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6C1C99492A0000ACBF /* CargoModel.m */; };
 		9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */; };
 		9ACEBC751C9950E90000ACBF /* CargoTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC741C9950E90000ACBF /* CargoTypeViewController.m */; };
+		9ACEBCAA1C9BF25F0000ACBF /* TimerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBCA91C9BF25F0000ACBF /* TimerUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -514,6 +515,8 @@
 		9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoFormCell.m; sourceTree = "<group>"; };
 		9ACEBC731C9950E90000ACBF /* CargoTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoTypeViewController.h; sourceTree = "<group>"; };
 		9ACEBC741C9950E90000ACBF /* CargoTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoTypeViewController.m; sourceTree = "<group>"; };
+		9ACEBCA81C9BF25F0000ACBF /* TimerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerUtil.h; sourceTree = "<group>"; };
+		9ACEBCA91C9BF25F0000ACBF /* TimerUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerUtil.m; sourceTree = "<group>"; };
 		B30457667634636F561BC865 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1049,6 +1052,8 @@
 			children = (
 				8B5DC67F1C79D0DB00D29292 /* YGRestClient.h */,
 				8B5DC6801C79D0DB00D29292 /* YGRestClient.m */,
+				9ACEBCA81C9BF25F0000ACBF /* TimerUtil.h */,
+				9ACEBCA91C9BF25F0000ACBF /* TimerUtil.m */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -1596,6 +1601,7 @@
 				8BB4FB141C7A0884003389F1 /* iConsole.m in Sources */,
 				9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */,
 				8B5DC6241C79B8A700D29292 /* IFTTTFrameAnimation.m in Sources */,
+				9ACEBCAA1C9BF25F0000ACBF /* TimerUtil.m in Sources */,
 				8B5DC6201C79B8A700D29292 /* IFTTTConstraintMultiplierAnimation.m in Sources */,
 				8B10AD2D1C88744E00F5B0D6 /* PersonalSettingController.m in Sources */,
 				8B5DC62B1C79B8A700D29292 /* IFTTTPathPositionAnimation.m in Sources */,

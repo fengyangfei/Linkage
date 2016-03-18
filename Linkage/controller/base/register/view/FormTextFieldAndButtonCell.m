@@ -7,6 +7,7 @@
 //
 
 #import "FormTextFieldAndButtonCell.h"
+#import "TimerUtil.h"
 #import <BlocksKit/BlocksKit+UIKit.h>
 NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
 
@@ -51,7 +52,7 @@ NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
     [self.dynamicCustomConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=11)-[label]-(>=11)-|" options:NSLayoutFormatAlignAllBaseline metrics:nil views:views]];
     [self.dynamicCustomConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=11)-[textField]-(>=11)-|" options:NSLayoutFormatAlignAllBaseline metrics:nil views:views]];
     [self.dynamicCustomConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[button]-0-|" options:0 metrics:nil views:views]];
-    [self.dynamicCustomConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[label(>=50)]-[textField]-[button(==150)]-0-|" options:0 metrics:nil views:views]];
+    [self.dynamicCustomConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[label(>=50)]-[textField]-[button(==160)]-0-|" options:0 metrics:nil views:views]];
     
     [self.dynamicCustomConstraints addObject:[NSLayoutConstraint constraintWithItem:self.textField
                                                                           attribute:NSLayoutAttributeWidth
@@ -70,18 +71,30 @@ NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
     [super customUpdateConstraints];
 }
 
+-(void)clickEvent
+{
+    WeakSelf
+    [TimerUtil shareInstance].block = ^(NSInteger second){
+        NSString *title = [NSString stringWithFormat:@"获取验证码%ld", (long)second];
+        [weakSelf.button setTitle:title forState:UIControlStateNormal];
+    };
+    [[TimerUtil shareInstance] fire];
+}
+
 -(UIButton *)button
 {
     WeakSelf
     if (!_button) {
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         _button.translatesAutoresizingMaskIntoConstraints = NO;
-        [_button setTitle:@"获取验证码" forState:UIControlStateNormal];
+        NSString *title = [NSString stringWithFormat:@"获取验证码"];
+        [_button setTitle:title forState:UIControlStateNormal];
         [_button setBackgroundColor:[UIColor grayColor]];
         [_button bk_addEventHandler:^(id sender) {
-            if (weakSelf.rowDescriptor.action.formBlock) {
-                weakSelf.rowDescriptor.action.formBlock(weakSelf.rowDescriptor);
-            }
+//            if (weakSelf.rowDescriptor.action.formBlock) {
+//                weakSelf.rowDescriptor.action.formBlock(weakSelf.rowDescriptor);
+//            }
+            [weakSelf clickEvent];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _button;
