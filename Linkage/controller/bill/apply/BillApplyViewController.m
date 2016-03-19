@@ -11,12 +11,18 @@
 #import "CargoModel.h"
 #import "CargoTypeViewController.h"
 #import "CargoFormRowDescriptor.h"
+#import "TRImagePickerDelegate.h"
 
 @interface BillApplyViewController ()
 
 @end
 
 @implementation BillApplyViewController
+
+-(void)dealloc
+{
+    [TRImagePickerDelegate clearImageIndentifies];
+}
 
 - (instancetype)init
 {
@@ -179,6 +185,9 @@
         if (editingStyle == UITableViewCellEditingStyleInsert){
             [self addPhotoButtonTapped:row];
         }else if(editingStyle == UITableViewCellEditingStyleDelete){
+            if ([row.value isKindOfClass:[SOImageModel class]]) {
+                [TRImagePickerDelegate removeImageIndentifyByKey:((SOImageModel *)row.value).photoName];
+            }
             [super tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
         }
     }else{
