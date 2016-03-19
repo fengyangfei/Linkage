@@ -45,7 +45,7 @@
     [section addFormRow:row];
     
     //货柜
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
+    section = [XLFormSectionDescriptor formSectionWithTitle:nil sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
     [form addFormSection:section];
     [section.multivaluedAddButton.cellConfig setObject:@"添加货柜" forKey:@"textLabel.text"];
     section.multivaluedTag = @"cargo";
@@ -59,9 +59,12 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"XLFormRowDescriptorTypeDateInline" rowType:XLFormRowDescriptorTypeText title:@"到达时间"];
     [section addFormRow:row];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"XLFormRowDescriptorTypeDateInline" rowType:XLFormRowDescriptorTypeButton title:@"到达时间"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"arrivatTime" rowType:XLFormRowDescriptorTypeDateInline title:@"到达时间"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"arrivate" rowType:XLFormRowDescriptorTypeButton title:@"提货港口"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"arrivate" rowType:XLFormRowDescriptorTypeText title:@"提货港口"];
+    
+    //so图片
+    [self addSOImageCell:form];
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
@@ -71,6 +74,11 @@
     };
     [section addFormRow:row];
     self.form = form;
+}
+
+-(void)addSOImageCell:(XLFormDescriptor *)form
+{
+    //子类实现
 }
 
 - (void)viewDidLoad {
@@ -107,8 +115,76 @@
 
 @end
 
+#import "SOImageFormCell.h"
+#import "SOImageModel.h"
+#import "UIViewController+TRImagePicker.h"
+#import "SpecialFormSectionDescriptor.h"
 @implementation BillImportApplyViewController
 
+-(void)addSOImageCell:(XLFormDescriptor *)form
+{
+    SpecialFormSectionDescriptor *section = [SpecialFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"SO图片"];
+    [row.cellConfig setObject:@(NSTextAlignmentNatural) forKey:@"textLabel.textAlignment"];
+    row.action.formSelector = NSSelectorFromString(@"addPhotoButtonTapped:");
+    [section addFormRow:row];
+}
+
+-(void)addPhotoButtonTapped:(XLFormRowDescriptor *)formRow
+{
+    [self addMultiplePhoto:^(UIImage *image, NSString *fileName) {
+        //添加到当前列的value里面
+        SOImageModel *model = [[SOImageModel alloc]init];
+        model.photoName = fileName;
+        model.createDate = [NSDate date];
+        model.photo = image;
+        
+        //添加新的一列
+        XLFormRowDescriptor *newRow = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:SOImageRowDescriporType];
+        newRow.value = model;
+        XLFormSectionDescriptor *currentFormSection = formRow.sectionDescriptor;
+        [currentFormSection addFormRow:newRow afterRow:formRow];
+    }];
+}
+
+#pragma mark - 重写tableviewDataSource方法
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XLFormRowDescriptor *row = [self.form formRowAtIndex:indexPath];
+    if ([row.sectionDescriptor isKindOfClass:[SpecialFormSectionDescriptor class]]) {
+        return YES;
+    }else{
+        return [super tableView:tableView canEditRowAtIndexPath:indexPath];
+    }
+}
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XLFormRowDescriptor *row = [self.form formRowAtIndex:indexPath];
+    if ([row.sectionDescriptor isKindOfClass:[SpecialFormSectionDescriptor class]]) {
+        if (indexPath.row == 0){
+            return UITableViewCellEditingStyleInsert;
+        }
+        return UITableViewCellEditingStyleDelete;
+    }else{
+        return [super tableView:tableView editingStyleForRowAtIndexPath:indexPath];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XLFormRowDescriptor *row = [self.form formRowAtIndex:indexPath];
+    if ([row.sectionDescriptor isKindOfClass:[SpecialFormSectionDescriptor class]]) {
+        if (editingStyle == UITableViewCellEditingStyleInsert){
+            [self addPhotoButtonTapped:row];
+        }else if(editingStyle == UITableViewCellEditingStyleDelete){
+            [super tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
+        }
+    }else{
+        [super tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
+    }
+}
 
 @end
 

@@ -23,7 +23,7 @@
     }
     else
     {
-        [[[UIActionSheet alloc] initWithTitle:nil delegate:[self tr_imagePickerDelegate] cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Take Photo", nil), NSLocalizedString(@"Photo Library", nil), nil] showInView:self.view];
+        [[[UIActionSheet alloc] initWithTitle:nil delegate:[self tr_imagePickerDelegate] cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"相机", @"相册", nil] showInView:self.view];
     }
 }
 

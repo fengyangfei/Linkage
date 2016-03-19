@@ -127,6 +127,9 @@
 		8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */; };
 		8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26761C89DD89001B187E /* ForgotPasswordController.m */; };
 		8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130531C9D2B2D007607F9 /* CargoFormRowDescriptor.m */; };
+		8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130561C9D93E4007607F9 /* SOImageFormCell.m */; };
+		8BA1305A1C9D951B007607F9 /* SOImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130591C9D951B007607F9 /* SOImageModel.m */; };
+		8BA1305D1C9DA398007607F9 /* SpecialFormSectionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1305C1C9DA398007607F9 /* SpecialFormSectionDescriptor.m */; };
 		8BB039DE1C94591900A3BCF9 /* LoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB039DD1C94591900A3BCF9 /* LoginUser.m */; };
 		8BB17AB71C9AF60D002708C4 /* BillApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB17AB61C9AF60D002708C4 /* BillApplyViewController.m */; };
 		8BB4FB131C7A0884003389F1 /* GTMStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB0D1C7A0884003389F1 /* GTMStackTrace.m */; };
@@ -424,6 +427,12 @@
 		8B8F26761C89DD89001B187E /* ForgotPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordController.m; sourceTree = "<group>"; };
 		8BA130521C9D2B2D007607F9 /* CargoFormRowDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoFormRowDescriptor.h; sourceTree = "<group>"; };
 		8BA130531C9D2B2D007607F9 /* CargoFormRowDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoFormRowDescriptor.m; sourceTree = "<group>"; };
+		8BA130551C9D93E4007607F9 /* SOImageFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOImageFormCell.h; sourceTree = "<group>"; };
+		8BA130561C9D93E4007607F9 /* SOImageFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOImageFormCell.m; sourceTree = "<group>"; };
+		8BA130581C9D951B007607F9 /* SOImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOImageModel.h; sourceTree = "<group>"; };
+		8BA130591C9D951B007607F9 /* SOImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOImageModel.m; sourceTree = "<group>"; };
+		8BA1305B1C9DA398007607F9 /* SpecialFormSectionDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialFormSectionDescriptor.h; sourceTree = "<group>"; };
+		8BA1305C1C9DA398007607F9 /* SpecialFormSectionDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialFormSectionDescriptor.m; sourceTree = "<group>"; };
 		8BB039DC1C94591900A3BCF9 /* LoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUser.h; sourceTree = "<group>"; };
 		8BB039DD1C94591900A3BCF9 /* LoginUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUser.m; sourceTree = "<group>"; };
 		8BB17AB51C9AF60D002708C4 /* BillApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillApplyViewController.h; sourceTree = "<group>"; };
@@ -1403,6 +1412,10 @@
 				9ACEBC6C1C99492A0000ACBF /* CargoModel.m */,
 				8BA130521C9D2B2D007607F9 /* CargoFormRowDescriptor.h */,
 				8BA130531C9D2B2D007607F9 /* CargoFormRowDescriptor.m */,
+				8BA130581C9D951B007607F9 /* SOImageModel.h */,
+				8BA130591C9D951B007607F9 /* SOImageModel.m */,
+				8BA1305B1C9DA398007607F9 /* SpecialFormSectionDescriptor.h */,
+				8BA1305C1C9DA398007607F9 /* SpecialFormSectionDescriptor.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1412,6 +1425,8 @@
 			children = (
 				9ACEBC6E1C99492A0000ACBF /* CargoFormCell.h */,
 				9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */,
+				8BA130551C9D93E4007607F9 /* SOImageFormCell.h */,
+				8BA130561C9D93E4007607F9 /* SOImageFormCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1617,6 +1632,7 @@
 				8B5DC6291C79B8A700D29292 /* IFTTTLayerStrokeStartAnimation.m in Sources */,
 				8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */,
 				8B44451B1C7C9EFE00160DC2 /* UIImage+MultiFormat.m in Sources */,
+				8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */,
 				9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */,
 				8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */,
 				9A23A2C41C7AE1B100FB5EB6 /* LoginViewController.m in Sources */,
@@ -1646,6 +1662,7 @@
 				8B4445191C7C9EFE00160DC2 /* UIButton+WebCache.m in Sources */,
 				9A95FF211C8931F400C5F492 /* BaseBillViewController.m in Sources */,
 				8BB039DE1C94591900A3BCF9 /* LoginUser.m in Sources */,
+				8BA1305D1C9DA398007607F9 /* SpecialFormSectionDescriptor.m in Sources */,
 				8BB4FB131C7A0884003389F1 /* GTMStackTrace.m in Sources */,
 				9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */,
 				8B5DC6331C79B8A700D29292 /* IFTTTViewAnimation.m in Sources */,
@@ -1674,6 +1691,7 @@
 				8B5DC6221C79B8A700D29292 /* IFTTTEasingFunction.m in Sources */,
 				9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */,
 				9A95FF091C858B0E00C5F492 /* SettingViewController.m in Sources */,
+				8BA1305A1C9D951B007607F9 /* SOImageModel.m in Sources */,
 				8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */,
 				8B5DC56A1C7992E900D29292 /* AppDelegate.m in Sources */,
 				8B44451A1C7C9EFE00160DC2 /* UIImage+GIF.m in Sources */,
