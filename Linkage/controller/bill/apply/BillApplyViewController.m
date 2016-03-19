@@ -8,7 +8,9 @@
 
 #import "BillApplyViewController.h"
 #import "CargoFormCell.h"
+#import "CargoModel.h"
 #import "CargoTypeViewController.h"
+#import "CargoFormRowDescriptor.h"
 
 @interface BillApplyViewController ()
 
@@ -34,17 +36,20 @@
     form = [XLFormDescriptor formDescriptor];
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"billNum" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"订单号"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"billNum" rowType:XLFormRowDescriptorTypeText title:@"订单号"];
     row.required = YES;
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"subCompany" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"承运商"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"subCompany" rowType:XLFormRowDescriptorTypeText title:@"承运商"];
     row.required = YES;
     [section addFormRow:row];
     
     //货柜
     section = [XLFormSectionDescriptor formSectionWithTitle:@"" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
     [form addFormSection:section];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
+    row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
+    NSDictionary *dic = [CargoTypeViewController cargoTypes];
+    NSNumber *key = @(1);
+    row.value = [CargoModel cargoModelWithValue:key displayText:[dic objectForKey:key] cargoCount:nil];
     row.action.viewControllerClass = [CargoTypeViewController class];
     [[row cellConfig] setObject:@"输入货柜数量" forKey:@"rightTextField.placeholder"];
     section.multivaluedRowTemplate = [row copy];
@@ -54,11 +59,14 @@
     //日期
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"date" rowType:XLFormRowDescriptorTypeButton title:@"日期"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"address" rowType:XLFormRowDescriptorTypeText title:@"装货地址"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sendDate" rowType:XLFormRowDescriptorTypeButton title:@"送货时间"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"XLFormRowDescriptorTypeDateInline" rowType:XLFormRowDescriptorTypeText title:@"到达时间"];
     [section addFormRow:row];
-    
+    [section addFormRow:row];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"XLFormRowDescriptorTypeDateInline" rowType:XLFormRowDescriptorTypeButton title:@"到达时间"];
+    [section addFormRow:row];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"arrivate" rowType:XLFormRowDescriptorTypeButton title:@"提货港口"];
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];

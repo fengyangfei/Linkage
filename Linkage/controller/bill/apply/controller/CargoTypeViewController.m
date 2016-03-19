@@ -7,8 +7,10 @@
 //
 
 #import "CargoTypeViewController.h"
+#import "CargoModel.h"
 
 @implementation CargoTypeViewController
+@synthesize rowDescriptor = _rowDescriptor;
 
 - (instancetype)init
 {
@@ -30,6 +32,27 @@
         return [obj1.valueData compare:obj2.valueData];
     }];
     return options;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    id cellObject =  [[self selectorOptions] objectAtIndex:indexPath.row];
+    if (self.rowDescriptor.value){
+        NSInteger index = [[self selectorOptions] formIndexForItem:self.rowDescriptor.value];
+        if (index != NSNotFound){
+            NSIndexPath * oldSelectedIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+            UITableViewCell *oldSelectedCell = [tableView cellForRowAtIndexPath:oldSelectedIndexPath];
+            oldSelectedCell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    CargoModel *cargoModel = (CargoModel *)self.rowDescriptor.value;
+    cargoModel.cargoType = cellObject;
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    if ([self.parentViewController isKindOfClass:[UINavigationController class]]){
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 +(NSMutableDictionary *)cargoTypes

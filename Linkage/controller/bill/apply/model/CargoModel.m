@@ -18,6 +18,12 @@
     return obj;
 }
 
++(CargoModel *)cargoModelWithValue:(id)value displayText:(NSString *)displayText cargoCount:(NSString *)cargoCount
+{
+    XLFormOptionsObject *option = [XLFormOptionsObject formOptionsObjectWithValue:(id)value displayText:displayText];
+    return [self cargoModelWithType:option cargoCount:cargoCount];
+}
+
 #pragma mark - XLFormOptionObject
 
 -(NSString *)formDisplayText

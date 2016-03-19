@@ -15,4 +15,5 @@
 @property (nonatomic, copy) NSString *cargoCount;
 
 +(CargoModel *)cargoModelWithType:(XLFormOptionsObject *)cargoType cargoCount:(NSString *)cargoCount;
++(CargoModel *)cargoModelWithValue:(id)value displayText:(NSString *)displayText cargoCount:(NSString *)cargoCount;
 @end

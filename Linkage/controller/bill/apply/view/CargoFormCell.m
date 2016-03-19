@@ -41,7 +41,7 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
 {
     [super update];
     CargoModel *model = self.rowDescriptor.value;
-    [self.leftButton setTitle:[model formDisplayText] forState:UIControlStateNormal];
+    [self.leftButton setTitle:[model displayText] forState:UIControlStateNormal];
     self.rightTextField.text = model.cargoCount;
 }
 
