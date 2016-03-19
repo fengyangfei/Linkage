@@ -34,11 +34,11 @@
     if (object == self && ([keyPath isEqualToString:@"value.cargoType"])){
         if ([[change objectForKey:NSKeyValueChangeKindKey] isEqualToNumber:@(NSKeyValueChangeSetting)]){
             CargoModel *newValue = [change objectForKey:NSKeyValueChangeNewKey];
+            CargoModel *oldValue = [change objectForKey:NSKeyValueChangeNewKey];
             if ([keyPath isEqualToString:@"value.cargoType"]){
-                NSLog(@"newValue - %@", [newValue displayText]);
-//                if (self.onChangeBlock) {
-//                    self.onChangeBlock(oldValue, newValue, self);
-//                }
+                if (self.onChangeBlock) {
+                    self.onChangeBlock(oldValue, newValue, self);
+                }
             }
         }
     }

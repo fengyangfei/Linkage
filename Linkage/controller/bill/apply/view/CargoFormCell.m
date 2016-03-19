@@ -11,9 +11,13 @@
 #import <BlocksKit/UIView+BlocksKit.h>
 
 NSString * const kCargoRowDescriptroType = @"cargoRowType";
+@interface CargoFormCell()<UITextFieldDelegate>
+
+@end
 @implementation CargoFormCell
 @synthesize leftButton = _leftButton;
 @synthesize rightTextField = _rightTextField;
+@synthesize rowDescriptor = _rowDescriptor;
 
 +(void)load
 {
@@ -35,6 +39,7 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[rightTextFileld]-0-|" options:0 metrics:nil views:views]];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[separatorView(20)]" options:0 metrics:nil views:views]];
     [self.contentView addConstraints:constraints];
+    [self.rightTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
 -(void)update
@@ -62,6 +67,27 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
     return 45.0;
+}
+
+-(void)setRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    WeakSelf
+    _rowDescriptor = rowDescriptor;
+    _rowDescriptor.onChangeBlock = ^(id oldValue, id newValue, XLFormRowDescriptor *rowDescriptor){
+        if ([oldValue isKindOfClass:[XLFormOptionsObject class]] && [newValue isKindOfClass:[XLFormOptionsObject class]]) {
+            [weakSelf.leftButton setTitle:[newValue displayText] forState:UIControlStateNormal];
+        }
+    };
+}
+
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidChange:(UITextField *)textField{
+    CargoModel *cargoModel = (CargoModel *)self.rowDescriptor.value;
+    if([self.rightTextField.text length] > 0) {
+        cargoModel.cargoCount = self.rightTextField.text;
+    } else {
+        cargoModel.cargoCount = @"";
+    }
 }
 
 #pragma mark - 各种属性

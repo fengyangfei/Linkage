@@ -29,6 +29,7 @@
 
 - (void)initializeForm
 {
+    WeakSelf
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
@@ -46,15 +47,9 @@
     //货柜
     section = [XLFormSectionDescriptor formSectionWithTitle:@"" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
     [form addFormSection:section];
-    row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
-    NSDictionary *dic = [CargoTypeViewController cargoTypes];
-    NSNumber *key = @(1);
-    row.value = [CargoModel cargoModelWithValue:key displayText:[dic objectForKey:key] cargoCount:nil];
-    row.action.viewControllerClass = [CargoTypeViewController class];
-    [[row cellConfig] setObject:@"输入货柜数量" forKey:@"rightTextField.placeholder"];
-    section.multivaluedRowTemplate = [row copy];
     [section.multivaluedAddButton.cellConfig setObject:@"添加货柜" forKey:@"textLabel.text"];
-    [section addFormRow:row];
+    section.multivaluedTag = @"cargo";
+    [section addFormRow:[self generateCargoRow]];
     
     //日期
     section = [XLFormSectionDescriptor formSection];
@@ -70,14 +65,40 @@
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"about" rowType:XLFormRowDescriptorTypeButton title:@"提交订单"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"提交订单"];
+    row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        [weakSelf submitForm];
+    };
     [section addFormRow:row];
-    
     self.form = form;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+-(CargoFormRowDescriptor *)generateCargoRow
+{
+    CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
+    NSDictionary *dic = [CargoTypeViewController cargoTypes];
+    NSNumber *key = @(1);
+    row.value = [CargoModel cargoModelWithValue:key displayText:[dic objectForKey:key] cargoCount:nil];
+    row.action.viewControllerClass = [CargoTypeViewController class];
+    [[row cellConfig] setObject:@"输入货柜数量" forKey:@"rightTextField.placeholder"];
+    return row;
+}
+
+//重写获取货柜的cell
+-(XLFormRowDescriptor *)formRowFormMultivaluedFormSection:(XLFormSectionDescriptor *)formSection
+{
+    return [self generateCargoRow];
+}
+
+#pragma mark - 事件
+-(void)submitForm
+{
+    NSDictionary *formValues = [self formValues];
+    NSLog(@"formValues %@", formValues);
 }
 
 - (void)didReceiveMemoryWarning {
