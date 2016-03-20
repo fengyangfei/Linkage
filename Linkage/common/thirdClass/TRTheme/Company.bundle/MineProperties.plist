@@ -9,10 +9,20 @@
 			<key>iconName</key>
 			<string>side_company_logo</string>
 			<key>className</key>
-			<string>PersonalSettingController</string>
+			<string>CompanySettingViewController</string>
 			<key>type</key>
 			<integer>1</integer>
 		</dict>
+        <dict>
+            <key>title</key>
+            <string>个人</string>
+            <key>iconName</key>
+            <string>side_company_logo</string>
+            <key>className</key>
+            <string>PersonalSettingController</string>
+            <key>type</key>
+            <integer>1</integer>
+        </dict>
 	</array>
 	<array>
 		<dict>

@@ -137,6 +137,8 @@
 		8BB4FB151C7A0884003389F1 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB111C7A0884003389F1 /* LICENSE.md */; };
 		8BB4FB161C7A0884003389F1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB121C7A0884003389F1 /* README.md */; };
 		8BBE05EA1C9E982B0018EB2A /* BillTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */; };
+		8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */; };
+		8BBE05F21C9EB4F10018EB2A /* XLFormViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05F11C9EB4F10018EB2A /* XLFormViewController+ImagePicker.m */; };
 		8BDBB7CA1C98509D00D60207 /* Company.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8BDBB7C91C98509D00D60207 /* Company.bundle */; };
 		8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */; };
 		8BDBB7D11C9859CD00D60207 /* BillDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7D01C9859CD00D60207 /* BillDataSource.m */; };
@@ -446,6 +448,10 @@
 		8BB4FB121C7A0884003389F1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8BBE05E81C9E982B0018EB2A /* BillTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTypeViewController.h; sourceTree = "<group>"; };
 		8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTypeViewController.m; sourceTree = "<group>"; };
+		8BBE05EC1C9EA5670018EB2A /* CompanySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanySettingViewController.h; sourceTree = "<group>"; };
+		8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanySettingViewController.m; sourceTree = "<group>"; };
+		8BBE05F01C9EB4F10018EB2A /* XLFormViewController+ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XLFormViewController+ImagePicker.h"; sourceTree = "<group>"; };
+		8BBE05F11C9EB4F10018EB2A /* XLFormViewController+ImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XLFormViewController+ImagePicker.m"; sourceTree = "<group>"; };
 		8BDBB7C91C98509D00D60207 /* Company.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Company.bundle; sourceTree = "<group>"; };
 		8BDBB7CC1C9854B700D60207 /* BillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTableViewCell.h; sourceTree = "<group>"; };
 		8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTableViewCell.m; sourceTree = "<group>"; };
@@ -1130,6 +1136,24 @@
 			path = iConsole;
 			sourceTree = "<group>";
 		};
+		8BBE05EB1C9EA5150018EB2A /* company */ = {
+			isa = PBXGroup;
+			children = (
+				8BBE05EC1C9EA5670018EB2A /* CompanySettingViewController.h */,
+				8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */,
+			);
+			path = company;
+			sourceTree = "<group>";
+		};
+		8BBE05EF1C9EB49E0018EB2A /* extend */ = {
+			isa = PBXGroup;
+			children = (
+				8BBE05F01C9EB4F10018EB2A /* XLFormViewController+ImagePicker.h */,
+				8BBE05F11C9EB4F10018EB2A /* XLFormViewController+ImagePicker.m */,
+			);
+			path = extend;
+			sourceTree = "<group>";
+		};
 		8BDBB7CB1C98547B00D60207 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -1276,23 +1300,16 @@
 		9A95FEF91C83DF7D00C5F492 /* mine */ = {
 			isa = PBXGroup;
 			children = (
+				8BBE05EB1C9EA5150018EB2A /* company */,
 				9A95FF0E1C89131000C5F492 /* advice */,
 				8B10AD2A1C8873EC00F5B0D6 /* personal */,
 				9A95FF061C858AE600C5F492 /* settting */,
 				9A95FEFF1C83E10C00C5F492 /* model */,
-				9A95FEFA1C83DF7D00C5F492 /* baseController */,
 				9A95FEFB1C83DF7D00C5F492 /* view */,
 				9A95FEFC1C83DFCF00C5F492 /* MineViewController.h */,
 				9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */,
 			);
 			path = mine;
-			sourceTree = "<group>";
-		};
-		9A95FEFA1C83DF7D00C5F492 /* baseController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = baseController;
 			sourceTree = "<group>";
 		};
 		9A95FEFB1C83DF7D00C5F492 /* view */ = {
@@ -1399,6 +1416,7 @@
 		9ACEBC691C99492A0000ACBF /* apply */ = {
 			isa = PBXGroup;
 			children = (
+				8BBE05EF1C9EB49E0018EB2A /* extend */,
 				9ACEBC721C9950C10000ACBF /* controller */,
 				9ACEBC6A1C99492A0000ACBF /* model */,
 				9ACEBC6D1C99492A0000ACBF /* view */,
@@ -1659,6 +1677,7 @@
 				8B5DC62C1C79B8A700D29292 /* IFTTTRotationAnimation.m in Sources */,
 				8B5DC6251C79B8A700D29292 /* IFTTTHideAnimation.m in Sources */,
 				8B4445121C7C9EFE00160DC2 /* SDImageCache.m in Sources */,
+				8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */,
 				8B5DC6351C79B8A700D29292 /* JRToast.m in Sources */,
 				8B4445101C7C9EFE00160DC2 /* MKAnnotationView+WebCache.m in Sources */,
 				8B5DC6391C79B8A700D29292 /* TRThemeManager.m in Sources */,
@@ -1675,6 +1694,7 @@
 				8B5DC6371C79B8A700D29292 /* TRThemeBaseViewController.m in Sources */,
 				8B4445091C7C9EFE00160DC2 /* TAAbstractDotView.m in Sources */,
 				8B5DC6321C79B8A700D29292 /* IFTTTTranslationAnimation.m in Sources */,
+				8BBE05F21C9EB4F10018EB2A /* XLFormViewController+ImagePicker.m in Sources */,
 				8B5DC62F1C79B8A700D29292 /* IFTTTShapeLayerAnimation.m in Sources */,
 				8B44450B1C7C9EFE00160DC2 /* TADotView.m in Sources */,
 				8B5DC6191C79B8A700D29292 /* IFTTTAlphaAnimation.m in Sources */,

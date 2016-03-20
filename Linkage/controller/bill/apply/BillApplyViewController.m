@@ -192,9 +192,7 @@
 
 #pragma mark - 出口订单
 #import "SOImageFormCell.h"
-#import "SOImageModel.h"
-#import "UIViewController+TRImagePicker.h"
-#import "SpecialFormSectionDescriptor.h"
+#import "XLFormViewController+ImagePicker.h"
 @implementation BillExportApplyViewController
 
 -(void)viewDidLoad
@@ -254,63 +252,20 @@
     [section addFormRow:row];
 }
 
--(void)addPhotoButtonTapped:(XLFormRowDescriptor *)formRow
-{
-    [self deselectFormRow:formRow];
-    [self addMultiplePhoto:^(UIImage *image, NSString *fileName) {
-        //添加到当前列的value里面
-        SOImageModel *model = [[SOImageModel alloc]init];
-        model.photoName = fileName;
-        model.createDate = [NSDate date];
-        model.photo = image;
-        
-        //添加新的一列
-        XLFormRowDescriptor *newRow = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:SOImageRowDescriporType];
-        newRow.value = model;
-        XLFormSectionDescriptor *currentFormSection = formRow.sectionDescriptor;
-        [currentFormSection addFormRow:newRow afterRow:formRow];
-    }];
-}
-
 #pragma mark - 重写tableviewDataSource方法
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XLFormRowDescriptor *row = [self.form formRowAtIndex:indexPath];
-    if ([row.sectionDescriptor isKindOfClass:[SpecialFormSectionDescriptor class]]) {
-        return YES;
-    }else{
-        return [super tableView:tableView canEditRowAtIndexPath:indexPath];
-    }
+    return [self imageWithTableView:tableView editingStyleForRowAtIndexPath:indexPath];
 }
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XLFormRowDescriptor *row = [self.form formRowAtIndex:indexPath];
-    if ([row.sectionDescriptor isKindOfClass:[SpecialFormSectionDescriptor class]]) {
-        if (indexPath.row == 0){
-            return UITableViewCellEditingStyleInsert;
-        }
-        return UITableViewCellEditingStyleDelete;
-    }else{
-        return [super tableView:tableView editingStyleForRowAtIndexPath:indexPath];
-    }
+    return [self imageWithTableView:tableView editingStyleForRowAtIndexPath:indexPath];
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XLFormRowDescriptor *row = [self.form formRowAtIndex:indexPath];
-    if ([row.sectionDescriptor isKindOfClass:[SpecialFormSectionDescriptor class]]) {
-        if (editingStyle == UITableViewCellEditingStyleInsert){
-            [self addPhotoButtonTapped:row];
-        }else if(editingStyle == UITableViewCellEditingStyleDelete){
-            if ([row.value isKindOfClass:[SOImageModel class]]) {
-                [TRImagePickerDelegate removeImageIndentifyByKey:((SOImageModel *)row.value).photoName];
-            }
-            [super tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
-        }
-    }else{
-        [super tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
-    }
+    [self imageWithTableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
 }
 
 @end
