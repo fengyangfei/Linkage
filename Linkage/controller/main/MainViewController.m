@@ -25,7 +25,7 @@
 
 -(void)setupData
 {
-    self.dataSource = [[FactoryDataSource alloc]init];
+    self.dataSource = [[CompanyDataSource alloc]init];
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self.dataSource;
     [self.tableView reloadData];

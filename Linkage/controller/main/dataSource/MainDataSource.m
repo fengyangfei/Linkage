@@ -32,7 +32,7 @@
 
 @end
 
-@implementation FactoryDataSource
+@implementation CompanyDataSource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

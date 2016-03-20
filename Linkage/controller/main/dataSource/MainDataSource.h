@@ -13,6 +13,6 @@
 @end
 
 
-@interface FactoryDataSource : MainDataSource
+@interface CompanyDataSource : MainDataSource
 
 @end
