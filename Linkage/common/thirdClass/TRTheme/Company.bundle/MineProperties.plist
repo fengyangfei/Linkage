@@ -41,7 +41,7 @@
 			<key>iconName</key>
 			<string>side_group</string>
 			<key>className</key>
-			<string>MineViewController</string>
+			<string>EmployeeManageViewController</string>
 		</dict>
 		<dict>
 			<key>title</key>

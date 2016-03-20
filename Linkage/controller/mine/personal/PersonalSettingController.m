@@ -57,6 +57,9 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeText title:@"手机"];
     [section addFormRow:row];
     
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"email" rowType:XLFormRowDescriptorTypeEmail title:@"邮箱"];
+    [section addFormRow:row];
+    
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
@@ -78,6 +81,9 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.tableView.sectionHeaderHeight = 0.0f;
+    self.tableView.sectionFooterHeight = 10.0f;
 }
 
 //退出

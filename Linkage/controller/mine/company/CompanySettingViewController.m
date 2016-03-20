@@ -85,10 +85,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.tableView.sectionHeaderHeight = 0.0f;
+    self.tableView.sectionFooterHeight = 10.0f;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveAction:)];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - 按钮事件
+-(void)saveAction:(id)sender
+{
+    NSDictionary *formValues = [self formValues];
+    NSLog(@"%@",formValues);
 }
 
 #pragma mark - 重写tableviewDataSource方法

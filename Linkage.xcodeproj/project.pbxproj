@@ -139,6 +139,7 @@
 		8BBE05EA1C9E982B0018EB2A /* BillTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */; };
 		8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */; };
 		8BBE05F21C9EB4F10018EB2A /* XLFormViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05F11C9EB4F10018EB2A /* XLFormViewController+ImagePicker.m */; };
+		8BBE05F61C9EEE850018EB2A /* EmployeeManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05F51C9EEE850018EB2A /* EmployeeManageViewController.m */; };
 		8BDBB7CA1C98509D00D60207 /* Company.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8BDBB7C91C98509D00D60207 /* Company.bundle */; };
 		8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */; };
 		8BDBB7D11C9859CD00D60207 /* BillDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7D01C9859CD00D60207 /* BillDataSource.m */; };
@@ -452,6 +453,8 @@
 		8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanySettingViewController.m; sourceTree = "<group>"; };
 		8BBE05F01C9EB4F10018EB2A /* XLFormViewController+ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XLFormViewController+ImagePicker.h"; sourceTree = "<group>"; };
 		8BBE05F11C9EB4F10018EB2A /* XLFormViewController+ImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XLFormViewController+ImagePicker.m"; sourceTree = "<group>"; };
+		8BBE05F41C9EEE850018EB2A /* EmployeeManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeManageViewController.h; sourceTree = "<group>"; };
+		8BBE05F51C9EEE850018EB2A /* EmployeeManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeManageViewController.m; sourceTree = "<group>"; };
 		8BDBB7C91C98509D00D60207 /* Company.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Company.bundle; sourceTree = "<group>"; };
 		8BDBB7CC1C9854B700D60207 /* BillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTableViewCell.h; sourceTree = "<group>"; };
 		8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTableViewCell.m; sourceTree = "<group>"; };
@@ -1154,6 +1157,15 @@
 			path = extend;
 			sourceTree = "<group>";
 		};
+		8BBE05F31C9EEE220018EB2A /* employeeManage */ = {
+			isa = PBXGroup;
+			children = (
+				8BBE05F41C9EEE850018EB2A /* EmployeeManageViewController.h */,
+				8BBE05F51C9EEE850018EB2A /* EmployeeManageViewController.m */,
+			);
+			path = employeeManage;
+			sourceTree = "<group>";
+		};
 		8BDBB7CB1C98547B00D60207 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -1300,6 +1312,7 @@
 		9A95FEF91C83DF7D00C5F492 /* mine */ = {
 			isa = PBXGroup;
 			children = (
+				8BBE05F31C9EEE220018EB2A /* employeeManage */,
 				8BBE05EB1C9EA5150018EB2A /* company */,
 				9A95FF0E1C89131000C5F492 /* advice */,
 				8B10AD2A1C8873EC00F5B0D6 /* personal */,
@@ -1680,6 +1693,7 @@
 				8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */,
 				8B5DC6351C79B8A700D29292 /* JRToast.m in Sources */,
 				8B4445101C7C9EFE00160DC2 /* MKAnnotationView+WebCache.m in Sources */,
+				8BBE05F61C9EEE850018EB2A /* EmployeeManageViewController.m in Sources */,
 				8B5DC6391C79B8A700D29292 /* TRThemeManager.m in Sources */,
 				9ACEBC751C9950E90000ACBF /* CargoTypeViewController.m in Sources */,
 				8B5DC62A1C79B8A700D29292 /* IFTTTMaskAnimation.m in Sources */,
