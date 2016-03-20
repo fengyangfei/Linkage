@@ -40,6 +40,11 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
     self.dateLabel.text = [formatter stringFromDate:model.createDate];
 }
 
++(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    return 65.0;
+}
+
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
 {
     //SOImageModel *model = (SOImageModel *)self.rowDescriptor.value;
@@ -88,7 +93,6 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
     
     [self.imageView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView.top).offset(11);
-        make.bottom.equalTo(self.contentView.bottom).offset(-11);
         make.left.equalTo(self.contentView.left).offset(16);
         make.height.equalTo(44);
         make.width.equalTo(44);

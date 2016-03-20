@@ -59,8 +59,8 @@
 
 -(void)pushBillApplyViewController
 {
-    BillImportApplyViewController *importApplyVC = [[BillImportApplyViewController alloc]init];
-    [self.navigationController pushViewController:importApplyVC animated:YES];
+    BillExportApplyViewController *exportApplyVC = [[BillExportApplyViewController alloc]init];
+    [self.navigationController pushViewController:exportApplyVC animated:YES];
 }
 
 #pragma mark - 属性

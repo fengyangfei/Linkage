@@ -12,12 +12,17 @@
 
 @end
 
-
+//进口订单
 @interface BillImportApplyViewController : BillApplyViewController
 
 @end
 
-
+//出口订单
 @interface BillExportApplyViewController : BillApplyViewController
+
+@end
+
+//自备柜配送订单
+@interface BillCustomApplyViewController : BillApplyViewController
 
 @end
