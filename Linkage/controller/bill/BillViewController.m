@@ -9,8 +9,7 @@
 #import "BillViewController.h"
 #import "BillDataSource.h"
 #import "TRPopButton.h"
-
-#import "BillApplyViewController.h"
+#import "BillTypeViewController.h"
 
 @interface BillViewController ()
 @property (nonatomic, readonly) UIButton *addButton;
@@ -59,8 +58,8 @@
 
 -(void)pushBillApplyViewController
 {
-    BillExportApplyViewController *exportApplyVC = [[BillExportApplyViewController alloc]init];
-    [self.navigationController pushViewController:exportApplyVC animated:YES];
+    BillTypeViewController *controller = [[BillTypeViewController alloc]init];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - 属性
