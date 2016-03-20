@@ -1519,6 +1519,7 @@
 				TargetAttributes = {
 					8B5DC5611C7992E900D29292 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = WKSMSBBC3K;
 					};
 				};
 			};
@@ -1877,7 +1878,7 @@
 			baseConfigurationReference = BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: xiang wen (AQDGX6QJU2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1898,7 +1899,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ygsoft.Linkage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a1d1d637-89d5-4d33-9e07-45c2b2d22ce3";
+				PROVISIONING_PROFILE = "86a7c418-a369-45a9-a9ba-2620bd7071af";
 			};
 			name = Debug;
 		};
@@ -1907,7 +1908,7 @@
 			baseConfigurationReference = B30457667634636F561BC865 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: YGSOFT Inc";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1928,6 +1929,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ygsoft.Linkage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "83ad7f30-2685-411f-b924-094515c44d2a";
 			};
 			name = Release;
 		};
