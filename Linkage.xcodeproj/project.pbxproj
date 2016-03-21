@@ -124,6 +124,8 @@
 		8B5DC6701C79CB2C00D29292 /* LinkageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC66E1C79CB2C00D29292 /* LinkageModel.xcdatamodeld */; };
 		8B5DC6811C79D0DB00D29292 /* YGRestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC6801C79D0DB00D29292 /* YGRestClient.m */; };
 		8B7172E01CA01F4B00DBEB9F /* DriverManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172DF1CA01F4B00DBEB9F /* DriverManageViewController.m */; };
+		8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E31CA0436C00DBEB9F /* AddressViewController.m */; };
+		8B7172E71CA0443300DBEB9F /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */; };
 		8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F266F1C89C83D001B187E /* RegisterViewController.m */; };
 		8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */; };
 		8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26761C89DD89001B187E /* ForgotPasswordController.m */; };
@@ -426,6 +428,10 @@
 		8B5DC6801C79D0DB00D29292 /* YGRestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGRestClient.m; sourceTree = "<group>"; };
 		8B7172DE1CA01F4B00DBEB9F /* DriverManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverManageViewController.h; sourceTree = "<group>"; };
 		8B7172DF1CA01F4B00DBEB9F /* DriverManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverManageViewController.m; sourceTree = "<group>"; };
+		8B7172E21CA0436C00DBEB9F /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
+		8B7172E31CA0436C00DBEB9F /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
+		8B7172E51CA0443300DBEB9F /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAddressViewController.h; sourceTree = "<group>"; };
+		8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAddressViewController.m; sourceTree = "<group>"; };
 		8B8F266E1C89C83D001B187E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		8B8F266F1C89C83D001B187E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		8B8F26721C89DC72001B187E /* TRFormTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRFormTextFieldCell.h; sourceTree = "<group>"; };
@@ -1094,6 +1100,17 @@
 			path = driverManager;
 			sourceTree = "<group>";
 		};
+		8B7172E11CA0432A00DBEB9F /* addressManager */ = {
+			isa = PBXGroup;
+			children = (
+				8B7172E21CA0436C00DBEB9F /* AddressViewController.h */,
+				8B7172E31CA0436C00DBEB9F /* AddressViewController.m */,
+				8B7172E51CA0443300DBEB9F /* AddAddressViewController.h */,
+				8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */,
+			);
+			path = addressManager;
+			sourceTree = "<group>";
+		};
 		8B8F266C1C89C806001B187E /* forgotPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -1324,6 +1341,7 @@
 		9A95FEF91C83DF7D00C5F492 /* mine */ = {
 			isa = PBXGroup;
 			children = (
+				8B7172E11CA0432A00DBEB9F /* addressManager */,
 				8B7172DD1CA01F2C00DBEB9F /* driverManager */,
 				8BBE05F31C9EEE220018EB2A /* employeeManage */,
 				8BBE05EB1C9EA5150018EB2A /* company */,
@@ -1752,6 +1770,7 @@
 				8B5DC5671C7992E900D29292 /* main.m in Sources */,
 				8B7172E01CA01F4B00DBEB9F /* DriverManageViewController.m in Sources */,
 				9A95FF331C89731100C5F492 /* TRPopButton.m in Sources */,
+				8B7172E71CA0443300DBEB9F /* AddAddressViewController.m in Sources */,
 				8BB4FB151C7A0884003389F1 /* LICENSE.md in Sources */,
 				8B5DC61C1C79B8A700D29292 /* IFTTTAnimation.m in Sources */,
 				8B3302911C8BC0D70088DAE2 /* MainTableViewCell.m in Sources */,
@@ -1774,6 +1793,7 @@
 				8B44450A1C7C9EFE00160DC2 /* TAAnimatedDotView.m in Sources */,
 				9A95FF0D1C858C8200C5F492 /* DateAndTimeValueTrasformer.m in Sources */,
 				8B5DC6811C79D0DB00D29292 /* YGRestClient.m in Sources */,
+				8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */,
 				8B4445181C7C9EFE00160DC2 /* SDWebImagePrefetcher.m in Sources */,
 				8B44451C1C7C9EFE00160DC2 /* UIImage+WebP.m in Sources */,
 				8BB4FB161C7A0884003389F1 /* README.md in Sources */,
