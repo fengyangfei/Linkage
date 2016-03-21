@@ -18,9 +18,9 @@ extern NSString *const FormRowDescriptorTypeMineHeader;
 
 @end
 
-@interface MenuTableViewCell : MenuBaseTableViewCell
+@interface MenuCell : MenuBaseTableViewCell
 
 @end
 
-@interface MenuHeaderTableViewCell : MenuBaseTableViewCell
+@interface MenuInfoCell : MenuBaseTableViewCell
 @end

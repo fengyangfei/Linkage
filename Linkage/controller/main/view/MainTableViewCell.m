@@ -31,7 +31,7 @@
 
 @end
 
-@implementation FactoryTableCell
+@implementation CompanyTableCell
 
 -(void)setupUI
 {

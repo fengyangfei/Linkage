@@ -19,9 +19,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FactoryTableCell *cell = [tableView dequeueReusableCellWithIdentifier:kFactoryCellIndentifier];
+    CompanyTableCell *cell = [tableView dequeueReusableCellWithIdentifier:kFactoryCellIndentifier];
     if (!cell) {
-        cell = [[FactoryTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFactoryCellIndentifier];
+        cell = [[CompanyTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFactoryCellIndentifier];
     }
     
     cell.iconView.image = [UIImage imageNamed:@"logo"];

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import "MenuTableViewCell.h"
+#import "MenuCell.h"
 #import "MenuItem.h"
 NSString *const FormRowDescriptorTypeMine = @"mineRowCell";
 NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
@@ -17,8 +17,8 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 +(void)load
 {
     NSDictionary *dic = @{
-                          FormRowDescriptorTypeMine:[MenuTableViewCell class],
-                          FormRowDescriptorTypeMineHeader:[MenuHeaderTableViewCell class]
+                          FormRowDescriptorTypeMine:[MenuCell class],
+                          FormRowDescriptorTypeMineHeader:[MenuInfoCell class]
                           };
     [XLFormViewController.cellClassesForRowDescriptorTypes addEntriesFromDictionary:dic];
 }
@@ -70,7 +70,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 }
 @end
 
-@implementation MenuTableViewCell
+@implementation MenuCell
 
 -(void)configure
 {
@@ -107,11 +107,11 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 
 @end
 
-@interface MenuHeaderTableViewCell()
+@interface MenuInfoCell()
 @property (nonatomic, strong) UILabel *subTitleLabel;
 @end
 
-@implementation MenuHeaderTableViewCell
+@implementation MenuInfoCell
 
 -(void)configure
 {
@@ -150,7 +150,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
-    return 65;
+    return 70;
 }
 
 -(UILabel *)subTitleLabel

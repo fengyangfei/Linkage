@@ -7,7 +7,7 @@
 //
 
 #import "MineViewController.h"
-#import "MenuTableViewCell.h"
+#import "MenuCell.h"
 #import "MenuItem.h"
 #import "SettingViewController.h"
 

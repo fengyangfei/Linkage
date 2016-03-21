@@ -13,7 +13,7 @@
 @end
 
 
-@interface FactoryTableCell : MainTableViewCell
+@interface CompanyTableCell : MainTableViewCell
 @property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *subTitleLabel;
