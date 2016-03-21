@@ -50,7 +50,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.sectionHeaderHeight = 8;
+    self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;
 }
 

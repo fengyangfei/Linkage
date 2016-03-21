@@ -31,7 +31,7 @@
 			<key>iconName</key>
 			<string>side_manage</string>
 			<key>className</key>
-			<string>MineViewController</string>
+			<string>DriverManageViewController</string>
 		</dict>
 	</array>
 	<array>

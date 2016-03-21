@@ -20,7 +20,6 @@
     self = [super init];
     if (self) {
         [self initializeForm];
-        self.hidesBottomBarWhenPushed = YES;
     }
     return self;
 }
@@ -47,7 +46,8 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"clearCache" rowType:XLFormRowDescriptorTypeText title:@"清除缓存"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"clearCache" rowType:XLFormRowDescriptorTypeButton title:@"清除缓存"];
+    [row.cellConfig setObject:@(NSTextAlignmentNatural) forKey:@"textLabel.textAlignment"];
     [section addFormRow:row];
     
     
@@ -55,9 +55,11 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"share" rowType:XLFormRowDescriptorTypeButton title:@"分享好友"];
+    [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"update" rowType:XLFormRowDescriptorTypeButton title:@"版本更新"];
+    [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
     [section addFormRow:row];
 
     
@@ -65,6 +67,7 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"about" rowType:XLFormRowDescriptorTypeButton title:@"关于我们"];
+    [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
     [section addFormRow:row];
     
     self.form = form;
@@ -73,22 +76,19 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.sectionHeaderHeight = 20;
+    self.tableView.sectionFooterHeight = 0;
 }
 
 #pragma mark - XLFormDescriptorDelegate
 
--(void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)rowDescriptor oldValue:(id)oldValue newValue:(id)newValue
+-(void)cancelPressed:(UIBarButtonItem *)button
 {
-    
-}
-
--(void)cancelPressed:(UIBarButtonItem * __unused)button
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.tabBarController dismissViewControllerAnimated:YES completion:nil];
 }
 
 
--(void)savePressed:(UIBarButtonItem * __unused)button
+-(void)savePressed:(UIBarButtonItem *)button
 {
 }
 

@@ -20,7 +20,6 @@
     self = [super init];
     if (self) {
         [self initializeForm];
-        self.hidesBottomBarWhenPushed = YES;
     }
     return self;
 }
@@ -87,8 +86,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectZero];
-    self.tableView.sectionHeaderHeight = 0.0f;
-    self.tableView.sectionFooterHeight = 10.0f;
+    self.tableView.sectionHeaderHeight = 20;
+    self.tableView.sectionFooterHeight = 0;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveAction:)];
 }
 

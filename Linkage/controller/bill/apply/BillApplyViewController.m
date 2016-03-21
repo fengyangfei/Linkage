@@ -71,8 +71,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectZero];
-    self.tableView.sectionHeaderHeight = 0.0f;
-    self.tableView.sectionFooterHeight = 10.0f;
+    self.tableView.sectionHeaderHeight = 20;
+    self.tableView.sectionFooterHeight = 0;
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.top);
         make.left.equalTo(self.view.left);

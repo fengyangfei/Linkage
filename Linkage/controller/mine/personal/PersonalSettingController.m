@@ -8,6 +8,8 @@
 
 #import "PersonalSettingController.h"
 #import "LoginViewController.h"
+#import "TutorialController.h"
+#import "AppDelegate.h"
 
 @interface PersonalSettingController ()
 
@@ -20,7 +22,6 @@
     self = [super init];
     if (self) {
         [self initializeForm];
-        self.hidesBottomBarWhenPushed = YES;
     }
     return self;
 }
@@ -83,17 +84,20 @@
 {
     [super viewDidLoad];
     self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectZero];
-    self.tableView.sectionHeaderHeight = 0.0f;
-    self.tableView.sectionFooterHeight = 10.0f;
+    self.tableView.sectionHeaderHeight = 20;
+    self.tableView.sectionFooterHeight = 0;
 }
 
 //退出
 -(void)logoutAction
 {
-    LoginViewController *loginVC = [[LoginViewController alloc]init];
-    [self presentViewController:loginVC animated:YES completion:^{
-        
-    }];
+    UIViewController *rootViewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
+    if ([rootViewController isKindOfClass:[TutorialController class]] || [rootViewController isKindOfClass:[LoginBaseViewController class]]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        LoginViewController *loginVC = [[LoginViewController alloc]init];
+        [self presentViewController:loginVC animated:YES completion:nil];
+    }
 }
 
 

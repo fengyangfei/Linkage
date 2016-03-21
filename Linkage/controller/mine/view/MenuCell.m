@@ -46,6 +46,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
                 [controller presentViewController:controllerToPresent animated:YES completion:nil];
             }
             else{
+                controllerToPresent.hidesBottomBarWhenPushed = YES;
                 [controller.navigationController pushViewController:controllerToPresent animated:YES];
             }
         }
@@ -126,16 +127,16 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
     
     [self.contentView addSubview:self.titleLabel];
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.iconView.right).offset(5);
+        make.left.equalTo(self.iconView.right).offset(8);
         make.right.equalTo(self.contentView.right);
-        make.top.equalTo(self.iconView.top);
+        make.top.equalTo(self.iconView.top).offset(5);
     }];
     
     [self.contentView addSubview:self.subTitleLabel];
     [self.subTitleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.iconView.right).offset(5);
+        make.left.equalTo(self.iconView.right).offset(8);
         make.right.equalTo(self.contentView.right);
-        make.bottom.equalTo(self.iconView.bottom);
+        make.bottom.equalTo(self.iconView.bottom).offset(-3);
     }];
 }
 
@@ -150,7 +151,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
-    return 70;
+    return 80;
 }
 
 -(UILabel *)subTitleLabel

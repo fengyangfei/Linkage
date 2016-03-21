@@ -1,23 +1,23 @@
 //
-//  EmployeeManageViewController.m
+//  DriverManageViewController.m
 //  Linkage
 //
-//  Created by lihaijian on 16/3/20.
+//  Created by lihaijian on 16/3/21.
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import "EmployeeManageViewController.h"
+#import "DriverManageViewController.h"
 
-@interface EmployeeManageViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface DriverManageViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @end
 
-@implementation EmployeeManageViewController
+@implementation DriverManageViewController
 @synthesize tableView = _tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"员工管理";
+    self.title = @"司机管理";
     [self.view addSubview:self.tableView];
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.top);
@@ -39,7 +39,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"typeCell"];
     }
-    cell.textLabel.text = @"张三";
+    cell.textLabel.text = @"司机1";
     cell.detailTextLabel.text = @"电话:13378930299";
     cell.imageView.image = [UIImage imageNamed:@"tab_icon_selection_highlight"];
     return cell;
