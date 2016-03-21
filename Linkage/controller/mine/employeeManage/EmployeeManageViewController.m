@@ -15,6 +15,15 @@
 @implementation EmployeeManageViewController
 @synthesize tableView = _tableView;
 
+-(instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.hidesBottomBarWhenPushed = YES;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"员工管理";

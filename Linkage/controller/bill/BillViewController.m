@@ -59,6 +59,7 @@
 -(void)pushBillApplyViewController
 {
     BillTypeViewController *controller = [[BillTypeViewController alloc]init];
+    controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

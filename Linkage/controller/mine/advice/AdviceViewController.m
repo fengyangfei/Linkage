@@ -21,6 +21,15 @@
     [[IQKeyboardManager sharedManager] disableDistanceHandlingInViewControllerClass:[self class]];
 }
 
+-(instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.hidesBottomBarWhenPushed = YES;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"建议";

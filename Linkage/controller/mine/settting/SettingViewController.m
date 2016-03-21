@@ -20,6 +20,7 @@
     self = [super init];
     if (self) {
         [self initializeForm];
+        self.hidesBottomBarWhenPushed = YES;
     }
     return self;
 }
