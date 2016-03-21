@@ -7,7 +7,7 @@
 //
 
 #import "FormTextFieldAndButtonCell.h"
-#import "TimerUtil.h"
+#import "TimerManager.h"
 #import <BlocksKit/BlocksKit+UIKit.h>
 NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
 
@@ -74,7 +74,7 @@ NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
 -(void)clickEvent
 {
     WeakSelf
-    [TimerUtil shareInstance].block = ^(NSInteger second){
+    [TimerManager shareInstance].block = ^(NSInteger second){
         if (second > 0) {
             NSString *title = [NSString stringWithFormat:@"获取验证码(%ld)", (long)second];
             [weakSelf.button setTitle:title forState:UIControlStateNormal];
@@ -82,7 +82,7 @@ NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
             [weakSelf.button setTitle:@"获取验证码" forState:UIControlStateNormal];
         }
     };
-    [[TimerUtil shareInstance] fire];
+    [[TimerManager shareInstance] fire];
 }
 
 -(UIButton *)button

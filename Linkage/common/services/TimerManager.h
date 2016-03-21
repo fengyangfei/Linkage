@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 typedef void(^TimerBlock)(NSInteger second);
-@interface TimerUtil : NSObject
+@interface TimerManager : NSObject
 
 @property (nonatomic, copy) TimerBlock block;
-+(TimerUtil *)shareInstance;
++(TimerManager *)shareInstance;
 -(void)fire;
 -(void)invalidate;
 @end

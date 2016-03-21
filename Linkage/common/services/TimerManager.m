@@ -6,23 +6,23 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import "TimerUtil.h"
+#import "TimerManager.h"
 
 #define kTotalSecond 60
-@interface TimerUtil()
+@interface TimerManager()
 @property (nonatomic,readonly) NSTimer *timer;
 
 @end
 
-@implementation TimerUtil
+@implementation TimerManager
 @synthesize timer = _timer;
 
-+(TimerUtil *)shareInstance
++(TimerManager *)shareInstance
 {
-    static TimerUtil *instance;
+    static TimerManager *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[TimerUtil alloc]init];
+        instance = [[TimerManager alloc]init];
     });
     return instance;
 }
@@ -35,10 +35,7 @@ static NSInteger currentSecond;
     }
     currentSecond--;
     if (currentSecond == 0) {
-        [timer invalidate];
-        if (_timer) {
-            _timer = nil;
-        }
+        [self invalidate];
     }
     if (self.block) {
         self.block(currentSecond);
@@ -59,7 +56,6 @@ static NSInteger currentSecond;
         if (_timer) {
             _timer = nil;
         }
-        currentSecond = kTotalSecond;
     }
 }
 
