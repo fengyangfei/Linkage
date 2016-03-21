@@ -59,6 +59,14 @@ static NSInteger currentSecond;
     }
 }
 
+-(BOOL)isValid
+{
+    if (_timer && _timer.isValid) {
+        return YES;
+    }
+    return NO;
+}
+
 -(NSTimer *)timer
 {
     if (!_timer) {

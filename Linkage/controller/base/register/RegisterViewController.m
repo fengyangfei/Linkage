@@ -73,11 +73,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"注册";
 }
 
 - (void)registerAction
 {
-    NSLog(@"注册");
     [self.tableView endEditing:YES];
     NSDictionary *formValues = [self.form formValues];
     NSDictionary *paramter = @{@"mobile":formValues[@"phoneNum"],

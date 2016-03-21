@@ -70,7 +70,6 @@
         viewController;
     });
     
-    //司机的只有三个页签
     self.viewControllers = @[
                              [[UINavigationController alloc]initWithRootViewController:mainViewController],
                              [[UINavigationController alloc]initWithRootViewController:billController],

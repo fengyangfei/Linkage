@@ -11,7 +11,9 @@ typedef void(^TimerBlock)(NSInteger second);
 @interface TimerManager : NSObject
 
 @property (nonatomic, copy) TimerBlock block;
+@property (readonly, getter=isValid) BOOL valid;
 +(TimerManager *)shareInstance;
 -(void)fire;
 -(void)invalidate;
+
 @end

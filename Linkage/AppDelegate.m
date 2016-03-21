@@ -42,8 +42,7 @@ static NSString *const kStoreName = @"linkage.sqlite";
         if ([LoginUser shareInstance]) {
             rooViewController = [[LATabBarController alloc]init];
         }else{
-            LoginViewController *loginVC = [[LoginViewController alloc]init];
-            rooViewController = [[UINavigationController alloc]initWithRootViewController:loginVC];
+            rooViewController = [[LoginViewController alloc]init];
         }
     }
     self.window.rootViewController = rooViewController;
