@@ -7,6 +7,8 @@
 //
 
 #import "AddressViewController.h"
+#import "AddAddressViewController.h"
+#import "AddressCell.h"
 
 @interface AddressViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -25,6 +27,15 @@
         make.right.equalTo(self.view.right);
         make.bottom.equalTo(self.view.bottom);
     }];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAddressAction:)];
+}
+
+#pragma mark - action
+-(void)addAddressAction:(id)sender
+{
+    AddAddressViewController *addAddressVC = [[AddAddressViewController alloc]init];
+    [self.navigationController pushViewController:addAddressVC animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -35,13 +46,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"typeCell"];
+    AddressCell * cell = [tableView dequeueReusableCellWithIdentifier:@"typeCell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"typeCell"];
+        cell = [[AddressCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"typeCell"];
     }
     cell.textLabel.text = @"地址1";
-    cell.detailTextLabel.text = @"常用地址:13378930299";
-    cell.imageView.image = [UIImage imageNamed:@"tab_icon_selection_highlight"];
+    cell.detailLabel.text = @"常用地址:13378930299";
     return cell;
 }
 
@@ -49,6 +59,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 90;
 }
 
 -(UITableView *)tableView

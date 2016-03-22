@@ -22,6 +22,7 @@
 
 - (void)initializeForm
 {
+    WeakSelf
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
@@ -30,12 +31,21 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"联系方式"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeText title:@"联系方式"];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"address" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"详细地址"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"address" rowType:XLFormRowDescriptorTypeText title:@"详细地址"];
     [section addFormRow:row];
     
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"保存地址"];
+    row.action.formBlock  = ^(XLFormRowDescriptor * sender){
+        [weakSelf submitForm];
+    };
+    [section addFormRow:row];
+
     self.form = form;
 }
 
@@ -50,40 +60,11 @@
         make.right.equalTo(self.view.right);
         make.bottom.equalTo(self.view.bottom).offset(-54);
     }];
-    
-    UIView *bottomView = [UIView new];
-    bottomView.backgroundColor = self.tableView.backgroundColor;
-    [self.view addSubview:bottomView];
-    [bottomView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.left);
-        make.right.equalTo(self.view.right);
-        make.top.equalTo(self.tableView.bottom);
-        make.bottom.equalTo(self.view.bottom);
-    }];
-    
-    BFPaperButton *saveButton = ({
-        BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:YES];
-        button.cornerRadius = 4;
-        [button setBackgroundColor:ButtonColor];
-        [button setTitleFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.f]];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [button setTitle:@"提交订单" forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(submitForm:) forControlEvents:UIControlEventTouchUpInside];
-        button;
-    });
-    [bottomView addSubview:saveButton];
-    [saveButton makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(bottomView.left).offset(10);
-        make.right.equalTo(bottomView.right).offset(-10);
-        make.top.equalTo(bottomView.top).offset(5);
-        make.height.equalTo(@44);
-    }];
 }
 
--(void)submitForm:(id)sender
+-(void)submitForm
 {
-    
+    NSDictionary *allValue = [self formValues];
 }
 
 @end

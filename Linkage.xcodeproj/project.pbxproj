@@ -127,6 +127,7 @@
 		8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */; };
 		8BBE05F21C9EB4F10018EB2A /* XLFormViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05F11C9EB4F10018EB2A /* XLFormViewController+ImagePicker.m */; };
 		8BBE05F61C9EEE850018EB2A /* EmployeeManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05F51C9EEE850018EB2A /* EmployeeManageViewController.m */; };
+		8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC624F91CA18EBC00C70325 /* AddressCell.m */; };
 		8BDBB7CA1C98509D00D60207 /* Company.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8BDBB7C91C98509D00D60207 /* Company.bundle */; };
 		8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */; };
 		8BDBB7D11C9859CD00D60207 /* BillDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7D01C9859CD00D60207 /* BillDataSource.m */; };
@@ -422,6 +423,8 @@
 		8BBE05F11C9EB4F10018EB2A /* XLFormViewController+ImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XLFormViewController+ImagePicker.m"; sourceTree = "<group>"; };
 		8BBE05F41C9EEE850018EB2A /* EmployeeManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeManageViewController.h; sourceTree = "<group>"; };
 		8BBE05F51C9EEE850018EB2A /* EmployeeManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeManageViewController.m; sourceTree = "<group>"; };
+		8BC624F81CA18EBC00C70325 /* AddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressCell.h; sourceTree = "<group>"; };
+		8BC624F91CA18EBC00C70325 /* AddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressCell.m; sourceTree = "<group>"; };
 		8BDBB7C91C98509D00D60207 /* Company.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Company.bundle; sourceTree = "<group>"; };
 		8BDBB7CC1C9854B700D60207 /* BillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTableViewCell.h; sourceTree = "<group>"; };
 		8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTableViewCell.m; sourceTree = "<group>"; };
@@ -1034,6 +1037,7 @@
 		8B7172E11CA0432A00DBEB9F /* addressManager */ = {
 			isa = PBXGroup;
 			children = (
+				8BC624F71CA18E7F00C70325 /* view */,
 				8B7172E21CA0436C00DBEB9F /* AddressViewController.h */,
 				8B7172E31CA0436C00DBEB9F /* AddressViewController.m */,
 				8B7172E51CA0443300DBEB9F /* AddAddressViewController.h */,
@@ -1124,6 +1128,15 @@
 				8BBE05F51C9EEE850018EB2A /* EmployeeManageViewController.m */,
 			);
 			path = employeeManage;
+			sourceTree = "<group>";
+		};
+		8BC624F71CA18E7F00C70325 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8BC624F81CA18EBC00C70325 /* AddressCell.h */,
+				8BC624F91CA18EBC00C70325 /* AddressCell.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		8BDBB7CB1C98547B00D60207 /* view */ = {
@@ -1700,6 +1713,7 @@
 				8B5DC6361C79B8A700D29292 /* TRTheme.m in Sources */,
 				8B44450F1C7C9EFE00160DC2 /* UIView+SDExtension.m in Sources */,
 				8B44450C1C7C9EFE00160DC2 /* TAPageControl.m in Sources */,
+				8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */,
 				8B5DC63C1C79B8A700D29292 /* UIImage+TRTheme.m in Sources */,
 				8B3302941C8BC7510088DAE2 /* MainDataSource.m in Sources */,
 				8B5DC6221C79B8A700D29292 /* IFTTTEasingFunction.m in Sources */,
