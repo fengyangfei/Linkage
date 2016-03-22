@@ -33,6 +33,14 @@
 			<key>className</key>
 			<string>DriverManageViewController</string>
 		</dict>
+        <dict>
+            <key>title</key>
+            <string>地址管理</string>
+            <key>iconName</key>
+            <string>side_manage</string>
+            <key>className</key>
+            <string>AddressViewController</string>
+        </dict>
 	</array>
 	<array>
 		<dict>

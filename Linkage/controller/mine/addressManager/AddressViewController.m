@@ -39,8 +39,8 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"typeCell"];
     }
-    cell.textLabel.text = @"司机1";
-    cell.detailTextLabel.text = @"电话:13378930299";
+    cell.textLabel.text = @"地址1";
+    cell.detailTextLabel.text = @"常用地址:13378930299";
     cell.imageView.image = [UIImage imageNamed:@"tab_icon_selection_highlight"];
     return cell;
 }
