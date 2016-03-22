@@ -50,7 +50,7 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
 
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
 {
-    NSInteger rowIndex, currentIndex = 0;
+    NSInteger rowIndex = 0, currentIndex = 0;
     XLFormSectionDescriptor *section = self.rowDescriptor.sectionDescriptor;
     NSMutableArray * photoArray = [NSMutableArray new];
     for (XLFormRowDescriptor * row in section.formRows) {
@@ -61,11 +61,11 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
                 photo.image = model.photo;
                 photo;
             });
-            rowIndex++;
             [photoArray addObject:photo];
-        }
-        if (row == self.rowDescriptor) {
-            currentIndex = rowIndex;
+            if (row == self.rowDescriptor) {
+                currentIndex = rowIndex;
+            }
+            rowIndex++;
         }
     }
     MJPhotoBrowser *photoBrowser = [[MJPhotoBrowser alloc] init];
