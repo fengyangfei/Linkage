@@ -9,6 +9,9 @@
 #import "SOImageFormCell.h"
 #import "SOImageModel.h"
 
+#import "MJPhotoBrowser.h"
+#import "MJPhoto.h"
+
 NSString *const SOImageRowDescriporType = @"SOImageRowType";
 
 @implementation SOImageFormCell
@@ -47,8 +50,28 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
 
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
 {
-    //SOImageModel *model = (SOImageModel *)self.rowDescriptor.value;
-    //[(TRAccountRecordVC *)self.formViewController showImageViews:model.photo];
+    NSInteger rowIndex, currentIndex = 0;
+    XLFormSectionDescriptor *section = self.rowDescriptor.sectionDescriptor;
+    NSMutableArray * photoArray = [NSMutableArray new];
+    for (XLFormRowDescriptor * row in section.formRows) {
+        if (row.value){
+            SOImageModel *model = (SOImageModel *)row.value;
+            MJPhoto *photo = ({
+                MJPhoto *photo = [[MJPhoto alloc] init];
+                photo.image = model.photo;
+                photo;
+            });
+            rowIndex++;
+            [photoArray addObject:photo];
+        }
+        if (row == self.rowDescriptor) {
+            currentIndex = rowIndex;
+        }
+    }
+    MJPhotoBrowser *photoBrowser = [[MJPhotoBrowser alloc] init];
+    photoBrowser.photos = photoArray;
+    photoBrowser.currentPhotoIndex = currentIndex;
+    [photoBrowser show];
 }
 
 #pragma mark - Properties
