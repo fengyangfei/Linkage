@@ -7,7 +7,47 @@
 //
 
 #import "Address.h"
+NSString * const phoneNum = @"phoneNum";
+NSString * const address = @"address";
+#define kUserDefalutAddressKey  @"kUserDefalutAddressKey"
 
 @implementation Address
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.phoneNum forKey:phoneNum];
+    [aCoder encodeObject:self.address forKey:address];
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self) {
+        self.phoneNum = [aDecoder decodeObjectForKey:phoneNum];
+        self.address = [aDecoder decodeObjectForKey:address];
+    }
+    return self;
+}
+
+-(BOOL)save
+{
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefalutAddressKey];
+    return [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(Address *)defaultAddress
+{
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefalutAddressKey];
+    if(data){
+        return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    return nil;
+}
+
+-(BOOL)remove
+{
+    return NO;
+}
 
 @end

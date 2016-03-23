@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		473829019982DB6ABCA449C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C81D54C57DCA2DBC162EE98 /* libPods.a */; };
+		8B0254E01CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0254DD1CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.m */; };
+		8B0254E11CA2C4E4005F5CA7 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0254DF1CA2C4E4005F5CA7 /* AddressModel.m */; };
+		8B0254E41CA2CBDE005F5CA7 /* AddressWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0254E31CA2CBDE005F5CA7 /* AddressWrapper.m */; };
 		8B10AD2D1C88744E00F5B0D6 /* PersonalSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */; };
 		8B10AD3E1C887D3F00F5B0D6 /* side_backup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B10AD2F1C887D3F00F5B0D6 /* side_backup@2x.png */; };
 		8B10AD3F1C887D3F00F5B0D6 /* side_company_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B10AD301C887D3F00F5B0D6 /* side_company_logo@2x.png */; };
@@ -191,6 +194,12 @@
 
 /* Begin PBXFileReference section */
 		2C81D54C57DCA2DBC162EE98 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B0254DC1CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AddressModel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		8B0254DD1CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AddressModel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		8B0254DE1CA2C4E4005F5CA7 /* AddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
+		8B0254DF1CA2C4E4005F5CA7 /* AddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
+		8B0254E21CA2CBDE005F5CA7 /* AddressWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressWrapper.h; sourceTree = "<group>"; };
+		8B0254E31CA2CBDE005F5CA7 /* AddressWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressWrapper.m; sourceTree = "<group>"; };
 		8B10AD2B1C88744E00F5B0D6 /* PersonalSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalSettingController.h; sourceTree = "<group>"; };
 		8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalSettingController.m; sourceTree = "<group>"; };
 		8B10AD2F1C887D3F00F5B0D6 /* side_backup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "side_backup@2x.png"; sourceTree = "<group>"; };
@@ -1480,6 +1489,12 @@
 			children = (
 				9AEF89C41CA2907D00C5EB90 /* Address.h */,
 				9AEF89C51CA2907D00C5EB90 /* Address.m */,
+				8B0254DC1CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.h */,
+				8B0254DD1CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.m */,
+				8B0254DE1CA2C4E4005F5CA7 /* AddressModel.h */,
+				8B0254DF1CA2C4E4005F5CA7 /* AddressModel.m */,
+				8B0254E21CA2CBDE005F5CA7 /* AddressWrapper.h */,
+				8B0254E31CA2CBDE005F5CA7 /* AddressWrapper.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1697,6 +1712,7 @@
 				8BBE05F61C9EEE850018EB2A /* EmployeeManageViewController.m in Sources */,
 				8B5DC6391C79B8A700D29292 /* TRThemeManager.m in Sources */,
 				9AEF89BE1CA1274600C5EB90 /* MJPhotoBrowser.m in Sources */,
+				8B0254E11CA2C4E4005F5CA7 /* AddressModel.m in Sources */,
 				9ACEBC751C9950E90000ACBF /* CargoTypeViewController.m in Sources */,
 				8B5DC62A1C79B8A700D29292 /* IFTTTMaskAnimation.m in Sources */,
 				9A95FF211C8931F400C5F492 /* BaseBillViewController.m in Sources */,
@@ -1730,6 +1746,7 @@
 				8B5DC63C1C79B8A700D29292 /* UIImage+TRTheme.m in Sources */,
 				8B3302941C8BC7510088DAE2 /* MainDataSource.m in Sources */,
 				8B5DC6221C79B8A700D29292 /* IFTTTEasingFunction.m in Sources */,
+				8B0254E41CA2CBDE005F5CA7 /* AddressWrapper.m in Sources */,
 				9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */,
 				9AEF89C61CA2907D00C5EB90 /* Address.m in Sources */,
 				9A95FF091C858B0E00C5F492 /* SettingViewController.m in Sources */,
@@ -1764,6 +1781,7 @@
 				8B5DC6211C79B8A700D29292 /* IFTTTCornerRadiusAnimation.m in Sources */,
 				8B44450A1C7C9EFE00160DC2 /* TAAnimatedDotView.m in Sources */,
 				9A95FF0D1C858C8200C5F492 /* DateAndTimeValueTrasformer.m in Sources */,
+				8B0254E01CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.m in Sources */,
 				8B5DC6811C79D0DB00D29292 /* YGRestClient.m in Sources */,
 				8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */,
 				8BB4FB161C7A0884003389F1 /* README.md in Sources */,

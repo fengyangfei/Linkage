@@ -7,7 +7,7 @@
 //
 
 #import "AddAddressViewController.h"
-#import "BFPaperButton.h"
+#import "AddressModel.h"
 
 @implementation AddAddressViewController
 
@@ -58,13 +58,20 @@
         make.top.equalTo(self.view.top);
         make.left.equalTo(self.view.left);
         make.right.equalTo(self.view.right);
-        make.bottom.equalTo(self.view.bottom).offset(-54);
+        make.bottom.equalTo(self.view.bottom);
     }];
 }
 
 -(void)submitForm
 {
+    WeakSelf
     NSDictionary *allValue = [self formValues];
+    AddressModel *model = [AddressModel createEntity];
+    model.phoneNum = allValue[@"phoneNum"];
+    model.address = allValue[@"address"];
+    [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError *error) {
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 @end

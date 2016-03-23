@@ -9,31 +9,39 @@
 #import "AddressViewController.h"
 #import "AddAddressViewController.h"
 #import "AddressCell.h"
-#import "Address.h"
+#import "AddressWrapper.h"
+#import "AddressModel.h"
 
 @implementation AddressViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"地址管理";
-    [self.view addSubview:self.tableView];
+    self.tableView.tableHeaderView = [UIView new];
+    self.tableView.sectionHeaderHeight = 10;
+    self.tableView.sectionFooterHeight = 0;
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.top);
         make.left.equalTo(self.view.left);
         make.right.equalTo(self.view.right);
         make.bottom.equalTo(self.view.bottom);
     }];
-    [self setupData];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAddressAction:)];
 }
 
-- (void)setupData
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self setupForm];
+}
+
+- (void)setupForm
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
     form = [XLFormDescriptor formDescriptor];
-    for (Address *address in [self dataFromLocal]) {
+    for (Address *address in [self findDataFromLocal]) {
         section = [XLFormSectionDescriptor formSection];
         [form addFormSection:section];
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"nil" rowType:kAddressRowDescriptroType];
@@ -43,16 +51,10 @@
     self.form = form;
 }
 
--(NSArray *)dataFromLocal
+-(NSArray *)findDataFromLocal
 {
-    NSMutableArray *array = [NSMutableArray array];
-    for (int i = 0; i < 7; i++) {
-        Address *address = [[Address alloc]init];
-        address.target = @"联系方式";
-        address.specific = @"12312123123123123";
-        [array addObject:address];
-    }
-    return [array copy];
+    NSArray *models = [AddressModel findAll];
+    return [AddressWrapper generateAddress:models];
 }
 
 #pragma mark - action

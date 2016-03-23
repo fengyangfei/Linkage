@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface Address : NSObject
-@property (nonatomic, copy) NSString *target;
-@property (nonatomic, copy) NSString *specific;
+@property (nonatomic, copy) NSString *phoneNum;
+@property (nonatomic, copy) NSString *address;
+-(BOOL)save;
++(Address *)defaultAddress;
+-(BOOL)remove;
 @end
