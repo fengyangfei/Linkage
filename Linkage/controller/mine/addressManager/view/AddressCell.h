@@ -6,9 +6,10 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <XLForm/XLForm.h>
 
-@interface AddressCell : UITableViewCell
+extern NSString * const kAddressRowDescriptroType;
+@interface AddressCell : XLFormBaseCell
 @property (nonatomic, readonly) UIButton *defaultAddrButton;
 @property (nonatomic, readonly) UIButton *deleteButton;
 @property (nonatomic, readonly) UILabel *textLabel;

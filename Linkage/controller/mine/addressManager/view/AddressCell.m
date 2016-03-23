@@ -7,7 +7,9 @@
 //
 
 #import "AddressCell.h"
+#import "Address.h"
 
+NSString * const kAddressRowDescriptroType = @"addressRowType";;
 @interface AddressCell()
 
 @end
@@ -18,13 +20,16 @@
 @synthesize textLabel = _textLabel;
 @synthesize detailLabel = _detailLabel;
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
++(void)load
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        [self configureUI];
-    }
-    return self;
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:kAddressRowDescriptroType];
+}
+
+-(void)configure
+{
+    [super configure];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self configureUI];
 }
 
 -(void)configureUI
@@ -62,13 +67,24 @@
     }];
 }
 
+-(void)update
+{
+    [self update];
+    Address *address = self.rowDescriptor.value;
+    self.textLabel.text = address.target;
+    self.detailLabel.text = address.specific;
+}
+
+#pragma mark - 属性
 -(UIButton *)defaultAddrButton
 {
     if (!_defaultAddrButton) {
         _defaultAddrButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_defaultAddrButton setTitle:@"默认地址" forState:UIControlStateNormal];
-        [_defaultAddrButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [_defaultAddrButton setImage:[UIImage imageNamed:@"check_icon"] forState:UIControlStateNormal];
+        [_defaultAddrButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_defaultAddrButton setImage:[UIImage imageNamed:@"round_icon"] forState:UIControlStateNormal];
+        [_defaultAddrButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+        _defaultAddrButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     }
     return _defaultAddrButton;
 }
@@ -78,7 +94,8 @@
     if (!_deleteButton) {
         _deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_deleteButton setTitle:@"删除" forState:UIControlStateNormal];
-        [_deleteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [_deleteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _deleteButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     }
     return _deleteButton;
 }

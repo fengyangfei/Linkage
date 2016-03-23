@@ -9,13 +9,9 @@
 #import "AddressViewController.h"
 #import "AddAddressViewController.h"
 #import "AddressCell.h"
-
-@interface AddressViewController ()<UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong) UITableView *tableView;
-@end
+#import "Address.h"
 
 @implementation AddressViewController
-@synthesize tableView = _tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,8 +23,36 @@
         make.right.equalTo(self.view.right);
         make.bottom.equalTo(self.view.bottom);
     }];
-    
+    [self setupData];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAddressAction:)];
+}
+
+- (void)setupData
+{
+    XLFormDescriptor * form;
+    XLFormSectionDescriptor * section;
+    XLFormRowDescriptor * row;
+    form = [XLFormDescriptor formDescriptor];
+    for (Address *address in [self dataFromLocal]) {
+        section = [XLFormSectionDescriptor formSection];
+        [form addFormSection:section];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"nil" rowType:kAddressRowDescriptroType];
+        row.value = address;
+        [section addFormRow:row];
+    }
+    self.form = form;
+}
+
+-(NSArray *)dataFromLocal
+{
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < 7; i++) {
+        Address *address = [[Address alloc]init];
+        address.target = @"联系方式";
+        address.specific = @"12312123123123123";
+        [array addObject:address];
+    }
+    return [array copy];
 }
 
 #pragma mark - action
@@ -38,42 +62,5 @@
     [self.navigationController pushViewController:addAddressVC animated:YES];
 }
 
-#pragma mark - UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 3;
-}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    AddressCell * cell = [tableView dequeueReusableCellWithIdentifier:@"typeCell"];
-    if (!cell) {
-        cell = [[AddressCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"typeCell"];
-    }
-    cell.textLabel.text = @"地址1";
-    cell.detailLabel.text = @"常用地址:13378930299";
-    return cell;
-}
-
-#pragma mark - UITableViewDelegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 90;
-}
-
--(UITableView *)tableView
-{
-    if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        _tableView.tableFooterView = [UIView new];
-    }
-    return _tableView;
-}
 @end

@@ -186,6 +186,7 @@
 		9AEF89C01CA1274600C5EB90 /* MJPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89B71CA1274600C5EB90 /* MJPhotoProgressView.m */; };
 		9AEF89C11CA1274600C5EB90 /* MJPhotoToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89B91CA1274600C5EB90 /* MJPhotoToolbar.m */; };
 		9AEF89C21CA1274600C5EB90 /* MJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89BB1CA1274600C5EB90 /* MJPhotoView.m */; };
+		9AEF89C61CA2907D00C5EB90 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89C51CA2907D00C5EB90 /* Address.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -524,6 +525,8 @@
 		9AEF89B91CA1274600C5EB90 /* MJPhotoToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoToolbar.m; sourceTree = "<group>"; };
 		9AEF89BA1CA1274600C5EB90 /* MJPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoView.h; sourceTree = "<group>"; };
 		9AEF89BB1CA1274600C5EB90 /* MJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoView.m; sourceTree = "<group>"; };
+		9AEF89C41CA2907D00C5EB90 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		9AEF89C51CA2907D00C5EB90 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		B30457667634636F561BC865 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1037,6 +1040,7 @@
 		8B7172E11CA0432A00DBEB9F /* addressManager */ = {
 			isa = PBXGroup;
 			children = (
+				9AEF89C31CA2905A00C5EB90 /* model */,
 				8BC624F71CA18E7F00C70325 /* view */,
 				8B7172E21CA0436C00DBEB9F /* AddressViewController.h */,
 				8B7172E31CA0436C00DBEB9F /* AddressViewController.m */,
@@ -1471,6 +1475,15 @@
 			path = MJPhotoBrowser;
 			sourceTree = "<group>";
 		};
+		9AEF89C31CA2905A00C5EB90 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9AEF89C41CA2907D00C5EB90 /* Address.h */,
+				9AEF89C51CA2907D00C5EB90 /* Address.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		A0DDFB85B826F36604928232 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1718,6 +1731,7 @@
 				8B3302941C8BC7510088DAE2 /* MainDataSource.m in Sources */,
 				8B5DC6221C79B8A700D29292 /* IFTTTEasingFunction.m in Sources */,
 				9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */,
+				9AEF89C61CA2907D00C5EB90 /* Address.m in Sources */,
 				9A95FF091C858B0E00C5F492 /* SettingViewController.m in Sources */,
 				8BA1305A1C9D951B007607F9 /* SOImageModel.m in Sources */,
 				8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */,
