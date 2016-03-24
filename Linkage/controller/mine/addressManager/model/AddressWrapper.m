@@ -50,4 +50,12 @@
     return [_model remove];
 }
 
+-(id)copy
+{
+    Address *address = [[Address alloc]init];
+    address.phoneNum = [self phoneNum];
+    address.address = [self address];
+    return address;
+}
+
 @end

@@ -12,7 +12,7 @@
 
 +(NSArray *)findAll
 {
-    return [AddressModel MR_findAllInContext:[NSManagedObjectContext MR_defaultContext]];
+    return [AddressModel MR_findAllSortedBy:@"phoneNum" ascending:YES inContext:[NSManagedObjectContext MR_defaultContext]];
 }
 
 +(AddressModel *)createEntity

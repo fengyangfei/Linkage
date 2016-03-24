@@ -44,7 +44,6 @@ NSString * const kAddressRowDescriptroType = @"addressRowType";;
     }
 }
 
-
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
     return 100;
@@ -103,7 +102,7 @@ NSString * const kAddressRowDescriptroType = @"addressRowType";;
 
 -(void)defalutAction:(id)sender
 {
-    Address *address = self.rowDescriptor.value;
+    Address *address = [self.rowDescriptor.value copy];
     [address save];
     [self.formViewController performFormSelector:NSSelectorFromString(@"setupForm") withObject:nil];
 }
