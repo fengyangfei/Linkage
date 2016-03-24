@@ -57,7 +57,7 @@
 			<key>iconName</key>
 			<string>side_group</string>
 			<key>className</key>
-			<string>MineViewController</string>
+			<string>InvitationViewController</string>
 		</dict>
 	</array>
 	<array>
@@ -67,7 +67,7 @@
 			<key>iconName</key>
 			<string>side_favourite</string>
 			<key>className</key>
-			<string>MineViewController</string>
+			<string>FavoriteViewController</string>
 		</dict>
 	</array>
 	<array>

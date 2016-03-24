@@ -108,6 +108,7 @@
         _ratingView = ({
             AXRatingView *axRatinView = [[AXRatingView alloc]initWithFrame:CGRectZero];
             [axRatinView setStepInterval:1.0];
+            axRatinView.value = 4.0;
             axRatinView;
         });
     }

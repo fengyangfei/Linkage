@@ -36,6 +36,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
 {
+    MenuItem *item = self.rowDescriptor.value;
     if (self.rowDescriptor.action.viewControllerClass) {
         UIViewController * controllerToPresent = [[self.rowDescriptor.action.viewControllerClass alloc] init];
         if (controllerToPresent){
@@ -46,6 +47,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
                 [controller presentViewController:controllerToPresent animated:YES completion:nil];
             }
             else{
+                controllerToPresent.title = item.title;
                 controllerToPresent.hidesBottomBarWhenPushed = YES;
                 [controller.navigationController pushViewController:controllerToPresent animated:YES];
             }

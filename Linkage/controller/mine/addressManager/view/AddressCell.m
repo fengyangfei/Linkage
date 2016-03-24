@@ -156,6 +156,8 @@ NSString * const kAddressRowDescriptroType = @"addressRowType";;
 {
     if (!_detailLabel) {
         _detailLabel = [UILabel new];
+        _detailLabel.textColor = [UIColor darkGrayColor];
+        _detailLabel.font = [UIFont systemFontOfSize:14];
     }
     return _detailLabel;
 }

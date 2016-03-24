@@ -32,9 +32,11 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeText title:@"联系方式"];
+    row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"address" rowType:XLFormRowDescriptorTypeText title:@"详细地址"];
+    row.required = YES;
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
@@ -42,7 +44,7 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"保存地址"];
     row.action.formBlock  = ^(XLFormRowDescriptor * sender){
-        [weakSelf submitForm];
+        [weakSelf submitForm:sender];
     };
     [section addFormRow:row];
 
@@ -62,9 +64,15 @@
     }];
 }
 
--(void)submitForm
+-(void)submitForm:(XLFormRowDescriptor *)row
 {
     WeakSelf
+    [self deselectFormRow:row];
+    NSArray *errors = [self formValidationErrors];
+    if (errors && errors.count > 0) {
+        [self showFormValidationError:errors[0]];
+        return;
+    }
     NSDictionary *allValue = [self formValues];
     AddressModel *model = [AddressModel createEntity];
     model.phoneNum = allValue[@"phoneNum"];

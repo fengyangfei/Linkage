@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  YGTravel
+
+  Created by Mac mini on 15/9/7.
+  Copyright (c) 2015年 ygsoft. All rights reserved.
+*/
+"XLFormViewController_ValidationErrorTitle" = "数据有误!";
+"OK" = "确定";
+"%@ can't be empty" = "%@ 不能为空";

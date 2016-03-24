@@ -30,6 +30,9 @@
 		8B3302911C8BC0D70088DAE2 /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3302901C8BC0D70088DAE2 /* MainTableViewCell.m */; };
 		8B3302941C8BC7510088DAE2 /* MainDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3302931C8BC7510088DAE2 /* MainDataSource.m */; };
 		8B3C31921C956EEB00FC6323 /* FormTextFieldAndButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C31901C9568B900FC6323 /* FormTextFieldAndButtonCell.m */; };
+		8B4221181CA428BF00F58D77 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B4221171CA428BF00F58D77 /* Localizable.strings */; };
+		8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B42211B1CA42AD600F58D77 /* FavoriteViewController.m */; };
+		8B4221201CA42C6900F58D77 /* InvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B42211F1CA42C6900F58D77 /* InvitationViewController.m */; };
 		8B4445091C7C9EFE00160DC2 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4444DA1C7C9EFE00160DC2 /* TAAbstractDotView.m */; };
 		8B44450A1C7C9EFE00160DC2 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4444DC1C7C9EFE00160DC2 /* TAAnimatedDotView.m */; };
 		8B44450B1C7C9EFE00160DC2 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4444DE1C7C9EFE00160DC2 /* TADotView.m */; };
@@ -223,6 +226,11 @@
 		8B3302931C8BC7510088DAE2 /* MainDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainDataSource.m; sourceTree = "<group>"; };
 		8B3C318F1C9568B900FC6323 /* FormTextFieldAndButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormTextFieldAndButtonCell.h; sourceTree = "<group>"; };
 		8B3C31901C9568B900FC6323 /* FormTextFieldAndButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormTextFieldAndButtonCell.m; sourceTree = "<group>"; };
+		8B4221171CA428BF00F58D77 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		8B42211A1CA42AD600F58D77 /* FavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteViewController.h; sourceTree = "<group>"; };
+		8B42211B1CA42AD600F58D77 /* FavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
+		8B42211E1CA42C6900F58D77 /* InvitationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitationViewController.h; sourceTree = "<group>"; };
+		8B42211F1CA42C6900F58D77 /* InvitationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitationViewController.m; sourceTree = "<group>"; };
 		8B4444D91C7C9EFE00160DC2 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
 		8B4444DA1C7C9EFE00160DC2 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
 		8B4444DB1C7C9EFE00160DC2 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
@@ -655,6 +663,24 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		8B4221191CA42A8700F58D77 /* favorite */ = {
+			isa = PBXGroup;
+			children = (
+				8B42211A1CA42AD600F58D77 /* FavoriteViewController.h */,
+				8B42211B1CA42AD600F58D77 /* FavoriteViewController.m */,
+			);
+			path = favorite;
+			sourceTree = "<group>";
+		};
+		8B42211D1CA42C5500F58D77 /* invitation */ = {
+			isa = PBXGroup;
+			children = (
+				8B42211E1CA42C6900F58D77 /* InvitationViewController.h */,
+				8B42211F1CA42C6900F58D77 /* InvitationViewController.m */,
+			);
+			path = invitation;
+			sourceTree = "<group>";
+		};
 		8B4444D71C7C9EFE00160DC2 /* SDCycleScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -722,6 +748,7 @@
 		8B5DC5651C7992E900D29292 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8B4221171CA428BF00F58D77 /* Localizable.strings */,
 				8B5DC6541C79B8FF00D29292 /* Linkage-Prefix.pch */,
 				8B5DC5661C7992E900D29292 /* main.m */,
 			);
@@ -1298,6 +1325,8 @@
 		9A95FEF91C83DF7D00C5F492 /* mine */ = {
 			isa = PBXGroup;
 			children = (
+				8B42211D1CA42C5500F58D77 /* invitation */,
+				8B4221191CA42A8700F58D77 /* favorite */,
 				8B7172E11CA0432A00DBEB9F /* addressManager */,
 				8B7172DD1CA01F2C00DBEB9F /* driverManager */,
 				8BBE05F31C9EEE220018EB2A /* employeeManage */,
@@ -1610,6 +1639,7 @@
 				8B5DC6491C79B8A700D29292 /* UMSocialSDKResourcesNew.bundle in Resources */,
 				8B10AD471C887D3F00F5B0D6 /* side_menu_icon@2x.png in Resources */,
 				8B5DC6461C79B8A700D29292 /* UMSLoginViewController.xib in Resources */,
+				8B4221181CA428BF00F58D77 /* Localizable.strings in Resources */,
 				9A23A3161C7E8E7500FB5EB6 /* tutorial_background_03@2x.jpg in Resources */,
 				8B5DC6431C79B8A700D29292 /* UMSCommentInputControlleriPad.xib in Resources */,
 				9A23A3111C7E8E7500FB5EB6 /* Default.png in Resources */,
@@ -1690,6 +1720,7 @@
 				8B5DC6291C79B8A700D29292 /* IFTTTLayerStrokeStartAnimation.m in Sources */,
 				8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */,
 				8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */,
+				8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */,
 				9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */,
 				8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */,
 				9A23A2C41C7AE1B100FB5EB6 /* LoginViewController.m in Sources */,
@@ -1767,6 +1798,7 @@
 				9AEF89BC1CA1274600C5EB90 /* MJPhoto.m in Sources */,
 				8B5DC61A1C79B8A700D29292 /* IFTTTAnimatedPagingScrollViewController.m in Sources */,
 				8B5DC6581C79B9A200D29292 /* RMMapper.m in Sources */,
+				8B4221201CA42C6900F58D77 /* InvitationViewController.m in Sources */,
 				9A95FF411C89824F00C5F492 /* UIViewController+TRImagePicker.m in Sources */,
 				8B5DC6301C79B8A700D29292 /* IFTTTTextColorAnimation.m in Sources */,
 				9AEF89C01CA1274600C5EB90 /* MJPhotoProgressView.m in Sources */,
