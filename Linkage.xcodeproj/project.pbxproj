@@ -193,6 +193,9 @@
 		9AEF89C11CA1274600C5EB90 /* MJPhotoToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89B91CA1274600C5EB90 /* MJPhotoToolbar.m */; };
 		9AEF89C21CA1274600C5EB90 /* MJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89BB1CA1274600C5EB90 /* MJPhotoView.m */; };
 		9AEF89C61CA2907D00C5EB90 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89C51CA2907D00C5EB90 /* Address.m */; };
+		9AEF89CB1CA4CD5400C5EB90 /* ImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89CA1CA4CD5400C5EB90 /* ImageToDataTransformer.m */; };
+		9AEF89D01CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89CD1CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.m */; };
+		9AEF89D11CA4CDEA00C5EB90 /* PhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89CF1CA4CDEA00C5EB90 /* PhotoModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -544,6 +547,12 @@
 		9AEF89BB1CA1274600C5EB90 /* MJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoView.m; sourceTree = "<group>"; };
 		9AEF89C41CA2907D00C5EB90 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		9AEF89C51CA2907D00C5EB90 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		9AEF89C91CA4CD5400C5EB90 /* ImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageToDataTransformer.h; sourceTree = "<group>"; };
+		9AEF89CA1CA4CD5400C5EB90 /* ImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageToDataTransformer.m; sourceTree = "<group>"; };
+		9AEF89CC1CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PhotoModel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		9AEF89CD1CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PhotoModel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		9AEF89CE1CA4CDEA00C5EB90 /* PhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoModel.h; sourceTree = "<group>"; };
+		9AEF89CF1CA4CDEA00C5EB90 /* PhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoModel.m; sourceTree = "<group>"; };
 		B30457667634636F561BC865 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1108,6 +1117,8 @@
 		8B8F26711C89DC72001B187E /* extends */ = {
 			isa = PBXGroup;
 			children = (
+				9AEF89C91CA4CD5400C5EB90 /* ImageToDataTransformer.h */,
+				9AEF89CA1CA4CD5400C5EB90 /* ImageToDataTransformer.m */,
 				8B8F26721C89DC72001B187E /* TRFormTextFieldCell.h */,
 				8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */,
 			);
@@ -1424,6 +1435,10 @@
 			children = (
 				8BB039DC1C94591900A3BCF9 /* LoginUser.h */,
 				8BB039DD1C94591900A3BCF9 /* LoginUser.m */,
+				9AEF89CC1CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.h */,
+				9AEF89CD1CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.m */,
+				9AEF89CE1CA4CDEA00C5EB90 /* PhotoModel.h */,
+				9AEF89CF1CA4CDEA00C5EB90 /* PhotoModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1728,6 +1743,7 @@
 				9A23A3201C7E8EA900FB5EB6 /* ICETutorialPage.m in Sources */,
 				9AEF89C11CA1274600C5EB90 /* MJPhotoToolbar.m in Sources */,
 				9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */,
+				9AEF89D11CA4CDEA00C5EB90 /* PhotoModel.m in Sources */,
 				9A95FF341C89731100C5F492 /* TRPopManager.m in Sources */,
 				8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */,
 				8B5DC6341C79B8A700D29292 /* UIView+IFTTTJazzHands.m in Sources */,
@@ -1753,6 +1769,7 @@
 				9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */,
 				8B5DC6331C79B8A700D29292 /* IFTTTViewAnimation.m in Sources */,
 				8B5DC6281C79B8A700D29292 /* IFTTTLayerStrokeEndAnimation.m in Sources */,
+				9AEF89D01CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.m in Sources */,
 				8B5DC6371C79B8A700D29292 /* TRThemeBaseViewController.m in Sources */,
 				8B4445091C7C9EFE00160DC2 /* TAAbstractDotView.m in Sources */,
 				8B5DC6321C79B8A700D29292 /* IFTTTTranslationAnimation.m in Sources */,
@@ -1788,6 +1805,7 @@
 				8B5DC5671C7992E900D29292 /* main.m in Sources */,
 				8B7172E01CA01F4B00DBEB9F /* DriverManageViewController.m in Sources */,
 				9A95FF331C89731100C5F492 /* TRPopButton.m in Sources */,
+				9AEF89CB1CA4CD5400C5EB90 /* ImageToDataTransformer.m in Sources */,
 				8B7172E71CA0443300DBEB9F /* AddAddressViewController.m in Sources */,
 				8BB4FB151C7A0884003389F1 /* LICENSE.md in Sources */,
 				9AEF89BF1CA1274600C5EB90 /* MJPhotoLoadingView.m in Sources */,

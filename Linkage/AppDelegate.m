@@ -14,7 +14,8 @@
 #import "UIImage+ImageWithColor.h"
 #import "LoginUser.h"
 #import "LoginViewController.h"
-
+#import <IQKeyboardManager/KeyboardManager.h>
+#import <XLFormViewController.h>
 
 static NSString *const kStoreName = @"linkage.sqlite";
 
@@ -49,7 +50,7 @@ static NSString *const kStoreName = @"linkage.sqlite";
     
     [self.window makeKeyAndVisible];
     [self setupGlobalAppearance];
-    
+    [[IQKeyboardManager sharedManager] disableDistanceHandlingInViewControllerClass:[XLFormViewController class]];
     [TRThemeManager shareInstance].themeType = TRThemeTypeCompany;
     
     return YES;
