@@ -1,15 +1,14 @@
 //
-//  GlobalSetting.h
+//  GlobalVariable.h
 //  Linkage
 //
-//  Created by Mac mini on 16/3/4.
+//  Created by lihaijian on 16/3/25.
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import "TRFormTextFieldCell.h"
+#import <Foundation/Foundation.h>
 
-#ifndef GlobalSetting_h
-#define GlobalSetting_h
+#import "TRFormTextFieldCell.h"
 
 #define HeaderColor UIColorFromRGB(0x272727)
 #define ButtonColor UIColorFromRGB(0x0080FF)
@@ -28,4 +27,23 @@
 #define GenInvitecodeUrl [NSString stringWithFormat:@"%@/api/code/inviteurl",BaseUrl]//生成邀请链接
 #define ModCompanyUrl [NSString stringWithFormat:@"%@/api/company/modcompany",BaseUrl]
 
-#endif /* GlobalSetting_h */
+
+extern NSString * const email;
+extern NSString * const phoneNumber;
+extern NSString * const tokenId;
+extern NSString * const userName;
+extern NSString * const userId;
+extern NSString * const photoId;
+
+extern NSString * const logo;
+extern NSString * const companyName;
+extern NSString * const introduction;
+extern NSString * const contract;
+extern NSString * const fax;
+extern NSString * const url;
+extern NSString * const photos;
+extern NSString * const companyImages;
+extern NSString * const customerPhones;
+
+extern NSString * const phoneNum;
+extern NSString * const address;

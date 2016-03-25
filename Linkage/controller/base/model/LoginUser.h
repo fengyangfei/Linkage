@@ -28,11 +28,4 @@
 @interface LoginUser (Extensions)
 LoginUser_Attr(currentLocation, NSString *)//用户所在地
 @end
-
 AS_RMMapperModel(LoginUser)
-
-@interface Company : NSObject
-@property (nonatomic,copy) NSString *companyName;
-@property (nonatomic,copy) NSString *companyNumber;
-@property (nonatomic,copy) NSString *photoId;
-@end

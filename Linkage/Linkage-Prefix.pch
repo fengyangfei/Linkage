@@ -16,6 +16,6 @@
     #import <MagicalRecord/MagicalRecord.h>
     #import <BlocksKit/BlocksKit+UIKit.h>
     #import "TRConstants.h"
-    #import "GlobalSetting.h"
+    #import "GlobalVariable.h"
     #import "TRThemeManager.h"
 #endif

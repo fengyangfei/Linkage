@@ -7,8 +7,7 @@
 //
 
 #import "Address.h"
-NSString * const phoneNum = @"phoneNum";
-NSString * const address = @"address";
+
 #define kUserDefalutAddressKey  @"kUserDefalutAddressKey"
 
 @implementation Address

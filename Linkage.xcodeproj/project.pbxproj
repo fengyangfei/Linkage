@@ -116,6 +116,8 @@
 		8B7172E01CA01F4B00DBEB9F /* DriverManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172DF1CA01F4B00DBEB9F /* DriverManageViewController.m */; };
 		8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E31CA0436C00DBEB9F /* AddressViewController.m */; };
 		8B7172E71CA0443300DBEB9F /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */; };
+		8B8284891CA57EA9001B36C1 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8284881CA57EA9001B36C1 /* Company.m */; };
+		8B82848C1CA58A16001B36C1 /* GlobalVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B82848B1CA58A16001B36C1 /* GlobalVariable.m */; };
 		8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F266F1C89C83D001B187E /* RegisterViewController.m */; };
 		8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */; };
 		8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26761C89DD89001B187E /* ForgotPasswordController.m */; };
@@ -413,6 +415,10 @@
 		8B7172E31CA0436C00DBEB9F /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 		8B7172E51CA0443300DBEB9F /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAddressViewController.h; sourceTree = "<group>"; };
 		8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAddressViewController.m; sourceTree = "<group>"; };
+		8B8284871CA57EA9001B36C1 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
+		8B8284881CA57EA9001B36C1 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
+		8B82848A1CA58A16001B36C1 /* GlobalVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVariable.h; sourceTree = "<group>"; };
+		8B82848B1CA58A16001B36C1 /* GlobalVariable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVariable.m; sourceTree = "<group>"; };
 		8B8F266E1C89C83D001B187E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		8B8F266F1C89C83D001B187E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		8B8F26721C89DC72001B187E /* TRFormTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRFormTextFieldCell.h; sourceTree = "<group>"; };
@@ -508,7 +514,6 @@
 		9A95FF101C89135400C5F492 /* AdviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdviceViewController.m; sourceTree = "<group>"; };
 		9A95FF131C891CFB00C5F492 /* BillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillViewController.h; sourceTree = "<group>"; };
 		9A95FF141C891CFB00C5F492 /* BillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillViewController.m; sourceTree = "<group>"; };
-		9A95FF161C891F7500C5F492 /* GlobalSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalSetting.h; sourceTree = "<group>"; };
 		9A95FF171C89221C00C5F492 /* UIImage+ImageWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithColor.h"; sourceTree = "<group>"; };
 		9A95FF181C89221C00C5F492 /* UIImage+ImageWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithColor.m"; sourceTree = "<group>"; };
 		9A95FF1F1C8931F400C5F492 /* BaseBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseBillViewController.h; sourceTree = "<group>"; };
@@ -775,7 +780,8 @@
 				8B5DC67E1C79D0DB00D29292 /* services */,
 				8B5DC57F1C79B8A700D29292 /* thirdClass */,
 				8B5DC6591C79BACA00D29292 /* TRConstants.h */,
-				9A95FF161C891F7500C5F492 /* GlobalSetting.h */,
+				8B82848A1CA58A16001B36C1 /* GlobalVariable.h */,
+				8B82848B1CA58A16001B36C1 /* GlobalVariable.m */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -1444,6 +1450,8 @@
 				9AEF89CD1CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.m */,
 				9AEF89CE1CA4CDEA00C5EB90 /* PhotoModel.h */,
 				9AEF89CF1CA4CDEA00C5EB90 /* PhotoModel.m */,
+				8B8284871CA57EA9001B36C1 /* Company.h */,
+				8B8284881CA57EA9001B36C1 /* Company.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1821,7 +1829,9 @@
 				9A23A2CD1C7C316C00FB5EB6 /* LATabBarController.m in Sources */,
 				9AEF89BC1CA1274600C5EB90 /* MJPhoto.m in Sources */,
 				8B5DC61A1C79B8A700D29292 /* IFTTTAnimatedPagingScrollViewController.m in Sources */,
+				8B8284891CA57EA9001B36C1 /* Company.m in Sources */,
 				8B5DC6581C79B9A200D29292 /* RMMapper.m in Sources */,
+				8B82848C1CA58A16001B36C1 /* GlobalVariable.m in Sources */,
 				8B4221201CA42C6900F58D77 /* InvitationViewController.m in Sources */,
 				9A95FF411C89824F00C5F492 /* UIViewController+TRImagePicker.m in Sources */,
 				8B5DC6301C79B8A700D29292 /* IFTTTTextColorAnimation.m in Sources */,

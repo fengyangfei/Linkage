@@ -8,13 +8,6 @@
 
 #import "LoginUser.h"
 
-NSString * const email = @"email";
-NSString * const phoneNumber = @"phoneNumber";
-NSString * const tokenId = @"tokenId";
-NSString * const userName = @"userName";
-NSString * const userId = @"userId";
-NSString * const photoId = @"photoId";
-
 #define kUserDefalutLoginUserKey    @"kUserDefalutLoginUserKey"
 #define UserDefaultkey(attr)      [NSString stringWithFormat:@"UserDefaultKey_%s", #attr]
 
@@ -113,11 +106,5 @@ static LoginUser *user;
 LoginUser_AttrImpl(currentLocation, NSString *)
 
 @end
-
 DEF_RMMapperModel(LoginUser)
 
-#pragma mark - 公司
-@implementation Company
-
-
-@end
