@@ -10,13 +10,12 @@
     </entity>
     <entity name="PhotoModel" representedClassName="PhotoModel" syncable="YES">
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="photo" optional="YES" attributeType="Transformable" valueTransformerName="ImageToDataTransformer" syncable="YES"/>
-        <attribute name="photoId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="photoName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="AddressModel" positionX="-63" positionY="0" width="128" height="75"/>
         <element name="DocumentModel" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="PhotoModel" positionX="-63" positionY="9" width="128" height="105"/>
+        <element name="PhotoModel" positionX="-63" positionY="9" width="128" height="90"/>
     </elements>
 </model>

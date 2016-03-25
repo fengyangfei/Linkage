@@ -14,8 +14,7 @@
 @implementation PhotoModel (CoreDataProperties)
 
 @dynamic createTime;
-@dynamic photo;
-@dynamic photoId;
-@dynamic photoName;
+@dynamic name;
+@dynamic url;
 
 @end

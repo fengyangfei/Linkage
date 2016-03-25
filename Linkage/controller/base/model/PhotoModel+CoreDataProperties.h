@@ -16,9 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PhotoModel (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSDate *createTime;
-@property (nullable, nonatomic, retain) id photo;
-@property (nullable, nonatomic, retain) NSString *photoId;
-@property (nullable, nonatomic, retain) NSString *photoName;
+@property (nullable, nonatomic, retain) NSString *name;
+@property (nullable, nonatomic, retain) NSString *url;
 
 @end
 

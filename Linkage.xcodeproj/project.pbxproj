@@ -196,6 +196,7 @@
 		9AEF89CB1CA4CD5400C5EB90 /* ImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89CA1CA4CD5400C5EB90 /* ImageToDataTransformer.m */; };
 		9AEF89D01CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89CD1CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.m */; };
 		9AEF89D11CA4CDEA00C5EB90 /* PhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89CF1CA4CDEA00C5EB90 /* PhotoModel.m */; };
+		9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89D31CA518BA00C5EB90 /* ImageCacheManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -553,6 +554,8 @@
 		9AEF89CD1CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PhotoModel+CoreDataProperties.m"; sourceTree = "<group>"; };
 		9AEF89CE1CA4CDEA00C5EB90 /* PhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoModel.h; sourceTree = "<group>"; };
 		9AEF89CF1CA4CDEA00C5EB90 /* PhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoModel.m; sourceTree = "<group>"; };
+		9AEF89D21CA518BA00C5EB90 /* ImageCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCacheManager.h; sourceTree = "<group>"; };
+		9AEF89D31CA518BA00C5EB90 /* ImageCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCacheManager.m; sourceTree = "<group>"; };
 		B30457667634636F561BC865 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1121,6 +1124,8 @@
 				9AEF89CA1CA4CD5400C5EB90 /* ImageToDataTransformer.m */,
 				8B8F26721C89DC72001B187E /* TRFormTextFieldCell.h */,
 				8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */,
+				9AEF89D21CA518BA00C5EB90 /* ImageCacheManager.h */,
+				9AEF89D31CA518BA00C5EB90 /* ImageCacheManager.m */,
 			);
 			path = extends;
 			sourceTree = "<group>";
@@ -1735,6 +1740,7 @@
 				8B5DC6291C79B8A700D29292 /* IFTTTLayerStrokeStartAnimation.m in Sources */,
 				8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */,
 				8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */,
+				9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */,
 				8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */,
 				9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */,
 				8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */,
