@@ -8,9 +8,10 @@
 
 #import "SOImageFormCell.h"
 #import "SOImageModel.h"
-
 #import "MJPhotoBrowser.h"
 #import "MJPhoto.h"
+#import "UIImageView+Cache.h"
+#import "ImageCacheManager.h"
 
 NSString *const SOImageRowDescriporType = @"SOImageRowType";
 
@@ -36,7 +37,11 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
 {
     [super update];
     SOImageModel *model = (SOImageModel *)self.rowDescriptor.value;
-    self.imageView.image = model.photo;
+    if (model.photo) {
+        self.imageView.image = model.photo;
+    }else{
+        [self.imageView imageWithCacheKey:model.photoName];
+    }
     self.nameLabel.text = model.photoName;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
@@ -58,7 +63,14 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
             SOImageModel *model = (SOImageModel *)row.value;
             MJPhoto *photo = ({
                 MJPhoto *photo = [[MJPhoto alloc] init];
-                photo.image = model.photo;
+                if(model.photo){
+                    photo.image = model.photo;
+                }else{
+                    __weak __typeof(photo) weakPhoto = photo;
+                    [[ImageCacheManager sharedManger] queryDiskCacheForKey:model.photoName done:^(UIImage *image, SDImageCacheType cacheType) {
+                        weakPhoto.image = image;
+                    }];
+                }
                 photo;
             });
             [photoArray addObject:photo];

@@ -127,7 +127,6 @@
             SOImageModel *model = [[SOImageModel alloc]init];
             model.photoName = imageKey;
             model.createDate = [NSDate date];
-            model.photo = [[ImageCacheManager sharedManger] imageFromDiskCacheForKey:imageKey];
             
             row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:SOImageRowDescriporType];
             row.value = model;

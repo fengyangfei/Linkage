@@ -130,7 +130,9 @@
     NSDictionary *dic = [self formValues];
     LoginUser *user = [LoginUser createFromDictionary:dic];
     XLFormOptionsObject *sexObj = dic[sex];
-    user.sex = [sexObj formValue];
+    if (sexObj && ![sexObj isEqual:[NSNull null]]) {
+        user.sex = [sexObj formValue];
+    }
     BOOL saveSuccess = [user save];
     if (saveSuccess) {
         [SVProgressHUD showSuccessWithStatus:@"保存成功"];

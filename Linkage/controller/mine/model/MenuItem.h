@@ -14,12 +14,13 @@ typedef NS_ENUM(NSUInteger, MenuItemType) {
 };
 @interface MenuItem : NSObject
 
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *iconName;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *iconName;
 @property (nonatomic, strong) UIImage *icon;
-@property (nonatomic, strong) NSString *className;
+@property (nonatomic, copy) NSString *className;
 @property (nonatomic, strong) Class viewControllerClass;
 @property (nonatomic, assign) MenuItemType type;
+@property (nonatomic, copy) NSString *entityName;
 
 - (instancetype)initWithTitle:(NSString *)title andIconName:(NSString *)iconName andClass:(Class)viewControllerClass;
 

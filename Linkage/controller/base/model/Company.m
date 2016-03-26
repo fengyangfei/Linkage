@@ -49,8 +49,10 @@
 }
 
 //保存
+static Company *company;
 -(BOOL)save
 {
+    company = self;
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefalutCompanyKey];
     return [[NSUserDefaults standardUserDefaults] synchronize];
@@ -58,11 +60,13 @@
 
 +(Company *)shareInstance
 {
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefalutCompanyKey];
-    if(data){
-        return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    if (!company) {
+        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefalutCompanyKey];
+        if(data){
+            company = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        }
     }
-    return nil;
+    return company;
 }
 
 @end

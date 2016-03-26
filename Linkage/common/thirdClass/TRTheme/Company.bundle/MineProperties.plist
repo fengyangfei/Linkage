@@ -12,17 +12,21 @@
 			<string>CompanySettingViewController</string>
 			<key>type</key>
 			<integer>1</integer>
+			<key>entityName</key>
+			<string>Company</string>
 		</dict>
-        <dict>
-            <key>title</key>
-            <string>个人</string>
-            <key>iconName</key>
-            <string>side_company_logo</string>
-            <key>className</key>
-            <string>PersonalSettingController</string>
-            <key>type</key>
-            <integer>1</integer>
-        </dict>
+		<dict>
+			<key>title</key>
+			<string>个人</string>
+			<key>iconName</key>
+			<string>side_company_logo</string>
+			<key>className</key>
+			<string>PersonalSettingController</string>
+			<key>type</key>
+			<integer>1</integer>
+			<key>entityName</key>
+			<string>LoginUser</string>
+		</dict>
 	</array>
 	<array>
 		<dict>
@@ -33,14 +37,14 @@
 			<key>className</key>
 			<string>DriverManageViewController</string>
 		</dict>
-        <dict>
-            <key>title</key>
-            <string>地址管理</string>
-            <key>iconName</key>
-            <string>side_manage</string>
-            <key>className</key>
-            <string>AddressViewController</string>
-        </dict>
+		<dict>
+			<key>title</key>
+			<string>地址管理</string>
+			<key>iconName</key>
+			<string>side_manage</string>
+			<key>className</key>
+			<string>AddressViewController</string>
+		</dict>
 	</array>
 	<array>
 		<dict>

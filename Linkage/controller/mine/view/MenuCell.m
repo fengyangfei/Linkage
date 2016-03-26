@@ -8,6 +8,10 @@
 
 #import "MenuCell.h"
 #import "MenuItem.h"
+#import "LoginUser.h"
+#import "Company.h"
+#import "UIImageView+Cache.h"
+
 NSString *const FormRowDescriptorTypeMine = @"mineRowCell";
 NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 @implementation MenuBaseTableViewCell
@@ -146,9 +150,19 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 {
     [super update];
     MenuItem *item = self.rowDescriptor.value;
-    self.iconView.image = [UIImage imageNamed:@"logo"];
-    self.titleLabel.text = item.title;
-    self.subTitleLabel.text = @"电话:150111111111";
+    [item isKindOfClass:[self class]];
+    if ([item.entityName isEqualToString:@"LoginUser"]) {
+        LoginUser *user = [LoginUser shareInstance];
+        [self.iconView imageWithCacheKey:user.avatar];
+        self.titleLabel.text = user.userName;
+        self.subTitleLabel.text = [NSString stringWithFormat:@"电话%@", user.phoneNum];
+    }
+    else if ([item.entityName isEqualToString:@"Company"]) {
+        Company *company = [Company shareInstance];
+        [self.iconView imageWithCacheKey:company.logo];
+        self.titleLabel.text = company.companyName;
+        self.subTitleLabel.text = company.address;
+    }
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
@@ -168,6 +182,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 -(UIImageView *)iconView
 {
     UIImageView *imageView = super.iconView;
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.layer.masksToBounds = YES;
     imageView.layer.cornerRadius = 6;
     return imageView;

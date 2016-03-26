@@ -52,13 +52,13 @@ NSString *const AvatarDescriporType = @"AvatarRowType";
 {
     WeakSelf
     [self.formViewController addSignalPhoto:^(UIImage *image, NSString *fileName) {
+        weakSelf.imageView.image = image;
+        weakSelf.rowDescriptor.value = fileName;
         [[ImageCacheManager sharedManger] diskImageExistsWithKey:fileName completion:^(BOOL isInCache) {
             if (!isInCache) {
                 [[ImageCacheManager sharedManger] storeImage:image forKey:fileName];
             }
         }];
-        weakSelf.rowDescriptor.value = fileName;
-        weakSelf.imageView.image = image;
     }];
 }
 
