@@ -52,7 +52,11 @@ NSString *const AvatarDescriporType = @"AvatarRowType";
 {
     WeakSelf
     [self.formViewController addSignalPhoto:^(UIImage *image, NSString *fileName) {
-        [[ImageCacheManager sharedManger] storeImage:image forKey:fileName];
+        [[ImageCacheManager sharedManger] diskImageExistsWithKey:fileName completion:^(BOOL isInCache) {
+            if (!isInCache) {
+                [[ImageCacheManager sharedManger] storeImage:image forKey:fileName];
+            }
+        }];
         weakSelf.rowDescriptor.value = fileName;
         weakSelf.imageView.image = image;
     }];
@@ -66,6 +70,7 @@ NSString *const AvatarDescriporType = @"AvatarRowType";
         return _imageView;
     }
     _imageView = [UIImageView new];
+    _imageView.contentMode = UIViewContentModeScaleAspectFill;
     _imageView.layer.masksToBounds = YES;
     _imageView.layer.cornerRadius = 5;
     return _imageView;
@@ -94,7 +99,7 @@ NSString *const AvatarDescriporType = @"AvatarRowType";
     }];
     
     [self.textLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(16);
+        make.left.equalTo(self.contentView.left).offset(18);
         make.right.equalTo(self.imageView.left);
         make.centerY.equalTo(self.contentView.centerY);
     }];

@@ -12,6 +12,7 @@
 #import "ImageCacheManager.h"
 #import "SOImageModel.h"
 #import "SOImageFormCell.h"
+#import "AvatarFormCell.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface CompanySettingViewController ()
@@ -61,7 +62,7 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:logo rowType:XLFormRowDescriptorTypeText title:@"企业Logo"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:logo rowType:AvatarDescriporType title:@"企业Logo"];
     if (company) {
         row.value = company.logo;
     }
