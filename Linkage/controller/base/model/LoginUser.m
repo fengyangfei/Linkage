@@ -9,52 +9,19 @@
 #import "LoginUser.h"
 
 #define kUserDefalutLoginUserKey    @"kUserDefalutLoginUserKey"
-#define UserDefaultkey(attr)      [NSString stringWithFormat:@"UserDefaultKey_%s", #attr]
-
-#define LoginUser_AttrImpl(attr,attrType) \
-+ (attrType)attr \
-{ \
-return [[NSUserDefaults standardUserDefaults] objectForKey:UserDefaultkey(attr)]; \
-}\
-+ (void)set##attr:(attrType)attr \
-{\
-[[NSUserDefaults standardUserDefaults] setObject:attr forKey:UserDefaultkey(attr)];\
-[[NSUserDefaults standardUserDefaults] synchronize];\
-}
-
-#define LoginUser_AttrBoolImpl(attr,attrType) \
-+ (attrType)attr \
-{ \
-return [[NSUserDefaults standardUserDefaults] boolForKey:UserDefaultkey(attr)]; \
-}\
-+ (void)set##attr:(attrType)attr \
-{\
-[[NSUserDefaults standardUserDefaults] setBool:attr forKey:UserDefaultkey(attr)];\
-[[NSUserDefaults standardUserDefaults] synchronize];\
-}
-
-#define LoginUser_AttrIntegerImpl(attr,attrType) \
-+ (attrType)attr \
-{ \
-return [[NSUserDefaults standardUserDefaults] integerForKey:UserDefaultkey(attr)]; \
-}\
-+ (void)set##attr:(attrType)attr \
-{\
-[[NSUserDefaults standardUserDefaults] setInteger:attr forKey:UserDefaultkey(attr)];\
-[[NSUserDefaults standardUserDefaults] synchronize];\
-}
-
 static LoginUser *user;
 @implementation LoginUser
 
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.email forKey:email];
-    [aCoder encodeObject:self.phoneNumber forKey:phoneNumber];
+    [aCoder encodeObject:self.phoneNum forKey:phoneNum];
     [aCoder encodeObject:self.tokenId forKey:tokenId];
     [aCoder encodeObject:self.userName forKey:userName];
     [aCoder encodeObject:self.userId forKey:userId];
-    [aCoder encodeObject:self.photoId forKey:photoId];
+    [aCoder encodeObject:self.avatar forKey:avatar];
+    [aCoder encodeObject:self.sex forKey:sex];
+
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -62,11 +29,13 @@ static LoginUser *user;
     self = [super init];
     if (self) {
         self.email = [aDecoder decodeObjectForKey:email];
-        self.phoneNumber = [aDecoder decodeObjectForKey:phoneNumber];
+        self.phoneNum = [aDecoder decodeObjectForKey:phoneNum];
         self.tokenId = [aDecoder decodeObjectForKey:tokenId];
         self.userName = [aDecoder decodeObjectForKey:userName];
         self.userId = [aDecoder decodeObjectForKey:userId];
-        self.photoId = [aDecoder decodeObjectForKey:photoId];
+        self.avatar = [aDecoder decodeObjectForKey:avatar];
+        self.sex = [aDecoder decodeObjectForKey:sex];
+
     }
     return self;
 }
@@ -103,8 +72,7 @@ static LoginUser *user;
 @end
 
 @implementation LoginUser(Extensions)
-LoginUser_AttrImpl(currentLocation, NSString *)
-
+UserDefault_AttrImpl(currentLocation, NSString *)
 @end
 DEF_RMMapperModel(LoginUser)
 

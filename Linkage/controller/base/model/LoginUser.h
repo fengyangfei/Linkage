@@ -7,18 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#define LoginUser_Attr(attr,attrType) \
-+ (attrType)attr; \
-+ (void)set##attr:(attrType)attr;
 
 @interface LoginUser : NSObject<NSCoding,RMMapping>
 @property (nonatomic,copy) NSString *email;
-@property (nonatomic,copy) NSString *phoneNumber;
+@property (nonatomic,copy) NSString *phoneNum;
 @property (nonatomic,copy) NSString *tokenId;
 @property (nonatomic,copy) NSString *userName;
 @property (nonatomic,copy) NSString *userId;
-@property (nonatomic,copy) NSString *photoId;
-@property (nonatomic) UIImage  *avatarImage;
+@property (nonatomic,copy) NSString *avatar;
+@property (nonatomic,strong) NSNumber *sex;
 
 -(BOOL)save;
 +(LoginUser *)shareInstance;
@@ -26,6 +23,6 @@
 @end
 
 @interface LoginUser (Extensions)
-LoginUser_Attr(currentLocation, NSString *)//用户所在地
+UserDefault_Attr(currentLocation, NSString *)//用户所在地
 @end
 AS_RMMapperModel(LoginUser)

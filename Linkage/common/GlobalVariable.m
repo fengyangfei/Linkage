@@ -6,14 +6,15 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-
+//个人
 NSString * const email = @"email";
-NSString * const phoneNumber = @"phoneNumber";
 NSString * const tokenId = @"tokenId";
 NSString * const userName = @"userName";
+NSString * const sex = @"sex";
 NSString * const userId = @"userId";
-NSString * const photoId = @"photoId";
+NSString * const avatar = @"avatar";
 
+//公司
 NSString * const logo = @"logo";
 NSString * const companyName = @"companyName";
 NSString * const introduction = @"introduction";
@@ -24,5 +25,6 @@ NSString * const photos = @"photos";
 NSString * const companyImages = @"companyImages";
 NSString * const customerPhones = @"customerPhones";
 
+//地址
 NSString * const phoneNum = @"phoneNum";
 NSString * const address = @"address";

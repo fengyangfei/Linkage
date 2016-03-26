@@ -10,6 +10,45 @@
 
 #import "TRFormTextFieldCell.h"
 
+#define UserDefault_Attr(attr,attrType) \
++ (attrType)attr; \
++ (void)set##attr:(attrType)attr;
+
+#define UserDefaultkey(attr)      [NSString stringWithFormat:@"UserDefaultKey_%s", #attr]
+
+#define UserDefault_AttrImpl(attr,attrType) \
++ (attrType)attr \
+{ \
+return [[NSUserDefaults standardUserDefaults] objectForKey:UserDefaultkey(attr)]; \
+}\
++ (void)set##attr:(attrType)attr \
+{\
+[[NSUserDefaults standardUserDefaults] setObject:attr forKey:UserDefaultkey(attr)];\
+[[NSUserDefaults standardUserDefaults] synchronize];\
+}
+
+#define UserDefault_AttrBoolImpl(attr,attrType) \
++ (attrType)attr \
+{ \
+return [[NSUserDefaults standardUserDefaults] boolForKey:UserDefaultkey(attr)]; \
+}\
++ (void)set##attr:(attrType)attr \
+{\
+[[NSUserDefaults standardUserDefaults] setBool:attr forKey:UserDefaultkey(attr)];\
+[[NSUserDefaults standardUserDefaults] synchronize];\
+}
+
+#define UserDefault_AttrIntegerImpl(attr,attrType) \
++ (attrType)attr \
+{ \
+return [[NSUserDefaults standardUserDefaults] integerForKey:UserDefaultkey(attr)]; \
+}\
++ (void)set##attr:(attrType)attr \
+{\
+[[NSUserDefaults standardUserDefaults] setInteger:attr forKey:UserDefaultkey(attr)];\
+[[NSUserDefaults standardUserDefaults] synchronize];\
+}
+
 #define HeaderColor UIColorFromRGB(0x272727)
 #define ButtonColor UIColorFromRGB(0x0080FF)
 
@@ -29,11 +68,11 @@
 
 
 extern NSString * const email;
-extern NSString * const phoneNumber;
 extern NSString * const tokenId;
 extern NSString * const userName;
+extern NSString * const sex;
 extern NSString * const userId;
-extern NSString * const photoId;
+extern NSString * const avatar;
 
 extern NSString * const logo;
 extern NSString * const companyName;
