@@ -77,8 +77,18 @@ static NSString *const kStoreName = @"linkage.sqlite";
     [MobClick setCrashReportEnabled:YES]; // 如果不需要捕捉异常，注释掉此行
     [MobClick setLogEnabled:YES];  // 打开友盟sdk调试，注意Release发布时需要注释掉此行,减少io消耗
     [MobClick setAppVersion:XcodeAppVersion];
-    [MobClick startWithAppkey:@"564d414567e58e62d1003c47" reportPolicy:BATCH channelId:@"web"];
+    [MobClick startWithAppkey:@"56f67ddce0f55a76730018f5" reportPolicy:BATCH channelId:@"web"];
     [MobClick updateOnlineConfig];  //在线参数配置
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onlineConfigCallBack:) name:UMOnlineConfigDidFinishedNotification object:nil];
+}
+
+- (void)onlineConfigCallBack:(NSNotification *)note {
+    NSDictionary *onlineDic = note.userInfo;
+    if (onlineDic && [onlineDic[@"available"] isEqualToString:@"0"]) {
+        UIViewController *rooViewController = [[UIViewController alloc]init];
+        self.window.rootViewController = rooViewController;
+        [self.window makeKeyAndVisible];
+    }
 }
 
 - (void)setupGlobalAppearance
@@ -109,6 +119,8 @@ static NSString *const kStoreName = @"linkage.sqlite";
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    [MagicalRecord cleanUp];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UMOnlineConfigDidFinishedNotification object:nil];
 }
 
 @end

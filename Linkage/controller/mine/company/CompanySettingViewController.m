@@ -48,8 +48,10 @@
 -(void)setupData
 {
     Company *company = [Company shareInstance];
-    XLFormDescriptor *form = [self createForm:company];
-    [self setForm:form];
+    if(company){
+        XLFormDescriptor *form = [self createForm:company];
+        [self setForm:form];
+    }
 }
 
 -(XLFormDescriptor *)createForm:(Company *)company

@@ -47,9 +47,11 @@
 
 -(void)setupData
 {
-    LoginUser *uesr = [LoginUser shareInstance];
-    XLFormDescriptor *form = [self createForm:uesr];
-    [self setForm:form];
+    LoginUser *user = [LoginUser shareInstance];
+    if (user) {
+        XLFormDescriptor *form = [self createForm:user];
+        [self setForm:form];
+    }
 }
 
 -(XLFormDescriptor *)createForm:(LoginUser *)user
