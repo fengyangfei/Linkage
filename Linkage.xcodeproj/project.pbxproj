@@ -466,6 +466,7 @@
 		8BEC33C51CA6160D007B924B /* AvatarFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarFormCell.m; sourceTree = "<group>"; };
 		8BEC33CA1CA6A43E007B924B /* UIImageView+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Cache.h"; sourceTree = "<group>"; };
 		8BEC33CB1CA6A43E007B924B /* UIImageView+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cache.m"; sourceTree = "<group>"; };
+		8BF633471CA80E3D00179AE9 /* FormDescriptorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDescriptorCell.h; sourceTree = "<group>"; };
 		9A23A2A51C7A91D400FB5EB6 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
 		9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
 		9A23A2A71C7A91D400FB5EB6 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -1439,6 +1440,7 @@
 			children = (
 				8BDBB7CF1C9859CD00D60207 /* BillDataSource.h */,
 				8BDBB7D01C9859CD00D60207 /* BillDataSource.m */,
+				8BF633471CA80E3D00179AE9 /* FormDescriptorCell.h */,
 			);
 			path = dataSource;
 			sourceTree = "<group>";

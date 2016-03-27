@@ -8,17 +8,56 @@
 
 #import "BillTableViewCell.h"
 
+NSString *const TodoBillDescriporType = @"TodoBillRowType";
+NSString *const DoneBillDescriporType = @"DoneBillRowType";
+
 @implementation BillTableViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(nullable NSString *)reuseIdentifier
+#pragma mark - 生命周期
+-(void)configure
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        [self setupUI];
-    }
-    return self;
+    [super configure];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self setupUI];
 }
 
+-(void)update
+{
+    [super update];
+    self.billNumLable.text = @"订单号123123";
+    self.detailLable.text = @"详细内容";
+    self.timeLable.text = @"123123";
+    self.ratingLable.text = @"已经完成 80%";
+}
+
++(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    return 80;
+}
+
+-(void)formDescriptorCellDidSelectedWithViewController:(UIViewController *)controller
+{
+    if (self.rowDescriptor.action.formBlock){
+        self.rowDescriptor.action.formBlock(self.rowDescriptor);
+    }
+    else{
+        UIViewController * controllerToPresent = [[self.rowDescriptor.action.viewControllerClass alloc] init];
+        if (controllerToPresent){
+            if ([controllerToPresent conformsToProtocol:@protocol(XLFormRowDescriptorViewController)]){
+                ((UIViewController<XLFormRowDescriptorViewController> *)controllerToPresent).rowDescriptor = self.rowDescriptor;
+            }
+            if (controller.navigationController == nil || [controllerToPresent isKindOfClass:[UINavigationController class]] || self.rowDescriptor.action.viewControllerPresentationMode == XLFormPresentationModePresent){
+                [controller presentViewController:controllerToPresent animated:YES completion:nil];
+            }
+            else{
+                [controller.navigationController pushViewController:controllerToPresent animated:YES];
+            }
+        }
+        
+    }
+}
+
+#pragma mark - UI
 -(void)setupUI
 {
     [self.contentView addSubview:self.billNumLable];
@@ -90,8 +129,23 @@
 
 @implementation CompanyTableViewCell
 
++(void)load
+{
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:TodoBillDescriporType];
+}
+
 @end
 
 @implementation SubCompanyTableViewCell
+
++(void)load
+{
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:DoneBillDescriporType];
+}
+
+-(void)formDescriptorCellDidSelectedWithViewController:(UIViewController *)controller
+{
+    
+}
 
 @end

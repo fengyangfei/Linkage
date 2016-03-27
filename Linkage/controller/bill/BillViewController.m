@@ -7,53 +7,61 @@
 //
 
 #import "BillViewController.h"
+#import "BillTableViewCell.h"
 #import "BillDataSource.h"
-#import "TRPopButton.h"
 #import "BillTypeViewController.h"
 
-@interface BillViewController ()
-@property (nonatomic, readonly) UIButton *addButton;
+#import "BillApplyViewController.h"
+
+@interface BillViewController ()<BillDataSourceDelegate>
 
 @property (nonatomic, strong) TodoDataSource *todoDS;
 @property (nonatomic, strong) DoneDataSource *doneDS;
 @end
 
 @implementation BillViewController
-@synthesize addButton = _addButton;
+
+-(void)dealloc
+{
+    self.todoDS = nil;
+    self.doneDS = nil;
+}
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    [self configureUI];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
     [self setupData];
 }
 
 -(void)setupData
 {
+    [self refreshTodoTable];
+    [self refreshDoneTable];
+}
+
+-(void)refreshTodoTable
+{
     self.todoDS = [[TodoDataSource alloc]init];
-    self.doneDS = [[DoneDataSource alloc]init];
-    [self refreshData];
-}
-
--(void)configureUI
-{
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
-}
-
--(void)refreshData
-{
+    [self.todoDS setForm:[self createForm]];
+    self.todoDS.dataSourceDelegate = self;
     self.todoTableView.dataSource = self.todoDS;
     self.todoTableView.delegate = self.todoDS;
-    self.doneTableView.dataSource = self.doneDS;
-    self.doneTableView.delegate = self.doneDS;
-    [self.todoTableView reloadData];
-    [self.doneTableView reloadData];
+    if ([self isViewLoaded]){
+        [self.todoTableView reloadData];
+    }
 }
 
-//切换segment
-- (void)segmentedControlChangeIndex:(NSInteger)index
+-(void)refreshDoneTable
 {
-    
+    self.doneDS = [[DoneDataSource alloc]init];
+    [self.doneDS setForm:[self createForm]];
+    self.doneDS.dataSourceDelegate = self;
+    self.doneTableView.dataSource = self.doneDS;
+    self.doneTableView.delegate = self.doneDS;
+    if ([self isViewLoaded]){
+        [self.doneTableView reloadData];
+    }
 }
 
 -(void)pushBillApplyViewController
@@ -63,21 +71,30 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-#pragma mark - 属性
--(UIButton *)addButton
+#pragma mark - BillDataSourceDelegate
+-(UIViewController *)formControllerOfDataSource:(BillDataSource*)dataSource
 {
-    WeakSelf
-    if (!_addButton) {
-        _addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _addButton.layer.masksToBounds = YES;
-        _addButton.layer.cornerRadius = 25.0;
-        _addButton.backgroundColor = ButtonColor;
-        [_addButton setImage:[UIImage imageNamed:@"add_icon"] forState:UIControlStateNormal];
-        [_addButton bk_addEventHandler:^(id sender) {
-            [weakSelf pushBillApplyViewController];
-        } forControlEvents:UIControlEventTouchUpInside];
+    return self;
+}
+
+
+-(XLFormDescriptor *)createForm
+{
+    XLFormDescriptor * form;
+    XLFormSectionDescriptor * section;
+    XLFormRowDescriptor * row;
+    
+    form = [XLFormDescriptor formDescriptor];
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    for (int i = 0; i < 10; i++) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
+        row.action.viewControllerClass = [BillExportApplyViewController class];
+        [section addFormRow:row];
     }
-    return _addButton;
+    
+    return form;
 }
 
 @end

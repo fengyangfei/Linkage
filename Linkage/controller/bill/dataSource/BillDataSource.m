@@ -7,54 +7,166 @@
 //
 
 #import "BillDataSource.h"
-#import "BillTableViewCell.h"
+#import <XLForm/XLForm.h>
+#import "FormDescriptorCell.h"
 
 @implementation BillDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+
+#pragma mark - XLFormViewControllerDelegate
+-(NSDictionary *)formValues
 {
-    return 2;
+    return [self.form formValues];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+-(void)didSelectFormRow:(XLFormRowDescriptor *)formRow
 {
-    if (section == 1) {
-        return @"已接单";
-    }else{
-        return @"未接单";
+    XLFormBaseCell<FormDescriptorCell> *cell = (XLFormBaseCell<FormDescriptorCell> *)[formRow cellForFormController:nil];
+    if ([cell respondsToSelector:@selector(formDescriptorCellDidSelectedWithViewController:)] && self.dataSourceDelegate && [self.dataSourceDelegate respondsToSelector:@selector(formControllerOfDataSource:)]){
+        UIViewController *controller = [self.dataSourceDelegate formControllerOfDataSource:self];
+        [cell formDescriptorCellDidSelectedWithViewController:controller];
     }
 }
 
+#pragma mark - UITableViewDataSource
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [self.form.formSections count];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    if (section >= self.form.formSections.count){
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"" userInfo:nil];
+    }
+    return [[[self.form.formSections objectAtIndex:section] formRows] count];
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CompanyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"todocell"];
-    if (!cell) {
-        cell = [[CompanyTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"todocell"];
+    XLFormRowDescriptor * rowDescriptor = [self.form formRowAtIndex:indexPath];
+    return [rowDescriptor cellForFormController:nil];
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XLFormRowDescriptor * rowDescriptor = [self.form formRowAtIndex:indexPath];
+    [self updateFormRow:rowDescriptor];
+}
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XLFormRowDescriptor *rowDescriptor = [self.form formRowAtIndex:indexPath];
+    if (rowDescriptor.isDisabled || !rowDescriptor.sectionDescriptor.isMultivaluedSection){
+        return NO;
     }
-    cell.billNumLable.text = @"订单号：1101";
-    cell.timeLable.text = @"2015年7月6日";
-    cell.detailLable.text = @"A承运商 张三 7月7日 14：00 已接单";
-    cell.ratingLable.text = @"80%";
-    return cell;
+    XLFormBaseCell * baseCell = [rowDescriptor cellForFormController:nil];
+    if ([baseCell conformsToProtocol:@protocol(XLFormInlineRowDescriptorCell)] && ((id<XLFormInlineRowDescriptorCell>)baseCell).inlineRowDescriptor){
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return 70;
+    return [[self.form.formSections objectAtIndex:section] title];
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    return [[self.form.formSections objectAtIndex:section] footerTitle];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XLFormRowDescriptor *rowDescriptor = [self.form formRowAtIndex:indexPath];
+    Class cellClass = [[rowDescriptor cellForFormController:nil] class];
+    if ([cellClass respondsToSelector:@selector(formDescriptorCellHeightForRowDescriptor:)]){
+        return [cellClass formDescriptorCellHeightForRowDescriptor:rowDescriptor];
+    }
+    return tableView.rowHeight;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XLFormRowDescriptor *rowDescriptor = [self.form formRowAtIndex:indexPath];
+    Class cellClass = [[rowDescriptor cellForFormController:nil] class];
+    if ([cellClass respondsToSelector:@selector(formDescriptorCellHeightForRowDescriptor:)]){
+        return [cellClass formDescriptorCellHeightForRowDescriptor:rowDescriptor];
+    }
+    return 44;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XLFormRowDescriptor * row = [self.form formRowAtIndex:indexPath];
+    if (row.isDisabled) {
+        return;
+    }
+    UITableViewCell<XLFormDescriptorCell> * cell = (UITableViewCell<XLFormDescriptorCell> *)[row cellForFormController:nil];
+    if (!([cell formDescriptorCellCanBecomeFirstResponder] && [cell formDescriptorCellBecomeFirstResponder])){
+        [tableView endEditing:YES];
+    }
+    [self didSelectFormRow:row];
+}
+
+#pragma mark - Helpers
+
+-(void)deselectFormRow:(XLFormRowDescriptor *)formRow
+{
+    NSIndexPath * indexPath = [self.form indexPathOfFormRow:formRow];
+    if (indexPath){
+        if(self.dataSourceDelegate && [self.dataSourceDelegate respondsToSelector:@selector(tableViewOfDataSource:)]){
+            UITableView *tableView = [self.dataSourceDelegate tableViewOfDataSource:self];
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+    }
+}
+
+
+-(void)reloadFormRow:(XLFormRowDescriptor *)formRow
+{
+    NSIndexPath * indexPath = [self.form indexPathOfFormRow:formRow];
+    if (indexPath){
+        if(self.dataSourceDelegate && [self.dataSourceDelegate respondsToSelector:@selector(tableViewOfDataSource:)]){
+            UITableView *tableView = [self.dataSourceDelegate tableViewOfDataSource:self];
+            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }
+    }
+}
+
+-(XLFormBaseCell *)updateFormRow:(XLFormRowDescriptor *)formRow
+{
+    XLFormBaseCell * cell = [formRow cellForFormController:nil];
+    [self configureCell:cell];
+    [cell setNeedsUpdateConstraints];
+    [cell setNeedsLayout];
+    return cell;
+}
+
+-(void)configureCell:(XLFormBaseCell*) cell
+{
+    [cell update];
+    [cell.rowDescriptor.cellConfig enumerateKeysAndObjectsUsingBlock:^(NSString *keyPath, id value, BOOL * stop) {
+        [cell setValue:(value == [NSNull null]) ? nil : value forKeyPath:keyPath];
+    }];
+    if (cell.rowDescriptor.isDisabled){
+        [cell.rowDescriptor.cellConfigIfDisabled enumerateKeysAndObjectsUsingBlock:^(NSString *keyPath, id value, BOOL * stop) {
+            [cell setValue:(value == [NSNull null]) ? nil : value forKeyPath:keyPath];
+        }];
+    }
 }
 
 @end
 
 @implementation TodoDataSource
 
+
+
 @end
 
 @implementation DoneDataSource
+
 
 @end

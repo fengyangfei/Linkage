@@ -6,9 +6,13 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <XLForm/XLForm.h>
+#import "FormDescriptorCell.h"
 
-@interface BillTableViewCell : UITableViewCell
+extern NSString *const TodoBillDescriporType;
+extern NSString *const DoneBillDescriporType;
+
+@interface BillTableViewCell : XLFormBaseCell<FormDescriptorCell>
 
 @property (nonatomic, strong) UILabel *billNumLable;
 @property (nonatomic, strong) UILabel *timeLable;
