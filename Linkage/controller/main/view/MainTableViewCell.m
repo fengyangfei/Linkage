@@ -9,15 +9,14 @@
 #import "MainTableViewCell.h"
 #import "AXRatingView.h"
 
+NSString *const CompanyDescriporType = @"CompanyRowType";
+
 @implementation MainTableViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(nullable NSString *)reuseIdentifier
+-(void)configure
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        [self setupUI];
-    }
-    return self;
+    [super configure];
+    [self setupUI];
 }
 
 -(void)setupUI
@@ -25,13 +24,32 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
-
 @end
 
 @implementation CompanyTableCell
+@synthesize iconView = _iconView;
+@synthesize titleLabel = _titleLabel;
+@synthesize subTitleLabel = _subTitleLabel;
+@synthesize ratingView = _ratingView;
+@synthesize button = _button;
+
++(void)load
+{
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:CompanyDescriporType];
+}
+
+-(void)update
+{
+    [super update];
+    self.iconView.image = [UIImage imageNamed:@"logo"];
+    self.titleLabel.text = @"承运商";
+    self.subTitleLabel.text  = @"已接123单";
+}
+
++(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    return 80.0;
+}
 
 -(void)setupUI
 {

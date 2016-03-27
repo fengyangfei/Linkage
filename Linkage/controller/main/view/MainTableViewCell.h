@@ -6,18 +6,20 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <XLForm/XLForm.h>
 
-@interface MainTableViewCell : UITableViewCell
+extern NSString *const CompanyDescriporType;
+
+@interface MainTableViewCell : XLFormBaseCell
 
 @end
 
 
 @interface CompanyTableCell : MainTableViewCell
-@property (nonatomic, strong) UIImageView *iconView;
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *subTitleLabel;
-@property (nonatomic, strong) UIView *ratingView;
-@property (nonatomic, strong) UIButton *button;
+@property (nonatomic, readonly) UIImageView *iconView;
+@property (nonatomic, readonly) UILabel *titleLabel;
+@property (nonatomic, readonly) UILabel *subTitleLabel;
+@property (nonatomic, readonly) UIView *ratingView;
+@property (nonatomic, readonly) UIButton *button;
 
 @end

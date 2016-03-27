@@ -7,16 +7,13 @@
 //
 
 #import "MainViewController.h"
-#import "MainDataSource.h"
+#import "MainTableViewCell.h"
 
 @interface MainViewController ()
-@property (nonatomic, strong) MainDataSource *dataSource;
 
 @end
 
 @implementation MainViewController
-
-@synthesize tableView = _tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,23 +22,30 @@
 
 -(void)setupData
 {
-    self.dataSource = [[CompanyDataSource alloc]init];
-    self.tableView.dataSource = self.dataSource;
-    self.tableView.delegate = self.dataSource;
-    [self.tableView reloadData];
+    XLFormDescriptor *form = [self createForm];
+    [self setForm:form];
+}
+
+-(XLFormDescriptor *)createForm
+{
+    XLFormDescriptor * form;
+    XLFormSectionDescriptor * section;
+    XLFormRowDescriptor * row;
+    
+    form = [XLFormDescriptor formDescriptor];
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    for (int i = 0; i < 10; i++) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:avatar rowType:CompanyDescriporType];
+        [section addFormRow:row];
+    }
+    
+    return form;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
--(UITableView *)tableView
-{
-    if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _tableView.tableFooterView = [UIView new];
-    }
-    return _tableView;
 }
 
 @end

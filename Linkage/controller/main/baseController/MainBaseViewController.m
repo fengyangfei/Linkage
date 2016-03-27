@@ -9,6 +9,17 @@
 #import "MainBaseViewController.h"
 #import "SDCycleScrollView.h"
 
+@interface XLFormViewController(MainBase)
+-(void)superViewDidLoad;
+@end
+
+@implementation XLFormViewController(MainBase)
+-(void)superViewDidLoad
+{
+    [super viewDidLoad];
+}
+@end
+
 @interface MainBaseViewController ()<SDCycleScrollViewDelegate>
 
 @property (nonatomic, readonly) UIView *topView;
@@ -20,9 +31,10 @@
 
 @synthesize topView = _topView;
 @synthesize centerView = _centerView;
+@synthesize tableView = _tableView;
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super superViewDidLoad];
     [self setupUI];
 }
 
@@ -48,6 +60,8 @@
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.centerView);
     }];
+    
+    self.form.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,6 +106,19 @@
         _centerView = [UIView new];
     }
     return _centerView;
+}
+
+-(UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.rowHeight = UITableViewAutomaticDimension;
+        _tableView.estimatedRowHeight = 44.0;
+        _tableView.tableFooterView = [UIView new];
+    }
+    return _tableView;
 }
 
 #pragma mark - SDCycleScrollViewDelegate
