@@ -201,6 +201,7 @@
 		9AEF89D01CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89CD1CA4CDEA00C5EB90 /* PhotoModel+CoreDataProperties.m */; };
 		9AEF89D11CA4CDEA00C5EB90 /* PhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89CF1CA4CDEA00C5EB90 /* PhotoModel.m */; };
 		9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89D31CA518BA00C5EB90 /* ImageCacheManager.m */; };
+		9AEF89D71CA8B02900C5EB90 /* XLFormDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89D61CA8B02900C5EB90 /* XLFormDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -466,7 +467,6 @@
 		8BEC33C51CA6160D007B924B /* AvatarFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarFormCell.m; sourceTree = "<group>"; };
 		8BEC33CA1CA6A43E007B924B /* UIImageView+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Cache.h"; sourceTree = "<group>"; };
 		8BEC33CB1CA6A43E007B924B /* UIImageView+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cache.m"; sourceTree = "<group>"; };
-		8BF633471CA80E3D00179AE9 /* FormDescriptorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDescriptorCell.h; sourceTree = "<group>"; };
 		9A23A2A51C7A91D400FB5EB6 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
 		9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
 		9A23A2A71C7A91D400FB5EB6 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -568,6 +568,9 @@
 		9AEF89CF1CA4CDEA00C5EB90 /* PhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoModel.m; sourceTree = "<group>"; };
 		9AEF89D21CA518BA00C5EB90 /* ImageCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCacheManager.h; sourceTree = "<group>"; };
 		9AEF89D31CA518BA00C5EB90 /* ImageCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCacheManager.m; sourceTree = "<group>"; };
+		9AEF89D51CA8B02900C5EB90 /* XLFormDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLFormDataSource.h; sourceTree = "<group>"; };
+		9AEF89D61CA8B02900C5EB90 /* XLFormDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLFormDataSource.m; sourceTree = "<group>"; };
+		9AEF89D81CA8B2D700C5EB90 /* FormDescriptorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormDescriptorCell.h; sourceTree = "<group>"; };
 		B30457667634636F561BC865 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1134,6 +1137,7 @@
 		8B8F26711C89DC72001B187E /* extends */ = {
 			isa = PBXGroup;
 			children = (
+				9AEF89D81CA8B2D700C5EB90 /* FormDescriptorCell.h */,
 				8BEC33C01CA61423007B924B /* XLFormViewController+ImagePicker.h */,
 				8BEC33C11CA61423007B924B /* XLFormViewController+ImagePicker.m */,
 				9AEF89C91CA4CD5400C5EB90 /* ImageToDataTransformer.h */,
@@ -1142,6 +1146,8 @@
 				8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */,
 				9AEF89D21CA518BA00C5EB90 /* ImageCacheManager.h */,
 				9AEF89D31CA518BA00C5EB90 /* ImageCacheManager.m */,
+				9AEF89D51CA8B02900C5EB90 /* XLFormDataSource.h */,
+				9AEF89D61CA8B02900C5EB90 /* XLFormDataSource.m */,
 			);
 			path = extends;
 			sourceTree = "<group>";
@@ -1440,7 +1446,6 @@
 			children = (
 				8BDBB7CF1C9859CD00D60207 /* BillDataSource.h */,
 				8BDBB7D01C9859CD00D60207 /* BillDataSource.m */,
-				8BF633471CA80E3D00179AE9 /* FormDescriptorCell.h */,
 			);
 			path = dataSource;
 			sourceTree = "<group>";
@@ -1748,6 +1753,7 @@
 				8B5DC63D1C79B8A700D29292 /* UIViewController+TRTheme.m in Sources */,
 				8B5DC6261C79B8A700D29292 /* IFTTTInterpolatable.m in Sources */,
 				8B5DC6271C79B8A700D29292 /* IFTTTLayerFillColorAnimation.m in Sources */,
+				9AEF89D71CA8B02900C5EB90 /* XLFormDataSource.m in Sources */,
 				8BB4FB141C7A0884003389F1 /* iConsole.m in Sources */,
 				9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */,
 				8B5DC6241C79B8A700D29292 /* IFTTTFrameAnimation.m in Sources */,

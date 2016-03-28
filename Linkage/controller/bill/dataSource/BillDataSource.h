@@ -7,24 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XLFormDataSource.h"
 
-@class BillDataSource;
-@protocol BillDataSourceDelegate <NSObject>
-@optional
--(UIViewController *)formControllerOfDataSource:(BillDataSource*)dataSource;
--(UITableView *)tableViewOfDataSource:(BillDataSource*)dataSource;
-@end
-
-@interface BillDataSource : NSObject<UITableViewDataSource,UITableViewDelegate>
-@property (nonatomic, strong) XLFormDescriptor *form;
-@property (nonatomic, weak) id<BillDataSourceDelegate> dataSourceDelegate;
-@end
-
-
-@interface TodoDataSource : BillDataSource
+@interface TodoDataSource : XLFormDataSource
 
 @end
 
-@interface DoneDataSource : BillDataSource
+@interface DoneDataSource : XLFormDataSource
 
 @end

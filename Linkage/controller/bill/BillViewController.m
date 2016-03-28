@@ -13,7 +13,7 @@
 
 #import "BillApplyViewController.h"
 
-@interface BillViewController ()<BillDataSourceDelegate>
+@interface BillViewController ()
 
 @property (nonatomic, strong) TodoDataSource *todoDS;
 @property (nonatomic, strong) DoneDataSource *doneDS;
@@ -25,6 +25,8 @@
 {
     self.todoDS = nil;
     self.doneDS = nil;
+    self.todoTableView.delegate = nil;
+    self.doneTableView.dataSource = nil;
 }
 
 -(void)viewDidLoad
@@ -42,9 +44,8 @@
 
 -(void)refreshTodoTable
 {
-    self.todoDS = [[TodoDataSource alloc]init];
+    self.todoDS = [[TodoDataSource alloc]initWithViewController:self tableView:self.todoTableView];
     [self.todoDS setForm:[self createForm]];
-    self.todoDS.dataSourceDelegate = self;
     self.todoTableView.dataSource = self.todoDS;
     self.todoTableView.delegate = self.todoDS;
     if ([self isViewLoaded]){
@@ -54,9 +55,8 @@
 
 -(void)refreshDoneTable
 {
-    self.doneDS = [[DoneDataSource alloc]init];
+    self.doneDS = [[DoneDataSource alloc]initWithViewController:self tableView:self.doneTableView];
     [self.doneDS setForm:[self createForm]];
-    self.doneDS.dataSourceDelegate = self;
     self.doneTableView.dataSource = self.doneDS;
     self.doneTableView.delegate = self.doneDS;
     if ([self isViewLoaded]){
@@ -70,13 +70,6 @@
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
-
-#pragma mark - BillDataSourceDelegate
--(UIViewController *)formControllerOfDataSource:(BillDataSource*)dataSource
-{
-    return self;
-}
-
 
 -(XLFormDescriptor *)createForm
 {
