@@ -51,6 +51,15 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
     return 80.0;
 }
 
+-(void)clickAction:(id)sender
+{
+    if (self.rowDescriptor.action.viewControllerClass){
+        UIViewController *controller = [[self.rowDescriptor.action.viewControllerClass alloc] init];
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.formViewController.navigationController pushViewController:controller animated:YES];
+    }
+}
+
 -(void)setupUI
 {
     [super setupUI];
@@ -139,6 +148,7 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         [_button setTitle:@"下单" forState:UIControlStateNormal];
         [_button setBackgroundColor:ButtonColor];
+        [_button addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button;
 }

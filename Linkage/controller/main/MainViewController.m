@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "MainTableViewCell.h"
+#import "BillTypeViewController.h"
 
 @interface MainViewController ()
 
@@ -38,6 +39,7 @@
     
     for (int i = 0; i < 10; i++) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:avatar rowType:CompanyDescriporType];
+        row.action.viewControllerClass = [BillTypeViewController class];
         [section addFormRow:row];
     }
     

@@ -71,11 +71,48 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    for (int i = 0; i < 5; i++) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"测试"];
-        row.value = @(i);
-        [section addFormRow:row];
-    }
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"订单号"];
+    row.value = @(111);
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"接单承运商"];
+    row.value = @"B单位";
+    [section addFormRow:row];
+
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"柜型1"];
+    row.value = @(111);
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"装货地址"];
+    row.value = @"码头西北";
+    [section addFormRow:row];
+
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"到厂时间"];
+    row.value = @"2016年10月10日";
+    [section addFormRow:row];
+
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"送货地址"];
+    row.value = @"码头西北";
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"图片"];
+    row.value = @(111);
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程公司"];
+    [section addFormRow:row];
+
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程船名"];
+    [section addFormRow:row];
+
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否约好"];
+    row.value = @YES;
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否转关"];
+    row.value = @YES;
+    [section addFormRow:row];
     
     return form;
 }
@@ -85,14 +122,21 @@
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
-    
     form = [XLFormDescriptor formDescriptor];
+    
     section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜A"];
     [form addFormSection:section];
     
     for (int i = 0; i < 5; i++) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:DriverInfoDescriporType];
-        row.value = @(i);
+        [section addFormRow:row];
+    }
+    
+    section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜B"];
+    [form addFormSection:section];
+    
+    for (int i = 0; i < 5; i++) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:DriverInfoDescriporType];
         [section addFormRow:row];
     }
     

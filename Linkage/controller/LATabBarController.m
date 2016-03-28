@@ -11,6 +11,7 @@
 #import "MainViewController.h"
 #import "BillViewController.h"
 #import "MineViewController.h"
+#import "MessageViewController.h"
 
 @interface LATabBarController ()
 
@@ -56,7 +57,7 @@
     
     UIViewController *messageController = ({
         NSString *title = @"消息";
-        UIViewController *viewController = [[UIViewController alloc]init];
+        MessageViewController *viewController = [[MessageViewController alloc]init];
         viewController.title = title;
         viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"icon_tab_fujin_normal"] selectedImage:[UIImage imageNamed:@"icon_tab_fujin_normal_light"]];
         viewController;

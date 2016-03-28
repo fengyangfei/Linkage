@@ -80,9 +80,9 @@
                                           @"http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg"
                                           ];
             //文字
-            NSArray *titles = @[@"图片1",
-                                @"图片2",
-                                @"图片3"
+            NSArray *titles = @[@"承运商A",
+                                @"承运商B",
+                                @"承运商C"
                                 ];
             
             SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
