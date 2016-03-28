@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <HMSegmentedControl/HMSegmentedControl.h>
 
 @interface BaseBillViewController : UIViewController
 
-@property (nonatomic, strong) UITableView *todoTableView;
-@property (nonatomic, strong) UITableView *doneTableView;
+@property (nonatomic, strong) UITableView *leftTableView;
+@property (nonatomic, strong) UITableView *rightTableView;
+@property (nonatomic, strong) HMSegmentedControl *segmentedControl;
 
 - (void)segmentedControlChangeIndex:(NSInteger)index;
 @end

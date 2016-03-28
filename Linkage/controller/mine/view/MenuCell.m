@@ -155,8 +155,8 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
         LoginUser *user = [LoginUser shareInstance];
         if (user) {
             [self.iconView imageWithCacheKey:user.avatar];
-            self.titleLabel.text = user.userName;
-            self.subTitleLabel.text = [NSString stringWithFormat:@"电话%@", user.phoneNum];
+            self.titleLabel.text = NilStringWrapper(user.userName);
+            self.subTitleLabel.text = NilStringWrapper(user.phoneNum);
         }else{
             self.iconView.image = [UIImage imageNamed:@"logo"];
             self.titleLabel.text = @"登录名";

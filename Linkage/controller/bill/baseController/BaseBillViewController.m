@@ -8,10 +8,8 @@
 
 #import "BaseBillViewController.h"
 #import "UIColor+BFPaperColors.h"
-#import <HMSegmentedControl/HMSegmentedControl.h>
 
 @interface BaseBillViewController()<UIScrollViewDelegate>
-@property (nonatomic, strong) HMSegmentedControl *segmentedControl;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @end
@@ -49,24 +47,24 @@
         }];
     }
     
-    [contentView addSubview:self.todoTableView];
-    [self.todoTableView makeConstraints:^(MASConstraintMaker *make) {
+    [contentView addSubview:self.leftTableView];
+    [self.leftTableView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@0);
         make.top.equalTo(@0);
         make.width.equalTo(IPHONE_WIDTH);
         make.height.equalTo(contentView.height);
     }];
     
-    [contentView addSubview:self.doneTableView];
-    [self.doneTableView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.todoTableView.right);
+    [contentView addSubview:self.rightTableView];
+    [self.rightTableView makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.leftTableView.right);
         make.top.equalTo(@0);
         make.width.equalTo(IPHONE_WIDTH);
         make.height.equalTo(contentView.height);
     }];
     
     [contentView makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.doneTableView.right);
+        make.right.equalTo(self.rightTableView.right);
     }];
 }
 
@@ -101,9 +99,9 @@
         _segmentedControl.selectionIndicatorEdgeInsets = UIEdgeInsetsMake(0, 0, -2, 0);
         [_segmentedControl setIndexChangeBlock:^(NSInteger index) {
             if (index == 0) {
-                [weakSelf.scrollView scrollRectToVisible:weakSelf.todoTableView.frame animated:YES];
+                [weakSelf.scrollView scrollRectToVisible:weakSelf.leftTableView.frame animated:YES];
             }else{
-                [weakSelf.scrollView scrollRectToVisible:weakSelf.doneTableView.frame animated:YES];
+                [weakSelf.scrollView scrollRectToVisible:weakSelf.rightTableView.frame animated:YES];
             }
             [weakSelf segmentedControlChangeIndex:index];
         }];
@@ -125,22 +123,22 @@
     return _scrollView;
 }
 
--(UITableView *)todoTableView
+-(UITableView *)leftTableView
 {
-    if (!_todoTableView) {
-        _todoTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _todoTableView.tableFooterView = [UIView new];
+    if (!_leftTableView) {
+        _leftTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _leftTableView.tableFooterView = [UIView new];
     }
-    return _todoTableView;
+    return _leftTableView;
 }
 
--(UITableView *)doneTableView
+-(UITableView *)rightTableView
 {
-    if (!_doneTableView) {
-        _doneTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _doneTableView.tableFooterView = [UIView new];
+    if (!_rightTableView) {
+        _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _rightTableView.tableFooterView = [UIView new];
     }
-    return _doneTableView;
+    return _rightTableView;
 }
 
 - (void)didReceiveMemoryWarning {

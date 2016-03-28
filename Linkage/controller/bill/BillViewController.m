@@ -11,7 +11,7 @@
 #import "BillDataSource.h"
 #import "BillTypeViewController.h"
 
-#import "BillApplyViewController.h"
+#import "BillDetailViewController.h"
 
 @interface BillViewController ()
 
@@ -25,8 +25,8 @@
 {
     self.todoDS = nil;
     self.doneDS = nil;
-    self.todoTableView.delegate = nil;
-    self.doneTableView.dataSource = nil;
+    self.leftTableView.delegate = nil;
+    self.rightTableView.dataSource = nil;
 }
 
 -(void)viewDidLoad
@@ -44,23 +44,23 @@
 
 -(void)refreshTodoTable
 {
-    self.todoDS = [[TodoDataSource alloc]initWithViewController:self tableView:self.todoTableView];
+    self.todoDS = [[TodoDataSource alloc]initWithViewController:self tableView:self.leftTableView];
     [self.todoDS setForm:[self createForm]];
-    self.todoTableView.dataSource = self.todoDS;
-    self.todoTableView.delegate = self.todoDS;
+    self.leftTableView.dataSource = self.todoDS;
+    self.leftTableView.delegate = self.todoDS;
     if ([self isViewLoaded]){
-        [self.todoTableView reloadData];
+        [self.leftTableView reloadData];
     }
 }
 
 -(void)refreshDoneTable
 {
-    self.doneDS = [[DoneDataSource alloc]initWithViewController:self tableView:self.doneTableView];
+    self.doneDS = [[DoneDataSource alloc]initWithViewController:self tableView:self.rightTableView];
     [self.doneDS setForm:[self createForm]];
-    self.doneTableView.dataSource = self.doneDS;
-    self.doneTableView.delegate = self.doneDS;
+    self.rightTableView.dataSource = self.doneDS;
+    self.rightTableView.delegate = self.doneDS;
     if ([self isViewLoaded]){
-        [self.doneTableView reloadData];
+        [self.rightTableView reloadData];
     }
 }
 
@@ -78,12 +78,21 @@
     XLFormRowDescriptor * row;
     
     form = [XLFormDescriptor formDescriptor];
-    section = [XLFormSectionDescriptor formSection];
+    section = [XLFormSectionDescriptor formSectionWithTitle:@"未完成"];
     [form addFormSection:section];
     
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
-        row.action.viewControllerClass = [BillExportApplyViewController class];
+        row.action.viewControllerClass = [BillDetailViewController class];
+        [section addFormRow:row];
+    }
+    
+    section = [XLFormSectionDescriptor formSectionWithTitle:@"已完成"];
+    [form addFormSection:section];
+    
+    for (int i = 0; i < 5; i++) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
+        row.action.viewControllerClass = [BillDetailViewController class];
         [section addFormRow:row];
     }
     

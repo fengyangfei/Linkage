@@ -135,6 +135,8 @@
 		8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */; };
 		8BBE05F61C9EEE850018EB2A /* EmployeeManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05F51C9EEE850018EB2A /* EmployeeManageViewController.m */; };
 		8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC624F91CA18EBC00C70325 /* AddressCell.m */; };
+		8BCA5FB31CA95EE3002601F6 /* BillDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA5FB21CA95EE3002601F6 /* BillDetailViewController.m */; };
+		8BCA5FB71CA96508002601F6 /* DriverInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA5FB61CA96508002601F6 /* DriverInfoCell.m */; };
 		8BDBB7CA1C98509D00D60207 /* Company.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8BDBB7C91C98509D00D60207 /* Company.bundle */; };
 		8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */; };
 		8BDBB7D11C9859CD00D60207 /* BillDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7D01C9859CD00D60207 /* BillDataSource.m */; };
@@ -454,6 +456,10 @@
 		8BBE05F51C9EEE850018EB2A /* EmployeeManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeManageViewController.m; sourceTree = "<group>"; };
 		8BC624F81CA18EBC00C70325 /* AddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressCell.h; sourceTree = "<group>"; };
 		8BC624F91CA18EBC00C70325 /* AddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressCell.m; sourceTree = "<group>"; };
+		8BCA5FB11CA95EE3002601F6 /* BillDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillDetailViewController.h; sourceTree = "<group>"; };
+		8BCA5FB21CA95EE3002601F6 /* BillDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillDetailViewController.m; sourceTree = "<group>"; };
+		8BCA5FB51CA96508002601F6 /* DriverInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverInfoCell.h; sourceTree = "<group>"; };
+		8BCA5FB61CA96508002601F6 /* DriverInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverInfoCell.m; sourceTree = "<group>"; };
 		8BDBB7C91C98509D00D60207 /* Company.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Company.bundle; sourceTree = "<group>"; };
 		8BDBB7CC1C9854B700D60207 /* BillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTableViewCell.h; sourceTree = "<group>"; };
 		8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTableViewCell.m; sourceTree = "<group>"; };
@@ -1208,6 +1214,25 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		8BCA5FB01CA95EB8002601F6 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				8BCA5FB41CA9646D002601F6 /* view */,
+				8BCA5FB11CA95EE3002601F6 /* BillDetailViewController.h */,
+				8BCA5FB21CA95EE3002601F6 /* BillDetailViewController.m */,
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
+		8BCA5FB41CA9646D002601F6 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8BCA5FB51CA96508002601F6 /* DriverInfoCell.h */,
+				8BCA5FB61CA96508002601F6 /* DriverInfoCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		8BDBB7CB1C98547B00D60207 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -1431,6 +1456,7 @@
 		9A95FF121C891CDA00C5F492 /* bill */ = {
 			isa = PBXGroup;
 			children = (
+				8BCA5FB01CA95EB8002601F6 /* detail */,
 				9ACEBC691C99492A0000ACBF /* apply */,
 				8BDBB7CB1C98547B00D60207 /* view */,
 				9A95FF1E1C8931BB00C5F492 /* baseController */,
@@ -1782,6 +1808,7 @@
 				9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */,
 				9A95FF351C89731100C5F492 /* TRPopView.m in Sources */,
 				8B44450E1C7C9EFE00160DC2 /* SDCycleScrollView.m in Sources */,
+				8BCA5FB71CA96508002601F6 /* DriverInfoCell.m in Sources */,
 				9A95FF111C89135400C5F492 /* AdviceViewController.m in Sources */,
 				9A95FF151C891CFB00C5F492 /* BillViewController.m in Sources */,
 				8BEC33CC1CA6A43E007B924B /* UIImageView+Cache.m in Sources */,
@@ -1844,6 +1871,7 @@
 				9AEF89BF1CA1274600C5EB90 /* MJPhotoLoadingView.m in Sources */,
 				8B5DC61C1C79B8A700D29292 /* IFTTTAnimation.m in Sources */,
 				8B3302911C8BC0D70088DAE2 /* MainTableViewCell.m in Sources */,
+				8BCA5FB31CA95EE3002601F6 /* BillDetailViewController.m in Sources */,
 				8B5DC62D1C79B8A700D29292 /* IFTTTScaleAnimation.m in Sources */,
 				8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */,
 				9A23A2CD1C7C316C00FB5EB6 /* LATabBarController.m in Sources */,

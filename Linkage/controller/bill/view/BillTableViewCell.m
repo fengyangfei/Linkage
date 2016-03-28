@@ -50,6 +50,7 @@ NSString *const DoneBillDescriporType = @"DoneBillRowType";
                 [controller presentViewController:controllerToPresent animated:YES completion:nil];
             }
             else{
+                controllerToPresent.hidesBottomBarWhenPushed = YES;
                 [controller.navigationController pushViewController:controllerToPresent animated:YES];
             }
         }
