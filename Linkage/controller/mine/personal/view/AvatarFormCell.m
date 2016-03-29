@@ -51,8 +51,8 @@ NSString *const AvatarDescriporType = @"AvatarRowType";
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
 {
     WeakSelf
-    [self.formViewController addSignalPhoto:^(UIImage *image, NSString *fileName) {
-        weakSelf.imageView.image = image;
+    [controller addSignalPhoto:^(UIImage *image, NSString *fileName) {
+        [weakSelf.imageView setImage:image];
         weakSelf.rowDescriptor.value = fileName;
         [[ImageCacheManager sharedManger] diskImageExistsWithKey:fileName completion:^(BOOL isInCache) {
             if (!isInCache) {

@@ -66,6 +66,27 @@ return [[NSUserDefaults standardUserDefaults] integerForKey:UserDefaultkey(attr)
 #define GenInvitecodeUrl [NSString stringWithFormat:@"%@/api/code/inviteurl",BaseUrl]//生成邀请链接
 #define ModCompanyUrl [NSString stringWithFormat:@"%@/api/company/modcompany",BaseUrl]
 
+//微信key
+#define kWXAppId @"wxc88cd091086c438a"
+#define kWXAppSecret @"d4624c36b6795d1d99dcf0547af5443d"
+
+//QQ对应key
+#define kQQAppId @"1104981294"
+#define kQQAppkey @"uxbaaEdIiiPZGjub"
+
+//易信key
+#define kYixinAppkey @"yx35664bdff4db42c2b7be1e29390c1a06"
+#define kYixinAppkey @"yx35664bdff4db42c2b7be1e29390c1a06"
+
+//高德key
+#define kAMapAppkey @"9f2ae179e79818e2e5c428135edc53f3"
+
+//友盟key
+#define kUmengSocialAppKey @"56f67ddce0f55a76730018f5"
+
+#define kSocialTitle @"【XXXX】"
+#define kAppIndexHtml @"http://app.ygsoft.com/travel/index.html"
+
 
 extern NSString * const email;
 extern NSString * const tokenId;

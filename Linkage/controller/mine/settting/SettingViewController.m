@@ -8,8 +8,10 @@
 
 #import "SettingViewController.h"
 #import "DateAndTimeValueTrasformer.h"
+#import "ImageCacheManager.h"
+#import "UMSocial.h"
 
-@interface SettingViewController ()
+@interface SettingViewController ()<UMSocialUIDelegate>
 
 @end
 
@@ -27,6 +29,7 @@
 
 - (void)initializeForm
 {
+    WeakSelf
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
@@ -48,6 +51,9 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"clearCache" rowType:XLFormRowDescriptorTypeButton title:@"清除缓存"];
     [row.cellConfig setObject:@(NSTextAlignmentNatural) forKey:@"textLabel.textAlignment"];
+    row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        [weakSelf clearCacheAction:sender];
+    };
     [section addFormRow:row];
     
     
@@ -56,10 +62,16 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"share" rowType:XLFormRowDescriptorTypeButton title:@"分享好友"];
     [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
+    row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        [weakSelf shareAction:sender];
+    };
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"update" rowType:XLFormRowDescriptorTypeButton title:@"版本更新"];
     [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
+    row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        [weakSelf updateAction:sender];
+    };
     [section addFormRow:row];
 
     
@@ -68,6 +80,9 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"about" rowType:XLFormRowDescriptorTypeButton title:@"关于我们"];
     [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
+    row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        [weakSelf aboutUSAction:sender];
+    };
     [section addFormRow:row];
     
     self.form = form;
@@ -80,16 +95,41 @@
     self.tableView.sectionFooterHeight = 0;
 }
 
-#pragma mark - XLFormDescriptorDelegate
-
--(void)cancelPressed:(UIBarButtonItem *)button
+-(void)presentSns
 {
-    [self.tabBarController dismissViewControllerAnimated:YES completion:nil];
+    NSArray *shareArray = [NSArray arrayWithObjects:UMShareToWechatTimeline,UMShareToWechatFavorite,UMShareToSina,UMShareToWechatSession,UMShareToQQ,UMShareToQzone,UMShareToYXSession,UMShareToYXTimeline,nil];
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"56f67ddce0f55a76730018f5"
+                                      shareText:@"XXXX"
+                                     shareImage:[UIImage imageNamed:@"logo"]
+                                shareToSnsNames:shareArray
+                                       delegate:self];
 }
 
+#pragma mark - XLFormDescriptorDelegate
 
--(void)savePressed:(UIBarButtonItem *)button
+-(void)clearCacheAction:(XLFormRowDescriptor *)row
 {
+    [self deselectFormRow:row];
+    [[ImageCacheManager sharedManger] clearDiskOnCompletion:^{
+        
+    }];
+}
+
+-(void)shareAction:(XLFormRowDescriptor *)row
+{
+    [self deselectFormRow:row];
+    [self presentSns];
+}
+
+-(void)updateAction:(XLFormRowDescriptor *)row
+{
+    [self deselectFormRow:row];
+}
+
+-(void)aboutUSAction:(XLFormRowDescriptor *)row
+{
+    [self deselectFormRow:row];
 }
 
 @end

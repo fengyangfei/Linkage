@@ -17,6 +17,11 @@
 #import <IQKeyboardManager/KeyboardManager.h>
 #import <XLFormViewController.h>
 
+#import "UMSocialData.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialQQHandler.h"
+#import "UMSocialYixinHandler.h"
+
 static NSString *const kStoreName = @"linkage.sqlite";
 
 @interface AppDelegate ()
@@ -32,6 +37,7 @@ static NSString *const kStoreName = @"linkage.sqlite";
     [self setupDataBase];
     
     [self umengTrack];
+    [self setupSocialConfig];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -78,9 +84,31 @@ static NSString *const kStoreName = @"linkage.sqlite";
     [MobClick setCrashReportEnabled:YES]; // 如果不需要捕捉异常，注释掉此行
     [MobClick setLogEnabled:YES];  // 打开友盟sdk调试，注意Release发布时需要注释掉此行,减少io消耗
     [MobClick setAppVersion:XcodeAppVersion];
-    [MobClick startWithAppkey:@"56f67ddce0f55a76730018f5" reportPolicy:BATCH channelId:@"web"];
+    [MobClick startWithAppkey:kUmengSocialAppKey reportPolicy:BATCH channelId:@"web"];
     [MobClick updateOnlineConfig];  //在线参数配置
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onlineConfigCallBack:) name:UMOnlineConfigDidFinishedNotification object:nil];
+}
+
+/**
+ *  设置社交App的Key
+ */
+-(void)setupSocialConfig
+{
+    //设置友盟社会化组件appkey
+    [UMSocialData setAppKey:kUmengSocialAppKey];
+    
+    //设置微信AppId、appSecret，分享url
+    [UMSocialWechatHandler setWXAppId:kWXAppId appSecret:kWXAppSecret url:kAppIndexHtml];
+    
+    //设置手机QQ 的AppId，Appkey，和分享URL，需要#import "UMSocialQQHandler.h"
+    [UMSocialQQHandler setQQWithAppId:kQQAppId appKey:kQQAppkey url:kAppIndexHtml];
+    
+    //设置易信Appkey和分享url地址,注意需要引用头文件 #import UMSocialYixinHandler.h
+    [UMSocialYixinHandler setYixinAppKey:kYixinAppkey url:kAppIndexHtml];
+    
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = kSocialTitle;
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = kSocialTitle;
+    [UMSocialData defaultData].extConfig.wechatFavoriteData.title = kSocialTitle;
 }
 
 - (void)onlineConfigCallBack:(NSNotification *)note {
