@@ -49,6 +49,7 @@ return [[NSUserDefaults standardUserDefaults] integerForKey:UserDefaultkey(attr)
 [[NSUserDefaults standardUserDefaults] synchronize];\
 }
 
+#define PhoneNumRegex @"^((13[0-9])|(147)|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"
 #define HeaderColor UIColorFromRGB(0x272727)
 #define ButtonColor UIColorFromRGB(0x0080FF)
 

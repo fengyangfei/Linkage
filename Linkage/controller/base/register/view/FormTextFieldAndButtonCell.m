@@ -7,7 +7,6 @@
 //
 
 #import "FormTextFieldAndButtonCell.h"
-#import "TimerManager.h"
 #import <BlocksKit/BlocksKit+UIKit.h>
 NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
 
@@ -71,19 +70,6 @@ NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
     [super customUpdateConstraints];
 }
 
--(void)clickEvent
-{
-    WeakSelf
-    [TimerManager shareInstance].block = ^(NSInteger second){
-        if (second > 0) {
-            NSString *title = [NSString stringWithFormat:@"获取验证码(%ld)", (long)second];
-            [weakSelf.button setTitle:title forState:UIControlStateNormal];
-        }else{
-            [weakSelf.button setTitle:@"获取验证码" forState:UIControlStateNormal];
-        }
-    };
-    [[TimerManager shareInstance] fire];
-}
 
 -(UIButton *)button
 {
@@ -95,10 +81,9 @@ NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
         [_button setTitle:title forState:UIControlStateNormal];
         [_button setBackgroundColor:[UIColor grayColor]];
         [_button bk_addEventHandler:^(id sender) {
-//            if (weakSelf.rowDescriptor.action.formBlock) {
-//                weakSelf.rowDescriptor.action.formBlock(weakSelf.rowDescriptor);
-//            }
-            [weakSelf clickEvent];
+            if (weakSelf.rowDescriptor.action.formBlock) {
+                weakSelf.rowDescriptor.action.formBlock(weakSelf.rowDescriptor);
+            }
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _button;

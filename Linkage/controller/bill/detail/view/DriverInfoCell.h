@@ -17,6 +17,5 @@ extern NSString *const DriverInfoDescriporType;
 @property (nonatomic, weak) XLFormRowDescriptor * rowDescriptor;
 @property (nonatomic, readonly) UILabel *textLabel;
 @property (nonatomic, readonly) UILabel *detailLabel;
-@property (nonatomic, readonly) UIButton *button;
 
 @end

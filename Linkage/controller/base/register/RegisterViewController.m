@@ -10,6 +10,7 @@
 #import "YGRestClient.h"
 #import "FormTextFieldAndButtonCell.h"
 #import "TimerManager.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface RegisterViewController ()
 
@@ -45,7 +46,7 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeTextAndButton title:@"手机"];
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
-        [weakSelf genInviteCode];
+        [weakSelf genInviteCode:sender];
     };
     [section addFormRow:row];
     
@@ -64,7 +65,7 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"注册"];
     row.disabled = @YES;
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
-        [weakSelf registerAction];
+        [weakSelf registerAction:sender];
     };
     [section addFormRow:row];
     
@@ -88,14 +89,14 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)registerAction
+- (void)registerAction:(XLFormRowDescriptor *)row
 {
     [self.tableView endEditing:YES];
     NSDictionary *formValues = [self.form formValues];
-    NSDictionary *paramter = @{@"mobile":formValues[@"phoneNum"],
-                               @"password":formValues[@"password"],
+    NSDictionary *paramter = @{@"mobile":NilStringWrapper(formValues[@"phoneNum"]),
+                               @"password":NilStringWrapper(formValues[@"password"]),
                                @"ctype":@0,
-                               @"invite_code":formValues[@"inviteCode"]};
+                               @"invite_code":NilStringWrapper(formValues[@"inviteCode"])};
     [[YGRestClient sharedInstance] postForObjectWithUrl:Register4InviteUrl form:paramter success:^(id responseObject) {
         NSLog(@"sucss%@",responseObject);
     } failure:^(NSError *error) {
@@ -103,15 +104,32 @@
     }];
 }
 
--(void)genInviteCode
+-(void)genInviteCode:(XLFormRowDescriptor *)row
 {
-    NSLog(@"生成验证码");
     NSDictionary *formValues = [self.form formValues];
-    NSDictionary *paramter = @{@"mobile":formValues[@"phoneNum"]};
+    NSString *photoNum = NilStringWrapper(formValues[@"phoneNum"]);
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", PhoneNumRegex];
+    BOOL isMatch = [pred evaluateWithObject:photoNum];
+    if (!isMatch) {
+        [SVProgressHUD showErrorWithStatus:@"请填写正确的手机号码"];
+        return;
+    }
+    
+    FormTextFieldAndButtonCell *cell = (FormTextFieldAndButtonCell *)[row cellForFormController:nil];
+    __weak FormTextFieldAndButtonCell *weakCell = cell;
+    NSDictionary *paramter = @{@"mobile": photoNum};
     [[YGRestClient sharedInstance] postForObjectWithUrl:VerifycodeUrl form:paramter success:^(id responseObject) {
-        NSLog(@"sucss%@",responseObject);
+        [TimerManager shareInstance].block = ^(NSInteger second){
+            if (second > 0) {
+                NSString *title = [NSString stringWithFormat:@"获取验证码(%ld)", (long)second];
+                [weakCell.button setTitle:title forState:UIControlStateNormal];
+            }else{
+                [weakCell.button setTitle:@"获取验证码" forState:UIControlStateNormal];
+            }
+        };
+        [[TimerManager shareInstance] fire];
     } failure:^(NSError *error) {
-        NSLog(@"%@",error.localizedDescription);
+        
     }];
 }
 

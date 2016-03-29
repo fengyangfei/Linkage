@@ -7,13 +7,13 @@
 //
 
 #import "DriverInfoCell.h"
+#import <MGSwipeTableCell/MGSwipeButton.h>
 NSString *const DriverInfoDescriporType = @"DriverInfoRowType";;
 
 @implementation DriverInfoCell
 
 @synthesize textLabel = _textLabel;
 @synthesize detailLabel = _detailLabel;
-@synthesize button = _button;
 
 +(void)load
 {
@@ -33,8 +33,10 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";;
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self setupUI];
-    self.rightButtons = @[[MGSwipeButton buttonWithTitle:@"测试" backgroundColor:[UIColor greenColor]],
-                    [MGSwipeButton buttonWithTitle:@"aSSS" backgroundColor:[UIColor yellowColor]]];
+    MGSwipeButton *rightButton = [MGSwipeButton buttonWithTitle:@"打单" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        return YES;
+    }];
+    self.rightButtons = @[rightButton];
     self.rightSwipeSettings.transition = MGSwipeStateSwippingRightToLeft;
 }
 
@@ -66,13 +68,6 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";;
         make.bottom.equalTo(self.contentView.bottom);
     }];
     
-    [self.contentView addSubview:self.button];
-    [self.button makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView.right).offset(-8);
-        make.top.equalTo(self.contentView.top).offset(8);
-        make.bottom.equalTo(self.contentView.bottom).offset(-8);
-        make.width.equalTo(@80);
-    }];
 }
 
 -(UILabel *)textLabel
@@ -92,14 +87,5 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";;
     return _detailLabel;
 }
 
--(UIButton *)button
-{
-    if (!_button) {
-        _button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_button setTitle:@"打单" forState:UIControlStateNormal];
-        [_button setBackgroundColor:ButtonColor];
-    }
-    return _button;
-}
 
 @end

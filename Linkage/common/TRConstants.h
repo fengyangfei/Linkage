@@ -263,7 +263,7 @@ __DEF_CategoryProperty(propertyType, propertyName, setPropertyName, OBJC_ASSOCIA
 @end
 
 #define NilWrapper(obj) obj == nil ? @"" : obj
-#define NilStringWrapper(str) (str == nil || [str isEqualToString:@"null"]) ? @"" : str
+#define NilStringWrapper(str) (str == nil || [str isEqual:[NSNull null]]) ? @"" : str
 
 #define ArrNotEmpty(arr) (arr != nil && arr.count > 0)
 #define ArrIsEmpty(arr) (arr == nil || arr.count == 0)
