@@ -23,6 +23,7 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";;
 -(void)configure
 {
     [super configure];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self setupUI];
 }
 

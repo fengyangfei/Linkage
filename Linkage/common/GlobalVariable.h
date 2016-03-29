@@ -85,16 +85,16 @@ return [[NSUserDefaults standardUserDefaults] integerForKey:UserDefaultkey(attr)
 #define kUmengSocialAppKey @"56f67ddce0f55a76730018f5"
 
 #define kSocialTitle @"【XXXX】"
-#define kAppIndexHtml @"http://app.ygsoft.com/travel/index.html"
+#define kAppIndexHtml @"https://www.pgyer.com/linkage"
 
-
+//个人
 extern NSString * const email;
 extern NSString * const tokenId;
 extern NSString * const userName;
 extern NSString * const sex;
 extern NSString * const userId;
 extern NSString * const avatar;
-
+//公司
 extern NSString * const logo;
 extern NSString * const companyName;
 extern NSString * const introduction;
@@ -104,6 +104,24 @@ extern NSString * const url;
 extern NSString * const photos;
 extern NSString * const companyImages;
 extern NSString * const customerPhones;
-
+//地址
 extern NSString * const phoneNum;
 extern NSString * const address;
+//Bill
+extern NSString * const billNum;
+extern NSString * const subCompany;
+extern NSString * const cargo;
+extern NSString * const packingAddress;
+extern NSString * const arrivalDate;
+extern NSString * const deliveryDate;
+extern NSString * const deliveryPort;
+extern NSString * const headerCompany;
+extern NSString * const headerName;
+extern NSString * const headerGrades;
+extern NSString * const cargoNum;
+extern NSString * const contact;
+extern NSString * const phone;
+extern NSString * const soImage;
+extern NSString * const isDating;
+extern NSString * const isTransit;
+extern NSString * const note;
