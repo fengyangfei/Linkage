@@ -30,7 +30,7 @@
 
 -(void)didSelectFormRow:(XLFormRowDescriptor *)formRow
 {
-    XLFormBaseCell<FormDescriptorCell> *cell = (XLFormBaseCell<FormDescriptorCell> *)[formRow cellForFormController:nil];
+    UITableViewCell<FormDescriptorCell> *cell = (UITableViewCell<FormDescriptorCell> *)[formRow cellForFormController:nil];
     if ([cell respondsToSelector:@selector(formDescriptorCellDidSelectedWithViewController:)]){
         [cell formDescriptorCellDidSelectedWithViewController:self.viewController];
     }
@@ -69,7 +69,7 @@
     if (rowDescriptor.isDisabled || !rowDescriptor.sectionDescriptor.isMultivaluedSection){
         return NO;
     }
-    XLFormBaseCell * baseCell = [rowDescriptor cellForFormController:nil];
+    UITableViewCell<FormDescriptorCell> * baseCell = (UITableViewCell<FormDescriptorCell> *)[rowDescriptor cellForFormController:nil];
     if ([baseCell conformsToProtocol:@protocol(XLFormInlineRowDescriptorCell)] && ((id<XLFormInlineRowDescriptorCell>)baseCell).inlineRowDescriptor){
         return NO;
     }
@@ -139,16 +139,16 @@
     }
 }
 
--(XLFormBaseCell *)updateFormRow:(XLFormRowDescriptor *)formRow
+-(UITableViewCell<XLFormDescriptorCell> *)updateFormRow:(XLFormRowDescriptor *)formRow
 {
-    XLFormBaseCell * cell = [formRow cellForFormController:nil];
+    UITableViewCell<XLFormDescriptorCell> * cell = [formRow cellForFormController:nil];
     [self configureCell:cell];
     [cell setNeedsUpdateConstraints];
     [cell setNeedsLayout];
     return cell;
 }
 
--(void)configureCell:(XLFormBaseCell*) cell
+-(void)configureCell:(UITableViewCell<XLFormDescriptorCell>*) cell
 {
     [cell update];
     [cell.rowDescriptor.cellConfig enumerateKeysAndObjectsUsingBlock:^(NSString *keyPath, id value, BOOL * stop) {

@@ -20,16 +20,26 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";;
     [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:DriverInfoDescriporType];
 }
 
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self configure];
+    }
+    return self;
+}
+
 -(void)configure
 {
-    [super configure];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self setupUI];
+    self.rightButtons = @[[MGSwipeButton buttonWithTitle:@"测试" backgroundColor:[UIColor greenColor]],
+                    [MGSwipeButton buttonWithTitle:@"aSSS" backgroundColor:[UIColor yellowColor]]];
+    self.rightSwipeSettings.transition = MGSwipeStateSwippingRightToLeft;
 }
 
 -(void)update
 {
-    [super update];
     self.textLabel.text = @"司机A";
     self.detailLabel.text = @"车牌：粤C88888";
 }

@@ -138,7 +138,7 @@
             _cell = [[cellClass alloc] initWithStyle:self.cellStyle reuseIdentifier:nil];
         }
         _cell.rowDescriptor = self;
-        NSAssert([_cell isKindOfClass:[XLFormBaseCell class]], @"UITableViewCell must extend from XLFormBaseCell");
+        NSAssert([_cell conformsToProtocol:@protocol(XLFormDescriptorCell)], @"UITableViewCell must implementation from XLFormDescriptorCell");
         [self configureCellAtCreationTime];
     }
     return _cell;
