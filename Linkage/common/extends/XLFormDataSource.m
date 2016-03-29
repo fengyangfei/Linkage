@@ -114,8 +114,10 @@
         return;
     }
     UITableViewCell<XLFormDescriptorCell> * cell = (UITableViewCell<XLFormDescriptorCell> *)[row cellForFormController:nil];
-    if (!([cell formDescriptorCellCanBecomeFirstResponder] && [cell formDescriptorCellBecomeFirstResponder])){
-        [tableView endEditing:YES];
+    if ([cell respondsToSelector:@selector(formDescriptorCellCanBecomeFirstResponder)] && [cell respondsToSelector:@selector(formDescriptorCellBecomeFirstResponder)]) {
+        if (!([cell formDescriptorCellCanBecomeFirstResponder] && [cell formDescriptorCellBecomeFirstResponder])){
+            [tableView endEditing:YES];
+        }
     }
     [self didSelectFormRow:row];
 }
