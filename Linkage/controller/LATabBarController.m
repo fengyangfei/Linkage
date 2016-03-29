@@ -27,13 +27,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    //[self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (void)setupUI

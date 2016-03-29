@@ -102,8 +102,7 @@
 -(void)skipAction:(id)sender
 {
     LoginViewController *loginVC = [[LoginViewController alloc]init];
-    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:loginVC];
-    [self presentViewController:navController animated:YES completion:^{
+    [self presentViewController:loginVC animated:YES completion:^{
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:UserDefault_hasShowIntroduce];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }];
