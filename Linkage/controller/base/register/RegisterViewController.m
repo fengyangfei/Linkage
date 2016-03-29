@@ -101,7 +101,7 @@
     [[YGRestClient sharedInstance] postForObjectWithUrl:Register4InviteUrl form:paramter success:^(id responseObject) {
         NSLog(@"sucss%@",responseObject);
     } failure:^(NSError *error) {
-        NSLog(@"%@",error.localizedDescription);
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
 }
 
