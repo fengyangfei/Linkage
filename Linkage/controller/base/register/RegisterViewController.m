@@ -46,11 +46,11 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeTextAndButton title:@"手机"];
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
-        [weakSelf genInviteCode:sender];
+        [weakSelf generateVerifyCode:sender];
     };
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"inviteCode" rowType:XLFormRowDescriptorTypePassword title:@"验证码"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"inviteCode" rowType:XLFormRowDescriptorTypeText title:@"验证码"];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"password" rowType:XLFormRowDescriptorTypePassword title:@"密码"];
@@ -62,8 +62,8 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"注册"];
-    row.disabled = @YES;
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"register" rowType:XLFormRowDescriptorTypeButton title:@"注册"];
+    //row.disabled = @YES;
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf registerAction:sender];
     };
@@ -91,6 +91,7 @@
 
 - (void)registerAction:(XLFormRowDescriptor *)row
 {
+    [self deselectFormRow:row];
     [self.tableView endEditing:YES];
     NSDictionary *formValues = [self.form formValues];
     NSDictionary *paramter = @{@"mobile":NilStringWrapper(formValues[@"phoneNum"]),
@@ -104,7 +105,7 @@
     }];
 }
 
--(void)genInviteCode:(XLFormRowDescriptor *)row
+-(void)generateVerifyCode:(XLFormRowDescriptor *)row
 {
     NSDictionary *formValues = [self.form formValues];
     NSString *photoNum = NilStringWrapper(formValues[@"phoneNum"]);
@@ -115,18 +116,23 @@
         return;
     }
     
+    //正在倒计时，不再请求验证码
+    if ([TimerManager shareInstance].isValid) {
+        return;
+    }
+    
     FormTextFieldAndButtonCell *cell = (FormTextFieldAndButtonCell *)[row cellForFormController:nil];
     __weak FormTextFieldAndButtonCell *weakCell = cell;
+    [TimerManager shareInstance].block = ^(NSInteger second){
+        if (second > 0) {
+            NSString *title = [NSString stringWithFormat:@"(%ld)秒后重新获取", (long)second];
+            [weakCell.button setTitle:title forState:UIControlStateNormal];
+        }else{
+            [weakCell.button setTitle:@"获取验证码" forState:UIControlStateNormal];
+        }
+    };
     NSDictionary *paramter = @{@"mobile": photoNum};
     [[YGRestClient sharedInstance] postForObjectWithUrl:VerifycodeUrl form:paramter success:^(id responseObject) {
-        [TimerManager shareInstance].block = ^(NSInteger second){
-            if (second > 0) {
-                NSString *title = [NSString stringWithFormat:@"获取验证码(%ld)", (long)second];
-                [weakCell.button setTitle:title forState:UIControlStateNormal];
-            }else{
-                [weakCell.button setTitle:@"获取验证码" forState:UIControlStateNormal];
-            }
-        };
         [[TimerManager shareInstance] fire];
     } failure:^(NSError *error) {
         
