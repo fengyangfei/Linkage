@@ -33,7 +33,7 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";;
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self setupUI];
-    MGSwipeButton *rightButton = [MGSwipeButton buttonWithTitle:@"打单" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender) {
+    MGSwipeButton *rightButton = [MGSwipeButton buttonWithTitle:@"打单" backgroundColor:[UIColor redColor] insets:UIEdgeInsetsMake(0, 20, 0, 20) callback:^BOOL(MGSwipeTableCell *sender) {
         return YES;
     }];
     self.rightButtons = @[rightButton];

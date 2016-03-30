@@ -41,6 +41,9 @@ PODS:
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
+  - Mantle (2.0.6):
+    - Mantle/extobjc (= 2.0.6)
+  - Mantle/extobjc (2.0.6)
   - Masonry (0.6.4)
   - MGSwipeTableCell (1.5.3)
   - MJRefresh (3.1.0)
@@ -60,6 +63,7 @@ DEPENDENCIES:
   - HMSegmentedControl
   - IQKeyboardManager
   - MagicalRecord (~> 2.3.0)
+  - Mantle
   - Masonry
   - MGSwipeTableCell
   - MJRefresh
@@ -77,6 +81,7 @@ SPEC CHECKSUMS:
   HMSegmentedControl: 83b9686022d2176fb6457d2bdb61e5d6393fed7d
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  Mantle: 299966b00759634931699f69cb6a30b9239b944d
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MGSwipeTableCell: 5ae3b9a15efda26b201adc8676b24040febe6ff6
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
