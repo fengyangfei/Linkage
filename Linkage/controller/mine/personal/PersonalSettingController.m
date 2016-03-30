@@ -13,6 +13,7 @@
 #import "AvatarFormCell.h"
 #import "LoginUser.h"
 #import <SVProgressHUD.h>
+#import <Mantle/Mantle.h>
 
 @interface PersonalSettingController ()
 
@@ -82,7 +83,7 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:sex rowType:XLFormRowDescriptorTypeSelectorPush title:@"性别"];
     if (user) {
-        row.value = [XLFormOptionsObject formOptionsObjectWithValue:user.sex displayText:[user.sex compare:@(0)] == NSOrderedSame ? @"女":@"男"];
+        row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(user.gender) displayText:user.gender == Male ? @"女":@"男"];
     }
     row.selectorTitle = @"性别";
     row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"女"],
@@ -92,7 +93,7 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:phoneNum rowType:XLFormRowDescriptorTypeText title:@"手机"];
     if (user) {
-        row.value = user.phoneNum;
+        row.value = user.mobile;
     }
     [section addFormRow:row];
     
@@ -130,11 +131,11 @@
 {
     [self deselectFormRow:sender];
     NSDictionary *dic = [self formValues];
-    LoginUser *user = [LoginUser createFromDictionary:dic];
-    XLFormOptionsObject *sexObj = dic[sex];
-    if (sexObj && ![sexObj isEqual:[NSNull null]]) {
-        user.sex = [sexObj formValue];
-    }
+    LoginUser *user = [MTLJSONAdapter modelOfClass:[LoginUser class] fromJSONDictionary:dic error:nil];
+//    XLFormOptionsObject *sexObj = dic[sex];
+//    if (sexObj && ![sexObj isEqual:[NSNull null]]) {
+//        user.sex = [sexObj formValue];
+//    }
     BOOL saveSuccess = [user save];
     if (saveSuccess) {
         [SVProgressHUD showSuccessWithStatus:@"保存成功"];

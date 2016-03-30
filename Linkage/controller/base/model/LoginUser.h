@@ -6,16 +6,24 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Mantle/Mantle.h>
+#import "MTLManagedObjectAdapter.h"
 
-@interface LoginUser : NSObject<NSCoding,RMMapping>
-@property (nonatomic,copy) NSString *email;
-@property (nonatomic,copy) NSString *phoneNum;
-@property (nonatomic,copy) NSString *tokenId;
-@property (nonatomic,copy) NSString *userName;
+typedef NS_ENUM(NSUInteger,UserGender) {
+    Male,
+    Female
+};
+@interface LoginUser : MTLModel<MTLJSONSerializing>
 @property (nonatomic,copy) NSString *userId;
+@property (nonatomic,copy) NSString *userName;
+@property (nonatomic,copy) NSString *password;
+@property (nonatomic,copy) NSString *token;
+@property (nonatomic,assign) UserGender gender;
+@property (nonatomic,copy) NSString *mobile;
+@property (nonatomic,copy) NSString *email;
+@property (nonatomic,copy) NSString *address;
+@property (nonatomic,strong) NSDate *birthday;
 @property (nonatomic,copy) NSString *avatar;
-@property (nonatomic,strong) NSNumber *sex;
 
 -(BOOL)save;
 +(LoginUser *)shareInstance;
@@ -25,4 +33,3 @@
 @interface LoginUser (Extensions)
 UserDefault_Attr(currentLocation, NSString *)//用户所在地
 @end
-AS_RMMapperModel(LoginUser)

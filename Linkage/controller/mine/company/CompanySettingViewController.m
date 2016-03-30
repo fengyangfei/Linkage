@@ -14,6 +14,7 @@
 #import "SOImageFormCell.h"
 #import "AvatarFormCell.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <Mantle/Mantle.h>
 
 @interface CompanySettingViewController ()
 
@@ -178,7 +179,7 @@
         }
     }
     //保存到UserDefault
-    Company *company = [Company createFromDictionary:formValues];
+    Company *company = [MTLJSONAdapter modelOfClass:[Company class] fromJSONDictionary:formValues error:nil];
     company.companyImages = [companyImages copy];
     company.customerPhones = [formValues[customerPhones] copy];
     BOOL saveSuccess = [company save];

@@ -11,41 +11,9 @@
 
 @implementation Company
 
--(void)encodeWithCoder:(NSCoder *)aCoder
++ (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    [aCoder encodeObject:self.logo forKey:logo];
-    [aCoder encodeObject:self.companyName forKey:companyName];
-    [aCoder encodeObject:self.introduction forKey:introduction];
-    [aCoder encodeObject:self.contract forKey:contract];
-    [aCoder encodeObject:self.address forKey:address];
-    [aCoder encodeObject:self.email forKey:email];
-    [aCoder encodeObject:self.fax forKey:fax];
-    [aCoder encodeObject:self.url forKey:url];
-    [aCoder encodeObject:self.companyImages forKey:companyImages];
-    [aCoder encodeObject:self.customerPhones forKey:customerPhones];
-}
-
--(id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super init];
-    if (self) {
-        self.logo = [aDecoder decodeObjectForKey:logo];
-        self.companyName = [aDecoder decodeObjectForKey:companyName];
-        self.introduction = [aDecoder decodeObjectForKey:introduction];
-        self.contract = [aDecoder decodeObjectForKey:contract];
-        self.address = [aDecoder decodeObjectForKey:address];
-        self.email = [aDecoder decodeObjectForKey:email];
-        self.fax = [aDecoder decodeObjectForKey:fax];
-        self.url = [aDecoder decodeObjectForKey:url];
-        self.companyImages = [aDecoder decodeObjectForKey:companyImages];
-        self.customerPhones = [aDecoder decodeObjectForKey:customerPhones];
-    }
-    return self;
-}
-
-- (NSArray *)rm_excludedProperties
-{
-    return @[@"photos"];
+    return nil;
 }
 
 //保存
@@ -70,4 +38,3 @@ static Company *company;
 }
 
 @end
-DEF_RMMapperModel(Company)

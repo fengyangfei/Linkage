@@ -6,8 +6,10 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-@interface Company : NSObject<NSCoding,RMMapping>
+#import <Mantle/Mantle.h>
+#import "MTLManagedObjectAdapter.h"
+
+@interface Company : MTLModel<MTLJSONSerializing>
 @property (nonatomic,copy) NSString *logo;
 @property (nonatomic,copy) NSString *companyName;
 @property (nonatomic,copy) NSString *introduction;
@@ -19,7 +21,7 @@
 @property (nonatomic,strong) NSArray *companyImages;
 @property (nonatomic,strong) NSArray *customerPhones;
 
+
 -(BOOL)save;
 +(Company *)shareInstance;
 @end
-AS_RMMapperModel(Company)

@@ -7,37 +7,13 @@
 //
 
 #import "LoginUser.h"
-
-#define kUserDefalutLoginUserKey    @"kUserDefalutLoginUserKey"
+#define kUserDefalutLoginUserKey @"kUserDefalutLoginUserKey"
 static LoginUser *user;
 @implementation LoginUser
 
--(void)encodeWithCoder:(NSCoder *)aCoder
++ (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    [aCoder encodeObject:self.email forKey:email];
-    [aCoder encodeObject:self.phoneNum forKey:phoneNum];
-    [aCoder encodeObject:self.tokenId forKey:tokenId];
-    [aCoder encodeObject:self.userName forKey:userName];
-    [aCoder encodeObject:self.userId forKey:userId];
-    [aCoder encodeObject:self.avatar forKey:avatar];
-    [aCoder encodeObject:self.sex forKey:sex];
-
-}
-
--(id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super init];
-    if (self) {
-        self.email = [aDecoder decodeObjectForKey:email];
-        self.phoneNum = [aDecoder decodeObjectForKey:phoneNum];
-        self.tokenId = [aDecoder decodeObjectForKey:tokenId];
-        self.userName = [aDecoder decodeObjectForKey:userName];
-        self.userId = [aDecoder decodeObjectForKey:userId];
-        self.avatar = [aDecoder decodeObjectForKey:avatar];
-        self.sex = [aDecoder decodeObjectForKey:sex];
-
-    }
-    return self;
+    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
 }
 
 //保存登录用户信息
@@ -74,5 +50,4 @@ static LoginUser *user;
 @implementation LoginUser(Extensions)
 UserDefault_AttrImpl(currentLocation, NSString *)
 @end
-DEF_RMMapperModel(LoginUser)
 

@@ -156,7 +156,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
         if (user) {
             [self.iconView imageWithCacheKey:user.avatar];
             self.titleLabel.text = NilStringWrapper(user.userName);
-            self.subTitleLabel.text = NilStringWrapper(user.phoneNum);
+            self.subTitleLabel.text = NilStringWrapper(user.mobile);
         }else{
             self.iconView.image = [UIImage imageNamed:@"logo"];
             self.titleLabel.text = @"登录名";
