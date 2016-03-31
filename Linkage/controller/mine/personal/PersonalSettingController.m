@@ -66,7 +66,7 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:avatar rowType:AvatarDescriporType title:@"头像"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"avatar" rowType:AvatarDescriporType title:@"头像"];
     if (user) {
         row.value = user.avatar;
     }
@@ -75,15 +75,15 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:userName rowType:XLFormRowDescriptorTypeText title:@"姓名"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"userName" rowType:XLFormRowDescriptorTypeText title:@"姓名"];
     if (user) {
         row.value = user.userName;
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:sex rowType:XLFormRowDescriptorTypeSelectorPush title:@"性别"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"gender" rowType:XLFormRowDescriptorTypeSelectorPush title:@"性别"];
     if (user) {
-        row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(user.gender) displayText:user.gender == Male ? @"女":@"男"];
+        row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(user.gender) displayText:user.gender == Male ? @"男": @"女"];
     }
     row.selectorTitle = @"性别";
     row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"女"],
@@ -91,13 +91,13 @@
                             ];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:phoneNum rowType:XLFormRowDescriptorTypeText title:@"手机"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"mobile" rowType:XLFormRowDescriptorTypeText title:@"手机"];
     if (user) {
         row.value = user.mobile;
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:email rowType:XLFormRowDescriptorTypeEmail title:@"邮箱"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"email" rowType:XLFormRowDescriptorTypeEmail title:@"邮箱"];
     if (user) {
         row.value = user.email;
     }
@@ -130,12 +130,12 @@
 -(void)saveAction:(XLFormRowDescriptor *)sender
 {
     [self deselectFormRow:sender];
-    NSDictionary *dic = [self formValues];
+    NSMutableDictionary *dic = [[self formValues] mutableCopy];
+    XLFormOptionsObject *sexObj = dic[@"gender"];
+    if (sexObj && ![sexObj isEqual:[NSNull null]]) {
+        dic[@"gender"] = [sexObj formValue];
+    }
     LoginUser *user = [MTLJSONAdapter modelOfClass:[LoginUser class] fromJSONDictionary:dic error:nil];
-//    XLFormOptionsObject *sexObj = dic[sex];
-//    if (sexObj && ![sexObj isEqual:[NSNull null]]) {
-//        user.sex = [sexObj formValue];
-//    }
     BOOL saveSuccess = [user save];
     if (saveSuccess) {
         [SVProgressHUD showSuccessWithStatus:@"保存成功"];

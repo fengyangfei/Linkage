@@ -13,7 +13,7 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    return nil;
+    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
 }
 
 //保存

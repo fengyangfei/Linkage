@@ -46,14 +46,14 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 //进口订单
 @interface ImportOrder : Order
 @property (nonatomic, copy) NSString *billNo;
-@property (nonatomic, copy) NSString *customsBroker;
+@property (nonatomic, copy) NSString *customsBroker;//海关代理人
 @property (nonatomic, copy) NSString *customsHouseContact;
 @property (nonatomic, copy) NSString *cargoCompany;
 @end
 
 //出口订单
 @interface ExportOrder : Order
-@property (nonatomic, copy) NSString *so;
+@property (nonatomic, copy) NSString *so;//图片
 @property (nonatomic, copy) NSString *customsIn;
 @property (nonatomic, copy) NSString *shipCompany;
 @property (nonatomic, copy) NSString *shipName;

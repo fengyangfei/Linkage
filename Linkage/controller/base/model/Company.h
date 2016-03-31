@@ -21,7 +21,6 @@
 @property (nonatomic,strong) NSArray *companyImages;
 @property (nonatomic,strong) NSArray *customerPhones;
 
-
 -(BOOL)save;
 +(Company *)shareInstance;
 @end

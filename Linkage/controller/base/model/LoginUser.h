@@ -10,8 +10,8 @@
 #import "MTLManagedObjectAdapter.h"
 
 typedef NS_ENUM(NSUInteger,UserGender) {
-    Male,
-    Female
+    Female,
+    Male
 };
 @interface LoginUser : MTLModel<MTLJSONSerializing>
 @property (nonatomic,copy) NSString *userId;

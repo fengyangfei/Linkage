@@ -14,15 +14,15 @@ static LoginUser *user;
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    [keyDic mtl_dictionaryByRemovingValuesForKeys:@[@"createTime", @"updateTime"]];
+    [keyDic mtl_dictionaryByRemovingValuesForKeys:@[@"gender", @"createTime", @"updateTime"]];
     return keyDic;
 }
 
 + (NSValueTransformer *)genderJSONTransformer
 {
     NSDictionary *transDic = @{
-                               @(0): @(Male),
-                               @(1): @(Female)
+                               @(0): @(Female),
+                               @(1): @(Male)
                                };
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic];
 }
