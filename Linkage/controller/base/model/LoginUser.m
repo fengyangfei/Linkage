@@ -13,7 +13,28 @@ static LoginUser *user;
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    [keyDic mtl_dictionaryByRemovingValuesForKeys:@[@"createTime", @"updateTime"]];
+    return keyDic;
+}
+
++ (NSValueTransformer *)genderJSONTransformer
+{
+    NSDictionary *transDic = @{
+                               @(0): @(Male),
+                               @(1): @(Female)
+                               };
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic];
+}
+
+-(instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error
+{
+    self = [super initWithDictionary:dictionaryValue error:error];
+    if (self) {
+        _createTime = [NSDate date];
+        _updateTime = [NSDate date];
+    }
+    return self;
 }
 
 //保存登录用户信息

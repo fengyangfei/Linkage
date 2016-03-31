@@ -24,6 +24,8 @@ typedef NS_ENUM(NSUInteger,UserGender) {
 @property (nonatomic,copy) NSString *address;
 @property (nonatomic,strong) NSDate *birthday;
 @property (nonatomic,copy) NSString *avatar;
+@property (nonatomic, strong) NSDate *createTime;
+@property (nonatomic, strong) NSDate *updateTime;
 
 -(BOOL)save;
 +(LoginUser *)shareInstance;
