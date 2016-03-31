@@ -88,23 +88,6 @@ return [[NSUserDefaults standardUserDefaults] integerForKey:UserDefaultkey(attr)
 #define kSocialTitle @"【XXXX】"
 #define kAppIndexHtml @"https://www.pgyer.com/linkage"
 
-//个人
-extern NSString * const email;
-extern NSString * const tokenId;
-extern NSString * const userName;
-extern NSString * const sex;
-extern NSString * const userId;
-extern NSString * const avatar;
-//公司
-extern NSString * const logo;
-extern NSString * const companyName;
-extern NSString * const introduction;
-extern NSString * const contract;
-extern NSString * const fax;
-extern NSString * const url;
-extern NSString * const photos;
-extern NSString * const companyImages;
-extern NSString * const customerPhones;
 //地址
 extern NSString * const phoneNum;
 extern NSString * const address;

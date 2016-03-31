@@ -65,19 +65,19 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:logo rowType:AvatarDescriporType title:@"企业Logo"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logo" rowType:AvatarDescriporType title:@"企业Logo"];
     if (company) {
         row.value = company.logo;
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:companyName rowType:XLFormRowDescriptorTypeText title:@"企业名称"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"name" rowType:XLFormRowDescriptorTypeText title:@"企业名称"];
     if (company) {
-        row.value = company.companyName;
+        row.value = company.name;
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:introduction rowType:XLFormRowDescriptorTypeTextView title:@"企业简介"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"description" rowType:XLFormRowDescriptorTypeTextView title:@"企业简介"];
     if (company) {
         row.value = company.introduction;
     }
@@ -86,31 +86,31 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:contract rowType:XLFormRowDescriptorTypeText title:@"企业联系人"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"contactor" rowType:XLFormRowDescriptorTypeText title:@"企业联系人"];
     if (company) {
-        row.value = company.contract;
+        row.value = company.contactor;
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:address rowType:XLFormRowDescriptorTypeText title:@"企业地址"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"address" rowType:XLFormRowDescriptorTypeText title:@"企业地址"];
     if (company) {
         row.value = company.address;
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:email rowType:XLFormRowDescriptorTypeEmail title:@"企业邮箱"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"email" rowType:XLFormRowDescriptorTypeEmail title:@"企业邮箱"];
     if (company) {
         row.value = company.email;
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:fax rowType:XLFormRowDescriptorTypeText title:@"传真"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"fax" rowType:XLFormRowDescriptorTypeText title:@"传真"];
     if (company) {
         row.value = company.fax;
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:url rowType:XLFormRowDescriptorTypeURL title:@"企业网址"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"url" rowType:XLFormRowDescriptorTypeURL title:@"企业网址"];
     if (company) {
         row.value = company.url;
     }
@@ -122,7 +122,7 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"企业图片"];
     [row.cellConfig setObject:@(NSTextAlignmentNatural) forKey:@"textLabel.textAlignment"];
     row.action.formSelector = NSSelectorFromString(@"addPhotoButtonTapped:");
-    section.multivaluedTag = photos;
+    section.multivaluedTag = @"photos";
     [section addFormRow:row];
     if (company) {
         for (NSString *imageKey in company.companyImages) {
@@ -164,10 +164,10 @@
 #pragma mark - 按钮事件
 -(void)saveAction:(id)sender
 {
-    NSDictionary *formValues = [self formValues];
+    NSMutableDictionary *formValues = [[self formValues] mutableCopy];
     //保存图片到硬盘
     NSMutableArray *companyImages = [NSMutableArray array];
-    NSArray *formPhotos = formValues[photos];
+    NSArray *formPhotos = formValues[@"photos"];
     if (formPhotos) {
         for (SOImageModel *imageModel in formPhotos) {
             [[ImageCacheManager sharedManger] diskImageExistsWithKey:imageModel.photoName completion:^(BOOL isInCache) {
@@ -178,10 +178,9 @@
             [companyImages addObject:imageModel.photoName];
         }
     }
+    formValues[@"companyImages"] = companyImages;
     //保存到UserDefault
     Company *company = [MTLJSONAdapter modelOfClass:[Company class] fromJSONDictionary:formValues error:nil];
-    company.companyImages = [companyImages copy];
-    company.customerPhones = [formValues[customerPhones] copy];
     BOOL saveSuccess = [company save];
     if (saveSuccess) {
         [SVProgressHUD showSuccessWithStatus:@"保存成功"];

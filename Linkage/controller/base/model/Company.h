@@ -11,13 +11,17 @@
 
 @interface Company : MTLModel<MTLJSONSerializing>
 @property (nonatomic,copy) NSString *logo;
-@property (nonatomic,copy) NSString *companyName;
+@property (nonatomic,copy) NSString *name;
 @property (nonatomic,copy) NSString *introduction;
-@property (nonatomic,copy) NSString *contract;
+@property (nonatomic,copy) NSString *contactor;
 @property (nonatomic,copy) NSString *address;
 @property (nonatomic,copy) NSString *email;
 @property (nonatomic,copy) NSString *fax;
 @property (nonatomic,copy) NSString *url;
+@property (nonatomic,copy) NSString *phone1;
+@property (nonatomic,copy) NSString *phone2;
+@property (nonatomic,copy) NSString *phone3;
+@property (nonatomic,copy) NSString *phone4;
 @property (nonatomic,strong) NSArray *companyImages;
 @property (nonatomic,strong) NSArray *customerPhones;
 

@@ -13,7 +13,8 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    return [keyDic mtl_dictionaryByAddingEntriesFromDictionary:@{@"introduction":@"description"}];
 }
 
 //保存

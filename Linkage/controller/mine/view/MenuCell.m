@@ -167,7 +167,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
         Company *company = [Company shareInstance];
         if (company) {
             [self.iconView imageWithCacheKey:company.logo];
-            self.titleLabel.text = company.companyName;
+            self.titleLabel.text = company.name;
             self.subTitleLabel.text = company.address;
         }else{
             self.iconView.image = [UIImage imageNamed:@"logo"];
