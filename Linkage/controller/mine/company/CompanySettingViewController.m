@@ -143,7 +143,7 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypePhone title:@"客户电话"];
     [section.multivaluedAddButton.cellConfig setObject:@"添加客户电话" forKey:@"textLabel.text"];
     section.multivaluedRowTemplate = row;
-    section.multivaluedTag = customerPhones;
+    section.multivaluedTag = @"customerPhones";
     if (company) {
         for (NSString *photoNum in company.customerPhones) {
             row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypePhone title:@"客户电话"];

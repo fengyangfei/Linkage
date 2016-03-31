@@ -44,13 +44,25 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeTextAndButton title:@"手机"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"companyName" rowType:XLFormRowDescriptorTypeText title:@"公司名称"];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"name" rowType:XLFormRowDescriptorTypeText title:@"注册人姓名"];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"gender" rowType:XLFormRowDescriptorTypeSelectorPush title:@"性别"];
+    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"女"],
+                            [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"男"]
+                            ];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeText title:@"手机"];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"inviteCode" rowType:XLFormRowDescriptorTypeTextAndButton title:@"验证码"];
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf generateVerifyCode:sender];
     };
-    [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"inviteCode" rowType:XLFormRowDescriptorTypeText title:@"验证码"];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"password" rowType:XLFormRowDescriptorTypePassword title:@"密码"];
@@ -82,6 +94,9 @@
         make.bottom.equalTo(self.view.bottom);
     }];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
+    UISegmentedControl *segementedControl = [[UISegmentedControl alloc]initWithItems:@[@"厂商",@"承运商"]];
+    segementedControl.selectedSegmentIndex = 1;
+    self.navigationItem.titleView = segementedControl;
 }
 
 -(void)backAction:(id)sender

@@ -38,7 +38,7 @@
     [form addFormSection:section];
     
     for (int i = 0; i < 10; i++) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:avatar rowType:CompanyDescriporType];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:CompanyDescriporType];
         row.action.viewControllerClass = [BillTypeViewController class];
         [section addFormRow:row];
     }
