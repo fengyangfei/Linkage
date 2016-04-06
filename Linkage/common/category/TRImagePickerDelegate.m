@@ -40,10 +40,11 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSString *fileName = [NSString stringWithFormat:@"%@.JPG", [[[NSUUID UUID] UUIDString] stringByReplacingOccurrencesOfString:@"-" withString:@""]];
-    if (self.selectBlock) {
-        self.selectBlock(info[UIImagePickerControllerOriginalImage], fileName);
-    }
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        if (self.selectBlock) {
+            self.selectBlock(info[UIImagePickerControllerOriginalImage], fileName);
+        }
+    }];
 }
 
 #pragma mark - QBImagePickerControllerDelegate
@@ -53,10 +54,12 @@
     NSString *fileName = [representation filename];
     CGImageRef ref = [representation fullScreenImage];
     UIImage *image = [[UIImage alloc]initWithCGImage:ref];
-    if (self.selectBlock) {
-        self.selectBlock(image, fileName);
-    }
-    [imagePickerController dismissViewControllerAnimated:YES completion:NULL];
+
+    [imagePickerController dismissViewControllerAnimated:YES completion:^{
+        if (self.selectBlock) {
+            self.selectBlock(image, fileName);
+        }
+    }];
 }
 
 static NSMutableArray *imageIndentifies;
