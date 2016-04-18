@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "AvatarFormCell.h"
 #import "LoginUser.h"
+#import "ChangePasswordController.h"
 #import <SVProgressHUD.h>
 #import <Mantle/Mantle.h>
 
@@ -107,6 +108,7 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"密码修改"];
+    row.action.viewControllerClass = [ChangePasswordController class];
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
