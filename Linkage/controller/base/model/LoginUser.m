@@ -24,7 +24,7 @@ static LoginUser *user;
                                @(0): @(Female),
                                @(1): @(Male)
                                };
-    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic];
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(Male) reverseDefaultValue:@(1)];
 }
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error
