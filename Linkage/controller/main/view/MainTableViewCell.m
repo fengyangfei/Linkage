@@ -83,7 +83,7 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
         make.left.equalTo(self.iconView.right).offset(5);
         make.right.equalTo(self.contentView.right);
         make.bottom.equalTo(self.iconView.bottom);
-        make.height.equalTo(@30);
+        make.height.equalTo(@26);
     }];
     
     [self.contentView addSubview:self.button];
@@ -91,7 +91,7 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
         make.right.equalTo(self.contentView.right).offset(-8);
         make.centerY.equalTo(self.contentView.centerY);
         make.height.equalTo(@44);
-        make.width.equalTo(@80);
+        make.width.equalTo(@60);
     }];
     
     [self.contentView addSubview:self.subTitleLabel];
