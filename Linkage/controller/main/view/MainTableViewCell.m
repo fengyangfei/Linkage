@@ -134,6 +134,7 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
     if (!_ratingView) {
         _ratingView = ({
             AXRatingView *axRatinView = [[AXRatingView alloc]initWithFrame:CGRectZero];
+            axRatinView.enabled = NO;
             [axRatinView setStepInterval:1.0];
             axRatinView.value = 4.0;
             axRatinView;

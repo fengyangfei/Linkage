@@ -13,7 +13,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface RegisterViewController ()
-
+@property (nonatomic, strong) UISegmentedControl *segementedControl;
 @end
 
 @implementation RegisterViewController
@@ -59,7 +59,7 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeText title:@"手机"];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"inviteCode" rowType:XLFormRowDescriptorTypeTextAndButton title:@"验证码"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"verifyCode" rowType:XLFormRowDescriptorTypeTextAndButton title:@"验证码"];
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf generateVerifyCode:sender];
     };
@@ -94,9 +94,16 @@
         make.bottom.equalTo(self.view.bottom);
     }];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
-    UISegmentedControl *segementedControl = [[UISegmentedControl alloc]initWithItems:@[@"厂商",@"承运商"]];
-    segementedControl.selectedSegmentIndex = 1;
-    self.navigationItem.titleView = segementedControl;
+    self.navigationItem.titleView = self.segementedControl;
+}
+
+-(UISegmentedControl *)segementedControl
+{
+    if (!_segementedControl) {
+        _segementedControl = [[UISegmentedControl alloc]initWithItems:@[@"厂商",@"承运商"]];
+        _segementedControl.selectedSegmentIndex = 0;
+    }
+    return _segementedControl;
 }
 
 -(void)backAction:(id)sender
@@ -106,15 +113,20 @@
 
 - (void)registerAction:(XLFormRowDescriptor *)row
 {
+    WeakSelf
     [self deselectFormRow:row];
     [self.tableView endEditing:YES];
     NSDictionary *formValues = [self.form formValues];
     NSDictionary *paramter = @{@"mobile":NilStringWrapper(formValues[@"phoneNum"]),
                                @"password":NilStringWrapper(formValues[@"password"]),
-                               @"ctype":@0,
-                               @"invite_code":NilStringWrapper(formValues[@"inviteCode"])};
-    [[YGRestClient sharedInstance] postForObjectWithUrl:Register4InviteUrl form:paramter success:^(id responseObject) {
-        NSLog(@"sucss%@",responseObject);
+                               @"company_name":NilStringWrapper(formValues[@"companyName"]),
+                               @"ctype":@(self.segementedControl.selectedSegmentIndex),
+                               @"verify_code":NilStringWrapper(formValues[@"verifyCode"])};
+    [[YGRestClient sharedInstance] postForObjectWithUrl:Register4AdminUrl form:paramter success:^(id responseObject) {
+        [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+        [weakSelf.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
     } failure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];

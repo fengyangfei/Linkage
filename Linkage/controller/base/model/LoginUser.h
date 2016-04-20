@@ -13,6 +13,15 @@ typedef NS_ENUM(NSUInteger,UserGender) {
     Female,
     Male
 };
+
+typedef NS_ENUM(NSUInteger,UserType) {
+    UserTypeCompanyAdmin,//厂商管理员
+    UserTypeCompanyUser,//厂商普通员工
+    UserTypeSubCompanyAdmin,//承运商管理员
+    UserTypeSubCompanyUser,//承运商普通员工
+    UserTypeSubCompanyDriver////承运商司机
+};
+
 @interface LoginUser : MTLModel<MTLJSONSerializing>
 @property (nonatomic,copy) NSString *userId;
 @property (nonatomic,copy) NSString *userName;
@@ -26,6 +35,8 @@ typedef NS_ENUM(NSUInteger,UserGender) {
 @property (nonatomic,copy) NSString *avatar;
 @property (nonatomic, strong) NSDate *createTime;
 @property (nonatomic, strong) NSDate *updateTime;
+@property (nonatomic, assign) UserType ctype;
+@property (nonatomic, strong) NSArray *companies;
 
 -(BOOL)save;
 +(LoginUser *)shareInstance;

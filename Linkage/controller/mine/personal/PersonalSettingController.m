@@ -147,6 +147,7 @@
 //退出
 -(void)logoutAction
 {
+    [LoginUser clearUserInfo];
     UIViewController *rootViewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
     if ([rootViewController isKindOfClass:[TutorialController class]] || [rootViewController isKindOfClass:[LoginBaseViewController class]]) {
         [self dismissViewControllerAnimated:YES completion:nil];

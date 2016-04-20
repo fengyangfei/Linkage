@@ -71,7 +71,7 @@
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"name" rowType:XLFormRowDescriptorTypeText title:@"企业名称"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company_name" rowType:XLFormRowDescriptorTypeText title:@"企业名称"];
     if (company) {
         row.value = company.name;
     }
@@ -86,13 +86,13 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"contactor" rowType:XLFormRowDescriptorTypeText title:@"企业联系人"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"contact_name" rowType:XLFormRowDescriptorTypeText title:@"企业联系人"];
     if (company) {
         row.value = company.contactor;
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"address" rowType:XLFormRowDescriptorTypeText title:@"企业地址"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"contact_address" rowType:XLFormRowDescriptorTypeText title:@"企业地址"];
     if (company) {
         row.value = company.address;
     }

@@ -7,6 +7,7 @@
 //
 
 #import "LoginUser.h"
+#import "Company.h"
 #define kUserDefalutLoginUserKey @"kUserDefalutLoginUserKey"
 static LoginUser *user;
 @implementation LoginUser
@@ -14,17 +15,33 @@ static LoginUser *user;
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    [keyDic mtl_dictionaryByRemovingValuesForKeys:@[@"gender", @"createTime", @"updateTime"]];
+    keyDic = [keyDic mtl_dictionaryByRemovingValuesForKeys:@[@"createTime", @"updateTime",@"birthday"]];
     return keyDic;
 }
 
 + (NSValueTransformer *)genderJSONTransformer
 {
     NSDictionary *transDic = @{
-                               @(0): @(Female),
-                               @(1): @(Male)
+                               @"F": @(Female),
+                               @"M": @(Male)
                                };
-    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(Male) reverseDefaultValue:@(1)];
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(Male) reverseDefaultValue:@"M"];
+}
+
++ (NSValueTransformer *)ctypeJSONTransformer
+{
+    NSDictionary *transDic = @{
+                               @(0): @(UserTypeCompanyAdmin),
+                               @(1): @(UserTypeCompanyUser),
+                               @(2): @(UserTypeSubCompanyAdmin),
+                               @(3): @(UserTypeSubCompanyUser),
+                               @(4): @(UserTypeSubCompanyDriver)
+                               };
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(UserTypeCompanyAdmin) reverseDefaultValue:@(0)];
+}
+
++ (NSValueTransformer *)companiesJSONTransformer {
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[Company class]];
 }
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error

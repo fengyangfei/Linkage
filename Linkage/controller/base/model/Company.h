@@ -14,6 +14,7 @@
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,copy) NSString *introduction;
 @property (nonatomic,copy) NSString *contactor;
+@property (nonatomic,copy) NSString *contactorPhone;
 @property (nonatomic,copy) NSString *address;
 @property (nonatomic,copy) NSString *email;
 @property (nonatomic,copy) NSString *fax;
@@ -24,7 +25,9 @@
 @property (nonatomic,copy) NSString *phone4;
 @property (nonatomic,strong) NSArray *companyImages;
 @property (nonatomic,strong) NSArray *customerPhones;
-
+@property (nonatomic,copy) NSString *companyId;
+@property (nonatomic,strong) NSNumber *orderNum;//订单数量
+@property (nonatomic,strong) NSNumber *score;//分值
 -(BOOL)save;
 +(Company *)shareInstance;
 @end

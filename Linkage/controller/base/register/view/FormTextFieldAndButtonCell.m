@@ -51,7 +51,7 @@ NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
     [self.dynamicCustomConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=11)-[label]-(>=11)-|" options:NSLayoutFormatAlignAllBaseline metrics:nil views:views]];
     [self.dynamicCustomConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=11)-[textField]-(>=11)-|" options:NSLayoutFormatAlignAllBaseline metrics:nil views:views]];
     [self.dynamicCustomConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[button]-0-|" options:0 metrics:nil views:views]];
-    [self.dynamicCustomConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[label(>=50)]-[textField]-[button(==160)]-0-|" options:0 metrics:nil views:views]];
+    [self.dynamicCustomConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[label(>=50)]-[textField]-[button(==120)]-0-|" options:0 metrics:nil views:views]];
     
     [self.dynamicCustomConstraints addObject:[NSLayoutConstraint constraintWithItem:self.textField
                                                                           attribute:NSLayoutAttributeWidth
