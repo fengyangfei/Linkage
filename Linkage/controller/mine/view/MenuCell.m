@@ -154,11 +154,13 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
     if ([item.entityName isEqualToString:@"LoginUser"]) {
         LoginUser *user = [LoginUser shareInstance];
         if (user) {
-            [self.iconView imageWithCacheKey:user.avatar];
+            if (user.avatar) {
+                [self.iconView imageWithCacheKey:user.avatar];
+            }
             self.titleLabel.text = NilStringWrapper(user.userName);
             self.subTitleLabel.text = NilStringWrapper(user.mobile);
         }else{
-            self.iconView.image = [UIImage imageNamed:@"logo"];
+            self.iconView.image = [UIImage imageNamed:@"user_header"];
             self.titleLabel.text = @"登录名";
             self.subTitleLabel.text = @"电话信息";
         }
@@ -166,11 +168,13 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
     else if ([item.entityName isEqualToString:@"Company"]) {
         Company *company = [Company shareInstance];
         if (company) {
-            [self.iconView imageWithCacheKey:company.logo];
+            if (company.logo) {
+                [self.iconView imageWithCacheKey:company.logo];
+            }
             self.titleLabel.text = company.name;
             self.subTitleLabel.text = company.address;
         }else{
-            self.iconView.image = [UIImage imageNamed:@"logo"];
+            self.iconView.image = [UIImage imageNamed:@"user_header"];
             self.titleLabel.text = @"公司名称";
             self.subTitleLabel.text = @"详细信息";
         }
@@ -194,6 +198,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 -(UIImageView *)iconView
 {
     UIImageView *imageView = super.iconView;
+    imageView.image = [UIImage imageNamed:@"user_header"];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.layer.masksToBounds = YES;
     imageView.layer.cornerRadius = 6;

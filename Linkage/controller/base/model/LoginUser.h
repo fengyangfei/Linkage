@@ -8,6 +8,7 @@
 
 #import <Mantle/Mantle.h>
 #import "MTLManagedObjectAdapter.h"
+#import "MTLModel+Merge.h"
 
 typedef NS_ENUM(NSUInteger,UserGender) {
     Female,
@@ -22,7 +23,7 @@ typedef NS_ENUM(NSUInteger,UserType) {
     UserTypeSubCompanyDriver////承运商司机
 };
 
-@interface LoginUser : MTLModel<MTLJSONSerializing>
+@interface LoginUser : MTLModel<MTLJSONSerializingExt>
 @property (nonatomic,copy) NSString *userId;
 @property (nonatomic,copy) NSString *userName;
 @property (nonatomic,copy) NSString *password;

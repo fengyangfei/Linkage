@@ -148,6 +148,7 @@
 		8BDBB7CA1C98509D00D60207 /* Company.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8BDBB7C91C98509D00D60207 /* Company.bundle */; };
 		8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */; };
 		8BDBB7D11C9859CD00D60207 /* BillDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7D01C9859CD00D60207 /* BillDataSource.m */; };
+		8BE25B091CC7AF970073BD8D /* MTLModel+Merge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE25B081CC7AF970073BD8D /* MTLModel+Merge.m */; };
 		8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE996511C96EBFF008B4B13 /* AXRatingView.m */; };
 		8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C11CA61423007B924B /* XLFormViewController+ImagePicker.m */; };
 		8BEC33C61CA6160D007B924B /* AvatarFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C51CA6160D007B924B /* AvatarFormCell.m */; };
@@ -491,6 +492,8 @@
 		8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTableViewCell.m; sourceTree = "<group>"; };
 		8BDBB7CF1C9859CD00D60207 /* BillDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillDataSource.h; sourceTree = "<group>"; };
 		8BDBB7D01C9859CD00D60207 /* BillDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillDataSource.m; sourceTree = "<group>"; };
+		8BE25B071CC7AF970073BD8D /* MTLModel+Merge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTLModel+Merge.h"; sourceTree = "<group>"; };
+		8BE25B081CC7AF970073BD8D /* MTLModel+Merge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTLModel+Merge.m"; sourceTree = "<group>"; };
 		8BE996501C96EBFF008B4B13 /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
 		8BE996511C96EBFF008B4B13 /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
 		8BEC33C01CA61423007B924B /* XLFormViewController+ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XLFormViewController+ImagePicker.h"; sourceTree = "<group>"; };
@@ -1223,6 +1226,8 @@
 				9AEF89D31CA518BA00C5EB90 /* ImageCacheManager.m */,
 				9AEF89D51CA8B02900C5EB90 /* XLFormDataSource.h */,
 				9AEF89D61CA8B02900C5EB90 /* XLFormDataSource.m */,
+				8BE25B071CC7AF970073BD8D /* MTLModel+Merge.h */,
+				8BE25B081CC7AF970073BD8D /* MTLModel+Merge.m */,
 			);
 			path = extends;
 			sourceTree = "<group>";
@@ -1989,6 +1994,7 @@
 				9A23A2FD1C7DAA2500FB5EB6 /* UIViewController+Extensions.m in Sources */,
 				9A95FF401C89824F00C5F492 /* TRImagePickerDelegate.m in Sources */,
 				9A95FF191C89221C00C5F492 /* UIImage+ImageWithColor.m in Sources */,
+				8BE25B091CC7AF970073BD8D /* MTLModel+Merge.m in Sources */,
 				8BDBB7D11C9859CD00D60207 /* BillDataSource.m in Sources */,
 				8B5DC6231C79B8A700D29292 /* IFTTTFilmstrip.m in Sources */,
 				8B5DC6211C79B8A700D29292 /* IFTTTCornerRadiusAnimation.m in Sources */,

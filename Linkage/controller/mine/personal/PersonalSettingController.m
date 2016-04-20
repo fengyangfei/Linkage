@@ -87,8 +87,8 @@
         row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(user.gender) displayText:user.gender == Male ? @"男": @"女"];
     }
     row.selectorTitle = @"性别";
-    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"女"],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"男"]
+    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@"F" displayText:@"女"],
+                            [XLFormOptionsObject formOptionsObjectWithValue:@"M" displayText:@"男"]
                             ];
     [section addFormRow:row];
     
@@ -133,12 +133,11 @@
 {
     [self deselectFormRow:sender];
     NSMutableDictionary *dic = [[self formValues] mutableCopy];
-    XLFormOptionsObject *sexObj = dic[@"gender"];
-    if (sexObj && ![sexObj isEqual:[NSNull null]]) {
-        dic[@"gender"] = [sexObj formValue];
-    }
-    LoginUser *user = [MTLJSONAdapter modelOfClass:[LoginUser class] fromJSONDictionary:dic error:nil];
-    BOOL saveSuccess = [user save];
+    dic[@"gender"] = [dic[@"gender"] valueData];
+    LoginUser *modifyUser = [MTLJSONAdapter modelOfClass:[LoginUser class] fromJSONDictionary:dic error:nil];
+    LoginUser *defalutUser = [LoginUser shareInstance];
+    [defalutUser mergeValuesForMergeKeysFromModel:modifyUser];
+    BOOL saveSuccess = [defalutUser save];
     if (saveSuccess) {
         [SVProgressHUD showSuccessWithStatus:@"保存成功"];
     }

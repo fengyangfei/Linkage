@@ -44,6 +44,11 @@ static LoginUser *user;
     return [MTLJSONAdapter arrayTransformerWithModelClass:[Company class]];
 }
 
+- (NSSet *)propertyMergeKeys
+{
+    return [NSSet setWithArray:@[@"userName",@"gender",@"email",@"avatar"]];
+}
+
 -(instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error
 {
     self = [super initWithDictionary:dictionaryValue error:error];
