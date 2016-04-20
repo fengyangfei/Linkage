@@ -297,11 +297,47 @@ __DEF_CategoryProperty(propertyType, propertyName, setPropertyName, OBJC_ASSOCIA
 #define OperationFailure @"操作失败,请重试"
 #define OperationSuccess @"操作成功"
 
-
 #define YGDownLoadIOSAppProtocol @"itms-services://?action=download-manifest&url="
 #define YGDownLoadIOSAppUrl(plistUrl) [NSString stringWithFormat:@"%@%@", YGDownLoadIOSAppProtocol, plistUrl]
 
+#define UserDefault_Attr(attr,attrType) \
++ (attrType)attr; \
++ (void)set##attr:(attrType)attr;
 
+#define UserDefaultkey(attr)      [NSString stringWithFormat:@"UserDefaultKey_%s", #attr]
+
+#define UserDefault_AttrImpl(attr,attrType) \
++ (attrType)attr \
+{ \
+return [[NSUserDefaults standardUserDefaults] objectForKey:UserDefaultkey(attr)]; \
+}\
++ (void)set##attr:(attrType)attr \
+{\
+[[NSUserDefaults standardUserDefaults] setObject:attr forKey:UserDefaultkey(attr)];\
+[[NSUserDefaults standardUserDefaults] synchronize];\
+}
+
+#define UserDefault_AttrBoolImpl(attr,attrType) \
++ (attrType)attr \
+{ \
+return [[NSUserDefaults standardUserDefaults] boolForKey:UserDefaultkey(attr)]; \
+}\
++ (void)set##attr:(attrType)attr \
+{\
+[[NSUserDefaults standardUserDefaults] setBool:attr forKey:UserDefaultkey(attr)];\
+[[NSUserDefaults standardUserDefaults] synchronize];\
+}
+
+#define UserDefault_AttrIntegerImpl(attr,attrType) \
++ (attrType)attr \
+{ \
+return [[NSUserDefaults standardUserDefaults] integerForKey:UserDefaultkey(attr)]; \
+}\
++ (void)set##attr:(attrType)attr \
+{\
+[[NSUserDefaults standardUserDefaults] setInteger:attr forKey:UserDefaultkey(attr)];\
+[[NSUserDefaults standardUserDefaults] synchronize];\
+}
 
 typedef void(^YGRequestCompletionHandle)(id result, NSError *error);
 

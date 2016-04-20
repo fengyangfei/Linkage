@@ -121,7 +121,6 @@
 		8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E31CA0436C00DBEB9F /* AddressViewController.m */; };
 		8B7172E71CA0443300DBEB9F /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */; };
 		8B8284891CA57EA9001B36C1 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8284881CA57EA9001B36C1 /* Company.m */; };
-		8B82848C1CA58A16001B36C1 /* GlobalVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B82848B1CA58A16001B36C1 /* GlobalVariable.m */; };
 		8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F266F1C89C83D001B187E /* RegisterViewController.m */; };
 		8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */; };
 		8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26761C89DD89001B187E /* ForgotPasswordController.m */; };
@@ -149,6 +148,8 @@
 		8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */; };
 		8BDBB7D11C9859CD00D60207 /* BillDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7D01C9859CD00D60207 /* BillDataSource.m */; };
 		8BE25B091CC7AF970073BD8D /* MTLModel+Merge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE25B081CC7AF970073BD8D /* MTLModel+Merge.m */; };
+		8BE25B101CC7D0540073BD8D /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE25B0D1CC7D0540073BD8D /* Base64.m */; };
+		8BE25B111CC7D0540073BD8D /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE25B0F1CC7D0540073BD8D /* CocoaSecurity.m */; };
 		8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE996511C96EBFF008B4B13 /* AXRatingView.m */; };
 		8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C11CA61423007B924B /* XLFormViewController+ImagePicker.m */; };
 		8BEC33C61CA6160D007B924B /* AvatarFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C51CA6160D007B924B /* AvatarFormCell.m */; };
@@ -441,8 +442,6 @@
 		8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAddressViewController.m; sourceTree = "<group>"; };
 		8B8284871CA57EA9001B36C1 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
 		8B8284881CA57EA9001B36C1 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
-		8B82848A1CA58A16001B36C1 /* GlobalVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVariable.h; sourceTree = "<group>"; };
-		8B82848B1CA58A16001B36C1 /* GlobalVariable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVariable.m; sourceTree = "<group>"; };
 		8B8F266E1C89C83D001B187E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		8B8F266F1C89C83D001B187E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		8B8F26721C89DC72001B187E /* TRFormTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRFormTextFieldCell.h; sourceTree = "<group>"; };
@@ -494,6 +493,11 @@
 		8BDBB7D01C9859CD00D60207 /* BillDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillDataSource.m; sourceTree = "<group>"; };
 		8BE25B071CC7AF970073BD8D /* MTLModel+Merge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTLModel+Merge.h"; sourceTree = "<group>"; };
 		8BE25B081CC7AF970073BD8D /* MTLModel+Merge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTLModel+Merge.m"; sourceTree = "<group>"; };
+		8BE25B0A1CC7CC930073BD8D /* LinkConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkConstants.h; sourceTree = "<group>"; };
+		8BE25B0C1CC7D0540073BD8D /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		8BE25B0D1CC7D0540073BD8D /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		8BE25B0E1CC7D0540073BD8D /* CocoaSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSecurity.h; sourceTree = "<group>"; };
+		8BE25B0F1CC7D0540073BD8D /* CocoaSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSecurity.m; sourceTree = "<group>"; };
 		8BE996501C96EBFF008B4B13 /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
 		8BE996511C96EBFF008B4B13 /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
 		8BEC33C01CA61423007B924B /* XLFormViewController+ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XLFormViewController+ImagePicker.h"; sourceTree = "<group>"; };
@@ -868,8 +872,7 @@
 				8B5DC67E1C79D0DB00D29292 /* services */,
 				8B5DC57F1C79B8A700D29292 /* thirdClass */,
 				8B5DC6591C79BACA00D29292 /* TRConstants.h */,
-				8B82848A1CA58A16001B36C1 /* GlobalVariable.h */,
-				8B82848B1CA58A16001B36C1 /* GlobalVariable.m */,
+				8BE25B0A1CC7CC930073BD8D /* LinkConstants.h */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 		8B5DC57F1C79B8A700D29292 /* thirdClass */ = {
 			isa = PBXGroup;
 			children = (
+				8BE25B0B1CC7D0540073BD8D /* CocoaSecurity */,
 				8B0060301CABFABC001B0FC9 /* MTLManagedObjectAdapter */,
 				9AEF89AE1CA1274600C5EB90 /* MJPhotoBrowser */,
 				8BE9964F1C96EBFF008B4B13 /* AXRatingView */,
@@ -1334,6 +1338,17 @@
 				8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		8BE25B0B1CC7D0540073BD8D /* CocoaSecurity */ = {
+			isa = PBXGroup;
+			children = (
+				8BE25B0C1CC7D0540073BD8D /* Base64.h */,
+				8BE25B0D1CC7D0540073BD8D /* Base64.m */,
+				8BE25B0E1CC7D0540073BD8D /* CocoaSecurity.h */,
+				8BE25B0F1CC7D0540073BD8D /* CocoaSecurity.m */,
+			);
+			path = CocoaSecurity;
 			sourceTree = "<group>";
 		};
 		8BE9964F1C96EBFF008B4B13 /* AXRatingView */ = {
@@ -1888,6 +1903,7 @@
 				8B5DC61D1C79B8A700D29292 /* IFTTTAnimator.m in Sources */,
 				8B5DC6291C79B8A700D29292 /* IFTTTLayerStrokeStartAnimation.m in Sources */,
 				8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */,
+				8BE25B101CC7D0540073BD8D /* Base64.m in Sources */,
 				8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */,
 				9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */,
 				8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */,
@@ -1896,6 +1912,7 @@
 				9A23A2C41C7AE1B100FB5EB6 /* LoginViewController.m in Sources */,
 				8B986F651CC50A7E002DDA68 /* ChangePasswordController.m in Sources */,
 				9ACEBC701C99492A0000ACBF /* CargoModel.m in Sources */,
+				8BE25B111CC7D0540073BD8D /* CocoaSecurity.m in Sources */,
 				9A23A3201C7E8EA900FB5EB6 /* ICETutorialPage.m in Sources */,
 				9AEF89C11CA1274600C5EB90 /* MJPhotoToolbar.m in Sources */,
 				9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */,
@@ -1982,7 +1999,6 @@
 				8B8284891CA57EA9001B36C1 /* Company.m in Sources */,
 				8B5DC6581C79B9A200D29292 /* RMMapper.m in Sources */,
 				8B986F6C1CC50D7A002DDA68 /* AddCarViewController.m in Sources */,
-				8B82848C1CA58A16001B36C1 /* GlobalVariable.m in Sources */,
 				8B4221201CA42C6900F58D77 /* InvitationViewController.m in Sources */,
 				9A95FF411C89824F00C5F492 /* UIViewController+TRImagePicker.m in Sources */,
 				8B5DC6301C79B8A700D29292 /* IFTTTTextColorAnimation.m in Sources */,

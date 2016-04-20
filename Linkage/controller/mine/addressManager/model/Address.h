@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MTLModel+Merge.h"
 
-@interface Address : NSObject
+@interface Address : MTLModel<MTLJSONSerializingExt>
 @property (nonatomic, copy) NSString *phoneNum;
 @property (nonatomic, copy) NSString *address;
 -(BOOL)save;

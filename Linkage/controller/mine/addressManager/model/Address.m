@@ -12,20 +12,10 @@
 
 @implementation Address
 
--(void)encodeWithCoder:(NSCoder *)aCoder
++ (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    [aCoder encodeObject:self.phoneNum forKey:phoneNum];
-    [aCoder encodeObject:self.address forKey:address];
-}
-
--(id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super init];
-    if (self) {
-        self.phoneNum = [aDecoder decodeObjectForKey:phoneNum];
-        self.address = [aDecoder decodeObjectForKey:address];
-    }
-    return self;
+    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    return keyDic;
 }
 
 -(BOOL)save
