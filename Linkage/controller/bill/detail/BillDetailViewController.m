@@ -147,7 +147,7 @@
 - (HMSegmentedControl *)segmentedControl
 {
     HMSegmentedControl *segmentedControl = [super segmentedControl];
-    segmentedControl.sectionTitles = @[@"订单进度", @"订单详情"];
+    segmentedControl.sectionTitles = @[@"订单详情", @"货柜详情"];
     return segmentedControl;
 }
 
