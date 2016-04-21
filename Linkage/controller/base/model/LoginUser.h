@@ -24,6 +24,7 @@ typedef NS_ENUM(NSUInteger,UserType) {
 };
 
 @interface LoginUser : MTLModel<MTLJSONSerializingExt>
+@property (nonatomic,copy) NSString *cid;
 @property (nonatomic,copy) NSString *userId;
 @property (nonatomic,copy) NSString *userName;
 @property (nonatomic,copy) NSString *password;
