@@ -61,7 +61,9 @@
     else{
         self.textLabel.textColor = nil;
     }
-    self.detailTextLabel.text = [self.rowDescriptor.value displayText];
+    if (self.rowDescriptor.value) {
+        self.detailTextLabel.text = [self.rowDescriptor.value displayText];
+    }
 }
 
 
