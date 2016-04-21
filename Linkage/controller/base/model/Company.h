@@ -9,7 +9,7 @@
 #import <Mantle/Mantle.h>
 #import "MTLManagedObjectAdapter.h"
 
-@interface Company : MTLModel<MTLJSONSerializing>
+@interface Company : MTLModel<MTLJSONSerializing,XLFormOptionObject>
 @property (nonatomic,copy) NSString *logo;
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,copy) NSString *introduction;

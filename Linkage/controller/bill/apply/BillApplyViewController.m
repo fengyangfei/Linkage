@@ -13,6 +13,12 @@
 #import "CargoFormRowDescriptor.h"
 #import "TRImagePickerDelegate.h"
 #import "BFPaperButton.h"
+#import "FormOptionsViewController.h"
+
+#define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
+[row.cellConfig setObject:[UIColor blackColor] forKey:@"textLabel.textColor"];\
+row.cellStyle = UITableViewCellStyleValue1;
+#define RowPlaceHolderUI(str) [row.cellConfigAtConfigure setObject:str forKey:@"detailTextLabel.text"];
 
 @interface BillApplyViewController ()
 
@@ -50,7 +56,10 @@
     [section addFormRow:row];
      */
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company_id" rowType:XLFormRowDescriptorTypeText title:@"承运商"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company_id" rowType:XLFormRowDescriptorTypeButton title:@"承运商"];
+    RowUI
+    RowPlaceHolderUI(@"请选择承运商")
+    row.action.viewControllerClass = [CompanyOptionsViewController class];
     [section addFormRow:row];
     
     //货柜

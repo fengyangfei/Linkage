@@ -154,6 +154,7 @@
 		8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C11CA61423007B924B /* XLFormViewController+ImagePicker.m */; };
 		8BEC33C61CA6160D007B924B /* AvatarFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C51CA6160D007B924B /* AvatarFormCell.m */; };
 		8BEC33CC1CA6A43E007B924B /* UIImageView+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33CB1CA6A43E007B924B /* UIImageView+Cache.m */; };
+		9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3741CC8BBB0009BC8C9 /* FormOptionsViewController.m */; };
 		9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */; };
 		9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A81C7A91D400FB5EB6 /* UIColor+BFPaperColors.m */; };
 		9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2B01C7AAA3D00FB5EB6 /* MainViewController.m */; };
@@ -506,6 +507,8 @@
 		8BEC33C51CA6160D007B924B /* AvatarFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarFormCell.m; sourceTree = "<group>"; };
 		8BEC33CA1CA6A43E007B924B /* UIImageView+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Cache.h"; sourceTree = "<group>"; };
 		8BEC33CB1CA6A43E007B924B /* UIImageView+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cache.m"; sourceTree = "<group>"; };
+		9A05C3731CC8BBB0009BC8C9 /* FormOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormOptionsViewController.h; sourceTree = "<group>"; };
+		9A05C3741CC8BBB0009BC8C9 /* FormOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormOptionsViewController.m; sourceTree = "<group>"; };
 		9A23A2A51C7A91D400FB5EB6 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
 		9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
 		9A23A2A71C7A91D400FB5EB6 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -1663,6 +1666,8 @@
 				9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */,
 				8BA130551C9D93E4007607F9 /* SOImageFormCell.h */,
 				8BA130561C9D93E4007607F9 /* SOImageFormCell.m */,
+				9A05C3731CC8BBB0009BC8C9 /* FormOptionsViewController.h */,
+				9A05C3741CC8BBB0009BC8C9 /* FormOptionsViewController.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1962,6 +1967,7 @@
 				9A23A2F91C7D9FE100FB5EB6 /* LoginBaseViewController.m in Sources */,
 				8B44450D1C7C9EFE00160DC2 /* SDCollectionViewCell.m in Sources */,
 				8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */,
+				9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */,
 				9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */,
 				8B5DC61B1C79B8A700D29292 /* IFTTTAnimatedScrollViewController.m in Sources */,
 				8B5DC6361C79B8A700D29292 /* TRTheme.m in Sources */,

@@ -25,6 +25,7 @@
 
 #import "XLFormRowDescriptor.h"
 #import "XLFormButtonCell.h"
+#import "NSObject+XLFormAdditions.h"
 
 @implementation XLFormButtonCell
 
@@ -60,7 +61,7 @@
     else{
         self.textLabel.textColor = nil;
     }
-    self.detailTextLabel.text = self.rowDescriptor.value;
+    self.detailTextLabel.text = [self.rowDescriptor.value displayText];
 }
 
 

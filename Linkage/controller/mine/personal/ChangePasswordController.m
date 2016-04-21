@@ -7,6 +7,7 @@
 //
 
 #import "ChangePasswordController.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @implementation ChangePasswordController
 
@@ -54,8 +55,19 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"confirmpassword" rowType:XLFormRowDescriptorTypePassword title:@"确认新密码"];
     [section addFormRow:row];
     
+    WeakSelf
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"修改"];
+    row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        [weakSelf clickAction:sender];
+    };
+    [section addFormRow:row];
+    
     return form;
 }
 
+//修改
+-(void)clickAction:(XLFormRowDescriptor *)sender
+{
+}
 
 @end

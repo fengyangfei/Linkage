@@ -25,6 +25,16 @@
     return [keyDic mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
 }
 
+-(NSString *)formDisplayText
+{
+    return _name;
+}
+
+-(id)formValue
+{
+    return _companyId;
+}
+
 //保存
 static Company *company;
 -(BOOL)save
