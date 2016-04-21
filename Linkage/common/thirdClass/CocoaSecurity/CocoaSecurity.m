@@ -506,3 +506,11 @@
 }
 
 @end
+
+@implementation NSString(Security)
+-(NSString *)md5
+{
+    CocoaSecurityResult *result = [CocoaSecurity md5:self];
+    return [result utf8String];
+}
+@end

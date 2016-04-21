@@ -2,7 +2,6 @@
 //  UIViewController+Extensions.m
 //  TechnologyTemplate
 //
-//  Created by leitaiyuan on 15/7/24.
 //  Copyright (c) 2015年 leitaiyuan. All rights reserved.
 //
 

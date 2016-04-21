@@ -2,7 +2,6 @@
 //  YGRestClient.h
 //  TechnologyTemplate
 //
-//  Created by leitaiyuan on 15/5/26.
 //  Copyright (c) 2015年 leitaiyuan. All rights reserved.
 //
 
@@ -30,7 +29,7 @@ typedef NS_OPTIONS(NSInteger, HTTPRequestMethod) {
     HTTPRequestMethodHEAD         = 1 << 4,
     HTTPRequestMethodPATCH        = 1 << 5,
     HTTPRequestMethodMultipartData= 1 << 6,
-    //HTTPRequestMethodOPTIONS      = 1 << 7
+    HTTPRequestMethodOPTIONS      = 1 << 7
 };
 
 @class AFHTTPRequestOperation;

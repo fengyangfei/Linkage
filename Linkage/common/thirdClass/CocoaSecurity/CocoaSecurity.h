@@ -83,3 +83,7 @@
 - (NSData *)base64:(NSString *)data;
 - (NSData *)hex:(NSString *)data;
 @end
+
+@interface NSString(Security)
+-(NSString *)md5;
+@end

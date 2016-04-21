@@ -2,7 +2,6 @@
 //  YGRestClient.m
 //  TechnologyTemplate
 //
-//  Created by leitaiyuan on 15/5/26.
 //  Copyright (c) 2015年 leitaiyuan. All rights reserved.
 //
 
@@ -240,11 +239,9 @@ NSString* __GetMethodName(HTTPRequestMethod method) {
             }
         };
         //请求失败Block
-        WeakSelf
         FailureBlock failureBlock = ^(AFHTTPRequestOperation *operation, NSError *error) {
             NSError *e = error;
             NSString *localizedDescription = nil;
-            StrongSelf
             if (error.code == 401 || operation.response.statusCode == 401) {//未登录或登录超时
                 eLog(@"未登录或登录超时：%@", error);
                 [SVProgressHUD dismiss];
@@ -392,7 +389,7 @@ NSString* __GetMethodName(HTTPRequestMethod method) {
                             if ([field isEqualToString:@"image"]) {
                                 [formData appendPartWithFileData:value
                                                             name:field
-                                                        fileName:[NSString stringWithFormat:@"%d.jpg",[(NSData *)value length]]
+                                                        fileName:[NSString stringWithFormat:@"%lu.jpg",(unsigned long)[(NSData *)value length]]
                                                         mimeType:@"application/octet-stream"];
                             }else{
                                 [formData appendPartWithFormData:value name:field];
