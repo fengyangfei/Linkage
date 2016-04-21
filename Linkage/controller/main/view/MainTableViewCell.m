@@ -60,7 +60,7 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 
 -(void)clickAction:(id)sender
 {
-    UIViewController *controller = [[BillTypeViewController alloc] init];
+    UIViewController *controller = [[BillTypeViewController alloc] initWithCompany:self.rowDescriptor.value];
     controller.hidesBottomBarWhenPushed = YES;
     [self.formViewController.navigationController pushViewController:controller animated:YES];
 }
