@@ -19,10 +19,24 @@
                                 @"address":@"contact_address",
                                 @"contactor":@"contact_name",
                                 @"contactorPhone":@"contact_phone",
+                                @"orderNum":@"order_num",
                                 @"introduction":@"description"
                              };
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     return [keyDic mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
+}
+
++ (NSValueTransformer *)orderNumJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if (value != nil && [value isKindOfClass:[NSNumber class]]) {
+            return value;
+        }else if (value != nil && [value isKindOfClass:[NSString class]]) {
+            return @([value intValue]);
+        }else{
+            return @(0);
+        }
+    }];
 }
 
 -(NSString *)formDisplayText

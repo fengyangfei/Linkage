@@ -38,9 +38,11 @@
             LATabBarController *tabBarController = [[LATabBarController alloc]init];
             [weakSelf presentViewController:tabBarController animated:YES completion:nil];
         }else{
+            NSLog(@"%@",error);
             [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@" ,error]];
         }
     } failure:^(NSError *error) {
+        NSLog(@"%@",error);
         [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
 }
