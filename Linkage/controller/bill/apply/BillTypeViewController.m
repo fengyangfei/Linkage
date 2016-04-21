@@ -9,14 +9,25 @@
 #import "BillTypeViewController.h"
 #import "BillApplyViewController.h"
 #import "Order.h"
+#import "Company.h"
 
 #define kBillTypeArray @[@"出口订单",@"进口订单",@"自备柜配送"]
 @interface BillTypeViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) Company *company;
 @end
 
 @implementation BillTypeViewController
 @synthesize tableView = _tableView;
+
+-(instancetype)initWithCompany:(Company *)company
+{
+    self = [super init];
+    if (self) {
+        self.company = company;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,11 +64,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     BillApplyViewController *billApplyVC;
     if (indexPath.row == OrderTypeExport) {
-        billApplyVC = [[BillExportApplyViewController alloc]init];
+        billApplyVC = [[BillExportApplyViewController alloc]initWithCompany:self.company];
     }else if(indexPath.row == OrderTypeImport){
-        billApplyVC = [[BillImportApplyViewController alloc]init];
+        billApplyVC = [[BillImportApplyViewController alloc]initWithCompany:self.company];
     }else if(indexPath.row == OrderTypeSelf){
-        billApplyVC = [[BillSelfApplyViewController alloc]init];
+        billApplyVC = [[BillSelfApplyViewController alloc]initWithCompany:self.company];
     }
     [self.navigationController pushViewController:billApplyVC animated:YES];
 }

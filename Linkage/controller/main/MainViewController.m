@@ -9,6 +9,8 @@
 #import "MainViewController.h"
 #import "MainTableViewCell.h"
 #import "BillTypeViewController.h"
+#import "LoginUser.h"
+#import "Company.h"
 
 @interface MainViewController ()
 
@@ -37,12 +39,12 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    for (int i = 0; i < 10; i++) {
+    for (Company *company in [LoginUser shareInstance].companies) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:CompanyDescriporType];
-        row.action.viewControllerClass = [BillTypeViewController class];
+        row.value = company;
         [section addFormRow:row];
     }
-    
+
     return form;
 }
 

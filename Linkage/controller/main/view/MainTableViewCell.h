@@ -7,6 +7,7 @@
 //
 
 #import <XLForm/XLForm.h>
+#import "AXRatingView.h"
 
 extern NSString *const CompanyDescriporType;
 
@@ -19,7 +20,7 @@ extern NSString *const CompanyDescriporType;
 @property (nonatomic, readonly) UIImageView *iconView;
 @property (nonatomic, readonly) UILabel *titleLabel;
 @property (nonatomic, readonly) UILabel *subTitleLabel;
-@property (nonatomic, readonly) UIView *ratingView;
+@property (nonatomic, readonly) AXRatingView *ratingView;
 @property (nonatomic, readonly) UIButton *button;
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "MainTableViewCell.h"
-#import "AXRatingView.h"
+#import "BillTypeViewController.h"
+#import "Company.h"
 
 NSString *const CompanyDescriporType = @"CompanyRowType";
 
@@ -41,9 +42,15 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 -(void)update
 {
     [super update];
-    self.iconView.image = [UIImage imageNamed:@"logo"];
-    self.titleLabel.text = @"承运商";
-    self.subTitleLabel.text  = @"已接123单";
+    Company *company = self.rowDescriptor.value;
+    if (company.logo) {
+        self.iconView.image =  [UIImage imageNamed:company.logo];
+    }else{
+        self.iconView.image =  [UIImage imageNamed:@"logo"];
+    }
+    self.titleLabel.text = company.name;
+    self.subTitleLabel.text  = [NSString stringWithFormat:@"已接%@单", company.orderNum];
+    self.ratingView.value = MIN(MAX([company.score intValue], 0),5);
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
@@ -53,11 +60,9 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 
 -(void)clickAction:(id)sender
 {
-    if (self.rowDescriptor.action.viewControllerClass){
-        UIViewController *controller = [[self.rowDescriptor.action.viewControllerClass alloc] init];
-        controller.hidesBottomBarWhenPushed = YES;
-        [self.formViewController.navigationController pushViewController:controller animated:YES];
-    }
+    UIViewController *controller = [[BillTypeViewController alloc] init];
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.formViewController.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)setupUI
@@ -129,16 +134,12 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
     return _subTitleLabel;
 }
 
--(UIView *)ratingView
+-(AXRatingView *)ratingView
 {
     if (!_ratingView) {
-        _ratingView = ({
-            AXRatingView *axRatinView = [[AXRatingView alloc]initWithFrame:CGRectZero];
-            axRatinView.enabled = NO;
-            [axRatinView setStepInterval:1.0];
-            axRatinView.value = 4.0;
-            axRatinView;
-        });
+        _ratingView = [[AXRatingView alloc]initWithFrame:CGRectZero];
+        _ratingView.enabled = NO;
+        _ratingView.value = 0;
     }
     return _ratingView;
 }

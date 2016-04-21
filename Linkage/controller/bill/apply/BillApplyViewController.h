@@ -7,9 +7,10 @@
 //
 
 #import <XLForm/XLForm.h>
+@class Company;
 
 @interface BillApplyViewController : XLFormViewController
-
+- (instancetype)initWithCompany:(Company *)company;
 @end
 
 //进口订单

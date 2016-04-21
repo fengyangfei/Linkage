@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Company;
 @interface BillTypeViewController : UIViewController
-
+- (instancetype)initWithCompany:(Company *)company;
 @end

@@ -14,6 +14,7 @@
 #import "TRImagePickerDelegate.h"
 #import "BFPaperButton.h"
 #import "FormOptionsViewController.h"
+#import "Company.h"
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
 [row.cellConfig setObject:[UIColor blackColor] forKey:@"textLabel.textColor"];\
@@ -33,14 +34,19 @@ row.cellStyle = UITableViewCellStyleValue1;
 
 - (instancetype)init
 {
+    return [self initWithCompany:nil];
+}
+
+- (instancetype)initWithCompany:(Company *)company
+{
     self = [super init];
     if (self) {
-        [self initializeForm];
+        [self initializeForm:company];
     }
     return self;
 }
 
-- (void)initializeForm
+- (void)initializeForm:(Company *)company
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
@@ -59,6 +65,9 @@ row.cellStyle = UITableViewCellStyleValue1;
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company_id" rowType:XLFormRowDescriptorTypeButton title:@"承运商"];
     RowUI
     RowPlaceHolderUI(@"请选择承运商")
+    if (company) {
+        row.value = company;
+    }
     row.action.viewControllerClass = [CompanyOptionsViewController class];
     [section addFormRow:row];
     
