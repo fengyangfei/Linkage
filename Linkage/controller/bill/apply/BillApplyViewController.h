@@ -23,6 +23,6 @@
 @end
 
 //自备柜配送订单
-@interface BillCustomApplyViewController : BillApplyViewController
+@interface BillSelfApplyViewController : BillApplyViewController
 
 @end

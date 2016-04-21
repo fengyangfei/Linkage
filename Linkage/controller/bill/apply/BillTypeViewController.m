@@ -8,6 +8,7 @@
 
 #import "BillTypeViewController.h"
 #import "BillApplyViewController.h"
+#import "Order.h"
 
 #define kBillTypeArray @[@"出口订单",@"进口订单",@"自备柜配送"]
 @interface BillTypeViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -51,12 +52,12 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     BillApplyViewController *billApplyVC;
-    if (indexPath.row == 0) {
+    if (indexPath.row == OrderTypeExport) {
         billApplyVC = [[BillExportApplyViewController alloc]init];
-    }else if(indexPath.row == 1){
+    }else if(indexPath.row == OrderTypeImport){
         billApplyVC = [[BillImportApplyViewController alloc]init];
-    }else{
-        billApplyVC = [[BillCustomApplyViewController alloc]init];
+    }else if(indexPath.row == OrderTypeSelf){
+        billApplyVC = [[BillSelfApplyViewController alloc]init];
     }
     [self.navigationController pushViewController:billApplyVC animated:YES];
 }
