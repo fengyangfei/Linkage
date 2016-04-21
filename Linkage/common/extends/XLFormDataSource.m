@@ -5,14 +5,33 @@
 //  Created by Mac mini on 16/3/28.
 //  Copyright © 2016年 LA. All rights reserved.
 //
-
 #import "XLFormDataSource.h"
-#import <XLForm/XLForm.h>
 #import "FormDescriptorCell.h"
+#import "ExpandFormSectionDescriptor.h"
+
+@interface XLFormRowDescriptor(_XLFormDataSource)
+
+@property (readonly) NSArray * observers;
+-(BOOL)evaluateIsDisabled;
+-(BOOL)evaluateIsHidden;
+
+@end
+
+@interface XLFormSectionDescriptor(_XLFormDataSource)
+
+-(BOOL)evaluateIsHidden;
+
+@end
+
+@interface XLFormDescriptor (_XLFormDataSource)
+
+@property NSMutableDictionary* rowObservers;
+
+@end
 
 @implementation XLFormDataSource
 
-- (instancetype)initWithViewController:(UIViewController *)viewController tableView:(UITableView *)tableView
+- (instancetype)initWithViewController:(UIViewController<FormViewController> *)viewController tableView:(UITableView *)tableView
 {
     self = [super init];
     if (self) {
@@ -20,6 +39,16 @@
         self.tableView = tableView;
     }
     return self;
+}
+
+-(void)setForm:(XLFormDescriptor *)form
+{
+    _form.delegate = nil;
+    _form = form;
+    _form.delegate = self;
+    if ([self.viewController isViewLoaded]){
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - XLFormViewControllerDelegate
@@ -34,6 +63,60 @@
     if ([cell respondsToSelector:@selector(formDescriptorCellDidSelectedWithViewController:)]){
         [cell formDescriptorCellDidSelectedWithViewController:self.viewController];
     }
+}
+
+-(void)deselectFormRow:(XLFormRowDescriptor *)formRow
+{
+    NSIndexPath * indexPath = [self.form indexPathOfFormRow:formRow];
+    if (indexPath){
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
+#pragma mark - XLFormDescriptorDelegate
+-(void)formRowHasBeenAdded:(XLFormRowDescriptor *)formRow atIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+}
+
+-(void)formRowHasBeenRemoved:(XLFormRowDescriptor *)formRow atIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+}
+
+-(void)formSectionHasBeenRemoved:(XLFormSectionDescriptor *)formSection atIndex:(NSUInteger)index
+{
+    [self.tableView beginUpdates];
+    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+}
+
+-(void)formSectionHasBeenAdded:(XLFormSectionDescriptor *)formSection atIndex:(NSUInteger)index
+{
+    [self.tableView beginUpdates];
+    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+}
+
+-(void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)formRow oldValue:(id)oldValue newValue:(id)newValue
+{
+    [self updateAfterDependentRowChanged:formRow];
+}
+
+-(void)formRowDescriptorPredicateHasChanged:(XLFormRowDescriptor *)formRow oldValue:(id)oldValue newValue:(id)newValue predicateType:(XLPredicateType)predicateType
+{
+    if (oldValue != newValue) {
+        [self updateAfterDependentRowChanged:formRow];
+    }
+}
+
+-(void)updateAfterDependentRowChanged:(XLFormRowDescriptor *)formRow
+{
+    [self updateFormRow:formRow];
 }
 
 #pragma mark - UITableViewDataSource
@@ -77,6 +160,15 @@
 }
 
 #pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    XLFormSectionDescriptor *sectionDescriptor = [self.form.formSections objectAtIndex:section];
+    if([sectionDescriptor conformsToProtocol:@protocol(ExpandFormSectionDescriptorDelegate)]){
+        return [((XLFormSectionDescriptor<ExpandFormSectionDescriptorDelegate> *)sectionDescriptor) heightForSectionHeader];
+    }
+    return 30;
+}
+
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return [[self.form.formSections objectAtIndex:section] title];
@@ -123,15 +215,6 @@
 }
 
 #pragma mark - Helpers
-
--(void)deselectFormRow:(XLFormRowDescriptor *)formRow
-{
-    NSIndexPath * indexPath = [self.form indexPathOfFormRow:formRow];
-    if (indexPath && self.tableView){
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    }
-}
-
 
 -(void)reloadFormRow:(XLFormRowDescriptor *)formRow
 {
