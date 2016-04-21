@@ -11,7 +11,25 @@
 @implementation Order
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    NSDictionary *keyMap = @{
+                                @"takeAddress":@"take_address",
+                                @"takeTime":@"take_time",
+                                @"deliveryAddress":@"delivery_address",
+                                @"deliverTime":@"delivery_time",
+                                @"deliveryAddress":@"port",
+                                @"deliverTime":@"delivery_time",
+                                @"port":@"port",
+                                @"customsIn":@"customs_in",
+                                @"shipCompany":@"ship_company",
+                                @"shipName":@"ship_name",
+                                @"shipScheduleNo":@"ship_schedule_no",
+                                @"isBookCargo":@"is_book_cargo",
+                                @"isTransferPort":@"is_transfer_port",
+                                @"memo":@"memo"
+                             };
+    NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    keys = [keys mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
+    return keys;
 }
 
 + (NSString *)managedObjectEntityName

@@ -41,13 +41,16 @@
     XLFormRowDescriptor * row;
     
     form = [XLFormDescriptor formDescriptor];
+    
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
+    
+    /*
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"billNum" rowType:XLFormRowDescriptorTypeText title:@"订单号"];
-    row.required = YES;
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"subCompany" rowType:XLFormRowDescriptorTypeText title:@"承运商"];
-    row.required = YES;
+     */
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company_id" rowType:XLFormRowDescriptorTypeText title:@"承运商"];
     [section addFormRow:row];
     
     //货柜
@@ -162,7 +165,7 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"arrivalDate" rowType:XLFormRowDescriptorTypeText title:@"提柜港口"];
     row.value = [NSDate date];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"deliveryDate" rowType:XLFormRowDescriptorTypeDateInline title:@"送货地址"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_address" rowType:XLFormRowDescriptorTypeDateInline title:@"送货地址"];
     row.value = [NSDate date];
     [section addFormRow:row];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"deliveryPort" rowType:XLFormRowDescriptorTypeDateInline title:@"到厂时间"];
@@ -209,15 +212,24 @@
     //日期与地点
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"packingAddress" rowType:XLFormRowDescriptorTypeText title:@"装货地址"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address" rowType:XLFormRowDescriptorTypeText title:@"装货地址"];
+    
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"arrivalDate" rowType:XLFormRowDescriptorTypeDateInline title:@"到厂时间"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeTime title:@"到厂时间"];
     row.value = [NSDate date];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"deliveryDate" rowType:XLFormRowDescriptorTypeDateInline title:@"到达时间"];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_address" rowType:XLFormRowDescriptorTypeText title:@"送货地址"];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeTime title:@"送货时间"];
     row.value = [NSDate date];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"deliveryPort" rowType:XLFormRowDescriptorTypeText title:@"提货港口"];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"port" rowType:XLFormRowDescriptorTypeText title:@"提货港口"];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_in" rowType:XLFormRowDescriptorTypeTime title:@"截关日期"];
     [section addFormRow:row];
     
     //SO图片
@@ -232,22 +244,23 @@
     //公司信息
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"headerCompany" rowType:XLFormRowDescriptorTypeText title:@"头程公司"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"ship_company" rowType:XLFormRowDescriptorTypeText title:@"头程公司"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"headerName" rowType:XLFormRowDescriptorTypeText title:@"头程船名"];
-    row.value = [NSDate date];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"ship_name" rowType:XLFormRowDescriptorTypeText title:@"头程船名"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"headerGrades" rowType:XLFormRowDescriptorTypeText title:@"头程班次"];
-    row.value = [NSDate date];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"ship_schedule_no" rowType:XLFormRowDescriptorTypeText title:@"头程班次"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"isDating" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否与头程约好柜"];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"is_book_cargo" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否与头程约好柜"];
     row.value = @YES;
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"isTransit" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否转关"];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"is_transfer_port" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否转关"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"isTransit" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否转关"];
-    [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"note" rowType:XLFormRowDescriptorTypeTextView title:@"备注"];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"memo" rowType:XLFormRowDescriptorTypeTextView title:@"备注"];
     [row.cellConfigAtConfigure setObject:@"请填写备注" forKey:@"textView.placeholder"];
     [section addFormRow:row];
 }

@@ -54,11 +54,13 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 //出口订单
 @interface ExportOrder : Order
 @property (nonatomic, copy) NSString *so;//图片
-@property (nonatomic, copy) NSString *customsIn;
-@property (nonatomic, copy) NSString *shipCompany;
-@property (nonatomic, copy) NSString *shipName;
-@property (nonatomic, copy) NSString *shipScheduleNo;
-@property (nonatomic, assign) BOOL  isBookCargo;
+@property (nonatomic, copy) NSString *customsIn;//截关日期
+@property (nonatomic, copy) NSString *shipCompany;//头程公司
+@property (nonatomic, copy) NSString *shipName;//头程船名
+@property (nonatomic, copy) NSString *shipScheduleNo;//头程班次
+@property (nonatomic, assign) BOOL  isBookCargo;//是否与头程越好柜
+@property (nonatomic, assign) BOOL  isTransferPort;//是否转关
+@property (nonatomic, copy) NSString *port;//港口
 @end
 
 typedef NS_ENUM(NSUInteger, DriverTaskStatus) {
