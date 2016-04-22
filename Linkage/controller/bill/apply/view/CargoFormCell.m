@@ -9,7 +9,6 @@
 #import "CargoFormCell.h"
 #import "Cargo.h"
 #import <BlocksKit/UIView+BlocksKit.h>
-#import "CargoTypeViewController.h"
 
 NSString * const kCargoRowDescriptroType = @"cargoRowType";
 @interface CargoFormCell()<UITextFieldDelegate>
@@ -75,9 +74,8 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
     WeakSelf
     _rowDescriptor = rowDescriptor;
     _rowDescriptor.onChangeBlock = ^(id oldValue, id newValue, XLFormRowDescriptor *rowDescriptor){
-        if ([oldValue isKindOfClass:[NSNumber class]] && [newValue isKindOfClass:[NSNumber class]]) {
-            NSDictionary *dic = [CargoTypeViewController cargoTypes];
-            [weakSelf.leftButton setTitle:[dic objectForKey:newValue] forState:UIControlStateNormal];
+        if ([oldValue isKindOfClass:[NSString class]] && [newValue isKindOfClass:[NSString class]]) {
+            [weakSelf.leftButton setTitle:newValue forState:UIControlStateNormal];
         }
     };
 }
