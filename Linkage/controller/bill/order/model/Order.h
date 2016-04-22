@@ -35,7 +35,7 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 @property (nonatomic, strong) NSDate *takeTime;//装货时间
 @property (nonatomic, copy) NSString *deliveryAddress;//交货地址
 @property (nonatomic, strong) NSDate *deliverTime;//交货时间
-@property (nonatomic, strong) NSDate *cargosCentExpire;//柜租到期日期
+@property (nonatomic, strong) NSDate *cargosRentExpire;//柜租到期日期
 @property (nonatomic, copy) NSString *memo;//备注
 @property (nonatomic, strong) NSDate *createTime;
 @property (nonatomic, strong) NSDate *updateTime;
@@ -51,6 +51,7 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 @property (nonatomic, copy) NSString *customsBroker;//报关行联系人
 @property (nonatomic, copy) NSString *customsHouseContact;//报关行联系人电话
 @property (nonatomic, copy) NSString *cargoCompany;//二程公司
+@property (nonatomic, assign) BOOL  isTransferPort;//是否转关
 @end
 
 //出口订单

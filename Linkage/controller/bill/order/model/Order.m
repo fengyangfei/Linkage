@@ -8,17 +8,15 @@
 
 #import "Order.h"
 #import "Cargo.h"
+#import "OrderModel.h"
 
 @implementation Order
+#pragma mark - MTLJSONSerializing
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos"]];
     return keys;
-}
-
-+ (NSString *)managedObjectEntityName
-{
-    return @"Order";
 }
 
 + (NSValueTransformer *)cargosJSONTransformer
@@ -26,14 +24,13 @@
     return [MTLJSONAdapter arrayTransformerWithModelClass:[Cargo class]];
 }
 
-+ (NSDictionary *)managedObjectKeysByPropertyKey
-{
-    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-}
-
 + (NSValueTransformer *)takeTimeJSONTransformer {
-    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *dateString, BOOL *success, NSError *__autoreleasing *error) {
-        return [self.dateFormatter dateFromString:dateString];
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id dateString, BOOL *success, NSError *__autoreleasing *error) {
+        if ([dateString isKindOfClass:[NSDate class]]) {
+            return dateString;
+        }else{
+            return [self.dateFormatter dateFromString:dateString];
+        }
     } reverseBlock:^id(NSDate *date, BOOL *success, NSError *__autoreleasing *error) {
         return [self.dateFormatter stringFromDate:date];
     }];
@@ -41,13 +38,29 @@
 
 + (Class)classForParsingJSONDictionary:(NSDictionary *)JSONDictionary
 {
-    if (JSONDictionary[@"cargoNo"] != nil) {
+    if (JSONDictionary[@"cargo_no"] != nil) {
         return [ImportOrder class];
     }
-    if (JSONDictionary[@"shipName"] != nil) {
+    if (JSONDictionary[@"ship_name"] != nil) {
         return [ExportOrder class];
     }
     return self;
+}
+
+#pragma mark - MTLManagedObjectSerializing
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass([OrderModel class]);
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+}
+
++ (NSValueTransformer *)cargosEntityAttributeTransformer
+{
+    return [MTLManagedObjectAdapter transformerForModelPropertiesOfClass:[CargoModel class]];
 }
 
 + (NSDateFormatter *)dateFormatter {
@@ -69,7 +82,7 @@
                              @"takeTime":@"take_time",
                              @"deliveryAddress":@"delivery_address",
                              @"deliverTime":@"delivery_time",
-                             @"cargosCentExpire":@"cargos_rent_expire",
+                             @"cargosRentExpire":@"cargos_rent_expire",
                              @"billNo":@"bill_no",
                              @"cargoNo":@"cargo_no",
                              @"cargoCompany":@"cargo_company",
@@ -80,7 +93,18 @@
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keys = [keys mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos"]];
     return keys;
+}
+
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass([ImportOrderModel class]);
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
 }
 @end
 
@@ -105,6 +129,7 @@
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keys = [keys mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos"]];
     return keys;
 }
 
@@ -127,6 +152,7 @@
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keys = [keys mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos"]];
     return keys;
 }
 @end

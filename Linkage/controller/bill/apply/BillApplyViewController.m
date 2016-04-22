@@ -154,12 +154,13 @@ row.cellStyle = UITableViewCellStyleValue1;
 {
     NSMutableDictionary *formValues = [[self formValues] mutableCopy];
     NSLog(@"formValues %@", formValues);
-    formValues[@"cargo"] = [formValues[@"cargos"] cargosStringValue];
     
     NSError *error;
     Order *order = [MTLJSONAdapter modelOfClass:[Order class] fromJSONDictionary:formValues error:&error];
-    if (error) {
-        OrderModel *orderModel = [MTLManagedObjectAdapter managedObjectFromModel:order insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
+    if (order && !error) {
+        order.cargos = formValues[@"cargos"];
+        NSLog(@"order %@", order);
+        [MTLManagedObjectAdapter managedObjectFromModel:order insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     }else{
         NSLog(@"%@",error);
@@ -218,7 +219,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address" rowType:XLFormRowDescriptorTypeText title:@"提货港口"];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDateTime title:@"提货时间"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"提货时间"];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_address" rowType:XLFormRowDescriptorTypeText title:@"送货地址"];

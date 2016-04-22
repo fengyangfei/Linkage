@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeCargos:(NSSet<CargoModel *> *)values;
 @end
 
-@interface ImportOrderModel : NSManagedObject
+@interface ImportOrderModel : OrderModel
 @property (nullable, nonatomic, retain) NSString *billNo;
 @property (nullable, nonatomic, retain) NSString *cargoNo;
 @property (nullable, nonatomic, retain) NSString *customsHouseContact;
