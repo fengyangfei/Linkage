@@ -9,7 +9,7 @@
 #import <Mantle/Mantle.h>
 #import <XLForm/XLForm.h>
 
-@interface Cargo : MTLModel<XLFormOptionObject, MTLJSONSerializing>
+@interface Cargo : MTLModel<XLFormOptionObject, MTLJSONSerializing, MTLManagedObjectSerializing>
 
 @property (nonatomic, strong) NSNumber *cargoId;
 @property (nonatomic, copy) NSString *cargoName;

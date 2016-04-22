@@ -7,6 +7,7 @@
 //
 
 #import "Cargo.h"
+#improt "OrderModel.h"
 
 @implementation Cargo
 
@@ -15,6 +16,18 @@
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     return keyDic;
 }
+
++ (NSString *)managedObjectEntityName
+{
+    return @"CargoModel";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    return keyDic;
+}
+
 
 +(Cargo *)cargoWithId:(NSNumber *)cargoId name:(NSString *)cargoName count:(NSNumber *)cargoCount
 {
