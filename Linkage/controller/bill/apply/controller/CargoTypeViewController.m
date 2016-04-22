@@ -37,7 +37,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    id cellObject =  [[self selectorOptions] objectAtIndex:indexPath.row];
+    id<XLFormOptionObject> cellObject =  [[self selectorOptions] objectAtIndex:indexPath.row];
     if (self.rowDescriptor.value){
         NSInteger index = [[self selectorOptions] formIndexForItem:self.rowDescriptor.value];
         if (index != NSNotFound){
@@ -47,7 +47,8 @@
         }
     }
     Cargo *cargoModel = (Cargo *)self.rowDescriptor.value;
-    cargoModel.cargoType = cellObject;
+    cargoModel.cargoId = [cellObject formValue];
+    cargoModel.cargoName = [cellObject formDisplayText];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     if ([self.parentViewController isKindOfClass:[UINavigationController class]]){
         [self.navigationController popViewControllerAnimated:YES];

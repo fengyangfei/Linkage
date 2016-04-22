@@ -9,6 +9,7 @@
 #import "CargoFormCell.h"
 #import "Cargo.h"
 #import <BlocksKit/UIView+BlocksKit.h>
+#import "CargoTypeViewController.h"
 
 NSString * const kCargoRowDescriptroType = @"cargoRowType";
 @interface CargoFormCell()<UITextFieldDelegate>
@@ -47,7 +48,7 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
     [super update];
     Cargo *model = self.rowDescriptor.value;
     [self.leftButton setTitle:[model displayText] forState:UIControlStateNormal];
-    self.rightTextField.text = model.cargoCount;
+    self.rightTextField.text = [model.cargoCount stringValue];
 }
 
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
@@ -74,8 +75,9 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
     WeakSelf
     _rowDescriptor = rowDescriptor;
     _rowDescriptor.onChangeBlock = ^(id oldValue, id newValue, XLFormRowDescriptor *rowDescriptor){
-        if ([oldValue isKindOfClass:[XLFormOptionsObject class]] && [newValue isKindOfClass:[XLFormOptionsObject class]]) {
-            [weakSelf.leftButton setTitle:[newValue displayText] forState:UIControlStateNormal];
+        if ([oldValue isKindOfClass:[NSNumber class]] && [newValue isKindOfClass:[NSNumber class]]) {
+            NSDictionary *dic = [CargoTypeViewController cargoTypes];
+            [weakSelf.leftButton setTitle:[dic objectForKey:newValue] forState:UIControlStateNormal];
         }
     };
 }
@@ -84,9 +86,9 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
 - (void)textFieldDidChange:(UITextField *)textField{
     Cargo *cargoModel = (Cargo *)self.rowDescriptor.value;
     if([self.rightTextField.text length] > 0) {
-        cargoModel.cargoCount = self.rightTextField.text;
+        cargoModel.cargoCount = @([self.rightTextField.text integerValue]);
     } else {
-        cargoModel.cargoCount = @"";
+        cargoModel.cargoCount = @(0);
     }
 }
 

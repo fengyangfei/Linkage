@@ -14,7 +14,7 @@
 - (void)dealloc
 {
     @try {
-        [self removeObserver:self forKeyPath:@"value.cargoType"];
+        [self removeObserver:self forKeyPath:@"value.cargoId"];
     }
     @catch (NSException * __unused exception) {}
 }
@@ -23,7 +23,7 @@
 {
     self = [super initWithTag:tag rowType:rowType title:title];
     if (self) {
-        [self addObserver:self forKeyPath:@"value.cargoType" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:0];
+        [self addObserver:self forKeyPath:@"value.cargoId" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:0];
     }
     return self;
 }
@@ -31,11 +31,11 @@
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    if (object == self && ([keyPath isEqualToString:@"value.cargoType"])){
+    if (object == self && ([keyPath isEqualToString:@"value.cargoId"])){
         if ([[change objectForKey:NSKeyValueChangeKindKey] isEqualToNumber:@(NSKeyValueChangeSetting)]){
-            Cargo *newValue = [change objectForKey:NSKeyValueChangeNewKey];
-            Cargo *oldValue = [change objectForKey:NSKeyValueChangeNewKey];
-            if ([keyPath isEqualToString:@"value.cargoType"]){
+            NSNumber *newValue = [change objectForKey:NSKeyValueChangeNewKey];
+            NSNumber *oldValue = [change objectForKey:NSKeyValueChangeOldKey];
+            if ([keyPath isEqualToString:@"value.cargoId"]){
                 if (self.onChangeBlock) {
                     self.onChangeBlock(oldValue, newValue, self);
                 }

@@ -5,9 +5,9 @@
         <attribute name="phoneNum" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="CargoModel" syncable="YES">
-        <attribute name="cargoCount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="typeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cargoCount" optional="YES" attributeType="Integer 64" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="cargoId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="cargoName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderModel" inverseName="cargos" inverseEntity="OrderModel" syncable="YES"/>
     </entity>
     <entity name="OrderModel" isAbstract="YES" syncable="YES">

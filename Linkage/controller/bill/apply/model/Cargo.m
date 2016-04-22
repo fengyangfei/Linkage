@@ -16,30 +16,25 @@
     return keyDic;
 }
 
-+(Cargo *)cargoModelWithType:(XLFormOptionsObject *)cargoType cargoCount:(NSString *)cargoCount
++(Cargo *)cargoWithId:(NSNumber *)cargoId name:(NSString *)cargoName count:(NSNumber *)cargoCount
 {
     Cargo *obj = [[Cargo alloc]init];
-    obj.cargoType = cargoType;
+    obj.cargoId = cargoId;
+    obj.cargoName = cargoName;
     obj.cargoCount = cargoCount;
     return obj;
-}
-
-+(Cargo *)cargoModelWithValue:(id)value displayText:(NSString *)displayText cargoCount:(NSString *)cargoCount
-{
-    XLFormOptionsObject *option = [XLFormOptionsObject formOptionsObjectWithValue:(id)value displayText:displayText];
-    return [self cargoModelWithType:option cargoCount:cargoCount];
 }
 
 #pragma mark - XLFormOptionObject
 
 -(NSString *)formDisplayText
 {
-    return self.cargoType.formDisplayText;
+    return self.cargoName;
 }
 
 -(id)formValue
 {
-    return self.cargoType.formValue;
+    return self.cargoId;
 }
 
 @end
@@ -49,7 +44,7 @@
 {
     NSMutableString *str = [NSMutableString string];
     for (Cargo *model in self) {
-        NSString *mStr = [NSString stringWithFormat:@"%@:%@;", model.cargoType.formValue, model.cargoCount];
+        NSString *mStr = [NSString stringWithFormat:@"%@:%@;", model.cargoId, model.cargoCount];
         [str appendString:mStr];
     }
     return str;

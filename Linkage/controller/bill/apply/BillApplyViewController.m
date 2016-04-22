@@ -136,9 +136,8 @@ row.cellStyle = UITableViewCellStyleValue1;
     CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
     NSDictionary *dic = [CargoTypeViewController cargoTypes];
     NSNumber *key = @(1);
-    row.value = [Cargo cargoModelWithValue:key displayText:[dic objectForKey:key] cargoCount:nil];
+    row.value = [Cargo cargoWithId:key name:[dic objectForKey:key] count:@(0)];
     row.action.viewControllerClass = [CargoTypeViewController class];
-    [[row cellConfig] setObject:@"输入货柜数量" forKey:@"rightTextField.placeholder"];
     return row;
 }
 
@@ -154,7 +153,6 @@ row.cellStyle = UITableViewCellStyleValue1;
     NSMutableDictionary *formValues = [[self formValues] mutableCopy];
     NSLog(@"formValues %@", formValues);
     formValues[@"cargo"] = [formValues[@"cargos"] cargosStringValue];
-    formValues[@"soImages"] = [formValues[@"soImages"] cargosStringValue];
 
     /*
      cargos =     (
