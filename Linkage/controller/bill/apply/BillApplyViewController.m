@@ -8,7 +8,7 @@
 
 #import "BillApplyViewController.h"
 #import "CargoFormCell.h"
-#import "CargoModel.h"
+#import "Cargo.h"
 #import "CargoTypeViewController.h"
 #import "CargoFormRowDescriptor.h"
 #import "TRImagePickerDelegate.h"
@@ -136,7 +136,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
     NSDictionary *dic = [CargoTypeViewController cargoTypes];
     NSNumber *key = @(1);
-    row.value = [CargoModel cargoModelWithValue:key displayText:[dic objectForKey:key] cargoCount:nil];
+    row.value = [Cargo cargoModelWithValue:key displayText:[dic objectForKey:key] cargoCount:nil];
     row.action.viewControllerClass = [CargoTypeViewController class];
     [[row cellConfig] setObject:@"输入货柜数量" forKey:@"rightTextField.placeholder"];
     return row;

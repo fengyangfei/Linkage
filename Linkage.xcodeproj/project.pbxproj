@@ -200,7 +200,7 @@
 		9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3A1C897EE800C5F492 /* TRFloatingModel.m */; };
 		9A95FF401C89824F00C5F492 /* TRImagePickerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3D1C89824F00C5F492 /* TRImagePickerDelegate.m */; };
 		9A95FF411C89824F00C5F492 /* UIViewController+TRImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3F1C89824F00C5F492 /* UIViewController+TRImagePicker.m */; };
-		9ACEBC701C99492A0000ACBF /* CargoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6C1C99492A0000ACBF /* CargoModel.m */; };
+		9ACEBC701C99492A0000ACBF /* Cargo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6C1C99492A0000ACBF /* Cargo.m */; };
 		9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */; };
 		9ACEBC751C9950E90000ACBF /* CargoTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC741C9950E90000ACBF /* CargoTypeViewController.m */; };
 		9ACEBCAA1C9BF25F0000ACBF /* TimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBCA91C9BF25F0000ACBF /* TimerManager.m */; };
@@ -585,8 +585,8 @@
 		9A95FF3D1C89824F00C5F492 /* TRImagePickerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRImagePickerDelegate.m; sourceTree = "<group>"; };
 		9A95FF3E1C89824F00C5F492 /* UIViewController+TRImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TRImagePicker.h"; sourceTree = "<group>"; };
 		9A95FF3F1C89824F00C5F492 /* UIViewController+TRImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TRImagePicker.m"; sourceTree = "<group>"; };
-		9ACEBC6B1C99492A0000ACBF /* CargoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoModel.h; sourceTree = "<group>"; };
-		9ACEBC6C1C99492A0000ACBF /* CargoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoModel.m; sourceTree = "<group>"; };
+		9ACEBC6B1C99492A0000ACBF /* Cargo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cargo.h; sourceTree = "<group>"; };
+		9ACEBC6C1C99492A0000ACBF /* Cargo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cargo.m; sourceTree = "<group>"; };
 		9ACEBC6E1C99492A0000ACBF /* CargoFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoFormCell.h; sourceTree = "<group>"; };
 		9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoFormCell.m; sourceTree = "<group>"; };
 		9ACEBC731C9950E90000ACBF /* CargoTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoTypeViewController.h; sourceTree = "<group>"; };
@@ -1657,8 +1657,8 @@
 		9ACEBC6A1C99492A0000ACBF /* model */ = {
 			isa = PBXGroup;
 			children = (
-				9ACEBC6B1C99492A0000ACBF /* CargoModel.h */,
-				9ACEBC6C1C99492A0000ACBF /* CargoModel.m */,
+				9ACEBC6B1C99492A0000ACBF /* Cargo.h */,
+				9ACEBC6C1C99492A0000ACBF /* Cargo.m */,
 				8BA130521C9D2B2D007607F9 /* CargoFormRowDescriptor.h */,
 				8BA130531C9D2B2D007607F9 /* CargoFormRowDescriptor.m */,
 				8BA130581C9D951B007607F9 /* SOImageModel.h */,
@@ -1926,7 +1926,7 @@
 				8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */,
 				9A23A2C41C7AE1B100FB5EB6 /* LoginViewController.m in Sources */,
 				8B986F651CC50A7E002DDA68 /* ChangePasswordController.m in Sources */,
-				9ACEBC701C99492A0000ACBF /* CargoModel.m in Sources */,
+				9ACEBC701C99492A0000ACBF /* Cargo.m in Sources */,
 				8BE25B111CC7D0540073BD8D /* CocoaSecurity.m in Sources */,
 				9A23A3201C7E8EA900FB5EB6 /* ICETutorialPage.m in Sources */,
 				9AEF89C11CA1274600C5EB90 /* MJPhotoToolbar.m in Sources */,

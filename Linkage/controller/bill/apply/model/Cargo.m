@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Xmartlabs. All rights reserved.
 //
 
-#import "CargoModel.h"
+#import "Cargo.h"
 
-@implementation CargoModel
+@implementation Cargo
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
@@ -16,15 +16,15 @@
     return keyDic;
 }
 
-+(CargoModel *)cargoModelWithType:(XLFormOptionsObject *)cargoType cargoCount:(NSString *)cargoCount
++(Cargo *)cargoModelWithType:(XLFormOptionsObject *)cargoType cargoCount:(NSString *)cargoCount
 {
-    CargoModel *obj = [[CargoModel alloc]init];
+    Cargo *obj = [[Cargo alloc]init];
     obj.cargoType = cargoType;
     obj.cargoCount = cargoCount;
     return obj;
 }
 
-+(CargoModel *)cargoModelWithValue:(id)value displayText:(NSString *)displayText cargoCount:(NSString *)cargoCount
++(Cargo *)cargoModelWithValue:(id)value displayText:(NSString *)displayText cargoCount:(NSString *)cargoCount
 {
     XLFormOptionsObject *option = [XLFormOptionsObject formOptionsObjectWithValue:(id)value displayText:displayText];
     return [self cargoModelWithType:option cargoCount:cargoCount];
@@ -48,7 +48,7 @@
 -(NSString *)cargosStringValue
 {
     NSMutableString *str = [NSMutableString string];
-    for (CargoModel *model in self) {
+    for (Cargo *model in self) {
         NSString *mStr = [NSString stringWithFormat:@"%@:%@;", model.cargoType.formValue, model.cargoCount];
         [str appendString:mStr];
     }

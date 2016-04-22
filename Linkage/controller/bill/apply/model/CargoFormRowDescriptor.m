@@ -7,7 +7,7 @@
 //
 
 #import "CargoFormRowDescriptor.h"
-#import "CargoModel.h"
+#import "Cargo.h"
 
 @implementation CargoFormRowDescriptor
 
@@ -33,8 +33,8 @@
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     if (object == self && ([keyPath isEqualToString:@"value.cargoType"])){
         if ([[change objectForKey:NSKeyValueChangeKindKey] isEqualToNumber:@(NSKeyValueChangeSetting)]){
-            CargoModel *newValue = [change objectForKey:NSKeyValueChangeNewKey];
-            CargoModel *oldValue = [change objectForKey:NSKeyValueChangeNewKey];
+            Cargo *newValue = [change objectForKey:NSKeyValueChangeNewKey];
+            Cargo *oldValue = [change objectForKey:NSKeyValueChangeNewKey];
             if ([keyPath isEqualToString:@"value.cargoType"]){
                 if (self.onChangeBlock) {
                     self.onChangeBlock(oldValue, newValue, self);

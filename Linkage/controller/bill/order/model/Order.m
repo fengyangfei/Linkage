@@ -7,7 +7,7 @@
 //
 
 #import "Order.h"
-#import "CargoModel.h"
+#import "Cargo.h"
 
 @implementation Order
 + (NSDictionary *)JSONKeyPathsByPropertyKey
@@ -23,7 +23,7 @@
 
 + (NSValueTransformer *)cargosJSONTransformer
 {
-    return [MTLJSONAdapter arrayTransformerWithModelClass:[CargoModel class]];
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[Cargo class]];
 }
 
 + (NSDictionary *)managedObjectKeysByPropertyKey

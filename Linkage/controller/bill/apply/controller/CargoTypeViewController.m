@@ -7,7 +7,7 @@
 //
 
 #import "CargoTypeViewController.h"
-#import "CargoModel.h"
+#import "Cargo.h"
 
 @implementation CargoTypeViewController
 @synthesize rowDescriptor = _rowDescriptor;
@@ -46,7 +46,7 @@
             oldSelectedCell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
-    CargoModel *cargoModel = (CargoModel *)self.rowDescriptor.value;
+    Cargo *cargoModel = (Cargo *)self.rowDescriptor.value;
     cargoModel.cargoType = cellObject;
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     if ([self.parentViewController isKindOfClass:[UINavigationController class]]){
