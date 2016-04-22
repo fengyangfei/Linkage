@@ -62,7 +62,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
      */
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company_id" rowType:XLFormRowDescriptorTypeButton title:@"承运商"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company" rowType:XLFormRowDescriptorTypeButton title:@"承运商"];
     RowUI
     RowPlaceHolderUI(@"请选择承运商")
     if (company) {
@@ -75,7 +75,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     section = [XLFormSectionDescriptor formSectionWithTitle:nil sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
     [form addFormSection:section];
     [section.multivaluedAddButton.cellConfig setObject:@"添加货柜" forKey:@"textLabel.text"];
-    section.multivaluedTag = @"cargo";
+    section.multivaluedTag = @"cargos";
     [section addFormRow:[self generateCargoRow]];
     
     //自定义Cell
@@ -151,10 +151,13 @@ row.cellStyle = UITableViewCellStyleValue1;
 #pragma mark - 事件
 -(void)submitForm:(id)sender
 {
-    NSDictionary *formValues = [self formValues];
+    NSMutableDictionary *formValues = [[self formValues] mutableCopy];
     NSLog(@"formValues %@", formValues);
+    formValues[@"cargo"] = [formValues[@"cargos"] cargosStringValue];
+    formValues[@"soImages"] = [formValues[@"soImages"] cargosStringValue];
+
     /*
-     cargo =     (
+     cargos =     (
      "<CargoModel: 0x7be15150>",
      "<CargoModel: 0x7bf29fa0>",
      "<CargoModel: 0x7e06d310>"
@@ -170,7 +173,7 @@ row.cellStyle = UITableViewCellStyleValue1;
      "ship_company" = 444;
      "ship_name" = 555;
      "ship_schedule_no" = 666;
-     soImage =     (
+     soImages =     (
      "<SOImageModel: 0x7bf043e0>",
      "<SOImageModel: 0x7e1551d0>"
      );
@@ -291,7 +294,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"SO图片"];
     [row.cellConfig setObject:@(NSTextAlignmentNatural) forKey:@"textLabel.textAlignment"];
     row.action.formSelector = NSSelectorFromString(@"addPhotoButtonTapped:");
-    section.multivaluedTag = @"soImage";
+    section.multivaluedTag = @"soImages";
     [section addFormRow:row];
     
     //公司信息

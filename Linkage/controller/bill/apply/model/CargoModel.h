@@ -6,14 +6,18 @@
 //  Copyright © 2016年 Xmartlabs. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Mantle/Mantle.h>
 #import <XLForm/XLForm.h>
 
-@interface CargoModel : NSObject<XLFormOptionObject>
+@interface CargoModel : MTLModel<XLFormOptionObject, MTLJSONSerializing>
 
 @property (nonatomic, strong) XLFormOptionsObject *cargoType;
 @property (nonatomic, copy) NSString *cargoCount;
 
 +(CargoModel *)cargoModelWithType:(XLFormOptionsObject *)cargoType cargoCount:(NSString *)cargoCount;
 +(CargoModel *)cargoModelWithValue:(id)value displayText:(NSString *)displayText cargoCount:(NSString *)cargoCount;
+@end
+
+@interface NSArray(CargoModel)
+-(NSString *)cargosStringValue;
 @end

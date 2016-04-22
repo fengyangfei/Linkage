@@ -41,6 +41,7 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 @property (nonatomic, strong) NSDate *updateTime;
 @property (nonatomic, assign) OrderStatus status;
 @property (nonatomic, copy) NSString *userId;
+@property (nonatomic, strong) NSArray *cargos;//货柜
 @end
 
 //进口订单

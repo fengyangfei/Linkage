@@ -6,11 +6,15 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Mantle/Mantle.h>
 
-@interface SOImageModel : NSObject
+@interface SOImageModel : MTLModel<MTLJSONSerializing>
 @property (nonatomic,strong) UIImage *photo;
 @property (nonatomic,strong) NSDate *createDate;
 @property (nonatomic,copy) NSString *photoName;
 
+@end
+
+@interface NSArray(SOImageModel)
+-(NSString *)soImageStringValue;
 @end

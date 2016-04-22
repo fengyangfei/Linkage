@@ -10,6 +10,12 @@
 
 @implementation CargoModel
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    return keyDic;
+}
+
 +(CargoModel *)cargoModelWithType:(XLFormOptionsObject *)cargoType cargoCount:(NSString *)cargoCount
 {
     CargoModel *obj = [[CargoModel alloc]init];
@@ -36,4 +42,16 @@
     return self.cargoType.formValue;
 }
 
+@end
+
+@implementation NSArray(CargoModel)
+-(NSString *)cargosStringValue
+{
+    NSMutableString *str = [NSMutableString string];
+    for (CargoModel *model in self) {
+        NSString *mStr = [NSString stringWithFormat:@"%@:%@;", model.cargoType.formValue, model.cargoCount];
+        [str appendString:mStr];
+    }
+    return str;
+}
 @end

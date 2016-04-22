@@ -4,8 +4,24 @@
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneNum" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="DocumentModel" representedClassName="DocumentModel" syncable="YES">
+    <entity name="OrderModel" isAbstract="YES" syncable="YES">
+        <attribute name="cargosCentExpire" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deliverTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deliveryAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="manufactureContactName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="manufactureContactTel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="manufactureId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="memo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="takeAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="takeTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="transporterContactName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transporterContractTel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transporterId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="PhotoModel" representedClassName="PhotoModel" syncable="YES">
@@ -15,7 +31,7 @@
     </entity>
     <elements>
         <element name="AddressModel" positionX="-63" positionY="0" width="128" height="75"/>
-        <element name="DocumentModel" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="PhotoModel" positionX="-63" positionY="9" width="128" height="90"/>
+        <element name="OrderModel" positionX="-63" positionY="27" width="128" height="315"/>
     </elements>
 </model>
