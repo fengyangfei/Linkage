@@ -8,6 +8,7 @@
 
 #import <Mantle/Mantle.h>
 #import <XLForm/XLForm.h>
+#import "MTLManagedObjectSerializing.h"
 
 @interface Cargo : MTLModel<XLFormOptionObject, MTLJSONSerializing, MTLManagedObjectSerializing>
 

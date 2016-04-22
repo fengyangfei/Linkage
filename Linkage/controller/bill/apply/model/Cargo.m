@@ -7,27 +7,9 @@
 //
 
 #import "Cargo.h"
-#improt "OrderModel.h"
+#import "OrderModel.h"
 
 @implementation Cargo
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey
-{
-    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    return keyDic;
-}
-
-+ (NSString *)managedObjectEntityName
-{
-    return @"CargoModel";
-}
-
-+ (NSDictionary *)managedObjectKeysByPropertyKey
-{
-    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    return keyDic;
-}
-
 
 +(Cargo *)cargoWithId:(NSNumber *)cargoId name:(NSString *)cargoName count:(NSNumber *)cargoCount
 {
@@ -36,6 +18,25 @@
     obj.cargoName = cargoName;
     obj.cargoCount = cargoCount;
     return obj;
+}
+
+#pragma mark - MTLJSONSerializing
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    return keyDic;
+}
+
+#pragma mark - MTLManagedObjectSerializing
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass([CargoModel class]);
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    return keyDic;
 }
 
 #pragma mark - XLFormOptionObject
