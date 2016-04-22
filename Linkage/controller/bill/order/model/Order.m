@@ -30,6 +30,33 @@
 {
     return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
 }
+
++ (NSValueTransformer *)takeTimeJSONTransformer {
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *dateString, BOOL *success, NSError *__autoreleasing *error) {
+        return [self.dateFormatter dateFromString:dateString];
+    } reverseBlock:^id(NSDate *date, BOOL *success, NSError *__autoreleasing *error) {
+        return [self.dateFormatter stringFromDate:date];
+    }];
+}
+
++ (Class)classForParsingJSONDictionary:(NSDictionary *)JSONDictionary
+{
+    if (JSONDictionary[@"cargoNo"] != nil) {
+        return [ImportOrder class];
+    }
+    if (JSONDictionary[@"shipName"] != nil) {
+        return [ExportOrder class];
+    }
+    return self;
+}
+
++ (NSDateFormatter *)dateFormatter {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+    return dateFormatter;
+}
+
 @end
 
 @implementation ImportOrder

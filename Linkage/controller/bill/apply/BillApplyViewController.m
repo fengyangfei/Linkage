@@ -15,6 +15,8 @@
 #import "BFPaperButton.h"
 #import "FormOptionsViewController.h"
 #import "Company.h"
+#import "Order.h"
+#import "OrderModel.h"
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
 [row.cellConfig setObject:[UIColor blackColor] forKey:@"textLabel.textColor"];\
@@ -153,12 +155,21 @@ row.cellStyle = UITableViewCellStyleValue1;
     NSMutableDictionary *formValues = [[self formValues] mutableCopy];
     NSLog(@"formValues %@", formValues);
     formValues[@"cargo"] = [formValues[@"cargos"] cargosStringValue];
-
+    
+    NSError *error;
+    Order *order = [MTLJSONAdapter modelOfClass:[Order class] fromJSONDictionary:formValues error:&error];
+    if (error) {
+        OrderModel *orderModel = [MTLManagedObjectAdapter managedObjectFromModel:order insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+    }else{
+        NSLog(@"%@",error);
+    }
+    
     /*
      cargos =     (
-     "<CargoModel: 0x7be15150>",
-     "<CargoModel: 0x7bf29fa0>",
-     "<CargoModel: 0x7e06d310>"
+     "<Cargo: 0x7be15150>",
+     "<Cargo: 0x7bf29fa0>",
+     "<Cargo: 0x7e06d310>"
      );
      "company_id" = "<Company: 0x7be096b0> {\n    address = zhuhai;\n    companyId = 10000;\n    companyImages = \"<null>\";\n    contactor = joe;\n    contactorPhone = 123456;\n    customerPhones = \"<null>\";\n    email = \"<null>\";\n    fax = \"<null>\";\n    introduction = \"\\U771f\\U7684\\U662f\\U4e00\\U5bb6\\U8fd0\\U8425\\U5546\";\n    logo = \"<null>\";\n    name = \"\\U6821\\U91cc\";\n    orderNum = 3;\n    phone1 = \"<null>\";\n    phone2 = \"<null>\";\n    phone3 = \"<null>\";\n    phone4 = \"<null>\";\n    score = 5;\n    url = \"<null>\";\n}";
      "customs_in" = "2016-04-21 14:58:10 +0000";
