@@ -25,6 +25,7 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 @interface Order : MTLModel<MTLJSONSerializing, MTLManagedObjectSerializing>
 @property (nonatomic, copy) NSString *orderId;
 @property (nonatomic, assign) OrderType type;
+@property (nonatomic, copy) NSString *companyId;//承运商ID
 @property (nonatomic, copy) NSString *manufactureId;//生产商ID
 @property (nonatomic, copy) NSString *transporterId;//输送商ID
 @property (nonatomic, copy) NSString *manufactureContactName;//厂商联系人

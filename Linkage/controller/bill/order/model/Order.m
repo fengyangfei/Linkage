@@ -10,13 +10,14 @@
 #import "Cargo.h"
 #import "OrderModel.h"
 
+#define kOrderRemoveKeys @[@"cargos",@"companyId",@"userId"]
 @implementation Order
 
 #pragma mark - MTLJSONSerializing
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:kOrderRemoveKeys];
     return keys;
 }
 
@@ -96,7 +97,7 @@
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keys = [keys mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:kOrderRemoveKeys];
     return keys;
 }
 
@@ -135,7 +136,7 @@
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keys = [keys mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:kOrderRemoveKeys];
     return keys;
 }
 
@@ -171,7 +172,7 @@
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keys = [keys mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:kOrderRemoveKeys];
     return keys;
 }
 @end

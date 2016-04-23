@@ -17,6 +17,7 @@
 #import "Company.h"
 #import "Order.h"
 #import "OrderModel.h"
+#import "OrderUtil.h"
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
 [row.cellConfig setObject:[UIColor blackColor] forKey:@"textLabel.textColor"];\
@@ -152,21 +153,13 @@ row.cellStyle = UITableViewCellStyleValue1;
 #pragma mark - 事件
 -(void)submitForm:(id)sender
 {
-    NSError *error;
-    NSMutableDictionary *formValues = [[self formValues] mutableCopy];
-    
-    Order *order = [MTLJSONAdapter modelOfClass:[Order class] fromJSONDictionary:formValues error:&error];
-    if (order && !error) {
-        order.cargos = formValues[@"cargos"];
-        OrderModel *orderModel = [MTLManagedObjectAdapter managedObjectFromModel:order insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
-        if (orderModel && !error) {
-            [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-        }else{
-            NSLog(@"%@",error);
-        }
-    }else{
-        NSLog(@"%@",error);
-    }
+    NSDictionary *formValues =  [self.form formValues];
+    Order *order = [OrderUtil modelFromXLFormValue:formValues];
+    [OrderUtil syncToServer:order success:^(id responseData) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
     
     /*
      cargos =     (
