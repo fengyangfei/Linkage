@@ -41,6 +41,7 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 @property (nonatomic, strong) NSDate *updateTime;
 @property (nonatomic, assign) OrderStatus status;
 @property (nonatomic, copy) NSString *userId;
+@property (nonatomic, assign) BOOL  isTransferPort;//是否转关
 @property (nonatomic, strong) NSArray *cargos;//货柜
 @end
 
@@ -51,7 +52,6 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 @property (nonatomic, copy) NSString *customsBroker;//报关行联系人
 @property (nonatomic, copy) NSString *customsHouseContact;//报关行联系人电话
 @property (nonatomic, copy) NSString *cargoCompany;//二程公司
-@property (nonatomic, assign) BOOL  isTransferPort;//是否转关
 @end
 
 //出口订单
@@ -62,7 +62,6 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 @property (nonatomic, copy) NSString *shipName;//头程船名
 @property (nonatomic, copy) NSString *shipScheduleNo;//头程班次
 @property (nonatomic, assign) BOOL  isBookCargo;//是否与头程越好柜
-@property (nonatomic, assign) BOOL  isTransferPort;//是否转关
 @property (nonatomic, copy) NSString *port;//港口
 @end
 
@@ -71,7 +70,6 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 @property (nonatomic, assign) BOOL isCustomsDeclare;//是否需要报关
 @property (nonatomic, strong) NSDate *customsIn;//报关时间
 @property (nonatomic, strong) NSDate *cargoTakeTime;//提货时间
-@property (nonatomic, assign) BOOL isTransferPort;//是否需要转关
 @end
 
 typedef NS_ENUM(NSUInteger, DriverTaskStatus) {

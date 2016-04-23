@@ -152,16 +152,18 @@ row.cellStyle = UITableViewCellStyleValue1;
 #pragma mark - 事件
 -(void)submitForm:(id)sender
 {
-    NSMutableDictionary *formValues = [[self formValues] mutableCopy];
-    NSLog(@"formValues %@", formValues);
-    
     NSError *error;
+    NSMutableDictionary *formValues = [[self formValues] mutableCopy];
+    
     Order *order = [MTLJSONAdapter modelOfClass:[Order class] fromJSONDictionary:formValues error:&error];
     if (order && !error) {
         order.cargos = formValues[@"cargos"];
-        NSLog(@"order %@", order);
-        [MTLManagedObjectAdapter managedObjectFromModel:order insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
-        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        OrderModel *orderModel = [MTLManagedObjectAdapter managedObjectFromModel:order insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
+        if (orderModel && !error) {
+            [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        }else{
+            NSLog(@"%@",error);
+        }
     }else{
         NSLog(@"%@",error);
     }
@@ -217,42 +219,54 @@ row.cellStyle = UITableViewCellStyleValue1;
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address" rowType:XLFormRowDescriptorTypeText title:@"提货港口"];
+    row.value= @"222";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"提货时间"];
+    row.value= [NSDate date];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_address" rowType:XLFormRowDescriptorTypeText title:@"送货地址"];
+    row.value= @"222";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDateTime title:@"送货时间"];
+    row.value= [NSDate date];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"cargos_rent_expire" rowType:XLFormRowDescriptorTypeDateTime title:@"柜租到期日期"];
+    row.value= [NSDate date];
     [section addFormRow:row];
     
     //订单信息
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"bill_no" rowType:XLFormRowDescriptorTypeText title:@"提单号"];
+    row.value= @"222";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"cargo_no" rowType:XLFormRowDescriptorTypeText title:@"柜号"];
+    row.value= @"222";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"cargo_company" rowType:XLFormRowDescriptorTypeText title:@"二程公司"];
+    row.value= @"222";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_broker" rowType:XLFormRowDescriptorTypeText title:@"报关行联系人"];
+    row.value= @"222";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_contact" rowType:XLFormRowDescriptorTypeText title:@"报关行联系人电话"];
+    row.value= @"222";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"is_transfer_port" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否转关"];
+    row.value = @(YES);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"memo" rowType:XLFormRowDescriptorTypeTextView title:@"备注"];
+    row.value= @"222";
     [row.cellConfigAtConfigure setObject:@"请填写备注" forKey:@"textView.placeholder"];
     [section addFormRow:row];
 }
@@ -278,14 +292,17 @@ row.cellStyle = UITableViewCellStyleValue1;
     //日期与地点
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address" rowType:XLFormRowDescriptorTypeText title:@"装货地址"];
     
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address" rowType:XLFormRowDescriptorTypeText title:@"装货地址"];
+    row.value= @"333";
     [section addFormRow:row];
+    
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDateTime title:@"到厂时间"];
     row.value = [NSDate date];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_address" rowType:XLFormRowDescriptorTypeText title:@"送货地址"];
+    row.value= @"333";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDateTime title:@"送货时间"];
@@ -293,6 +310,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"port" rowType:XLFormRowDescriptorTypeText title:@"提货港口"];
+    row.value= @"333";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_in" rowType:XLFormRowDescriptorTypeDateTime title:@"截关日期"];
@@ -310,13 +328,17 @@ row.cellStyle = UITableViewCellStyleValue1;
     //公司信息
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
+    
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"ship_company" rowType:XLFormRowDescriptorTypeText title:@"头程公司"];
+    row.value= @"333";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"ship_name" rowType:XLFormRowDescriptorTypeText title:@"头程船名"];
+    row.value= @"333";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"ship_schedule_no" rowType:XLFormRowDescriptorTypeText title:@"头程班次"];
+    row.value= @"333";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"is_book_cargo" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否与头程约好柜"];
@@ -324,9 +346,11 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"is_transfer_port" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否转关"];
+    row.value = @YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"memo" rowType:XLFormRowDescriptorTypeTextView title:@"备注"];
+    row.value = @"3333";
     [row.cellConfigAtConfigure setObject:@"请填写备注" forKey:@"textView.placeholder"];
     [section addFormRow:row];
 }

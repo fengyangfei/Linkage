@@ -12,7 +12,6 @@
 @dynamic cargoCount;
 @dynamic cargoId;
 @dynamic cargoName;
-@dynamic order;
 @end
 
 @implementation OrderModel
@@ -28,13 +27,14 @@
 @dynamic takeTime;
 @dynamic deliveryAddress;
 @dynamic deliverTime;
-@dynamic cargosCentExpire;
+@dynamic cargosRentExpire;
 @dynamic memo;
 @dynamic createTime;
 @dynamic updateTime;
 @dynamic status;
 @dynamic userId;
 @dynamic cargos;
+@dynamic isTransferPort;
 @end
 
 @implementation ImportOrderModel
@@ -42,4 +42,15 @@
 @dynamic cargoNo;
 @dynamic customsHouseContact;
 @dynamic customsBroker;
+@dynamic cargoCompany;
+@end
+
+@implementation ExportOrderModel
+@dynamic so;
+@dynamic customsIn;
+@dynamic shipCompany;
+@dynamic shipName;
+@dynamic shipScheduleNo;
+@dynamic isBookCargo;
+@dynamic port;
 @end

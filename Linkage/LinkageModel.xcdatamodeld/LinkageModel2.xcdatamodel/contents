@@ -8,19 +8,29 @@
         <attribute name="cargoCount" optional="YES" attributeType="Integer 64" defaultValueString="0.0" syncable="YES"/>
         <attribute name="cargoId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="cargoName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderModel" inverseName="cargos" inverseEntity="OrderModel" syncable="YES"/>
+    </entity>
+    <entity name="ExportOrderModel" representedClassName="ExportOrderModel" parentEntity="OrderModel" syncable="YES">
+        <attribute name="customsIn" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isBookCargo" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="port" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shipCompany" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shipName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shipScheduleNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="so" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ImportOrderModel" representedClassName="ImportOrderModel" parentEntity="OrderModel" syncable="YES">
         <attribute name="billNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cargoCompany" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cargoNo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customsBroker" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customsHouseContact" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="OrderModel" representedClassName="OrderModel" isAbstract="YES" syncable="YES">
-        <attribute name="cargosCentExpire" optional="YES" attributeType="Date" syncable="YES"/>
+    <entity name="OrderModel" representedClassName="OrderModel" syncable="YES">
+        <attribute name="cargosRentExpire" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="deliverTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="deliveryAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isTransferPort" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="manufactureContactName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="manufactureContactTel" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="manufactureId" optional="YES" attributeType="String" syncable="YES"/>
@@ -35,7 +45,7 @@
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cargos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CargoModel" inverseName="order" inverseEntity="CargoModel" syncable="YES"/>
+        <relationship name="cargos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CargoModel" syncable="YES"/>
     </entity>
     <entity name="PhotoModel" representedClassName="PhotoModel" syncable="YES">
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
@@ -44,9 +54,10 @@
     </entity>
     <elements>
         <element name="AddressModel" positionX="-63" positionY="0" width="128" height="75"/>
-        <element name="CargoModel" positionX="-54" positionY="162" width="128" height="105"/>
-        <element name="ImportOrderModel" positionX="-36" positionY="171" width="128" height="105"/>
-        <element name="OrderModel" positionX="-63" positionY="27" width="128" height="330"/>
+        <element name="CargoModel" positionX="-54" positionY="162" width="128" height="90"/>
+        <element name="ImportOrderModel" positionX="-36" positionY="171" width="128" height="120"/>
+        <element name="OrderModel" positionX="-63" positionY="27" width="128" height="345"/>
         <element name="PhotoModel" positionX="-63" positionY="9" width="128" height="90"/>
+        <element name="ExportOrderModel" positionX="-45" positionY="153" width="128" height="150"/>
     </elements>
 </model>

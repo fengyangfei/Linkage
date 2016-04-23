@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *cargoCount;
 @property (nullable, nonatomic, retain) NSNumber *cargoId;
 @property (nullable, nonatomic, retain) NSString *cargoName;
-@property (nullable, nonatomic, retain) NSManagedObject *order;
 @end
 
 @interface OrderModel : NSManagedObject
@@ -30,12 +29,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSDate *takeTime;
 @property (nullable, nonatomic, retain) NSString *deliveryAddress;
 @property (nullable, nonatomic, retain) NSDate *deliverTime;
-@property (nullable, nonatomic, retain) NSDate *cargosCentExpire;
+@property (nullable, nonatomic, retain) NSDate *cargosRentExpire;
 @property (nullable, nonatomic, retain) NSString *memo;
 @property (nullable, nonatomic, retain) NSDate *createTime;
 @property (nullable, nonatomic, retain) NSDate *updateTime;
 @property (nullable, nonatomic, retain) NSNumber *status;
 @property (nullable, nonatomic, retain) NSString *userId;
+@property (nullable, nonatomic, retain) NSNumber *isTransferPort;
 @property (nullable, nonatomic, retain) NSSet<CargoModel *> *cargos;
 @end
 
@@ -51,6 +51,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *cargoNo;
 @property (nullable, nonatomic, retain) NSString *customsHouseContact;
 @property (nullable, nonatomic, retain) NSString *customsBroker;
+@property (nullable, nonatomic, retain) NSString *cargoCompany;
+@end
+
+@interface ExportOrderModel : OrderModel
+@property (nullable, nonatomic, retain) NSString *so;
+@property (nullable, nonatomic, retain) NSDate *customsIn;
+@property (nullable, nonatomic, retain) NSString *shipCompany;
+@property (nullable, nonatomic, retain) NSString *shipName;
+@property (nullable, nonatomic, retain) NSString *shipScheduleNo;
+@property (nullable, nonatomic, retain) NSNumber *isBookCargo;
+@property (nullable, nonatomic, retain) NSString *port;
 @end
 
 NS_ASSUME_NONNULL_END

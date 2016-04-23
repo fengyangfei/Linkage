@@ -15,7 +15,6 @@
 @property (nonatomic, strong) NSNumber *cargoId;
 @property (nonatomic, copy) NSString *cargoName;
 @property (nonatomic, strong) NSNumber *cargoCount;
-@property (nonatomic, weak) OrderModel *order;
 
 +(Cargo *)cargoWithId:(NSNumber *)cargoId name:(NSString *)cargoName count:(NSNumber *)cargoCount;
 @end

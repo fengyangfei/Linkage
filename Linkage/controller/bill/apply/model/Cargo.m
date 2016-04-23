@@ -39,11 +39,6 @@
     return keyDic;
 }
 
-+ (NSValueTransformer *)orderEntityAttributeTransformer
-{
-    return [MTLManagedObjectAdapter transformerForModelPropertiesOfClass:[OrderModel class]];
-}
-
 #pragma mark - XLFormOptionObject
 
 -(NSString *)formDisplayText

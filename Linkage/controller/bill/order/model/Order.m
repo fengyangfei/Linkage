@@ -11,6 +11,7 @@
 #import "OrderModel.h"
 
 @implementation Order
+
 #pragma mark - MTLJSONSerializing
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
@@ -72,8 +73,10 @@
 
 @end
 
+/**
+ * 进口
+ */
 @implementation ImportOrder
-//进口
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyMap = @{
@@ -97,6 +100,7 @@
     return keys;
 }
 
+#pragma mark - MTLManagedObjectSerializing
 + (NSString *)managedObjectEntityName
 {
     return NSStringFromClass([ImportOrderModel class]);
@@ -108,8 +112,10 @@
 }
 @end
 
+/**
+ * 出口
+ */
 @implementation ExportOrder
-//出口
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyMap = @{
@@ -130,6 +136,19 @@
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keys = [keys mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
     keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos"]];
+    return keys;
+}
+
+#pragma mark - MTLManagedObjectSerializing
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass([ExportOrderModel class]);
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"so"]];
     return keys;
 }
 
