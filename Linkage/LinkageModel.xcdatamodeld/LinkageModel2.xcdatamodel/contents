@@ -17,6 +17,7 @@
         <attribute name="shipName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shipScheduleNo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="so" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="soImages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SOImageModel" syncable="YES"/>
     </entity>
     <entity name="ImportOrderModel" representedClassName="ImportOrderModel" parentEntity="OrderModel" syncable="YES">
         <attribute name="billNo" optional="YES" attributeType="String" syncable="YES"/>
@@ -55,16 +56,15 @@
     </entity>
     <entity name="SOImageModel" representedClassName="PhotoModel" syncable="YES">
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="AddressModel" positionX="-63" positionY="0" width="128" height="75"/>
         <element name="CargoModel" positionX="-54" positionY="162" width="128" height="90"/>
-        <element name="ExportOrderModel" positionX="-45" positionY="153" width="128" height="150"/>
+        <element name="ExportOrderModel" positionX="-45" positionY="153" width="128" height="165"/>
         <element name="ImportOrderModel" positionX="-36" positionY="171" width="128" height="120"/>
         <element name="OrderModel" positionX="-63" positionY="27" width="128" height="360"/>
-        <element name="SOImageModel" positionX="-63" positionY="9" width="128" height="90"/>
+        <element name="SOImageModel" positionX="-63" positionY="9" width="128" height="75"/>
         <element name="SelfOrderModel" positionX="-45" positionY="153" width="128" height="90"/>
     </elements>
 </model>

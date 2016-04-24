@@ -16,6 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *cargoName;
 @end
 
+@interface SOImageModel : NSManagedObject
+@property (nullable, nonatomic, retain) NSString *imageName;
+@property (nullable, nonatomic, retain) NSDate *createDate;
+@end
+
 @interface OrderModel : NSManagedObject
 @property (nullable, nonatomic, retain) NSString *orderId;
 @property (nullable, nonatomic, retain) NSString *companyId;
@@ -63,6 +68,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *shipScheduleNo;
 @property (nullable, nonatomic, retain) NSNumber *isBookCargo;
 @property (nullable, nonatomic, retain) NSString *port;
+@property (nullable, nonatomic, retain) NSSet<SOImageModel *> *soImages;
+@end
+
+@interface ExportOrderModel (CoreDataGeneratedAccessors)
+- (void)addSoImagesObject:(SOImageModel *)value;
+- (void)removeSoImagesObject:(SOImageModel *)value;
+- (void)addSoImages:(NSSet<SOImageModel *> *)values;
+- (void)removeSoImages:(NSSet<SOImageModel *> *)values;
 @end
 
 @interface SelfOrderModel : OrderModel

@@ -7,11 +7,27 @@
 //
 
 #import "SOImage.h"
+#import "OrderModel.h"
 
 @implementation SOImage
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"image"]];
+    return keys;
+}
+
+#pragma mark - MTLManagedObjectSerializing
++ (NSString *)managedObjectEntityName
+{
+    return [SOImageModel class];
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"image"]];
+    return keys;
 }
 
 @end

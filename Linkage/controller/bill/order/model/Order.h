@@ -78,6 +78,7 @@ typedef NS_ENUM(NSUInteger, DriverTaskStatus) {
     DriverTaskStatusWait,
     DriverTaskStatusDone
 };
+
 //司机任务
 @interface DriverTask : MTLModel<MTLJSONSerializing, MTLManagedObjectSerializing>
 @property (nonatomic, copy) NSString *taskId;

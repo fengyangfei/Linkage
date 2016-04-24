@@ -14,6 +14,11 @@
 @dynamic cargoName;
 @end
 
+@implementation SOImageModel : NSManagedObject
+@dynamic imageName;
+@dynamic createDate;
+@end
+
 @implementation OrderModel
 @dynamic orderId;
 @dynamic companyId;
@@ -54,6 +59,7 @@
 @dynamic shipScheduleNo;
 @dynamic isBookCargo;
 @dynamic port;
+@dynamic soImages;
 @end
 
 @implementation SelfOrderModel

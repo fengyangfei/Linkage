@@ -7,8 +7,9 @@
 //
 
 #import <Mantle/Mantle.h>
+#import "MTLManagedObjectAdapter.h"
 
-@interface SOImage : MTLModel<MTLJSONSerializing>
+@interface SOImage : MTLModel<MTLJSONSerializing, MTLManagedObjectSerializing>
 @property (nonatomic,strong) UIImage *image;
 @property (nonatomic,strong) NSDate *createDate;
 @property (nonatomic,copy) NSString *imageName;
