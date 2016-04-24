@@ -39,7 +39,6 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 @property (nonatomic, strong) NSDate *cargosRentExpire;//柜租到期日期
 @property (nonatomic, copy) NSString *memo;//备注
 @property (nonatomic, strong) NSDate *createTime;
-@property (nonatomic, strong) NSDate *updateTime;
 @property (nonatomic, assign) BOOL  isTransferPort;//是否转关
 @property (nonatomic, strong) NSArray *cargos;//货柜
 @end

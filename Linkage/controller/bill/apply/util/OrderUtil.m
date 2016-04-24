@@ -24,11 +24,11 @@
     NSDictionary *paramter = [self jsonFromModel:order];
     if (paramter) {
         if ([order isKindOfClass:[ImportOrder class]]) {
-            [[YGRestClient sharedInstance] postWithUrl:Place4importUrl json:paramter success:success failure:failure];
+            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4importUrl json:paramter success:success failure:failure];
         }else if([order isKindOfClass:[ExportOrder class]]){
-            [[YGRestClient sharedInstance] postWithUrl:Place4exportUrl json:paramter success:success failure:failure];
+            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4exportUrl json:paramter success:success failure:failure];
         }else if([order isKindOfClass:[SelfOrder class]]){
-            [[YGRestClient sharedInstance] postWithUrl:Place4selfUrl json:paramter success:success failure:failure];
+            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4selfUrl json:paramter success:success failure:failure];
         }
     }
 }
@@ -111,12 +111,11 @@
                                @"offset":@(0),
                                @"size":@(100)
                                };
-    [[YGRestClient sharedInstance] postWithUrl:ListByStatusUrl form:paramter success:^(id responseData) {
-        NSLog(@"%@",responseData);
+    [[YGRestClient sharedInstance] postForObjectWithUrl:ListByStatusUrl form:paramter success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
-
 }
 
 @end
