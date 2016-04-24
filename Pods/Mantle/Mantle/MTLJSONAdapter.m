@@ -233,16 +233,18 @@ static NSString * const MTLJSONAdapterThrownExceptionErrorKey = @"MTLJSONAdapter
 		};
 
 		if ([JSONKeyPaths isKindOfClass:NSString.class]) {
-			createComponents(JSONDictionary, JSONKeyPaths);
-
-			[JSONDictionary setValue:value forKeyPath:JSONKeyPaths];
+            if (value != NSNull.null) {
+                createComponents(JSONDictionary, JSONKeyPaths);
+                [JSONDictionary setValue:value forKeyPath:JSONKeyPaths];
+            }
 		}
 
 		if ([JSONKeyPaths isKindOfClass:NSArray.class]) {
 			for (NSString *JSONKeyPath in JSONKeyPaths) {
-				createComponents(JSONDictionary, JSONKeyPath);
-
-				[JSONDictionary setValue:value[JSONKeyPath] forKeyPath:JSONKeyPath];
+                if (value[JSONKeyPath] != NSNull.null) {
+                    createComponents(JSONDictionary, JSONKeyPath);
+                    [JSONDictionary setValue:value[JSONKeyPath] forKeyPath:JSONKeyPath];
+                }
 			}
 		}
 	}];
