@@ -6,9 +6,9 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import "SOImageModel.h"
+#import "SOImage.h"
 
-@implementation SOImageModel
+@implementation SOImage
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
@@ -20,8 +20,8 @@
 -(NSString *)soImageStringValue
 {
     NSMutableString *str = [NSMutableString string];
-    for (SOImageModel *model in self) {
-        NSString *mStr = [NSString stringWithFormat:@"%@;", model.photoName];
+    for (SOImage *model in self) {
+        NSString *mStr = [NSString stringWithFormat:@"%@;", model.imageName];
         [str appendString:mStr];
     }
     return str;

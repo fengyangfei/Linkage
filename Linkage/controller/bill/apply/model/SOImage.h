@@ -8,11 +8,10 @@
 
 #import <Mantle/Mantle.h>
 
-@interface SOImageModel : MTLModel<MTLJSONSerializing>
+@interface SOImage : MTLModel<MTLJSONSerializing>
 @property (nonatomic,strong) UIImage *photo;
 @property (nonatomic,strong) NSDate *createDate;
-@property (nonatomic,copy) NSString *photoName;
-
+@property (nonatomic,copy) NSString *imageName;
 @end
 
 @interface NSArray(SOImageModel)

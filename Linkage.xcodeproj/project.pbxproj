@@ -130,7 +130,7 @@
 		8B986F6C1CC50D7A002DDA68 /* AddCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F6B1CC50D7A002DDA68 /* AddCarViewController.m */; };
 		8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130531C9D2B2D007607F9 /* CargoFormRowDescriptor.m */; };
 		8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130561C9D93E4007607F9 /* SOImageFormCell.m */; };
-		8BA1305A1C9D951B007607F9 /* SOImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130591C9D951B007607F9 /* SOImageModel.m */; };
+		8BA1305A1C9D951B007607F9 /* SOImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130591C9D951B007607F9 /* SOImage.m */; };
 		8BA1305D1C9DA398007607F9 /* SpecialFormSectionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1305C1C9DA398007607F9 /* SpecialFormSectionDescriptor.m */; };
 		8BB039DE1C94591900A3BCF9 /* LoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB039DD1C94591900A3BCF9 /* LoginUser.m */; };
 		8BB17AB71C9AF60D002708C4 /* BillApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB17AB61C9AF60D002708C4 /* BillApplyViewController.m */; };
@@ -465,8 +465,8 @@
 		8BA130531C9D2B2D007607F9 /* CargoFormRowDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoFormRowDescriptor.m; sourceTree = "<group>"; };
 		8BA130551C9D93E4007607F9 /* SOImageFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOImageFormCell.h; sourceTree = "<group>"; };
 		8BA130561C9D93E4007607F9 /* SOImageFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOImageFormCell.m; sourceTree = "<group>"; };
-		8BA130581C9D951B007607F9 /* SOImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOImageModel.h; sourceTree = "<group>"; };
-		8BA130591C9D951B007607F9 /* SOImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOImageModel.m; sourceTree = "<group>"; };
+		8BA130581C9D951B007607F9 /* SOImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOImage.h; sourceTree = "<group>"; };
+		8BA130591C9D951B007607F9 /* SOImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOImage.m; sourceTree = "<group>"; };
 		8BA1305B1C9DA398007607F9 /* SpecialFormSectionDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialFormSectionDescriptor.h; sourceTree = "<group>"; };
 		8BA1305C1C9DA398007607F9 /* SpecialFormSectionDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialFormSectionDescriptor.m; sourceTree = "<group>"; };
 		8BB039DC1C94591900A3BCF9 /* LoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUser.h; sourceTree = "<group>"; };
@@ -1679,8 +1679,8 @@
 				9ACEBC6C1C99492A0000ACBF /* Cargo.m */,
 				8BA130521C9D2B2D007607F9 /* CargoFormRowDescriptor.h */,
 				8BA130531C9D2B2D007607F9 /* CargoFormRowDescriptor.m */,
-				8BA130581C9D951B007607F9 /* SOImageModel.h */,
-				8BA130591C9D951B007607F9 /* SOImageModel.m */,
+				8BA130581C9D951B007607F9 /* SOImage.h */,
+				8BA130591C9D951B007607F9 /* SOImage.m */,
 				8BA1305B1C9DA398007607F9 /* SpecialFormSectionDescriptor.h */,
 				8BA1305C1C9DA398007607F9 /* SpecialFormSectionDescriptor.m */,
 			);
@@ -2010,7 +2010,7 @@
 				9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */,
 				9AEF89C61CA2907D00C5EB90 /* Address.m in Sources */,
 				9A95FF091C858B0E00C5F492 /* SettingViewController.m in Sources */,
-				8BA1305A1C9D951B007607F9 /* SOImageModel.m in Sources */,
+				8BA1305A1C9D951B007607F9 /* SOImage.m in Sources */,
 				8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */,
 				9AEF89C21CA1274600C5EB90 /* MJPhotoView.m in Sources */,
 				8B5DC56A1C7992E900D29292 /* AppDelegate.m in Sources */,

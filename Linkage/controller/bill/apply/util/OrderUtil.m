@@ -11,6 +11,7 @@
 #import "OrderModel.h"
 #import "Cargo.h"
 #import "Company.h"
+#import "SOImage.h"
 #import "LoginUser.h"
 #import "MTLManagedObjectAdapter.h"
 #import <Mantle/Mantle.h>
@@ -55,6 +56,9 @@
         order.cargos = formValues[@"cargos"];
         order.companyId = ((Company *)formValues[@"company"]).companyId;
         order.userId = [LoginUser shareInstance].userId;
+        if ([order isKindOfClass:[ExportOrder class]]) {
+            ((ExportOrder *)order).soImages = formValues[@"soImages"];
+        }
     }else{
         NSLog(@"表单转换成对象失败 - %@",error);
     }
@@ -70,8 +74,14 @@
     }
     if (dic) {
         NSMutableDictionary *mutableDic = [dic mutableCopy];
-        mutableDic[@"cargo"] = [order.cargos cargosStringValue];
         mutableDic[@"cid"] = [LoginUser shareInstance].cid;
+        mutableDic[@"token"] = [LoginUser shareInstance].token;
+        mutableDic[@"company_id"] = order.companyId;
+        mutableDic[@"cargo"] = [order.cargos cargosStringValue];
+        if ([order isKindOfClass:[ExportOrder class]]) {
+            mutableDic[@"so"] = @"so";
+            mutableDic[@"so_images"] = [((ExportOrder *)order).soImages soImageStringValue];
+        }
         return [mutableDic copy];
     }else{
         return nil;

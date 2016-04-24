@@ -162,28 +162,11 @@ row.cellStyle = UITableViewCellStyleValue1;
     }];
     
     /*
-     cargos =     (
-     "<Cargo: 0x7be15150>",
-     "<Cargo: 0x7bf29fa0>",
-     "<Cargo: 0x7e06d310>"
-     );
-     "company_id" = "<Company: 0x7be096b0> {\n    address = zhuhai;\n    companyId = 10000;\n    companyImages = \"<null>\";\n    contactor = joe;\n    contactorPhone = 123456;\n    customerPhones = \"<null>\";\n    email = \"<null>\";\n    fax = \"<null>\";\n    introduction = \"\\U771f\\U7684\\U662f\\U4e00\\U5bb6\\U8fd0\\U8425\\U5546\";\n    logo = \"<null>\";\n    name = \"\\U6821\\U91cc\";\n    orderNum = 3;\n    phone1 = \"<null>\";\n    phone2 = \"<null>\";\n    phone3 = \"<null>\";\n    phone4 = \"<null>\";\n    score = 5;\n    url = \"<null>\";\n}";
-     "customs_in" = "2016-04-21 14:58:10 +0000";
-     "delivery_address" = 11;
-     "delivery_time" = "2016-04-21 14:40:47 +0000";
-     "is_book_cargo" = 1;
-     "is_transfer_port" = 1;
-     memo = 666;
-     port = 222;
-     "ship_company" = 444;
-     "ship_name" = 555;
-     "ship_schedule_no" = 666;
+     
      soImages =     (
      "<SOImageModel: 0x7bf043e0>",
      "<SOImageModel: 0x7e1551d0>"
      );
-     "take_address" = Asa;
-     "take_time" = "2016-04-21 14:40:47 +0000";
      */
 }
 

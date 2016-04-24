@@ -64,6 +64,7 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 @property (nonatomic, copy) NSString *shipScheduleNo;//头程班次
 @property (nonatomic, assign) BOOL  isBookCargo;//是否与头程越好柜
 @property (nonatomic, copy) NSString *port;//港口
+@property (nonatomic, strong) NSArray *soImages;//so图片
 @end
 
 //自备柜订单

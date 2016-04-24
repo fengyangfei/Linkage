@@ -46,6 +46,9 @@
     if (JSONDictionary[@"ship_name"] != nil) {
         return [ExportOrder class];
     }
+    if (JSONDictionary[@"is_customs_declare"] != nil) {
+        return [SelfOrder class];
+    }
     return self;
 }
 
@@ -136,7 +139,7 @@
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keys = [keys mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:kOrderRemoveKeys];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos",@"companyId",@"userId",@"soImages"]];
     return keys;
 }
 

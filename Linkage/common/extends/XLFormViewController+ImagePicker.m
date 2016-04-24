@@ -7,7 +7,7 @@
 //
 
 #import "XLFormViewController+ImagePicker.h"
-#import "SOImageModel.h"
+#import "SOImage.h"
 #import "UIViewController+TRImagePicker.h"
 #import "SOImageFormCell.h"
 
@@ -18,8 +18,8 @@
     [self deselectFormRow:formRow];
     [self addMultiplePhoto:^(UIImage *image, NSString *fileName) {
         //添加到当前列的value里面
-        SOImageModel *model = [[SOImageModel alloc]init];
-        model.photoName = fileName;
+        SOImage *model = [[SOImage alloc]init];
+        model.imageName = fileName;
         model.createDate = [NSDate date];
         model.photo = image;
         
@@ -87,8 +87,8 @@
     XLFormRowDescriptor *row = [self.form formRowAtIndex:indexPath];
     //加入业务逻辑
     if([row.sectionDescriptor isKindOfClass:[SpecialFormSectionDescriptor class]] && editingStyle == UITableViewCellEditingStyleDelete){
-        if ([row.value isKindOfClass:[SOImageModel class]]) {
-            [TRImagePickerDelegate removeImageIndentifyByKey:((SOImageModel *)row.value).photoName];
+        if ([row.value isKindOfClass:[SOImage class]]) {
+            [TRImagePickerDelegate removeImageIndentifyByKey:((SOImage *)row.value).imageName];
         }
     }
     //原来的处理方式

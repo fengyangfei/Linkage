@@ -10,7 +10,7 @@
 #import "XLFormViewController+ImagePicker.h"
 #import "Company.h"
 #import "ImageCacheManager.h"
-#import "SOImageModel.h"
+#import "SOImage.h"
 #import "SOImageFormCell.h"
 #import "AvatarFormCell.h"
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -127,8 +127,8 @@
     if (company) {
         for (NSString *imageKey in company.companyImages) {
             //添加到当前列的value里面
-            SOImageModel *model = [[SOImageModel alloc]init];
-            model.photoName = imageKey;
+            SOImage *model = [[SOImage alloc]init];
+            model.imageName = imageKey;
             model.createDate = [NSDate date];
             
             row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:SOImageRowDescriporType];
@@ -169,13 +169,13 @@
     NSMutableArray *companyImages = [NSMutableArray array];
     NSArray *formPhotos = formValues[@"photos"];
     if (formPhotos) {
-        for (SOImageModel *imageModel in formPhotos) {
-            [[ImageCacheManager sharedManger] diskImageExistsWithKey:imageModel.photoName completion:^(BOOL isInCache) {
+        for (SOImage *imageModel in formPhotos) {
+            [[ImageCacheManager sharedManger] diskImageExistsWithKey:imageModel.imageName completion:^(BOOL isInCache) {
                 if (!isInCache) {
-                    [[ImageCacheManager sharedManger] storeImage:imageModel.photo forKey:imageModel.photoName];
+                    [[ImageCacheManager sharedManger] storeImage:imageModel.photo forKey:imageModel.imageName];
                 }
             }];
-            [companyImages addObject:imageModel.photoName];
+            [companyImages addObject:imageModel.imageName];
         }
     }
     formValues[@"companyImages"] = companyImages;

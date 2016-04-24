@@ -7,7 +7,7 @@
 //
 
 #import "SOImageFormCell.h"
-#import "SOImageModel.h"
+#import "SOImage.h"
 #import "MJPhotoBrowser.h"
 #import "MJPhoto.h"
 #import "UIImageView+Cache.h"
@@ -36,11 +36,11 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
 -(void)update
 {
     [super update];
-    SOImageModel *model = (SOImageModel *)self.rowDescriptor.value;
+    SOImage *model = (SOImage *)self.rowDescriptor.value;
     if (model.photo) {
         self.imageView.image = model.photo;
     }else{
-        [self.imageView imageWithCacheKey:model.photoName];
+        [self.imageView imageWithCacheKey:model.imageName];
     }
     self.nameLabel.text = model.photoName;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -60,14 +60,14 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
     NSMutableArray * photoArray = [NSMutableArray new];
     for (XLFormRowDescriptor * row in section.formRows) {
         if (row.value){
-            SOImageModel *model = (SOImageModel *)row.value;
+            SOImage *model = (SOImage *)row.value;
             MJPhoto *photo = ({
                 MJPhoto *photo = [[MJPhoto alloc] init];
                 if(model.photo){
                     photo.image = model.photo;
                 }else{
                     __weak __typeof(photo) weakPhoto = photo;
-                    [[ImageCacheManager sharedManger] queryDiskCacheForKey:model.photoName done:^(UIImage *image, SDImageCacheType cacheType) {
+                    [[ImageCacheManager sharedManger] queryDiskCacheForKey:model.imageName done:^(UIImage *image, SDImageCacheType cacheType) {
                         weakPhoto.image = image;
                     }];
                 }

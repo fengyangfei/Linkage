@@ -8,7 +8,7 @@
 
 #import "AvatarFormCell.h"
 #import "UIViewController+TRImagePicker.h"
-#import "SOImageModel.h"
+#import "SOImage.h"
 #import "ImageCacheManager.h"
 
 NSString *const AvatarDescriporType = @"AvatarRowType";
