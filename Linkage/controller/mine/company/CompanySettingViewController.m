@@ -172,7 +172,7 @@
         for (SOImage *imageModel in formPhotos) {
             [[ImageCacheManager sharedManger] diskImageExistsWithKey:imageModel.imageName completion:^(BOOL isInCache) {
                 if (!isInCache) {
-                    [[ImageCacheManager sharedManger] storeImage:imageModel.photo forKey:imageModel.imageName];
+                    [[ImageCacheManager sharedManger] storeImage:imageModel.image forKey:imageModel.imageName];
                 }
             }];
             [companyImages addObject:imageModel.imageName];

@@ -9,7 +9,7 @@
 #import <Mantle/Mantle.h>
 
 @interface SOImage : MTLModel<MTLJSONSerializing>
-@property (nonatomic,strong) UIImage *photo;
+@property (nonatomic,strong) UIImage *image;
 @property (nonatomic,strong) NSDate *createDate;
 @property (nonatomic,copy) NSString *imageName;
 @end

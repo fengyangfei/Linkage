@@ -37,12 +37,12 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
 {
     [super update];
     SOImage *model = (SOImage *)self.rowDescriptor.value;
-    if (model.photo) {
-        self.imageView.image = model.photo;
+    if (model.image) {
+        self.imageView.image = model.image;
     }else{
         [self.imageView imageWithCacheKey:model.imageName];
     }
-    self.nameLabel.text = model.photoName;
+    self.nameLabel.text = model.imageName;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
     self.dateLabel.text = [formatter stringFromDate:model.createDate];
@@ -63,8 +63,8 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
             SOImage *model = (SOImage *)row.value;
             MJPhoto *photo = ({
                 MJPhoto *photo = [[MJPhoto alloc] init];
-                if(model.photo){
-                    photo.image = model.photo;
+                if(model.image){
+                    photo.image = model.image;
                 }else{
                     __weak __typeof(photo) weakPhoto = photo;
                     [[ImageCacheManager sharedManger] queryDiskCacheForKey:model.imageName done:^(UIImage *image, SDImageCacheType cacheType) {

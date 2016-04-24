@@ -21,7 +21,7 @@
         SOImage *model = [[SOImage alloc]init];
         model.imageName = fileName;
         model.createDate = [NSDate date];
-        model.photo = image;
+        model.image = image;
         
         //添加新的一列
         XLFormRowDescriptor *newRow = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:SOImageRowDescriporType];
