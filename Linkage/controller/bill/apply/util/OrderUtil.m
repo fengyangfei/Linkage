@@ -51,7 +51,9 @@
     Order *order = [MTLJSONAdapter modelOfClass:[Order class] fromJSONDictionary:formValues error:&error];
     if (!error) {
         order.cargos = formValues[@"cargos"];
-        order.companyId = ((Company *)formValues[@"company"]).companyId;
+        if (formValues[@"company"] && [formValues[@"company"] isKindOfClass:[Company class]]) {
+            order.companyId = ((Company *)formValues[@"company"]).companyId;
+        }
         order.userId = [LoginUser shareInstance].userId;
         if ([order isKindOfClass:[ExportOrder class]]) {
             ((ExportOrder *)order).soImages = formValues[@"soImages"];

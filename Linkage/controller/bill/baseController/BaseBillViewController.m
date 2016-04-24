@@ -8,6 +8,7 @@
 
 #import "BaseBillViewController.h"
 #import "UIColor+BFPaperColors.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface BaseBillViewController()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -127,7 +128,13 @@
 {
     if (!_leftTableView) {
         _leftTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _todoDS = [[TodoDataSource alloc] initWithViewController:self tableView:_leftTableView];
+        _leftTableView.dataSource = _todoDS;
+        _leftTableView.delegate = _todoDS;
         _leftTableView.tableFooterView = [UIView new];
+        _leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            
+        }];
     }
     return _leftTableView;
 }
@@ -136,7 +143,13 @@
 {
     if (!_rightTableView) {
         _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _doneDS = [[DoneDataSource alloc] initWithViewController:self tableView:_rightTableView];
+        _rightTableView.dataSource = _doneDS;
+        _rightTableView.delegate = _doneDS;
         _rightTableView.tableFooterView = [UIView new];
+        _rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            
+        }];
     }
     return _rightTableView;
 }

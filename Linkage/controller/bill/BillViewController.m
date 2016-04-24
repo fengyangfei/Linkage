@@ -8,15 +8,14 @@
 
 #import "BillViewController.h"
 #import "BillTableViewCell.h"
-#import "BillDataSource.h"
 #import "BillTypeViewController.h"
-
 #import "BillDetailViewController.h"
+
+#import "OrderModel.h"
 
 @interface BillViewController ()
 
-@property (nonatomic, strong) TodoDataSource *todoDS;
-@property (nonatomic, strong) DoneDataSource *doneDS;
+
 @end
 
 @implementation BillViewController
@@ -25,14 +24,18 @@
 {
     self.todoDS = nil;
     self.doneDS = nil;
-    self.leftTableView.delegate = nil;
-    self.rightTableView.dataSource = nil;
 }
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
+    [self setupData];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     [self setupData];
 }
 
@@ -44,23 +47,15 @@
 
 -(void)refreshTodoTable
 {
-    self.todoDS = [[TodoDataSource alloc]initWithViewController:self tableView:self.leftTableView];
-    [self.todoDS setForm:[self createForm]];
-    self.leftTableView.dataSource = self.todoDS;
-    self.leftTableView.delegate = self.todoDS;
-    if ([self isViewLoaded]){
-        [self.leftTableView reloadData];
+    if (self.todoDS) {
+        [self.todoDS setForm:[self createForm]];
     }
 }
 
 -(void)refreshDoneTable
 {
-    self.doneDS = [[DoneDataSource alloc]initWithViewController:self tableView:self.rightTableView];
-    [self.doneDS setForm:[self createForm]];
-    self.rightTableView.dataSource = self.doneDS;
-    self.rightTableView.delegate = self.doneDS;
-    if ([self isViewLoaded]){
-        [self.rightTableView reloadData];
+    if (self.doneDS){
+        [self.doneDS setForm:[self createForm]];
     }
 }
 
@@ -78,20 +73,13 @@
     XLFormRowDescriptor * row;
     
     form = [XLFormDescriptor formDescriptor];
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"未完成"];
+    section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    for (int i = 0; i < 5; i++) {
+    NSArray *orderModelArray = [OrderModel MR_findAllInContext:[NSManagedObjectContext MR_defaultContext]];
+    for (OrderModel *orderModel in orderModelArray) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
-        row.action.viewControllerClass = [BillDetailViewController class];
-        [section addFormRow:row];
-    }
-    
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"已完成"];
-    [form addFormSection:section];
-    
-    for (int i = 0; i < 5; i++) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
+        row.value = orderModel;
         row.action.viewControllerClass = [BillDetailViewController class];
         [section addFormRow:row];
     }

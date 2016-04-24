@@ -156,6 +156,11 @@
     return keys;
 }
 
++ (NSValueTransformer *)soImagesEntityAttributeTransformer
+{
+    return [MTLManagedObjectAdapter transformerForModelPropertiesOfClass:[SOImageModel class]];
+}
+
 @end
 
 @implementation SelfOrder
@@ -178,6 +183,19 @@
     keys = [keys mtl_dictionaryByRemovingValuesForKeys:kOrderRemoveKeys];
     return keys;
 }
+
+#pragma mark - MTLManagedObjectSerializing
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass([SelfOrderModel class]);
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    return keys;
+}
+
 @end
 
 @implementation DriverTask

@@ -7,6 +7,8 @@
 //
 
 #import "BillTableViewCell.h"
+#import "OrderModel.h"
+#import "Order.h"
 
 NSString *const TodoBillDescriporType = @"TodoBillRowType";
 NSString *const DoneBillDescriporType = @"DoneBillRowType";
@@ -24,10 +26,11 @@ NSString *const DoneBillDescriporType = @"DoneBillRowType";
 -(void)update
 {
     [super update];
-    self.billNumLable.text = @"订单号123123";
-    self.detailLable.text = @"详细内容";
-    self.timeLable.text = @"123123";
-    self.ratingLable.text = @"已经完成 80%";
+    OrderModel *order = self.rowDescriptor.value;
+    self.billNumLable.text = order.companyId;
+    self.detailLable.text = order.memo;
+    self.timeLable.text = order.takeAddress;
+    self.ratingLable.text = order.deliveryAddress;
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor

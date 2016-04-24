@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <HMSegmentedControl/HMSegmentedControl.h>
+#import "BillDataSource.h"
 
 @interface BaseBillViewController : UIViewController
 
@@ -16,4 +17,7 @@
 @property (nonatomic, strong) HMSegmentedControl *segmentedControl;
 
 - (void)segmentedControlChangeIndex:(NSInteger)index;
+
+@property (nonatomic, strong) TodoDataSource *todoDS;
+@property (nonatomic, strong) DoneDataSource *doneDS;
 @end
