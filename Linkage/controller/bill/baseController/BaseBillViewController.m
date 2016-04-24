@@ -8,6 +8,7 @@
 
 #import "BaseBillViewController.h"
 #import "UIColor+BFPaperColors.h"
+#import "OrderUtil.h"
 #import <MJRefresh/MJRefresh.h>
 
 @interface BaseBillViewController()<UIScrollViewDelegate>
@@ -133,7 +134,9 @@
         _leftTableView.delegate = _todoDS;
         _leftTableView.tableFooterView = [UIView new];
         _leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            
+            [OrderUtil queryAllOrder:^(NSArray *orders) {
+                
+            }];
         }];
     }
     return _leftTableView;
@@ -148,7 +151,9 @@
         _rightTableView.delegate = _doneDS;
         _rightTableView.tableFooterView = [UIView new];
         _rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            
+            [OrderUtil queryAllOrder:^(NSArray *orders) {
+                
+            }];
         }];
     }
     return _rightTableView;

@@ -24,11 +24,11 @@
     NSDictionary *paramter = [self jsonFromModel:order];
     if (paramter) {
         if ([order isKindOfClass:[ImportOrder class]]) {
-            [[YGRestClient sharedInstance] postWithUrl:Place4importUrl form:paramter success:success failure:failure];
+            [[YGRestClient sharedInstance] postWithUrl:Place4importUrl json:paramter success:success failure:failure];
         }else if([order isKindOfClass:[ExportOrder class]]){
-            [[YGRestClient sharedInstance] postWithUrl:Place4exportUrl form:paramter success:success failure:failure];
+            [[YGRestClient sharedInstance] postWithUrl:Place4exportUrl json:paramter success:success failure:failure];
         }else if([order isKindOfClass:[SelfOrder class]]){
-            [[YGRestClient sharedInstance] postWithUrl:Place4selfUrl form:paramter success:success failure:failure];
+            [[YGRestClient sharedInstance] postWithUrl:Place4selfUrl json:paramter success:success failure:failure];
         }
     }
 }
@@ -45,6 +45,7 @@
     }
 }
 
+//form转换成对象
 +(Order *)modelFromXLFormValue:(NSDictionary *)formValues
 {
     NSError *error;
@@ -64,6 +65,7 @@
     return order;
 }
 
+//转换成json
 +(NSDictionary *)jsonFromModel:(Order *)order
 {
     NSError *error;
@@ -87,6 +89,7 @@
     }
 }
 
+//数据库对象转换成普通对象
 +(Order *)modelFromManagedObject:(OrderModel *)orderModel
 {
     NSError *error;
@@ -95,6 +98,25 @@
         NSLog(@"数据库对象转换对象失败 - %@",error);
     }
     return order;
+}
+
++(void)queryAllOrder:(void(^)(NSArray *orders))completion
+{
+    NSDictionary *paramter = @{
+                               @"cid":[LoginUser shareInstance].cid,
+                               @"token":[LoginUser shareInstance].token,
+                               @"type":@(-1),
+                               @"status":@(0),
+                               @"pagination":@(0),
+                               @"offset":@(0),
+                               @"size":@(100)
+                               };
+    [[YGRestClient sharedInstance] postWithUrl:ListByStatusUrl form:paramter success:^(id responseData) {
+        NSLog(@"%@",responseData);
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+
 }
 
 @end

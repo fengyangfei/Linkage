@@ -208,12 +208,6 @@ NSString* __GetMethodName(HTTPRequestMethod method) {
     __block AFHTTPRequestOperation *operation;
     if ([self connectedToNetWork]){
         // 设置超时时间
-        //[manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        //manager.requestSerializer.timeoutInterval = 10.f;
-        //[manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-        
-        //[SVProgressHUD show];
-        
         if (manager.requestSerializer.class == [AFHTTPRequestSerializer class]) {//如果是form表单请求，设置编码格式为UTF-8
             [manager.requestSerializer setValue:@"application/x-www-form-urlencoded;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
         }
