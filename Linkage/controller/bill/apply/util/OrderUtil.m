@@ -21,9 +21,8 @@
 //同步到服务端
 +(void)syncToServer:(Order *)order success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
 {
-    NSError *error;
-    NSDictionary *paramter = [MTLJSONAdapter JSONDictionaryFromModel:order error:&error];
-    if (!error) {
+    NSDictionary *paramter = [self jsonFromModel:order];
+    if (paramter) {
         if ([order isKindOfClass:[ImportOrder class]]) {
             [[YGRestClient sharedInstance] postWithUrl:Place4importUrl form:paramter success:success failure:failure];
         }else if([order isKindOfClass:[ExportOrder class]]){
@@ -31,8 +30,6 @@
         }else if([order isKindOfClass:[SelfOrder class]]){
             [[YGRestClient sharedInstance] postWithUrl:Place4selfUrl form:paramter success:success failure:failure];
         }
-    }else{
-        NSLog(@"同步到服务器失败 - %@",error);
     }
 }
 
