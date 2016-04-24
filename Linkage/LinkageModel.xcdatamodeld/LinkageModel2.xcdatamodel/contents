@@ -54,7 +54,7 @@
         <attribute name="customsIn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="isCustomsDeclare" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
-    <entity name="SOImageModel" representedClassName="PhotoModel" syncable="YES">
+    <entity name="SOImageModel" representedClassName="SOImageModel" syncable="YES">
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
