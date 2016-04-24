@@ -33,7 +33,7 @@
 			<key>title</key>
 			<string>司机管理</string>
 			<key>iconName</key>
-			<string>side_manage</string>
+			<string>setting_driver</string>
 			<key>className</key>
 			<string>DriverManageViewController</string>
 		</dict>
@@ -41,7 +41,7 @@
             <key>title</key>
             <string>车辆管理</string>
             <key>iconName</key>
-            <string>side_manage</string>
+            <string>setting_car</string>
             <key>className</key>
             <string>CarListViewController</string>
         </dict>
@@ -49,7 +49,7 @@
 			<key>title</key>
 			<string>地址管理</string>
 			<key>iconName</key>
-			<string>side_manage</string>
+			<string>setting_address</string>
 			<key>className</key>
 			<string>AddressViewController</string>
 		</dict>
@@ -59,17 +59,9 @@
 			<key>title</key>
 			<string>员工管理</string>
 			<key>iconName</key>
-			<string>side_group</string>
+			<string>setting_staff</string>
 			<key>className</key>
 			<string>EmployeeManageViewController</string>
-		</dict>
-		<dict>
-			<key>title</key>
-			<string>邀请员工注册</string>
-			<key>iconName</key>
-			<string>side_group</string>
-			<key>className</key>
-			<string>InvitationViewController</string>
 		</dict>
 	</array>
 	<array>
@@ -77,7 +69,7 @@
 			<key>title</key>
 			<string>我的收藏</string>
 			<key>iconName</key>
-			<string>side_favourite</string>
+			<string>setting_favorite</string>
 			<key>className</key>
 			<string>FavoriteViewController</string>
 		</dict>
@@ -87,7 +79,7 @@
 			<key>title</key>
 			<string>投诉与建议</string>
 			<key>iconName</key>
-			<string>side_sms</string>
+			<string>setting_sms</string>
 			<key>className</key>
 			<string>AdviceViewController</string>
 		</dict>
@@ -97,7 +89,7 @@
 			<key>title</key>
 			<string>系统设置</string>
 			<key>iconName</key>
-			<string>side_setting</string>
+			<string>setting_system</string>
 			<key>className</key>
 			<string>SettingViewController</string>
 		</dict>

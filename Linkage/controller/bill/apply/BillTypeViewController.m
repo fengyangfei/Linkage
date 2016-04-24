@@ -47,6 +47,11 @@
     return 3;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"typeCell"];
@@ -54,7 +59,13 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"typeCell"];
     }
     cell.textLabel.text = [kBillTypeArray objectAtIndex:indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:@"tab_icon_selection_highlight"];
+    if (indexPath.row == OrderTypeExport) {
+        cell.imageView.image = [UIImage imageNamed:@"order_type_export"];
+    }else if(indexPath.row == OrderTypeImport){
+        cell.imageView.image = [UIImage imageNamed:@"order_type_import"];
+    }else if(indexPath.row == OrderTypeSelf){
+        cell.imageView.image = [UIImage imageNamed:@"order_type_self"];
+    }    
     return cell;
 }
 
@@ -79,6 +90,7 @@
         _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
         _tableView.tableFooterView = [UIView new];
     }
     return _tableView;

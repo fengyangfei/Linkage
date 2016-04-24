@@ -24,11 +24,11 @@
     NSDictionary *paramter = [self jsonFromModel:order];
     if (paramter) {
         if ([order isKindOfClass:[ImportOrder class]]) {
-            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4importUrl json:paramter success:success failure:failure];
+            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4importUrl form:paramter success:success failure:failure];
         }else if([order isKindOfClass:[ExportOrder class]]){
-            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4exportUrl json:paramter success:success failure:failure];
+            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4exportUrl form:paramter success:success failure:failure];
         }else if([order isKindOfClass:[SelfOrder class]]){
-            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4selfUrl json:paramter success:success failure:failure];
+            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4selfUrl form:paramter success:success failure:failure];
         }
     }
 }
