@@ -71,6 +71,7 @@
     if (dic) {
         NSMutableDictionary *mutableDic = [dic mutableCopy];
         mutableDic[@"cargo"] = [order.cargos cargosStringValue];
+        mutableDic[@"cid"] = [LoginUser shareInstance].cid;
         return [mutableDic copy];
     }else{
         return nil;

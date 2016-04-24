@@ -16,6 +16,8 @@
 
 @implementation OrderModel
 @dynamic orderId;
+@dynamic companyId;
+@dynamic userId;
 @dynamic type;
 @dynamic transporterId;
 @dynamic manufactureId;
@@ -32,7 +34,6 @@
 @dynamic createTime;
 @dynamic updateTime;
 @dynamic status;
-@dynamic userId;
 @dynamic cargos;
 @dynamic isTransferPort;
 @end
@@ -53,4 +54,10 @@
 @dynamic shipScheduleNo;
 @dynamic isBookCargo;
 @dynamic port;
+@end
+
+@implementation SelfOrderModel
+@dynamic isCustomsDeclare;
+@dynamic customsIn;
+@dynamic cargoTakeTime;
 @end

@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OrderModel : NSManagedObject
 @property (nullable, nonatomic, retain) NSString *orderId;
+@property (nullable, nonatomic, retain) NSString *companyId;
+@property (nullable, nonatomic, retain) NSString *userId;
 @property (nullable, nonatomic, retain) NSNumber *type;
 @property (nullable, nonatomic, retain) NSString *transporterId;
 @property (nullable, nonatomic, retain) NSString *manufactureId;
@@ -34,7 +36,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSDate *createTime;
 @property (nullable, nonatomic, retain) NSDate *updateTime;
 @property (nullable, nonatomic, retain) NSNumber *status;
-@property (nullable, nonatomic, retain) NSString *userId;
 @property (nullable, nonatomic, retain) NSNumber *isTransferPort;
 @property (nullable, nonatomic, retain) NSSet<CargoModel *> *cargos;
 @end
@@ -62,6 +63,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *shipScheduleNo;
 @property (nullable, nonatomic, retain) NSNumber *isBookCargo;
 @property (nullable, nonatomic, retain) NSString *port;
+@end
+
+@interface SelfOrderModel : OrderModel
+@property (nullable, nonatomic, retain) NSNumber *isCustomsDeclare;
+@property (nullable, nonatomic, retain) NSDate *customsIn;
+@property (nullable, nonatomic, retain) NSDate *cargoTakeTime;
 @end
 
 NS_ASSUME_NONNULL_END
