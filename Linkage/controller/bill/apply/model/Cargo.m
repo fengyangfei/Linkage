@@ -61,6 +61,9 @@
         NSString *mStr = [NSString stringWithFormat:@"%@:%@;", model.cargoId, model.cargoCount];
         [str appendString:mStr];
     }
+    if (str.length > 0) {
+        return [str substringToIndex:str.length - 1];
+    }
     return str;
 }
 @end

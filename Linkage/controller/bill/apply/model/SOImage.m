@@ -20,7 +20,7 @@
 #pragma mark - MTLManagedObjectSerializing
 + (NSString *)managedObjectEntityName
 {
-    return [SOImageModel class];
+    return NSStringFromClass([SOImageModel class]);
 }
 
 + (NSDictionary *)managedObjectKeysByPropertyKey

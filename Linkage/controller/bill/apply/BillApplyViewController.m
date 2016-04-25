@@ -354,6 +354,12 @@ row.cellStyle = UITableViewCellStyleValue1;
 
 @implementation BillSelfApplyViewController
 
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.title = @"自备柜配送";
+}
+
 -(void)addCustomCell:(XLFormDescriptor *)form
 {
     XLFormSectionDescriptor *section;
