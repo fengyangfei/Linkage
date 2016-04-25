@@ -44,7 +44,7 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
-    return 80;
+    return 65;
 }
 
 -(void)formDescriptorCellDidSelectedWithViewController:(UIViewController *)controller
@@ -97,7 +97,7 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
 {
     if (!_titleLable) {
         _titleLable = [UILabel new];
-        _titleLable.font = [UIFont systemFontOfSize:12];
+        _titleLable.font = [UIFont boldSystemFontOfSize:12];
     }
     return _titleLable;
 }
@@ -117,6 +117,7 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
     if (!_detailLable) {
         _detailLable = [UILabel new];
         _detailLable.font = [UIFont systemFontOfSize:12];
+        _detailLable.textColor = [UIColor lightGrayColor];
         _detailLable.numberOfLines = 0;
     }
     return _detailLable;

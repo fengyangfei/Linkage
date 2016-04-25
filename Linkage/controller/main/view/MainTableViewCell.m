@@ -44,9 +44,9 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
     [super update];
     Company *company = self.rowDescriptor.value;
     if (company.logo) {
-        self.iconView.image =  [UIImage imageNamed:company.logo];
+        self.iconView.image = [UIImage imageNamed:company.logo];
     }else{
-        self.iconView.image =  [UIImage imageNamed:@"logo"];
+        self.iconView.image = [UIImage imageNamed:@"logo"];
     }
     self.titleLabel.text = company.name;
     self.subTitleLabel.text  = [NSString stringWithFormat:@"已接%@单", company.orderNum];
@@ -55,7 +55,7 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
-    return 80.0;
+    return 85.0;
 }
 
 -(void)clickAction:(id)sender
@@ -79,30 +79,27 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
     [self.contentView addSubview:self.titleLabel];
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconView.right).offset(5);
-        make.right.equalTo(self.contentView.right);
-        make.top.equalTo(self.iconView.top);
+        make.top.equalTo(self.contentView.top).offset(10);
     }];
     
     [self.contentView addSubview:self.ratingView];
     [self.ratingView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconView.right).offset(5);
-        make.right.equalTo(self.contentView.right);
-        make.bottom.equalTo(self.iconView.bottom);
-        make.height.equalTo(@26);
+        make.top.equalTo(self.titleLabel.bottom);
+    }];
+    
+    [self.contentView addSubview:self.subTitleLabel];
+    [self.subTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.iconView.right).offset(5);
+        make.top.equalTo(self.ratingView.bottom);
     }];
     
     [self.contentView addSubview:self.button];
     [self.button makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView.right).offset(-8);
         make.centerY.equalTo(self.contentView.centerY);
-        make.height.equalTo(@44);
+        make.height.equalTo(@30);
         make.width.equalTo(@60);
-    }];
-    
-    [self.contentView addSubview:self.subTitleLabel];
-    [self.subTitleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.button.left).offset(-5);
-        make.bottom.equalTo(self.button.bottom);
     }];
 }
 
@@ -150,6 +147,8 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         [_button setTitle:@"下单" forState:UIControlStateNormal];
         [_button setBackgroundColor:ButtonColor];
+        _button.layer.masksToBounds = YES;
+        _button.layer.cornerRadius = 6;
         [_button addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button;
