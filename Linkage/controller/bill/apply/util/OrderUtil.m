@@ -127,3 +127,17 @@
 }
 
 @end
+
+@implementation NSArray (OrderModel)
+
+-(NSArray *)modelsFromManagedObject
+{
+    NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:self.count];
+    for (OrderModel *manageObj in self) {
+        Order *order = [OrderUtil modelFromManagedObject:manageObj];
+        [mutableArray addObject:order];
+    }
+    return [mutableArray copy];
+}
+
+@end

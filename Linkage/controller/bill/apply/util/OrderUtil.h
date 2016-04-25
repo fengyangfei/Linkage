@@ -25,3 +25,8 @@
 +(void)queryAllOrder:(void(^)(NSArray *orders))completion;
 
 @end
+
+@interface NSArray (OrderModel)
+
+-(NSArray *)modelsFromManagedObject;
+@end;
