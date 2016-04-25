@@ -15,18 +15,18 @@
 
 //用户注册
 #define BaseUrl @"http://120.25.82.122:8000"
-#define Register4AdminUrl [NSString stringWithFormat:@"%@/api/session/register4admin", BaseUrl]
-#define Register4InviteUrl [NSString stringWithFormat:@"%@/api/session/register4invitecode", BaseUrl]
-#define LoginUrl [NSString stringWithFormat:@"%@/api/session/login", BaseUrl]
-#define ForgotPasswordUrl [NSString stringWithFormat:@"%@/api/session/forgotpassword", BaseUrl]
-#define ModPasswordUrl [NSString stringWithFormat:@"%@/api/profile/modpassword", BaseUrl]
+#define Register4AdminUrl [NSString stringWithFormat:@"%@/api/session/register4admin", BaseUrl]//注册
+#define Register4InviteUrl [NSString stringWithFormat:@"%@/api/session/register4invitecode", BaseUrl]//注册
+#define LoginUrl [NSString stringWithFormat:@"%@/api/session/login", BaseUrl]//登录
+#define ForgotPasswordUrl [NSString stringWithFormat:@"%@/api/session/forgotpassword", BaseUrl]//忘记密码
+#define ModPasswordUrl [NSString stringWithFormat:@"%@/api/profile/modpassword", BaseUrl]//修改密码
 #define ModMobileUrl [NSString stringWithFormat:@"%@/api/profile/modmobile", BaseUrl]
 #define InfomationUrl [NSString stringWithFormat:@"%@/api/profile/information", BaseUrl]
-#define ModInfomationUrl [NSString stringWithFormat:@"%@/api/profile/modinformation",BaseUrl]
-#define VerifycodeUrl [NSString stringWithFormat:@"%@/api/code/verifycode",BaseUrl]
+#define ModInfomationUrl [NSString stringWithFormat:@"%@/api/profile/modinformation",BaseUrl]//修改信息
+#define VerifycodeUrl [NSString stringWithFormat:@"%@/api/code/verifycode",BaseUrl]//验证码
 #define InvitecodeUrl [NSString stringWithFormat:@"%@/api/code/invitecode",BaseUrl]//生成邀请码
 #define GenInvitecodeUrl [NSString stringWithFormat:@"%@/api/code/inviteurl",BaseUrl]//生成邀请链接
-#define ModCompanyUrl [NSString stringWithFormat:@"%@/api/company/modcompany",BaseUrl]
+#define ModCompanyUrl [NSString stringWithFormat:@"%@/api/company/modcompany",BaseUrl]//修改厂商
 
 //车辆与司机
 #define DriversUrl [NSString stringWithFormat:@"%@/api/transporter/drivers",BaseUrl]//司机查询接口
@@ -67,7 +67,6 @@
 #define kQQAppkey @"uxbaaEdIiiPZGjub"
 
 //易信key
-#define kYixinAppkey @"yx35664bdff4db42c2b7be1e29390c1a06"
 #define kYixinAppkey @"yx35664bdff4db42c2b7be1e29390c1a06"
 
 //高德key

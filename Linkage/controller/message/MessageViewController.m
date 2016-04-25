@@ -7,6 +7,7 @@
 //
 
 #import "MessageViewController.h"
+#import "MessageTableCell.h"
 
 @implementation MessageViewController
 
@@ -26,11 +27,10 @@
     XLFormRowDescriptor * row;
     
     form = [XLFormDescriptor formDescriptorWithTitle:@"消息"];
-    
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
     for (int i = 0; i< 10 ; i++) {
-        section = [XLFormSectionDescriptor formSection];
-        [form addFormSection:section];
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"消息"];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:MessageDescriporType title:@"消息"];
         row.disabled = @YES;
         [section addFormRow:row];
     }

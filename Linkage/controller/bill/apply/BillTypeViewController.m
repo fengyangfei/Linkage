@@ -65,7 +65,8 @@
         cell.imageView.image = [UIImage imageNamed:@"order_type_import"];
     }else if(indexPath.row == OrderTypeSelf){
         cell.imageView.image = [UIImage imageNamed:@"order_type_self"];
-    }    
+    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 

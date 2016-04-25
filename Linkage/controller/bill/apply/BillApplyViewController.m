@@ -156,14 +156,16 @@ row.cellStyle = UITableViewCellStyleValue1;
 {
     NSDictionary *formValues =  [self.form formValues];
     Order *order = [OrderUtil modelFromXLFormValue:formValues];
-    //同步到数据库
-    [OrderUtil syncToDataBase:order completion:^(BOOL contextDidSave, NSError * _Nullable error) {
-        if (contextDidSave) {
-            [SVProgressHUD showSuccessWithStatus:@"单据缓存成功"];
-        }
-    }];
     //同步到服务端
     [OrderUtil syncToServer:order success:^(id responseData) {
+        NSString *orderId = responseData[@"order_id"];
+        order.orderId = orderId;
+        //同步到数据库
+        [OrderUtil syncToDataBase:order completion:^(BOOL contextDidSave, NSError * _Nullable error) {
+            if (contextDidSave) {
+                [SVProgressHUD showSuccessWithStatus:@"单据缓存成功"];
+            }
+        }];
         [SVProgressHUD showSuccessWithStatus:@"单据保存成功"];
     } failure:^(NSError *error) {
         [SVProgressHUD showSuccessWithStatus:@"单据保存失败"];

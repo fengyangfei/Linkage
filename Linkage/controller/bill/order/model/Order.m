@@ -75,9 +75,17 @@
 
 + (NSDateFormatter *)dateFormatter {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
     return dateFormatter;
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error
+{
+    self = [super initWithDictionary:dictionaryValue error:error];
+    if (self) {
+        self.createTime = [NSDate date];
+    }
+    return self;
 }
 
 @end

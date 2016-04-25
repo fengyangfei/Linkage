@@ -14,10 +14,6 @@ extern NSString *const DoneBillDescriporType;
 
 @interface BillTableViewCell : XLFormBaseCell<FormDescriptorCell>
 
-@property (nonatomic, strong) UILabel *billNumLable;
-@property (nonatomic, strong) UILabel *timeLable;
-@property (nonatomic, strong) UILabel *detailLable;
-@property (nonatomic, strong) UILabel *ratingLable;
 
 @end
 

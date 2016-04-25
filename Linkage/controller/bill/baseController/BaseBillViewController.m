@@ -91,14 +91,14 @@
         _segmentedControl = [HMSegmentedControl new];
         _segmentedControl.sectionTitles = @[@"未完成", @"已完成"];
         _segmentedControl.selectedSegmentIndex = 0;
-        _segmentedControl.backgroundColor = HeaderColor;
+        _segmentedControl.backgroundColor = [UIColor whiteColor];
         _segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor grayColor], NSFontAttributeName : [UIFont systemFontOfSize:16.0f]};
-        _segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-        _segmentedControl.selectionIndicatorColor = [UIColor whiteColor];
+        _segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : ButtonColor};
+        _segmentedControl.selectionIndicatorColor = ButtonColor;
         _segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
         _segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
         _segmentedControl.selectionIndicatorHeight = 3.f;
-        _segmentedControl.selectionIndicatorEdgeInsets = UIEdgeInsetsMake(0, 0, -2, 0);
+        //_segmentedControl.selectionIndicatorEdgeInsets = UIEdgeInsetsMake(0, 0, -2, 0);
         [_segmentedControl setIndexChangeBlock:^(NSInteger index) {
             if (index == 0) {
                 [weakSelf.scrollView scrollRectToVisible:weakSelf.leftTableView.frame animated:YES];
@@ -132,6 +132,7 @@
         _todoDS = [[TodoDataSource alloc] initWithViewController:self tableView:_leftTableView];
         _leftTableView.dataSource = _todoDS;
         _leftTableView.delegate = _todoDS;
+        _leftTableView.sectionFooterHeight = 0;
         _leftTableView.tableFooterView = [UIView new];
         _leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [OrderUtil queryAllOrder:^(NSArray *orders) {
@@ -149,6 +150,7 @@
         _doneDS = [[DoneDataSource alloc] initWithViewController:self tableView:_rightTableView];
         _rightTableView.dataSource = _doneDS;
         _rightTableView.delegate = _doneDS;
+        _rightTableView.sectionFooterHeight = 0;
         _rightTableView.tableFooterView = [UIView new];
         _rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [OrderUtil queryAllOrder:^(NSArray *orders) {

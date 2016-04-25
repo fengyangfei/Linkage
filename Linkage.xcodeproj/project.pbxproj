@@ -122,6 +122,7 @@
 		8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E31CA0436C00DBEB9F /* AddressViewController.m */; };
 		8B7172E71CA0443300DBEB9F /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */; };
 		8B8284891CA57EA9001B36C1 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8284881CA57EA9001B36C1 /* Company.m */; };
+		8B8B7BE61CCE4BA100080609 /* MessageTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B7BE51CCE4BA100080609 /* MessageTableCell.m */; };
 		8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F266F1C89C83D001B187E /* RegisterViewController.m */; };
 		8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */; };
 		8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26761C89DD89001B187E /* ForgotPasswordController.m */; };
@@ -447,6 +448,8 @@
 		8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAddressViewController.m; sourceTree = "<group>"; };
 		8B8284871CA57EA9001B36C1 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
 		8B8284881CA57EA9001B36C1 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
+		8B8B7BE41CCE4BA100080609 /* MessageTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableCell.h; sourceTree = "<group>"; };
+		8B8B7BE51CCE4BA100080609 /* MessageTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableCell.m; sourceTree = "<group>"; };
 		8B8F266E1C89C83D001B187E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		8B8F266F1C89C83D001B187E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		8B8F26721C89DC72001B187E /* TRFormTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRFormTextFieldCell.h; sourceTree = "<group>"; };
@@ -1217,6 +1220,15 @@
 			path = addressManager;
 			sourceTree = "<group>";
 		};
+		8B8B7BE31CCE4B7A00080609 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8B8B7BE41CCE4BA100080609 /* MessageTableCell.h */,
+				8B8B7BE51CCE4BA100080609 /* MessageTableCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		8B8F266C1C89C806001B187E /* forgotPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -1349,6 +1361,7 @@
 		8BCA5FB81CA97F97002601F6 /* message */ = {
 			isa = PBXGroup;
 			children = (
+				8B8B7BE31CCE4B7A00080609 /* view */,
 				8BCA5FB91CA97FB8002601F6 /* MessageViewController.h */,
 				8BCA5FBA1CA97FB8002601F6 /* MessageViewController.m */,
 			);
@@ -1938,6 +1951,7 @@
 				8BE25B111CC7D0540073BD8D /* CocoaSecurity.m in Sources */,
 				9A23A3201C7E8EA900FB5EB6 /* ICETutorialPage.m in Sources */,
 				9AEF89C11CA1274600C5EB90 /* MJPhotoToolbar.m in Sources */,
+				8B8B7BE61CCE4BA100080609 /* MessageTableCell.m in Sources */,
 				9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */,
 				9A95FF341C89731100C5F492 /* TRPopManager.m in Sources */,
 				8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */,
