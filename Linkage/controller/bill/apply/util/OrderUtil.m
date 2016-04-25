@@ -112,7 +112,15 @@
                                @"size":@(100)
                                };
     [[YGRestClient sharedInstance] postForObjectWithUrl:ListByStatusUrl form:paramter success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+        if (responseObject[@"orders"] && [responseObject[@"orders"] isKindOfClass:[NSArray class]]) {
+            NSError *error;
+            NSArray *array = [MTLJSONAdapter modelsOfClass:[Order class] fromJSONArray:responseObject[@"orders"] error:&error];
+            if (completion) {
+                completion(array);
+            }
+        }else{
+            completion(nil);
+        }
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];

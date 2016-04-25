@@ -134,9 +134,10 @@
         _leftTableView.delegate = _todoDS;
         _leftTableView.sectionFooterHeight = 0;
         _leftTableView.tableFooterView = [UIView new];
+        __weak __typeof(_leftTableView) weakView = _leftTableView;
         _leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [OrderUtil queryAllOrder:^(NSArray *orders) {
-                
+                [weakView.mj_header endRefreshing];
             }];
         }];
     }
@@ -152,9 +153,10 @@
         _rightTableView.delegate = _doneDS;
         _rightTableView.sectionFooterHeight = 0;
         _rightTableView.tableFooterView = [UIView new];
+        __weak __typeof(_rightTableView) weakView = _leftTableView;
         _rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [OrderUtil queryAllOrder:^(NSArray *orders) {
-                
+                [weakView.mj_header endRefreshing];
             }];
         }];
     }

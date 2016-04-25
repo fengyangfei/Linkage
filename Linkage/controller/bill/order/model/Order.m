@@ -10,7 +10,7 @@
 #import "Cargo.h"
 #import "OrderModel.h"
 
-#define kOrderRemoveKeys @[@"cargos",@"companyId",@"userId"]
+#define kOrderRemoveKeys @[@"cargos",@"userId"]
 @implementation Order
 
 #pragma mark - MTLJSONSerializing
@@ -24,6 +24,27 @@
 + (NSValueTransformer *)cargosJSONTransformer
 {
     return [MTLJSONAdapter arrayTransformerWithModelClass:[Cargo class]];
+}
+
++ (NSValueTransformer *)typeJSONTransformer
+{
+    NSDictionary *transDic = @{
+                               @(0): @(OrderTypeExport),
+                               @(1): @(OrderTypeImport),
+                               @(2): @(OrderTypeMainland),
+                               @(3): @(OrderTypeSelf)
+                               };
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(OrderTypeExport) reverseDefaultValue:@(0)];
+}
+
++ (NSValueTransformer *)statusJSONTransformer
+{
+    NSDictionary *transDic = @{
+                               @(0): @(OrderStatusUnDo),
+                               @(1): @(OrderStatusDoing),
+                               @(2): @(OrderStatusDone)
+                               };
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(OrderStatusUnDo) reverseDefaultValue:@(0)];
 }
 
 + (NSValueTransformer *)JSONTransformerForKey:(NSString *)key
@@ -54,6 +75,15 @@
     if (JSONDictionary[@"is_customs_declare"] != nil) {
         return [SelfOrder class];
     }
+    
+    if ([JSONDictionary[@"type"] integerValue] == 0) {
+        return [ExportOrder class];
+    }else if ([JSONDictionary[@"type"] integerValue] == 1){
+        return [ImportOrder class];
+    }else if ([JSONDictionary[@"type"] integerValue] == 3){
+        return [SelfOrder class];
+    }
+    
     return self;
 }
 
@@ -71,12 +101,6 @@
 + (NSValueTransformer *)cargosEntityAttributeTransformer
 {
     return [MTLManagedObjectAdapter transformerForModelPropertiesOfClass:[CargoModel class]];
-}
-
-+ (NSDateFormatter *)dateFormatter {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd";
-    return dateFormatter;
 }
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error
@@ -98,6 +122,7 @@
 {
     NSDictionary *keyMap = @{
                              @"orderId":@"order_id",
+                             @"companyId":@"company_id",
                              @"takeAddress":@"take_address",
                              @"takeTime":@"take_time",
                              @"deliveryAddress":@"delivery_address",
@@ -137,6 +162,7 @@
 {
     NSDictionary *keyMap = @{
                              @"orderId":@"order_id",
+                             @"companyId":@"company_id",
                              @"takeAddress":@"take_address",
                              @"takeTime":@"take_time",
                              @"deliveryAddress":@"delivery_address",
@@ -152,7 +178,7 @@
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keys = [keys mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos",@"companyId",@"userId",@"soImages"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos",@"userId",@"soImages"]];
     return keys;
 }
 
@@ -181,6 +207,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyMap = @{
+                             @"companyId":@"company_id",
                              @"takeAddress":@"take_address",
                              @"takeTime":@"take_time",
                              @"deliveryAddress":@"delivery_address",
