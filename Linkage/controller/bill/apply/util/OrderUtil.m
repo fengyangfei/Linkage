@@ -45,6 +45,23 @@
     }
 }
 
+//json转换成对象
++(Order *)modelFromJson:(NSDictionary *)json
+{
+    NSError *error;
+    Order *order = [MTLJSONAdapter modelOfClass:[Order class] fromJSONDictionary:json error:&error];
+    if (!error) {
+        if (json[@"cargos"] && [json[@"cargos"] isKindOfClass:[NSArray class]]) {
+            NSArray *cargos = [MTLJSONAdapter modelsOfClass:[Cargo class] fromJSONArray:json[@"cargos"] error:&error];
+            order.cargos = cargos;
+        }
+        order.userId = [LoginUser shareInstance].userId;
+    }else{
+        NSLog(@"JSON转换成对象失败 - %@",error);
+    }
+    return order;
+}
+
 //form转换成对象
 +(Order *)modelFromXLFormValue:(NSDictionary *)formValues
 {
@@ -157,24 +174,38 @@
                                @"token":[LoginUser shareInstance].token,
                                @"order_id":order.orderId
                                };
+    
+    Order *(^mergeOrder)(id responseObject) = ^(id responseObject) {
+        Order *result = [OrderUtil modelFromJson:responseObject];
+        [result mergeValueForKey:@"orderId" fromModel:order];
+        [result mergeValueForKey:@"type" fromModel:order];
+        [result mergeValueForKey:@"status" fromModel:order];
+        return result;
+    };
     if ([order isKindOfClass:[ImportOrder class]]) {
         [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4importUrl form:paramter success:^(id responseObject) {
-            
-            //[self ];
-            
-            completion(nil);
+            Order *order = mergeOrder(responseObject);
+            if (completion) {
+                completion(order);
+            }
         } failure:^(NSError *error) {
             
         }];
     }else if([order isKindOfClass:[ExportOrder class]]){
         [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4exportUrl form:paramter success:^(id responseObject) {
-            
+            Order *order = mergeOrder(responseObject);
+            if (completion) {
+                completion(order);
+            }
         } failure:^(NSError *error) {
             
         }];
     }else if([order isKindOfClass:[SelfOrder class]]){
         [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4selfUrl form:paramter success:^(id responseObject) {
-            
+            Order *order = mergeOrder(responseObject);
+            if (completion) {
+                completion(order);
+            }
         } failure:^(NSError *error) {
             
         }];

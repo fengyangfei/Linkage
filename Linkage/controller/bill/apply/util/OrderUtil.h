@@ -16,6 +16,8 @@
 
 +(void)syncToDataBase:(Order *)order completion:(MRSaveCompletionHandler)completion;
 
++(Order *)modelFromJson:(NSDictionary *)json;
+
 +(Order *)modelFromXLFormValue:(NSDictionary *)formValues;
 
 +(Order *)modelFromManagedObject:(OrderModel *)orderModel;

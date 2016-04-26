@@ -16,6 +16,7 @@
     #import <MagicalRecord/MagicalRecord.h>
     #import <Mantle/Mantle.h>
     #import <BlocksKit/BlocksKit+UIKit.h>
+    #import <ReactiveCocoa/ReactiveCocoa.h>
     #import "TRFormTextFieldCell.h"
     #import "TRConstants.h"
     #import "LinkConstants.h"

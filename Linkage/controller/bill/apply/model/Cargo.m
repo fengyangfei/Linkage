@@ -23,8 +23,11 @@
 #pragma mark - MTLJSONSerializing
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    return keyDic;
+    NSDictionary *keyMap = @{
+                             @"cargoId":@"type",
+                             @"cargoCount":@"number"
+                             };
+    return keyMap;
 }
 
 #pragma mark - MTLManagedObjectSerializing
