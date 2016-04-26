@@ -11,7 +11,8 @@
 #import "BillTypeViewController.h"
 #import "BillDetailViewController.h"
 
-#import "OrderModel.h"
+#import "Order.h"
+#import "OrderUtil.h"
 
 @interface BillViewController ()
 
@@ -70,19 +71,19 @@
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
-    XLFormRowDescriptor * row;
     
     form = [XLFormDescriptor formDescriptor];
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    NSArray *orderModelArray = [OrderModel MR_findAllInContext:[NSManagedObjectContext MR_defaultContext]];
-    for (OrderModel *orderModel in orderModelArray) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
-        row.value = orderModel;
-        row.action.viewControllerClass = [BillDetailViewController class];
-        [section addFormRow:row];
-    }
+    [OrderUtil queryOrderFromDataBase:^(NSArray *orders) {
+        for (Order *order in orders) {
+            XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
+            row.value = order;
+            row.action.viewControllerClass = [BillDetailViewController class];
+            [section addFormRow:row];
+        }
+    }];
     
     return form;
 }

@@ -7,7 +7,6 @@
 //
 
 #import "BillTableViewCell.h"
-#import "OrderModel.h"
 #import "Order.h"
 
 NSString *const TodoBillDescriporType = @"TodoBillRowType";
@@ -53,7 +52,7 @@ NSString *const DoneBillDescriporType = @"DoneBillRowType";
 -(void)update
 {
     [super update];
-    OrderModel *order = self.rowDescriptor.value;
+    Order *order = self.rowDescriptor.value;
     self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
     self.ratingLable.attributedText = [order.deliveryAddress attributedStringWithTitle:@"进度："];
     self.timeLable.attributedText = [[[BillTableViewCell dateFormatter] stringFromDate:order.createTime] attributedStringWithTitle:@"下单时间："];

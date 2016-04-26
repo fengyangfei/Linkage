@@ -22,7 +22,9 @@
 
 +(Order *)modelFromManagedObject:(OrderModel *)orderModel;
 
-+(void)queryAllOrder:(void(^)(NSArray *orders))completion;
++(void)queryOrderFromServer:(void(^)(NSArray *orders))completion;
+
++(void)queryOrderFromDataBase:(void(^)(NSArray *orders))completion;
 
 @end
 

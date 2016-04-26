@@ -9,6 +9,7 @@
 #import "Order.h"
 #import "Cargo.h"
 #import "OrderModel.h"
+#import "SOImage.h"
 
 #define kOrderRemoveKeys @[@"cargos",@"userId"]
 @implementation Order
@@ -101,6 +102,11 @@
 + (NSValueTransformer *)cargosEntityAttributeTransformer
 {
     return [MTLManagedObjectAdapter transformerForModelPropertiesOfClass:[CargoModel class]];
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey
+{
+    return @{@"cargos":[Cargo class],@"soImages":[SOImage class]};
 }
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error

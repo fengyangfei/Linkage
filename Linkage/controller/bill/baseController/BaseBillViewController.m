@@ -136,7 +136,7 @@
         _leftTableView.tableFooterView = [UIView new];
         __weak __typeof(_leftTableView) weakView = _leftTableView;
         _leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [OrderUtil queryAllOrder:^(NSArray *orders) {
+            [OrderUtil queryOrderFromServer:^(NSArray *orders) {
                 [weakView.mj_header endRefreshing];
             }];
         }];
@@ -155,7 +155,7 @@
         _rightTableView.tableFooterView = [UIView new];
         __weak __typeof(_rightTableView) weakView = _leftTableView;
         _rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [OrderUtil queryAllOrder:^(NSArray *orders) {
+            [OrderUtil queryOrderFromServer:^(NSArray *orders) {
                 [weakView.mj_header endRefreshing];
             }];
         }];

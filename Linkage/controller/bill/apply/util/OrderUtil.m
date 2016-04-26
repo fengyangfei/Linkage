@@ -100,7 +100,8 @@
     return order;
 }
 
-+(void)queryAllOrder:(void(^)(NSArray *orders))completion
+//服务端查询
++(void)queryOrderFromServer:(void(^)(NSArray *orders))completion
 {
     NSDictionary *paramter = @{
                                @"cid":[LoginUser shareInstance].cid,
@@ -126,10 +127,20 @@
     }];
 }
 
+//数据库查询
++(void)queryOrderFromDataBase:(void(^)(NSArray *orders))completion
+{
+    NSArray *orderModelArray = [OrderModel MR_findAllInContext:[NSManagedObjectContext MR_defaultContext]];
+    NSArray *orders = [orderModelArray modelsFromManagedObject];
+    if (completion) {
+        completion(orders);
+    }
+}
+
 @end
 
 @implementation NSArray (OrderModel)
-
+//对象转换
 -(NSArray *)modelsFromManagedObject
 {
     NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:self.count];
