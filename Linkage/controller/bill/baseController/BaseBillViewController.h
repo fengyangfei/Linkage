@@ -18,6 +18,6 @@
 
 - (void)segmentedControlChangeIndex:(NSInteger)index;
 
-@property (nonatomic, strong) TodoDataSource *todoDS;
-@property (nonatomic, strong) DoneDataSource *doneDS;
+@property (nonatomic, strong) XLFormDataSource *todoDS;
+@property (nonatomic, strong) XLFormDataSource *doneDS;
 @end

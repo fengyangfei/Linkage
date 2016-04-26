@@ -8,16 +8,18 @@
 
 #import "BillDetailViewController.h"
 #import "XLFormDataSource.h"
+#import "Order.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import "DriverInfoCell.h"
 
-@interface BillDetailViewController()
+@interface BillDetailViewController()<XLFormRowDescriptorViewController>
 @property (nonatomic, strong) XLFormDataSource *detailDS;
 @property (nonatomic, strong) XLFormDataSource *historyDS;
-
 @end
 
 @implementation BillDetailViewController
+@synthesize rowDescriptor = _rowDescriptor;
+
 -(void)dealloc
 {
     self.detailDS = nil;
@@ -42,27 +44,23 @@
 -(void)refreshLeftTable
 {
     self.detailDS = [[XLFormDataSource alloc]initWithViewController:self tableView:self.leftTableView];
-    [self.detailDS setForm:[self createDetailForm]];
     self.leftTableView.dataSource = self.detailDS;
     self.leftTableView.delegate = self.detailDS;
-    if ([self isViewLoaded]){
-        [self.leftTableView reloadData];
-    }
+    [self.detailDS setForm:[self createDetailForm]];
 }
 
 -(void)refreshRightTable
 {
     self.historyDS = [[XLFormDataSource alloc]initWithViewController:self tableView:self.rightTableView];
-    [self.historyDS setForm:[self createHistoryForm]];
     self.rightTableView.dataSource = self.historyDS;
     self.rightTableView.delegate = self.historyDS;
-    if ([self isViewLoaded]){
-        [self.rightTableView reloadData];
-    }
+    [self.historyDS setForm:[self createHistoryForm]];
 }
 
 -(XLFormDescriptor *)createDetailForm
 {
+    Order *order = self.rowDescriptor.value;
+    
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
@@ -72,13 +70,12 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"订单号"];
-    row.value = @(111);
+    row.value = order.orderId;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"接单承运商"];
     row.value = @"B单位";
     [section addFormRow:row];
-
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"柜型1"];
     row.value = @(111);

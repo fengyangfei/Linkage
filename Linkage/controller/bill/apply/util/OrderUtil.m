@@ -97,6 +97,9 @@
     if (error) {
         NSLog(@"数据库对象转换对象失败 - %@",error);
     }
+    if (order) {
+        order.objStatus = Persistent;
+    }
     return order;
 }
 

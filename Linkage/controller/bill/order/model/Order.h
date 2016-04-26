@@ -22,6 +22,11 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
     OrderStatusDone
 };
 
+typedef NS_ENUM(NSUInteger, ObjectStatus) {
+    Transient,//引用状态
+    Persistent//持久状态
+};
+
 //订单
 @interface Order : MTLModel<MTLJSONSerializing, MTLManagedObjectSerializing>
 @property (nonatomic, copy) NSString *orderId;//订单号
@@ -44,6 +49,7 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 @property (nonatomic, strong) NSDate *createTime;//创建时间
 @property (nonatomic, assign) BOOL  isTransferPort;//是否转关
 @property (nonatomic, strong) NSArray *cargos;//货柜
+@property (nonatomic, assign) ObjectStatus objStatus;//对象状态
 @end
 
 //进口订单

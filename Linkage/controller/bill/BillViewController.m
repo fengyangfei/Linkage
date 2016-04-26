@@ -10,6 +10,7 @@
 #import "BillTableViewCell.h"
 #import "BillTypeViewController.h"
 #import "BillDetailViewController.h"
+#import <MJRefresh/MJRefresh.h>
 
 #import "Order.h"
 #import "OrderUtil.h"
@@ -31,6 +32,20 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
+    __weak __typeof(self.leftTableView) weakLeftView = self.leftTableView;
+    self.leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [OrderUtil queryOrderFromServer:^(NSArray *orders) {
+            [weakLeftView.mj_header endRefreshing];
+        }];
+    }];
+    
+    __weak __typeof(self.rightTableView) weakRightView = self.rightTableView;
+    self.rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [OrderUtil queryOrderFromServer:^(NSArray *orders) {
+            [weakRightView.mj_header endRefreshing];
+        }];
+    }];
+    
     [self setupData];
 }
 

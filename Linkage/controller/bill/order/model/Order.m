@@ -11,7 +11,7 @@
 #import "OrderModel.h"
 #import "SOImage.h"
 
-#define kOrderRemoveKeys @[@"cargos",@"userId"]
+#define kOrderRemoveKeys @[@"cargos",@"userId",@"objStatus",@"soImages"]
 @implementation Order
 
 #pragma mark - MTLJSONSerializing
@@ -184,7 +184,7 @@
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keys = [keys mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"cargos",@"userId",@"soImages"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:kOrderRemoveKeys];
     return keys;
 }
 
