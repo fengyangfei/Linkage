@@ -48,6 +48,21 @@
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(OrderStatusUnDo) reverseDefaultValue:@(0)];
 }
 
++(NSValueTransformer *)isTransferPortJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if ([value isKindOfClass:[NSString class]]) {
+            return @([value intValue]);
+        }else if ([value isKindOfClass:[NSNumber class]]){
+            return value;
+        }else{
+            return @(0);
+        }
+    } reverseBlock:^id(id value, BOOL *success, NSError **error) {
+        return value;
+    }];
+}
+
 + (NSValueTransformer *)JSONTransformerForKey:(NSString *)key
 {
     if ([@[@"takeTime",@"deliverTime",@"cargosRentExpire",@"createTime",@"customsIn",@"cargoTakeTime"] containsObject:key]) {
