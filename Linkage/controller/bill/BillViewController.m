@@ -11,7 +11,8 @@
 #import "BillTypeViewController.h"
 #import "BillDetailViewController.h"
 #import <MJRefresh/MJRefresh.h>
-
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <XLForm/XLForm.h>
 #import "Order.h"
 #import "OrderUtil.h"
 
@@ -30,11 +31,13 @@
 
 -(void)viewDidLoad
 {
+    WeakSelf
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
     __weak __typeof(self.leftTableView) weakLeftView = self.leftTableView;
     self.leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [OrderUtil queryOrdersFromServer:^(NSArray *orders) {
+            [weakSelf addRows:orders toDataSource:weakSelf.todoDS];
             [weakLeftView.mj_header endRefreshing];
         }];
     }];
@@ -42,6 +45,7 @@
     __weak __typeof(self.rightTableView) weakRightView = self.rightTableView;
     self.rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [OrderUtil queryOrdersFromServer:^(NSArray *orders) {
+            [weakSelf addRows:orders toDataSource:weakSelf.doneDS];
             [weakRightView.mj_header endRefreshing];
         }];
     }];
@@ -52,27 +56,16 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self setupData];
 }
 
 -(void)setupData
 {
-    [self refreshTodoTable];
-    [self refreshDoneTable];
-}
-
--(void)refreshTodoTable
-{
-    if (self.todoDS) {
-        [self.todoDS setForm:[self createForm]];
-    }
-}
-
--(void)refreshDoneTable
-{
-    if (self.doneDS){
-        [self.doneDS setForm:[self createForm]];
-    }
+    [self.todoDS setForm:[self createForm:nil]];
+    [self.doneDS setForm:[self createForm:nil]];
+    WeakSelf
+    [OrderUtil queryOrdersFromDataBase:^(NSArray *orders) {
+        [weakSelf addRows:orders toDataSource:weakSelf.todoDS];
+    }];
 }
 
 -(void)pushBillApplyViewController
@@ -82,25 +75,42 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
--(XLFormDescriptor *)createForm
+- (void)segmentedControlChangeIndex:(NSInteger)index
+{
+    if (index == 0) {
+        [self.leftTableView.mj_header beginRefreshing];
+    }else if (index == 1){
+        [self.rightTableView.mj_header beginRefreshing];
+    }
+}
+
+-(XLFormDescriptor *)createForm:(NSArray *)orders
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
-    
+
     form = [XLFormDescriptor formDescriptor];
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    [OrderUtil queryOrdersFromDataBase:^(NSArray *orders) {
-        for (Order *order in orders) {
-            XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
-            row.value = order;
-            row.action.viewControllerClass = [BillDetailViewController class];
-            [section addFormRow:row];
-        }
-    }];
-    
+    [self addRows:orders toSection:section];
     return form;
+}
+
+-(void)addRows:(NSArray *)orders toSection:(XLFormSectionDescriptor *)section
+{
+    for (Order *order in orders) {
+        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
+        row.value = order;
+        row.action.viewControllerClass = [BillDetailViewController class];
+        [section addFormRow:row];
+    }
+}
+
+-(void)addRows:(NSArray *)orders toDataSource:(XLFormDataSource *)dataSource
+{
+    XLFormSectionDescriptor *section = (XLFormSectionDescriptor *)[dataSource.form.formSections firstObject];
+    [self addRows:orders toSection:section];
 }
 
 @end

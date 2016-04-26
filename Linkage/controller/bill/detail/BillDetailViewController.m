@@ -11,9 +11,10 @@
 #import "LoginUser.h"
 #import "Order.h"
 #import "OrderUtil.h"
-#import <HMSegmentedControl/HMSegmentedControl.h>
 #import "DriverInfoCell.h"
 #import "LinkUtil.h"
+#import <HMSegmentedControl/HMSegmentedControl.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface BillDetailViewController()<XLFormRowDescriptorViewController>
 @property (nonatomic, strong) XLFormDataSource *detailDS;
@@ -39,12 +40,15 @@
     [self setupData];
     
     Order *order = self.rowDescriptor.value;
-    //if (order.objStatus == Transient) {
-        [OrderUtil queryOrderFromServer:order completion:^(Order *result) {
-            [weakSelf.detailDS setForm:[self createDetailForm:result]];
-        }];
-    //}
-
+    if (order.objStatus == Transient) {
+        if (order.orderId) {
+            [SVProgressHUD show];
+            [OrderUtil queryOrderFromServer:order completion:^(Order *result) {
+                [weakSelf.detailDS setForm:[self createDetailForm:result]];
+                [SVProgressHUD dismiss];
+            }];
+        }
+    }
 }
 
 -(void)setupData
@@ -115,6 +119,34 @@
         }else{
             row.value = @"否";
         }
+        [section addFormRow:row];
+    }
+    
+    if([order isKindOfClass:[ImportOrder class]]) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"柜号"];
+        row.value = order? ((ImportOrder *)order).cargoNo :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"报关行联系人"];
+        row.value = order? ((ImportOrder *)order).customsBroker :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"联系人电话"];
+        row.value = order? ((ImportOrder *)order).customsHouseContact :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"二程公司"];
+        row.value = order? ((ImportOrder *)order).cargoCompany :@"";
+        [section addFormRow:row];
+    }
+    
+    if([order isKindOfClass:[SelfOrder class]]) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"报关时间"];
+        row.value = order? [[LinkUtil dateFormatter] stringFromDate:((SelfOrder *)order).customsIn] :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"提货时间"];
+        row.value = order? [[LinkUtil dateFormatter] stringFromDate:((SelfOrder *)order).cargoTakeTime] :@"";
         [section addFormRow:row];
     }
     

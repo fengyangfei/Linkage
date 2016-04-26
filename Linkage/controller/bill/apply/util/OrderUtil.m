@@ -174,7 +174,6 @@
                                @"token":[LoginUser shareInstance].token,
                                @"order_id":order.orderId
                                };
-    
     Order *(^mergeOrder)(id responseObject) = ^(id responseObject) {
         Order *result = [OrderUtil modelFromJson:responseObject];
         [result mergeValueForKey:@"orderId" fromModel:order];
