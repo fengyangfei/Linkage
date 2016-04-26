@@ -65,6 +65,29 @@
     return order;
 }
 
+//数据库对象转换成普通对象
++(Order *)modelFromManagedObject:(OrderModel *)orderModel
+{
+    NSError *error;
+    Order *order;
+    if ([orderModel isKindOfClass:[ImportOrderModel class]]) {
+        order = [MTLManagedObjectAdapter modelOfClass:[ImportOrder class] fromManagedObject:orderModel error:&error];
+    }else if([orderModel isKindOfClass:[ExportOrderModel class]]) {
+        order = [MTLManagedObjectAdapter modelOfClass:[ExportOrder class] fromManagedObject:orderModel error:&error];
+    }else if([orderModel isKindOfClass:[SelfOrderModel class]]) {
+        order = [MTLManagedObjectAdapter modelOfClass:[SelfOrder class] fromManagedObject:orderModel error:&error];
+    }else{
+        order = [MTLManagedObjectAdapter modelOfClass:[Order class] fromManagedObject:orderModel error:&error];
+    }
+    if (error) {
+        NSLog(@"数据库对象转换对象失败 - %@",error);
+    }
+    if (order) {
+        order.objStatus = Persistent;
+    }
+    return order;
+}
+
 //转换成json
 +(NSDictionary *)jsonFromModel:(Order *)order
 {
@@ -89,22 +112,8 @@
     }
 }
 
-//数据库对象转换成普通对象
-+(Order *)modelFromManagedObject:(OrderModel *)orderModel
-{
-    NSError *error;
-    Order *order = [MTLManagedObjectAdapter modelOfClass:[Order class] fromManagedObject:orderModel error:&error];
-    if (error) {
-        NSLog(@"数据库对象转换对象失败 - %@",error);
-    }
-    if (order) {
-        order.objStatus = Persistent;
-    }
-    return order;
-}
-
 //服务端查询
-+(void)queryOrderFromServer:(void(^)(NSArray *orders))completion
++(void)queryOrdersFromServer:(void(^)(NSArray *orders))completion
 {
     NSDictionary *paramter = @{
                                @"cid":[LoginUser shareInstance].cid,
@@ -131,12 +140,44 @@
 }
 
 //数据库查询
-+(void)queryOrderFromDataBase:(void(^)(NSArray *orders))completion
++(void)queryOrdersFromDataBase:(void(^)(NSArray *orders))completion
 {
     NSArray *orderModelArray = [OrderModel MR_findAllInContext:[NSManagedObjectContext MR_defaultContext]];
     NSArray *orders = [orderModelArray modelsFromManagedObject];
     if (completion) {
         completion(orders);
+    }
+}
+
+//查询详情
++(void)queryOrderFromServer:(Order *)order completion:(void(^)(Order *result))completion
+{
+    NSDictionary *paramter = @{
+                               @"cid":[LoginUser shareInstance].cid,
+                               @"token":[LoginUser shareInstance].token,
+                               @"order_id":order.orderId
+                               };
+    if ([order isKindOfClass:[ImportOrder class]]) {
+        [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4importUrl form:paramter success:^(id responseObject) {
+            
+            //[self ];
+            
+            completion(nil);
+        } failure:^(NSError *error) {
+            
+        }];
+    }else if([order isKindOfClass:[ExportOrder class]]){
+        [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4exportUrl form:paramter success:^(id responseObject) {
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    }else if([order isKindOfClass:[SelfOrder class]]){
+        [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4selfUrl form:paramter success:^(id responseObject) {
+            
+        } failure:^(NSError *error) {
+            
+        }];
     }
 }
 

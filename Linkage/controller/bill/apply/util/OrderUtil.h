@@ -18,14 +18,15 @@
 
 +(Order *)modelFromXLFormValue:(NSDictionary *)formValues;
 
-+(NSDictionary *)jsonFromModel:(Order *)order;
-
 +(Order *)modelFromManagedObject:(OrderModel *)orderModel;
 
-+(void)queryOrderFromServer:(void(^)(NSArray *orders))completion;
++(NSDictionary *)jsonFromModel:(Order *)order;
 
-+(void)queryOrderFromDataBase:(void(^)(NSArray *orders))completion;
++(void)queryOrdersFromServer:(void(^)(NSArray *orders))completion;
 
++(void)queryOrdersFromDataBase:(void(^)(NSArray *orders))completion;
+
++(void)queryOrderFromServer:(Order *)order completion:(void(^)(Order *result))completion;
 @end
 
 @interface NSArray (OrderModel)

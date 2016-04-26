@@ -96,7 +96,9 @@
 
 + (NSDictionary *)managedObjectKeysByPropertyKey
 {
-    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"objStatus"]];
+    return keys;
 }
 
 + (NSValueTransformer *)cargosEntityAttributeTransformer
@@ -156,7 +158,9 @@
 
 + (NSDictionary *)managedObjectKeysByPropertyKey
 {
-    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"objStatus"]];
+    return keys;
 }
 @end
 
@@ -197,7 +201,7 @@
 + (NSDictionary *)managedObjectKeysByPropertyKey
 {
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"so"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"so",@"objStatus"]];
     return keys;
 }
 
@@ -239,6 +243,7 @@
 + (NSDictionary *)managedObjectKeysByPropertyKey
 {
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"objStatus"]];
     return keys;
 }
 

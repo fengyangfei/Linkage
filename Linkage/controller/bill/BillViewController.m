@@ -34,14 +34,14 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
     __weak __typeof(self.leftTableView) weakLeftView = self.leftTableView;
     self.leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [OrderUtil queryOrderFromServer:^(NSArray *orders) {
+        [OrderUtil queryOrdersFromServer:^(NSArray *orders) {
             [weakLeftView.mj_header endRefreshing];
         }];
     }];
     
     __weak __typeof(self.rightTableView) weakRightView = self.rightTableView;
     self.rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [OrderUtil queryOrderFromServer:^(NSArray *orders) {
+        [OrderUtil queryOrdersFromServer:^(NSArray *orders) {
             [weakRightView.mj_header endRefreshing];
         }];
     }];
@@ -91,7 +91,7 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    [OrderUtil queryOrderFromDataBase:^(NSArray *orders) {
+    [OrderUtil queryOrdersFromDataBase:^(NSArray *orders) {
         for (Order *order in orders) {
             XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
             row.value = order;

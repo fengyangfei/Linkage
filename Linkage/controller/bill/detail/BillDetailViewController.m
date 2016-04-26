@@ -36,9 +36,11 @@
     [self setupData];
     
     Order *order = self.rowDescriptor.value;
-    if (order.objStatus == Transient) {
-        
-    }
+    //if (order.objStatus == Transient) {
+        [OrderUtil queryOrderFromServer:order completion:^(Order *result) {
+            
+        }];
+    //}
 }
 
 -(void)setupData
