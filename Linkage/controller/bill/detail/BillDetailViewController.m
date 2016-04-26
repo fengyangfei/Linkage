@@ -9,6 +9,7 @@
 #import "BillDetailViewController.h"
 #import "XLFormDataSource.h"
 #import "Order.h"
+#import "OrderUtil.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import "DriverInfoCell.h"
 
@@ -33,6 +34,11 @@
     [super viewDidLoad];
     self.title = @"订单详情";
     [self setupData];
+    
+    Order *order = self.rowDescriptor.value;
+    if (order.objStatus == Transient) {
+        
+    }
 }
 
 -(void)setupData
