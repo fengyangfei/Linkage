@@ -33,6 +33,8 @@
             return value;
         }else if (value != nil && [value isKindOfClass:[NSString class]]) {
             return @([value intValue]);
+        }else if (value == [NSNull null]) {
+            return @(0);
         }else{
             return @(0);
         }

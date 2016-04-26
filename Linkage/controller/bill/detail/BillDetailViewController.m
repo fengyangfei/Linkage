@@ -8,10 +8,12 @@
 
 #import "BillDetailViewController.h"
 #import "XLFormDataSource.h"
+#import "LoginUser.h"
 #import "Order.h"
 #import "OrderUtil.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import "DriverInfoCell.h"
+#import "LinkUtil.h"
 
 @interface BillDetailViewController()<XLFormRowDescriptorViewController>
 @property (nonatomic, strong) XLFormDataSource *detailDS;
@@ -31,6 +33,7 @@
 
 -(void)viewDidLoad
 {
+    WeakSelf
     [super viewDidLoad];
     self.title = @"订单详情";
     [self setupData];
@@ -38,9 +41,10 @@
     Order *order = self.rowDescriptor.value;
     //if (order.objStatus == Transient) {
         [OrderUtil queryOrderFromServer:order completion:^(Order *result) {
-            
+            [weakSelf.detailDS setForm:[self createDetailForm:result]];
         }];
     //}
+
 }
 
 -(void)setupData
@@ -54,7 +58,7 @@
     self.detailDS = [[XLFormDataSource alloc]initWithViewController:self tableView:self.leftTableView];
     self.leftTableView.dataSource = self.detailDS;
     self.leftTableView.delegate = self.detailDS;
-    [self.detailDS setForm:[self createDetailForm]];
+    [self.detailDS setForm:[self createDetailForm:self.rowDescriptor.value]];
 }
 
 -(void)refreshRightTable
@@ -65,10 +69,8 @@
     [self.historyDS setForm:[self createHistoryForm]];
 }
 
--(XLFormDescriptor *)createDetailForm
+-(XLFormDescriptor *)createDetailForm:(Order *)order
 {
-    Order *order = self.rowDescriptor.value;
-    
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
@@ -82,41 +84,47 @@
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"接单承运商"];
-    row.value = @"B单位";
-    [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"柜型1"];
-    row.value = @(111);
+    Company *company = [LoginUser findCompanyById:order.companyId];
+    row.value = company ? company.name :@"";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"装货地址"];
-    row.value = @"码头西北";
+    row.value = order? order.takeAddress:@"";
     [section addFormRow:row];
 
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"到厂时间"];
-    row.value = @"2016年10月10日";
+    row.value = order? [[LinkUtil dateFormatter] stringFromDate:order.deliverTime]: @"";
     [section addFormRow:row];
 
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"送货地址"];
-    row.value = @"码头西北";
+    row.value = order? order.deliveryAddress:@"";
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"图片"];
-    row.value = @(111);
-    [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程公司"];
-    [section addFormRow:row];
-
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程船名"];
-    [section addFormRow:row];
-
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否约好"];
-    row.value = @YES;
-    [section addFormRow:row];
+    if ([order isKindOfClass:[ExportOrder class]]) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程公司"];
+        row.value = order? ((ExportOrder *)order).shipCompany :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程船名"];
+        row.value = order? ((ExportOrder *)order).shipName :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否约好"];
+        if (order && ((ExportOrder *)order).isBookCargo) {
+            row.value = @"是";
+        }else{
+            row.value = @"否";
+        }
+        [section addFormRow:row];
+    }
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否转关"];
     row.value = @YES;
+    if (order && order.isTransferPort) {
+        row.value = @"是";
+    }else{
+        row.value = @"否";
+    }
     [section addFormRow:row];
     
     return form;

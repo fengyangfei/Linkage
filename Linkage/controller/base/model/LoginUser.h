@@ -9,6 +9,7 @@
 #import <Mantle/Mantle.h>
 #import "MTLManagedObjectAdapter.h"
 #import "MTLModel+Merge.h"
+#import "Company.h"
 
 typedef NS_ENUM(NSUInteger,UserGender) {
     Female,
@@ -47,4 +48,6 @@ typedef NS_ENUM(NSUInteger,UserType) {
 
 @interface LoginUser (Extensions)
 UserDefault_Attr(currentLocation, NSString *)//用户所在地
+
++(Company *)findCompanyById:(NSString *)companyId;
 @end

@@ -184,27 +184,27 @@
     };
     if ([order isKindOfClass:[ImportOrder class]]) {
         [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4importUrl form:paramter success:^(id responseObject) {
-            Order *order = mergeOrder(responseObject);
+            Order *result = mergeOrder(responseObject);
             if (completion) {
-                completion(order);
+                completion(result);
             }
         } failure:^(NSError *error) {
             
         }];
     }else if([order isKindOfClass:[ExportOrder class]]){
         [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4exportUrl form:paramter success:^(id responseObject) {
-            Order *order = mergeOrder(responseObject);
+            Order *result = mergeOrder(responseObject);
             if (completion) {
-                completion(order);
+                completion(result);
             }
         } failure:^(NSError *error) {
             
         }];
     }else if([order isKindOfClass:[SelfOrder class]]){
         [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4selfUrl form:paramter success:^(id responseObject) {
-            Order *order = mergeOrder(responseObject);
+            Order *result = mergeOrder(responseObject);
             if (completion) {
-                completion(order);
+                completion(result);
             }
         } failure:^(NSError *error) {
             

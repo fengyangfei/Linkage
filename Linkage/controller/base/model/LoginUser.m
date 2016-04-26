@@ -92,5 +92,17 @@ static LoginUser *user;
 
 @implementation LoginUser(Extensions)
 UserDefault_AttrImpl(currentLocation, NSString *)
+
++(Company *)findCompanyById:(NSString *)companyId
+{
+    __block Company *company;
+    [[LoginUser shareInstance].companies enumerateObjectsUsingBlock:^(Company *obj, NSUInteger idx, BOOL *stop) {
+        if ([obj.companyId isEqualToString:companyId]) {
+            company = obj;
+            *stop = YES;
+        }
+    }];
+    return company;
+}
 @end
 

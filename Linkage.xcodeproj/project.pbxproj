@@ -160,6 +160,7 @@
 		9A05C37A1CC8C413009BC8C9 /* ExpandFormSectionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3771CC8C413009BC8C9 /* ExpandFormSectionDescriptor.m */; };
 		9A05C37B1CC8C413009BC8C9 /* XLFormButtonCell+Push.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3791CC8C413009BC8C9 /* XLFormButtonCell+Push.m */; };
 		9A05C38D1CCA095D009BC8C9 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3871CCA095D009BC8C9 /* OrderModel.m */; };
+		9A11F0591CCF48F9002E8F6F /* LinkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0581CCF48F9002E8F6F /* LinkUtil.m */; };
 		9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */; };
 		9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A81C7A91D400FB5EB6 /* UIColor+BFPaperColors.m */; };
 		9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2B01C7AAA3D00FB5EB6 /* MainViewController.m */; };
@@ -522,6 +523,8 @@
 		9A05C3791CC8C413009BC8C9 /* XLFormButtonCell+Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XLFormButtonCell+Push.m"; sourceTree = "<group>"; };
 		9A05C3861CCA095D009BC8C9 /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
 		9A05C3871CCA095D009BC8C9 /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
+		9A11F0571CCF48F9002E8F6F /* LinkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkUtil.h; sourceTree = "<group>"; };
+		9A11F0581CCF48F9002E8F6F /* LinkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkUtil.m; sourceTree = "<group>"; };
 		9A23A2A51C7A91D400FB5EB6 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
 		9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
 		9A23A2A71C7A91D400FB5EB6 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -1194,6 +1197,8 @@
 				8B5DC6801C79D0DB00D29292 /* YGRestClient.m */,
 				9ACEBCA81C9BF25F0000ACBF /* TimerManager.h */,
 				9ACEBCA91C9BF25F0000ACBF /* TimerManager.m */,
+				9A11F0571CCF48F9002E8F6F /* LinkUtil.h */,
+				9A11F0581CCF48F9002E8F6F /* LinkUtil.m */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -2062,6 +2067,7 @@
 				9A05C38D1CCA095D009BC8C9 /* OrderModel.m in Sources */,
 				8BB4FB161C7A0884003389F1 /* README.md in Sources */,
 				9A95FF051C83E74E00C5F492 /* MenuCell.m in Sources */,
+				9A11F0591CCF48F9002E8F6F /* LinkUtil.m in Sources */,
 				8B5DC6701C79CB2C00D29292 /* LinkageModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
