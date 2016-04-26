@@ -31,7 +31,6 @@
 //车辆与司机
 #define DriversUrl [NSString stringWithFormat:@"%@/api/transporter/drivers",BaseUrl]//司机查询接口
 #define AddDriverUrl [NSString stringWithFormat:@"%@/api/transporter/adddriver",BaseUrl]//添加司机接口
-#define AddDriverUrl [NSString stringWithFormat:@"%@/api/transporter/adddriver",BaseUrl]//添加司机接口
 #define DelDriverUrl [NSString stringWithFormat:@"%@/api/transporter/deldriver",BaseUrl]//删除司机接口
 #define DriverDetailUrl [NSString stringWithFormat:@"%@/api/transporter/driverdetail",BaseUrl]//司机详情接口
 #define CarsUrl [NSString stringWithFormat:@"%@/api/transporter/cars",BaseUrl]//车辆查询接口
