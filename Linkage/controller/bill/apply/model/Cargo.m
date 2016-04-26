@@ -30,6 +30,32 @@
     return keyMap;
 }
 
++ (NSValueTransformer *)cargoCountJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if ([value isKindOfClass:[NSNumber class]]) {
+            return value;
+        }else if ([value isKindOfClass:[NSString class]]) {
+            return @([value integerValue]);
+        }else{
+            return @(0);
+        }
+    }];
+}
+
++ (NSValueTransformer *)cargoIdJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if ([value isKindOfClass:[NSNumber class]]) {
+            return value;
+        }else if ([value isKindOfClass:[NSString class]]) {
+            return @([value integerValue]);
+        }else{
+            return @(0);
+        }
+    }];
+}
+
 #pragma mark - MTLManagedObjectSerializing
 + (NSString *)managedObjectEntityName
 {

@@ -12,4 +12,6 @@
 
 + (NSDateFormatter *)dateFormatter;
 
++ (NSMutableDictionary *)cargoTypes;
+
 @end

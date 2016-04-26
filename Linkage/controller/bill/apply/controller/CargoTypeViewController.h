@@ -9,6 +9,5 @@
 #import <XLForm/XLForm.h>
 
 @interface CargoTypeViewController : XLFormOptionsViewController
-+(NSMutableDictionary *)cargoTypes;
 
 @end

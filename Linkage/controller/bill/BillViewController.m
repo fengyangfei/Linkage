@@ -37,7 +37,10 @@
     __weak __typeof(self.leftTableView) weakLeftView = self.leftTableView;
     self.leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [OrderUtil queryOrdersFromServer:^(NSArray *orders) {
-            [weakSelf addRows:orders toDataSource:weakSelf.todoDS];
+            for (Order *order in orders) {
+                [OrderUtil syncToDataBase:order completion:nil];
+            }
+            [weakSelf setupData];
             [weakLeftView.mj_header endRefreshing];
         }];
     }];
@@ -45,26 +48,27 @@
     __weak __typeof(self.rightTableView) weakRightView = self.rightTableView;
     self.rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [OrderUtil queryOrdersFromServer:^(NSArray *orders) {
-            [weakSelf addRows:orders toDataSource:weakSelf.doneDS];
+            for (Order *order in orders) {
+                [OrderUtil syncToDataBase:order completion:nil];
+            }
+            [weakSelf setupData];
             [weakRightView.mj_header endRefreshing];
         }];
     }];
-    
-    [self setupData];
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
+    [self setupData];
 }
 
 -(void)setupData
 {
-    [self.todoDS setForm:[self createForm:nil]];
-    [self.doneDS setForm:[self createForm:nil]];
     WeakSelf
     [OrderUtil queryOrdersFromDataBase:^(NSArray *orders) {
-        [weakSelf addRows:orders toDataSource:weakSelf.todoDS];
+        [weakSelf.todoDS setForm:[weakSelf createForm:orders]];
+        [weakSelf.doneDS setForm:[weakSelf createForm:orders]];
     }];
 }
 
@@ -77,11 +81,7 @@
 
 - (void)segmentedControlChangeIndex:(NSInteger)index
 {
-    if (index == 0) {
-        [self.leftTableView.mj_header beginRefreshing];
-    }else if (index == 1){
-        [self.rightTableView.mj_header beginRefreshing];
-    }
+    
 }
 
 -(XLFormDescriptor *)createForm:(NSArray *)orders
@@ -93,24 +93,13 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    [self addRows:orders toSection:section];
-    return form;
-}
-
--(void)addRows:(NSArray *)orders toSection:(XLFormSectionDescriptor *)section
-{
     for (Order *order in orders) {
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
         row.value = order;
         row.action.viewControllerClass = [BillDetailViewController class];
         [section addFormRow:row];
     }
-}
-
--(void)addRows:(NSArray *)orders toDataSource:(XLFormDataSource *)dataSource
-{
-    XLFormSectionDescriptor *section = (XLFormSectionDescriptor *)[dataSource.form.formSections firstObject];
-    [self addRows:orders toSection:section];
+    return form;
 }
 
 @end

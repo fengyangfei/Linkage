@@ -37,11 +37,18 @@
 +(void)syncToDataBase:(Order *)order completion:(MRSaveCompletionHandler)completion;
 {
     NSError *error;
-    OrderModel *orderModel = [MTLManagedObjectAdapter managedObjectFromModel:order insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
-    if (orderModel && !error) {
-        [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:completion];
-    }else{
-        NSLog(@"同步到数据库失败 - %@",error);
+    if (order.orderId) {
+        OrderModel *existModel = [OrderModel MR_findFirstByAttribute:@"orderId" withValue:order.orderId inContext:[NSManagedObjectContext MR_defaultContext]];
+        if (existModel) {
+            [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+        }
+        order.userId = [LoginUser shareInstance].userId;
+        OrderModel *orderModel = [MTLManagedObjectAdapter managedObjectFromModel:order insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
+        if (orderModel && !error) {
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:completion];
+        }else{
+            NSLog(@"同步到数据库失败 - %@",error);
+        }
     }
 }
 
@@ -159,7 +166,7 @@
 //数据库查询
 +(void)queryOrdersFromDataBase:(void(^)(NSArray *orders))completion
 {
-    NSArray *orderModelArray = [OrderModel MR_findAllInContext:[NSManagedObjectContext MR_defaultContext]];
+    NSArray *orderModelArray = [OrderModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].userId inContext:[NSManagedObjectContext MR_defaultContext]];
     NSArray *orders = [orderModelArray modelsFromManagedObject];
     if (completion) {
         completion(orders);

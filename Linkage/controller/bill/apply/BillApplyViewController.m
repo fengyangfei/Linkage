@@ -18,6 +18,7 @@
 #import "Order.h"
 #import "OrderModel.h"
 #import "OrderUtil.h"
+#import "LinkUtil.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
@@ -138,7 +139,7 @@ row.cellStyle = UITableViewCellStyleValue1;
 -(CargoFormRowDescriptor *)generateCargoRow
 {
     CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
-    NSDictionary *dic = [CargoTypeViewController cargoTypes];
+    NSDictionary *dic = [LinkUtil cargoTypes];
     NSNumber *key = @(1);
     row.value = [Cargo cargoWithId:key name:[dic objectForKey:key] count:@(0)];
     row.action.viewControllerClass = [CargoTypeViewController class];

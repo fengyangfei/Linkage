@@ -10,6 +10,7 @@
 #import "XLFormDataSource.h"
 #import "LoginUser.h"
 #import "Order.h"
+#import "Cargo.h"
 #import "OrderUtil.h"
 #import "DriverInfoCell.h"
 #import "LinkUtil.h"
@@ -40,14 +41,13 @@
     [self setupData];
     
     Order *order = self.rowDescriptor.value;
-    if (order.objStatus == Transient) {
-        if (order.orderId) {
-            [SVProgressHUD show];
-            [OrderUtil queryOrderFromServer:order completion:^(Order *result) {
-                [weakSelf.detailDS setForm:[self createDetailForm:result]];
-                [SVProgressHUD dismiss];
-            }];
-        }
+    if (order.orderId) {
+        [SVProgressHUD show];
+        [OrderUtil queryOrderFromServer:order completion:^(Order *result) {
+            [OrderUtil syncToDataBase:result completion:nil];
+            [weakSelf.detailDS setForm:[self createDetailForm:result]];
+            [SVProgressHUD dismiss];
+        }];
     }
 }
 
@@ -91,6 +91,12 @@
     Company *company = [LoginUser findCompanyById:order.companyId];
     row.value = company ? company.name :@"";
     [section addFormRow:row];
+    
+    for (Cargo *cargo in order.cargos) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:[LinkUtil.cargoTypes objectForKey:cargo.cargoId]];
+        row.value = cargo.cargoCount;
+        [section addFormRow:row];
+    }
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"装货地址"];
     row.value = order? order.takeAddress:@"";
