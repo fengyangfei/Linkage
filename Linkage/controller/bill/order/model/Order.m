@@ -77,11 +77,11 @@
         return [SelfOrder class];
     }
     
-    if ([JSONDictionary[@"type"] integerValue] == 0) {
+    if ([JSONDictionary[@"type"] integerValue] == OrderTypeExport) {
         return [ExportOrder class];
-    }else if ([JSONDictionary[@"type"] integerValue] == 1){
+    }else if ([JSONDictionary[@"type"] integerValue] == OrderTypeImport){
         return [ImportOrder class];
-    }else if ([JSONDictionary[@"type"] integerValue] == 3){
+    }else if ([JSONDictionary[@"type"] integerValue] == OrderTypeSelf){
         return [SelfOrder class];
     }
     

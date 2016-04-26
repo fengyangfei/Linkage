@@ -12,8 +12,8 @@
 typedef NS_ENUM(NSUInteger, OrderType) {
     OrderTypeExport,
     OrderTypeImport,
-    OrderTypeMainland,
-    OrderTypeSelf
+    OrderTypeSelf,
+    OrderTypeMainland
 };
 
 typedef NS_ENUM(NSUInteger, OrderStatus) {
