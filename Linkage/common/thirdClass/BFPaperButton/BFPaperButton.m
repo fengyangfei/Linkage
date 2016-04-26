@@ -675,7 +675,6 @@ CGFloat const bfPaperButton_tapCircleDiameterDefault = -2.f;
     CGFloat startingOpacity = tapCircle.opacity;
     
     if ([[tapCircle animationKeys] count] > 0) {
-        startingPath = [[tapCircle presentationLayer] path];
         startingOpacity = [[tapCircle presentationLayer] opacity];
     }
     
