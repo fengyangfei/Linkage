@@ -10,6 +10,7 @@
 #import "Driver.h"
 #import "DriverUtil.h"
 #import "LoginUser.h"
+#import "AddDriverViewController.h"
 #import <MJRefresh/MJRefresh.h>
 
 @interface DriverManageViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -88,7 +89,9 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    Driver *driver = [self.drivers objectAtIndex:indexPath.row];
+    AddDriverViewController *viewContrller = [[AddDriverViewController alloc]init];
+    [self.navigationController pushViewController:viewContrller animated:YES];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,7 +114,7 @@
         _tableView.tableFooterView = [UIView new];
         __weak __typeof(_tableView) weakView = _tableView;
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [DriverUtil queryModelsFromServerWithModel:[LoginUser shareInstance] completion:^(NSArray *models) {
+            [DriverUtil queryModelsFromServer:^(NSArray *models) {
                 for (id model in models) {
                     [DriverUtil syncToDataBase:model completion:nil];
                 }

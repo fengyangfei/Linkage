@@ -20,14 +20,20 @@
 
 - (instancetype)init
 {
+    return [self initWithDriver:nil];
+}
+
+- (instancetype)initWithDriver:(Driver *)driver
+{
     self = [super init];
     if (self) {
-        [self initializeForm];
+        [self initializeForm:driver];
     }
     return self;
 }
 
-- (void)initializeForm
+
+- (void)initializeForm:(Driver *)driver
 {
     WeakSelf
     XLFormDescriptor * form;

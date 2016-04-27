@@ -178,7 +178,7 @@
 }
 
 //查询详情
-+(void)queryModelFromServer:(id)model completion:(void(^)(id<MTLJSONSerializing> result))completion
++(void)queryModelFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model completion:(void(^)(id<MTLJSONSerializing> result))completion
 {
     Order *order = (Order *)model;
     NSDictionary *paramter = @{

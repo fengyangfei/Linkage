@@ -104,9 +104,9 @@
     }
 }
 
-+(void)queryModelsFromServerWithModel:(id<ModelHttpParameter>)parameter completion:(void(^)(NSArray *models))completion
++(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
-    [[YGRestClient sharedInstance] postForObjectWithUrl:DriversUrl form:[parameter baseHttpParameter] success:^(id responseObject) {
+    [[YGRestClient sharedInstance] postForObjectWithUrl:DriversUrl form:[LoginUser shareInstance].baseHttpParameter success:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
             NSError *error;
             NSArray *array = [MTLJSONAdapter modelsOfClass:[Driver class] fromJSONArray:responseObject error:&error];
