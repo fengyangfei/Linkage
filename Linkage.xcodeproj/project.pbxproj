@@ -126,6 +126,8 @@
 		8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F266F1C89C83D001B187E /* RegisterViewController.m */; };
 		8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */; };
 		8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26761C89DD89001B187E /* ForgotPasswordController.m */; };
+		8B941BAB1CD102270059BE13 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B941BAA1CD102270059BE13 /* Car.m */; };
+		8B941BB11CD107060059BE13 /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B941BAF1CD107060059BE13 /* CarModel.m */; };
 		8B986F651CC50A7E002DDA68 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F641CC50A7E002DDA68 /* ChangePasswordController.m */; };
 		8B986F691CC50D59002DDA68 /* CarListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F681CC50D59002DDA68 /* CarListViewController.m */; };
 		8B986F6C1CC50D7A002DDA68 /* AddCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F6B1CC50D7A002DDA68 /* AddCarViewController.m */; };
@@ -462,6 +464,10 @@
 		8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRFormTextFieldCell.m; sourceTree = "<group>"; };
 		8B8F26751C89DD88001B187E /* ForgotPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordController.h; sourceTree = "<group>"; };
 		8B8F26761C89DD89001B187E /* ForgotPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordController.m; sourceTree = "<group>"; };
+		8B941BA91CD102270059BE13 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
+		8B941BAA1CD102270059BE13 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		8B941BAE1CD107060059BE13 /* CarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarModel.h; sourceTree = "<group>"; };
+		8B941BAF1CD107060059BE13 /* CarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarModel.m; sourceTree = "<group>"; };
 		8B986F631CC50A7E002DDA68 /* ChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordController.h; sourceTree = "<group>"; };
 		8B986F641CC50A7E002DDA68 /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
 		8B986F671CC50D59002DDA68 /* CarListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarListViewController.h; sourceTree = "<group>"; };
@@ -1300,9 +1306,29 @@
 			path = extends;
 			sourceTree = "<group>";
 		};
+		8B941BA71CD1020E0059BE13 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8B941BA91CD102270059BE13 /* Car.h */,
+				8B941BAA1CD102270059BE13 /* Car.m */,
+				8B941BAE1CD107060059BE13 /* CarModel.h */,
+				8B941BAF1CD107060059BE13 /* CarModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8B941BA81CD1020E0059BE13 /* util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		8B986F661CC50CE2002DDA68 /* carManager */ = {
 			isa = PBXGroup;
 			children = (
+				8B941BA71CD1020E0059BE13 /* model */,
+				8B941BA81CD1020E0059BE13 /* util */,
 				8B986F671CC50D59002DDA68 /* CarListViewController.h */,
 				8B986F681CC50D59002DDA68 /* CarListViewController.m */,
 				8B986F6A1CC50D7A002DDA68 /* AddCarViewController.h */,
@@ -1994,6 +2020,7 @@
 				8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */,
 				9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */,
 				8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */,
+				8B941BB11CD107060059BE13 /* CarModel.m in Sources */,
 				9A23A2C41C7AE1B100FB5EB6 /* LoginViewController.m in Sources */,
 				8B986F651CC50A7E002DDA68 /* ChangePasswordController.m in Sources */,
 				9ACEBC701C99492A0000ACBF /* Cargo.m in Sources */,
@@ -2004,6 +2031,7 @@
 				9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */,
 				9A95FF341C89731100C5F492 /* TRPopManager.m in Sources */,
 				8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */,
+				8B941BAB1CD102270059BE13 /* Car.m in Sources */,
 				8B5DC6341C79B8A700D29292 /* UIView+IFTTTJazzHands.m in Sources */,
 				9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */,
 				9A95FF351C89731100C5F492 /* TRPopView.m in Sources */,

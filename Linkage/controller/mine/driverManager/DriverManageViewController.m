@@ -96,8 +96,18 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    WeakSelf
+    Driver *driver = [self.drivers objectAtIndex:indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
+        [DriverUtil deleteFromServer:driver success:^(id responseData) {
+            StrongSelf
+            [DriverUtil deleteFromDataBase:driver completion:^{
+                [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+                [strongSelf setupData];
+            }];
+        } failure:^(NSError *error) {
+            
+        }];
     }
 }
 

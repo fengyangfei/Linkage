@@ -31,11 +31,3 @@
 -(BOOL)save;
 +(Company *)shareInstance;
 @end
-
-@interface Car : MTLModel<MTLJSONSerializing>
-@property (nonatomic, copy) NSString *carId;
-@property (nonatomic, strong) Company *company;
-@property (nonatomic, copy) NSString *license;
-@property (nonatomic, copy) NSString *carType;
-@property (nonatomic, copy) NSString *memo;
-@end

@@ -73,13 +73,3 @@ static Company *company;
 }
 
 @end
-
-@implementation Car
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey
-{
-    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    return keyDic;
-}
-
-@end

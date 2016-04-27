@@ -28,6 +28,8 @@
 
 +(void)deleteFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 
++(void)deleteFromDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion;
+
 +(void)truncateAll;
 
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion;

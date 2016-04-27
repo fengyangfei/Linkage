@@ -9,6 +9,20 @@
         <attribute name="cargoId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="cargoName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="CarModel" representedClassName="CarModel" syncable="YES">
+        <attribute name="applyDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="businessInsureData" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="carId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="engineNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="examineData" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="frameNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="insureCompany" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="license" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maintainData" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="memo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trafficInsureData" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="DriverModel" representedClassName="DriverModel" syncable="YES">
         <attribute name="driverId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -76,5 +90,6 @@
         <element name="OrderModel" positionX="-63" positionY="27" width="128" height="360"/>
         <element name="SelfOrderModel" positionX="-45" positionY="153" width="128" height="90"/>
         <element name="SOImageModel" positionX="-63" positionY="9" width="128" height="75"/>
+        <element name="CarModel" positionX="-45" positionY="153" width="128" height="225"/>
     </elements>
 </model>

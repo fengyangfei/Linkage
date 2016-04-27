@@ -91,6 +91,20 @@
     }
 }
 
++(void)deleteFromDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion
+{
+    Driver *driver = (Driver *)model;
+    if (driver.driverId) {
+        DriverModel *existModel = [DriverModel MR_findFirstByAttribute:@"driverId" withValue:driver.driverId inContext:[NSManagedObjectContext MR_defaultContext]];
+        if (existModel) {
+            [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+        }
+        if (completion) {
+            completion();
+        }
+    }
+}
+
 //数据库查询
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
 {
