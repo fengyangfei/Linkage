@@ -7,6 +7,10 @@
 //
 
 #import "AddDriverViewController.h"
+#import "DriverUtil.h"
+#import "Driver.h"
+#import "DriverModel.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface AddDriverViewController ()
 
@@ -73,7 +77,6 @@
 
 -(void)submitForm:(XLFormRowDescriptor *)row
 {
-    WeakSelf
     [self deselectFormRow:row];
     NSArray *errors = [self formValidationErrors];
     if (errors && errors.count > 0) {
@@ -81,9 +84,22 @@
         return;
     }
     NSDictionary *formValues = [self formValues];
-    [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError *error) {
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+    Driver *driver = (Driver *)[DriverUtil modelFromXLFormValue:formValues];
+    //同步到服务端
+    [DriverUtil syncToServer:driver success:^(id responseData) {
+        NSString *driverId = responseData[@"driver_id"];
+        driver.driverId = driverId;
+        //同步到数据库
+        [DriverUtil syncToDataBase:driver completion:^(BOOL contextDidSave, NSError * _Nullable error) {
+            if (contextDidSave) {
+                [SVProgressHUD showSuccessWithStatus:@"单据缓存成功"];
+            }
+        }];
+        [SVProgressHUD showSuccessWithStatus:@"单据保存成功"];
+    } failure:^(NSError *error) {
+        [SVProgressHUD showSuccessWithStatus:@"单据保存失败"];
     }];
+    
 }
 
 

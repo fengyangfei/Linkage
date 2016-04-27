@@ -12,31 +12,31 @@
 
 @implementation DriverUtil
 
-+(void)syncToServer:(MTLModel *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
++(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
 {
 
 }
 
-+(void)syncToDataBase:(MTLModel *)model completion:(MRSaveCompletionHandler)completion
++(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(MRSaveCompletionHandler)completion
 {
 
 }
 
-+(MTLModel *)modelFromJson:(NSDictionary *)json
++(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
 {
     NSError *error;
     Driver *driver = [MTLJSONAdapter modelOfClass:[Driver class] fromJSONDictionary:json error:&error];
     return driver;
 }
 
-+(MTLModel *)modelFromXLFormValue:(NSDictionary *)formValues
++(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues
 {
     NSError *error;
     Driver *driver = [MTLJSONAdapter modelOfClass:[Driver class] fromJSONDictionary:formValues error:&error];
     return driver;
 }
 
-+(MTLModel *)modelFromManagedObject:(NSManagedObject *)managedObject
++(id<MTLJSONSerializing>)modelFromManagedObject:(NSManagedObject *)managedObject
 {
     return nil;
 }
@@ -57,7 +57,7 @@
     
 }
 
-+(void)queryModelsFromServer:(MTLModel *)model completion:(void(^)(MTLModel *result))completion
++(void)queryModelsFromServer:(id)model completion:(void(^)(id<MTLJSONSerializing> result))completion
 {
 
 }

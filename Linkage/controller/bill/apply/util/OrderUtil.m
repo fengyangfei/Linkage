@@ -19,24 +19,25 @@
 @implementation OrderUtil
 
 //同步到服务端
-+(void)syncToServer:(Order *)order success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
++(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
 {
-    NSDictionary *paramter = [self jsonFromModel:order];
+    NSDictionary *paramter = [self jsonFromModel:model];
     if (paramter) {
-        if ([order isKindOfClass:[ImportOrder class]]) {
+        if ([model isKindOfClass:[ImportOrder class]]) {
             [[YGRestClient sharedInstance] postForObjectWithUrl:Place4importUrl form:paramter success:success failure:failure];
-        }else if([order isKindOfClass:[ExportOrder class]]){
+        }else if([model isKindOfClass:[ExportOrder class]]){
             [[YGRestClient sharedInstance] postForObjectWithUrl:Place4exportUrl form:paramter success:success failure:failure];
-        }else if([order isKindOfClass:[SelfOrder class]]){
+        }else if([model isKindOfClass:[SelfOrder class]]){
             [[YGRestClient sharedInstance] postForObjectWithUrl:Place4selfUrl form:paramter success:success failure:failure];
         }
     }
 }
 
 //同步到数据库
-+(void)syncToDataBase:(Order *)order completion:(MRSaveCompletionHandler)completion;
++(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(MRSaveCompletionHandler)completion
 {
     NSError *error;
+    Order *order = (Order *)model;
     if (order.orderId) {
         OrderModel *existModel = [OrderModel MR_findFirstByAttribute:@"orderId" withValue:order.orderId inContext:[NSManagedObjectContext MR_defaultContext]];
         if (existModel) {
@@ -53,7 +54,7 @@
 }
 
 //json转换成对象
-+(Order *)modelFromJson:(NSDictionary *)json
++(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
 {
     NSError *error;
     Order *order = [MTLJSONAdapter modelOfClass:[Order class] fromJSONDictionary:json error:&error];
@@ -70,7 +71,7 @@
 }
 
 //form转换成对象
-+(Order *)modelFromXLFormValue:(NSDictionary *)formValues
++(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues
 {
     NSError *error;
     Order *order = [MTLJSONAdapter modelOfClass:[Order class] fromJSONDictionary:formValues error:&error];
@@ -90,18 +91,18 @@
 }
 
 //数据库对象转换成普通对象
-+(Order *)modelFromManagedObject:(OrderModel *)orderModel
++(id<MTLJSONSerializing>)modelFromManagedObject:(NSManagedObject *)managedObject
 {
     NSError *error;
     Order *order;
-    if ([orderModel isKindOfClass:[ImportOrderModel class]]) {
-        order = [MTLManagedObjectAdapter modelOfClass:[ImportOrder class] fromManagedObject:orderModel error:&error];
-    }else if([orderModel isKindOfClass:[ExportOrderModel class]]) {
-        order = [MTLManagedObjectAdapter modelOfClass:[ExportOrder class] fromManagedObject:orderModel error:&error];
-    }else if([orderModel isKindOfClass:[SelfOrderModel class]]) {
-        order = [MTLManagedObjectAdapter modelOfClass:[SelfOrder class] fromManagedObject:orderModel error:&error];
+    if ([managedObject isKindOfClass:[ImportOrderModel class]]) {
+        order = [MTLManagedObjectAdapter modelOfClass:[ImportOrder class] fromManagedObject:managedObject error:&error];
+    }else if([managedObject isKindOfClass:[ExportOrderModel class]]) {
+        order = [MTLManagedObjectAdapter modelOfClass:[ExportOrder class] fromManagedObject:managedObject error:&error];
+    }else if([managedObject isKindOfClass:[SelfOrderModel class]]) {
+        order = [MTLManagedObjectAdapter modelOfClass:[SelfOrder class] fromManagedObject:managedObject error:&error];
     }else{
-        order = [MTLManagedObjectAdapter modelOfClass:[Order class] fromManagedObject:orderModel error:&error];
+        order = [MTLManagedObjectAdapter modelOfClass:[Order class] fromManagedObject:managedObject error:&error];
     }
     if (error) {
         NSLog(@"数据库对象转换对象失败 - %@",error);
@@ -113,9 +114,10 @@
 }
 
 //转换成json
-+(NSDictionary *)jsonFromModel:(Order *)order
++(NSDictionary *)jsonFromModel:(id<MTLJSONSerializing>)model
 {
     NSError *error;
+    Order *order = (Order *)model;
     NSDictionary *dic = [MTLJSONAdapter JSONDictionaryFromModel:order error:&error];
     if (error) {
         NSLog(@"对象转换字典失败 - %@",error);
@@ -137,7 +139,7 @@
 }
 
 //服务端查询
-+(void)queryOrdersFromServer:(void(^)(NSArray *orders))completion
++(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
     NSDictionary *paramter = @{
                                @"cid":[LoginUser shareInstance].cid,
@@ -164,7 +166,7 @@
 }
 
 //数据库查询
-+(void)queryOrdersFromDataBase:(void(^)(NSArray *orders))completion
++(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
 {
     NSArray *orderModelArray = [OrderModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].userId inContext:[NSManagedObjectContext MR_defaultContext]];
     NSArray *orders = [orderModelArray modelsFromManagedObject];
@@ -174,15 +176,16 @@
 }
 
 //查询详情
-+(void)queryOrderFromServer:(Order *)order completion:(void(^)(Order *result))completion
++(void)queryModelsFromServer:(id)model completion:(void(^)(id<MTLJSONSerializing> result))completion
 {
+    Order *order = (Order *)model;
     NSDictionary *paramter = @{
                                @"cid":[LoginUser shareInstance].cid,
                                @"token":[LoginUser shareInstance].token,
                                @"order_id":order.orderId
                                };
     Order *(^mergeOrder)(id responseObject) = ^(id responseObject) {
-        Order *result = [OrderUtil modelFromJson:responseObject];
+        Order *result = (Order *)[OrderUtil modelFromJson:responseObject];
         [result mergeValueForKey:@"orderId" fromModel:order];
         [result mergeValueForKey:@"type" fromModel:order];
         [result mergeValueForKey:@"status" fromModel:order];
@@ -226,7 +229,7 @@
 {
     NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:self.count];
     for (OrderModel *manageObj in self) {
-        Order *order = [OrderUtil modelFromManagedObject:manageObj];
+        Order *order = (Order *)[OrderUtil modelFromManagedObject:manageObj];
         [mutableArray addObject:order];
     }
     return [mutableArray copy];

@@ -8,6 +8,7 @@
 
 #import "Driver.h"
 #import "LoginUser.h"
+#import "DriverModel.h"
 
 @implementation Driver
 
@@ -30,6 +31,18 @@
                                @"M": @(Male)
                                };
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(Male) reverseDefaultValue:@"M"];
+}
+
+#pragma mark - MTLManagedObjectSerializing
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass([DriverModel class]);
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    return keyDic;
 }
 
 

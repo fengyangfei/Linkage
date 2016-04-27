@@ -8,27 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "YGRestClient.h"
+#import "ModelOperation.h"
 @class Order;
 @class OrderModel;
-@interface OrderUtil : NSObject
-
-+(void)syncToServer:(Order *)order success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
-
-+(void)syncToDataBase:(Order *)order completion:(MRSaveCompletionHandler)completion;
-
-+(Order *)modelFromJson:(NSDictionary *)json;
-
-+(Order *)modelFromXLFormValue:(NSDictionary *)formValues;
-
-+(Order *)modelFromManagedObject:(OrderModel *)orderModel;
-
-+(NSDictionary *)jsonFromModel:(Order *)order;
-
-+(void)queryOrdersFromServer:(void(^)(NSArray *orders))completion;
-
-+(void)queryOrdersFromDataBase:(void(^)(NSArray *orders))completion;
-
-+(void)queryOrderFromServer:(Order *)order completion:(void(^)(Order *result))completion;
+@interface OrderUtil : NSObject<ModelOperation>
 @end
 
 @interface NSArray (OrderModel)

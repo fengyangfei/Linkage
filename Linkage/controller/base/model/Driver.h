@@ -7,8 +7,10 @@
 //
 
 #import <Mantle/Mantle.h>
+#import "MTLManagedObjectAdapter.h"
 
-@interface Driver : MTLModel<MTLJSONSerializing>
+@interface Driver : MTLModel<MTLJSONSerializing,MTLManagedObjectSerializing>
+@property (nonatomic,copy) NSString *driverId;
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,copy) NSString *mobile;
 @property (nonatomic,copy) NSString *gender;

@@ -36,7 +36,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
     __weak __typeof(self.leftTableView) weakLeftView = self.leftTableView;
     self.leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [OrderUtil queryOrdersFromServer:^(NSArray *orders) {
+        [OrderUtil queryModelsFromServer:^(NSArray *orders) {
             for (Order *order in orders) {
                 [OrderUtil syncToDataBase:order completion:nil];
             }
@@ -47,7 +47,7 @@
     
     __weak __typeof(self.rightTableView) weakRightView = self.rightTableView;
     self.rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [OrderUtil queryOrdersFromServer:^(NSArray *orders) {
+        [OrderUtil queryModelsFromServer:^(NSArray *orders) {
             for (Order *order in orders) {
                 [OrderUtil syncToDataBase:order completion:nil];
             }
@@ -66,7 +66,7 @@
 -(void)setupData
 {
     WeakSelf
-    [OrderUtil queryOrdersFromDataBase:^(NSArray *orders) {
+    [OrderUtil queryModelsFromDataBase:^(NSArray *orders) {
         [weakSelf.todoDS setForm:[weakSelf createForm:orders]];
         [weakSelf.doneDS setForm:[weakSelf createForm:orders]];
     }];

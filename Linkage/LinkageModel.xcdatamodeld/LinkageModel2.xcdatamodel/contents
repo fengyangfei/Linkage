@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
     <entity name="AddressModel" representedClassName="AddressModel" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneNum" optional="YES" attributeType="String" syncable="YES"/>
@@ -8,6 +8,13 @@
         <attribute name="cargoCount" optional="YES" attributeType="Integer 64" defaultValueString="0.0" syncable="YES"/>
         <attribute name="cargoId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="cargoName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="DriverModel" representedClassName="DriverModel" syncable="YES">
+        <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="license" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ExportOrderModel" representedClassName="ExportOrderModel" parentEntity="OrderModel" syncable="YES">
         <attribute name="customsIn" optional="YES" attributeType="Date" syncable="YES"/>
@@ -64,7 +71,8 @@
         <element name="ExportOrderModel" positionX="-45" positionY="153" width="128" height="165"/>
         <element name="ImportOrderModel" positionX="-36" positionY="171" width="128" height="120"/>
         <element name="OrderModel" positionX="-63" positionY="27" width="128" height="360"/>
-        <element name="SOImageModel" positionX="-63" positionY="9" width="128" height="75"/>
         <element name="SelfOrderModel" positionX="-45" positionY="153" width="128" height="90"/>
+        <element name="SOImageModel" positionX="-63" positionY="9" width="128" height="75"/>
+        <element name="DriverModel" positionX="-45" positionY="153" width="128" height="120"/>
     </elements>
 </model>

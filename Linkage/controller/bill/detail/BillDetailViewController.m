@@ -43,7 +43,7 @@
     Order *order = self.rowDescriptor.value;
     if (order.orderId) {
         [SVProgressHUD show];
-        [OrderUtil queryOrderFromServer:order completion:^(Order *result) {
+        [OrderUtil queryModelsFromServer:order completion:^(Order *result) {
             [OrderUtil syncToDataBase:result completion:nil];
             [weakSelf.detailDS setForm:[self createDetailForm:result]];
             [SVProgressHUD dismiss];

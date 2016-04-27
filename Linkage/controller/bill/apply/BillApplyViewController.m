@@ -156,7 +156,7 @@ row.cellStyle = UITableViewCellStyleValue1;
 -(void)submitForm:(id)sender
 {
     NSDictionary *formValues =  [self.form formValues];
-    Order *order = [OrderUtil modelFromXLFormValue:formValues];
+    Order *order = (Order *)[OrderUtil modelFromXLFormValue:formValues];
     //同步到服务端
     [OrderUtil syncToServer:order success:^(id responseData) {
         NSString *orderId = responseData[@"order_id"];

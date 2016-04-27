@@ -6,20 +6,20 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 #import "YGRestClient.h"
-@class MTLModel;
+#import <Mantle/MTLJSONAdapter.h>
 @protocol ModelOperation <NSObject>
 
 @optional
 
-+(void)syncToServer:(MTLModel *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
++(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 
-+(void)syncToDataBase:(MTLModel *)model completion:(MRSaveCompletionHandler)completion;
++(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(MRSaveCompletionHandler)completion;
 
-+(MTLModel *)modelFromJson:(NSDictionary *)json;
++(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json;
 
-+(MTLModel *)modelFromXLFormValue:(NSDictionary *)formValues;
++(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues;
 
-+(MTLModel *)modelFromManagedObject:(NSManagedObject *)managedObject;
++(id<MTLJSONSerializing>)modelFromManagedObject:(NSManagedObject *)managedObject;
 
 +(NSDictionary *)jsonFromModel:(id<MTLJSONSerializing>)model;
 
@@ -27,6 +27,6 @@
 
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion;
 
-+(void)queryModelsFromServer:(MTLModel *)model completion:(void(^)(MTLModel *result))completion;
++(void)queryModelsFromServer:(id)model completion:(void(^)(id<MTLJSONSerializing> result))completion;
 
 @end
