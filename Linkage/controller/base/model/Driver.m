@@ -50,7 +50,7 @@
     if (!self.driverId) {
         return nil;
     }
-    NSDictionary *baseParameter = [[LoginUser shareInstance] baseHttpParameter];
+    NSDictionary *baseParameter = [LoginUser shareInstance].baseHttpParameter;
     NSDictionary *paramter = [baseParameter mtl_dictionaryByAddingEntriesFromDictionary:@{@"driver_id": self.driverId}];
     return paramter;
 }

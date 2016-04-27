@@ -9,7 +9,6 @@
 #import <Mantle/MTLJSONAdapter.h>
 @protocol ModelHttpParameter <NSObject>
 @optional
--(NSDictionary *)baseHttpParameter;
 -(NSDictionary *)httpParameterForDetail;
 @end
 

@@ -25,7 +25,17 @@ typedef NS_ENUM(NSUInteger,UserType) {
     UserTypeSubCompanyDriver////承运商司机
 };
 
-@interface LoginUser : MTLModel<MTLJSONSerializingExt,ModelHttpParameter>
+@class LoginUser;
+@protocol LoginUserDelegate <NSObject>
+@required
+-(BOOL)save;
++(LoginUser *)shareInstance;
++(BOOL)clearUserInfo;
+@optional
+-(NSDictionary *)baseHttpParameter;
+@end
+
+@interface LoginUser : MTLModel<MTLJSONSerializingExt,LoginUserDelegate>
 @property (nonatomic,copy) NSString *cid;
 @property (nonatomic,copy) NSString *userId;
 @property (nonatomic,copy) NSString *userName;
@@ -41,10 +51,6 @@ typedef NS_ENUM(NSUInteger,UserType) {
 @property (nonatomic, strong) NSDate *updateTime;
 @property (nonatomic, assign) UserType ctype;
 @property (nonatomic, strong) NSArray *companies;
-
--(BOOL)save;
-+(LoginUser *)shareInstance;
-+(BOOL)clearUserInfo;
 @end
 
 @interface LoginUser (Extensions)
