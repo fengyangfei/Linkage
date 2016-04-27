@@ -163,8 +163,8 @@
 		9A11F0591CCF48F9002E8F6F /* LinkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0581CCF48F9002E8F6F /* LinkUtil.m */; };
 		9A11F05C1CD041BA002E8F6F /* Driver.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F05B1CD041BA002E8F6F /* Driver.m */; };
 		9A11F05F1CD04753002E8F6F /* AddDriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F05E1CD04753002E8F6F /* AddDriverViewController.m */; };
-		9A11F0621CD04948002E8F6F /* DriverUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0611CD04948002E8F6F /* DriverUtil.m */; };
 		9A11F06A1CD05A9B002E8F6F /* DriverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0681CD05A9B002E8F6F /* DriverModel.m */; };
+		9A11F06E1CD06D52002E8F6F /* DriverUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F06D1CD06D52002E8F6F /* DriverUtil.m */; };
 		9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */; };
 		9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A81C7A91D400FB5EB6 /* UIColor+BFPaperColors.m */; };
 		9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2B01C7AAA3D00FB5EB6 /* MainViewController.m */; };
@@ -533,11 +533,11 @@
 		9A11F05B1CD041BA002E8F6F /* Driver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Driver.m; sourceTree = "<group>"; };
 		9A11F05D1CD04753002E8F6F /* AddDriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDriverViewController.h; sourceTree = "<group>"; };
 		9A11F05E1CD04753002E8F6F /* AddDriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDriverViewController.m; sourceTree = "<group>"; };
-		9A11F0601CD04948002E8F6F /* DriverUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverUtil.h; sourceTree = "<group>"; };
-		9A11F0611CD04948002E8F6F /* DriverUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverUtil.m; sourceTree = "<group>"; };
 		9A11F0631CD04AF9002E8F6F /* ModelOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelOperation.h; sourceTree = "<group>"; };
 		9A11F0671CD05A9B002E8F6F /* DriverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverModel.h; sourceTree = "<group>"; };
 		9A11F0681CD05A9B002E8F6F /* DriverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverModel.m; sourceTree = "<group>"; };
+		9A11F06C1CD06D52002E8F6F /* DriverUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverUtil.h; sourceTree = "<group>"; };
+		9A11F06D1CD06D52002E8F6F /* DriverUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverUtil.m; sourceTree = "<group>"; };
 		9A23A2A51C7A91D400FB5EB6 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
 		9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
 		9A23A2A71C7A91D400FB5EB6 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -1219,13 +1219,12 @@
 		8B7172DD1CA01F2C00DBEB9F /* driverManager */ = {
 			isa = PBXGroup;
 			children = (
+				9A11F06B1CD06D52002E8F6F /* util */,
 				9A11F0641CD059C0002E8F6F /* model */,
 				8B7172DE1CA01F4B00DBEB9F /* DriverManageViewController.h */,
 				8B7172DF1CA01F4B00DBEB9F /* DriverManageViewController.m */,
 				9A11F05D1CD04753002E8F6F /* AddDriverViewController.h */,
 				9A11F05E1CD04753002E8F6F /* AddDriverViewController.m */,
-				9A11F0601CD04948002E8F6F /* DriverUtil.h */,
-				9A11F0611CD04948002E8F6F /* DriverUtil.m */,
 			);
 			path = driverManager;
 			sourceTree = "<group>";
@@ -1437,6 +1436,15 @@
 				9A11F0681CD05A9B002E8F6F /* DriverModel.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		9A11F06B1CD06D52002E8F6F /* util */ = {
+			isa = PBXGroup;
+			children = (
+				9A11F06C1CD06D52002E8F6F /* DriverUtil.h */,
+				9A11F06D1CD06D52002E8F6F /* DriverUtil.m */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		9A23A2A41C7A91D400FB5EB6 /* BFPaperButton */ = {
@@ -2055,10 +2063,10 @@
 				8B5DC56A1C7992E900D29292 /* AppDelegate.m in Sources */,
 				8B5DC5671C7992E900D29292 /* main.m in Sources */,
 				8B7172E01CA01F4B00DBEB9F /* DriverManageViewController.m in Sources */,
-				9A11F0621CD04948002E8F6F /* DriverUtil.m in Sources */,
 				9A95FF331C89731100C5F492 /* TRPopButton.m in Sources */,
 				9AEF89CB1CA4CD5400C5EB90 /* ImageToDataTransformer.m in Sources */,
 				8B7172E71CA0443300DBEB9F /* AddAddressViewController.m in Sources */,
+				9A11F06E1CD06D52002E8F6F /* DriverUtil.m in Sources */,
 				8BEC33C61CA6160D007B924B /* AvatarFormCell.m in Sources */,
 				8BB4FB151C7A0884003389F1 /* LICENSE.md in Sources */,
 				9A11F06A1CD05A9B002E8F6F /* DriverModel.m in Sources */,
