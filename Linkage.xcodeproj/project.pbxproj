@@ -128,6 +128,7 @@
 		8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26761C89DD89001B187E /* ForgotPasswordController.m */; };
 		8B941BAB1CD102270059BE13 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B941BAA1CD102270059BE13 /* Car.m */; };
 		8B941BB11CD107060059BE13 /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B941BAF1CD107060059BE13 /* CarModel.m */; };
+		8B941BB41CD109080059BE13 /* CarUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B941BB31CD109080059BE13 /* CarUtil.m */; };
 		8B986F651CC50A7E002DDA68 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F641CC50A7E002DDA68 /* ChangePasswordController.m */; };
 		8B986F691CC50D59002DDA68 /* CarListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F681CC50D59002DDA68 /* CarListViewController.m */; };
 		8B986F6C1CC50D7A002DDA68 /* AddCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F6B1CC50D7A002DDA68 /* AddCarViewController.m */; };
@@ -468,6 +469,8 @@
 		8B941BAA1CD102270059BE13 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
 		8B941BAE1CD107060059BE13 /* CarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarModel.h; sourceTree = "<group>"; };
 		8B941BAF1CD107060059BE13 /* CarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarModel.m; sourceTree = "<group>"; };
+		8B941BB21CD109080059BE13 /* CarUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarUtil.h; sourceTree = "<group>"; };
+		8B941BB31CD109080059BE13 /* CarUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarUtil.m; sourceTree = "<group>"; };
 		8B986F631CC50A7E002DDA68 /* ChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordController.h; sourceTree = "<group>"; };
 		8B986F641CC50A7E002DDA68 /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
 		8B986F671CC50D59002DDA68 /* CarListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarListViewController.h; sourceTree = "<group>"; };
@@ -1320,6 +1323,8 @@
 		8B941BA81CD1020E0059BE13 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				8B941BB21CD109080059BE13 /* CarUtil.h */,
+				8B941BB31CD109080059BE13 /* CarUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -2050,6 +2055,7 @@
 				9AEF89BE1CA1274600C5EB90 /* MJPhotoBrowser.m in Sources */,
 				8B0254E11CA2C4E4005F5CA7 /* AddressModel.m in Sources */,
 				9ACEBC751C9950E90000ACBF /* CargoTypeViewController.m in Sources */,
+				8B941BB41CD109080059BE13 /* CarUtil.m in Sources */,
 				8B5DC62A1C79B8A700D29292 /* IFTTTMaskAnimation.m in Sources */,
 				9A95FF211C8931F400C5F492 /* BaseBillViewController.m in Sources */,
 				8BB039DE1C94591900A3BCF9 /* LoginUser.m in Sources */,
