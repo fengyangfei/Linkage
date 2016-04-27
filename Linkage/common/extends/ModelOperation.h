@@ -14,14 +14,6 @@
 
 @protocol ModelOperation <NSObject>
 @optional
-+(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
-
-+(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion;
-
-+(void)deleteFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
-
-+(void)truncateAll;
-
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json;
 
 +(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues;
@@ -29,6 +21,14 @@
 +(id<MTLJSONSerializing>)modelFromManagedObject:(NSManagedObject *)managedObject;
 
 +(NSDictionary *)jsonFromModel:(id<MTLJSONSerializing>)model;
+
++(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
+
++(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion;
+
++(void)deleteFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
+
++(void)truncateAll;
 
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion;
 

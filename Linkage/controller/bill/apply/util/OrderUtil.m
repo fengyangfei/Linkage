@@ -18,43 +18,6 @@
 
 @implementation OrderUtil
 
-//同步到服务端
-+(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
-{
-    NSDictionary *paramter = [self jsonFromModel:model];
-    if (paramter) {
-        if ([model isKindOfClass:[ImportOrder class]]) {
-            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4importUrl form:paramter success:success failure:failure];
-        }else if([model isKindOfClass:[ExportOrder class]]){
-            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4exportUrl form:paramter success:success failure:failure];
-        }else if([model isKindOfClass:[SelfOrder class]]){
-            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4selfUrl form:paramter success:success failure:failure];
-        }
-    }
-}
-
-//同步到数据库
-+(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion
-{
-    NSError *error;
-    Order *order = (Order *)model;
-    if (order.orderId) {
-        OrderModel *existModel = [OrderModel MR_findFirstByAttribute:@"orderId" withValue:order.orderId inContext:[NSManagedObjectContext MR_defaultContext]];
-        if (existModel) {
-            [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
-        }
-        order.userId = [LoginUser shareInstance].userId;
-        OrderModel *orderModel = [MTLManagedObjectAdapter managedObjectFromModel:order insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
-        if (orderModel && !error) {
-            if (completion) {
-                completion();
-            }
-        }else{
-            NSLog(@"同步到数据库失败 - %@",error);
-        }
-    }
-}
-
 //json转换成对象
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
 {
@@ -137,6 +100,43 @@
         return [mutableDic copy];
     }else{
         return nil;
+    }
+}
+
+//同步到服务端
++(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
+{
+    NSDictionary *paramter = [self jsonFromModel:model];
+    if (paramter) {
+        if ([model isKindOfClass:[ImportOrder class]]) {
+            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4importUrl form:paramter success:success failure:failure];
+        }else if([model isKindOfClass:[ExportOrder class]]){
+            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4exportUrl form:paramter success:success failure:failure];
+        }else if([model isKindOfClass:[SelfOrder class]]){
+            [[YGRestClient sharedInstance] postForObjectWithUrl:Place4selfUrl form:paramter success:success failure:failure];
+        }
+    }
+}
+
+//同步到数据库
++(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion
+{
+    NSError *error;
+    Order *order = (Order *)model;
+    if (order.orderId) {
+        OrderModel *existModel = [OrderModel MR_findFirstByAttribute:@"orderId" withValue:order.orderId inContext:[NSManagedObjectContext MR_defaultContext]];
+        if (existModel) {
+            [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+        }
+        order.userId = [LoginUser shareInstance].userId;
+        OrderModel *orderModel = [MTLManagedObjectAdapter managedObjectFromModel:order insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
+        if (orderModel && !error) {
+            if (completion) {
+                completion();
+            }
+        }else{
+            NSLog(@"同步到数据库失败 - %@",error);
+        }
     }
 }
 
