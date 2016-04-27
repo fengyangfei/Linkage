@@ -54,6 +54,9 @@
 {
     NSError *error;
     Driver *driver = [MTLJSONAdapter modelOfClass:[Driver class] fromJSONDictionary:json error:&error];
+    if (error) {
+        NSLog(@"%@",error);
+    }
     return driver;
 }
 
@@ -61,6 +64,9 @@
 {
     NSError *error;
     Driver *driver = [MTLJSONAdapter modelOfClass:[Driver class] fromJSONDictionary:formValues error:&error];
+    if (error) {
+        NSLog(@"%@",error);
+    }
     return driver;
 }
 
@@ -104,6 +110,9 @@
         if ([responseObject isKindOfClass:[NSArray class]]) {
             NSError *error;
             NSArray *array = [MTLJSONAdapter modelsOfClass:[Driver class] fromJSONArray:responseObject error:&error];
+            if (error) {
+                NSLog(@"%@",error);
+            }
             if (completion) {
                 completion(array);
             }
