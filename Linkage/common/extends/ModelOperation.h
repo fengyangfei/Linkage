@@ -13,7 +13,7 @@
 
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 
-+(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(MRSaveCompletionHandler)completion;
++(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion;
 
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json;
 

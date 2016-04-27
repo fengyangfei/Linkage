@@ -40,6 +40,7 @@
             for (Order *order in orders) {
                 [OrderUtil syncToDataBase:order completion:nil];
             }
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
             [weakSelf setupData];
             [weakLeftView.mj_header endRefreshing];
         }];

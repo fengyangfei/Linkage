@@ -17,7 +17,7 @@
 
 }
 
-+(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(MRSaveCompletionHandler)completion
++(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion
 {
 
 }

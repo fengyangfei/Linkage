@@ -162,10 +162,8 @@ row.cellStyle = UITableViewCellStyleValue1;
         NSString *orderId = responseData[@"order_id"];
         order.orderId = orderId;
         //同步到数据库
-        [OrderUtil syncToDataBase:order completion:^(BOOL contextDidSave, NSError * _Nullable error) {
-            if (contextDidSave) {
-                [SVProgressHUD showSuccessWithStatus:@"单据缓存成功"];
-            }
+        [OrderUtil syncToDataBase:order completion:^{
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         }];
         [SVProgressHUD showSuccessWithStatus:@"单据保存成功"];
     } failure:^(NSError *error) {

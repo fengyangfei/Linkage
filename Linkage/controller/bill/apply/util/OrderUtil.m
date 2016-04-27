@@ -34,7 +34,7 @@
 }
 
 //同步到数据库
-+(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(MRSaveCompletionHandler)completion
++(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion
 {
     NSError *error;
     Order *order = (Order *)model;
@@ -46,7 +46,9 @@
         order.userId = [LoginUser shareInstance].userId;
         OrderModel *orderModel = [MTLManagedObjectAdapter managedObjectFromModel:order insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
         if (orderModel && !error) {
-            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:completion];
+            if (completion) {
+                completion();
+            }
         }else{
             NSLog(@"同步到数据库失败 - %@",error);
         }

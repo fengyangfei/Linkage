@@ -47,6 +47,7 @@
             [OrderUtil syncToDataBase:result completion:nil];
             [weakSelf.detailDS setForm:[self createDetailForm:result]];
             [SVProgressHUD dismiss];
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         }];
     }
 }
