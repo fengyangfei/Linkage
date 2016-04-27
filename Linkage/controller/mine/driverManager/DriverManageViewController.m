@@ -8,9 +8,13 @@
 
 #import "DriverManageViewController.h"
 #import "Driver.h"
+#import "DriverUtil.h"
+#import "LoginUser.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface DriverManageViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *drivers;
 @end
 
 @implementation DriverManageViewController
@@ -19,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"司机管理";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
     [self.view addSubview:self.tableView];
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.top);
@@ -26,7 +31,15 @@
         make.right.equalTo(self.view.right);
         make.bottom.equalTo(self.view.bottom);
     }];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
+}
+
+-(void)setupData
+{
+    WeakSelf
+    [DriverUtil queryModelsFromDataBase:^(NSArray *models) {
+        weakSelf.drivers = models;
+        [weakSelf.tableView reloadData];
+    }];
 }
 
 #pragma mark - action
@@ -43,17 +56,19 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.drivers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Driver *driver = [self.drivers objectAtIndex:indexPath.row];
+    
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"typeCell"];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"typeCell"];
     }
-    cell.textLabel.text = @"司机1";
-    cell.detailTextLabel.text = @"电话:13378930299";
+    cell.textLabel.text = driver.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ 电话（%@）", driver.license, driver.mobile];
     cell.imageView.image = [UIImage imageNamed:@"tab_icon_selection_highlight"];
     return cell;
 }
@@ -88,11 +103,23 @@
 
 -(UITableView *)tableView
 {
+    WeakSelf
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
+        __weak __typeof(_tableView) weakView = _tableView;
+        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [DriverUtil queryModelsFromServerWithModel:[LoginUser shareInstance] completion:^(NSArray *models) {
+                for (id model in models) {
+                    [DriverUtil syncToDataBase:model completion:nil];
+                }
+                [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+                [weakSelf setupData];
+                [weakView.mj_header endRefreshing];
+            }];
+        }];
     }
     return _tableView;
 }

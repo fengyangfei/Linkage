@@ -88,6 +88,14 @@ static LoginUser *user;
     return [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+#pragma mark - ModelHttpParameter
+-(NSDictionary *)httpParameterForList
+{
+    return @{
+             @"cid":self.cid,
+             @"token":self.token
+             };
+}
 @end
 
 @implementation LoginUser(Extensions)

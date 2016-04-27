@@ -77,6 +77,7 @@
 
 -(void)submitForm:(XLFormRowDescriptor *)row
 {
+    WeakSelf
     [self deselectFormRow:row];
     NSArray *errors = [self formValidationErrors];
     if (errors && errors.count > 0) {
@@ -91,7 +92,9 @@
         driver.driverId = driverId;
         //同步到数据库
         [DriverUtil syncToDataBase:driver completion:^{
-            
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * _Nullable error) {
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }];
         }];
         [SVProgressHUD showSuccessWithStatus:@"单据保存成功"];
     } failure:^(NSError *error) {

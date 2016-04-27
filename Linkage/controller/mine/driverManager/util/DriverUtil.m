@@ -59,7 +59,12 @@
 
 +(id<MTLJSONSerializing>)modelFromManagedObject:(NSManagedObject *)managedObject
 {
-    return nil;
+    NSError *error;
+    Driver *driver = [MTLManagedObjectAdapter modelOfClass:[Driver class] fromManagedObject:managedObject error:&error];
+    if (error) {
+        NSLog(@"%@",error);
+    }
+    return driver;
 }
 
 +(NSDictionary *)jsonFromModel:(id<MTLJSONSerializing>)model
@@ -70,6 +75,37 @@
         NSLog(@"对象转换字典失败 - %@",error);
     }
     return dic;
+}
+
+//数据库查询
++(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
+{
+    NSArray *managerObjects = [DriverModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].userId inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:managerObjects.count];
+    for (NSManagedObject *manageObj in managerObjects) {
+        id<MTLJSONSerializing> model = [self modelFromManagedObject:manageObj];
+        [mutableArray addObject:model];
+    }
+    if (completion) {
+        completion([mutableArray copy]);
+    }
+}
+
++(void)queryModelsFromServerWithModel:(id<ModelHttpParameter>)parameter completion:(void(^)(NSArray *models))completion
+{
+    [[YGRestClient sharedInstance] postForObjectWithUrl:DriversUrl form:[parameter httpParameterForList] success:^(id responseObject) {
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            NSError *error;
+            NSArray *array = [MTLJSONAdapter modelsOfClass:[Driver class] fromJSONArray:responseObject error:&error];
+            if (completion) {
+                completion(array);
+            }
+        }else{
+            completion(nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 @end

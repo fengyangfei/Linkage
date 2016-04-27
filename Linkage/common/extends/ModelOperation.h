@@ -33,7 +33,7 @@
 
 +(void)queryModelFromServer:(id)model completion:(void(^)(id<MTLJSONSerializing> result))completion;
 
-+(void)queryModelFromServerWithModel:(id<ModelHttpParameter>)model completion:(void(^)(id<MTLJSONSerializing> result))completion;
++(void)queryModelFromServerWithModel:(id<ModelHttpParameter>)parameter completion:(void(^)(id<MTLJSONSerializing> result))completion;
 
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion;
 
