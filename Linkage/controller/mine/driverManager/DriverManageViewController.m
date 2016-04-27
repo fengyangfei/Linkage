@@ -7,6 +7,7 @@
 //
 
 #import "DriverManageViewController.h"
+#import "Driver.h"
 
 @interface DriverManageViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;

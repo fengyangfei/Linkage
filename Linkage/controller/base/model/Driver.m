@@ -1,0 +1,36 @@
+//
+//  Driver.m
+//  Linkage
+//
+//  Created by Mac mini on 16/4/27.
+//  Copyright © 2016年 LA. All rights reserved.
+//
+
+#import "Driver.h"
+#import "LoginUser.h"
+
+@implementation Driver
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    
+    NSDictionary *keyMap = @{
+                             @"name":@"driver_name",
+                             @"mobile":@"company_mobile"
+                             };
+    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    keyDic = [keyDic mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
+    return keyDic;
+}
+
++ (NSValueTransformer *)genderJSONTransformer
+{
+    NSDictionary *transDic = @{
+                               @"F": @(Female),
+                               @"M": @(Male)
+                               };
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(Male) reverseDefaultValue:@"M"];
+}
+
+
+@end
