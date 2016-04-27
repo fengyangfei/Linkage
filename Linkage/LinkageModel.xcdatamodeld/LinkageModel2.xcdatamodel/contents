@@ -15,6 +15,7 @@
         <attribute name="license" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ExportOrderModel" representedClassName="ExportOrderModel" parentEntity="OrderModel" syncable="YES">
         <attribute name="customsIn" optional="YES" attributeType="Date" syncable="YES"/>
@@ -73,6 +74,6 @@
         <element name="OrderModel" positionX="-63" positionY="27" width="128" height="360"/>
         <element name="SelfOrderModel" positionX="-45" positionY="153" width="128" height="90"/>
         <element name="SOImageModel" positionX="-63" positionY="9" width="128" height="75"/>
-        <element name="DriverModel" positionX="-45" positionY="153" width="128" height="120"/>
+        <element name="DriverModel" positionX="-45" positionY="153" width="128" height="135"/>
     </elements>
 </model>

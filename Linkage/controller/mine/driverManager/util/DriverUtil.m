@@ -12,16 +12,6 @@
 
 @implementation DriverUtil
 
-+(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
-{
-
-}
-
-+(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion
-{
-
-}
-
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
 {
     NSError *error;
@@ -45,21 +35,6 @@
 {
     NSError *error;
     return [MTLJSONAdapter JSONDictionaryFromModel:model error:&error];
-}
-
-+(void)queryModelsFromServer:(void(^)(NSArray *models))completion
-{
-
-}
-
-+(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
-{
-    
-}
-
-+(void)queryModelFromServer:(id)model completion:(void(^)(id<MTLJSONSerializing> result))completion
-{
-
 }
 
 @end

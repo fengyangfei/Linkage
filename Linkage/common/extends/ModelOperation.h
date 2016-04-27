@@ -7,10 +7,13 @@
 //
 #import "YGRestClient.h"
 #import <Mantle/MTLJSONAdapter.h>
-@protocol ModelOperation <NSObject>
-
+@protocol ModelHttpParameter <NSObject>
 @optional
+-(NSDictionary *)httpParameterForAll;
+@end
 
+@protocol ModelOperation <NSObject>
+@optional
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 
 +(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion;
@@ -25,11 +28,10 @@
 
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion;
 
-+(void)queryModelsFromServer:(NSDictionary *)parameters completion:(void(^)(NSArray *models))completion;
++(void)queryModelsFromServer:(id<ModelHttpParameter>)parameter completion:(void(^)(NSArray *models))completion;
 
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion;
 
 +(void)queryModelFromServer:(id)model completion:(void(^)(id<MTLJSONSerializing> result))completion;
-
 
 @end

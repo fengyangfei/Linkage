@@ -9,6 +9,7 @@
 #import "DriverModel.h"
 
 @implementation DriverModel
+@dynamic userId;
 @dynamic name;
 @dynamic mobile;
 @dynamic gender;

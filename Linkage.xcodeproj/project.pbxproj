@@ -165,6 +165,7 @@
 		9A11F05F1CD04753002E8F6F /* AddDriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F05E1CD04753002E8F6F /* AddDriverViewController.m */; };
 		9A11F06A1CD05A9B002E8F6F /* DriverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0681CD05A9B002E8F6F /* DriverModel.m */; };
 		9A11F06E1CD06D52002E8F6F /* DriverUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F06D1CD06D52002E8F6F /* DriverUtil.m */; };
+		9A11F0711CD08894002E8F6F /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0701CD08894002E8F6F /* Task.m */; };
 		9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */; };
 		9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A81C7A91D400FB5EB6 /* UIColor+BFPaperColors.m */; };
 		9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2B01C7AAA3D00FB5EB6 /* MainViewController.m */; };
@@ -538,6 +539,8 @@
 		9A11F0681CD05A9B002E8F6F /* DriverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverModel.m; sourceTree = "<group>"; };
 		9A11F06C1CD06D52002E8F6F /* DriverUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverUtil.h; sourceTree = "<group>"; };
 		9A11F06D1CD06D52002E8F6F /* DriverUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverUtil.m; sourceTree = "<group>"; };
+		9A11F06F1CD08894002E8F6F /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		9A11F0701CD08894002E8F6F /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		9A23A2A51C7A91D400FB5EB6 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
 		9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
 		9A23A2A71C7A91D400FB5EB6 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -737,6 +740,8 @@
 				8B0060401CAC08E3001B0FC9 /* Order.m */,
 				9A05C3861CCA095D009BC8C9 /* OrderModel.h */,
 				9A05C3871CCA095D009BC8C9 /* OrderModel.m */,
+				9A11F06F1CD08894002E8F6F /* Task.h */,
+				9A11F0701CD08894002E8F6F /* Task.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1976,6 +1981,7 @@
 				8B5DC6241C79B8A700D29292 /* IFTTTFrameAnimation.m in Sources */,
 				9ACEBCAA1C9BF25F0000ACBF /* TimerManager.m in Sources */,
 				8B5DC6201C79B8A700D29292 /* IFTTTConstraintMultiplierAnimation.m in Sources */,
+				9A11F0711CD08894002E8F6F /* Task.m in Sources */,
 				8B10AD2D1C88744E00F5B0D6 /* PersonalSettingController.m in Sources */,
 				8B5DC62B1C79B8A700D29292 /* IFTTTPathPositionAnimation.m in Sources */,
 				9A23A31F1C7E8EA900FB5EB6 /* ICETutorialController.m in Sources */,

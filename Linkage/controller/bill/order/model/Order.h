@@ -79,35 +79,3 @@ typedef NS_ENUM(NSUInteger, ObjectStatus) {
 @property (nonatomic, strong) NSDate *customsIn;//报关时间
 @property (nonatomic, strong) NSDate *cargoTakeTime;//提货时间
 @end
-
-typedef NS_ENUM(NSUInteger, DriverTaskStatus) {
-    DriverTaskStatusWait,
-    DriverTaskStatusDone
-};
-
-//司机任务
-@interface DriverTask : MTLModel<MTLJSONSerializing, MTLManagedObjectSerializing>
-@property (nonatomic, copy) NSString *taskId;
-@property (nonatomic, copy) NSString *orderId;
-@property (nonatomic, copy) NSString *orderType;
-@property (nonatomic, copy) NSString *driverId;
-@property (nonatomic, copy) NSString *licence;
-@property (nonatomic, copy) NSString *CargoNo;
-@property (nonatomic, copy) NSString *CargoType;
-@property (nonatomic, assign) DriverTaskStatus status;
-@property (nonatomic, assign) BOOL isAccept;
-@property (nonatomic, copy) NSString *rejectReason;
-@property (nonatomic, copy) NSString *memo;
-@property (nonatomic, copy) NSString *image;
-@property (nonatomic, strong) NSDate *createTime;
-@property (nonatomic, strong) NSDate *updateTime;
-@end
-
-//司机任务
-@interface DriverTaskHistory : MTLModel<MTLJSONSerializing, MTLManagedObjectSerializing>
-@property (nonatomic, copy) NSString *taskId;
-@property (nonatomic, copy) NSString *memo;
-@property (nonatomic, copy) NSString *image;
-@property (nonatomic, strong) NSDate *createTime;
-@property (nonatomic, strong) NSDate *updateTime;
-@end
