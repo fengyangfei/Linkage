@@ -90,10 +90,8 @@
         NSString *driverId = responseData[@"driver_id"];
         driver.driverId = driverId;
         //同步到数据库
-        [DriverUtil syncToDataBase:driver completion:^(BOOL contextDidSave, NSError * _Nullable error) {
-            if (contextDidSave) {
-                [SVProgressHUD showSuccessWithStatus:@"单据缓存成功"];
-            }
+        [DriverUtil syncToDataBase:driver completion:^{
+            
         }];
         [SVProgressHUD showSuccessWithStatus:@"单据保存成功"];
     } failure:^(NSError *error) {

@@ -57,7 +57,7 @@
     
 }
 
-+(void)queryModelsFromServer:(id)model completion:(void(^)(id<MTLJSONSerializing> result))completion
++(void)queryModelFromServer:(id)model completion:(void(^)(id<MTLJSONSerializing> result))completion
 {
 
 }
