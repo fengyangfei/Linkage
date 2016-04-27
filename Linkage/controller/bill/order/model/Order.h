@@ -8,6 +8,7 @@
 
 #import <Mantle/Mantle.h>
 #import "MTLManagedObjectAdapter.h"
+#import "ModelOperation.h"
 
 typedef NS_ENUM(NSUInteger, OrderType) {
     OrderTypeExport,
@@ -28,7 +29,7 @@ typedef NS_ENUM(NSUInteger, ObjectStatus) {
 };
 
 //订单
-@interface Order : MTLModel<MTLJSONSerializing, MTLManagedObjectSerializing>
+@interface Order : MTLModel<MTLJSONSerializing, MTLManagedObjectSerializing,ModelHttpParameter>
 @property (nonatomic, copy) NSString *orderId;//订单号
 @property (nonatomic, assign) OrderType type;//订单类型
 @property (nonatomic, assign) OrderStatus status;//订单状态

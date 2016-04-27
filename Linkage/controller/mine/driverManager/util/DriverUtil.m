@@ -43,6 +43,13 @@
     }
 }
 
++(void)deleteFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
+{
+    if (model.httpParameterForDetail) {
+        [[YGRestClient sharedInstance] postForObjectWithUrl:DelDriverUrl form:model.httpParameterForDetail success:success failure:failure];
+    }
+}
+
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
 {
     NSError *error;
@@ -93,7 +100,7 @@
 
 +(void)queryModelsFromServerWithModel:(id<ModelHttpParameter>)parameter completion:(void(^)(NSArray *models))completion
 {
-    [[YGRestClient sharedInstance] postForObjectWithUrl:DriversUrl form:[parameter httpParameterForList] success:^(id responseObject) {
+    [[YGRestClient sharedInstance] postForObjectWithUrl:DriversUrl form:[parameter baseHttpParameter] success:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
             NSError *error;
             NSArray *array = [MTLJSONAdapter modelsOfClass:[Driver class] fromJSONArray:responseObject error:&error];
@@ -106,6 +113,26 @@
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
+}
+
++(void)queryModelFromServer:(id<MTLJSONSerializing, ModelHttpParameter>)parameter completion:(void(^)(id<MTLJSONSerializing> result))completion
+{
+    if (parameter.httpParameterForDetail) {
+        Driver *(^mergeOrder)(id responseObject) = ^(id responseObject) {
+            Driver *result = (Driver *)[DriverUtil modelFromJson:responseObject];
+            [result mergeValueForKey:@"driverId" fromModel:parameter];
+            return result;
+        };
+        
+        [[YGRestClient sharedInstance] postForObjectWithUrl:DriverDetailUrl form:parameter.httpParameterForDetail success:^(id responseObject) {
+            Driver *result = mergeOrder(responseObject);
+            if (completion) {
+                completion(result);
+            }
+        } failure:^(NSError *error) {
+            
+        }];
+    }
 }
 
 @end

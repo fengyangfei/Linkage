@@ -89,7 +89,7 @@ static LoginUser *user;
 }
 
 #pragma mark - ModelHttpParameter
--(NSDictionary *)httpParameterForList
+-(NSDictionary *)baseHttpParameter
 {
     return @{
              @"cid":self.cid,

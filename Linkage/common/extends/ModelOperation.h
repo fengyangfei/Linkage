@@ -9,7 +9,7 @@
 #import <Mantle/MTLJSONAdapter.h>
 @protocol ModelHttpParameter <NSObject>
 @optional
--(NSDictionary *)httpParameterForList;
+-(NSDictionary *)baseHttpParameter;
 -(NSDictionary *)httpParameterForDetail;
 @end
 
@@ -18,6 +18,10 @@
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 
 +(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion;
+
++(void)deleteFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
+
++(void)truncateAll;
 
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json;
 
@@ -31,9 +35,7 @@
 
 +(void)queryModelsFromServerWithModel:(id<ModelHttpParameter>)parameter completion:(void(^)(NSArray *models))completion;
 
-+(void)queryModelFromServer:(id)model completion:(void(^)(id<MTLJSONSerializing> result))completion;
-
-+(void)queryModelFromServerWithModel:(id<ModelHttpParameter>)parameter completion:(void(^)(id<MTLJSONSerializing> result))completion;
++(void)queryModelFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model completion:(void(^)(id<MTLJSONSerializing> result))completion;
 
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion;
 

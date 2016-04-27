@@ -45,21 +45,14 @@
 }
 
 #pragma mark - ModelHttpParameter
--(NSDictionary *)httpParameterForList
-{
-    return @{
-             @"cid":[LoginUser shareInstance].cid,
-             @"token":[LoginUser shareInstance].token
-             };
-}
-
 -(NSDictionary *)httpParameterForDetail
 {
-    return @{
-             @"cid":[LoginUser shareInstance].cid,
-             @"token":[LoginUser shareInstance].token,
-             @"driver_id":self.driverId?self.driverId:[NSNull null]
-             };
+    if (!self.driverId) {
+        return nil;
+    }
+    NSDictionary *baseParameter = [[LoginUser shareInstance] baseHttpParameter];
+    NSDictionary *paramter = [baseParameter mtl_dictionaryByAddingEntriesFromDictionary:@{@"driver_id": self.driverId}];
+    return paramter;
 }
 
 
