@@ -14,7 +14,6 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    
     NSDictionary *keyMap = @{
                              @"name":@"driver_name",
                              @"mobile":@"company_mobile"
@@ -43,6 +42,24 @@
 {
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     return keyDic;
+}
+
+#pragma mark - ModelHttpParameter
+-(NSDictionary *)httpParameterForList
+{
+    return @{
+             @"cid":[LoginUser shareInstance].cid,
+             @"token":[LoginUser shareInstance].token
+             };
+}
+
+-(NSDictionary *)httpParameterForDetail
+{
+    return @{
+             @"cid":[LoginUser shareInstance].cid,
+             @"token":[LoginUser shareInstance].token,
+             @"driver_id":self.driverId?self.driverId:[NSNull null]
+             };
 }
 
 
