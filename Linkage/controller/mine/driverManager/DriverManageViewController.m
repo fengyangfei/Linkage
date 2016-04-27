@@ -24,7 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"司机管理";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
+    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
+    UIBarButtonItem *addBtn = self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
+    self.navigationItem.rightBarButtonItems = @[editBtn, addBtn];
+
     [self.view addSubview:self.tableView];
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.top);
@@ -32,6 +35,12 @@
         make.right.equalTo(self.view.right);
         make.bottom.equalTo(self.view.bottom);
     }];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self setupData];
 }
 
 -(void)setupData
@@ -52,6 +61,12 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
     }
     [self.tableView setEditing:!self.tableView.isEditing];
+}
+
+-(void)addAction:(UIBarButtonItem *)sender
+{
+    AddDriverViewController *addViewController = [[AddDriverViewController alloc]init];
+    [self.navigationController pushViewController:addViewController animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -89,8 +104,8 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Driver *driver = [self.drivers objectAtIndex:indexPath.row];
-    AddDriverViewController *viewContrller = [[AddDriverViewController alloc]init];
+    Driver *driver = (Driver *)[self.drivers objectAtIndex:indexPath.row];
+    AddDriverViewController *viewContrller = [[AddDriverViewController alloc]initWithDriver:driver];
     [self.navigationController pushViewController:viewContrller animated:YES];
 }
 

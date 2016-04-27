@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DriverModel : NSManagedObject
 @property (nullable, nonatomic, retain) NSString *userId;
+@property (nullable, nonatomic, retain) NSString *driverId;
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *mobile;
 @property (nullable, nonatomic, retain) NSNumber *gender;

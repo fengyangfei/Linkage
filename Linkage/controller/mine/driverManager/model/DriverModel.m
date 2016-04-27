@@ -10,6 +10,7 @@
 
 @implementation DriverModel
 @dynamic userId;
+@dynamic driverId;
 @dynamic name;
 @dynamic mobile;
 @dynamic gender;

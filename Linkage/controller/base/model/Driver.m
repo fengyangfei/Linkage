@@ -15,8 +15,9 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyMap = @{
+                             @"driverId":@"driver_id",
                              @"name":@"driver_name",
-                             @"mobile":@"company_mobile"
+                             @"mobile":@"driver_mobile"
                              };
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keyDic = [keyDic mtl_dictionaryByAddingEntriesFromDictionary:keyMap];

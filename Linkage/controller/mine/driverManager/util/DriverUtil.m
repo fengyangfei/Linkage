@@ -57,6 +57,7 @@
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
 {
     NSDictionary *paramter = [self jsonFromModel:model];
+    paramter = [paramter mtl_dictionaryByAddingEntriesFromDictionary:[LoginUser shareInstance].baseHttpParameter];
     if (paramter) {
         [[YGRestClient sharedInstance] postForObjectWithUrl:AddDriverUrl form:paramter success:success failure:failure];
     }
@@ -71,7 +72,7 @@
         if (existModel) {
             [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
         }
-        driver.userId = [LoginUser shareInstance].userId;
+        driver.userId = [LoginUser shareInstance].cid;
         DriverModel *driverModel = [MTLManagedObjectAdapter managedObjectFromModel:driver insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
         if (driverModel && !error) {
             if (completion) {
@@ -93,7 +94,7 @@
 //数据库查询
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
 {
-    NSArray *managerObjects = [DriverModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].userId inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSArray *managerObjects = [DriverModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].cid inContext:[NSManagedObjectContext MR_defaultContext]];
     NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:managerObjects.count];
     for (NSManagedObject *manageObj in managerObjects) {
         id<MTLJSONSerializing> model = [self modelFromManagedObject:manageObj];
@@ -107,9 +108,9 @@
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
     [[YGRestClient sharedInstance] postForObjectWithUrl:DriversUrl form:[LoginUser shareInstance].baseHttpParameter success:^(id responseObject) {
-        if ([responseObject isKindOfClass:[NSArray class]]) {
+        if (responseObject[@"drivers"] && [responseObject[@"drivers"] isKindOfClass:[NSArray class]]) {
             NSError *error;
-            NSArray *array = [MTLJSONAdapter modelsOfClass:[Driver class] fromJSONArray:responseObject error:&error];
+            NSArray *array = [MTLJSONAdapter modelsOfClass:[Driver class] fromJSONArray:responseObject[@"drivers"] error:&error];
             if (error) {
                 NSLog(@"%@",error);
             }
