@@ -117,7 +117,6 @@
 		8B5DC66D1C79BFCE00D29292 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5DC66C1C79BFCE00D29292 /* CoreLocation.framework */; };
 		8B5DC6701C79CB2C00D29292 /* LinkageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC66E1C79CB2C00D29292 /* LinkageModel.xcdatamodeld */; };
 		8B5DC6811C79D0DB00D29292 /* YGRestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC6801C79D0DB00D29292 /* YGRestClient.m */; };
-		8B7172E01CA01F4B00DBEB9F /* DriverManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172DF1CA01F4B00DBEB9F /* DriverManageViewController.m */; };
 		8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E31CA0436C00DBEB9F /* AddressViewController.m */; };
 		8B7172E71CA0443300DBEB9F /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */; };
 		8B8284891CA57EA9001B36C1 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8284881CA57EA9001B36C1 /* Company.m */; };
@@ -447,8 +446,6 @@
 		8B5DC6781C79CF1500D29292 /* LinkageModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkageModel2.xcdatamodel; sourceTree = "<group>"; };
 		8B5DC67F1C79D0DB00D29292 /* YGRestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGRestClient.h; sourceTree = "<group>"; };
 		8B5DC6801C79D0DB00D29292 /* YGRestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGRestClient.m; sourceTree = "<group>"; };
-		8B7172DE1CA01F4B00DBEB9F /* DriverManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverManageViewController.h; sourceTree = "<group>"; };
-		8B7172DF1CA01F4B00DBEB9F /* DriverManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverManageViewController.m; sourceTree = "<group>"; };
 		8B7172E21CA0436C00DBEB9F /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
 		8B7172E31CA0436C00DBEB9F /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 		8B7172E51CA0443300DBEB9F /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAddressViewController.h; sourceTree = "<group>"; };
@@ -1223,10 +1220,9 @@
 		8B7172DD1CA01F2C00DBEB9F /* driverManager */ = {
 			isa = PBXGroup;
 			children = (
+				9A11F0751CD1A4B6002E8F6F /* view */,
 				9A11F06B1CD06D52002E8F6F /* util */,
 				9A11F0641CD059C0002E8F6F /* model */,
-				8B7172DE1CA01F4B00DBEB9F /* DriverManageViewController.h */,
-				8B7172DF1CA01F4B00DBEB9F /* DriverManageViewController.m */,
 				9A11F05D1CD04753002E8F6F /* AddDriverViewController.h */,
 				9A11F05E1CD04753002E8F6F /* AddDriverViewController.m */,
 				9A11F0721CD19257002E8F6F /* DriverViewController.h */,
@@ -1473,6 +1469,13 @@
 				9A11F06D1CD06D52002E8F6F /* DriverUtil.m */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		9A11F0751CD1A4B6002E8F6F /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		9A23A2A41C7A91D400FB5EB6 /* BFPaperButton */ = {
@@ -2094,7 +2097,6 @@
 				9AEF89C21CA1274600C5EB90 /* MJPhotoView.m in Sources */,
 				8B5DC56A1C7992E900D29292 /* AppDelegate.m in Sources */,
 				8B5DC5671C7992E900D29292 /* main.m in Sources */,
-				8B7172E01CA01F4B00DBEB9F /* DriverManageViewController.m in Sources */,
 				9A95FF331C89731100C5F492 /* TRPopButton.m in Sources */,
 				9AEF89CB1CA4CD5400C5EB90 /* ImageToDataTransformer.m in Sources */,
 				8B7172E71CA0443300DBEB9F /* AddAddressViewController.m in Sources */,

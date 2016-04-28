@@ -7,10 +7,11 @@
 //
 
 #import <Mantle/Mantle.h>
+#import <XLForm/XLFormRowDescriptor.h>
 #import "MTLManagedObjectAdapter.h"
 #import "ModelOperation.h"
 
-@interface Driver : MTLModel<MTLJSONSerializing,MTLManagedObjectSerializing,ModelHttpParameter>
+@interface Driver : MTLModel<MTLJSONSerializing,MTLManagedObjectSerializing,ModelHttpParameter,XLFormOptionObject>
 @property (nonatomic,copy) NSString *driverId;
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,copy) NSString *mobile;

@@ -45,6 +45,17 @@
     return keyDic;
 }
 
+#pragma mark - XLFormOptionObject
+-(NSString *)formDisplayText
+{
+    return self.mobile;
+}
+
+-(id)formValue
+{
+    return self.driverId;
+}
+
 #pragma mark - ModelHttpParameter
 -(NSDictionary *)httpParameterForDetail
 {

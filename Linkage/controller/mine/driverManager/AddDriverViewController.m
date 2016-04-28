@@ -17,6 +17,7 @@
 @end
 
 @implementation AddDriverViewController
+@synthesize rowDescriptor = _rowDescriptor;
 
 - (instancetype)init
 {
@@ -32,6 +33,11 @@
     return self;
 }
 
+-(void)setRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    _rowDescriptor = rowDescriptor;
+    [self initializeForm:rowDescriptor.value];
+}
 
 - (void)initializeForm:(Driver *)driver
 {

@@ -8,7 +8,7 @@
 
 #import <XLForm/XLForm.h>
 @class Driver;
-@interface AddDriverViewController : XLFormViewController
+@interface AddDriverViewController : XLFormViewController<XLFormRowDescriptorViewController>
 
 - (instancetype)initWithDriver:(Driver *)driver;
 @end
