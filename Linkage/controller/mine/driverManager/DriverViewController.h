@@ -6,8 +6,8 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import <XLForm/XLForm.h>
+#import "ModelBaseViewController.h"
 
-@interface DriverViewController : XLFormViewController
+@interface DriverViewController : ModelBaseViewController
 
 @end

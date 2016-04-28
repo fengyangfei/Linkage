@@ -45,7 +45,7 @@
     return keyDic;
 }
 
-#pragma mark - XLFormOptionObject
+#pragma mark - XLFormTitleOptionObject
 -(NSString *)formDisplayText
 {
     return self.mobile;
@@ -54,6 +54,11 @@
 -(id)formValue
 {
     return self.driverId;
+}
+
+-(NSString *)formTitleText
+{
+    return self.name;
 }
 
 #pragma mark - ModelHttpParameter

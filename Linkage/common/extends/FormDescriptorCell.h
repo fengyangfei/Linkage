@@ -17,3 +17,8 @@
 @optional
 -(void)formDescriptorCellDidSelectedWithViewController:(UIViewController<FormViewController> *)controller;
 @end
+
+@protocol XLFormTitleOptionObject <XLFormOptionObject>
+@optional
+-(NSString *)formTitleText;
+@end

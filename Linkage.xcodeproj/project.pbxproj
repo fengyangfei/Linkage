@@ -168,6 +168,7 @@
 		9A11F06E1CD06D52002E8F6F /* DriverUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F06D1CD06D52002E8F6F /* DriverUtil.m */; };
 		9A11F0711CD08894002E8F6F /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0701CD08894002E8F6F /* Task.m */; };
 		9A11F0741CD19257002E8F6F /* DriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0731CD19257002E8F6F /* DriverViewController.m */; };
+		9A11F0781CD1BBBA002E8F6F /* ModelBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0771CD1BBBA002E8F6F /* ModelBaseViewController.m */; };
 		9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */; };
 		9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A81C7A91D400FB5EB6 /* UIColor+BFPaperColors.m */; };
 		9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2B01C7AAA3D00FB5EB6 /* MainViewController.m */; };
@@ -547,6 +548,8 @@
 		9A11F0701CD08894002E8F6F /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		9A11F0721CD19257002E8F6F /* DriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverViewController.h; sourceTree = "<group>"; };
 		9A11F0731CD19257002E8F6F /* DriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverViewController.m; sourceTree = "<group>"; };
+		9A11F0761CD1BBBA002E8F6F /* ModelBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBaseViewController.h; sourceTree = "<group>"; };
+		9A11F0771CD1BBBA002E8F6F /* ModelBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBaseViewController.m; sourceTree = "<group>"; };
 		9A23A2A51C7A91D400FB5EB6 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
 		9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
 		9A23A2A71C7A91D400FB5EB6 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -1632,6 +1635,8 @@
 			children = (
 				9A95FF031C83E74E00C5F492 /* MenuCell.h */,
 				9A95FF041C83E74E00C5F492 /* MenuCell.m */,
+				9A11F0761CD1BBBA002E8F6F /* ModelBaseViewController.h */,
+				9A11F0771CD1BBBA002E8F6F /* ModelBaseViewController.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2105,6 +2110,7 @@
 				8BB4FB151C7A0884003389F1 /* LICENSE.md in Sources */,
 				9A11F06A1CD05A9B002E8F6F /* DriverModel.m in Sources */,
 				9AEF89BF1CA1274600C5EB90 /* MJPhotoLoadingView.m in Sources */,
+				9A11F0781CD1BBBA002E8F6F /* ModelBaseViewController.m in Sources */,
 				8B5DC61C1C79B8A700D29292 /* IFTTTAnimation.m in Sources */,
 				8B3302911C8BC0D70088DAE2 /* MainTableViewCell.m in Sources */,
 				8BCA5FB31CA95EE3002601F6 /* BillDetailViewController.m in Sources */,

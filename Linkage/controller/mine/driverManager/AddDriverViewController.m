@@ -68,11 +68,13 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"保存"];
-    row.action.formBlock  = ^(XLFormRowDescriptor * sender){
-        [weakSelf submitForm:sender];
-    };
-    [section addFormRow:row];
+    if(!driver){
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"保存"];
+        row.action.formBlock  = ^(XLFormRowDescriptor * sender){
+            [weakSelf submitForm:sender];
+        };
+        [section addFormRow:row];
+    }
     
     self.form = form;
 }
@@ -102,20 +104,23 @@
     NSDictionary *formValues = [self formValues];
     Driver *driver = (Driver *)[DriverUtil modelFromXLFormValue:formValues];
     //同步到服务端
+    [SVProgressHUD show];
     [DriverUtil syncToServer:driver success:^(id responseData) {
         NSString *driverId = responseData[@"driver_id"];
         if (driverId) {
             driver.driverId = driverId;
             //同步到数据库
+            StrongSelf
             [DriverUtil syncToDataBase:driver completion:^{
                 [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
-                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                    [SVProgressHUD dismiss];
                 }];
+                [strongSelf.navigationController popViewControllerAnimated:YES];
             }];
         }
-        [SVProgressHUD showSuccessWithStatus:@"单据保存成功"];
+        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
     } failure:^(NSError *error) {
-        [SVProgressHUD showSuccessWithStatus:error.localizedDescription];
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
     
 }
