@@ -207,6 +207,21 @@
     return keys;
 }
 
++(NSValueTransformer *)isBookCargoJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if ([value isKindOfClass:[NSString class]]) {
+            return @([value intValue]);
+        }else if ([value isKindOfClass:[NSNumber class]]){
+            return value;
+        }else{
+            return @(0);
+        }
+    } reverseBlock:^id(id value, BOOL *success, NSError **error) {
+        return value;
+    }];
+}
+
 #pragma mark - MTLManagedObjectSerializing
 + (NSString *)managedObjectEntityName
 {
@@ -247,6 +262,21 @@
     keys = [keys mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
     keys = [keys mtl_dictionaryByRemovingValuesForKeys:kOrderRemoveKeys];
     return keys;
+}
+
++(NSValueTransformer *)isCustomsDeclareJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if ([value isKindOfClass:[NSString class]]) {
+            return @([value intValue]);
+        }else if ([value isKindOfClass:[NSNumber class]]){
+            return value;
+        }else{
+            return @(0);
+        }
+    } reverseBlock:^id(id value, BOOL *success, NSError **error) {
+        return value;
+    }];
 }
 
 #pragma mark - MTLManagedObjectSerializing

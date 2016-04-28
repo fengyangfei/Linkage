@@ -14,6 +14,7 @@
 #import "OrderUtil.h"
 #import "DriverInfoCell.h"
 #import "LinkUtil.h"
+#import "SpecialFormSectionDescriptor.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
@@ -24,6 +25,7 @@
 
 @implementation BillDetailViewController
 @synthesize rowDescriptor = _rowDescriptor;
+@synthesize rightTableView = _rightTableView;
 
 -(void)dealloc
 {
@@ -50,6 +52,18 @@
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         }];
     }
+}
+
+-(UITableView *)rightTableView
+{
+    if (!_rightTableView) {
+        _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _rightTableView.sectionFooterHeight = 0;
+        _rightTableView.tableFooterView = [UIView new];
+        [_rightTableView setEditing:YES animated:NO];
+        _rightTableView.allowsSelectionDuringEditing = YES;
+    }
+    return _rightTableView;
 }
 
 -(void)setupData
@@ -172,16 +186,17 @@
 -(XLFormDescriptor *)createHistoryForm
 {
     XLFormDescriptor * form;
-    XLFormSectionDescriptor * section;
+    SpecialFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
     form = [XLFormDescriptor formDescriptor];
     
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜A" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
+    section = [SpecialFormSectionDescriptor formSectionWithTitle:@"货柜A" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
     [section.multivaluedAddButton.cellConfig setObject:@"添加司机" forKey:@"textLabel.text"];
     section.multivaluedTag = @"drivers";
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton];
+    section.multivaluedRowTemplate = row;
     [section addFormRow:row];
     
     return form;
