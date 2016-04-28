@@ -128,7 +128,7 @@
 -(UITableView *)leftTableView
 {
     if (!_leftTableView) {
-        _leftTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _leftTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _todoDS = [[TodoDataSource alloc] initWithViewController:self tableView:_leftTableView];
         _leftTableView.dataSource = _todoDS;
         _leftTableView.delegate = _todoDS;
@@ -141,7 +141,7 @@
 -(UITableView *)rightTableView
 {
     if (!_rightTableView) {
-        _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _doneDS = [[DoneDataSource alloc] initWithViewController:self tableView:_rightTableView];
         _rightTableView.dataSource = _doneDS;
         _rightTableView.delegate = _doneDS;

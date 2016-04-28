@@ -60,6 +60,9 @@
         _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _rightTableView.sectionFooterHeight = 0;
         _rightTableView.tableFooterView = [UIView new];
+        _historyDS = [[XLFormDataSource alloc]initWithViewController:self tableView:_rightTableView];
+        _rightTableView.dataSource = _historyDS;
+        _rightTableView.delegate = _historyDS;
         [_rightTableView setEditing:YES animated:NO];
         _rightTableView.allowsSelectionDuringEditing = YES;
     }
@@ -82,10 +85,9 @@
 
 -(void)refreshRightTable
 {
-    self.historyDS = [[XLFormDataSource alloc]initWithViewController:self tableView:self.rightTableView];
-    self.rightTableView.dataSource = self.historyDS;
-    self.rightTableView.delegate = self.historyDS;
-    [self.historyDS setForm:[self createHistoryForm]];
+    if (_historyDS) {
+        [_historyDS setForm:[self createHistoryForm]];
+    }
 }
 
 -(XLFormDescriptor *)createDetailForm:(Order *)order
@@ -186,11 +188,11 @@
 -(XLFormDescriptor *)createHistoryForm
 {
     XLFormDescriptor * form;
-    SpecialFormSectionDescriptor * section;
+    XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
     form = [XLFormDescriptor formDescriptor];
     
-    section = [SpecialFormSectionDescriptor formSectionWithTitle:@"货柜A" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
+    section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜A" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
     [section.multivaluedAddButton.cellConfig setObject:@"添加司机" forKey:@"textLabel.text"];
     section.multivaluedTag = @"drivers";
     [form addFormSection:section];
