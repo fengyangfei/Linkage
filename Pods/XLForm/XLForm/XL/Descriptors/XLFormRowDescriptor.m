@@ -109,7 +109,7 @@
     return [[[self class] alloc] initWithTag:tag rowType:rowType title:title];
 }
 
--(XLFormBaseCell *)cellForFormController:(XLFormViewController *)formController
+-(UITableViewCell<XLFormDescriptorCell> *)cellForFormController:(UIViewController *)formController
 {
     if (!_cell){
         id cellClass = self.cellClass ?: [XLFormViewController cellClassesForRowDescriptorTypes][self.rowType];

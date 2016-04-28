@@ -176,21 +176,13 @@
     XLFormRowDescriptor * row;
     form = [XLFormDescriptor formDescriptor];
     
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜A"];
+    section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜A" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
+    [section.multivaluedAddButton.cellConfig setObject:@"添加司机" forKey:@"textLabel.text"];
+    section.multivaluedTag = @"drivers";
     [form addFormSection:section];
     
-    for (int i = 0; i < 5; i++) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:DriverInfoDescriporType];
-        [section addFormRow:row];
-    }
-    
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜B"];
-    [form addFormSection:section];
-    
-    for (int i = 0; i < 5; i++) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:DriverInfoDescriporType];
-        [section addFormRow:row];
-    }
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton];
+    [section addFormRow:row];
     
     return form;
 }
