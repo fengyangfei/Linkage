@@ -90,6 +90,13 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
     }
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if ([textField.text isEqualToString:@"0"]) {
+        textField.text = @"";
+    }
+}
+
 #pragma mark - 各种属性
 -(UIButton *)leftButton
 {
@@ -126,6 +133,7 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
         [_rightTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_rightTextField setTextColor:[UIColor grayColor]];
         [_rightTextField setTextAlignment:NSTextAlignmentRight];
+        _rightTextField.delegate = self;
     }
     return _rightTextField;
 }

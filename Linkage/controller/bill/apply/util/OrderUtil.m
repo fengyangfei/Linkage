@@ -28,7 +28,7 @@
             NSArray *cargos = [MTLJSONAdapter modelsOfClass:[Cargo class] fromJSONArray:json[@"cargos"] error:&error];
             order.cargos = cargos;
         }
-        order.userId = [LoginUser shareInstance].userId;
+        order.userId = [LoginUser shareInstance].cid;
     }else{
         NSLog(@"JSON转换成对象失败 - %@",error);
     }
@@ -45,7 +45,7 @@
         if (formValues[@"company"] && [formValues[@"company"] isKindOfClass:[Company class]]) {
             order.companyId = ((Company *)formValues[@"company"]).companyId;
         }
-        order.userId = [LoginUser shareInstance].userId;
+        order.userId = [LoginUser shareInstance].cid;
         if ([order isKindOfClass:[ExportOrder class]]) {
             ((ExportOrder *)order).soImages = formValues[@"soImages"];
         }
@@ -128,7 +128,7 @@
         if (existModel) {
             [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
         }
-        order.userId = [LoginUser shareInstance].userId;
+        order.userId = [LoginUser shareInstance].cid;
         OrderModel *orderModel = [MTLManagedObjectAdapter managedObjectFromModel:order insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
         if (orderModel && !error) {
             if (completion) {
@@ -170,7 +170,7 @@
 //数据库查询
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
 {
-    NSArray *orderModelArray = [OrderModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].userId inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSArray *orderModelArray = [OrderModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].cid inContext:[NSManagedObjectContext MR_defaultContext]];
     NSArray *orders = [orderModelArray modelsFromManagedObject];
     if (completion) {
         completion(orders);
