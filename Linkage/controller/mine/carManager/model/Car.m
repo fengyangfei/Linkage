@@ -7,6 +7,7 @@
 //
 
 #import "Car.h"
+#import "CarModel.h"
 #import "LoginUser.h"
 
 @implementation Car
@@ -14,9 +15,15 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyMap = @{
-                             @"driverId":@"driver_id",
-                             @"name":@"driver_name",
-                             @"mobile":@"driver_mobile"
+                             @"carId":@"car_id",
+                             @"engineNo":@"engine_no",
+                             @"frameNo":@"frame_no",
+                             @"applyDate":@"apply_date",
+                             @"examineData":@"examine_data",
+                             @"maintainData":@"maintain_data",
+                             @"trafficInsureData":@"traffic_insure_data",
+                             @"businessInsureData":@"business_insure_data",
+                             @"insureCompany":@"insure_company"
                              };
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keyDic = [keyDic mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
@@ -26,7 +33,7 @@
 #pragma mark - MTLManagedObjectSerializing
 + (NSString *)managedObjectEntityName
 {
-    return @"CarModel";
+    return NSStringFromClass([CarModel class]);
 }
 
 + (NSDictionary *)managedObjectKeysByPropertyKey
@@ -42,7 +49,7 @@
         return nil;
     }
     NSDictionary *baseParameter = [LoginUser shareInstance].baseHttpParameter;
-    NSDictionary *paramter = [baseParameter mtl_dictionaryByAddingEntriesFromDictionary:@{@"driver_id": self.carId}];
+    NSDictionary *paramter = [baseParameter mtl_dictionaryByAddingEntriesFromDictionary:@{@"car_id": self.carId}];
     return paramter;
 }
 
