@@ -144,14 +144,13 @@
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
     NSDictionary *paramter = @{
-                               @"cid":[LoginUser shareInstance].cid,
-                               @"token":[LoginUser shareInstance].token,
                                @"type":@(-1),
                                @"status":@(0),
                                @"pagination":@(0),
                                @"offset":@(0),
                                @"size":@(100)
                                };
+    paramter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:paramter];
     [[YGRestClient sharedInstance] postForObjectWithUrl:ListByStatusUrl form:paramter success:^(id responseObject) {
         if (responseObject[@"orders"] && [responseObject[@"orders"] isKindOfClass:[NSArray class]]) {
             NSError *error;

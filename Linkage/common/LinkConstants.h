@@ -12,6 +12,7 @@
 #define PhoneNumRegex @"^((13[0-9])|(147)|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"
 #define HeaderColor UIColorFromRGB(0x0099FF)
 #define ButtonColor UIColorFromRGB(0x0080FF)
+#define TableBackgroundColor UIColorFromRGB(0x0080FF)
 
 //用户注册
 #define BaseUrl @"http://120.25.82.122:8000"

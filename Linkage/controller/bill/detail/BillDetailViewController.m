@@ -45,7 +45,7 @@
         [SVProgressHUD show];
         [OrderUtil queryModelFromServer:order completion:^(Order *result) {
             [OrderUtil syncToDataBase:result completion:nil];
-            [weakSelf.detailDS setForm:[self createDetailForm:result]];
+            [weakSelf.detailDS setForm:[weakSelf createDetailForm:result]];
             [SVProgressHUD dismiss];
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         }];
