@@ -43,7 +43,7 @@
             <key>iconName</key>
             <string>setting_car</string>
             <key>className</key>
-            <string>CarListViewController</string>
+            <string>CarViewController</string>
         </dict>
 		<dict>
 			<key>title</key>

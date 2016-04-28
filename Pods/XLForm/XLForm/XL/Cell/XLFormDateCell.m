@@ -43,8 +43,10 @@
 - (UIView *)inputView
 {
     if ([self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeDate] || [self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeTime] || [self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeDateTime] || [self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeCountDownTimer]){
-        if (self.rowDescriptor.value){
-            [self.datePicker setDate:self.rowDescriptor.value animated:[self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeCountDownTimer]];
+        if (self.rowDescriptor.value && self.rowDescriptor.value != [NSNull null]){
+            if ([self.rowDescriptor.value isKindOfClass:[NSDate class]]) {
+                [self.datePicker setDate:self.rowDescriptor.value animated:[self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeCountDownTimer]];
+            }
         }
         [self setModeToDatePicker:self.datePicker];
         return self.datePicker;
