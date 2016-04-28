@@ -179,7 +179,6 @@
     return [[[self.form.formSections objectAtIndex:section] formRows] count];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XLFormRowDescriptor * rowDescriptor = [self.form formRowAtIndex:indexPath];
@@ -276,6 +275,14 @@
 }
 
 #pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    XLFormSectionDescriptor *sectionDescriptor = [self.form.formSections objectAtIndex:section];
+    if([sectionDescriptor conformsToProtocol:@protocol(ExpandFormSectionDescriptorDelegate)]){
+        return [((XLFormSectionDescriptor<ExpandFormSectionDescriptorDelegate> *)sectionDescriptor) heightForSectionHeader];
+    }
+    return 0;
+}
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -317,8 +324,10 @@
         return;
     }
     UITableViewCell<XLFormDescriptorCell> * cell = (UITableViewCell<XLFormDescriptorCell> *)[row cellForFormController:self.viewController];
-    if (!([cell formDescriptorCellCanBecomeFirstResponder] && [cell formDescriptorCellBecomeFirstResponder])){
-        [self.tableView endEditing:YES];
+    if ([cell respondsToSelector:@selector(formDescriptorCellCanBecomeFirstResponder)] && [cell respondsToSelector:@selector(formDescriptorCellBecomeFirstResponder)]) {
+        if (!([cell formDescriptorCellCanBecomeFirstResponder] && [cell formDescriptorCellBecomeFirstResponder])){
+            [self.tableView endEditing:YES];
+        }
     }
     [self didSelectFormRow:row];
 }
@@ -393,105 +402,7 @@
     }
 }
 
-/*
-#pragma mark - UITableViewDataSource
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [self.form.formSections count];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (section >= self.form.formSections.count){
-        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"" userInfo:nil];
-    }
-    return [[[self.form.formSections objectAtIndex:section] formRows] count];
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    XLFormRowDescriptor * rowDescriptor = [self.form formRowAtIndex:indexPath];
-    return [rowDescriptor cellForFormController:nil];
-}
-
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    XLFormRowDescriptor * rowDescriptor = [self.form formRowAtIndex:indexPath];
-    [self updateFormRow:rowDescriptor];
-}
-
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    XLFormRowDescriptor *rowDescriptor = [self.form formRowAtIndex:indexPath];
-    if (rowDescriptor.isDisabled || !rowDescriptor.sectionDescriptor.isMultivaluedSection){
-        return NO;
-    }
-    UITableViewCell<FormDescriptorCell> * baseCell = (UITableViewCell<FormDescriptorCell> *)[rowDescriptor cellForFormController:nil];
-    if ([baseCell conformsToProtocol:@protocol(XLFormInlineRowDescriptorCell)] && ((id<XLFormInlineRowDescriptorCell>)baseCell).inlineRowDescriptor){
-        return NO;
-    }
-    return YES;
-}
-
-#pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    XLFormSectionDescriptor *sectionDescriptor = [self.form.formSections objectAtIndex:section];
-    if([sectionDescriptor conformsToProtocol:@protocol(ExpandFormSectionDescriptorDelegate)]){
-        return [((XLFormSectionDescriptor<ExpandFormSectionDescriptorDelegate> *)sectionDescriptor) heightForSectionHeader];
-    }
-    return 0;
-}
-
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return [[self.form.formSections objectAtIndex:section] title];
-}
-
--(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
-{
-    return [[self.form.formSections objectAtIndex:section] footerTitle];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    XLFormRowDescriptor *rowDescriptor = [self.form formRowAtIndex:indexPath];
-    Class cellClass = [[rowDescriptor cellForFormController:nil] class];
-    if ([cellClass respondsToSelector:@selector(formDescriptorCellHeightForRowDescriptor:)]){
-        return [cellClass formDescriptorCellHeightForRowDescriptor:rowDescriptor];
-    }
-    return tableView.rowHeight;
-}
-
--(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    XLFormRowDescriptor *rowDescriptor = [self.form formRowAtIndex:indexPath];
-    Class cellClass = [[rowDescriptor cellForFormController:nil] class];
-    if ([cellClass respondsToSelector:@selector(formDescriptorCellHeightForRowDescriptor:)]){
-        return [cellClass formDescriptorCellHeightForRowDescriptor:rowDescriptor];
-    }
-    return 44;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    XLFormRowDescriptor * row = [self.form formRowAtIndex:indexPath];
-    if (row.isDisabled) {
-        return;
-    }
-    UITableViewCell<XLFormDescriptorCell> * cell = (UITableViewCell<XLFormDescriptorCell> *)[row cellForFormController:nil];
-    if ([cell respondsToSelector:@selector(formDescriptorCellCanBecomeFirstResponder)] && [cell respondsToSelector:@selector(formDescriptorCellBecomeFirstResponder)]) {
-        if (!([cell formDescriptorCellCanBecomeFirstResponder] && [cell formDescriptorCellBecomeFirstResponder])){
-            [tableView endEditing:YES];
-        }
-    }
-    [self didSelectFormRow:row];
-}
- */
-
 #pragma mark - Helpers
-
 -(void)reloadFormRow:(XLFormRowDescriptor *)formRow
 {
     NSIndexPath * indexPath = [self.form indexPathOfFormRow:formRow];
