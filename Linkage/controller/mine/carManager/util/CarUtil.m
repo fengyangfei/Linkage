@@ -14,34 +14,39 @@
 
 @implementation CarUtil
 
++(Class)modelClass
+{
+    return [Car class];
+}
+
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
 {
     NSError *error;
-    Car *car = [MTLJSONAdapter modelOfClass:[Car class] fromJSONDictionary:json error:&error];
+    id model = [MTLJSONAdapter modelOfClass:self.modelClass fromJSONDictionary:json error:&error];
     if (error) {
         NSLog(@"%@",error);
     }
-    return car;
+    return model;
 }
 
 +(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues
 {
     NSError *error;
-    Car *car = [MTLJSONAdapter modelOfClass:[Car class] fromJSONDictionary:formValues error:&error];
+    id model = [MTLJSONAdapter modelOfClass:self.modelClass fromJSONDictionary:formValues error:&error];
     if (error) {
         NSLog(@"%@",error);
     }
-    return car;
+    return model;
 }
 
 +(id<MTLJSONSerializing>)modelFromManagedObject:(NSManagedObject *)managedObject
 {
     NSError *error;
-    Car *car = [MTLManagedObjectAdapter modelOfClass:[Car class] fromManagedObject:managedObject error:&error];
+    id model = [MTLManagedObjectAdapter modelOfClass:self.modelClass fromManagedObject:managedObject error:&error];
     if (error) {
         NSLog(@"%@",error);
     }
-    return car;
+    return model;
 }
 
 +(NSDictionary *)jsonFromModel:(id<MTLJSONSerializing>)model
@@ -68,7 +73,7 @@
     NSError *error;
     Car *car = (Car *)model;
     if (car.carId) {
-        CarModel *existModel = [CarModel MR_findFirstByAttribute:@"CarId" withValue:car.carId inContext:[NSManagedObjectContext MR_defaultContext]];
+        CarModel *existModel = [CarModel MR_findFirstByAttribute:@"carId" withValue:car.carId inContext:[NSManagedObjectContext MR_defaultContext]];
         if (existModel) {
             [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
         }
@@ -95,7 +100,7 @@
 {
     Car *car = (Car *)model;
     if (car.carId) {
-        CarModel *existModel = [CarModel MR_findFirstByAttribute:@"CarId" withValue:car.carId inContext:[NSManagedObjectContext MR_defaultContext]];
+        CarModel *existModel = [CarModel MR_findFirstByAttribute:@"carId" withValue:car.carId inContext:[NSManagedObjectContext MR_defaultContext]];
         if (existModel) {
             [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
         }
@@ -122,9 +127,9 @@
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
     [[YGRestClient sharedInstance] postForObjectWithUrl:CarsUrl form:[LoginUser shareInstance].baseHttpParameter success:^(id responseObject) {
-        if (responseObject[@"Cars"] && [responseObject[@"Cars"] isKindOfClass:[NSArray class]]) {
+        if (responseObject[@"cars"] && [responseObject[@"cars"] isKindOfClass:[NSArray class]]) {
             NSError *error;
-            NSArray *array = [MTLJSONAdapter modelsOfClass:[Car class] fromJSONArray:responseObject[@"Cars"] error:&error];
+            NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:responseObject[@"cars"] error:&error];
             if (error) {
                 NSLog(@"%@",error);
             }
@@ -142,14 +147,14 @@
 +(void)queryModelFromServer:(id<MTLJSONSerializing, ModelHttpParameter>)parameter completion:(void(^)(id<MTLJSONSerializing> result))completion
 {
     if (parameter.httpParameterForDetail) {
-        Car *(^mergeOrder)(id responseObject) = ^(id responseObject) {
-            Car *result = (Car *)[CarUtil modelFromJson:responseObject];
-            [result mergeValueForKey:@"CarId" fromModel:parameter];
+        id(^mergeOrder)(id) = ^(id responseObject) {
+            id<MTLJSONSerializing> result = [CarUtil modelFromJson:responseObject];
+            [result mergeValueForKey:@"carId" fromModel:parameter];
             return result;
         };
         
         [[YGRestClient sharedInstance] postForObjectWithUrl:CarDetailUrl form:parameter.httpParameterForDetail success:^(id responseObject) {
-            Car *result = mergeOrder(responseObject);
+            id result = mergeOrder(responseObject);
             if (completion) {
                 completion(result);
             }

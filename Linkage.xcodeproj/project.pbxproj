@@ -128,7 +128,6 @@
 		8B941BB11CD107060059BE13 /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B941BAF1CD107060059BE13 /* CarModel.m */; };
 		8B941BB41CD109080059BE13 /* CarUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B941BB31CD109080059BE13 /* CarUtil.m */; };
 		8B986F651CC50A7E002DDA68 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F641CC50A7E002DDA68 /* ChangePasswordController.m */; };
-		8B986F691CC50D59002DDA68 /* CarListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F681CC50D59002DDA68 /* CarListViewController.m */; };
 		8B986F6C1CC50D7A002DDA68 /* AddCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F6B1CC50D7A002DDA68 /* AddCarViewController.m */; };
 		8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130531C9D2B2D007607F9 /* CargoFormRowDescriptor.m */; };
 		8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130561C9D93E4007607F9 /* SOImageFormCell.m */; };
@@ -169,6 +168,7 @@
 		9A11F0711CD08894002E8F6F /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0701CD08894002E8F6F /* Task.m */; };
 		9A11F0741CD19257002E8F6F /* DriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0731CD19257002E8F6F /* DriverViewController.m */; };
 		9A11F0781CD1BBBA002E8F6F /* ModelBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0771CD1BBBA002E8F6F /* ModelBaseViewController.m */; };
+		9A126DE71CD1DE9000648184 /* CarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A126DE61CD1DE9000648184 /* CarViewController.m */; };
 		9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */; };
 		9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A81C7A91D400FB5EB6 /* UIColor+BFPaperColors.m */; };
 		9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2B01C7AAA3D00FB5EB6 /* MainViewController.m */; };
@@ -469,8 +469,6 @@
 		8B941BB31CD109080059BE13 /* CarUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarUtil.m; sourceTree = "<group>"; };
 		8B986F631CC50A7E002DDA68 /* ChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordController.h; sourceTree = "<group>"; };
 		8B986F641CC50A7E002DDA68 /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
-		8B986F671CC50D59002DDA68 /* CarListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarListViewController.h; sourceTree = "<group>"; };
-		8B986F681CC50D59002DDA68 /* CarListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarListViewController.m; sourceTree = "<group>"; };
 		8B986F6A1CC50D7A002DDA68 /* AddCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCarViewController.h; sourceTree = "<group>"; };
 		8B986F6B1CC50D7A002DDA68 /* AddCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCarViewController.m; sourceTree = "<group>"; };
 		8BA130521C9D2B2D007607F9 /* CargoFormRowDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoFormRowDescriptor.h; sourceTree = "<group>"; };
@@ -550,6 +548,8 @@
 		9A11F0731CD19257002E8F6F /* DriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverViewController.m; sourceTree = "<group>"; };
 		9A11F0761CD1BBBA002E8F6F /* ModelBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBaseViewController.h; sourceTree = "<group>"; };
 		9A11F0771CD1BBBA002E8F6F /* ModelBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBaseViewController.m; sourceTree = "<group>"; };
+		9A126DE51CD1DE9000648184 /* CarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarViewController.h; sourceTree = "<group>"; };
+		9A126DE61CD1DE9000648184 /* CarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarViewController.m; sourceTree = "<group>"; };
 		9A23A2A51C7A91D400FB5EB6 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
 		9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
 		9A23A2A71C7A91D400FB5EB6 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -1325,10 +1325,10 @@
 			children = (
 				8B941BA71CD1020E0059BE13 /* model */,
 				8B941BA81CD1020E0059BE13 /* util */,
-				8B986F671CC50D59002DDA68 /* CarListViewController.h */,
-				8B986F681CC50D59002DDA68 /* CarListViewController.m */,
 				8B986F6A1CC50D7A002DDA68 /* AddCarViewController.h */,
 				8B986F6B1CC50D7A002DDA68 /* AddCarViewController.m */,
+				9A126DE51CD1DE9000648184 /* CarViewController.h */,
+				9A126DE61CD1DE9000648184 /* CarViewController.m */,
 			);
 			path = carManager;
 			sourceTree = "<group>";
@@ -2011,6 +2011,7 @@
 				9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */,
 				8B5DC6241C79B8A700D29292 /* IFTTTFrameAnimation.m in Sources */,
 				9ACEBCAA1C9BF25F0000ACBF /* TimerManager.m in Sources */,
+				9A126DE71CD1DE9000648184 /* CarViewController.m in Sources */,
 				8B5DC6201C79B8A700D29292 /* IFTTTConstraintMultiplierAnimation.m in Sources */,
 				9A11F0711CD08894002E8F6F /* Task.m in Sources */,
 				8B10AD2D1C88744E00F5B0D6 /* PersonalSettingController.m in Sources */,
@@ -2142,7 +2143,6 @@
 				8B44450A1C7C9EFE00160DC2 /* TAAnimatedDotView.m in Sources */,
 				9A95FF0D1C858C8200C5F492 /* DateAndTimeValueTrasformer.m in Sources */,
 				8B0254E01CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.m in Sources */,
-				8B986F691CC50D59002DDA68 /* CarListViewController.m in Sources */,
 				8B5DC6811C79D0DB00D29292 /* YGRestClient.m in Sources */,
 				8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */,
 				9A05C38D1CCA095D009BC8C9 /* OrderModel.m in Sources */,

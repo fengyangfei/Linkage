@@ -65,10 +65,10 @@
     row.required = YES;
     [section addFormRow:row];
     
-    section = [XLFormSectionDescriptor formSection];
-    [form addFormSection:section];
-    
     if(!driver){
+        section = [XLFormSectionDescriptor formSection];
+        [form addFormSection:section];
+        
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"保存"];
         row.action.formBlock  = ^(XLFormRowDescriptor * sender){
             [weakSelf submitForm:sender];

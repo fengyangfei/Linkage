@@ -8,6 +8,6 @@
 
 #import <XLForm/XLForm.h>
 
-@interface AddCarViewController : XLFormViewController
+@interface AddCarViewController : XLFormViewController<XLFormRowDescriptorViewController>
 
 @end

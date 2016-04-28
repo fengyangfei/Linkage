@@ -7,13 +7,8 @@
 //
 
 #import "DriverViewController.h"
-#import "Driver.h"
 #import "DriverUtil.h"
 #import "AddDriverViewController.h"
-
-@interface DriverViewController()<ModelBaseControllerConfigure>
-
-@end
 
 @implementation DriverViewController
 

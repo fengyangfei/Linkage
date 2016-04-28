@@ -17,10 +17,6 @@
 [row.cellConfig setObject:[UIColor blackColor] forKey:@"detailTextLabel.textColor"];\
 row.cellStyle = UITableViewCellStyleValue1;
 
-@interface ModelBaseViewController()<ModelBaseControllerConfigure>
-
-@end
-
 @implementation ModelBaseViewController
 
 - (void)viewDidLoad {

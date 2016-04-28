@@ -14,6 +14,6 @@
 -(Class)viewControllerClass;
 @end
 
-@interface ModelBaseViewController : XLFormViewController
+@interface ModelBaseViewController : XLFormViewController<ModelBaseControllerConfigure>
 
 @end

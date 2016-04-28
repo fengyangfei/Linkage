@@ -9,8 +9,9 @@
 #import <Mantle/Mantle.h>
 #import "MTLManagedObjectAdapter.h"
 #import "ModelOperation.h"
+#import "FormDescriptorCell.h"
 
-@interface Car : MTLModel<MTLJSONSerializing,MTLManagedObjectSerializing,ModelHttpParameter>
+@interface Car : MTLModel<MTLJSONSerializing,MTLManagedObjectSerializing,ModelHttpParameter,XLFormTitleOptionObject>
 @property (nonatomic,copy) NSString *carId;
 @property (nonatomic,copy) NSString *license;//车牌号
 @property (nonatomic,copy) NSString *engineNo;//发动机号

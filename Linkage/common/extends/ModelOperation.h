@@ -14,6 +14,8 @@
 
 @protocol ModelOperation <NSObject>
 @optional
++(Class)modelClass;
+
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json;
 
 +(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues;

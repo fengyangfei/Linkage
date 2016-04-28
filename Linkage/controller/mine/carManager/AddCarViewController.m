@@ -7,23 +7,33 @@
 //
 
 #import "AddCarViewController.h"
+#import "Car.h"
+#import "CarModel.h"
+#import "CarUtil.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @implementation AddCarViewController
+@synthesize rowDescriptor = _rowDescriptor;
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        [self initializeForm];
+        [self initializeForm:nil];
     }
     return self;
 }
 
-
-- (void)initializeForm
+- (void)initializeForm:(Car *)car
 {
-    XLFormDescriptor *form = [self createForm];
+    XLFormDescriptor *form = [self createForm:car];
     self.form = form;
+}
+
+-(void)setRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    _rowDescriptor = rowDescriptor;
+    [self initializeForm:rowDescriptor.value];
 }
 
 -(void)viewDidLoad
@@ -34,8 +44,9 @@
     self.tableView.sectionFooterHeight = 0;
 }
 
--(XLFormDescriptor *)createForm
+-(XLFormDescriptor *)createForm:(Car *)car
 {
+    WeakSelf
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
@@ -44,37 +55,81 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"number" rowType:XLFormRowDescriptorTypeText title:@"车牌号码"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"license" rowType:XLFormRowDescriptorTypeText title:@"车牌号码"];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"carNum" rowType:XLFormRowDescriptorTypeText title:@"发动机号码"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"engine_no" rowType:XLFormRowDescriptorTypeText title:@"发动机号码"];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"carId" rowType:XLFormRowDescriptorTypeText title:@"车架号"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"frame_no" rowType:XLFormRowDescriptorTypeText title:@"车架号"];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"numDate" rowType:XLFormRowDescriptorTypeText title:@"上牌日期"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"apply_date" rowType:XLFormRowDescriptorTypeDate title:@"上牌日期"];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"yearDate" rowType:XLFormRowDescriptorTypeText title:@"年审日期"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"examine_data" rowType:XLFormRowDescriptorTypeDate title:@"年审日期"];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"secondMonth" rowType:XLFormRowDescriptorTypeText title:@"二级维护月份"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"maintain_data" rowType:XLFormRowDescriptorTypeDate title:@"二级维护月份"];
     [section addFormRow:row];
 
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"insurancedate" rowType:XLFormRowDescriptorTypeText title:@"交强险日期"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"traffic_insure_data" rowType:XLFormRowDescriptorTypeDate title:@"交强险日期"];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"insuranceTime" rowType:XLFormRowDescriptorTypeText title:@"商业险日期"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"business_insure_data" rowType:XLFormRowDescriptorTypeDate title:@"商业险日期"];
     [section addFormRow:row];
 
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"insuranceName" rowType:XLFormRowDescriptorTypeText title:@"保险公司名称"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"insure_company" rowType:XLFormRowDescriptorTypeText title:@"保险公司名称"];
     [section addFormRow:row];
 
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"remark" rowType:XLFormRowDescriptorTypeTextView title:@"备注信息"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"memo" rowType:XLFormRowDescriptorTypeTextView title:@"备注信息"];
     [section addFormRow:row];
+    
+    if(!car){
+        section = [XLFormSectionDescriptor formSection];
+        [form addFormSection:section];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"保存"];
+        row.action.formBlock  = ^(XLFormRowDescriptor * sender){
+            [weakSelf submitForm:sender];
+        };
+        [section addFormRow:row];
+    }
     
     return form;
+}
+
+-(void)submitForm:(XLFormRowDescriptor *)row
+{
+    WeakSelf
+    [self deselectFormRow:row];
+    NSArray *errors = [self formValidationErrors];
+    if (errors && errors.count > 0) {
+        [self showFormValidationError:errors[0]];
+        return;
+    }
+    NSDictionary *formValues = [self formValues];
+    Car *model = (Car *)[CarUtil modelFromXLFormValue:formValues];
+    //同步到服务端
+    [SVProgressHUD show];
+    [CarUtil syncToServer:model success:^(id responseData) {
+        NSString *carId = responseData[@"car_id"];
+        if (carId) {
+            model.carId = carId;
+            //同步到数据库
+            StrongSelf
+            [CarUtil syncToDataBase:model completion:^{
+                [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+                    [SVProgressHUD dismiss];
+                }];
+                [strongSelf.navigationController popViewControllerAnimated:YES];
+            }];
+        }
+        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+    }];
+    
 }
 
 @end

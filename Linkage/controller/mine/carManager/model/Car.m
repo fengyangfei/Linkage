@@ -54,4 +54,19 @@
 }
 
 
+#pragma mark - XLFormTitleOptionObject
+-(NSString *)formTitleText
+{
+    return self.license;
+}
+
+-(NSString *)formDisplayText
+{
+    return self.memo;
+}
+
+-(id)formValue{
+    return self.carId;
+}
+
 @end
