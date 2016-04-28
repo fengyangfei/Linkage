@@ -35,7 +35,7 @@
 			<key>iconName</key>
 			<string>setting_driver</string>
 			<key>className</key>
-			<string>DriverManageViewController</string>
+			<string>DriverViewController</string>
 		</dict>
         <dict>
             <key>title</key>

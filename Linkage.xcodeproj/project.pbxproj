@@ -105,7 +105,6 @@
 		8B5DC6511C79B8A700D29292 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5DC6151C79B8A700D29292 /* libzbar.a */; };
 		8B5DC6521C79B8A700D29292 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5DC6171C79B8A700D29292 /* zbar-back.png */; };
 		8B5DC6531C79B8A700D29292 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5DC6181C79B8A700D29292 /* zbar-samples.png */; };
-		8B5DC6581C79B9A200D29292 /* RMMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC6571C79B9A200D29292 /* RMMapper.m */; };
 		8B5DC65B1C79BD5400D29292 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5DC65A1C79BD5400D29292 /* Security.framework */; };
 		8B5DC65D1C79BD7100D29292 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5DC65C1C79BD7100D29292 /* CoreGraphics.framework */; };
 		8B5DC65F1C79BD9100D29292 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5DC65E1C79BD9100D29292 /* CoreTelephony.framework */; };
@@ -169,6 +168,7 @@
 		9A11F06A1CD05A9B002E8F6F /* DriverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0681CD05A9B002E8F6F /* DriverModel.m */; };
 		9A11F06E1CD06D52002E8F6F /* DriverUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F06D1CD06D52002E8F6F /* DriverUtil.m */; };
 		9A11F0711CD08894002E8F6F /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0701CD08894002E8F6F /* Task.m */; };
+		9A11F0741CD19257002E8F6F /* DriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0731CD19257002E8F6F /* DriverViewController.m */; };
 		9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */; };
 		9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A81C7A91D400FB5EB6 /* UIColor+BFPaperColors.m */; };
 		9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2B01C7AAA3D00FB5EB6 /* MainViewController.m */; };
@@ -432,8 +432,6 @@
 		8B5DC6171C79B8A700D29292 /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		8B5DC6181C79B8A700D29292 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
 		8B5DC6541C79B8FF00D29292 /* Linkage-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Linkage-Prefix.pch"; sourceTree = "<group>"; };
-		8B5DC6561C79B9A200D29292 /* RMMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapper.h; sourceTree = "<group>"; };
-		8B5DC6571C79B9A200D29292 /* RMMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMapper.m; sourceTree = "<group>"; };
 		8B5DC6591C79BACA00D29292 /* TRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRConstants.h; sourceTree = "<group>"; };
 		8B5DC65A1C79BD5400D29292 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8B5DC65C1C79BD7100D29292 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -550,6 +548,8 @@
 		9A11F06D1CD06D52002E8F6F /* DriverUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverUtil.m; sourceTree = "<group>"; };
 		9A11F06F1CD08894002E8F6F /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		9A11F0701CD08894002E8F6F /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		9A11F0721CD19257002E8F6F /* DriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverViewController.h; sourceTree = "<group>"; };
+		9A11F0731CD19257002E8F6F /* DriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverViewController.m; sourceTree = "<group>"; };
 		9A23A2A51C7A91D400FB5EB6 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
 		9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
 		9A23A2A71C7A91D400FB5EB6 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -942,7 +942,6 @@
 				8B4444D71C7C9EFE00160DC2 /* SDCycleScrollView */,
 				9A23A2A41C7A91D400FB5EB6 /* BFPaperButton */,
 				8BB4FB0A1C7A0884003389F1 /* iConsole */,
-				8B5DC6551C79B9A200D29292 /* RMMapper */,
 				8B5DC5801C79B8A700D29292 /* JazzHands */,
 				8B5DC5BB1C79B8A700D29292 /* toast */,
 				8B5DC5BE1C79B8A700D29292 /* TRTheme */,
@@ -1208,15 +1207,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		8B5DC6551C79B9A200D29292 /* RMMapper */ = {
-			isa = PBXGroup;
-			children = (
-				8B5DC6561C79B9A200D29292 /* RMMapper.h */,
-				8B5DC6571C79B9A200D29292 /* RMMapper.m */,
-			);
-			path = RMMapper;
-			sourceTree = "<group>";
-		};
 		8B5DC67E1C79D0DB00D29292 /* services */ = {
 			isa = PBXGroup;
 			children = (
@@ -1239,6 +1229,8 @@
 				8B7172DF1CA01F4B00DBEB9F /* DriverManageViewController.m */,
 				9A11F05D1CD04753002E8F6F /* AddDriverViewController.h */,
 				9A11F05E1CD04753002E8F6F /* AddDriverViewController.m */,
+				9A11F0721CD19257002E8F6F /* DriverViewController.h */,
+				9A11F0731CD19257002E8F6F /* DriverViewController.m */,
 			);
 			path = driverManager;
 			sourceTree = "<group>";
@@ -2121,7 +2113,6 @@
 				8B5DC61A1C79B8A700D29292 /* IFTTTAnimatedPagingScrollViewController.m in Sources */,
 				8B00603C1CABFABC001B0FC9 /* MTLManagedObjectAdapter.m in Sources */,
 				8B8284891CA57EA9001B36C1 /* Company.m in Sources */,
-				8B5DC6581C79B9A200D29292 /* RMMapper.m in Sources */,
 				8B986F6C1CC50D7A002DDA68 /* AddCarViewController.m in Sources */,
 				8B14B52C1CCBA642009ED887 /* OrderUtil.m in Sources */,
 				8B4221201CA42C6900F58D77 /* InvitationViewController.m in Sources */,
@@ -2148,6 +2139,7 @@
 				8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */,
 				9A05C38D1CCA095D009BC8C9 /* OrderModel.m in Sources */,
 				8BB4FB161C7A0884003389F1 /* README.md in Sources */,
+				9A11F0741CD19257002E8F6F /* DriverViewController.m in Sources */,
 				9A95FF051C83E74E00C5F492 /* MenuCell.m in Sources */,
 				9A11F0591CCF48F9002E8F6F /* LinkUtil.m in Sources */,
 				8B5DC6701C79CB2C00D29292 /* LinkageModel.xcdatamodeld in Sources */,

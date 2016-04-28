@@ -7,6 +7,7 @@
 //
 
 #import "TRThemeManager.h"
+#import <Mantle/Mantle.h>
 
 NSString *const kTRThemeChangeNofication = @"com.ygsoft.travel.theme.change";
 NSString *const kTRThemeUserDefaultKey = @"com.ygsoft.travel.theme.current";
@@ -71,7 +72,9 @@ static NSNumber *themeTypeCache;
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         //当前的文字颜色的对象
-        themeCache = [TRTheme populateThemes:[self themeDictionaryFromBundle]];
+        NSError *error;
+        TRTheme *theme = [MTLJSONAdapter modelOfClass:[TRTheme class] fromJSONDictionary:[self themeDictionaryFromBundle] error:&error];
+        themeCache = theme;
         
         //发送主题改变的通知
         [[NSNotificationCenter defaultCenter] postNotificationName:kTRThemeChangeNofication object:[NSNumber numberWithInt:themeType]];
@@ -83,7 +86,9 @@ static TRTheme *themeCache;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        themeCache = [TRTheme populateThemes:[self themeDictionaryFromBundle]];
+        NSError *error;
+        TRTheme *theme = [MTLJSONAdapter modelOfClass:[TRTheme class] fromJSONDictionary:[self themeDictionaryFromBundle] error:&error];
+        themeCache = theme;
     });
     return themeCache;
 }

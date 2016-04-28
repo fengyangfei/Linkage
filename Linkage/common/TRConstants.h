@@ -192,24 +192,6 @@
     return __singleton__; \
 }
 
-//定义RMMapperModel
-#import "RMMapper.h"
-#undef	AS_RMMapperModel
-#define AS_RMMapperModel( __class ) \
-@interface __class (RMMapper) \
-+ (instancetype)createFromDictionary:(NSDictionary *)dict; \
-+ (NSArray *)createFromArray:(NSArray *)array; \
-- (NSDictionary *)dictionaryObject; \
-@end
-
-#undef	DEF_RMMapperModel
-#define DEF_RMMapperModel( __class ) \
-@implementation __class (RMMapper) \
-+ (instancetype)createFromDictionary:(NSDictionary *)dict { return [RMMapper objectWithClass:[self class] fromDictionary:dict]; } \
-+ (NSArray *)createFromArray:(NSArray *)array { return [RMMapper arrayOfClass:[self class] fromArrayOfDictionary:array]; } \
-- (NSDictionary *)dictionaryObject { return [RMMapper dictionaryForObject:self]; } \
-@end
-
 #define __PropertyAssociatedKey__(propertyType, setPropertyName) k##propertyType##setPropertyName##Key
 
 //定义Category分类属性

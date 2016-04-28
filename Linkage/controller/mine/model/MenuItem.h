@@ -6,13 +6,13 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Mantle/Mantle.h>
 
 typedef NS_ENUM(NSUInteger, MenuItemType) {
     MenuItemTypeNormal,
     MenuItemTypeHeader
 };
-@interface MenuItem : NSObject
+@interface MenuItem : MTLModel<MTLJSONSerializing>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *iconName;
@@ -27,4 +27,3 @@ typedef NS_ENUM(NSUInteger, MenuItemType) {
 +(MenuItem *)createItemWithTitle:(NSString *)title andIconName:(NSString *)iconName andClass:(Class)viewControllerClass;
 +(NSArray *)menuItemsFromTheme;
 @end
-AS_RMMapperModel(MenuItem)

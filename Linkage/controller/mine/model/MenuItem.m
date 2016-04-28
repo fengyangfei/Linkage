@@ -10,6 +10,11 @@
 
 @implementation MenuItem
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+}
+
 -(UIImage *)icon
 {
     if (!_icon) {
@@ -47,10 +52,10 @@
     NSString *sourcePath = [[TRThemeManager shareInstance].themeBundle pathForResource:@"MineProperties" ofType:@"plist"];
     NSArray *array = [NSArray arrayWithContentsOfFile:sourcePath];
     for (NSArray *items in array) {
-        [result addObject:[MenuItem createFromArray:items]];
+        NSArray *models = [MTLJSONAdapter modelsOfClass:[MenuItem class] fromJSONArray:items error:NULL];
+        [result addObject:models];
     }
     return result;
 }
 
 @end
-DEF_RMMapperModel(MenuItem)

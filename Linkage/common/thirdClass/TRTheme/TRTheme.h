@@ -8,12 +8,10 @@
 //  主题包(包括文字大小与颜色等)
 //
 
-#import <Foundation/Foundation.h>
+#import <Mantle/Mantle.h>
 
-@interface TRTheme : NSObject
-
+@interface TRTheme : MTLModel<MTLJSONSerializing>
 @property (nonatomic, strong) NSNumber *mainCostButtonSize;
 @property (nonatomic, strong) UIColor *mainTipViewBackgroudColor;
 
-+ (TRTheme *)populateThemes:(NSDictionary *)themeDic;
 @end
