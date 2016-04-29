@@ -17,7 +17,20 @@
 [row.cellConfig setObject:[UIColor blackColor] forKey:@"detailTextLabel.textColor"];\
 row.cellStyle = UITableViewCellStyleValue1;
 
+@interface ModelBaseViewController()
+@property (nonatomic, assign) ControllerType controllerType;
+@end
+
 @implementation ModelBaseViewController
+
+- (instancetype)initWithControllerType:(ControllerType)controllerType
+{
+    self = [super init];
+    if (self) {
+        self.controllerType = controllerType;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,9 +51,11 @@ row.cellStyle = UITableViewCellStyleValue1;
         }];
     }];
     
-    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
-    UIBarButtonItem *addBtn = self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
-    self.navigationItem.rightBarButtonItems = @[editBtn, addBtn];
+    if (self.controllerType == ControllerTypeManager) {
+        UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
+        UIBarButtonItem *addBtn = self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
+        self.navigationItem.rightBarButtonItems = @[editBtn, addBtn];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -71,7 +86,11 @@ row.cellStyle = UITableViewCellStyleValue1;
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:[model formTitleText]];
         RowUI
         row.value = model;
-        row.action.viewControllerClass = self.viewControllerClass;
+        if (self.controllerType == ControllerTypeQuery) {
+            row.action.formSelector = @selector(didSelectModel:);
+        }else{
+            row.action.viewControllerClass = self.viewControllerClass;
+        }
         [section addFormRow:row];
     }
     self.form = form;
@@ -92,6 +111,12 @@ row.cellStyle = UITableViewCellStyleValue1;
 {
     id viewController = [[self.viewControllerClass alloc]init];
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+#pragma mark - methods
+-(void)didSelectModel:(XLFormRowDescriptor *)row
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableViewDataSource

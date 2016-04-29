@@ -11,6 +11,7 @@
 #import "LoginUser.h"
 #import "Company.h"
 #import "UIImageView+Cache.h"
+#import "ModelBaseViewController.h"
 
 NSString *const FormRowDescriptorTypeMine = @"mineRowCell";
 NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
@@ -42,7 +43,12 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 {
     MenuItem *item = self.rowDescriptor.value;
     if (self.rowDescriptor.action.viewControllerClass) {
-        UIViewController * controllerToPresent = [[self.rowDescriptor.action.viewControllerClass alloc] init];
+        UIViewController * controllerToPresent;
+        if ([self.rowDescriptor.action.viewControllerClass isSubclassOfClass:[ModelBaseViewController class]]) {
+            controllerToPresent = [[self.rowDescriptor.action.viewControllerClass alloc] initWithControllerType:ControllerTypeManager];
+        }else{
+            controllerToPresent = [[self.rowDescriptor.action.viewControllerClass alloc] init];
+        }
         if (controllerToPresent){
             if ([controllerToPresent conformsToProtocol:@protocol(XLFormRowDescriptorViewController)]){
                 ((UIViewController<XLFormRowDescriptorViewController> *)controllerToPresent).rowDescriptor = self.rowDescriptor;

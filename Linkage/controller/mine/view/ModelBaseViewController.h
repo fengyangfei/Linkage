@@ -7,7 +7,10 @@
 //
 
 #import <XLForm/XLForm.h>
-
+typedef NS_ENUM(NSUInteger, ControllerType) {
+    ControllerTypeQuery,
+    ControllerTypeManager
+};
 @protocol ModelBaseControllerConfigure <NSObject>
 @optional
 -(Class)modelUtilClass;
@@ -15,5 +18,7 @@
 @end
 
 @interface ModelBaseViewController : XLFormViewController<ModelBaseControllerConfigure>
+
+- (instancetype)initWithControllerType:(ControllerType)controllerType;
 
 @end

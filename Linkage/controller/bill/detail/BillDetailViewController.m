@@ -15,6 +15,7 @@
 #import "DriverInfoCell.h"
 #import "LinkUtil.h"
 #import "SpecialFormSectionDescriptor.h"
+#import "DriverViewController.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
@@ -199,9 +200,19 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加"];
+    row.action.formSelector = @selector(addDriverRow:);
     [section addFormRow:row];
     
     return form;
+}
+
+-(void)addDriverRow:(XLFormRowDescriptor *)row
+{
+    UIViewController *controller = [[DriverViewController alloc]initWithControllerType:ControllerTypeQuery];
+    [self.navigationController pushViewController:controller animated:YES];
+//    XLFormSectionDescriptor *section = row.sectionDescriptor;
+//    XLFormRowDescriptor *newRow = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"bbb"];
+//    [section addFormRow:newRow];
 }
 
 #pragma mark - 重写
