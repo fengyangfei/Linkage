@@ -23,19 +23,18 @@
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
 @interface BillDetailViewController()<XLFormRowDescriptorViewController>
 @property (nonatomic, strong) XLFormDataSource *detailDS;
-@property (nonatomic, strong) XLFormDataSource *historyDS;
+@property (nonatomic, strong) CargosDataSource *cargosDataSource;
 @end
 
 @implementation BillDetailViewController
 @synthesize rowDescriptor = _rowDescriptor;
+@synthesize leftTableView = _leftTableView;
 @synthesize rightTableView = _rightTableView;
 
 -(void)dealloc
 {
-    self.detailDS = nil;
-    self.historyDS = nil;
-    self.leftTableView.delegate = nil;
-    self.rightTableView.dataSource = nil;
+    _detailDS = nil;
+    _cargosDataSource = nil;
 }
 
 -(void)viewDidLoad
@@ -57,23 +56,6 @@
     }
 }
 
--(UITableView *)rightTableView
-{
-    if (!_rightTableView) {
-        _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        _rightTableView.sectionFooterHeight = 0;
-        _rightTableView.tableFooterView = [UIView new];
-        _historyDS = [[CargosDataSource alloc]initWithViewController:self tableView:_rightTableView];
-        _rightTableView.dataSource = _historyDS;
-        _rightTableView.delegate = _historyDS;
-        _rightTableView.rowHeight = UITableViewAutomaticDimension;
-        _rightTableView.estimatedRowHeight = 44.0;
-        [_rightTableView setEditing:YES animated:NO];
-        _rightTableView.allowsSelectionDuringEditing = YES;
-    }
-    return _rightTableView;
-}
-
 -(void)setupData
 {
     [self refreshLeftTable];
@@ -90,8 +72,8 @@
 
 -(void)refreshRightTable
 {
-    if (_historyDS) {
-        [_historyDS setForm:[self createHistoryForm]];
+    if (_cargosDataSource) {
+        [_cargosDataSource setForm:[self createCargosForm]];
     }
 }
 
@@ -190,7 +172,7 @@
     return form;
 }
 
--(XLFormDescriptor *)createHistoryForm
+-(XLFormDescriptor *)createCargosForm
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
@@ -232,6 +214,37 @@
     HMSegmentedControl *segmentedControl = [super segmentedControl];
     segmentedControl.sectionTitles = @[@"订单详情", @"货柜详情"];
     return segmentedControl;
+}
+
+#pragma mark - 属性
+-(UITableView *)leftTableView
+{
+    if (!_leftTableView) {
+        _leftTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _detailDS = [[XLFormDataSource alloc] initWithViewController:self tableView:_leftTableView];
+        _leftTableView.dataSource = _detailDS;
+        _leftTableView.delegate = _detailDS;
+        _leftTableView.sectionFooterHeight = 0;
+        _leftTableView.tableFooterView = [UIView new];
+    }
+    return _leftTableView;
+}
+
+-(UITableView *)rightTableView
+{
+    if (!_rightTableView) {
+        _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _rightTableView.sectionFooterHeight = 0;
+        _rightTableView.tableFooterView = [UIView new];
+        _cargosDataSource = [[CargosDataSource alloc]initWithViewController:self tableView:_rightTableView];
+        _rightTableView.dataSource = _cargosDataSource;
+        _rightTableView.delegate = _cargosDataSource;
+        _rightTableView.rowHeight = UITableViewAutomaticDimension;
+        _rightTableView.estimatedRowHeight = 44.0;
+        [_rightTableView setEditing:YES animated:NO];
+        _rightTableView.allowsSelectionDuringEditing = YES;
+    }
+    return _rightTableView;
 }
 
 @end

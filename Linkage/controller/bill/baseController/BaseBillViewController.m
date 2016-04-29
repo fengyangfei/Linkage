@@ -125,32 +125,6 @@
     return _scrollView;
 }
 
--(UITableView *)leftTableView
-{
-    if (!_leftTableView) {
-        _leftTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        _todoDS = [[TodoDataSource alloc] initWithViewController:self tableView:_leftTableView];
-        _leftTableView.dataSource = _todoDS;
-        _leftTableView.delegate = _todoDS;
-        _leftTableView.sectionFooterHeight = 0;
-        _leftTableView.tableFooterView = [UIView new];
-    }
-    return _leftTableView;
-}
-
--(UITableView *)rightTableView
-{
-    if (!_rightTableView) {
-        _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        _doneDS = [[DoneDataSource alloc] initWithViewController:self tableView:_rightTableView];
-        _rightTableView.dataSource = _doneDS;
-        _rightTableView.delegate = _doneDS;
-        _rightTableView.sectionFooterHeight = 0;
-        _rightTableView.tableFooterView = [UIView new];
-    }
-    return _rightTableView;
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

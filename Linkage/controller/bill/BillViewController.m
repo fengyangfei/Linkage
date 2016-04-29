@@ -17,16 +17,18 @@
 #import "OrderUtil.h"
 
 @interface BillViewController ()
-
-
+@property (nonatomic, strong) XLFormDataSource *todoDS;
+@property (nonatomic, strong) XLFormDataSource *doneDS;
 @end
 
 @implementation BillViewController
+@synthesize leftTableView = _leftTableView;
+@synthesize rightTableView = _rightTableView;
 
 -(void)dealloc
 {
-    self.todoDS = nil;
-    self.doneDS = nil;
+    _todoDS = nil;
+    _doneDS = nil;
 }
 
 -(void)viewDidLoad
@@ -81,11 +83,6 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)segmentedControlChangeIndex:(NSInteger)index
-{
-    
-}
-
 -(XLFormDescriptor *)createForm:(NSArray *)orders
 {
     XLFormDescriptor * form;
@@ -102,6 +99,33 @@
         [section addFormRow:row];
     }
     return form;
+}
+
+#pragma mark - 属性
+-(UITableView *)leftTableView
+{
+    if (!_leftTableView) {
+        _leftTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _todoDS = [[TodoDataSource alloc] initWithViewController:self tableView:_leftTableView];
+        _leftTableView.dataSource = _todoDS;
+        _leftTableView.delegate = _todoDS;
+        _leftTableView.sectionFooterHeight = 0;
+        _leftTableView.tableFooterView = [UIView new];
+    }
+    return _leftTableView;
+}
+
+-(UITableView *)rightTableView
+{
+    if (!_rightTableView) {
+        _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _doneDS = [[DoneDataSource alloc] initWithViewController:self tableView:_rightTableView];
+        _rightTableView.dataSource = _doneDS;
+        _rightTableView.delegate = _doneDS;
+        _rightTableView.sectionFooterHeight = 0;
+        _rightTableView.tableFooterView = [UIView new];
+    }
+    return _rightTableView;
 }
 
 @end

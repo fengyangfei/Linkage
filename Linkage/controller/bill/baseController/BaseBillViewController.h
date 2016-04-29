@@ -18,9 +18,6 @@
 
 - (void)segmentedControlChangeIndex:(NSInteger)index;
 
-@property (nonatomic, strong) XLFormDataSource *todoDS;
-@property (nonatomic, strong) XLFormDataSource *doneDS;
-
 -(void)performFormSelector:(SEL)selector withObject:(id)sender;
 
 @end
