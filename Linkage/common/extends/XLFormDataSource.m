@@ -53,6 +53,75 @@
     }
 }
 
+#pragma mark - XLFormDescriptorDelegate
+
+-(void)formRowHasBeenAdded:(XLFormRowDescriptor *)formRow atIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:[self insertRowAnimationForRow:formRow]];
+    [self.tableView endUpdates];
+}
+
+-(void)formRowHasBeenRemoved:(XLFormRowDescriptor *)formRow atIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:[self deleteRowAnimationForRow:formRow]];
+    [self.tableView endUpdates];
+}
+
+-(void)formSectionHasBeenRemoved:(XLFormSectionDescriptor *)formSection atIndex:(NSUInteger)index
+{
+    [self.tableView beginUpdates];
+    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:[self deleteRowAnimationForSection:formSection]];
+    [self.tableView endUpdates];
+}
+
+-(void)formSectionHasBeenAdded:(XLFormSectionDescriptor *)formSection atIndex:(NSUInteger)index
+{
+    [self.tableView beginUpdates];
+    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:[self insertRowAnimationForSection:formSection]];
+    [self.tableView endUpdates];
+}
+
+-(void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)formRow oldValue:(id)oldValue newValue:(id)newValue
+{
+    [self updateAfterDependentRowChanged:formRow];
+}
+
+-(void)formRowDescriptorPredicateHasChanged:(XLFormRowDescriptor *)formRow oldValue:(id)oldValue newValue:(id)newValue predicateType:(XLPredicateType)predicateType
+{
+    if (oldValue != newValue) {
+        [self updateAfterDependentRowChanged:formRow];
+    }
+}
+
+-(void)updateAfterDependentRowChanged:(XLFormRowDescriptor *)formRow
+{
+    NSMutableArray* revaluateHidden   = self.form.rowObservers[[formRow.tag formKeyForPredicateType:XLPredicateTypeHidden]];
+    NSMutableArray* revaluateDisabled = self.form.rowObservers[[formRow.tag formKeyForPredicateType:XLPredicateTypeDisabled]];
+    for (id object in revaluateDisabled) {
+        if ([object isKindOfClass:[NSString class]]) {
+            XLFormRowDescriptor* row = [self.form formRowWithTag:object];
+            if (row){
+                [row evaluateIsDisabled];
+                [self updateFormRow:row];
+            }
+        }
+    }
+    for (id object in revaluateHidden) {
+        if ([object isKindOfClass:[NSString class]]) {
+            XLFormRowDescriptor* row = [self.form formRowWithTag:object];
+            if (row){
+                [row evaluateIsHidden];
+            }
+        }
+        else if ([object isKindOfClass:[XLFormSectionDescriptor class]]) {
+            XLFormSectionDescriptor* section = (XLFormSectionDescriptor*) object;
+            [section evaluateIsHidden];
+        }
+    }
+}
+
 #pragma mark - XLFormViewControllerDelegate
 -(NSDictionary *)formValues
 {
@@ -61,18 +130,38 @@
 
 -(void)didSelectFormRow:(XLFormRowDescriptor *)formRow
 {
-    UITableViewCell<FormDescriptorCell> *cell = (UITableViewCell<FormDescriptorCell> *)[formRow cellForFormController:nil];
+    UITableViewCell<FormDescriptorCell> *cell = (UITableViewCell<FormDescriptorCell> *)[formRow cellForFormController:self.viewController];
     if ([cell respondsToSelector:@selector(formDescriptorCellDidSelectedWithViewController:)]){
         [cell formDescriptorCellDidSelectedWithViewController:self.viewController];
     }
 }
 
--(void)deselectFormRow:(XLFormRowDescriptor *)formRow
+-(UITableViewRowAnimation)insertRowAnimationForRow:(XLFormRowDescriptor *)formRow
 {
-    NSIndexPath * indexPath = [self.form indexPathOfFormRow:formRow];
-    if (indexPath){
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (formRow.sectionDescriptor.sectionOptions & XLFormSectionOptionCanInsert){
+        if (formRow.sectionDescriptor.sectionInsertMode == XLFormSectionInsertModeButton){
+            return UITableViewRowAnimationAutomatic;
+        }
+        else if (formRow.sectionDescriptor.sectionInsertMode == XLFormSectionInsertModeLastRow){
+            return YES;
+        }
     }
+    return UITableViewRowAnimationFade;
+}
+
+-(UITableViewRowAnimation)deleteRowAnimationForRow:(XLFormRowDescriptor *)formRow
+{
+    return UITableViewRowAnimationFade;
+}
+
+-(UITableViewRowAnimation)insertRowAnimationForSection:(XLFormSectionDescriptor *)formSection
+{
+    return UITableViewRowAnimationAutomatic;
+}
+
+-(UITableViewRowAnimation)deleteRowAnimationForSection:(XLFormSectionDescriptor *)formSection
+{
+    return UITableViewRowAnimationAutomatic;
 }
 
 -(void)beginEditing:(XLFormRowDescriptor *)rowDescriptor
@@ -120,50 +209,44 @@
     }
 }
 
-#pragma mark - XLFormDescriptorDelegate
--(void)formRowHasBeenAdded:(XLFormRowDescriptor *)formRow atIndexPath:(NSIndexPath *)indexPath
-{
-    [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
-}
+#pragma mark - Helpers
 
--(void)formRowHasBeenRemoved:(XLFormRowDescriptor *)formRow atIndexPath:(NSIndexPath *)indexPath
+-(void)deselectFormRow:(XLFormRowDescriptor *)formRow
 {
-    [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
-}
-
--(void)formSectionHasBeenRemoved:(XLFormSectionDescriptor *)formSection atIndex:(NSUInteger)index
-{
-    [self.tableView beginUpdates];
-    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
-}
-
--(void)formSectionHasBeenAdded:(XLFormSectionDescriptor *)formSection atIndex:(NSUInteger)index
-{
-    [self.tableView beginUpdates];
-    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
-}
-
--(void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)formRow oldValue:(id)oldValue newValue:(id)newValue
-{
-    [self updateAfterDependentRowChanged:formRow];
-}
-
--(void)formRowDescriptorPredicateHasChanged:(XLFormRowDescriptor *)formRow oldValue:(id)oldValue newValue:(id)newValue predicateType:(XLPredicateType)predicateType
-{
-    if (oldValue != newValue) {
-        [self updateAfterDependentRowChanged:formRow];
+    NSIndexPath * indexPath = [self.form indexPathOfFormRow:formRow];
+    if (indexPath){
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
--(void)updateAfterDependentRowChanged:(XLFormRowDescriptor *)formRow
+-(void)reloadFormRow:(XLFormRowDescriptor *)formRow
 {
-    [self updateFormRow:formRow];
+    NSIndexPath * indexPath = [self.form indexPathOfFormRow:formRow];
+    if (indexPath && self.tableView){
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
+-(UITableViewCell<XLFormDescriptorCell> *)updateFormRow:(XLFormRowDescriptor *)formRow
+{
+    UITableViewCell<XLFormDescriptorCell> * cell = [formRow cellForFormController:self.viewController];
+    [self configureCell:cell];
+    [cell setNeedsUpdateConstraints];
+    [cell setNeedsLayout];
+    return cell;
+}
+
+-(void)configureCell:(UITableViewCell<XLFormDescriptorCell> *) cell
+{
+    [cell update];
+    [cell.rowDescriptor.cellConfig enumerateKeysAndObjectsUsingBlock:^(NSString *keyPath, id value, BOOL * __unused stop) {
+        [cell setValue:(value == [NSNull null]) ? nil : value forKeyPath:keyPath];
+    }];
+    if (cell.rowDescriptor.isDisabled){
+        [cell.rowDescriptor.cellConfigIfDisabled enumerateKeysAndObjectsUsingBlock:^(NSString *keyPath, id value, BOOL *stop) {
+            [cell setValue:(value == [NSNull null]) ? nil : value forKeyPath:keyPath];
+        }];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -401,37 +484,6 @@
         if ([[XLFormViewController inlineRowDescriptorTypesForRowDescriptorTypes].allKeys containsObject:cell.rowDescriptor.rowType]){
             [self.tableView endEditing:YES];
         }
-    }
-}
-
-#pragma mark - Helpers
--(void)reloadFormRow:(XLFormRowDescriptor *)formRow
-{
-    NSIndexPath * indexPath = [self.form indexPathOfFormRow:formRow];
-    if (indexPath && self.tableView){
-        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    }
-}
-
--(UITableViewCell<XLFormDescriptorCell> *)updateFormRow:(XLFormRowDescriptor *)formRow
-{
-    UITableViewCell<XLFormDescriptorCell> * cell = [formRow cellForFormController:nil];
-    [self configureCell:cell];
-    [cell setNeedsUpdateConstraints];
-    [cell setNeedsLayout];
-    return cell;
-}
-
--(void)configureCell:(UITableViewCell<XLFormDescriptorCell>*) cell
-{
-    [cell update];
-    [cell.rowDescriptor.cellConfig enumerateKeysAndObjectsUsingBlock:^(NSString *keyPath, id value, BOOL * stop) {
-        [cell setValue:(value == [NSNull null]) ? nil : value forKeyPath:keyPath];
-    }];
-    if (cell.rowDescriptor.isDisabled){
-        [cell.rowDescriptor.cellConfigIfDisabled enumerateKeysAndObjectsUsingBlock:^(NSString *keyPath, id value, BOOL * stop) {
-            [cell setValue:(value == [NSNull null]) ? nil : value forKeyPath:keyPath];
-        }];
     }
 }
 @end
