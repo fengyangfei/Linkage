@@ -8,6 +8,6 @@
 
 #import <XLForm/XLForm.h>
 
-@interface AddAddressViewController : XLFormViewController
+@interface AddAddressViewController : XLFormViewController<XLFormRowDescriptorViewController>
 
 @end

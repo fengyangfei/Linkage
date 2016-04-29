@@ -103,14 +103,12 @@ NSString * const kAddressRowDescriptroType = @"addressRowType";;
 -(void)defalutAction:(id)sender
 {
     Address *address = [self.rowDescriptor.value copy];
-    [address save];
     [self.formViewController performFormSelector:NSSelectorFromString(@"setupForm") withObject:nil];
 }
 
 -(void)deleteAction:(id)sender
 {
     Address *address = self.rowDescriptor.value;
-    [address remove];
     [self.formViewController performFormSelector:NSSelectorFromString(@"setupForm") withObject:nil];
 }
 

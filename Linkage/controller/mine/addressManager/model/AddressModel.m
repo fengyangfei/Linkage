@@ -9,20 +9,8 @@
 #import "AddressModel.h"
 
 @implementation AddressModel
-
-+(NSArray *)findAll
-{
-    return [AddressModel MR_findAllSortedBy:@"phoneNum" ascending:YES inContext:[NSManagedObjectContext MR_defaultContext]];
-}
-
-+(AddressModel *)createEntity
-{
-    return [AddressModel MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
-}
-
--(BOOL)remove
-{
-    return [self MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
-}
-
+@dynamic addressId;
+@dynamic title;
+@dynamic address;
+@dynamic userId;
 @end

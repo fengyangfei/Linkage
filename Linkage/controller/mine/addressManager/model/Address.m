@@ -7,8 +7,8 @@
 //
 
 #import "Address.h"
-
-#define kUserDefalutAddressKey  @"kUserDefalutAddressKey"
+#import "AddressModel.h"
+#import "LoginUser.h"
 
 @implementation Address
 
@@ -18,25 +18,42 @@
     return keyDic;
 }
 
--(BOOL)save
+#pragma mark - MTLManagedObjectSerializing
++ (NSString *)managedObjectEntityName
 {
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefalutAddressKey];
-    return [[NSUserDefaults standardUserDefaults] synchronize];
+    return NSStringFromClass([AddressModel class]);
 }
 
-+(Address *)defaultAddress
++ (NSDictionary *)managedObjectKeysByPropertyKey
 {
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefalutAddressKey];
-    if(data){
-        return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    return keyDic;
+}
+
+#pragma mark - ModelHttpParameter
+-(NSDictionary *)httpParameterForDetail
+{
+    if (!self.addressId) {
+        return nil;
     }
-    return nil;
+    NSDictionary *baseParameter = [LoginUser shareInstance].baseHttpParameter;
+    NSDictionary *paramter = [baseParameter mtl_dictionaryByAddingEntriesFromDictionary:@{@"address_id": self.addressId}];
+    return paramter;
 }
 
--(BOOL)remove
+
+#pragma mark - XLFormTitleOptionObject
+-(NSString *)formTitleText
 {
-    return NO;
+    return self.title;
 }
 
+-(NSString *)formDisplayText
+{
+    return self.address;
+}
+
+-(id)formValue{
+    return self.addressId;
+}
 @end

@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MTLModel+Merge.h"
+#import "MTLManagedObjectAdapter.h"
+#import "ModelOperation.h"
+#import "FormDescriptorCell.h"
 
-@interface Address : MTLModel<MTLJSONSerializingExt>
-@property (nonatomic, copy) NSString *phoneNum;
+@interface Address : MTLModel<MTLJSONSerializing,MTLManagedObjectSerializing,ModelHttpParameter,XLFormTitleOptionObject>
+@property (nonatomic, copy) NSString *addressId;
+@property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *address;
--(BOOL)save;
-+(Address *)defaultAddress;
--(BOOL)remove;
+@property (nonatomic, copy) NSString *userId;
 @end

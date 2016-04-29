@@ -7,20 +7,36 @@
 //
 
 #import "AddAddressViewController.h"
+#import "Address.h"
 #import "AddressModel.h"
+#import "AddressUtil.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @implementation AddAddressViewController
+@synthesize rowDescriptor = _rowDescriptor;
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        [self initializeForm];
+        [self initializeForm:nil];
     }
     return self;
 }
 
-- (void)initializeForm
+- (void)initializeForm:(Address *)address
+{
+    XLFormDescriptor *form = [self createForm:address];
+    self.form = form;
+}
+
+-(void)setRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    _rowDescriptor = rowDescriptor;
+    [self initializeForm:rowDescriptor.value];
+}
+
+- (XLFormDescriptor *)createForm:(Address *)address
 {
     WeakSelf
     XLFormDescriptor * form;
@@ -31,24 +47,28 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeText title:@"联系方式"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"title" rowType:XLFormRowDescriptorTypeText title:@"标题"];
+    row.value = address?address.title:@"";
     row.required = YES;
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"address" rowType:XLFormRowDescriptorTypeText title:@"详细地址"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"address" rowType:XLFormRowDescriptorTypeText title:@"地址"];
+    row.value = address?address.address:@"";
     row.required = YES;
     [section addFormRow:row];
     
-    section = [XLFormSectionDescriptor formSection];
-    [form addFormSection:section];
+    if (address) {
+        section = [XLFormSectionDescriptor formSection];
+        [form addFormSection:section];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"保存"];
+        row.action.formBlock  = ^(XLFormRowDescriptor * sender){
+            [weakSelf submitForm:sender];
+        };
+        [section addFormRow:row];
+    }
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"保存地址"];
-    row.action.formBlock  = ^(XLFormRowDescriptor * sender){
-        [weakSelf submitForm:sender];
-    };
-    [section addFormRow:row];
-
-    self.form = form;
+    return form;
 }
 
 -(void)viewDidLoad
@@ -73,13 +93,27 @@
         [self showFormValidationError:errors[0]];
         return;
     }
-    NSDictionary *allValue = [self formValues];
-    AddressModel *model = [AddressModel createEntity];
-    model.phoneNum = allValue[@"phoneNum"];
-    model.address = allValue[@"address"];
-    [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError *error) {
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+    NSDictionary *formValues = [self formValues];
+    Address *model = (Address *)[AddressUtil modelFromXLFormValue:formValues];
+    //同步到服务端
+    [SVProgressHUD show];
+    [AddressUtil syncToServer:model success:^(id responseData) {
+        NSString *addressId = responseData[@"address_id"];
+        if (addressId) {
+            model.addressId = addressId;
+            //同步到数据库
+            StrongSelf
+            [AddressUtil syncToDataBase:model completion:^{
+                [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+                    [SVProgressHUD dismiss];
+                }];
+                [strongSelf.navigationController popViewControllerAnimated:YES];
+            }];
+        }
+        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
+    
 }
-
 @end

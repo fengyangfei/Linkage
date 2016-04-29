@@ -40,6 +40,11 @@
 #define CarDetailUrl [NSString stringWithFormat:@"%@/api/transporter/cardetail",BaseUrl]//车辆详情查询接口
 #define DispatchUrl [NSString stringWithFormat:@"%@/api/transporter/dispatch",BaseUrl]//分配司机接口
 
+//地址
+#define AddressUrl [NSString stringWithFormat:@"%@/api/profile/addrlist",BaseUrl]//车辆查询接口
+#define AddAddressUrl [NSString stringWithFormat:@"%@/api/profile/addaddress",BaseUrl]//添加车辆接口
+#define DelAddressUrl [NSString stringWithFormat:@"%@/api/transporter/deladdress",BaseUrl]//删除车辆接口
+
 //订单
 #define Place4exportUrl [NSString stringWithFormat:@"%@/api/order/place4export",BaseUrl]//厂商出口订单下单接口
 #define Place4importUrl [NSString stringWithFormat:@"%@/api/order/place4import",BaseUrl]//厂商进口订单下单接口

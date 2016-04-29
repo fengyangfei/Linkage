@@ -12,9 +12,7 @@
 		8B00603B1CABFABC001B0FC9 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0060361CABFABC001B0FC9 /* EXTScope.m */; };
 		8B00603C1CABFABC001B0FC9 /* MTLManagedObjectAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0060391CABFABC001B0FC9 /* MTLManagedObjectAdapter.m */; };
 		8B0060411CAC08E3001B0FC9 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0060401CAC08E3001B0FC9 /* Order.m */; };
-		8B0254E01CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0254DD1CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.m */; };
 		8B0254E11CA2C4E4005F5CA7 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0254DF1CA2C4E4005F5CA7 /* AddressModel.m */; };
-		8B0254E41CA2CBDE005F5CA7 /* AddressWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0254E31CA2CBDE005F5CA7 /* AddressWrapper.m */; };
 		8B10AD2D1C88744E00F5B0D6 /* PersonalSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */; };
 		8B10AD3E1C887D3F00F5B0D6 /* side_backup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B10AD2F1C887D3F00F5B0D6 /* side_backup@2x.png */; };
 		8B10AD3F1C887D3F00F5B0D6 /* side_company_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B10AD301C887D3F00F5B0D6 /* side_company_logo@2x.png */; };
@@ -156,6 +154,7 @@
 		8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C11CA61423007B924B /* XLFormViewController+ImagePicker.m */; };
 		8BEC33C61CA6160D007B924B /* AvatarFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C51CA6160D007B924B /* AvatarFormCell.m */; };
 		8BEC33CC1CA6A43E007B924B /* UIImageView+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33CB1CA6A43E007B924B /* UIImageView+Cache.m */; };
+		8BEEA7851CD3A7BB0088D70A /* AddressUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEEA7841CD3A7BB0088D70A /* AddressUtil.m */; };
 		9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3741CC8BBB0009BC8C9 /* FormOptionsViewController.m */; };
 		9A05C37A1CC8C413009BC8C9 /* ExpandFormSectionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3771CC8C413009BC8C9 /* ExpandFormSectionDescriptor.m */; };
 		9A05C37B1CC8C413009BC8C9 /* XLFormButtonCell+Push.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3791CC8C413009BC8C9 /* XLFormButtonCell+Push.m */; };
@@ -243,12 +242,8 @@
 		8B0060391CABFABC001B0FC9 /* MTLManagedObjectAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLManagedObjectAdapter.m; sourceTree = "<group>"; };
 		8B00603F1CAC08E3001B0FC9 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
 		8B0060401CAC08E3001B0FC9 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
-		8B0254DC1CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AddressModel+CoreDataProperties.h"; sourceTree = "<group>"; };
-		8B0254DD1CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AddressModel+CoreDataProperties.m"; sourceTree = "<group>"; };
 		8B0254DE1CA2C4E4005F5CA7 /* AddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
 		8B0254DF1CA2C4E4005F5CA7 /* AddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
-		8B0254E21CA2CBDE005F5CA7 /* AddressWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressWrapper.h; sourceTree = "<group>"; };
-		8B0254E31CA2CBDE005F5CA7 /* AddressWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressWrapper.m; sourceTree = "<group>"; };
 		8B10AD2B1C88744E00F5B0D6 /* PersonalSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalSettingController.h; sourceTree = "<group>"; };
 		8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalSettingController.m; sourceTree = "<group>"; };
 		8B10AD2F1C887D3F00F5B0D6 /* side_backup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "side_backup@2x.png"; sourceTree = "<group>"; };
@@ -525,6 +520,8 @@
 		8BEC33C51CA6160D007B924B /* AvatarFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarFormCell.m; sourceTree = "<group>"; };
 		8BEC33CA1CA6A43E007B924B /* UIImageView+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Cache.h"; sourceTree = "<group>"; };
 		8BEC33CB1CA6A43E007B924B /* UIImageView+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cache.m"; sourceTree = "<group>"; };
+		8BEEA7831CD3A7BB0088D70A /* AddressUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressUtil.h; sourceTree = "<group>"; };
+		8BEEA7841CD3A7BB0088D70A /* AddressUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressUtil.m; sourceTree = "<group>"; };
 		9A05C3731CC8BBB0009BC8C9 /* FormOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormOptionsViewController.h; sourceTree = "<group>"; };
 		9A05C3741CC8BBB0009BC8C9 /* FormOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormOptionsViewController.m; sourceTree = "<group>"; };
 		9A05C3761CC8C413009BC8C9 /* ExpandFormSectionDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandFormSectionDescriptor.h; sourceTree = "<group>"; };
@@ -1243,6 +1240,7 @@
 		8B7172E11CA0432A00DBEB9F /* addressManager */ = {
 			isa = PBXGroup;
 			children = (
+				8BEEA7821CD3A78D0088D70A /* util */,
 				9AEF89C31CA2905A00C5EB90 /* model */,
 				8BC624F71CA18E7F00C70325 /* view */,
 				8B7172E21CA0436C00DBEB9F /* AddressViewController.h */,
@@ -1463,6 +1461,15 @@
 				8BEC33C51CA6160D007B924B /* AvatarFormCell.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		8BEEA7821CD3A78D0088D70A /* util */ = {
+			isa = PBXGroup;
+			children = (
+				8BEEA7831CD3A7BB0088D70A /* AddressUtil.h */,
+				8BEEA7841CD3A7BB0088D70A /* AddressUtil.m */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		9A11F0641CD059C0002E8F6F /* model */ = {
@@ -1834,12 +1841,8 @@
 			children = (
 				9AEF89C41CA2907D00C5EB90 /* Address.h */,
 				9AEF89C51CA2907D00C5EB90 /* Address.m */,
-				8B0254DC1CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.h */,
-				8B0254DD1CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.m */,
 				8B0254DE1CA2C4E4005F5CA7 /* AddressModel.h */,
 				8B0254DF1CA2C4E4005F5CA7 /* AddressModel.m */,
-				8B0254E21CA2CBDE005F5CA7 /* AddressWrapper.h */,
-				8B0254E31CA2CBDE005F5CA7 /* AddressWrapper.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2112,7 +2115,6 @@
 				8B5DC63C1C79B8A700D29292 /* UIImage+TRTheme.m in Sources */,
 				8B3302941C8BC7510088DAE2 /* MainDataSource.m in Sources */,
 				8B5DC6221C79B8A700D29292 /* IFTTTEasingFunction.m in Sources */,
-				8B0254E41CA2CBDE005F5CA7 /* AddressWrapper.m in Sources */,
 				9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */,
 				9AEF89C61CA2907D00C5EB90 /* Address.m in Sources */,
 				9A95FF091C858B0E00C5F492 /* SettingViewController.m in Sources */,
@@ -2151,6 +2153,7 @@
 				8BB17AB71C9AF60D002708C4 /* BillApplyViewController.m in Sources */,
 				8B5DC61E1C79B8A700D29292 /* IFTTTBackgroundColorAnimation.m in Sources */,
 				8BCA5FBB1CA97FB8002601F6 /* MessageViewController.m in Sources */,
+				8BEEA7851CD3A7BB0088D70A /* AddressUtil.m in Sources */,
 				9A23A2FD1C7DAA2500FB5EB6 /* UIViewController+Extensions.m in Sources */,
 				9A95FF401C89824F00C5F492 /* TRImagePickerDelegate.m in Sources */,
 				9A95FF191C89221C00C5F492 /* UIImage+ImageWithColor.m in Sources */,
@@ -2161,7 +2164,6 @@
 				8B5DC6211C79B8A700D29292 /* IFTTTCornerRadiusAnimation.m in Sources */,
 				8B44450A1C7C9EFE00160DC2 /* TAAnimatedDotView.m in Sources */,
 				9A95FF0D1C858C8200C5F492 /* DateAndTimeValueTrasformer.m in Sources */,
-				8B0254E01CA2C4E4005F5CA7 /* AddressModel+CoreDataProperties.m in Sources */,
 				8B5DC6811C79D0DB00D29292 /* YGRestClient.m in Sources */,
 				8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */,
 				9A05C38D1CCA095D009BC8C9 /* OrderModel.m in Sources */,
