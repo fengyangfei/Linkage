@@ -2,7 +2,9 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
     <entity name="AddressModel" representedClassName="AddressModel" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="phoneNum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addressId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="CargoModel" representedClassName="CargoModel" syncable="YES">
         <attribute name="cargoCount" optional="YES" attributeType="Integer 64" defaultValueString="0.0" syncable="YES"/>
@@ -82,14 +84,14 @@
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AddressModel" positionX="-63" positionY="0" width="128" height="75"/>
+        <element name="AddressModel" positionX="-63" positionY="0" width="128" height="105"/>
         <element name="CargoModel" positionX="-54" positionY="162" width="128" height="90"/>
+        <element name="CarModel" positionX="-45" positionY="153" width="128" height="225"/>
         <element name="DriverModel" positionX="-45" positionY="153" width="128" height="150"/>
         <element name="ExportOrderModel" positionX="-45" positionY="153" width="128" height="165"/>
         <element name="ImportOrderModel" positionX="-36" positionY="171" width="128" height="120"/>
         <element name="OrderModel" positionX="-63" positionY="27" width="128" height="360"/>
         <element name="SelfOrderModel" positionX="-45" positionY="153" width="128" height="90"/>
         <element name="SOImageModel" positionX="-63" positionY="9" width="128" height="75"/>
-        <element name="CarModel" positionX="-45" positionY="153" width="128" height="225"/>
     </elements>
 </model>

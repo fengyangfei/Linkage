@@ -10,7 +10,7 @@
 
 @implementation AddressModel
 @dynamic addressId;
-@dynamic title;
 @dynamic address;
+@dynamic title;
 @dynamic userId;
 @end

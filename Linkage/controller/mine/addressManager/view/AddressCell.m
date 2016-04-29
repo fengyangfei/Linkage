@@ -36,12 +36,12 @@ NSString * const kAddressRowDescriptroType = @"addressRowType";;
 {
     [super update];
     Address *address = self.rowDescriptor.value;
-    self.textLabel.text = address.phoneNum;
+    self.textLabel.text = address.title;
     self.detailLabel.text = address.address;
-    Address *defalutAddress = [Address defaultAddress];
-    if ([address.phoneNum isEqualToString:defalutAddress.phoneNum] && [address.address isEqualToString:defalutAddress.address]) {
-        [self.defaultAddrButton setImage:[UIImage imageNamed:@"check_icon"] forState:UIControlStateNormal];
-    }
+//    Address *defalutAddress = [Address defaultAddress];
+//    if ([address.phoneNum isEqualToString:defalutAddress.phoneNum] && [address.address isEqualToString:defalutAddress.address]) {
+//        [self.defaultAddrButton setImage:[UIImage imageNamed:@"check_icon"] forState:UIControlStateNormal];
+//    }
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
