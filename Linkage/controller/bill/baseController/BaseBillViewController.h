@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <HMSegmentedControl/HMSegmentedControl.h>
-#import "BillDataSource.h"
 
 @interface BaseBillViewController : UIViewController
 

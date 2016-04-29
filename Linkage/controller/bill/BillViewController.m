@@ -15,6 +15,8 @@
 #import <XLForm/XLForm.h>
 #import "Order.h"
 #import "OrderUtil.h"
+#import "XLFormDataSource.h"
+#import "BillDataSource.h"
 
 @interface BillViewController ()
 @property (nonatomic, strong) XLFormDataSource *todoDS;

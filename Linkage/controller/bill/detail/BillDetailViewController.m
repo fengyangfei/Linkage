@@ -183,7 +183,7 @@
     section.multivaluedTag = @"drivers";
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加司机"];
     RowUI
     row.action.formSelector = @selector(addDriverRow:);
     [section addFormRow:row];
@@ -193,7 +193,7 @@
     section.multivaluedTag = @"drivers1";
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加司机"];
     RowUI
     row.action.formSelector = @selector(addDriverRow:);
     [section addFormRow:row];
@@ -208,7 +208,7 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-#pragma mark - 重写
+#pragma mark - 属性
 - (HMSegmentedControl *)segmentedControl
 {
     HMSegmentedControl *segmentedControl = [super segmentedControl];
@@ -216,7 +216,6 @@
     return segmentedControl;
 }
 
-#pragma mark - 属性
 -(UITableView *)leftTableView
 {
     if (!_leftTableView) {
@@ -236,7 +235,8 @@
         _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _rightTableView.sectionFooterHeight = 0;
         _rightTableView.tableFooterView = [UIView new];
-        _cargosDataSource = [[CargosDataSource alloc]initWithViewController:self tableView:_rightTableView];
+        _rightTableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 0.1)];
+        _cargosDataSource = [[CargosDataSource alloc] initWithViewController:self tableView:_rightTableView];
         _rightTableView.dataSource = _cargosDataSource;
         _rightTableView.delegate = _cargosDataSource;
         _rightTableView.rowHeight = UITableViewAutomaticDimension;

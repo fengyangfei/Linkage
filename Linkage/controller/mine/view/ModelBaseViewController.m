@@ -69,7 +69,11 @@ row.cellStyle = UITableViewCellStyleValue1;
 {
     WeakSelf
     [self.modelUtilClass queryModelsFromDataBase:^(NSArray *models) {
-        [weakSelf initializeForm:models];
+        if (models.count > 0) {
+            [weakSelf initializeForm:models];
+        }else{
+            [weakSelf.tableView.mj_header beginRefreshing];
+        }
     }];
 }
 
