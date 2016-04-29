@@ -134,6 +134,7 @@
     if ([cell respondsToSelector:@selector(formDescriptorCellDidSelectedWithViewController:)]){
         [cell formDescriptorCellDidSelectedWithViewController:self.viewController];
     }
+    [self deselectFormRow:formRow];
 }
 
 -(UITableViewRowAnimation)insertRowAnimationForRow:(XLFormRowDescriptor *)formRow

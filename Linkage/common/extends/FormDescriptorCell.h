@@ -9,7 +9,6 @@
 @protocol FormViewController <NSObject>
 @optional
 @property (nonatomic,weak,readonly) XLFormDescriptor *form;
-@property (nonatomic) UITableView *tableView;
 -(void)performFormSelector:(SEL)selector withObject:(id)sender;
 @end
 

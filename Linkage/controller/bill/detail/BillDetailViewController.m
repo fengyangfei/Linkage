@@ -16,6 +16,7 @@
 #import "LinkUtil.h"
 #import "SpecialFormSectionDescriptor.h"
 #import "DriverViewController.h"
+#import "CargosDataSource.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
@@ -61,7 +62,7 @@
         _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _rightTableView.sectionFooterHeight = 0;
         _rightTableView.tableFooterView = [UIView new];
-        _historyDS = [[XLFormDataSource alloc]initWithViewController:self tableView:_rightTableView];
+        _historyDS = [[CargosDataSource alloc]initWithViewController:self tableView:_rightTableView];
         _rightTableView.dataSource = _historyDS;
         _rightTableView.delegate = _historyDS;
         _rightTableView.rowHeight = UITableViewAutomaticDimension;

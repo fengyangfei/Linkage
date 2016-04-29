@@ -15,7 +15,9 @@
         self.rowDescriptor.action.formBlock(self.rowDescriptor);
     }
     else if (self.rowDescriptor.action.formSelector){
-        [controller performFormSelector:self.rowDescriptor.action.formSelector withObject:self.rowDescriptor];
+        if ([controller respondsToSelector:@selector(performFormSelector:withObject:)]) {
+            [controller performFormSelector:self.rowDescriptor.action.formSelector withObject:self.rowDescriptor];
+        }
     }
     else{
         UIViewController<XLFormRowDescriptorViewController> * controllerToPresent = [[self.rowDescriptor.action.viewControllerClass alloc] init];
@@ -32,7 +34,6 @@
             }
         }
     }
-    [controller.tableView deselectRowAtIndexPath:[controller.form indexPathOfFormRow:self.rowDescriptor] animated:YES];
 }
 
 @end

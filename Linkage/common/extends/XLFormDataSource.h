@@ -14,7 +14,27 @@
 -(void)deselectFormRow:(XLFormRowDescriptor *)formRow;
 -(void)reloadFormRow:(XLFormRowDescriptor *)formRow;
 -(UITableViewCell<XLFormDescriptorCell> *)updateFormRow:(XLFormRowDescriptor *)formRow;
+
 -(NSDictionary *)formValues;
+-(NSDictionary *)httpParameters;
+
+-(XLFormRowDescriptor *)formRowFormMultivaluedFormSection:(XLFormSectionDescriptor *)formSection;
+-(void)multivaluedInsertButtonTapped:(XLFormRowDescriptor *)formRow;
+-(UIStoryboard *)storyboardForRow:(XLFormRowDescriptor *)formRow;
+
+-(NSArray *)formValidationErrors;
+-(void)showFormValidationError:(NSError *)error;
+
+-(UITableViewRowAnimation)insertRowAnimationForRow:(XLFormRowDescriptor *)formRow;
+-(UITableViewRowAnimation)deleteRowAnimationForRow:(XLFormRowDescriptor *)formRow;
+-(UITableViewRowAnimation)insertRowAnimationForSection:(XLFormSectionDescriptor *)formSection;
+-(UITableViewRowAnimation)deleteRowAnimationForSection:(XLFormSectionDescriptor *)formSection;
+
+// highlight/unhighlight
+-(void)beginEditing:(XLFormRowDescriptor *)rowDescriptor;
+-(void)endEditing:(XLFormRowDescriptor *)rowDescriptor;
+
+-(void)ensureRowIsVisible:(XLFormRowDescriptor *)inlineRowDescriptor;
 @end
 
 
