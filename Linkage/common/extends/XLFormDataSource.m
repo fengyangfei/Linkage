@@ -366,7 +366,7 @@
     if([sectionDescriptor conformsToProtocol:@protocol(ExpandFormSectionDescriptorDelegate)]){
         return [((XLFormSectionDescriptor<ExpandFormSectionDescriptorDelegate> *)sectionDescriptor) heightForSectionHeader];
     }
-    return 0;
+    return 0.1;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

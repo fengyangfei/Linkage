@@ -63,6 +63,8 @@
         _historyDS = [[XLFormDataSource alloc]initWithViewController:self tableView:_rightTableView];
         _rightTableView.dataSource = _historyDS;
         _rightTableView.delegate = _historyDS;
+        _rightTableView.rowHeight = UITableViewAutomaticDimension;
+        _rightTableView.estimatedRowHeight = 44.0;
         [_rightTableView setEditing:YES animated:NO];
         _rightTableView.allowsSelectionDuringEditing = YES;
     }
@@ -192,13 +194,11 @@
     XLFormRowDescriptor * row;
     form = [XLFormDescriptor formDescriptor];
     
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜A" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
-    [section.multivaluedAddButton.cellConfig setObject:@"添加司机" forKey:@"textLabel.text"];
+    section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜A" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
     section.multivaluedTag = @"drivers";
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton];
-    section.multivaluedRowTemplate = row;
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加"];
     [section addFormRow:row];
     
     return form;
