@@ -64,10 +64,9 @@
 
 -(void)refreshLeftTable
 {
-    self.detailDS = [[XLFormDataSource alloc]initWithViewController:self tableView:self.leftTableView];
-    self.leftTableView.dataSource = self.detailDS;
-    self.leftTableView.delegate = self.detailDS;
-    [self.detailDS setForm:[self createDetailForm:self.rowDescriptor.value]];
+    if (_detailDS) {
+        [_detailDS setForm:[self createDetailForm:self.rowDescriptor.value]];
+    }
 }
 
 -(void)refreshRightTable
@@ -77,6 +76,7 @@
     }
 }
 
+#pragma mark - 创建Form对象
 -(XLFormDescriptor *)createDetailForm:(Order *)order
 {
     XLFormDescriptor * form;
