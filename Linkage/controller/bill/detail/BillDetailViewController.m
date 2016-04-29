@@ -20,6 +20,7 @@
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
+#define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
 @interface BillDetailViewController()<XLFormRowDescriptorViewController>
 @property (nonatomic, strong) XLFormDataSource *detailDS;
 @property (nonatomic, strong) XLFormDataSource *historyDS;
@@ -201,6 +202,17 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加"];
+    RowUI
+    row.action.formSelector = @selector(addDriverRow:);
+    [section addFormRow:row];
+    
+    
+    section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜B" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
+    section.multivaluedTag = @"drivers1";
+    [form addFormSection:section];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加"];
+    RowUI
     row.action.formSelector = @selector(addDriverRow:);
     [section addFormRow:row];
     
@@ -209,11 +221,9 @@
 
 -(void)addDriverRow:(XLFormRowDescriptor *)row
 {
-    UIViewController *controller = [[DriverViewController alloc]initWithControllerType:ControllerTypeQuery];
+    UIViewController<XLFormRowDescriptorViewController> *controller = [[DriverViewController alloc]initWithControllerType:ControllerTypeQuery];
+    controller.rowDescriptor = row;
     [self.navigationController pushViewController:controller animated:YES];
-//    XLFormSectionDescriptor *section = row.sectionDescriptor;
-//    XLFormRowDescriptor *newRow = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"bbb"];
-//    [section addFormRow:newRow];
 }
 
 #pragma mark - 重写

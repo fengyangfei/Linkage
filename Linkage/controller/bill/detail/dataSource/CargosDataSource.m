@@ -7,8 +7,14 @@
 //
 
 #import "CargosDataSource.h"
+#import "DriverViewController.h"
 
 @implementation CargosDataSource
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+}
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -24,6 +30,11 @@
             self.tableView.editing = !self.tableView.editing;
             self.tableView.editing = !self.tableView.editing;
         });
+    }else if (editingStyle == UITableViewCellEditingStyleInsert){
+        UIViewController<XLFormRowDescriptorViewController> *controller = [[DriverViewController alloc]initWithControllerType:ControllerTypeQuery];
+        XLFormRowDescriptor * multivaluedFormRow = [self.form formRowAtIndex:indexPath];
+        controller.rowDescriptor = multivaluedFormRow;
+        [self.viewController.navigationController pushViewController:controller animated:YES];
     }
 }
 

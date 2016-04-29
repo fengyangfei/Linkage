@@ -22,6 +22,7 @@ row.cellStyle = UITableViewCellStyleValue1;
 @end
 
 @implementation ModelBaseViewController
+@synthesize rowDescriptor = _rowDescriptor;
 
 - (instancetype)initWithControllerType:(ControllerType)controllerType
 {
@@ -114,8 +115,15 @@ row.cellStyle = UITableViewCellStyleValue1;
 }
 
 #pragma mark - methods
--(void)didSelectModel:(XLFormRowDescriptor *)row
+-(void)didSelectModel:(XLFormRowDescriptor *)chosenRow
 {
+    XLFormSectionDescriptor *currentSection = self.rowDescriptor.sectionDescriptor;
+    id<MTLJSONSerializing,XLFormTitleOptionObject> chosenValue = chosenRow.value;
+    XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:[chosenValue formTitleText]];
+    RowUI
+    row.value = chosenValue;
+    [currentSection addFormRow:row beforeRow:self.rowDescriptor];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
