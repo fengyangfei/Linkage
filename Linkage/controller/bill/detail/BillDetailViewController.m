@@ -41,11 +41,11 @@
 {
     WeakSelf
     [super viewDidLoad];
-    self.title = @"订单详情";
     [self setupData];
     
     Order *order = self.rowDescriptor.value;
     if (order.orderId) {
+        self.title = @"订单详情";
         [SVProgressHUD show];
         [OrderUtil queryModelFromServer:order completion:^(Order *result) {
             [OrderUtil syncToDataBase:result completion:nil];
@@ -177,7 +177,7 @@
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
-    form = [XLFormDescriptor formDescriptor];
+    form = [XLFormDescriptor formDescriptorWithTitle:@""];
     
     section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜A" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
     section.multivaluedTag = @"drivers";
