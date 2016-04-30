@@ -82,4 +82,24 @@
     }
 }
 
++(void)queryModelsFromServer:(void(^)(NSArray *models))completion
+{
+    [[YGRestClient sharedInstance] postForObjectWithUrl:StaffsUrl form:[LoginUser shareInstance].basePageHttpParameter success:^(id responseObject) {
+        if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
+            NSError *error;
+            NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:responseObject error:&error];
+            if (error) {
+                NSLog(@"%@",error);
+            }
+            if (completion) {
+                completion(array);
+            }
+        }else{
+            completion(nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
 @end

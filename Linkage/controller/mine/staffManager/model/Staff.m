@@ -13,7 +13,13 @@
 @implementation Staff
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
+    NSDictionary *keyMap = @{
+                             @"staffId":@"staff_id",
+                             @"staffIcon":@"staff_icon",
+                             @"userName":@"username"
+                             };
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    keyDic = [keyDic mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
     return keyDic;
 }
 

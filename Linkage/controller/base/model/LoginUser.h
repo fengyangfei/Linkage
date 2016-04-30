@@ -33,6 +33,7 @@ typedef NS_ENUM(NSUInteger,UserType) {
 +(BOOL)clearUserInfo;
 @optional
 -(NSDictionary *)baseHttpParameter;
+-(NSDictionary *)basePageHttpParameter;
 @end
 
 @interface LoginUser : MTLModel<MTLJSONSerializingExt,LoginUserDelegate>

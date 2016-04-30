@@ -95,6 +95,16 @@ static LoginUser *user;
              @"token":self.token
              };
 }
+
+-(NSDictionary *)basePageHttpParameter
+{
+    NSDictionary *extensMap = @{
+                                @"pagination":@0,
+                                @"offset":@0,
+                                @"size":@1000
+                                };
+    return [self.baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:extensMap];
+}
 @end
 
 @implementation LoginUser(Extensions)

@@ -61,7 +61,7 @@
 			<key>iconName</key>
 			<string>setting_staff</string>
 			<key>className</key>
-			<string>EmployeeManageViewController</string>
+			<string>StaffViewController</string>
 		</dict>
 	</array>
 	<array>
