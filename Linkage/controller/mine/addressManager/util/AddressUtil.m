@@ -17,46 +17,6 @@
     return [Address class];
 }
 
-+(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
-{
-    NSError *error;
-    id model = [MTLJSONAdapter modelOfClass:self.modelClass fromJSONDictionary:json error:&error];
-    if (error) {
-        NSLog(@"%@",error);
-    }
-    return model;
-}
-
-+(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues
-{
-    NSError *error;
-    id model = [MTLJSONAdapter modelOfClass:self.modelClass fromJSONDictionary:formValues error:&error];
-    if (error) {
-        NSLog(@"%@",error);
-    }
-    return model;
-}
-
-+(id<MTLJSONSerializing>)modelFromManagedObject:(NSManagedObject *)managedObject
-{
-    NSError *error;
-    id model = [MTLManagedObjectAdapter modelOfClass:self.modelClass fromManagedObject:managedObject error:&error];
-    if (error) {
-        NSLog(@"%@",error);
-    }
-    return model;
-}
-
-+(NSDictionary *)jsonFromModel:(id<MTLJSONSerializing>)model
-{
-    NSError *error;
-    NSDictionary *dic = [MTLJSONAdapter JSONDictionaryFromModel:model error:&error];
-    if (error) {
-        NSLog(@"对象转换字典失败 - %@",error);
-    }
-    return dic;
-}
-
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
 {
     NSDictionary *paramter = [self jsonFromModel:model];
@@ -71,7 +31,7 @@
     NSError *error;
     Address *add = (Address *)model;
     if (add.addressId) {
-        AddressModel *existModel = [AddressModel MR_findFirstByAttribute:@"carId" withValue:add.addressId inContext:[NSManagedObjectContext MR_defaultContext]];
+        AddressModel *existModel = [AddressModel MR_findFirstByAttribute:@"addressId" withValue:add.addressId inContext:[NSManagedObjectContext MR_defaultContext]];
         if (existModel) {
             [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
         }
@@ -98,7 +58,7 @@
 {
     Address *add = (Address *)model;
     if (add.addressId) {
-        AddressModel *existModel = [AddressModel MR_findFirstByAttribute:@"carId" withValue:add.addressId inContext:[NSManagedObjectContext MR_defaultContext]];
+        AddressModel *existModel = [AddressModel MR_findFirstByAttribute:@"addressId" withValue:add.addressId inContext:[NSManagedObjectContext MR_defaultContext]];
         if (existModel) {
             [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
         }

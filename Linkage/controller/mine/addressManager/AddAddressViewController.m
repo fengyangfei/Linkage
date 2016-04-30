@@ -57,7 +57,7 @@
     row.required = YES;
     [section addFormRow:row];
     
-    if (address) {
+    if (!address) {
         section = [XLFormSectionDescriptor formSection];
         [form addFormSection:section];
         

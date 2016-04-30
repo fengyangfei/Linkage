@@ -6,9 +6,8 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "ModelOperation.h"
+#import "ModelUtil.h"
 
-@interface AddressUtil : NSObject<ModelOperation>
+@interface AddressUtil : ModelUtil
 
 @end

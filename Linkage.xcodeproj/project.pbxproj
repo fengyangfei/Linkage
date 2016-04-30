@@ -131,6 +131,7 @@
 		8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130561C9D93E4007607F9 /* SOImageFormCell.m */; };
 		8BA1305A1C9D951B007607F9 /* SOImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130591C9D951B007607F9 /* SOImage.m */; };
 		8BA1305D1C9DA398007607F9 /* SpecialFormSectionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1305C1C9DA398007607F9 /* SpecialFormSectionDescriptor.m */; };
+		8BA3E3C41CD450450047AC6B /* ModelUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3E3C31CD450450047AC6B /* ModelUtil.m */; };
 		8BB039DE1C94591900A3BCF9 /* LoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB039DD1C94591900A3BCF9 /* LoginUser.m */; };
 		8BB17AB71C9AF60D002708C4 /* BillApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB17AB61C9AF60D002708C4 /* BillApplyViewController.m */; };
 		8BB4FB131C7A0884003389F1 /* GTMStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB0D1C7A0884003389F1 /* GTMStackTrace.m */; };
@@ -476,6 +477,8 @@
 		8BA130591C9D951B007607F9 /* SOImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOImage.m; sourceTree = "<group>"; };
 		8BA1305B1C9DA398007607F9 /* SpecialFormSectionDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialFormSectionDescriptor.h; sourceTree = "<group>"; };
 		8BA1305C1C9DA398007607F9 /* SpecialFormSectionDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialFormSectionDescriptor.m; sourceTree = "<group>"; };
+		8BA3E3C21CD450450047AC6B /* ModelUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelUtil.h; sourceTree = "<group>"; };
+		8BA3E3C31CD450450047AC6B /* ModelUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelUtil.m; sourceTree = "<group>"; };
 		8BB039DC1C94591900A3BCF9 /* LoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUser.h; sourceTree = "<group>"; };
 		8BB039DD1C94591900A3BCF9 /* LoginUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUser.m; sourceTree = "<group>"; };
 		8BB17AB51C9AF60D002708C4 /* BillApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillApplyViewController.h; sourceTree = "<group>"; };
@@ -1219,6 +1222,8 @@
 				9ACEBCA91C9BF25F0000ACBF /* TimerManager.m */,
 				9A11F0571CCF48F9002E8F6F /* LinkUtil.h */,
 				9A11F0581CCF48F9002E8F6F /* LinkUtil.m */,
+				8BA3E3C21CD450450047AC6B /* ModelUtil.h */,
+				8BA3E3C31CD450450047AC6B /* ModelUtil.m */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -2171,6 +2176,7 @@
 				9A11F0741CD19257002E8F6F /* DriverViewController.m in Sources */,
 				9A95FF051C83E74E00C5F492 /* MenuCell.m in Sources */,
 				9A126DEA1CD1FD9700648184 /* OrderHandleViewController.m in Sources */,
+				8BA3E3C41CD450450047AC6B /* ModelUtil.m in Sources */,
 				9A11F0591CCF48F9002E8F6F /* LinkUtil.m in Sources */,
 				8B5DC6701C79CB2C00D29292 /* LinkageModel.xcdatamodeld in Sources */,
 			);

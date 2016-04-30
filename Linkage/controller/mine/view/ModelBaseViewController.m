@@ -44,10 +44,12 @@ row.cellStyle = UITableViewCellStyleValue1;
             for (id model in models) {
                 [self.modelUtilClass syncToDataBase:model completion:nil];
             }
-            StrongSelf
-            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
-                [strongSelf setupData];
-            }];
+            if(models.count > 0){
+                StrongSelf
+                [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+                    [strongSelf setupData];
+                }];
+            }
             [weakSelf.tableView.mj_header endRefreshing];
         }];
     }];
