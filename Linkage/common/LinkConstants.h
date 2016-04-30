@@ -50,6 +50,11 @@
 #define AddStaffUrl [NSString stringWithFormat:@"%@/api/profile/addaddr",BaseUrl]//添加员工接口
 #define DelStaffUrl [NSString stringWithFormat:@"%@/api/user/delstaff",BaseUrl]//删除员工接口
 
+//收藏
+#define FavoritesUrl [NSString stringWithFormat:@"%@/api/profile/favlist",BaseUrl]//收藏查询接口
+#define AddFavoriteUrl [NSString stringWithFormat:@"%@/api/profile/addfavorite",BaseUrl]//添加收藏接口
+#define DelFavoriteUrl [NSString stringWithFormat:@"%@/api/profile/delfavorite",BaseUrl]//删除收藏接口
+
 //订单
 #define Place4exportUrl [NSString stringWithFormat:@"%@/api/order/place4export",BaseUrl]//厂商出口订单下单接口
 #define Place4importUrl [NSString stringWithFormat:@"%@/api/order/place4import",BaseUrl]//厂商进口订单下单接口

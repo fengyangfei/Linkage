@@ -6,8 +6,7 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ModelBaseViewController.h"
 
-@interface FavoriteViewController : UIViewController
-@property (nonatomic, strong) UITableView *tableView;
+@interface FavoriteViewController : ModelBaseViewController
 @end

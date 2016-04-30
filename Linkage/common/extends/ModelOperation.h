@@ -16,6 +16,8 @@
 @optional
 +(Class)modelClass;
 
++(Class)managedObjectClass;
+
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json;
 
 +(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues;

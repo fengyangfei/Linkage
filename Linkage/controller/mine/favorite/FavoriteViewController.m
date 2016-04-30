@@ -7,50 +7,19 @@
 //
 
 #import "FavoriteViewController.h"
-#import "MainDataSource.h"
-@interface FavoriteViewController ()
-@property (nonatomic, strong) MainDataSource *dataSource;
-
-@end
+#import "FavoriteUtil.h"
+#import "FavoriteViewController.h"
 
 @implementation FavoriteViewController
 
-@synthesize tableView = _tableView;
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.title = @"我的收藏";
-    [self setupUI];
-    [self setupData];
-}
-
--(void)setupUI
+-(Class)modelUtilClass
 {
-    [self.view addSubview:self.tableView];
-    [self.tableView makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
+    return [FavoriteUtil class];
 }
 
--(void)setupData
+-(Class)viewControllerClass
 {
-    self.dataSource = [[CompanyDataSource alloc]init];
-    self.tableView.dataSource = self.dataSource;
-    self.tableView.delegate = self.dataSource;
-    [self.tableView reloadData];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
--(UITableView *)tableView
-{
-    if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        _tableView.tableFooterView = [UIView new];
-    }
-    return _tableView;
+    return [FavoriteViewController class];
 }
 
 @end

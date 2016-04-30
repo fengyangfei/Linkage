@@ -21,4 +21,10 @@
 {
     return [StaffViewController class];
 }
+
+-(void)setupNavigationItem
+{
+    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
+    self.navigationItem.rightBarButtonItem = editBtn;
+}
 @end

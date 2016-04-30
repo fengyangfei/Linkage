@@ -8,6 +8,7 @@
 
 #import "ModelUtil.h"
 #import "MTLManagedObjectAdapter.h"
+#import "LoginUser.h"
 
 @implementation ModelUtil
 
@@ -49,6 +50,20 @@
         NSLog(@"对象转换字典失败 - %@",error);
     }
     return dic;
+}
+
+//数据库查询
++(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
+{
+    NSArray *managerObjects = [self.managedObjectClass MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].cid inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:managerObjects.count];
+    for (NSManagedObject *manageObj in managerObjects) {
+        id<MTLJSONSerializing> model = [self modelFromManagedObject:manageObj];
+        [mutableArray addObject:model];
+    }
+    if (completion) {
+        completion([mutableArray copy]);
+    }
 }
 
 @end
