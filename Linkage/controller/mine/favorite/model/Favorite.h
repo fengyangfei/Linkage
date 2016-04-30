@@ -19,5 +19,5 @@
 @property (nonatomic,strong) NSNumber *score;
 @property (nonatomic,strong) NSNumber *orderNum;
 @property (nonatomic,copy  ) NSString *logo;
-@property (nonatomic,copy) NSString *userId;
+@property (nonatomic,copy  ) NSString *userId;
 @end

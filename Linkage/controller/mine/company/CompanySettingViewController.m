@@ -73,7 +73,7 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company_name" rowType:XLFormRowDescriptorTypeText title:@"企业名称"];
     if (company) {
-        row.value = company.name;
+        row.value = company.companyName;
     }
     [section addFormRow:row];
     
@@ -88,7 +88,7 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"contact_name" rowType:XLFormRowDescriptorTypeText title:@"企业联系人"];
     if (company) {
-        row.value = company.contactor;
+        row.value = company.contactName;
     }
     [section addFormRow:row];
     

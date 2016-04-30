@@ -76,9 +76,9 @@
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
     [[YGRestClient sharedInstance] postForObjectWithUrl:FavoritesUrl form:[LoginUser shareInstance].basePageHttpParameter success:^(id responseObject) {
-        if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
+        if (responseObject[@"companies"] && [responseObject[@"companies"] isKindOfClass:[NSArray class]]) {
             NSError *error;
-            NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:responseObject error:&error];
+            NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:responseObject[@"companies"] error:&error];
             if (error) {
                 NSLog(@"%@",error);
             }

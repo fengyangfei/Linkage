@@ -8,6 +8,7 @@
 
 #import "MainTableViewCell.h"
 #import "BillTypeViewController.h"
+#import "Favorite.h"
 #import "Company.h"
 
 NSString *const CompanyDescriporType = @"CompanyRowType";
@@ -42,15 +43,15 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 -(void)update
 {
     [super update];
-    Company *company = self.rowDescriptor.value;
-    if (company.logo) {
-        self.iconView.image = [UIImage imageNamed:company.logo];
+    Favorite *favorite = self.rowDescriptor.value;
+    if (StringIsNotEmpty(favorite.logo)) {
+        self.iconView.image = [UIImage imageNamed:favorite.logo];
     }else{
         self.iconView.image = [UIImage imageNamed:@"logo"];
     }
-    self.titleLabel.text = company.name;
-    self.subTitleLabel.text  = [NSString stringWithFormat:@"已接%@单", company.orderNum];
-    self.ratingView.value = MIN(MAX([company.score intValue], 0),5);
+    self.titleLabel.text = favorite.companyName;
+    self.subTitleLabel.text  = [NSString stringWithFormat:@"已接%@单", favorite.orderNum];
+    self.ratingView.value = MIN(MAX([favorite.score intValue], 0),5);
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor

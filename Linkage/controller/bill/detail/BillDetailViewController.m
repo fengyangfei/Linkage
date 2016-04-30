@@ -93,7 +93,7 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"接单承运商"];
     Company *company = [LoginUser findCompanyById:order.companyId];
-    row.value = company ? company.name :@"";
+    row.value = company ? company.companyName :@"";
     [section addFormRow:row];
     
     for (Cargo *cargo in order.cargos) {

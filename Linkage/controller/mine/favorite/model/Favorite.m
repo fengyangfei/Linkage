@@ -25,6 +25,36 @@
     return keyDic;
 }
 
++ (NSValueTransformer *)orderNumJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if (value != nil && [value isKindOfClass:[NSNumber class]]) {
+            return value;
+        }else if (value != nil && [value isKindOfClass:[NSString class]]) {
+            return @([value intValue]);
+        }else if (value == [NSNull null]) {
+            return @(0);
+        }else{
+            return @(0);
+        }
+    }];
+}
+
++ (NSValueTransformer *)scoreJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if (value != nil && [value isKindOfClass:[NSNumber class]]) {
+            return value;
+        }else if (value != nil && [value isKindOfClass:[NSString class]]) {
+            return @([value intValue]);
+        }else if (value == [NSNull null]) {
+            return @(0);
+        }else{
+            return @(0);
+        }
+    }];
+}
+
 #pragma mark - MTLManagedObjectSerializing
 + (NSString *)managedObjectEntityName
 {
@@ -57,7 +87,7 @@
 
 -(NSString *)formDisplayText
 {
-    return self.servicePhone;
+    return self.companyName;
 }
 
 -(id)formValue{
