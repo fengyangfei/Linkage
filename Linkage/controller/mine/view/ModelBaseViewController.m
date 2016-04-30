@@ -50,10 +50,17 @@ row.cellStyle = UITableViewCellStyleValue1;
                     [strongSelf setupData];
                 }];
             }
-            [weakSelf.tableView.mj_header endRefreshing];
+            if([weakSelf.tableView.mj_header isRefreshing]){
+                [weakSelf.tableView.mj_header endRefreshing];
+            }
         }];
     }];
     
+    [self setupNavigationItem];
+}
+
+-(void)setupNavigationItem
+{
     if (self.controllerType == ControllerTypeManager) {
         UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
         UIBarButtonItem *addBtn = self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
@@ -74,7 +81,9 @@ row.cellStyle = UITableViewCellStyleValue1;
         if (models.count > 0) {
             [weakSelf initializeForm:models];
         }else{
-            [weakSelf.tableView.mj_header beginRefreshing];
+            if(![weakSelf.tableView.mj_header isRefreshing]){
+                //[weakSelf.tableView.mj_header beginRefreshing];
+            }
         }
     }];
 }

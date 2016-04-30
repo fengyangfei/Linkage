@@ -41,9 +41,14 @@
 #define DispatchUrl [NSString stringWithFormat:@"%@/api/transporter/dispatch",BaseUrl]//分配司机接口
 
 //地址
-#define AddressUrl [NSString stringWithFormat:@"%@/api/profile/addrlist",BaseUrl]//车辆查询接口
-#define AddAddressUrl [NSString stringWithFormat:@"%@/api/profile/addaddress",BaseUrl]//添加车辆接口
-#define DelAddressUrl [NSString stringWithFormat:@"%@/api/transporter/deladdress",BaseUrl]//删除车辆接口
+#define AddressUrl [NSString stringWithFormat:@"%@/api/profile/addrlist",BaseUrl]//地址查询接口
+#define AddAddressUrl [NSString stringWithFormat:@"%@/api/profile/addaddr",BaseUrl]//添加地址接口
+#define DelAddressUrl [NSString stringWithFormat:@"%@/api/transporter/deladdr",BaseUrl]//删除地址接口
+
+//员工
+#define StaffsUrl [NSString stringWithFormat:@"%@/api/user/staff",BaseUrl]//员工查询接口
+#define AddStaffUrl [NSString stringWithFormat:@"%@/api/profile/addaddr",BaseUrl]//添加员工接口
+#define DelStaffUrl [NSString stringWithFormat:@"%@/api/user/delstaff",BaseUrl]//删除员工接口
 
 //订单
 #define Place4exportUrl [NSString stringWithFormat:@"%@/api/order/place4export",BaseUrl]//厂商出口订单下单接口
