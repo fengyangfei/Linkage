@@ -125,6 +125,7 @@
 		8B941BAB1CD102270059BE13 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B941BAA1CD102270059BE13 /* Car.m */; };
 		8B941BB11CD107060059BE13 /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B941BAF1CD107060059BE13 /* CarModel.m */; };
 		8B941BB41CD109080059BE13 /* CarUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B941BB31CD109080059BE13 /* CarUtil.m */; };
+		8B958B3C1CD65301003BD74B /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B958B3B1CD65301003BD74B /* Message.m */; };
 		8B986F651CC50A7E002DDA68 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F641CC50A7E002DDA68 /* ChangePasswordController.m */; };
 		8B986F6C1CC50D7A002DDA68 /* AddCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F6B1CC50D7A002DDA68 /* AddCarViewController.m */; };
 		8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130531C9D2B2D007607F9 /* CargoFormRowDescriptor.m */; };
@@ -471,6 +472,8 @@
 		8B941BAF1CD107060059BE13 /* CarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarModel.m; sourceTree = "<group>"; };
 		8B941BB21CD109080059BE13 /* CarUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarUtil.h; sourceTree = "<group>"; };
 		8B941BB31CD109080059BE13 /* CarUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarUtil.m; sourceTree = "<group>"; };
+		8B958B3A1CD65301003BD74B /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		8B958B3B1CD65301003BD74B /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		8B986F631CC50A7E002DDA68 /* ChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordController.h; sourceTree = "<group>"; };
 		8B986F641CC50A7E002DDA68 /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
 		8B986F6A1CC50D7A002DDA68 /* AddCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCarViewController.h; sourceTree = "<group>"; };
@@ -1350,6 +1353,22 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		8B958B381CD652C3003BD74B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8B958B3A1CD65301003BD74B /* Message.h */,
+				8B958B3B1CD65301003BD74B /* Message.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8B958B391CD652C3003BD74B /* util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		8B986F661CC50CE2002DDA68 /* carManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1501,6 +1520,8 @@
 		8BCA5FB81CA97F97002601F6 /* message */ = {
 			isa = PBXGroup;
 			children = (
+				8B958B381CD652C3003BD74B /* model */,
+				8B958B391CD652C3003BD74B /* util */,
 				8B8B7BE31CCE4B7A00080609 /* view */,
 				8BCA5FB91CA97FB8002601F6 /* MessageViewController.h */,
 				8BCA5FBA1CA97FB8002601F6 /* MessageViewController.m */,
@@ -2241,6 +2262,7 @@
 				9A23A3211C7E8EA900FB5EB6 /* ICETutorialStyle.m in Sources */,
 				8BB17AB71C9AF60D002708C4 /* BillApplyViewController.m in Sources */,
 				8B5DC61E1C79B8A700D29292 /* IFTTTBackgroundColorAnimation.m in Sources */,
+				8B958B3C1CD65301003BD74B /* Message.m in Sources */,
 				8BCA5FBB1CA97FB8002601F6 /* MessageViewController.m in Sources */,
 				8BEEA7851CD3A7BB0088D70A /* AddressUtil.m in Sources */,
 				9A23A2FD1C7DAA2500FB5EB6 /* UIViewController+Extensions.m in Sources */,

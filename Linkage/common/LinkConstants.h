@@ -29,6 +29,10 @@
 #define GenInvitecodeUrl [NSString stringWithFormat:@"%@/api/code/inviteurl",BaseUrl]//生成邀请链接
 #define ModCompanyUrl [NSString stringWithFormat:@"%@/api/company/modcompany",BaseUrl]//修改厂商
 
+//消息
+#define MessagesUrl [NSString stringWithFormat:@"%@/api/message/list",BaseUrl]//消息列表
+#define MessageDetailUrl [NSString stringWithFormat:@"%@/api/message/detail",BaseUrl]//消息详情
+
 //车辆与司机
 #define DriversUrl [NSString stringWithFormat:@"%@/api/transporter/drivers",BaseUrl]//司机查询接口
 #define AddDriverUrl [NSString stringWithFormat:@"%@/api/transporter/adddriver",BaseUrl]//添加司机接口
