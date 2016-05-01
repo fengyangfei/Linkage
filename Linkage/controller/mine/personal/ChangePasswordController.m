@@ -8,6 +8,9 @@
 
 #import "ChangePasswordController.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <Mantle/Mantle.h>
+#import "YGRestClient.h"
+#import "LoginUser.h"
 
 @implementation ChangePasswordController
 
@@ -55,6 +58,9 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"confirmpassword" rowType:XLFormRowDescriptorTypePassword title:@"确认新密码"];
     [section addFormRow:row];
     
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+
     WeakSelf
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"修改"];
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
@@ -68,6 +74,24 @@
 //修改
 -(void)clickAction:(XLFormRowDescriptor *)sender
 {
+    WeakSelf
+    NSDictionary *forValues = [self.form formValues];
+    if (![forValues[@"newpassword"] isEqualToString:forValues[@"confirmpassword"] ]) {
+        [SVProgressHUD showErrorWithStatus:@"两次密码不一致"];
+        return;
+    }
+    NSDictionary *parameter = @{
+                                @"new_password":forValues[@"newpassword"],
+                                @"old_password":forValues[@"password"]
+                                };
+    parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+    [[YGRestClient sharedInstance]postForObjectWithUrl:ModPasswordUrl form:parameter success:^(id responseObject) {
+        [SVProgressHUD showSuccessWithStatus:@"修改成功"];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+        
+    }];
 }
 
 @end
