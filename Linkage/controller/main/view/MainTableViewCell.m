@@ -50,7 +50,7 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
         self.iconView.image = [UIImage imageNamed:@"logo"];
     }
     self.titleLabel.text = favorite.companyName;
-    self.subTitleLabel.text  = [NSString stringWithFormat:@"已接%@单", favorite.orderNum];
+    self.subTitleLabel.text  = [NSString stringWithFormat:@"已接%d单", [favorite.orderNum intValue]];
     self.ratingView.value = MIN(MAX([favorite.score intValue], 0),5);
 }
 
