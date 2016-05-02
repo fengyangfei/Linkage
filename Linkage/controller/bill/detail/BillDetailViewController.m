@@ -17,6 +17,7 @@
 #import "SpecialFormSectionDescriptor.h"
 #import "DriverViewController.h"
 #import "CargosDataSource.h"
+#import "YGRestClient.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
@@ -41,38 +42,27 @@
 {
     WeakSelf
     [super viewDidLoad];
-    [self setupData];
-    
     Order *order = self.rowDescriptor.value;
+    [self setupData:order];
     if (order.orderId) {
         self.title = @"订单详情";
         [SVProgressHUD show];
         [OrderUtil queryModelFromServer:order completion:^(Order *result) {
             [OrderUtil syncToDataBase:result completion:nil];
-            [weakSelf.detailDS setForm:[weakSelf createDetailForm:result]];
+            [weakSelf setupData:result];
             [SVProgressHUD dismiss];
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         }];
     }
 }
 
--(void)setupData
-{
-    [self refreshLeftTable];
-    [self refreshRightTable];
-}
-
--(void)refreshLeftTable
+-(void)setupData:(Order *)order
 {
     if (_detailDS) {
-        [_detailDS setForm:[self createDetailForm:self.rowDescriptor.value]];
+        [_detailDS setForm:[self createDetailForm:order]];
     }
-}
-
--(void)refreshRightTable
-{
     if (_cargosDataSource) {
-        [_cargosDataSource setForm:[self createCargosForm]];
+        [_cargosDataSource setForm:[self createCargosForm:order]];
     }
 }
 
@@ -172,40 +162,56 @@
     return form;
 }
 
--(XLFormDescriptor *)createCargosForm
+-(XLFormDescriptor *)createCargosForm:(Order *)order
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
     form = [XLFormDescriptor formDescriptorWithTitle:@""];
     
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜A" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
-    section.multivaluedTag = @"drivers";
-    [form addFormSection:section];
+    for (Cargo *cargo in order.cargos) {
+        NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoId];
+        section = [XLFormSectionDescriptor formSectionWithTitle:cargoTitle sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
+        section.multivaluedTag = [cargo.cargoId stringValue];
+        [form addFormSection:section];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加司机"];
+        RowUI
+        row.action.formSelector = @selector(addDriverRow:);
+        [section addFormRow:row];
+    }
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加司机"];
-    RowUI
-    row.action.formSelector = @selector(addDriverRow:);
-    [section addFormRow:row];
-    
-    
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"货柜B" sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
-    section.multivaluedTag = @"drivers1";
-    [form addFormSection:section];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加司机"];
-    RowUI
-    row.action.formSelector = @selector(addDriverRow:);
-    [section addFormRow:row];
+    if (order.cargos.count > 0) {
+        section = [XLFormSectionDescriptor formSection];
+        [form addFormSection:section];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"确定"];
+        row.action.formSelector = @selector(allocateTask:);
+        [section addFormRow:row];
+    }
     
     return form;
 }
 
+#pragma mark - 事件处理
+//添加司机
 -(void)addDriverRow:(XLFormRowDescriptor *)row
 {
     UIViewController<XLFormRowDescriptorViewController> *controller = [[DriverViewController alloc]initWithControllerType:ControllerTypeQuery];
     controller.rowDescriptor = row;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+//分配任务给司机
+-(void)allocateTask:(XLFormRowDescriptor *)row
+{
+    
+    //[LoginUser shareInstance].baseHttpParameter
+    [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl json:nil success:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        [SVProgressHUD showSuccessWithStatus:@"分配任务成功"];
+    }];
 }
 
 #pragma mark - 属性
