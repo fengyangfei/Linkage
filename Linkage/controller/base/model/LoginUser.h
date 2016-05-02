@@ -55,7 +55,8 @@ typedef NS_ENUM(NSUInteger,UserType) {
 @end
 
 @interface LoginUser (Extensions)
-UserDefault_Attr(currentLocation, NSString *)//用户所在地
+UserDefault_Attr(receiveSms, BOOL)//接收平台短信
+UserDefault_Attr(receiveEmail, BOOL)//接收平台邮件
 
 +(Company *)findCompanyById:(NSString *)companyId;
 @end

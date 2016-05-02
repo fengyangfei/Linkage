@@ -10,6 +10,7 @@
 #import "DateAndTimeValueTrasformer.h"
 #import "ImageCacheManager.h"
 #import "UMSocial.h"
+#import "LoginUser.h"
 
 @interface SettingViewController ()<UMSocialUIDelegate>
 
@@ -38,12 +39,12 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"getmessage" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"接收平台短信"];
-    row.required = YES;
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"receive_sms" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"接收平台短信"];
+    row.value = @([LoginUser receiveSms]);
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"getemail" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"接收平台邮件"];
-    row.required = YES;
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"receive_email" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"接收平台邮件"];
+    row.value = @([LoginUser receiveEmail]);
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
@@ -107,6 +108,16 @@
 }
 
 #pragma mark - XLFormDescriptorDelegate
+-(void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)formRow oldValue:(id)oldValue newValue:(id)newValue
+{
+    if ([formRow.tag isEqualToString:@"receive_sms"]) {
+        [LoginUser setreceiveSms:[newValue boolValue]];
+    }else if ([formRow.tag isEqualToString:@"receive_email"]) {
+        [LoginUser setreceiveEmail:[newValue boolValue]];
+    }else{
+        [super formRowDescriptorValueHasChanged:formRow oldValue:oldValue newValue:newValue];
+    }
+}
 
 -(void)clearCacheAction:(XLFormRowDescriptor *)row
 {

@@ -28,6 +28,7 @@
 #define InvitecodeUrl [NSString stringWithFormat:@"%@/api/code/invitecode",BaseUrl]//生成邀请码
 #define GenInvitecodeUrl [NSString stringWithFormat:@"%@/api/code/inviteurl",BaseUrl]//生成邀请链接
 #define ModCompanyUrl [NSString stringWithFormat:@"%@/api/company/modcompany",BaseUrl]//修改厂商
+#define SystemSettingUrl [NSString stringWithFormat:@"%@/api/profile/updatesysset",BaseUrl]//系统设置
 
 //消息
 #define MessagesUrl [NSString stringWithFormat:@"%@/api/message/list",BaseUrl]//消息列表

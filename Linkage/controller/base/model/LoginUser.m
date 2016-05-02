@@ -108,7 +108,8 @@ static LoginUser *user;
 @end
 
 @implementation LoginUser(Extensions)
-UserDefault_AttrImpl(currentLocation, NSString *)
+UserDefault_AttrBoolImpl(receiveSms, BOOL)//接收平台短信
+UserDefault_AttrBoolImpl(receiveEmail, BOOL)//接收平台邮件
 
 +(Company *)findCompanyById:(NSString *)companyId
 {
