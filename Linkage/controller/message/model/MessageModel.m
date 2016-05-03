@@ -15,4 +15,5 @@
 @dynamic title;
 @dynamic introduction;
 @dynamic createTime;
+@dynamic userId;
 @end

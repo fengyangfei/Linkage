@@ -32,6 +32,7 @@
         if (existModel) {
             [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
         }
+        message.userId = [LoginUser shareInstance].cid;
         MessageModel *addModel = [MTLManagedObjectAdapter managedObjectFromModel:message insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
         if (addModel && !error) {
             if (completion) {
@@ -53,9 +54,9 @@
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
     [[YGRestClient sharedInstance] postForObjectWithUrl:MessagesUrl form:[LoginUser shareInstance].basePageHttpParameter success:^(id responseObject) {
-        if (responseObject[@"messages"] && [responseObject[@"messages"] isKindOfClass:[NSArray class]]) {
+        if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
             NSError *error;
-            NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:responseObject[@"messages"] error:&error];
+            NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:responseObject error:&error];
             if (error) {
                 NSLog(@"%@",error);
             }

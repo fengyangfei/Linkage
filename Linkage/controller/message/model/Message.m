@@ -7,6 +7,7 @@
 //
 
 #import "Message.h"
+#import "MessageModel.h"
 
 @implementation Message
 
@@ -24,7 +25,7 @@
 #pragma mark - MTLManagedObjectSerializing
 + (NSString *)managedObjectEntityName
 {
-    return @"MessageModel";
+    return NSStringFromClass([MessageModel class]);
 }
 
 + (NSDictionary *)managedObjectKeysByPropertyKey
@@ -32,6 +33,5 @@
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     return keyDic;
 }
-
 
 @end

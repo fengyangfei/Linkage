@@ -18,4 +18,5 @@
 @property (nonatomic,copy  ) NSString *title;
 @property (nonatomic,copy  ) NSString *introduction;
 @property (nonatomic,strong) NSDate   *createTime;
+@property (nonatomic,copy  ) NSString *userId;
 @end
