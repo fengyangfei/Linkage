@@ -25,18 +25,17 @@
     static NSMutableDictionary * _cargoTypes;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _cargoTypes = [@{@1:@"CP(20尺)",
-                         @2:@"CP(40尺)",
-                         @3:@"CP(45尺)",
-                         @4:@"HQ(20尺)",
-                         @5:@"HQ(45尺)",
-                         @6:@"OT(20尺)",
-                         @7:@"OT(40尺)",
-                         @8:@"FR(20尺)",
-                         @9:@"FR(40尺)",
-                         @10:@"FR(45尺)",
-                         @11:@"GP(20尺)",
-                         @12:@"GP(40尺)"} mutableCopy];
+        _cargoTypes = [@{@0:@"GP(20尺)",
+                         @1:@"GP(40尺)",
+                         @2:@"HQ(40尺)",
+                         @3:@"HQ(45尺)",
+                         @4:@"OT(20尺)",
+                         @5:@"OT(40尺)",
+                         @6:@"FR(20尺)",
+                         @7:@"FR(40尺)",
+                         @8:@"FR(45尺)",
+                         @9:@"R(20尺)",
+                         @10:@"R(40尺)"} mutableCopy];
     });
     return _cargoTypes;
 }
