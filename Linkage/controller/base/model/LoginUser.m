@@ -14,7 +14,12 @@ static LoginUser *user;
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
+    NSDictionary *keys = @{
+                          @"userName":@"username",
+                          @"realName":@"realname"
+                          };
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    keyDic = [keyDic mtl_dictionaryByAddingEntriesFromDictionary:keys];
     keyDic = [keyDic mtl_dictionaryByRemovingValuesForKeys:@[@"createTime", @"updateTime",@"birthday"]];
     return keyDic;
 }

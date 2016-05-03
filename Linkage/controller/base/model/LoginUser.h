@@ -37,21 +37,23 @@ typedef NS_ENUM(NSUInteger,UserType) {
 @end
 
 @interface LoginUser : MTLModel<MTLJSONSerializingExt,LoginUserDelegate>
-@property (nonatomic,copy) NSString *cid;
-@property (nonatomic,copy) NSString *userId;
-@property (nonatomic,copy) NSString *userName;
-@property (nonatomic,copy) NSString *password;
-@property (nonatomic,copy) NSString *token;
-@property (nonatomic,assign) UserGender gender;
-@property (nonatomic,copy) NSString *mobile;
-@property (nonatomic,copy) NSString *email;
-@property (nonatomic,copy) NSString *address;
-@property (nonatomic,strong) NSDate *birthday;
-@property (nonatomic,copy) NSString *avatar;
-@property (nonatomic, strong) NSDate *createTime;
-@property (nonatomic, strong) NSDate *updateTime;
-@property (nonatomic, assign) UserType ctype;
-@property (nonatomic, strong) NSArray *companies;
+@property (nonatomic,copy   ) NSString   *cid;
+@property (nonatomic,copy   ) NSString   *userId;
+@property (nonatomic,copy   ) NSString   *userName;
+@property (nonatomic,copy   ) NSString   *realName;
+@property (nonatomic,copy   ) NSString   *password;
+@property (nonatomic,copy   ) NSString   *token;
+@property (nonatomic,assign ) UserGender gender;
+@property (nonatomic,copy   ) NSString   *mobile;
+@property (nonatomic,copy   ) NSString   *email;
+@property (nonatomic,copy   ) NSString   *address;
+@property (nonatomic,strong ) NSDate     *birthday;
+@property (nonatomic,copy   ) NSString   *avatar;
+@property (nonatomic,copy   ) NSString   *identity;
+@property (nonatomic, strong) NSDate     *createTime;
+@property (nonatomic, strong) NSDate     *updateTime;
+@property (nonatomic, assign) UserType   ctype;
+@property (nonatomic, strong) NSArray    *companies;
 @end
 
 @interface LoginUser (Extensions)

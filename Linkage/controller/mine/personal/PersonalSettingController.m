@@ -139,6 +139,18 @@
     [defalutUser mergeValuesForMergeKeysFromModel:modifyUser];
     BOOL saveSuccess = [defalutUser save];
     if (saveSuccess) {
+        NSError *error;
+        NSDictionary *parameter = [MTLJSONAdapter JSONDictionaryFromModel:defalutUser error:&error];
+        NSLog(@"%@", parameter);
+        if (!error) {
+            [[YGRestClient sharedInstance] postForObjectWithUrl:ModInfomationUrl form:parameter success:^(id responseObject) {
+                
+            } failure:^(NSError *error) {
+                
+            }];
+        }else{
+            NSLog(@"%@", error);
+        }
         [SVProgressHUD showSuccessWithStatus:@"保存成功"];
     }
 }

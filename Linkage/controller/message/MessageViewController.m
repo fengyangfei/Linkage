@@ -8,39 +8,16 @@
 
 #import "MessageViewController.h"
 #import "MessageTableCell.h"
+#import "MessageUtil.h"
 
 @implementation MessageViewController
 
-- (instancetype)init
+-(Class)modelUtilClass
 {
-    self = [super init];
-    if (self) {
-        [self initializeForm];
-    }
-    return self;
+    return [MessageUtil class];
 }
 
-- (void)initializeForm
+-(void)setupNavigationItem
 {
-    XLFormDescriptor * form;
-    XLFormSectionDescriptor * section;
-    XLFormRowDescriptor * row;
-    
-    form = [XLFormDescriptor formDescriptorWithTitle:@"消息"];
-    section = [XLFormSectionDescriptor formSection];
-    [form addFormSection:section];
-    for (int i = 0; i< 10 ; i++) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:MessageDescriporType title:@"消息"];
-        row.disabled = @YES;
-        [section addFormRow:row];
-    }
-    self.form = form;
 }
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.tableView.sectionHeaderHeight = 20;
-    self.tableView.sectionFooterHeight = 0;
-}
-
 @end

@@ -6,8 +6,8 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import <XLForm/XLForm.h>
+#import "ModelBaseViewController.h"
 
-@interface MessageViewController : XLFormViewController
+@interface MessageViewController : ModelBaseViewController
 
 @end
