@@ -14,4 +14,8 @@
 
 + (NSMutableDictionary *)cargoTypes;
 
++ (NSDictionary *)userTypes;
+
++ (NSArray *)userTypeOptions;
+
 @end

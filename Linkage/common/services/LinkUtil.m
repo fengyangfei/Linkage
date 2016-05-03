@@ -41,4 +41,32 @@
     return _cargoTypes;
 }
 
++ (NSDictionary *)userTypes
+{
+    static NSDictionary * _userTypes;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _userTypes = @{
+                         @0:@"厂商管理员",
+                         @1:@"承运商管理员"
+                        };
+    });
+    return _userTypes;
+}
+
++ (NSArray *)userTypeOptions
+{
+    static NSArray * _options;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSMutableArray *_mutableOptions = [[NSMutableArray alloc]init];
+        [self.userTypes enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            XLFormOptionsObject *option = [XLFormOptionsObject formOptionsObjectWithValue:key displayText:obj];
+            [_mutableOptions addObject:option];
+        }];
+        _options = [_mutableOptions copy];
+    });
+    return _options;
+}
+
 @end

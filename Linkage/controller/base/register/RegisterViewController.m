@@ -10,6 +10,7 @@
 #import "YGRestClient.h"
 #import "FormTextFieldAndButtonCell.h"
 #import "TimerManager.h"
+#import "LinkUtil.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface RegisterViewController ()
@@ -44,10 +45,16 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"ctype" rowType:XLFormRowDescriptorTypeSelectorPush title:@"用户类型"];
+    row.selectorOptions = [LinkUtil userTypeOptions];
+    row.required = YES;
+    [section addFormRow:row];
+    
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"companyName" rowType:XLFormRowDescriptorTypeText title:@"公司名称"];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"name" rowType:XLFormRowDescriptorTypeText title:@"注册人姓名"];
+    row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"gender" rowType:XLFormRowDescriptorTypeSelectorPush title:@"性别"];
@@ -66,9 +73,11 @@
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"password" rowType:XLFormRowDescriptorTypePassword title:@"密码"];
+    row.required = YES;
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"againPassword" rowType:XLFormRowDescriptorTypePassword title:@"确认密码"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"confirmPassword" rowType:XLFormRowDescriptorTypePassword title:@"确认密码"];
+    row.required = YES;
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
@@ -94,7 +103,7 @@
         make.bottom.equalTo(self.view.bottom);
     }];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
-    self.navigationItem.titleView = self.segementedControl;
+    //self.navigationItem.titleView = self.segementedControl;
 }
 
 -(UISegmentedControl *)segementedControl
@@ -117,10 +126,20 @@
     [self deselectFormRow:row];
     [self.tableView endEditing:YES];
     NSDictionary *formValues = [self.form formValues];
+    NSArray *errors = [self formValidationErrors];
+    if (errors && errors.count > 0) {
+        [self showFormValidationError:errors[0]];
+        return;
+    }
+    
+    if([formValues[@"password"] isEqualToString:formValues[@"confirmPassword"]]){
+        [SVProgressHUD showErrorWithStatus:@"两次填入密码不一致"];
+    }
+    
     NSDictionary *paramter = @{@"mobile":NilStringWrapper(formValues[@"phoneNum"]),
                                @"password":NilStringWrapper(formValues[@"password"]),
                                @"company_name":NilStringWrapper(formValues[@"companyName"]),
-                               @"ctype":@(self.segementedControl.selectedSegmentIndex),
+                               @"ctype":[formValues[@"ctype"] valueData],
                                @"verify_code":NilStringWrapper(formValues[@"verifyCode"])};
     [[YGRestClient sharedInstance] postForObjectWithUrl:Register4AdminUrl form:paramter success:^(id responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"注册成功"];
