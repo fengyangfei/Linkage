@@ -206,6 +206,8 @@
 		9A23A3201C7E8EA900FB5EB6 /* ICETutorialPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A31C1C7E8EA900FB5EB6 /* ICETutorialPage.m */; };
 		9A23A3211C7E8EA900FB5EB6 /* ICETutorialStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A31E1C7E8EA900FB5EB6 /* ICETutorialStyle.m */; };
 		9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A3231C7E900500FB5EB6 /* TutorialController.m */; };
+		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
+		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
 		9A95FF021C83E3C600C5F492 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF011C83E3C600C5F492 /* MenuItem.m */; };
 		9A95FF051C83E74E00C5F492 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF041C83E74E00C5F492 /* MenuCell.m */; };
@@ -617,6 +619,10 @@
 		9A23A31E1C7E8EA900FB5EB6 /* ICETutorialStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICETutorialStyle.m; sourceTree = "<group>"; };
 		9A23A3221C7E900500FB5EB6 /* TutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialController.h; sourceTree = "<group>"; };
 		9A23A3231C7E900500FB5EB6 /* TutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialController.m; sourceTree = "<group>"; };
+		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
+		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
+		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
+		9A7D0E971CD8868000EE005F /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
 		9A95FEFC1C83DFCF00C5F492 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		9A95FF001C83E3C600C5F492 /* MenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
@@ -1358,15 +1364,10 @@
 			children = (
 				8B958B3A1CD65301003BD74B /* Message.h */,
 				8B958B3B1CD65301003BD74B /* Message.m */,
+				9A7D0E961CD8868000EE005F /* MessageModel.h */,
+				9A7D0E971CD8868000EE005F /* MessageModel.m */,
 			);
 			path = model;
-			sourceTree = "<group>";
-		};
-		8B958B391CD652C3003BD74B /* util */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = util;
 			sourceTree = "<group>";
 		};
 		8B986F661CC50CE2002DDA68 /* carManager */ = {
@@ -1520,8 +1521,8 @@
 		8BCA5FB81CA97F97002601F6 /* message */ = {
 			isa = PBXGroup;
 			children = (
+				9A7D0E901CD885C400EE005F /* util */,
 				8B958B381CD652C3003BD74B /* model */,
-				8B958B391CD652C3003BD74B /* util */,
 				8B8B7BE31CCE4B7A00080609 /* view */,
 				8BCA5FB91CA97FB8002601F6 /* MessageViewController.h */,
 				8BCA5FBA1CA97FB8002601F6 /* MessageViewController.m */,
@@ -1736,6 +1737,15 @@
 				9A23A31E1C7E8EA900FB5EB6 /* ICETutorialStyle.m */,
 			);
 			path = ICETutorial;
+			sourceTree = "<group>";
+		};
+		9A7D0E901CD885C400EE005F /* util */ = {
+			isa = PBXGroup;
+			children = (
+				9A7D0E911CD885DA00EE005F /* MessageUtil.h */,
+				9A7D0E921CD885DA00EE005F /* MessageUtil.m */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		9A95FEF91C83DF7D00C5F492 /* mine */ = {
@@ -2211,6 +2221,7 @@
 				9A05C37B1CC8C413009BC8C9 /* XLFormButtonCell+Push.m in Sources */,
 				9A23A2F91C7D9FE100FB5EB6 /* LoginBaseViewController.m in Sources */,
 				8B44450D1C7C9EFE00160DC2 /* SDCollectionViewCell.m in Sources */,
+				9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */,
 				8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */,
 				9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */,
 				9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */,
@@ -2277,6 +2288,7 @@
 				9A95FF0D1C858C8200C5F492 /* DateAndTimeValueTrasformer.m in Sources */,
 				8B5DC6811C79D0DB00D29292 /* YGRestClient.m in Sources */,
 				8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */,
+				9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */,
 				9A05C38D1CCA095D009BC8C9 /* OrderModel.m in Sources */,
 				8BB4FB161C7A0884003389F1 /* README.md in Sources */,
 				9A11F0741CD19257002E8F6F /* DriverViewController.m in Sources */,

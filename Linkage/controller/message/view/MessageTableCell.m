@@ -7,6 +7,8 @@
 //
 
 #import "MessageTableCell.h"
+#import "Message.h"
+#import "LinkUtil.h"
 
 NSString *const MessageDescriporType = @"MessageDescriporType";
 
@@ -36,10 +38,11 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
 
 -(void)update
 {
+    Message *message = self.rowDescriptor.value;
     [super update];
-    self.titleLable.text = @"今天推荐";
-    self.timeLable.text = @"今天 10:59";
-    self.detailLable.text = @"客户：已为您定制今天的独享优惠，请勿向其他人泄露,已为您定制今天的独享优惠，请勿向其他人泄露!";
+    self.titleLable.text = message.title;
+    self.timeLable.text = [LinkUtil.dateFormatter stringFromDate:message.createTime];
+    self.detailLable.text = message.introduction;
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor

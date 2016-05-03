@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
     <entity name="AddressModel" representedClassName="AddressModel" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="addressId" optional="YES" attributeType="String" syncable="YES"/>
@@ -61,6 +61,13 @@
         <attribute name="customsBroker" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customsHouseContact" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="MessageModel" representedClassName="MessageModel" syncable="YES">
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="introduction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="OrderModel" representedClassName="OrderModel" syncable="YES">
         <attribute name="cargosRentExpire" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="companyId" optional="YES" attributeType="String" syncable="YES"/>
@@ -107,11 +114,12 @@
         <element name="CarModel" positionX="-45" positionY="153" width="128" height="225"/>
         <element name="DriverModel" positionX="-45" positionY="153" width="128" height="150"/>
         <element name="ExportOrderModel" positionX="-45" positionY="153" width="128" height="165"/>
+        <element name="FavoriteModel" positionX="-36" positionY="162" width="128" height="165"/>
         <element name="ImportOrderModel" positionX="-36" positionY="171" width="128" height="120"/>
         <element name="OrderModel" positionX="-63" positionY="27" width="128" height="360"/>
         <element name="SelfOrderModel" positionX="-45" positionY="153" width="128" height="90"/>
         <element name="SOImageModel" positionX="-63" positionY="9" width="128" height="75"/>
         <element name="StaffModel" positionX="-45" positionY="153" width="128" height="135"/>
-        <element name="FavoriteModel" positionX="-36" positionY="162" width="128" height="165"/>
+        <element name="MessageModel" positionX="-45" positionY="153" width="128" height="120"/>
     </elements>
 </model>

@@ -12,9 +12,10 @@
 #import "FormDescriptorCell.h"
 
 @interface Message : MTLModel<MTLJSONSerializing,MTLManagedObjectSerializing>
+@property (nonatomic,copy  ) NSString *messageId;
 @property (nonatomic,strong) NSNumber *type;
-@property (nonatomic,copy) NSString *icon;
-@property (nonatomic,copy) NSString *title;
-@property (nonatomic,copy) NSString *introduction;
-@property (nonatomic,strong) NSDate *createTime;
+@property (nonatomic,copy  ) NSString *icon;
+@property (nonatomic,copy  ) NSString *title;
+@property (nonatomic,copy  ) NSString *introduction;
+@property (nonatomic,strong) NSDate   *createTime;
 @end
