@@ -76,7 +76,7 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"userName" rowType:XLFormRowDescriptorTypeText title:@"姓名"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"username" rowType:XLFormRowDescriptorTypeText title:@"姓名"];
     if (user) {
         row.value = user.userName;
     }
@@ -140,7 +140,8 @@
     BOOL saveSuccess = [defalutUser save];
     if (saveSuccess) {
         NSError *error;
-        NSDictionary *parameter = [MTLJSONAdapter JSONDictionaryFromModel:defalutUser error:&error];
+        NSDictionary *parameter = [MTLJSONAdapter JSONDictionaryFromModel:modifyUser error:&error];
+        parameter = [parameter mtl_dictionaryByAddingEntriesFromDictionary:[LoginUser shareInstance].baseHttpParameter];
         NSLog(@"%@", parameter);
         if (!error) {
             [[YGRestClient sharedInstance] postForObjectWithUrl:ModInfomationUrl form:parameter success:^(id responseObject) {
