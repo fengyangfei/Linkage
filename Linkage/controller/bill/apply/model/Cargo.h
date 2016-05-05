@@ -12,9 +12,11 @@
 @class OrderModel;
 @interface Cargo : MTLModel<XLFormOptionObject, MTLJSONSerializing, MTLManagedObjectSerializing>
 @property (nonatomic, strong) NSNumber *cargoId;
+@property (nonatomic, strong) NSNumber *cargoType;
+@property (nonatomic, copy  ) NSString *cargoNo;
 @property (nonatomic, copy  ) NSString *cargoName;
 @property (nonatomic, strong) NSNumber *cargoCount;
-+(Cargo *)cargoWithId:(NSNumber *)cargoId name:(NSString *)cargoName count:(NSNumber *)cargoCount;
++(Cargo *)cargoWithType:(NSNumber *)type name:(NSString *)cargoName count:(NSNumber *)cargoCount;
 @end
 
 @interface NSArray(CargoModel)

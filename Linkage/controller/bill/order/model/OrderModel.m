@@ -11,6 +11,8 @@
 @implementation CargoModel : NSManagedObject
 @dynamic cargoCount;
 @dynamic cargoId;
+@dynamic cargoType;
+@dynamic cargoNo;
 @dynamic cargoName;
 @end
 

@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CargoModel : NSManagedObject
 @property (nullable, nonatomic, retain) NSNumber *cargoCount;
 @property (nullable, nonatomic, retain) NSNumber *cargoId;
+@property (nullable, nonatomic, retain) NSNumber *cargoType;
+@property (nullable, nonatomic, retain) NSString *cargoNo;
 @property (nullable, nonatomic, retain) NSString *cargoName;
 @end
 

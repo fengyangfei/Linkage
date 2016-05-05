@@ -141,7 +141,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
     NSDictionary *dic = [LinkUtil cargoTypes];
     NSNumber *key = @(1);
-    row.value = [Cargo cargoWithId:key name:[dic objectForKey:key] count:@(0)];
+    row.value = [Cargo cargoWithType:key name:[dic objectForKey:key] count:@(0)];
     row.action.viewControllerClass = [CargoTypeViewController class];
     return row;
 }

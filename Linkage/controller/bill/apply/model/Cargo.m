@@ -11,10 +11,10 @@
 
 @implementation Cargo
 
-+(Cargo *)cargoWithId:(NSNumber *)cargoId name:(NSString *)cargoName count:(NSNumber *)cargoCount
++(Cargo *)cargoWithType:(NSNumber *)type name:(NSString *)cargoName count:(NSNumber *)cargoCount
 {
     Cargo *obj = [[Cargo alloc]init];
-    obj.cargoId = cargoId;
+    obj.cargoType = type;
     obj.cargoName = cargoName;
     obj.cargoCount = cargoCount;
     return obj;
@@ -28,6 +28,19 @@
                              @"cargoCount":@"number"
                              };
     return keyMap;
+}
+
++ (NSValueTransformer *)cargoTypeJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if ([value isKindOfClass:[NSNumber class]]) {
+            return value;
+        }else if ([value isKindOfClass:[NSString class]]) {
+            return @([value integerValue]);
+        }else{
+            return @(0);
+        }
+    }];
 }
 
 + (NSValueTransformer *)cargoCountJSONTransformer
@@ -77,7 +90,7 @@
 
 -(id)formValue
 {
-    return self.cargoId;
+    return self.cargoType;
 }
 
 @end
@@ -87,7 +100,7 @@
 {
     NSMutableString *str = [NSMutableString string];
     for (Cargo *model in self) {
-        NSString *mStr = [NSString stringWithFormat:@"%@:%@;", model.cargoId, model.cargoCount];
+        NSString *mStr = [NSString stringWithFormat:@"%@:%@;", model.cargoType, model.cargoCount];
         [str appendString:mStr];
     }
     if (str.length > 0) {
