@@ -47,7 +47,7 @@ NSString * const kCargoRowDescriptroType = @"cargoRowType";
     [super update];
     Cargo *model = self.rowDescriptor.value;
     [self.leftButton setTitle:[model displayText] forState:UIControlStateNormal];
-    self.rightTextField.text = [model.cargoCount stringValue];
+    //self.rightTextField.text = [model.cargoCount stringValue];
 }
 
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller

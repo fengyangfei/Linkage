@@ -62,11 +62,6 @@ row.cellStyle = UITableViewCellStyleValue1;
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    /*
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"billNum" rowType:XLFormRowDescriptorTypeText title:@"订单号"];
-    [section addFormRow:row];
-     */
-    
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company" rowType:XLFormRowDescriptorTypeButton title:@"承运商"];
     RowUI
     RowPlaceHolderUI(@"请选择承运商")
@@ -139,6 +134,7 @@ row.cellStyle = UITableViewCellStyleValue1;
 -(CargoFormRowDescriptor *)generateCargoRow
 {
     CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
+    [row.cellConfigAtConfigure setObject:@"填入货柜数量" forKey:@"rightTextField.placeholder"];
     NSDictionary *dic = [LinkUtil cargoTypes];
     NSNumber *key = @(1);
     row.value = [Cargo cargoWithType:key name:[dic objectForKey:key] count:@(0)];
@@ -184,6 +180,17 @@ row.cellStyle = UITableViewCellStyleValue1;
 {
     [super viewDidLoad];
     self.title = @"进口订单";
+}
+
+-(CargoFormRowDescriptor *)generateCargoRow
+{
+    CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
+    [row.cellConfigAtConfigure setObject:@"填入货柜号" forKey:@"rightTextField.placeholder"];
+    NSDictionary *dic = [LinkUtil cargoTypes];
+    NSNumber *key = @(1);
+    row.value = [Cargo cargoWithType:key name:[dic objectForKey:key]];
+    row.action.viewControllerClass = [CargoTypeViewController class];
+    return row;
 }
 
 -(void)addCustomCell:(XLFormDescriptor *)form

@@ -16,7 +16,9 @@
 @property (nonatomic, copy  ) NSString *cargoNo;
 @property (nonatomic, copy  ) NSString *cargoName;
 @property (nonatomic, strong) NSNumber *cargoCount;
++(Cargo *)cargoWithType:(NSNumber *)type name:(NSString *)cargoName;
 +(Cargo *)cargoWithType:(NSNumber *)type name:(NSString *)cargoName count:(NSNumber *)cargoCount;
++(Cargo *)cargoWithType:(NSNumber *)type name:(NSString *)cargoName count:(NSNumber *)cargoCount cargoNo:(NSString *)cargoNo;
 @end
 
 @interface NSArray(CargoModel)

@@ -48,7 +48,7 @@
         }
     }
     Cargo *cargoModel = (Cargo *)self.rowDescriptor.value;
-    cargoModel.cargoId = [cellObject formValue];
+    cargoModel.cargoType = [cellObject formValue];
     cargoModel.cargoName = [cellObject formDisplayText];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     if ([self.parentViewController isKindOfClass:[UINavigationController class]]){

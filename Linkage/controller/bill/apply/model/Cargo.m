@@ -10,13 +10,23 @@
 #import "OrderModel.h"
 
 @implementation Cargo
++(Cargo *)cargoWithType:(NSNumber *)type name:(NSString *)cargoName
+{
+    return [self cargoWithType:type name:cargoName count:@(0) cargoNo:@""];
+}
 
 +(Cargo *)cargoWithType:(NSNumber *)type name:(NSString *)cargoName count:(NSNumber *)cargoCount
+{
+    return [self cargoWithType:type name:cargoName count:cargoCount cargoNo:@""];
+}
+
++(Cargo *)cargoWithType:(NSNumber *)type name:(NSString *)cargoName count:(NSNumber *)cargoCount cargoNo:(NSString *)cargoNo
 {
     Cargo *obj = [[Cargo alloc]init];
     obj.cargoType = type;
     obj.cargoName = cargoName;
     obj.cargoCount = cargoCount;
+    obj.cargoNo = cargoNo;
     return obj;
 }
 
@@ -24,7 +34,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyMap = @{
-                             @"cargoId":@"type",
+                             @"cargoType":@"type",
                              @"cargoCount":@"number"
                              };
     return keyMap;
