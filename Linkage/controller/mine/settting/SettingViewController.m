@@ -11,6 +11,8 @@
 #import "ImageCacheManager.h"
 #import "UMSocial.h"
 #import "LoginUser.h"
+#import "YGRestClient.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface SettingViewController ()<UMSocialUIDelegate>
 
@@ -117,6 +119,16 @@
     }else{
         [super formRowDescriptorValueHasChanged:formRow oldValue:oldValue newValue:newValue];
     }
+}
+
+-(void)syncToServer
+{
+    NSDictionary *parameter = @{};
+    [[YGRestClient sharedInstance] postForObjectWithUrl:SystemSettingUrl form:parameter success:^(id responseObject) {
+        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+    }];
 }
 
 -(void)clearCacheAction:(XLFormRowDescriptor *)row
