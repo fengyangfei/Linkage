@@ -16,7 +16,9 @@
     @try {
         [self removeObserver:self forKeyPath:@"value.cargoName"];
     }
-    @catch (NSException * __unused exception) {}
+    @catch (NSException * __unused exception) {
+        NSLog(@"extion-- %@",exception);
+    }
 }
 
 -(instancetype)initWithTag:(NSString *)tag rowType:(NSString *)rowType title:(NSString *)title;

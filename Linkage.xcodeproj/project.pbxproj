@@ -32,6 +32,7 @@
 		8B14B52C1CCBA642009ED887 /* OrderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B14B52B1CCBA642009ED887 /* OrderUtil.m */; };
 		8B3302911C8BC0D70088DAE2 /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3302901C8BC0D70088DAE2 /* MainTableViewCell.m */; };
 		8B3302941C8BC7510088DAE2 /* MainDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3302931C8BC7510088DAE2 /* MainDataSource.m */; };
+		8B38230C1CDB5CC20046A6F1 /* UINavigationController+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B38230B1CDB5CC20046A6F1 /* UINavigationController+Custom.m */; };
 		8B3C31921C956EEB00FC6323 /* FormTextFieldAndButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C31901C9568B900FC6323 /* FormTextFieldAndButtonCell.m */; };
 		8B4221181CA428BF00F58D77 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B4221171CA428BF00F58D77 /* Localizable.strings */; };
 		8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B42211B1CA42AD600F58D77 /* FavoriteViewController.m */; };
@@ -277,6 +278,8 @@
 		8B3302901C8BC0D70088DAE2 /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
 		8B3302921C8BC7510088DAE2 /* MainDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainDataSource.h; sourceTree = "<group>"; };
 		8B3302931C8BC7510088DAE2 /* MainDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainDataSource.m; sourceTree = "<group>"; };
+		8B38230A1CDB5CC20046A6F1 /* UINavigationController+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Custom.h"; sourceTree = "<group>"; };
+		8B38230B1CDB5CC20046A6F1 /* UINavigationController+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Custom.m"; sourceTree = "<group>"; };
 		8B3C318F1C9568B900FC6323 /* FormTextFieldAndButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormTextFieldAndButtonCell.h; sourceTree = "<group>"; };
 		8B3C31901C9568B900FC6323 /* FormTextFieldAndButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormTextFieldAndButtonCell.m; sourceTree = "<group>"; };
 		8B4221171CA428BF00F58D77 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -1694,6 +1697,8 @@
 				9A23A2FC1C7DAA2500FB5EB6 /* UIViewController+Extensions.m */,
 				8BEC33CA1CA6A43E007B924B /* UIImageView+Cache.h */,
 				8BEC33CB1CA6A43E007B924B /* UIImageView+Cache.m */,
+				8B38230A1CDB5CC20046A6F1 /* UINavigationController+Custom.h */,
+				8B38230B1CDB5CC20046A6F1 /* UINavigationController+Custom.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -2179,6 +2184,7 @@
 				8B5DC6341C79B8A700D29292 /* UIView+IFTTTJazzHands.m in Sources */,
 				9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */,
 				9A95FF351C89731100C5F492 /* TRPopView.m in Sources */,
+				8B38230C1CDB5CC20046A6F1 /* UINavigationController+Custom.m in Sources */,
 				8B44450E1C7C9EFE00160DC2 /* SDCycleScrollView.m in Sources */,
 				8BCA5FB71CA96508002601F6 /* DriverInfoCell.m in Sources */,
 				9A95FF111C89135400C5F492 /* AdviceViewController.m in Sources */,

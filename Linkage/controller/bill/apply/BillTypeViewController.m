@@ -41,6 +41,12 @@
     }];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"viewAppear");
+    [super viewWillAppear:animated];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
