@@ -12,6 +12,7 @@
 #import "Order.h"
 #import "Cargo.h"
 #import "OrderUtil.h"
+#import "Driver.h"
 #import "DriverInfoCell.h"
 #import "LinkUtil.h"
 #import "SpecialFormSectionDescriptor.h"
@@ -176,7 +177,7 @@
     for (Cargo *cargo in order.cargos) {
         NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoType];
         section = [XLFormSectionDescriptor formSectionWithTitle:cargoTitle sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
-        section.multivaluedTag = [cargo.cargoId stringValue];
+        section.multivaluedTag = [NSString stringWithFormat:@"%@_%@_%@", [cargo.cargoType stringValue], cargo.cargoId, cargo.cargoNo];
         [form addFormSection:section];
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加司机"];
@@ -209,13 +210,35 @@
 //分配任务给司机
 -(void)allocateTask:(XLFormRowDescriptor *)row
 {
-    
-    //[LoginUser shareInstance].baseHttpParameter
-    [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl json:nil success:^(id responseObject) {
-        
-    } failure:^(NSError *error) {
-        [SVProgressHUD showSuccessWithStatus:@"分配任务成功"];
+    NSMutableArray *cargos = [[NSMutableArray alloc]init];
+    NSDictionary *formValues = [self.cargosDataSource.form formValues];
+    [formValues enumerateKeysAndObjectsUsingBlock:^(NSString *key, id drivers, BOOL * stop) {
+        NSArray *keys = [key componentsSeparatedByString:@"_"];
+        if ([drivers isKindOfClass:[NSArray class]]) {
+            [drivers enumerateObjectsUsingBlock:^(id driver, NSUInteger idx, BOOL * stop) {
+                if ([driver isKindOfClass:[Driver class]]) {
+                    [cargos addObject:@{
+                                        @"driver_id":((Driver *)driver).driverId,
+                                        @"cargo_type":[keys firstObject],
+                                        @"cargo_no": [keys lastObject]?:@""
+                                        }];
+                }
+            }];
+        }
     }];
+    NSLog(@"%@",cargos);
+    
+//    Order *order = self.rowDescriptor.value;
+//    if (order.orderId) {
+//        NSDictionary *parameter = @{@"order_id":order.orderId};
+//        parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+//        [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl json:nil success:^(id responseObject) {
+//            
+//        } failure:^(NSError *error) {
+//            [SVProgressHUD showSuccessWithStatus:@"分配任务成功"];
+//        }];
+//    }
+
 }
 
 #pragma mark - 属性
