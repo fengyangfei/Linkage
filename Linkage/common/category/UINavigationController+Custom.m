@@ -25,7 +25,6 @@ static inline void af_swizzleSelector(Class class, SEL originalSelector, SEL swi
 
 - (UIViewController *)custom_popViewControllerAnimated:(BOOL)animated
 {
-    NSLog(@"sss");
     return [self custom_popViewControllerAnimated:animated];
 }
 

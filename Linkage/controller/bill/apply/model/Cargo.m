@@ -36,7 +36,7 @@
     NSDictionary *keyMap = @{
                              @"cargoType":@"type",
                              @"cargoCount":@"number",
-                             @"cargoNo":@"cargono"
+                             @"cargoNo":@"cargo_no"
                              };
     return keyMap;
 }
@@ -112,6 +112,19 @@
     NSMutableString *str = [NSMutableString string];
     for (Cargo *model in self) {
         NSString *mStr = [NSString stringWithFormat:@"%@:%@;", model.cargoType, model.cargoCount];
+        [str appendString:mStr];
+    }
+    if (str.length > 0) {
+        return [str substringToIndex:str.length - 1];
+    }
+    return str;
+}
+
+-(NSString *)cargosStringValue4Import
+{
+    NSMutableString *str = [NSMutableString string];
+    for (Cargo *model in self) {
+        NSString *mStr = [NSString stringWithFormat:@"%@:%@;", model.cargoNo, model.cargoType];
         [str appendString:mStr];
     }
     if (str.length > 0) {

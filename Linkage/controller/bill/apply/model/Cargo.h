@@ -23,4 +23,5 @@
 
 @interface NSArray(CargoModel)
 -(NSString *)cargosStringValue;
+-(NSString *)cargosStringValue4Import;
 @end

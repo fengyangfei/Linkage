@@ -184,10 +184,10 @@ row.cellStyle = UITableViewCellStyleValue1;
 
 -(CargoFormRowDescriptor *)generateCargoRow
 {
-    CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
+    CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kImportCargoRowDescriptroType];
     [row.cellConfigAtConfigure setObject:@"填入货柜号" forKey:@"rightTextField.placeholder"];
     NSDictionary *dic = [LinkUtil cargoTypes];
-    NSNumber *key = @(1);
+    NSNumber *key = @(0);
     row.value = [Cargo cargoWithType:key name:[dic objectForKey:key]];
     row.action.viewControllerClass = [CargoTypeViewController class];
     return row;

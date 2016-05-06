@@ -180,11 +180,8 @@
 +(void)queryModelFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model completion:(void(^)(id<MTLJSONSerializing> result))completion
 {
     Order *order = (Order *)model;
-    NSDictionary *paramter = @{
-                               @"cid":[LoginUser shareInstance].cid,
-                               @"token":[LoginUser shareInstance].token,
-                               @"order_id":order.orderId
-                               };
+    NSDictionary *paramter = @{@"order_id":order.orderId};
+    paramter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:paramter];
     Order *(^mergeOrder)(id responseObject) = ^(id responseObject) {
         Order *result = (Order *)[OrderUtil modelFromJson:responseObject];
         [result mergeValueForKey:@"orderId" fromModel:order];

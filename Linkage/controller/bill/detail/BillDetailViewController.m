@@ -87,8 +87,12 @@
     [section addFormRow:row];
     
     for (Cargo *cargo in order.cargos) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:[LinkUtil.cargoTypes objectForKey:cargo.cargoId]];
-        row.value = cargo.cargoCount;
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:[LinkUtil.cargoTypes objectForKey:cargo.cargoType]];
+        if (order.type == OrderTypeImport) {
+            row.value = cargo.cargoNo;
+        }else{
+            row.value = cargo.cargoCount;
+        }
         [section addFormRow:row];
     }
     
@@ -170,7 +174,7 @@
     form = [XLFormDescriptor formDescriptorWithTitle:@""];
     
     for (Cargo *cargo in order.cargos) {
-        NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoId];
+        NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoType];
         section = [XLFormSectionDescriptor formSectionWithTitle:cargoTitle sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
         section.multivaluedTag = [cargo.cargoId stringValue];
         [form addFormSection:section];
