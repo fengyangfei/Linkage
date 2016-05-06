@@ -53,6 +53,24 @@
     return _userTypes;
 }
 
++ (NSDictionary *)taskStatus
+{
+    static NSDictionary * _taskStatus;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _taskStatus = @{
+                           @0:@"打单",
+                           @1:@"提柜",
+                           @2:@"送柜",
+                           @3:@"待装货",
+                           @4:@"还柜途中",
+                           @5:@"进入码头",
+                           @6:@"已卸柜"
+                       };
+    });
+    return _taskStatus;
+}
+
 + (NSArray *)userTypeOptions
 {
     static NSArray * _options;

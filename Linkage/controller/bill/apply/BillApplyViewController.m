@@ -188,7 +188,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [row.cellConfigAtConfigure setObject:@"填入货柜号" forKey:@"rightTextField.placeholder"];
     NSDictionary *dic = [LinkUtil cargoTypes];
     NSNumber *key = @(1);
-    row.value = [Cargo cargoWithType:key name:[dic objectForKey:key] count:@0];
+    row.value = [Cargo cargoWithType:key name:[dic objectForKey:key]];
     row.action.viewControllerClass = [CargoTypeViewController class];
     return row;
 }

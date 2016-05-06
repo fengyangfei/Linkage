@@ -16,6 +16,8 @@
 
 + (NSDictionary *)userTypes;
 
++ (NSDictionary *)taskStatus;
+
 + (NSArray *)userTypeOptions;
 
 @end

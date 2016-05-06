@@ -35,7 +35,8 @@
 {
     NSDictionary *keyMap = @{
                              @"cargoType":@"type",
-                             @"cargoCount":@"number"
+                             @"cargoCount":@"number",
+                             @"cargoNo":@"cargono"
                              };
     return keyMap;
 }
