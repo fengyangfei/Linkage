@@ -156,7 +156,7 @@ row.cellStyle = UITableViewCellStyleValue1;
         [self showFormValidationError:errors[0]];
         return;
     }
-    
+    WeakSelf
     NSDictionary *formValues =  [self.form formValues];
     Order *order = (Order *)[OrderUtil modelFromXLFormValue:formValues];
     //同步到服务端
@@ -168,6 +168,7 @@ row.cellStyle = UITableViewCellStyleValue1;
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         }];
         [SVProgressHUD showSuccessWithStatus:@"单据保存成功"];
+        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
     } failure:^(NSError *error) {
         [SVProgressHUD showSuccessWithStatus:@"单据保存失败"];
     }];

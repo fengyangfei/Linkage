@@ -89,7 +89,7 @@
     
     for (Cargo *cargo in order.cargos) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:[LinkUtil.cargoTypes objectForKey:cargo.cargoType]];
-        if (order.type == OrderTypeImport) {
+        if ([order isKindOfClass:[ImportOrder class]]) {
             row.value = cargo.cargoNo;
         }else{
             row.value = cargo.cargoCount;
@@ -174,25 +174,27 @@
     XLFormRowDescriptor * row;
     form = [XLFormDescriptor formDescriptorWithTitle:@""];
     
-    for (Cargo *cargo in order.cargos) {
-        NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoType];
-        section = [XLFormSectionDescriptor formSectionWithTitle:cargoTitle sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
-        section.multivaluedTag = [NSString stringWithFormat:@"%@_%@_%@", [cargo.cargoType stringValue], cargo.cargoId, cargo.cargoNo];
-        [form addFormSection:section];
+    if ([order isKindOfClass:[ImportOrder class]]) {
+        for (Cargo *cargo in order.cargos) {
+            NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoType];
+            section = [XLFormSectionDescriptor formSectionWithTitle:cargoTitle sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
+            section.multivaluedTag = [NSString stringWithFormat:@"%@_%@_%@", [cargo.cargoType stringValue], cargo.cargoId, cargo.cargoNo];
+            [form addFormSection:section];
+            
+            row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加司机"];
+            RowUI
+            row.action.formSelector = @selector(addDriverRow:);
+            [section addFormRow:row];
+        }
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加司机"];
-        RowUI
-        row.action.formSelector = @selector(addDriverRow:);
-        [section addFormRow:row];
-    }
-    
-    if (order.cargos.count > 0) {
-        section = [XLFormSectionDescriptor formSection];
-        [form addFormSection:section];
-        
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"确定"];
-        row.action.formSelector = @selector(allocateTask:);
-        [section addFormRow:row];
+        if (order.cargos.count > 0) {
+            section = [XLFormSectionDescriptor formSection];
+            [form addFormSection:section];
+            
+            row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"确定"];
+            row.action.formSelector = @selector(allocateTask:);
+            [section addFormRow:row];
+        }
     }
     
     return form;
