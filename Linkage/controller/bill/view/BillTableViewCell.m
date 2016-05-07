@@ -55,7 +55,7 @@ NSString *const DoneBillDescriporType = @"DoneBillRowType";
     Order *order = self.rowDescriptor.value;
     self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
     self.ratingLable.attributedText = [order.deliveryAddress attributedStringWithTitle:@"进度："];
-    self.timeLable.attributedText = [[[BillTableViewCell dateFormatter] stringFromDate:order.createTime] attributedStringWithTitle:@"下单时间："];
+    self.timeLable.attributedText = [[[BillTableViewCell dateFormatter] stringFromDate:order.updateTime] attributedStringWithTitle:@"下单时间："];
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor

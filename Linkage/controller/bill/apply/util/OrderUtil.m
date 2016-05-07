@@ -169,7 +169,8 @@
 //数据库查询
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
 {
-    NSArray *orderModelArray = [OrderModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].cid inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"userId", [LoginUser shareInstance].cid];
+    NSArray *orderModelArray = [OrderModel MR_findAllSortedBy:@"updateTime" ascending:NO withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
     NSArray *orders = [orderModelArray modelsFromManagedObject];
     if (completion) {
         completion(orders);

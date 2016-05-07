@@ -65,7 +65,7 @@
 
 + (NSValueTransformer *)JSONTransformerForKey:(NSString *)key
 {
-    if ([@[@"takeTime",@"deliverTime",@"cargosRentExpire",@"createTime",@"customsIn",@"cargoTakeTime"] containsObject:key]) {
+    if ([@[@"takeTime",@"deliverTime",@"cargosRentExpire",@"createTime",@"updateTime",@"customsIn",@"cargoTakeTime"] containsObject:key]) {
         return [MTLValueTransformer transformerUsingForwardBlock:^id(id dateString, BOOL *success, NSError *__autoreleasing *error) {
             if ([dateString isKindOfClass:[NSDate class]]) {
                 return dateString;
@@ -129,9 +129,6 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error
 {
     self = [super initWithDictionary:dictionaryValue error:error];
-    if (self) {
-        self.createTime = [NSDate date];
-    }
     return self;
 }
 
@@ -157,6 +154,7 @@
                              @"customsBroker":@"customs_broker",
                              @"customsHouseContact":@"customs_contact",
                              @"isTransferPort":@"is_transfer_port",
+                             @"updateTime":@"update_time",
                              @"memo":@"memo"
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
@@ -199,6 +197,7 @@
                              @"shipScheduleNo":@"ship_schedule_no",
                              @"isBookCargo":@"is_book_cargo",
                              @"isTransferPort":@"is_transfer_port",
+                             @"updateTime":@"update_time",
                              @"memo":@"memo"
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
@@ -256,6 +255,7 @@
                              @"customsIn":@"customs_in",
                              @"cargoTakeTime":@"cargo_take_time",
                              @"isTransferPort":@"is_transfer_port",
+                             @"updateTime":@"update_time",
                              @"memo":@"memo"
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];

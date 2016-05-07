@@ -228,17 +228,19 @@
     }];
     NSLog(@"%@",cargos);
     
-//    Order *order = self.rowDescriptor.value;
-//    if (order.orderId) {
-//        NSDictionary *parameter = @{@"order_id":order.orderId};
-//        parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
-//        [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl json:nil success:^(id responseObject) {
-//            
-//        } failure:^(NSError *error) {
-//            [SVProgressHUD showSuccessWithStatus:@"分配任务成功"];
-//        }];
-//    }
-
+    Order *order = self.rowDescriptor.value;
+    if (order.orderId) {
+        NSDictionary *parameter = @{
+                                    @"order_id":order.orderId,
+                                    @"cargos":cargos
+                                    };
+        parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+        [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl json:nil success:^(id responseObject) {
+            
+        } failure:^(NSError *error) {
+            [SVProgressHUD showSuccessWithStatus:@"分配任务成功"];
+        }];
+    }
 }
 
 #pragma mark - 属性
