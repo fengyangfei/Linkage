@@ -21,8 +21,7 @@ typedef NS_ENUM(NSUInteger,UserType) {
     UserTypeCompanyAdmin,//厂商管理员
     UserTypeCompanyUser,//厂商普通员工
     UserTypeSubCompanyAdmin,//承运商管理员
-    UserTypeSubCompanyUser,//承运商普通员工
-    UserTypeSubCompanyDriver////承运商司机
+    UserTypeSubCompanyUser//承运商普通员工
 };
 
 @class LoginUser;

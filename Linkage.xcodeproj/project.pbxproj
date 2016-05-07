@@ -118,6 +118,7 @@
 		8B5DC6811C79D0DB00D29292 /* YGRestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC6801C79D0DB00D29292 /* YGRestClient.m */; };
 		8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E31CA0436C00DBEB9F /* AddressViewController.m */; };
 		8B7172E71CA0443300DBEB9F /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */; };
+		8B7BD7C51CDE4C69004B4752 /* SubCompany.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B7BD7C41CDE4C69004B4752 /* SubCompany.bundle */; };
 		8B8284891CA57EA9001B36C1 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8284881CA57EA9001B36C1 /* Company.m */; };
 		8B8B7BE61CCE4BA100080609 /* MessageTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B7BE51CCE4BA100080609 /* MessageTableCell.m */; };
 		8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F266F1C89C83D001B187E /* RegisterViewController.m */; };
@@ -461,6 +462,7 @@
 		8B7172E31CA0436C00DBEB9F /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 		8B7172E51CA0443300DBEB9F /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAddressViewController.h; sourceTree = "<group>"; };
 		8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAddressViewController.m; sourceTree = "<group>"; };
+		8B7BD7C41CDE4C69004B4752 /* SubCompany.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SubCompany.bundle; sourceTree = "<group>"; };
 		8B8284871CA57EA9001B36C1 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
 		8B8284881CA57EA9001B36C1 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
 		8B8B7BE41CCE4BA100080609 /* MessageTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableCell.h; sourceTree = "<group>"; };
@@ -1069,6 +1071,7 @@
 		8B5DC5BE1C79B8A700D29292 /* TRTheme */ = {
 			isa = PBXGroup;
 			children = (
+				8B7BD7C41CDE4C69004B4752 /* SubCompany.bundle */,
 				8BDBB7C91C98509D00D60207 /* Company.bundle */,
 				8B5DC5BF1C79B8A700D29292 /* TRTheme.h */,
 				8B5DC5C01C79B8A700D29292 /* TRTheme.m */,
@@ -2043,6 +2046,7 @@
 				9A23A30E1C7E8E7500FB5EB6 /* button-background.png in Resources */,
 				8B5DC5751C7992E900D29292 /* LaunchScreen.storyboard in Resources */,
 				8B5DC6531C79B8A700D29292 /* zbar-samples.png in Resources */,
+				8B7BD7C51CDE4C69004B4752 /* SubCompany.bundle in Resources */,
 				8B10AD3E1C887D3F00F5B0D6 /* side_backup@2x.png in Resources */,
 				8B5DC5721C7992E900D29292 /* Assets.xcassets in Resources */,
 				8B10AD441C887D3F00F5B0D6 /* side_group@2x.png in Resources */,

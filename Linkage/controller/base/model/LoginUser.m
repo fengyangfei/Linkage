@@ -39,8 +39,7 @@ static LoginUser *user;
                                @(0): @(UserTypeCompanyAdmin),
                                @(1): @(UserTypeCompanyUser),
                                @(2): @(UserTypeSubCompanyAdmin),
-                               @(3): @(UserTypeSubCompanyUser),
-                               @(4): @(UserTypeSubCompanyDriver)
+                               @(3): @(UserTypeSubCompanyUser)
                                };
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(UserTypeCompanyAdmin) reverseDefaultValue:@(0)];
 }

@@ -28,13 +28,20 @@
     WeakSelf
     NSString *userName = self.nameTextField.text;
     NSString *password = self.passwordTextField.text;
-    NSDictionary *paramter = @{@"mobile":userName,
-                               @"password":password};
+    NSDictionary *paramter = @{
+                               @"mobile":userName,
+                               @"password":password
+                               };
     [[YGRestClient sharedInstance] postForObjectWithUrl:LoginUrl form:paramter success:^(id responseObject) {
         NSError *error = nil;
         LoginUser *loginUser = [MTLJSONAdapter modelOfClass:[LoginUser class] fromJSONDictionary:responseObject error:&error];
         if (loginUser && !error) {
             [loginUser save];
+            if (loginUser.ctype == UserTypeCompanyAdmin) {
+                [TRThemeManager shareInstance].themeType = TRThemeTypeCompany;
+            }else if (loginUser.ctype == UserTypeSubCompanyAdmin){
+                [TRThemeManager shareInstance].themeType = TRThemeTypeSubCompany;
+            }
             LATabBarController *tabBarController = [[LATabBarController alloc]init];
             [weakSelf presentViewController:tabBarController animated:YES completion:nil];
         }else{
