@@ -9,6 +9,8 @@
 #import "DriverViewController.h"
 #import "DriverUtil.h"
 #import "AddDriverViewController.h"
+#import "FormDescriptorCell.h"
+#import <Mantle/Mantle.h>
 
 @implementation DriverViewController
 
@@ -20,6 +22,18 @@
 -(Class)viewControllerClass
 {
     return [AddDriverViewController class];
+}
+
+//选择行
+-(void)didSelectModel:(XLFormRowDescriptor *)chosenRow
+{
+    XLFormSectionDescriptor *currentSection = self.rowDescriptor.sectionDescriptor;
+    id<MTLJSONSerializing,XLFormTitleOptionObject> chosenValue = chosenRow.value;
+    XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:[chosenValue formTitleText]];
+    row.value = chosenValue;
+    [currentSection addFormRow:row beforeRow:self.rowDescriptor];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

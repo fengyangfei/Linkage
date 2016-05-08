@@ -12,9 +12,8 @@
 
 extern NSString *const DriverInfoDescriporType;
 
-@interface DriverInfoCell : MGSwipeTableCell<FormDescriptorCell>
+@interface DriverInfoCell : XLFormBaseCell<FormDescriptorCell>
 
-@property (nonatomic, weak) XLFormRowDescriptor * rowDescriptor;
 @property (nonatomic, readonly) UILabel *textLabel;
 @property (nonatomic, readonly) UILabel *detailLabel;
 

@@ -130,6 +130,7 @@ row.cellStyle = UITableViewCellStyleValue1;
 }
 
 #pragma mark - methods
+//选择行
 -(void)didSelectModel:(XLFormRowDescriptor *)chosenRow
 {
     XLFormSectionDescriptor *currentSection = self.rowDescriptor.sectionDescriptor;
