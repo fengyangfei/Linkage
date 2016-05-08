@@ -12,8 +12,8 @@
 #import "ForgotPasswordController.h"
 #import "YGRestClient.h"
 #import "LoginUser.h"
+#import "Company.h"
 #import <SVProgressHUD/SVProgressHUD.h>
-
 
 @interface LoginViewController ()
 
@@ -37,11 +37,15 @@
         LoginUser *loginUser = [MTLJSONAdapter modelOfClass:[LoginUser class] fromJSONDictionary:responseObject error:&error];
         if (loginUser && !error) {
             [loginUser save];
+            //主题变更
             if (loginUser.ctype == UserTypeCompanyAdmin) {
                 [TRThemeManager shareInstance].themeType = TRThemeTypeCompany;
             }else if (loginUser.ctype == UserTypeSubCompanyAdmin){
                 [TRThemeManager shareInstance].themeType = TRThemeTypeSubCompany;
             }
+            //获取企业信息
+            [Company queryFromServer:nil];
+            
             LATabBarController *tabBarController = [[LATabBarController alloc]init];
             [weakSelf presentViewController:tabBarController animated:YES completion:nil];
         }else{

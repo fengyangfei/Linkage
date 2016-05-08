@@ -65,7 +65,7 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logo" rowType:AvatarDescriporType title:@"企业Logo"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logo" rowType:CompanyLogoDescriporType title:@"企业Logo"];
     if (company) {
         row.value = company.logo;
     }

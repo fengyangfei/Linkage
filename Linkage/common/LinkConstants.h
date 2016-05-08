@@ -14,22 +14,25 @@
 #define ButtonColor UIColorFromRGB(0x0080FF)
 #define TableBackgroundColor UIColorFromRGB(0x0080FF)
 
-//用户注册
 #define BaseUrl @"http://120.25.82.122:8000"
+//个人
 #define Register4AdminUrl [NSString stringWithFormat:@"%@/api/session/register4admin", BaseUrl]//注册
 #define Register4InviteUrl [NSString stringWithFormat:@"%@/api/session/register4invitecode", BaseUrl]//注册
 #define LoginUrl [NSString stringWithFormat:@"%@/api/session/login", BaseUrl]//登录
 #define ForgotPasswordUrl [NSString stringWithFormat:@"%@/api/session/forgotpassword", BaseUrl]//忘记密码
 #define ModPasswordUrl [NSString stringWithFormat:@"%@/api/profile/modpassword", BaseUrl]//修改密码
 #define ModMobileUrl [NSString stringWithFormat:@"%@/api/profile/modmobile", BaseUrl]
-#define InfomationUrl [NSString stringWithFormat:@"%@/api/profile/information", BaseUrl]
+#define ProfileInfomationUrl [NSString stringWithFormat:@"%@/api/profile/information", BaseUrl]//获取个人信息
 #define ModInfomationUrl [NSString stringWithFormat:@"%@/api/profile/modinformation",BaseUrl]//修改个人信息
 #define VerifycodeUrl [NSString stringWithFormat:@"%@/api/code/verifycode",BaseUrl]//验证码
 #define InvitecodeUrl [NSString stringWithFormat:@"%@/api/code/invitecode",BaseUrl]//生成邀请码
 #define GenInvitecodeUrl [NSString stringWithFormat:@"%@/api/code/inviteurl",BaseUrl]//生成邀请链接
-#define ModCompanyUrl [NSString stringWithFormat:@"%@/api/company/modcompany",BaseUrl]//修改厂商
 #define SystemSettingUrl [NSString stringWithFormat:@"%@/api/profile/updatesysset",BaseUrl]//系统设置
 #define UserIconUrl [NSString stringWithFormat:@"%@/api/upload/usericon",BaseUrl]//上传个人头像
+
+//企业
+#define CompanyInfomationUrl [NSString stringWithFormat:@"%@/api/company/information", BaseUrl]//获取企业信息
+#define ModCompanyUrl [NSString stringWithFormat:@"%@/api/company/modcompany",BaseUrl]//修改厂商
 #define CompanyLogoUrl [NSString stringWithFormat:@"%@/api/upload/companylogo",BaseUrl]//上传公司头像
 
 //消息

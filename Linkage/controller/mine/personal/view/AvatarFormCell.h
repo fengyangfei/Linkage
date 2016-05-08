@@ -9,8 +9,12 @@
 #import <XLForm/XLForm.h>
 
 extern NSString *const AvatarDescriporType;
+extern NSString *const CompanyLogoDescriporType;
 
 @interface AvatarFormCell : XLFormBaseCell
 @property (nonatomic,readonly) UIImageView *imageView;
 @property (nonatomic,readonly) UILabel *textLabel;
+@end
+
+@interface CompanyLogoFormCell : AvatarFormCell
 @end

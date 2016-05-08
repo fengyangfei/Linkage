@@ -17,6 +17,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 NSString *const AvatarDescriporType = @"AvatarRowType";
+NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
 
 @implementation AvatarFormCell
 @synthesize imageView = _imageView;
@@ -109,6 +110,34 @@ NSString *const AvatarDescriporType = @"AvatarRowType";
         make.left.equalTo(self.contentView.left).offset(18);
         make.right.equalTo(self.imageView.left);
         make.centerY.equalTo(self.contentView.centerY);
+    }];
+}
+
+@end
+
+@implementation CompanyLogoFormCell
+
++(void)load
+{
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:CompanyLogoDescriporType];
+}
+
+-(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
+{
+    WeakSelf
+    [controller addSignalPhoto:^(UIImage *image, NSString *fileName) {
+        [weakSelf.imageView setImage:image];
+        weakSelf.rowDescriptor.value = fileName;
+        [[ImageCacheManager sharedManger] diskImageExistsWithKey:fileName completion:^(BOOL isInCache) {
+            [LinkUtil uploadWithUrl:CompanyLogoUrl image:UIImageJPEGRepresentation(image, 0.75) name:fileName success:^(id responseObject) {
+                Company *company = [Company shareInstance];
+                company.logo = responseObject[@"result"][@"icon"];
+                [company save];
+            }];
+            if (!isInCache) {
+                [[ImageCacheManager sharedManger] storeImage:image forKey:fileName];
+            }
+        }];
     }];
 }
 

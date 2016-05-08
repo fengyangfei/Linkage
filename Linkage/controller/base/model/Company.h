@@ -24,3 +24,7 @@
 -(BOOL)save;
 +(Company *)shareInstance;
 @end
+
+@interface Company(Operation)
++(void)queryFromServer:(void(^)(Company *company))completion;
+@end

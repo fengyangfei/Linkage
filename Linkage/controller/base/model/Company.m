@@ -7,6 +7,9 @@
 //
 
 #import "Company.h"
+#import "LoginUser.h"
+#import "YGRestClient.h"
+#import <Mantle/Mantle.h>
 #define kUserDefalutCompanyKey  @"kUserDefalutCompanyKey"
 
 @implementation Company
@@ -16,7 +19,7 @@
     NSDictionary *keyMap = @{
                                 @"address":@"contact_address",
                                 @"contactorPhone":@"contact_phone",
-                                @"introduction":@"description"
+                                @"introduction":@"contact_description"
                              };
     NSDictionary *keyDic = [super JSONKeyPathsByPropertyKey];
     return [keyDic mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
@@ -43,4 +46,29 @@ static Company *company;
     return company;
 }
 
+@end
+
+@implementation Company(Operation)
++(void)queryFromServer:(void(^)(Company *company))completion
+{
+    NSDictionary *parameter = @{
+                                @"company_id":[LoginUser shareInstance].companyId
+                                };
+    parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+    [[YGRestClient sharedInstance] postForObjectWithUrl:CompanyInfomationUrl form:parameter success:^(id responseObject) {
+        NSError *error = nil;
+        Company *company = [MTLJSONAdapter modelOfClass:[Company class] fromJSONDictionary:responseObject error:&error];
+        if (company) {
+            [company save];
+            if (completion) {
+                completion(company);
+            }
+        }
+        if (error) {
+            NSLog(@"%@",error);
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
 @end

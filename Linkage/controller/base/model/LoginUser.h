@@ -49,6 +49,7 @@ typedef NS_ENUM(NSUInteger,UserType) {
 @property (nonatomic,strong ) NSDate     *birthday;
 @property (nonatomic,copy   ) NSString   *avatar;
 @property (nonatomic,copy   ) NSString   *icon;//服务端返回的头像URL
+@property (nonatomic,copy   ) NSString   *companyId;//用户所属公司ID
 @property (nonatomic,copy   ) NSString   *identity;
 @property (nonatomic, strong) NSDate     *createTime;
 @property (nonatomic, strong) NSDate     *updateTime;
