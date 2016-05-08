@@ -27,4 +27,5 @@
 
 @interface Company(Operation)
 +(void)queryFromServer:(void(^)(Company *company))completion;
++(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 @end

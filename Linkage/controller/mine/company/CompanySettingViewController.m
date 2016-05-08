@@ -181,10 +181,14 @@
     formValues[@"companyImages"] = companyImages;
     //保存到UserDefault
     Company *company = [MTLJSONAdapter modelOfClass:[Company class] fromJSONDictionary:formValues error:nil];
-    BOOL saveSuccess = [company save];
-    if (saveSuccess) {
-        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
-    }
+    [Company syncToServer:company success:^(id responseData) {
+        BOOL saveSuccess = [company save];
+        if (saveSuccess) {
+            [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+        }
+    } failure:^(NSError *error) {
+        [SVProgressHUD showSuccessWithStatus:@"保存失败"];
+    }];
 }
 
 #pragma mark - 重写tableviewDataSource方法

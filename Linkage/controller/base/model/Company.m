@@ -71,4 +71,12 @@ static Company *company;
         
     }];
 }
+
++(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
+{
+    NSError *error;
+    NSDictionary *parameter = [MTLJSONAdapter JSONDictionaryFromModel:model error:&error];
+    parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+    [[YGRestClient sharedInstance] postForObjectWithUrl:ModCompanyUrl form:parameter success:success failure:failure];
+}
 @end

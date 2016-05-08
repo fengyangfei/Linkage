@@ -165,8 +165,6 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
         if (user) {
             if (user.icon) {
                 [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.icon]];
-            }else if (user.avatar) {
-                [self.iconView imageWithCacheKey:user.avatar];
             }
             self.titleLabel.text = NilStringWrapper(user.userName);
             self.subTitleLabel.text = NilStringWrapper(user.mobile);
@@ -180,7 +178,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
         Company *company = [Company shareInstance];
         if (company) {
             if (company.logo) {
-                [self.iconView imageWithCacheKey:company.logo];
+                [self.iconView sd_setImageWithURL:[NSURL URLWithString:company.logo]];
             }
             self.titleLabel.text = company.companyName;
             self.subTitleLabel.text = company.address;
