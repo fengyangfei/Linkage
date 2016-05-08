@@ -12,6 +12,7 @@
 #import "Company.h"
 #import "UIImageView+Cache.h"
 #import "ModelBaseViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 NSString *const FormRowDescriptorTypeMine = @"mineRowCell";
 NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
@@ -83,6 +84,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 }
 @end
 
+//普通的Cell
 @implementation MenuCell
 
 -(void)configure
@@ -120,6 +122,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 
 @end
 
+//公司与个人的Cell
 @interface MenuInfoCell()
 @property (nonatomic, strong) UILabel *subTitleLabel;
 @end
@@ -160,7 +163,9 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
     if ([item.entityName isEqualToString:@"LoginUser"]) {
         LoginUser *user = [LoginUser shareInstance];
         if (user) {
-            if (user.avatar) {
+            if (user.icon) {
+                [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.icon]];
+            }else if (user.avatar) {
                 [self.iconView imageWithCacheKey:user.avatar];
             }
             self.titleLabel.text = NilStringWrapper(user.userName);

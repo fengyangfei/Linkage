@@ -21,6 +21,6 @@
 + (NSArray *)userTypeOptions;
 
 //上传到服务器
-+ (void)uploadWithUrl:(NSString *)url image:(NSData *)image name:(NSString *)fileName;
++ (void)uploadWithUrl:(NSString *)url image:(NSData *)image name:(NSString *)fileName success:(void(^)(id responseObject))success;
 
 @end

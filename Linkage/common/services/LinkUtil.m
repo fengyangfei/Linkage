@@ -91,7 +91,7 @@
 }
 
 //上传到服务器
-+(void)uploadWithUrl:(NSString *)url image:(NSData *)image name:(NSString *)fileName
++(void)uploadWithUrl:(NSString *)url image:(NSData *)image name:(NSString *)fileName success:(void(^)(id responseObject))success
 {
     NSDictionary *parameter = @{};
     parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
@@ -104,6 +104,9 @@
                                 mimeType:[NSData sd_contentTypeForImageData:image]];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"上传成功"];
+        if (success) {
+            success(responseObject);
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"上传失败"];
     }];

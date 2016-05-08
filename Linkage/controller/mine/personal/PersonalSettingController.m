@@ -69,7 +69,7 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"avatar" rowType:AvatarDescriporType title:@"头像"];
     if (user) {
-        row.value = user.avatar;
+        row.value = user.icon;
     }
     [section addFormRow:row];
     

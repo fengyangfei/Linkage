@@ -14,6 +14,7 @@
 #import "LoginUser.h"
 #import "LinkUtil.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 NSString *const AvatarDescriporType = @"AvatarRowType";
 
@@ -37,13 +38,10 @@ NSString *const AvatarDescriporType = @"AvatarRowType";
 
 -(void)update
 {
-    WeakSelf
     [super update];
     self.textLabel.text = self.rowDescriptor.title;
     if (self.rowDescriptor.value) {
-        [[ImageCacheManager sharedManger] queryDiskCacheForKey:self.rowDescriptor.value done:^(UIImage *image, SDImageCacheType cacheType) {
-            weakSelf.imageView.image = image;
-        }];
+        [self.imageView sd_setImageWithURL:self.rowDescriptor.value];
     }
 }
 
@@ -59,7 +57,11 @@ NSString *const AvatarDescriporType = @"AvatarRowType";
         [weakSelf.imageView setImage:image];
         weakSelf.rowDescriptor.value = fileName;
         [[ImageCacheManager sharedManger] diskImageExistsWithKey:fileName completion:^(BOOL isInCache) {
-            [LinkUtil uploadWithUrl:UserIconUrl image:UIImageJPEGRepresentation(image, 0.75) name:fileName];
+            [LinkUtil uploadWithUrl:UserIconUrl image:UIImageJPEGRepresentation(image, 0.75) name:fileName success:^(id responseObject) {
+                LoginUser *user = [LoginUser shareInstance];
+                user.icon = responseObject[@"result"][@"icon"];
+                [user save];
+            }];
             if (!isInCache) {
                 [[ImageCacheManager sharedManger] storeImage:image forKey:fileName];
             }
