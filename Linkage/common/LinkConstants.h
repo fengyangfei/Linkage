@@ -29,6 +29,8 @@
 #define GenInvitecodeUrl [NSString stringWithFormat:@"%@/api/code/inviteurl",BaseUrl]//生成邀请链接
 #define ModCompanyUrl [NSString stringWithFormat:@"%@/api/company/modcompany",BaseUrl]//修改厂商
 #define SystemSettingUrl [NSString stringWithFormat:@"%@/api/profile/updatesysset",BaseUrl]//系统设置
+#define UserIconUrl [NSString stringWithFormat:@"%@/api/upload/usericon",BaseUrl]//上传个人头像
+#define CompanyLogoUrl [NSString stringWithFormat:@"%@/api/upload/companylogo",BaseUrl]//上传公司头像
 
 //消息
 #define MessagesUrl [NSString stringWithFormat:@"%@/api/message/list",BaseUrl]//消息列表

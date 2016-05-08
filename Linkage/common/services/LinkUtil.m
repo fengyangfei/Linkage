@@ -7,6 +7,10 @@
 //
 
 #import "LinkUtil.h"
+#import "LoginUser.h"
+#import <AFNetworking/AFNetworking.h>
+#import <SDWebImage/NSData+ImageContentType.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @implementation LinkUtil
 
@@ -85,5 +89,29 @@
     });
     return _options;
 }
+
+//上传到服务器
++(void)uploadWithUrl:(NSString *)url image:(NSData *)image name:(NSString *)fileName
+{
+    NSDictionary *parameter = @{};
+    parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+    AFHTTPRequestOperationManager *manager = [[YGRestClient sharedInstance] getJSONRequestManager];
+    manager.requestSerializer.timeoutInterval = 300.0f;
+    AFHTTPRequestOperation *operation = [manager POST:url parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:image
+                                    name:@"file"
+                                fileName:fileName
+                                mimeType:[NSData sd_contentTypeForImageData:image]];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD showSuccessWithStatus:@"上传成功"];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"上传失败"];
+    }];
+    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        float p = (totalBytesWritten + 0.0f) / totalBytesExpectedToWrite;
+        [SVProgressHUD showProgress:p status:@"上传中"];
+    }];
+}
+
 
 @end

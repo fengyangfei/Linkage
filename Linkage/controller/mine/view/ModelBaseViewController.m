@@ -82,7 +82,7 @@ row.cellStyle = UITableViewCellStyleValue1;
             [weakSelf initializeForm:models];
         }else{
             if(![weakSelf.tableView.mj_header isRefreshing]){
-                //[weakSelf.tableView.mj_header beginRefreshing];
+                [weakSelf.tableView.mj_header beginRefreshing];
             }
         }
     }];

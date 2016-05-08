@@ -8,6 +8,7 @@
 
 #import "MainBaseViewController.h"
 #import "SDCycleScrollView.h"
+#import "LoginUser.h"
 
 @interface XLFormViewController(MainBase)
 -(void)superViewDidLoad;
@@ -79,11 +80,13 @@
                                           @"https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
                                           @"http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg"
                                           ];
+            NSMutableArray *companyIcons = [NSMutableArray array];
+            NSMutableArray *companyNames = [NSMutableArray array];
+            [[LoginUser shareInstance].companies enumerateObjectsUsingBlock:^(Company *company, NSUInteger idx, BOOL * stop) {
+                [companyNames addObject: company.companyName];
+            }];
             //文字
-            NSArray *titles = @[@"承运商A",
-                                @"承运商B",
-                                @"承运商C"
-                                ];
+            NSArray *titles = companyNames;
             
             SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
             

@@ -10,6 +10,10 @@
 #import "UIViewController+TRImagePicker.h"
 #import "SOImage.h"
 #import "ImageCacheManager.h"
+#import "YGRestClient.h"
+#import "LoginUser.h"
+#import "LinkUtil.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 NSString *const AvatarDescriporType = @"AvatarRowType";
 
@@ -55,6 +59,7 @@ NSString *const AvatarDescriporType = @"AvatarRowType";
         [weakSelf.imageView setImage:image];
         weakSelf.rowDescriptor.value = fileName;
         [[ImageCacheManager sharedManger] diskImageExistsWithKey:fileName completion:^(BOOL isInCache) {
+            [LinkUtil uploadWithUrl:UserIconUrl image:UIImageJPEGRepresentation(image, 0.75) name:fileName];
             if (!isInCache) {
                 [[ImageCacheManager sharedManger] storeImage:image forKey:fileName];
             }
