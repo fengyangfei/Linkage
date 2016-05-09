@@ -39,7 +39,6 @@
     WeakSelf
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
-    __weak __typeof(self.leftTableView) weakLeftView = self.leftTableView;
     self.leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         NSDictionary *parameter = @{
                                     @"type":@(-1),
@@ -52,11 +51,10 @@
             }
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
             [weakSelf setupTodoData];
-            [weakLeftView.mj_header endRefreshing];
+            [weakSelf.leftTableView.mj_header endRefreshing];
         }];
     }];
     
-    __weak __typeof(self.rightTableView) weakRightView = self.rightTableView;
     self.rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         NSDictionary *parameter = @{
                                     @"type":@(-1),
@@ -69,7 +67,7 @@
             }
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
             [weakSelf setupDoneData];
-            [weakRightView.mj_header endRefreshing];
+            [weakSelf.rightTableView.mj_header endRefreshing];
         }];
     }];
 }
