@@ -8,6 +8,7 @@
 
 #import "DriverViewController.h"
 #import "Driver.h"
+#import "Cargo.h"
 #import "DriverUtil.h"
 #import "AddDriverViewController.h"
 #import "FormDescriptorCell.h"
@@ -33,7 +34,7 @@
     XLFormSectionDescriptor *currentSection = self.rowDescriptor.sectionDescriptor;
     id<MTLJSONSerializing,XLFormTitleOptionObject> chosenValue = chosenRow.value;
     XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:DriverInfoDescriporType title:[chosenValue formTitleText]];
-    row.value = [[CargoToDriver alloc]initWithDriver:(Driver *)chosenValue cargo:nil];
+    row.value = [[CargoToDriver alloc]initWithDriver:(Driver *)chosenValue cargo:(Cargo *)self.rowDescriptor.value];
     [currentSection addFormRow:row beforeRow:self.rowDescriptor];
     
     [self.navigationController popViewControllerAnimated:YES];

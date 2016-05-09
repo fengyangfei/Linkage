@@ -11,6 +11,7 @@
 #import "LoginUser.h"
 #import "Order.h"
 #import "Cargo.h"
+#import "CargoToDriver.h"
 #import "OrderUtil.h"
 #import "Driver.h"
 #import "DriverInfoCell.h"
@@ -177,11 +178,12 @@
     for (Cargo *cargo in order.cargos) {
         NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoType];
         section = [XLFormSectionDescriptor formSectionWithTitle:cargoTitle sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
-        section.multivaluedTag = [NSString stringWithFormat:@"%@_%@_%@", [cargo.cargoType stringValue], cargo.cargoId, cargo.cargoNo];
+        section.multivaluedTag = [NSUUID UUID].UUIDString;
         [form addFormSection:section];
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加司机"];
         RowUI
+        row.value = cargo;
         row.action.formSelector = @selector(addDriverRow:);
         [section addFormRow:row];
     }
@@ -213,14 +215,13 @@
     NSMutableArray *cargos = [[NSMutableArray alloc]init];
     NSDictionary *formValues = [self.cargosDataSource.form formValues];
     [formValues enumerateKeysAndObjectsUsingBlock:^(NSString *key, id drivers, BOOL * stop) {
-        NSArray *keys = [key componentsSeparatedByString:@"_"];
         if ([drivers isKindOfClass:[NSArray class]]) {
             [drivers enumerateObjectsUsingBlock:^(id driver, NSUInteger idx, BOOL * stop) {
-                if ([driver isKindOfClass:[Driver class]]) {
+                if ([driver isKindOfClass:[CargoToDriver class]]) {
                     [cargos addObject:@{
-                                        @"driver_id":((Driver *)driver).driverId,
-                                        @"cargo_type":[keys firstObject],
-                                        @"cargo_no": [keys lastObject]?:@""
+                                        @"driver_id":((CargoToDriver *)driver).driverId,
+                                        @"cargo_type":((CargoToDriver *)driver).cargoType,
+                                        @"cargo_no": ((CargoToDriver *)driver).cargoNo
                                         }];
                 }
             }];

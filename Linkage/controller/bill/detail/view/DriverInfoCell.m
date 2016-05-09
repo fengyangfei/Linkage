@@ -38,8 +38,8 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
 {
     [super update];
     CargoToDriver *model = self.rowDescriptor.value;
-    self.textLabel.attributedText = [model.driverName attributedStringWithTitle:@"司机"];
-    self.detailLabel.attributedText = [model.driverLicense attributedStringWithTitle:@"牌号"];
+    self.textLabel.attributedText = [model.driverName attributedStringWithTitle:@"司机："];
+    self.detailLabel.attributedText = [model.driverLicense attributedStringWithTitle:@"牌号："];
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
@@ -65,7 +65,7 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
     [self.contentView addSubview:self.textField];
     [self.textField makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.left).offset(12);
-        make.bottom.equalTo(self.contentView.bottom).offset(-5);
+        make.bottom.equalTo(self.contentView.bottom).offset(-6);
     }];
 }
 
@@ -73,7 +73,6 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
 {
     if (!_textLabel) {
         _textLabel = [UILabel new];
-        _textLabel.font = [UIFont systemFontOfSize:12];
     }
     return _textLabel;
 }
@@ -82,7 +81,6 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
 {
     if (!_detailLabel) {
         _detailLabel = [UILabel new];
-        _detailLabel.font = [UIFont systemFontOfSize:12];
     }
     return _detailLabel;
 }
@@ -91,7 +89,8 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
 {
     if (!_textField) {
         _textField = [[UITextField alloc]init];
-        _textField.placeholder = @"货柜号";
+        _textField.font = [UIFont systemFontOfSize:14];
+        _textField.placeholder = @"请填入货柜号";
     }
     return _textField;
 }
