@@ -9,31 +9,30 @@
 #import "DriverInfoCell.h"
 #import "CargoToDriver.h"
 #import "NSString+Hint.h"
+#import "LinkUtil.h"
 
 NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
-@interface DriverInfoCell()<UITextFieldDelegate>
+NSString *const DriverEditDescriporType = @"DriverEditRowType";
+
+@interface DriverBaseCell()<UITextFieldDelegate>
 @property (nonatomic, readonly) UILabel *textLabel;
 @property (nonatomic, readonly) UILabel *detailLabel;
 @property (nonatomic, readonly) UITextField *textField;
 @end
 
-@implementation DriverInfoCell
+@implementation DriverBaseCell
 @synthesize textLabel = _textLabel;
 @synthesize detailLabel = _detailLabel;
 @synthesize textField = _textField;
-
-+(void)load
-{
-    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:DriverInfoDescriporType];
-}
 
 -(void)configure
 {
     [super configure];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self setupUI];
+    [self.textField setEnabled:!self.rowDescriptor.disabled];
     [self.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-
+    
 }
 
 -(void)update
@@ -75,7 +74,7 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
     }
 }
 
-#pragma mark - UI
+#pragma mark - updateUI
 -(void)setupUI
 {
     [self.contentView addSubview:self.textLabel];
@@ -124,6 +123,18 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
     }
     return _textField;
 }
+@end
 
+@implementation DriverEditCell
++(void)load
+{
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:DriverEditDescriporType];
+}
+@end
 
+@implementation DriverInfoCell
++(void)load
+{
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:DriverInfoDescriporType];
+}
 @end

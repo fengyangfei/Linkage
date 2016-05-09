@@ -64,7 +64,11 @@
         [_detailDS setForm:[self createDetailForm:order]];
     }
     if (_cargosDataSource) {
-        [_cargosDataSource setForm:[self createCargosForm:order]];
+        if([LoginUser shareInstance].ctype == UserTypeCompanyAdmin){
+            [_cargosDataSource setForm:[self createCargosEditForm:order]];
+        }else{
+            [_cargosDataSource setForm:[self createCargosInfoForm:order]];
+        }
     }
 }
 
@@ -168,7 +172,8 @@
     return form;
 }
 
--(XLFormDescriptor *)createCargosForm:(Order *)order
+//可编辑的form
+-(XLFormDescriptor *)createCargosEditForm:(Order *)order
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
@@ -184,6 +189,9 @@
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加司机"];
         RowUI
         row.value = cargo;
+        if (![order isKindOfClass:[ImportOrder class]]) {
+            row.disabled = @YES;
+        }
         row.action.formSelector = @selector(addDriverRow:);
         [section addFormRow:row];
     }
@@ -197,6 +205,28 @@
         [section addFormRow:row];
     }
     
+    return form;
+}
+
+//查看详情的form
+-(XLFormDescriptor *)createCargosInfoForm:(Order *)order
+{
+    XLFormDescriptor * form;
+    XLFormSectionDescriptor * section;
+    XLFormRowDescriptor * row;
+    form = [XLFormDescriptor formDescriptorWithTitle:@""];
+    form.disabled = YES;
+    
+    for (Cargo *cargo in order.cargos) {
+        NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoType];
+        section = [XLFormSectionDescriptor formSectionWithTitle:cargoTitle];
+        [form addFormSection:section];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:DriverInfoDescriporType];
+        RowUI
+        row.value = cargo;
+        [section addFormRow:row];
+    }
     return form;
 }
 

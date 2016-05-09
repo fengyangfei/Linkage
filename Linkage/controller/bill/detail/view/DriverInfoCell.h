@@ -10,6 +10,13 @@
 #import "FormDescriptorCell.h"
 
 extern NSString *const DriverInfoDescriporType;
+extern NSString *const DriverEditDescriporType;
 
-@interface DriverInfoCell : XLFormBaseCell<FormDescriptorCell>
+@interface DriverBaseCell : XLFormBaseCell<FormDescriptorCell>
+@end
+
+@interface DriverEditCell : DriverBaseCell
+@end
+
+@interface DriverInfoCell : DriverBaseCell
 @end
