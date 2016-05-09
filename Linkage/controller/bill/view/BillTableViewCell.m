@@ -8,21 +8,10 @@
 
 #import "BillTableViewCell.h"
 #import "Order.h"
+#import "NSString+Hint.h"
 
 NSString *const TodoBillDescriporType = @"TodoBillRowType";
 NSString *const DoneBillDescriporType = @"DoneBillRowType";
-
-@implementation NSString (BillInfo)
-
--(NSAttributedString *)attributedStringWithTitle:(NSString *)title
-{
-    NSMutableAttributedString *titleString = [[[NSAttributedString alloc]initWithString:title attributes:@{NSForegroundColorAttributeName:[UIColor grayColor],NSFontAttributeName:[UIFont systemFontOfSize:14]}] mutableCopy];
-    NSAttributedString *valueString = [[NSAttributedString alloc]initWithString:self attributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:14]}];
-    [titleString appendAttributedString:valueString];
-    return [titleString copy];
-}
-
-@end
 
 @interface BillTableViewCell()
 

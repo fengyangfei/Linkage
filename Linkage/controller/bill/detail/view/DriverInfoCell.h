@@ -8,13 +8,8 @@
 
 #import <XLForm/XLForm.h>
 #import "FormDescriptorCell.h"
-#import <MGSwipeTableCell/MGSwipeTableCell.h>
 
 extern NSString *const DriverInfoDescriporType;
 
 @interface DriverInfoCell : XLFormBaseCell<FormDescriptorCell>
-
-@property (nonatomic, readonly) UILabel *textLabel;
-@property (nonatomic, readonly) UILabel *detailLabel;
-
 @end

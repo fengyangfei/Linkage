@@ -208,6 +208,8 @@
 		9A23A3201C7E8EA900FB5EB6 /* ICETutorialPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A31C1C7E8EA900FB5EB6 /* ICETutorialPage.m */; };
 		9A23A3211C7E8EA900FB5EB6 /* ICETutorialStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A31E1C7E8EA900FB5EB6 /* ICETutorialStyle.m */; };
 		9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A3231C7E900500FB5EB6 /* TutorialController.m */; };
+		9A2F5C2A1CE01E5B00E7E2DD /* NSString+Hint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */; };
+		9A2F5C2E1CE023E000E7E2DD /* CargoToDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C2D1CE023E000E7E2DD /* CargoToDriver.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -624,6 +626,10 @@
 		9A23A31E1C7E8EA900FB5EB6 /* ICETutorialStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICETutorialStyle.m; sourceTree = "<group>"; };
 		9A23A3221C7E900500FB5EB6 /* TutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialController.h; sourceTree = "<group>"; };
 		9A23A3231C7E900500FB5EB6 /* TutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialController.m; sourceTree = "<group>"; };
+		9A2F5C281CE01E5B00E7E2DD /* NSString+Hint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hint.h"; sourceTree = "<group>"; };
+		9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hint.m"; sourceTree = "<group>"; };
+		9A2F5C2C1CE023E000E7E2DD /* CargoToDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoToDriver.h; sourceTree = "<group>"; };
+		9A2F5C2D1CE023E000E7E2DD /* CargoToDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoToDriver.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -1341,6 +1347,8 @@
 				8BE25B071CC7AF970073BD8D /* MTLModel+Merge.h */,
 				8BE25B081CC7AF970073BD8D /* MTLModel+Merge.m */,
 				9A11F0631CD04AF9002E8F6F /* ModelOperation.h */,
+				9A2F5C281CE01E5B00E7E2DD /* NSString+Hint.h */,
+				9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */,
 			);
 			path = extends;
 			sourceTree = "<group>";
@@ -1505,6 +1513,7 @@
 		8BCA5FB01CA95EB8002601F6 /* detail */ = {
 			isa = PBXGroup;
 			children = (
+				9A2F5C2B1CE0224300E7E2DD /* model */,
 				9A126DEB1CD308C000648184 /* dataSource */,
 				8BCA5FB41CA9646D002601F6 /* view */,
 				8BCA5FB11CA95EE3002601F6 /* BillDetailViewController.h */,
@@ -1745,6 +1754,15 @@
 				9A23A31E1C7E8EA900FB5EB6 /* ICETutorialStyle.m */,
 			);
 			path = ICETutorial;
+			sourceTree = "<group>";
+		};
+		9A2F5C2B1CE0224300E7E2DD /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9A2F5C2C1CE023E000E7E2DD /* CargoToDriver.h */,
+				9A2F5C2D1CE023E000E7E2DD /* CargoToDriver.m */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		9A7D0E901CD885C400EE005F /* util */ = {
@@ -2232,6 +2250,7 @@
 				9A23A2F91C7D9FE100FB5EB6 /* LoginBaseViewController.m in Sources */,
 				8B44450D1C7C9EFE00160DC2 /* SDCollectionViewCell.m in Sources */,
 				9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */,
+				9A2F5C2E1CE023E000E7E2DD /* CargoToDriver.m in Sources */,
 				8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */,
 				9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */,
 				9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */,
@@ -2292,6 +2311,7 @@
 				8BE25B091CC7AF970073BD8D /* MTLModel+Merge.m in Sources */,
 				8BDBB7D11C9859CD00D60207 /* BillDataSource.m in Sources */,
 				9A05C37A1CC8C413009BC8C9 /* ExpandFormSectionDescriptor.m in Sources */,
+				9A2F5C2A1CE01E5B00E7E2DD /* NSString+Hint.m in Sources */,
 				8B5DC6231C79B8A700D29292 /* IFTTTFilmstrip.m in Sources */,
 				8B5DC6211C79B8A700D29292 /* IFTTTCornerRadiusAnimation.m in Sources */,
 				8B44450A1C7C9EFE00160DC2 /* TAAnimatedDotView.m in Sources */,

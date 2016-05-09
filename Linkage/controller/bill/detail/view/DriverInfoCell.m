@@ -7,12 +7,20 @@
 //
 
 #import "DriverInfoCell.h"
-#import <MGSwipeTableCell/MGSwipeButton.h>
-NSString *const DriverInfoDescriporType = @"DriverInfoRowType";;
+#import "CargoToDriver.h"
+#import "NSString+Hint.h"
+
+NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
+@interface DriverInfoCell()
+@property (nonatomic, readonly) UILabel *textLabel;
+@property (nonatomic, readonly) UILabel *detailLabel;
+@property (nonatomic, readonly) UITextField *textField;
+@end
 
 @implementation DriverInfoCell
 @synthesize textLabel = _textLabel;
 @synthesize detailLabel = _detailLabel;
+@synthesize textField = _textField;
 
 +(void)load
 {
@@ -29,8 +37,9 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";;
 -(void)update
 {
     [super update];
-    self.textLabel.text = @"司机A";
-    self.detailLabel.text = @"车牌：粤C88888";
+    CargoToDriver *model = self.rowDescriptor.value;
+    self.textLabel.attributedText = [model.driverName attributedStringWithTitle:@"司机"];
+    self.detailLabel.attributedText = [model.driverLicense attributedStringWithTitle:@"牌号"];
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
@@ -44,17 +53,20 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";;
     [self.contentView addSubview:self.textLabel];
     [self.textLabel makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.left).offset(12);
-        make.top.equalTo(self.contentView.top);
-        make.bottom.equalTo(self.contentView.centerY);
+        make.top.equalTo(self.contentView.top).offset(5);
     }];
     
     [self.contentView addSubview:self.detailLabel];
     [self.detailLabel makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.left).offset(12);
-        make.top.equalTo(self.contentView.centerY);
-        make.bottom.equalTo(self.contentView.bottom);
+        make.centerY.equalTo(self.contentView.centerY);
     }];
     
+    [self.contentView addSubview:self.textField];
+    [self.textField makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(12);
+        make.bottom.equalTo(self.contentView.bottom).offset(-5);
+    }];
 }
 
 -(UILabel *)textLabel
@@ -73,6 +85,15 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";;
         _detailLabel.font = [UIFont systemFontOfSize:12];
     }
     return _detailLabel;
+}
+
+-(UITextField *)textField
+{
+    if (!_textField) {
+        _textField = [[UITextField alloc]init];
+        _textField.placeholder = @"货柜号";
+    }
+    return _textField;
 }
 
 
