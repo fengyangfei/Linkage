@@ -255,11 +255,14 @@
         }
     }];
     
+    NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"cargos":cargos} options:0 error:NULL];
+    NSString *cargoString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    
     Order *order = self.rowDescriptor.value;
     if (order.orderId) {
         NSDictionary *parameter = @{
                                     @"order_id":order.orderId,
-                                    @"cargos":cargos
+                                    @"dispatch_info":cargoString
                                     };
         parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
         [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl form:parameter success:^(id responseObject) {
