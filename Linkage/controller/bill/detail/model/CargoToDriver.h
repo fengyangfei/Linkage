@@ -15,6 +15,7 @@
 @property (nonatomic,copy) NSString *driverLicense;
 @property (nonatomic,copy) NSString *cargoNo;
 @property (nonatomic,strong) NSNumber *cargoType;
+@property (nonatomic,strong) NSNumber *status;
 
 - (instancetype)initWithDriver:(Driver *)driver cargo:(Cargo *)cargo;
 @end

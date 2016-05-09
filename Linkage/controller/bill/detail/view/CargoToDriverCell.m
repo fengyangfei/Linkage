@@ -125,6 +125,7 @@ NSString *const DriverEditDescriporType = @"DriverEditRowType";
 }
 @end
 
+//编辑Cell
 @implementation DriverEditCell
 +(void)load
 {
@@ -132,9 +133,42 @@ NSString *const DriverEditDescriporType = @"DriverEditRowType";
 }
 @end
 
+//查看cell
+@interface DriverInfoCell()
+@property (nonatomic, readonly) UILabel *statusLabel;
+@end
+
 @implementation DriverInfoCell
+@synthesize statusLabel = _statusLabel;
 +(void)load
 {
     [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:DriverInfoDescriporType];
+}
+
+-(void)configure
+{
+    [super configure];
+    [self.textField setEnabled:NO];
+}
+
+-(void)setupUI
+{
+    [super setupUI];
+    [self.contentView addSubview:self.statusLabel];
+    [self.statusLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView.top);
+        make.bottom.equalTo(self.contentView.bottom);
+        make.right.equalTo(self.contentView.right);
+        make.width.equalTo(80);
+    }];
+}
+
+-(UILabel *)statusLabel
+{
+    if (!_statusLabel) {
+        _statusLabel = [UILabel new];
+        _statusLabel.backgroundColor = ButtonColor;
+    }
+    return _statusLabel;
 }
 @end
