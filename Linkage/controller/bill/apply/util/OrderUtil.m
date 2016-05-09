@@ -143,15 +143,20 @@
 //服务端查询
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
-    NSDictionary *paramter = @{
+    NSDictionary *parameter = @{
                                @"type":@(-1),
                                @"status":@(0),
                                @"pagination":@(0),
                                @"offset":@(0),
                                @"size":@(100)
                                };
-    paramter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:paramter];
-    [[YGRestClient sharedInstance] postForObjectWithUrl:ListByStatusUrl form:paramter success:^(id responseObject) {
+    parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+    [self queryModelsFromServer:parameter completion:completion];
+}
+
++(void)queryModelsFromServer:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
+{
+    [[YGRestClient sharedInstance] postForObjectWithUrl:ListByStatusUrl form:parameter success:^(id responseObject) {
         if (responseObject[@"orders"] && [responseObject[@"orders"] isKindOfClass:[NSArray class]]) {
             NSError *error;
             NSArray *array = [MTLJSONAdapter modelsOfClass:[Order class] fromJSONArray:responseObject[@"orders"] error:&error];
@@ -170,6 +175,11 @@
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"userId", [LoginUser shareInstance].cid];
+    [self queryModelsFromDataBase:predicate completion:completion];
+}
+
++(void)queryModelsFromDataBase:(NSPredicate *)predicate completion:(void(^)(NSArray *models))completion
+{
     NSArray *orderModelArray = [OrderModel MR_findAllSortedBy:@"updateTime" ascending:NO withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
     NSArray *orders = [orderModelArray modelsFromManagedObject];
     if (completion) {

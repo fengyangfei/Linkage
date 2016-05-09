@@ -13,6 +13,7 @@
 #import <MJRefresh/MJRefresh.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <XLForm/XLForm.h>
+#import "LoginUser.h"
 #import "Order.h"
 #import "OrderUtil.h"
 #import "XLFormDataSource.h"
@@ -40,24 +41,34 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
     __weak __typeof(self.leftTableView) weakLeftView = self.leftTableView;
     self.leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [OrderUtil queryModelsFromServer:^(NSArray *orders) {
+        NSDictionary *parameter = @{
+                                    @"type":@(-1),
+                                    @"status":@(1)
+                                    };
+        parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+        [OrderUtil queryModelsFromServer:parameter completion:^(NSArray *orders) {
             for (Order *order in orders) {
                 [OrderUtil syncToDataBase:order completion:nil];
             }
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
-            [weakSelf setupData];
+            [weakSelf setupTodoData];
             [weakLeftView.mj_header endRefreshing];
         }];
     }];
     
     __weak __typeof(self.rightTableView) weakRightView = self.rightTableView;
     self.rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [OrderUtil queryModelsFromServer:^(NSArray *orders) {
+        NSDictionary *parameter = @{
+                                    @"type":@(-1),
+                                    @"status":@(2)
+                                    };
+        parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+        [OrderUtil queryModelsFromServer:parameter completion:^(NSArray *orders) {
             for (Order *order in orders) {
                 [OrderUtil syncToDataBase:order completion:nil];
             }
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
-            [weakSelf setupData];
+            [weakSelf setupDoneData];
             [weakRightView.mj_header endRefreshing];
         }];
     }];
@@ -71,9 +82,23 @@
 
 -(void)setupData
 {
+    [self setupTodoData];
+}
+
+-(void)setupTodoData
+{
     WeakSelf
-    [OrderUtil queryModelsFromDataBase:^(NSArray *orders) {
+    NSPredicate *todoPredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status = %@", [LoginUser shareInstance].cid, @(1)];
+    [OrderUtil queryModelsFromDataBase:todoPredicate completion:^(NSArray *orders) {
         [weakSelf.todoDS setForm:[weakSelf createForm:orders]];
+    }];
+}
+
+-(void)setupDoneData
+{
+    WeakSelf
+    NSPredicate *donePredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status = %@", [LoginUser shareInstance].cid, @(2)];
+    [OrderUtil queryModelsFromDataBase:donePredicate completion:^(NSArray *orders) {
         [weakSelf.doneDS setForm:[weakSelf createForm:orders]];
     }];
 }
