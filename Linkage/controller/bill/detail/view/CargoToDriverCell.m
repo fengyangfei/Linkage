@@ -163,11 +163,19 @@ NSString *const DriverEditDescriporType = @"DriverEditRowType";
     }];
 }
 
+-(void)update
+{
+    [super update];
+    CargoToDriver *model = self.rowDescriptor.value;
+    self.statusLabel.text = [[LinkUtil taskStatus] objectForKey:model.status];
+}
+
 -(UILabel *)statusLabel
 {
     if (!_statusLabel) {
         _statusLabel = [UILabel new];
         _statusLabel.backgroundColor = ButtonColor;
+        _statusLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _statusLabel;
 }
