@@ -11,7 +11,7 @@
 #import "NSString+Hint.h"
 
 NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
-@interface DriverInfoCell()
+@interface DriverInfoCell()<UITextFieldDelegate>
 @property (nonatomic, readonly) UILabel *textLabel;
 @property (nonatomic, readonly) UILabel *detailLabel;
 @property (nonatomic, readonly) UITextField *textField;
@@ -32,6 +32,8 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
     [super configure];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self setupUI];
+    [self.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+
 }
 
 -(void)update
@@ -40,11 +42,37 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
     CargoToDriver *model = self.rowDescriptor.value;
     self.textLabel.attributedText = [model.driverName attributedStringWithTitle:@"司机："];
     self.detailLabel.attributedText = [model.driverLicense attributedStringWithTitle:@"牌号："];
+    if (model.cargoNo && model.cargoNo.length > 0) {
+        self.textField.text = model.cargoNo;
+    }
+}
+
+-(void)formDescriptorCellDidSelectedWithViewController:(UIViewController<FormViewController> *)controller
+{
+    [self.textField becomeFirstResponder];
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
     return 80;
+}
+
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self textFieldDidChange:textField];
+    [self.formViewController endEditing:self.rowDescriptor];
+    [self.formViewController textFieldDidEndEditing:textField];
+}
+
+#pragma mark - Helper
+- (void)textFieldDidChange:(UITextField *)textField{
+    CargoToDriver *model = self.rowDescriptor.value;
+    if([self.textField.text length] > 0) {
+        model.cargoNo = self.textField.text;
+    } else {
+        model.cargoNo = @"";
+    }
 }
 
 #pragma mark - UI
@@ -69,6 +97,7 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
     }];
 }
 
+#pragma mark - 属性
 -(UILabel *)textLabel
 {
     if (!_textLabel) {
@@ -91,6 +120,7 @@ NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
         _textField = [[UITextField alloc]init];
         _textField.font = [UIFont systemFontOfSize:14];
         _textField.placeholder = @"请填入货柜号";
+        _textField.delegate = self;
     }
     return _textField;
 }

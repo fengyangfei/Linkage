@@ -221,13 +221,12 @@
                     [cargos addObject:@{
                                         @"driver_id":((CargoToDriver *)driver).driverId,
                                         @"cargo_type":((CargoToDriver *)driver).cargoType,
-                                        @"cargo_no": ((CargoToDriver *)driver).cargoNo
+                                        @"cargo_no": ((CargoToDriver *)driver).cargoNo ?:@""
                                         }];
                 }
             }];
         }
     }];
-    NSLog(@"%@",cargos);
     
     Order *order = self.rowDescriptor.value;
     if (order.orderId) {
@@ -236,10 +235,10 @@
                                     @"cargos":cargos
                                     };
         parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
-        [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl json:nil success:^(id responseObject) {
-            
+        [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl form:parameter success:^(id responseObject) {
+            [SVProgressHUD showSuccessWithStatus:@"分配成功"];
         } failure:^(NSError *error) {
-            [SVProgressHUD showSuccessWithStatus:@"分配任务成功"];
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
         }];
     }
 }
