@@ -41,11 +41,10 @@
 + (NSValueTransformer *)statusJSONTransformer
 {
     NSDictionary *transDic = @{
-                               @(0): @(OrderStatusUnDo),
-                               @(1): @(OrderStatusDoing),
-                               @(2): @(OrderStatusDone)
+                               @(0): @(OrderStatusToDo),
+                               @(1): @(OrderStatusDone)
                                };
-    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(OrderStatusUnDo) reverseDefaultValue:@(0)];
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(OrderStatusToDo) reverseDefaultValue:@(0)];
 }
 
 +(NSValueTransformer *)isTransferPortJSONTransformer

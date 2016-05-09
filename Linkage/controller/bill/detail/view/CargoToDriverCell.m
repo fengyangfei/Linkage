@@ -39,10 +39,16 @@ NSString *const DriverEditDescriporType = @"DriverEditRowType";
 {
     [super update];
     CargoToDriver *model = self.rowDescriptor.value;
-    self.textLabel.attributedText = [model.driverName attributedStringWithTitle:@"司机："];
-    self.detailLabel.attributedText = [model.driverLicense attributedStringWithTitle:@"牌号："];
-    if (model.cargoNo && model.cargoNo.length > 0) {
-        self.textField.text = model.cargoNo;
+    if (model) {
+        if(model.driverName){
+            self.textLabel.attributedText = [model.driverName attributedStringWithTitle:@"司机："];
+        }
+        if (model.driverLicense) {
+            self.detailLabel.attributedText = [model.driverLicense attributedStringWithTitle:@"牌号："];
+        }
+        if (model.cargoNo && model.cargoNo.length > 0) {
+            self.textField.text = model.cargoNo;
+        }
     }
 }
 
@@ -165,9 +171,13 @@ NSString *const DriverEditDescriporType = @"DriverEditRowType";
 
 -(void)update
 {
-    [super update];
     CargoToDriver *model = self.rowDescriptor.value;
-    self.statusLabel.text = [[LinkUtil taskStatus] objectForKey:model.status];
+    if (model) {
+        self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机："];
+        self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌号："];
+        self.textField.attributedText = [model.cargoNo ?:@"" attributedStringWithTitle:@"货柜号："];
+        self.statusLabel.text = [[LinkUtil taskStatus] objectForKey:@([model.status intValue])];
+    }
 }
 
 -(UILabel *)statusLabel
@@ -176,6 +186,8 @@ NSString *const DriverEditDescriporType = @"DriverEditRowType";
         _statusLabel = [UILabel new];
         _statusLabel.backgroundColor = ButtonColor;
         _statusLabel.textAlignment = NSTextAlignmentCenter;
+        _statusLabel.textColor = [UIColor whiteColor];
+        _statusLabel.font = [UIFont systemFontOfSize:14];
     }
     return _statusLabel;
 }

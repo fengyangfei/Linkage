@@ -64,7 +64,7 @@
         [_detailDS setForm:[self createDetailForm:order]];
     }
     if (_cargosDataSource) {
-        if([LoginUser shareInstance].ctype == UserTypeCompanyAdmin){
+        if([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin){
             [_cargosDataSource setForm:[self createCargosEditForm:order]];
         }else{
             [_cargosDataSource setForm:[self createCargosInfoForm:order]];
@@ -189,9 +189,6 @@
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"添加司机"];
         RowUI
         row.value = cargo;
-        if (![order isKindOfClass:[ImportOrder class]]) {
-            row.disabled = @YES;
-        }
         row.action.formSelector = @selector(addDriverRow:);
         [section addFormRow:row];
     }
@@ -224,7 +221,7 @@
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:DriverInfoDescriporType];
         RowUI
-        row.value = cargo;
+        row.value = [[CargoToDriver alloc]initWithDriver:nil cargo:cargo];
         [section addFormRow:row];
     }
     return form;

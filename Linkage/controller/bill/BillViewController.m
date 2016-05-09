@@ -86,7 +86,7 @@
 -(void)setupTodoData
 {
     WeakSelf
-    NSPredicate *todoPredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status = %@", [LoginUser shareInstance].cid, @(1)];
+    NSPredicate *todoPredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status = %@", [LoginUser shareInstance].cid, @(OrderStatusToDo)];
     [OrderUtil queryModelsFromDataBase:todoPredicate completion:^(NSArray *orders) {
         [weakSelf.todoDS setForm:[weakSelf createForm:orders]];
     }];
@@ -95,7 +95,7 @@
 -(void)setupDoneData
 {
     WeakSelf
-    NSPredicate *donePredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status = %@", [LoginUser shareInstance].cid, @(2)];
+    NSPredicate *donePredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status = %@", [LoginUser shareInstance].cid, @(OrderStatusDone)];
     [OrderUtil queryModelsFromDataBase:donePredicate completion:^(NSArray *orders) {
         [weakSelf.doneDS setForm:[weakSelf createForm:orders]];
     }];

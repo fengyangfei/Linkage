@@ -18,8 +18,7 @@ typedef NS_ENUM(NSUInteger, OrderType) {
 };
 
 typedef NS_ENUM(NSUInteger, OrderStatus) {
-    OrderStatusUnDo,
-    OrderStatusDoing,
+    OrderStatusToDo,
     OrderStatusDone
 };
 
