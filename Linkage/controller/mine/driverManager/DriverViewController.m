@@ -12,7 +12,7 @@
 #import "DriverUtil.h"
 #import "AddDriverViewController.h"
 #import "FormDescriptorCell.h"
-#import "DriverInfoCell.h"
+#import "CargoToDriverCell.h"
 #import "CargoToDriver.h"
 #import <Mantle/Mantle.h>
 

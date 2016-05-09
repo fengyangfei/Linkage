@@ -152,7 +152,6 @@
 		8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */; };
 		8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC624F91CA18EBC00C70325 /* AddressCell.m */; };
 		8BCA5FB31CA95EE3002601F6 /* BillDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA5FB21CA95EE3002601F6 /* BillDetailViewController.m */; };
-		8BCA5FB71CA96508002601F6 /* DriverInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA5FB61CA96508002601F6 /* DriverInfoCell.m */; };
 		8BCA5FBB1CA97FB8002601F6 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA5FBA1CA97FB8002601F6 /* MessageViewController.m */; };
 		8BDBB7CA1C98509D00D60207 /* Company.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8BDBB7C91C98509D00D60207 /* Company.bundle */; };
 		8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */; };
@@ -210,6 +209,7 @@
 		9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A3231C7E900500FB5EB6 /* TutorialController.m */; };
 		9A2F5C2A1CE01E5B00E7E2DD /* NSString+Hint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */; };
 		9A2F5C2E1CE023E000E7E2DD /* CargoToDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C2D1CE023E000E7E2DD /* CargoToDriver.m */; };
+		9A2F5C311CE0634700E7E2DD /* CargoToDriverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C301CE0634700E7E2DD /* CargoToDriverCell.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -529,8 +529,6 @@
 		8BC624F91CA18EBC00C70325 /* AddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressCell.m; sourceTree = "<group>"; };
 		8BCA5FB11CA95EE3002601F6 /* BillDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillDetailViewController.h; sourceTree = "<group>"; };
 		8BCA5FB21CA95EE3002601F6 /* BillDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillDetailViewController.m; sourceTree = "<group>"; };
-		8BCA5FB51CA96508002601F6 /* DriverInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverInfoCell.h; sourceTree = "<group>"; };
-		8BCA5FB61CA96508002601F6 /* DriverInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverInfoCell.m; sourceTree = "<group>"; };
 		8BCA5FB91CA97FB8002601F6 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		8BCA5FBA1CA97FB8002601F6 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		8BDBB7C91C98509D00D60207 /* Company.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Company.bundle; sourceTree = "<group>"; };
@@ -630,6 +628,8 @@
 		9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hint.m"; sourceTree = "<group>"; };
 		9A2F5C2C1CE023E000E7E2DD /* CargoToDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoToDriver.h; sourceTree = "<group>"; };
 		9A2F5C2D1CE023E000E7E2DD /* CargoToDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoToDriver.m; sourceTree = "<group>"; };
+		9A2F5C2F1CE0634700E7E2DD /* CargoToDriverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoToDriverCell.h; sourceTree = "<group>"; };
+		9A2F5C301CE0634700E7E2DD /* CargoToDriverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoToDriverCell.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -1527,8 +1527,8 @@
 		8BCA5FB41CA9646D002601F6 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				8BCA5FB51CA96508002601F6 /* DriverInfoCell.h */,
-				8BCA5FB61CA96508002601F6 /* DriverInfoCell.m */,
+				9A2F5C2F1CE0634700E7E2DD /* CargoToDriverCell.h */,
+				9A2F5C301CE0634700E7E2DD /* CargoToDriverCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2208,7 +2208,6 @@
 				9A95FF351C89731100C5F492 /* TRPopView.m in Sources */,
 				8B38230C1CDB5CC20046A6F1 /* UINavigationController+Custom.m in Sources */,
 				8B44450E1C7C9EFE00160DC2 /* SDCycleScrollView.m in Sources */,
-				8BCA5FB71CA96508002601F6 /* DriverInfoCell.m in Sources */,
 				9A95FF111C89135400C5F492 /* AdviceViewController.m in Sources */,
 				9A95FF151C891CFB00C5F492 /* BillViewController.m in Sources */,
 				8BEC33CC1CA6A43E007B924B /* UIImageView+Cache.m in Sources */,
@@ -2253,6 +2252,7 @@
 				9A2F5C2E1CE023E000E7E2DD /* CargoToDriver.m in Sources */,
 				8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */,
 				9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */,
+				9A2F5C311CE0634700E7E2DD /* CargoToDriverCell.m in Sources */,
 				9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */,
 				9A11F05C1CD041BA002E8F6F /* Driver.m in Sources */,
 				8B5DC61B1C79B8A700D29292 /* IFTTTAnimatedScrollViewController.m in Sources */,

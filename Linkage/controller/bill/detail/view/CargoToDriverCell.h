@@ -1,8 +1,8 @@
 //
-//  DriverInfoCell.h
+//  CargoToDriverCell.h
 //  Linkage
 //
-//  Created by lihaijian on 16/3/28.
+//  Created by Mac mini on 16/5/9.
 //  Copyright © 2016年 LA. All rights reserved.
 //
 

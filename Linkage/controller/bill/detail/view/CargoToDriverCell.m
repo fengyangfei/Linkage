@@ -6,7 +6,7 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import "DriverInfoCell.h"
+#import "CargoToDriverCell.h"
 #import "CargoToDriver.h"
 #import "NSString+Hint.h"
 #import "LinkUtil.h"

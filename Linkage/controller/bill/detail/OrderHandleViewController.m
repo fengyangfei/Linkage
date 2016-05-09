@@ -12,7 +12,7 @@
 #import "Order.h"
 #import "Cargo.h"
 #import "OrderUtil.h"
-#import "DriverInfoCell.h"
+#import "CargoToDriverCell.h"
 #import "LinkUtil.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import <SVProgressHUD/SVProgressHUD.h>
