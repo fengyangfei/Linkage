@@ -11,7 +11,7 @@
 #import "LoginUser.h"
 #import "Order.h"
 #import "Cargo.h"
-#import "CargoToDriver.h"
+#import "Task.h"
 #import "OrderUtil.h"
 #import "Driver.h"
 #import "CargoToDriverCell.h"
@@ -221,7 +221,7 @@
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:DriverInfoDescriporType];
         RowUI
-        row.value = [[CargoToDriver alloc]initWithDriver:nil cargo:cargo];
+        row.value = [Task createWithDriver:nil cargo:cargo];
         [section addFormRow:row];
     }
     return form;
@@ -243,12 +243,12 @@
     NSDictionary *formValues = [self.cargosDataSource.form formValues];
     [formValues enumerateKeysAndObjectsUsingBlock:^(NSString *key, id drivers, BOOL * stop) {
         if ([drivers isKindOfClass:[NSArray class]]) {
-            [drivers enumerateObjectsUsingBlock:^(id driver, NSUInteger idx, BOOL * stop) {
-                if ([driver isKindOfClass:[CargoToDriver class]]) {
+            [drivers enumerateObjectsUsingBlock:^(id task, NSUInteger idx, BOOL * stop) {
+                if ([task isKindOfClass:[Task class]]) {
                     [cargos addObject:@{
-                                        @"driver_id":((CargoToDriver *)driver).driverId,
-                                        @"cargo_type":((CargoToDriver *)driver).cargoType,
-                                        @"cargo_no": ((CargoToDriver *)driver).cargoNo ?:@""
+                                        @"driver_id":((Task *)task).driverId,
+                                        @"cargo_type":((Task *)task).cargoType,
+                                        @"cargo_no": ((Task *)task).cargoNo ?:@""
                                         }];
                 }
             }];

@@ -7,7 +7,7 @@
 //
 
 #import "CargoToDriverCell.h"
-#import "CargoToDriver.h"
+#import "Task.h"
 #import "NSString+Hint.h"
 #import "LinkUtil.h"
 
@@ -38,7 +38,7 @@ NSString *const DriverEditDescriporType = @"DriverEditRowType";
 -(void)update
 {
     [super update];
-    CargoToDriver *model = self.rowDescriptor.value;
+    Task *model = self.rowDescriptor.value;
     if (model) {
         if(model.driverName){
             self.textLabel.attributedText = [model.driverName attributedStringWithTitle:@"司机："];
@@ -72,7 +72,7 @@ NSString *const DriverEditDescriporType = @"DriverEditRowType";
 
 #pragma mark - Helper
 - (void)textFieldDidChange:(UITextField *)textField{
-    CargoToDriver *model = self.rowDescriptor.value;
+    Task *model = self.rowDescriptor.value;
     if([self.textField.text length] > 0) {
         model.cargoNo = self.textField.text;
     } else {
@@ -171,7 +171,7 @@ NSString *const DriverEditDescriporType = @"DriverEditRowType";
 
 -(void)update
 {
-    CargoToDriver *model = self.rowDescriptor.value;
+    Task *model = self.rowDescriptor.value;
     if (model) {
         self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机："];
         self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌号："];

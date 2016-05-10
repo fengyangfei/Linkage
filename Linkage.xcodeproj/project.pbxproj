@@ -193,7 +193,6 @@
 		9A23A3211C7E8EA900FB5EB6 /* ICETutorialStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A31E1C7E8EA900FB5EB6 /* ICETutorialStyle.m */; };
 		9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A3231C7E900500FB5EB6 /* TutorialController.m */; };
 		9A2F5C2A1CE01E5B00E7E2DD /* NSString+Hint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */; };
-		9A2F5C2E1CE023E000E7E2DD /* CargoToDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C2D1CE023E000E7E2DD /* CargoToDriver.m */; };
 		9A2F5C311CE0634700E7E2DD /* CargoToDriverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C301CE0634700E7E2DD /* CargoToDriverCell.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
@@ -596,8 +595,6 @@
 		9A23A3231C7E900500FB5EB6 /* TutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialController.m; sourceTree = "<group>"; };
 		9A2F5C281CE01E5B00E7E2DD /* NSString+Hint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hint.h"; sourceTree = "<group>"; };
 		9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hint.m"; sourceTree = "<group>"; };
-		9A2F5C2C1CE023E000E7E2DD /* CargoToDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoToDriver.h; sourceTree = "<group>"; };
-		9A2F5C2D1CE023E000E7E2DD /* CargoToDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoToDriver.m; sourceTree = "<group>"; };
 		9A2F5C2F1CE0634700E7E2DD /* CargoToDriverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoToDriverCell.h; sourceTree = "<group>"; };
 		9A2F5C301CE0634700E7E2DD /* CargoToDriverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoToDriverCell.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
@@ -1461,7 +1458,6 @@
 		8BCA5FB01CA95EB8002601F6 /* detail */ = {
 			isa = PBXGroup;
 			children = (
-				9A2F5C2B1CE0224300E7E2DD /* model */,
 				9A126DEB1CD308C000648184 /* dataSource */,
 				8BCA5FB41CA9646D002601F6 /* view */,
 				8BCA5FB11CA95EE3002601F6 /* BillDetailViewController.h */,
@@ -1701,15 +1697,6 @@
 				9A23A31E1C7E8EA900FB5EB6 /* ICETutorialStyle.m */,
 			);
 			path = ICETutorial;
-			sourceTree = "<group>";
-		};
-		9A2F5C2B1CE0224300E7E2DD /* model */ = {
-			isa = PBXGroup;
-			children = (
-				9A2F5C2C1CE023E000E7E2DD /* CargoToDriver.h */,
-				9A2F5C2D1CE023E000E7E2DD /* CargoToDriver.m */,
-			);
-			path = model;
 			sourceTree = "<group>";
 		};
 		9A7D0E901CD885C400EE005F /* util */ = {
@@ -2181,7 +2168,6 @@
 				9A23A2F91C7D9FE100FB5EB6 /* LoginBaseViewController.m in Sources */,
 				8B44450D1C7C9EFE00160DC2 /* SDCollectionViewCell.m in Sources */,
 				9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */,
-				9A2F5C2E1CE023E000E7E2DD /* CargoToDriver.m in Sources */,
 				8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */,
 				9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */,
 				9A2F5C311CE0634700E7E2DD /* CargoToDriverCell.m in Sources */,
