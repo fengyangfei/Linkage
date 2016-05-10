@@ -87,8 +87,7 @@ static TRTheme *themeCache;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSError *error;
-        TRTheme *theme = [MTLJSONAdapter modelOfClass:[TRTheme class] fromJSONDictionary:[self themeDictionaryFromBundle] error:&error];
-        themeCache = theme;
+        themeCache = [MTLJSONAdapter modelOfClass:[TRTheme class] fromJSONDictionary:[self themeDictionaryFromBundle] error:&error];
     });
     return themeCache;
 }

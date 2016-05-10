@@ -196,6 +196,7 @@
 		9A2F5C451CE1724A00E7E2DD /* BillDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C401CE1724A00E7E2DD /* BillDataSource.m */; };
 		9A2F5C461CE1724A00E7E2DD /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C431CE1724A00E7E2DD /* BillTableViewCell.m */; };
 		9A2F5C4A1CE18DE300E7E2DD /* OrderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C491CE18DE300E7E2DD /* OrderUtil.m */; };
+		9A2F5C4E1CE1C2E500E7E2DD /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C4D1CE1C2E500E7E2DD /* CommentViewController.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -601,6 +602,8 @@
 		9A2F5C431CE1724A00E7E2DD /* BillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTableViewCell.m; sourceTree = "<group>"; };
 		9A2F5C481CE18DE300E7E2DD /* OrderUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderUtil.h; sourceTree = "<group>"; };
 		9A2F5C491CE18DE300E7E2DD /* OrderUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderUtil.m; sourceTree = "<group>"; };
+		9A2F5C4C1CE1C2E500E7E2DD /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		9A2F5C4D1CE1C2E500E7E2DD /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -1725,6 +1728,15 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		9A2F5C4B1CE1C2AC00E7E2DD /* comment */ = {
+			isa = PBXGroup;
+			children = (
+				9A2F5C4C1CE1C2E500E7E2DD /* CommentViewController.h */,
+				9A2F5C4D1CE1C2E500E7E2DD /* CommentViewController.m */,
+			);
+			path = comment;
+			sourceTree = "<group>";
+		};
 		9A7D0E901CD885C400EE005F /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -1809,6 +1821,7 @@
 				8B00603D1CAC089E001B0FC9 /* order */,
 				8BCA5FB01CA95EB8002601F6 /* detail */,
 				9ACEBC691C99492A0000ACBF /* apply */,
+				9A2F5C4B1CE1C2AC00E7E2DD /* comment */,
 				9A95FF131C891CFB00C5F492 /* BillViewController.h */,
 				9A95FF141C891CFB00C5F492 /* BillViewController.m */,
 			);
@@ -2210,6 +2223,7 @@
 				8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */,
 				9A23A2CD1C7C316C00FB5EB6 /* LATabBarController.m in Sources */,
 				9AEF89BC1CA1274600C5EB90 /* MJPhoto.m in Sources */,
+				9A2F5C4E1CE1C2E500E7E2DD /* CommentViewController.m in Sources */,
 				8B5DC61A1C79B8A700D29292 /* IFTTTAnimatedPagingScrollViewController.m in Sources */,
 				8B00603C1CABFABC001B0FC9 /* MTLManagedObjectAdapter.m in Sources */,
 				8B8284891CA57EA9001B36C1 /* Company.m in Sources */,

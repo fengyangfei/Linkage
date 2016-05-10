@@ -12,7 +12,21 @@
 @implementation TRTheme
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    NSMutableDictionary *mutableDic = [NSMutableDictionary dictionary];
+    NSArray *propertyKeys = [self.class propertyKeys].allObjects;
+    for (NSString *key in propertyKeys) {
+        NSString *plistKey = [NSString stringWithFormat:@"%c%@", toupper([key characterAtIndex:0]), [key substringFromIndex:1]];
+        [mutableDic setObject:plistKey forKey:key];
+    }
+    return [mutableDic copy];
+}
+
++ (NSValueTransformer *)JSONTransformerForKey:(NSString *)key
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *value, BOOL *success, NSError **error) {
+        UInt64 hexColor = strtoul([value UTF8String], 0, 16);
+        return HEXCOLOR(hexColor);
+    }];
 }
 
 @end

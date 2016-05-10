@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>MainCostButtonSize</key>
-	<string>54</string>
-	<key>MainButtonFontColor</key>
-	<string>0xFFFFFF</string>
-</dict>
+    <dict>
+        <key>HeaderBackgroundColor</key>
+        <string>0x0099FF</string>
+        <key>ButtonBackgroundColor</key>
+        <string>0x0080FF</string>
+        <key>TableViewBackgroundColor</key>
+        <string>0x0080FF</string>
+    </dict>
 </plist>

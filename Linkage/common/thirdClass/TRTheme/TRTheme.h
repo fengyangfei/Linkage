@@ -11,7 +11,7 @@
 #import <Mantle/Mantle.h>
 
 @interface TRTheme : MTLModel<MTLJSONSerializing>
-@property (nonatomic, strong) NSNumber *mainCostButtonSize;
-@property (nonatomic, strong) UIColor *mainTipViewBackgroudColor;
-
+@property (nonatomic, strong) UIColor *headerBackgroundColor;
+@property (nonatomic, strong) UIColor *buttonBackgroundColor;
+@property (nonatomic, strong) UIColor *tableViewBackgroundColor;
 @end
