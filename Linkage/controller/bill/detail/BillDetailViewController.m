@@ -214,14 +214,14 @@
     form = [XLFormDescriptor formDescriptorWithTitle:@""];
     form.disabled = YES;
     
-    for (Cargo *cargo in order.cargos) {
-        NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoType];
-        section = [XLFormSectionDescriptor formSectionWithTitle:cargoTitle];
+    for (Task *task in order.tasks) {
+        NSString *cargoName = task.cargoType ? [LinkUtil.cargoTypes objectForKey:task.cargoType] :@"";
+        section = [XLFormSectionDescriptor formSectionWithTitle:cargoName];
         [form addFormSection:section];
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TaskInfoDescriporType];
         RowUI
-        row.value = [Task createWithDriver:nil cargo:cargo];
+        row.value = task;
         [section addFormRow:row];
     }
     return form;

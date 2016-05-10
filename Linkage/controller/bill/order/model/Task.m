@@ -76,6 +76,7 @@
 @end
 
 @implementation Task(Operation)
+//司机与货柜组成任务
 + (Task*)createWithDriver:(Driver *)driver cargo:(Cargo *)cargo
 {
     Task *task = [[Task alloc]init];
