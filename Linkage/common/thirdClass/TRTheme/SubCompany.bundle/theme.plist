@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>HeaderBackgroundColor</key>
-	<string>0xFF2D2D</string>
+	<string>0x00CD66</string>
 	<key>ButtonBackgroundColor</key>
-	<string>0x0080FF</string>
+	<string>0x00CD00</string>
     <key>TableViewBackgroundColor</key>
-    <string>0x0080FF</string>
+    <string>0x00CD00</string>
 </dict>
 </plist>
