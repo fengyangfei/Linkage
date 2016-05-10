@@ -238,6 +238,24 @@
     }
 }
 
+//接单
++(void)acceptOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
+{
+    [[YGRestClient sharedInstance] postForObjectWithUrl:AcceptOrderUrl form:model.httpParameterForDetail success:success failure:failure];
+}
+
+//结单
++(void)confirmOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
+{
+    [[YGRestClient sharedInstance] postForObjectWithUrl:ConfirmOrderUrl form:model.httpParameterForDetail success:success failure:failure];
+}
+
+//拒绝
++(void)rejectOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
+{
+    [[YGRestClient sharedInstance] postForObjectWithUrl:RejectOrderUrl form:model.httpParameterForDetail success:success failure:failure];
+}
+
 @end
 
 @implementation NSArray (OrderModel)

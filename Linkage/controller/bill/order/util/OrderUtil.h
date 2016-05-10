@@ -12,6 +12,9 @@
 @class Order;
 @class OrderModel;
 @interface OrderUtil : NSObject<ModelOperation>
++(void)acceptOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
++(void)confirmOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
++(void)rejectOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 @end
 
 @interface NSArray (OrderModel)

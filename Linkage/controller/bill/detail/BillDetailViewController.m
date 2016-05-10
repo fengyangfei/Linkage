@@ -58,13 +58,14 @@
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         }];
     }
-    [self.view addSubview:self.toolBar];
-    [self.toolBar makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view.bottom);
-        make.left.equalTo(self.view.left);
-        make.right.equalTo(self.view.right);
-    }];
-    
+    if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin) {
+        [self.view addSubview:self.toolBar];
+        [self.toolBar makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.view.bottom);
+            make.left.equalTo(self.view.left);
+            make.right.equalTo(self.view.right);
+        }];
+    }
 }
 
 -(void)setupData:(Order *)order
@@ -282,6 +283,33 @@
     }
 }
 
+-(void)acceptAction
+{
+    [OrderUtil acceptOrder:self.rowDescriptor.value success:^(id responseData) {
+        [SVProgressHUD showSuccessWithStatus:@"接单成功"];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+-(void)confirmAction
+{
+    [OrderUtil confirmOrder:self.rowDescriptor.value success:^(id responseData) {
+        [SVProgressHUD showSuccessWithStatus:@"结单成功"];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+-(void)rejectAction
+{
+    [OrderUtil rejectOrder:self.rowDescriptor.value success:^(id responseData) {
+        [SVProgressHUD showSuccessWithStatus:@"拒绝成功"];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 #pragma mark - 属性
 - (HMSegmentedControl *)segmentedControl
 {
@@ -294,10 +322,13 @@
 {
     if (!_toolBar) {
         _toolBar = [[UIToolbar alloc]init];
-        UIBarButtonItem *add = [[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:nil];
-        UIBarButtonItem *add = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UIBarButtonItem *mod = [[UIBarButtonItem alloc]initWithTitle:@"修改" style:UIBarButtonItemStylePlain target:self action:nil];
-        [_toolBar setItems:@[add,mod]];
+        UIBarButtonItem *fixItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixItem.width = 20;
+        UIBarButtonItem *flex = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *accpet = [[UIBarButtonItem alloc]initWithTitle:@"接单" style:UIBarButtonItemStyleBordered target:self action:@selector(acceptAction)];
+        UIBarButtonItem *confirm = [[UIBarButtonItem alloc]initWithTitle:@"结单" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmAction)];
+        UIBarButtonItem *reject = [[UIBarButtonItem alloc]initWithTitle:@"拒绝" style:UIBarButtonItemStyleBordered target:self action:@selector(rejectAction)];
+        [_toolBar setItems:@[fixItem, accpet,flex,confirm,flex,reject, fixItem]];
     }
     return _toolBar;
 }
