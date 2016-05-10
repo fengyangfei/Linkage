@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>HeaderBackgroundColor</key>
-	<string>0x00CD66</string>
-	<key>ButtonBackgroundColor</key>
-	<string>0x00CD00</string>
-    <key>TableViewBackgroundColor</key>
-    <string>0x00CD00</string>
-</dict>
+    <dict>
+        <key>HeaderBackgroundColor</key>
+        <string>0x0099FF</string>
+        <key>ButtonBackgroundColor</key>
+        <string>0x0080FF</string>
+        <key>TableViewBackgroundColor</key>
+        <string>0x0080FF</string>
+    </dict>
 </plist>

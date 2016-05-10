@@ -11,6 +11,7 @@
 #import "OrderModel.h"
 #import "SOImage.h"
 #import "Task.h"
+#import "LoginUser.h"
 
 #define kOrderRemoveKeys @[@"cargos",@"userId",@"objStatus",@"soImages"]
 #define kOrderManageObjectRemoveKeys @[@"objStatus",@"tasks"]
@@ -129,6 +130,15 @@
 + (NSDictionary *)relationshipModelClassesByPropertyKey
 {
     return @{@"cargos":[Cargo class],@"soImages":[SOImage class]};
+}
+
+#pragma mark - ModelHttpParameter
+-(NSDictionary *)httpParameterForDetail
+{
+    NSDictionary *key = @{
+                          @"order_id":self.orderId
+                          };
+    return [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:key];
 }
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error
