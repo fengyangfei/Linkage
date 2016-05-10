@@ -138,8 +138,6 @@
 		8BCA5FB31CA95EE3002601F6 /* BillDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA5FB21CA95EE3002601F6 /* BillDetailViewController.m */; };
 		8BCA5FBB1CA97FB8002601F6 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA5FBA1CA97FB8002601F6 /* MessageViewController.m */; };
 		8BDBB7CA1C98509D00D60207 /* Company.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8BDBB7C91C98509D00D60207 /* Company.bundle */; };
-		8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */; };
-		8BDBB7D11C9859CD00D60207 /* BillDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBB7D01C9859CD00D60207 /* BillDataSource.m */; };
 		8BE25B091CC7AF970073BD8D /* MTLModel+Merge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE25B081CC7AF970073BD8D /* MTLModel+Merge.m */; };
 		8BE25B101CC7D0540073BD8D /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE25B0D1CC7D0540073BD8D /* Base64.m */; };
 		8BE25B111CC7D0540073BD8D /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE25B0F1CC7D0540073BD8D /* CocoaSecurity.m */; };
@@ -195,6 +193,9 @@
 		9A2F5C341CE16B9D00E7E2DD /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C331CE16B9D00E7E2DD /* TaskCell.m */; };
 		9A2F5C391CE1702400E7E2DD /* Cargo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C361CE1702400E7E2DD /* Cargo.m */; };
 		9A2F5C3A1CE1702400E7E2DD /* SOImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C381CE1702400E7E2DD /* SOImage.m */; };
+		9A2F5C441CE1724A00E7E2DD /* BaseBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C3D1CE1724A00E7E2DD /* BaseBillViewController.m */; };
+		9A2F5C451CE1724A00E7E2DD /* BillDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C401CE1724A00E7E2DD /* BillDataSource.m */; };
+		9A2F5C461CE1724A00E7E2DD /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C431CE1724A00E7E2DD /* BillTableViewCell.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -205,7 +206,6 @@
 		9A95FF111C89135400C5F492 /* AdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF101C89135400C5F492 /* AdviceViewController.m */; };
 		9A95FF151C891CFB00C5F492 /* BillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF141C891CFB00C5F492 /* BillViewController.m */; };
 		9A95FF191C89221C00C5F492 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF181C89221C00C5F492 /* UIImage+ImageWithColor.m */; };
-		9A95FF211C8931F400C5F492 /* BaseBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF201C8931F400C5F492 /* BaseBillViewController.m */; };
 		9A95FF331C89731100C5F492 /* TRPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF2E1C89731100C5F492 /* TRPopButton.m */; };
 		9A95FF341C89731100C5F492 /* TRPopManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF301C89731100C5F492 /* TRPopManager.m */; };
 		9A95FF351C89731100C5F492 /* TRPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF321C89731100C5F492 /* TRPopView.m */; };
@@ -499,10 +499,6 @@
 		8BCA5FB91CA97FB8002601F6 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		8BCA5FBA1CA97FB8002601F6 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		8BDBB7C91C98509D00D60207 /* Company.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Company.bundle; sourceTree = "<group>"; };
-		8BDBB7CC1C9854B700D60207 /* BillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTableViewCell.h; sourceTree = "<group>"; };
-		8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTableViewCell.m; sourceTree = "<group>"; };
-		8BDBB7CF1C9859CD00D60207 /* BillDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillDataSource.h; sourceTree = "<group>"; };
-		8BDBB7D01C9859CD00D60207 /* BillDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillDataSource.m; sourceTree = "<group>"; };
 		8BE25B071CC7AF970073BD8D /* MTLModel+Merge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTLModel+Merge.h"; sourceTree = "<group>"; };
 		8BE25B081CC7AF970073BD8D /* MTLModel+Merge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTLModel+Merge.m"; sourceTree = "<group>"; };
 		8BE25B0A1CC7CC930073BD8D /* LinkConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkConstants.h; sourceTree = "<group>"; };
@@ -599,6 +595,12 @@
 		9A2F5C361CE1702400E7E2DD /* Cargo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cargo.m; sourceTree = "<group>"; };
 		9A2F5C371CE1702400E7E2DD /* SOImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOImage.h; sourceTree = "<group>"; };
 		9A2F5C381CE1702400E7E2DD /* SOImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOImage.m; sourceTree = "<group>"; };
+		9A2F5C3C1CE1724A00E7E2DD /* BaseBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseBillViewController.h; sourceTree = "<group>"; };
+		9A2F5C3D1CE1724A00E7E2DD /* BaseBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseBillViewController.m; sourceTree = "<group>"; };
+		9A2F5C3F1CE1724A00E7E2DD /* BillDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillDataSource.h; sourceTree = "<group>"; };
+		9A2F5C401CE1724A00E7E2DD /* BillDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillDataSource.m; sourceTree = "<group>"; };
+		9A2F5C421CE1724A00E7E2DD /* BillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTableViewCell.h; sourceTree = "<group>"; };
+		9A2F5C431CE1724A00E7E2DD /* BillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTableViewCell.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -619,8 +621,6 @@
 		9A95FF141C891CFB00C5F492 /* BillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillViewController.m; sourceTree = "<group>"; };
 		9A95FF171C89221C00C5F492 /* UIImage+ImageWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithColor.h"; sourceTree = "<group>"; };
 		9A95FF181C89221C00C5F492 /* UIImage+ImageWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithColor.m"; sourceTree = "<group>"; };
-		9A95FF1F1C8931F400C5F492 /* BaseBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseBillViewController.h; sourceTree = "<group>"; };
-		9A95FF201C8931F400C5F492 /* BaseBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseBillViewController.m; sourceTree = "<group>"; };
 		9A95FF2D1C89731100C5F492 /* TRPopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRPopButton.h; sourceTree = "<group>"; };
 		9A95FF2E1C89731100C5F492 /* TRPopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRPopButton.m; sourceTree = "<group>"; };
 		9A95FF2F1C89731100C5F492 /* TRPopManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRPopManager.h; sourceTree = "<group>"; };
@@ -749,6 +749,9 @@
 			isa = PBXGroup;
 			children = (
 				8B00603E1CAC089E001B0FC9 /* model */,
+				9A2F5C3B1CE1724A00E7E2DD /* baseController */,
+				9A2F5C3E1CE1724A00E7E2DD /* dataSource */,
+				9A2F5C411CE1724A00E7E2DD /* view */,
 			);
 			path = order;
 			sourceTree = "<group>";
@@ -1493,15 +1496,6 @@
 			path = message;
 			sourceTree = "<group>";
 		};
-		8BDBB7CB1C98547B00D60207 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				8BDBB7CC1C9854B700D60207 /* BillTableViewCell.h */,
-				8BDBB7CD1C9854B700D60207 /* BillTableViewCell.m */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		8BE25B0B1CC7D0540073BD8D /* CocoaSecurity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1703,6 +1697,33 @@
 			path = ICETutorial;
 			sourceTree = "<group>";
 		};
+		9A2F5C3B1CE1724A00E7E2DD /* baseController */ = {
+			isa = PBXGroup;
+			children = (
+				9A2F5C3C1CE1724A00E7E2DD /* BaseBillViewController.h */,
+				9A2F5C3D1CE1724A00E7E2DD /* BaseBillViewController.m */,
+			);
+			path = baseController;
+			sourceTree = "<group>";
+		};
+		9A2F5C3E1CE1724A00E7E2DD /* dataSource */ = {
+			isa = PBXGroup;
+			children = (
+				9A2F5C3F1CE1724A00E7E2DD /* BillDataSource.h */,
+				9A2F5C401CE1724A00E7E2DD /* BillDataSource.m */,
+			);
+			path = dataSource;
+			sourceTree = "<group>";
+		};
+		9A2F5C411CE1724A00E7E2DD /* view */ = {
+			isa = PBXGroup;
+			children = (
+				9A2F5C421CE1724A00E7E2DD /* BillTableViewCell.h */,
+				9A2F5C431CE1724A00E7E2DD /* BillTableViewCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		9A7D0E901CD885C400EE005F /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -1787,31 +1808,10 @@
 				8B00603D1CAC089E001B0FC9 /* order */,
 				8BCA5FB01CA95EB8002601F6 /* detail */,
 				9ACEBC691C99492A0000ACBF /* apply */,
-				8BDBB7CB1C98547B00D60207 /* view */,
-				9A95FF1E1C8931BB00C5F492 /* baseController */,
-				9A95FF1A1C892C8F00C5F492 /* dataSource */,
 				9A95FF131C891CFB00C5F492 /* BillViewController.h */,
 				9A95FF141C891CFB00C5F492 /* BillViewController.m */,
 			);
 			path = bill;
-			sourceTree = "<group>";
-		};
-		9A95FF1A1C892C8F00C5F492 /* dataSource */ = {
-			isa = PBXGroup;
-			children = (
-				8BDBB7CF1C9859CD00D60207 /* BillDataSource.h */,
-				8BDBB7D01C9859CD00D60207 /* BillDataSource.m */,
-			);
-			path = dataSource;
-			sourceTree = "<group>";
-		};
-		9A95FF1E1C8931BB00C5F492 /* baseController */ = {
-			isa = PBXGroup;
-			children = (
-				9A95FF1F1C8931F400C5F492 /* BaseBillViewController.h */,
-				9A95FF201C8931F400C5F492 /* BaseBillViewController.m */,
-			);
-			path = baseController;
 			sourceTree = "<group>";
 		};
 		9A95FF221C8963A200C5F492 /* model */ = {
@@ -2085,6 +2085,7 @@
 				9A95FF021C83E3C600C5F492 /* MenuItem.m in Sources */,
 				9A23A2B51C7AB3A300FB5EB6 /* MainBaseViewController.m in Sources */,
 				8B5DC63D1C79B8A700D29292 /* UIViewController+TRTheme.m in Sources */,
+				9A2F5C451CE1724A00E7E2DD /* BillDataSource.m in Sources */,
 				8B5DC6261C79B8A700D29292 /* IFTTTInterpolatable.m in Sources */,
 				8B5DC6271C79B8A700D29292 /* IFTTTLayerFillColorAnimation.m in Sources */,
 				9AEF89D71CA8B02900C5EB90 /* XLFormDataSource.m in Sources */,
@@ -2107,8 +2108,8 @@
 				9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */,
 				8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */,
 				9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */,
-				8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */,
 				8B941BB11CD107060059BE13 /* CarModel.m in Sources */,
+				9A2F5C461CE1724A00E7E2DD /* BillTableViewCell.m in Sources */,
 				8BA3E3D11CD465AD0047AC6B /* StaffModel.m in Sources */,
 				9A2F5C391CE1702400E7E2DD /* Cargo.m in Sources */,
 				9A23A2C41C7AE1B100FB5EB6 /* LoginViewController.m in Sources */,
@@ -2122,6 +2123,7 @@
 				9A95FF341C89731100C5F492 /* TRPopManager.m in Sources */,
 				8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */,
 				8B941BAB1CD102270059BE13 /* Car.m in Sources */,
+				9A2F5C441CE1724A00E7E2DD /* BaseBillViewController.m in Sources */,
 				8B5DC6341C79B8A700D29292 /* UIView+IFTTTJazzHands.m in Sources */,
 				9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */,
 				9A95FF351C89731100C5F492 /* TRPopView.m in Sources */,
@@ -2142,7 +2144,6 @@
 				9ACEBC751C9950E90000ACBF /* CargoTypeViewController.m in Sources */,
 				8B941BB41CD109080059BE13 /* CarUtil.m in Sources */,
 				8B5DC62A1C79B8A700D29292 /* IFTTTMaskAnimation.m in Sources */,
-				9A95FF211C8931F400C5F492 /* BaseBillViewController.m in Sources */,
 				8BB039DE1C94591900A3BCF9 /* LoginUser.m in Sources */,
 				8BA1305D1C9DA398007607F9 /* SpecialFormSectionDescriptor.m in Sources */,
 				8BB4FB131C7A0884003389F1 /* GTMStackTrace.m in Sources */,
@@ -2227,7 +2228,6 @@
 				9A95FF401C89824F00C5F492 /* TRImagePickerDelegate.m in Sources */,
 				9A95FF191C89221C00C5F492 /* UIImage+ImageWithColor.m in Sources */,
 				8BE25B091CC7AF970073BD8D /* MTLModel+Merge.m in Sources */,
-				8BDBB7D11C9859CD00D60207 /* BillDataSource.m in Sources */,
 				9A05C37A1CC8C413009BC8C9 /* ExpandFormSectionDescriptor.m in Sources */,
 				9A2F5C2A1CE01E5B00E7E2DD /* NSString+Hint.m in Sources */,
 				8B5DC6231C79B8A700D29292 /* IFTTTFilmstrip.m in Sources */,

@@ -14,9 +14,7 @@ extern NSString *const DoneBillDescriporType;
 
 @interface BillTableViewCell : XLFormBaseCell<FormDescriptorCell>
 
-
 @end
-
 
 @interface CompanyTableViewCell : BillTableViewCell
 
