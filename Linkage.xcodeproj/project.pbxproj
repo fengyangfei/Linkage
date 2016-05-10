@@ -117,7 +117,6 @@
 		8B986F6C1CC50D7A002DDA68 /* AddCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B986F6B1CC50D7A002DDA68 /* AddCarViewController.m */; };
 		8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130531C9D2B2D007607F9 /* CargoFormRowDescriptor.m */; };
 		8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130561C9D93E4007607F9 /* SOImageFormCell.m */; };
-		8BA1305A1C9D951B007607F9 /* SOImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA130591C9D951B007607F9 /* SOImage.m */; };
 		8BA1305D1C9DA398007607F9 /* SpecialFormSectionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1305C1C9DA398007607F9 /* SpecialFormSectionDescriptor.m */; };
 		8BA3E3C41CD450450047AC6B /* ModelUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3E3C31CD450450047AC6B /* ModelUtil.m */; };
 		8BA3E3CB1CD463E90047AC6B /* Staff.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3E3CA1CD463E90047AC6B /* Staff.m */; };
@@ -194,6 +193,8 @@
 		9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A3231C7E900500FB5EB6 /* TutorialController.m */; };
 		9A2F5C2A1CE01E5B00E7E2DD /* NSString+Hint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */; };
 		9A2F5C341CE16B9D00E7E2DD /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C331CE16B9D00E7E2DD /* TaskCell.m */; };
+		9A2F5C391CE1702400E7E2DD /* Cargo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C361CE1702400E7E2DD /* Cargo.m */; };
+		9A2F5C3A1CE1702400E7E2DD /* SOImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C381CE1702400E7E2DD /* SOImage.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -211,7 +212,6 @@
 		9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3A1C897EE800C5F492 /* TRFloatingModel.m */; };
 		9A95FF401C89824F00C5F492 /* TRImagePickerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3D1C89824F00C5F492 /* TRImagePickerDelegate.m */; };
 		9A95FF411C89824F00C5F492 /* UIViewController+TRImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3F1C89824F00C5F492 /* UIViewController+TRImagePicker.m */; };
-		9ACEBC701C99492A0000ACBF /* Cargo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6C1C99492A0000ACBF /* Cargo.m */; };
 		9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */; };
 		9ACEBC751C9950E90000ACBF /* CargoTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC741C9950E90000ACBF /* CargoTypeViewController.m */; };
 		9ACEBCAA1C9BF25F0000ACBF /* TimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBCA91C9BF25F0000ACBF /* TimerManager.m */; };
@@ -460,8 +460,6 @@
 		8BA130531C9D2B2D007607F9 /* CargoFormRowDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoFormRowDescriptor.m; sourceTree = "<group>"; };
 		8BA130551C9D93E4007607F9 /* SOImageFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOImageFormCell.h; sourceTree = "<group>"; };
 		8BA130561C9D93E4007607F9 /* SOImageFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOImageFormCell.m; sourceTree = "<group>"; };
-		8BA130581C9D951B007607F9 /* SOImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOImage.h; sourceTree = "<group>"; };
-		8BA130591C9D951B007607F9 /* SOImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOImage.m; sourceTree = "<group>"; };
 		8BA1305B1C9DA398007607F9 /* SpecialFormSectionDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialFormSectionDescriptor.h; sourceTree = "<group>"; };
 		8BA1305C1C9DA398007607F9 /* SpecialFormSectionDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialFormSectionDescriptor.m; sourceTree = "<group>"; };
 		8BA3E3C21CD450450047AC6B /* ModelUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelUtil.h; sourceTree = "<group>"; };
@@ -597,6 +595,10 @@
 		9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hint.m"; sourceTree = "<group>"; };
 		9A2F5C321CE16B9D00E7E2DD /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		9A2F5C331CE16B9D00E7E2DD /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		9A2F5C351CE1702400E7E2DD /* Cargo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cargo.h; sourceTree = "<group>"; };
+		9A2F5C361CE1702400E7E2DD /* Cargo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cargo.m; sourceTree = "<group>"; };
+		9A2F5C371CE1702400E7E2DD /* SOImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOImage.h; sourceTree = "<group>"; };
+		9A2F5C381CE1702400E7E2DD /* SOImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOImage.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -631,8 +633,6 @@
 		9A95FF3D1C89824F00C5F492 /* TRImagePickerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRImagePickerDelegate.m; sourceTree = "<group>"; };
 		9A95FF3E1C89824F00C5F492 /* UIViewController+TRImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TRImagePicker.h"; sourceTree = "<group>"; };
 		9A95FF3F1C89824F00C5F492 /* UIViewController+TRImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TRImagePicker.m"; sourceTree = "<group>"; };
-		9ACEBC6B1C99492A0000ACBF /* Cargo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cargo.h; sourceTree = "<group>"; };
-		9ACEBC6C1C99492A0000ACBF /* Cargo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cargo.m; sourceTree = "<group>"; };
 		9ACEBC6E1C99492A0000ACBF /* CargoFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoFormCell.h; sourceTree = "<group>"; };
 		9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoFormCell.m; sourceTree = "<group>"; };
 		9ACEBC731C9950E90000ACBF /* CargoTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoTypeViewController.h; sourceTree = "<group>"; };
@@ -756,6 +756,10 @@
 		8B00603E1CAC089E001B0FC9 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				9A2F5C351CE1702400E7E2DD /* Cargo.h */,
+				9A2F5C361CE1702400E7E2DD /* Cargo.m */,
+				9A2F5C371CE1702400E7E2DD /* SOImage.h */,
+				9A2F5C381CE1702400E7E2DD /* SOImage.m */,
 				8B00603F1CAC08E3001B0FC9 /* Order.h */,
 				8B0060401CAC08E3001B0FC9 /* Order.m */,
 				9A05C3861CCA095D009BC8C9 /* OrderModel.h */,
@@ -1856,12 +1860,8 @@
 		9ACEBC6A1C99492A0000ACBF /* model */ = {
 			isa = PBXGroup;
 			children = (
-				9ACEBC6B1C99492A0000ACBF /* Cargo.h */,
-				9ACEBC6C1C99492A0000ACBF /* Cargo.m */,
 				8BA130521C9D2B2D007607F9 /* CargoFormRowDescriptor.h */,
 				8BA130531C9D2B2D007607F9 /* CargoFormRowDescriptor.m */,
-				8BA130581C9D951B007607F9 /* SOImage.h */,
-				8BA130591C9D951B007607F9 /* SOImage.m */,
 				8BA1305B1C9DA398007607F9 /* SpecialFormSectionDescriptor.h */,
 				8BA1305C1C9DA398007607F9 /* SpecialFormSectionDescriptor.m */,
 			);
@@ -2110,9 +2110,9 @@
 				8BDBB7CE1C9854B700D60207 /* BillTableViewCell.m in Sources */,
 				8B941BB11CD107060059BE13 /* CarModel.m in Sources */,
 				8BA3E3D11CD465AD0047AC6B /* StaffModel.m in Sources */,
+				9A2F5C391CE1702400E7E2DD /* Cargo.m in Sources */,
 				9A23A2C41C7AE1B100FB5EB6 /* LoginViewController.m in Sources */,
 				8B986F651CC50A7E002DDA68 /* ChangePasswordController.m in Sources */,
-				9ACEBC701C99492A0000ACBF /* Cargo.m in Sources */,
 				8BE25B111CC7D0540073BD8D /* CocoaSecurity.m in Sources */,
 				9A23A3201C7E8EA900FB5EB6 /* ICETutorialPage.m in Sources */,
 				9AEF89C11CA1274600C5EB90 /* MJPhotoToolbar.m in Sources */,
@@ -2162,6 +2162,7 @@
 				8BBE05EA1C9E982B0018EB2A /* BillTypeViewController.m in Sources */,
 				8B5DC62E1C79B8A700D29292 /* IFTTTScrollViewPageConstraintAnimation.m in Sources */,
 				8B00603A1CABFABC001B0FC9 /* EXTRuntimeExtensions.m in Sources */,
+				9A2F5C3A1CE1702400E7E2DD /* SOImage.m in Sources */,
 				8B5DC61F1C79B8A700D29292 /* IFTTTConstraintConstantAnimation.m in Sources */,
 				8B5DC6311C79B8A700D29292 /* IFTTTTransform3DAnimation.m in Sources */,
 				9A05C37B1CC8C413009BC8C9 /* XLFormButtonCell+Push.m in Sources */,
@@ -2184,7 +2185,6 @@
 				9AEF89C61CA2907D00C5EB90 /* Address.m in Sources */,
 				9A2F5C341CE16B9D00E7E2DD /* TaskCell.m in Sources */,
 				9A95FF091C858B0E00C5F492 /* SettingViewController.m in Sources */,
-				8BA1305A1C9D951B007607F9 /* SOImage.m in Sources */,
 				8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */,
 				9AEF89C21CA1274600C5EB90 /* MJPhotoView.m in Sources */,
 				8B5DC56A1C7992E900D29292 /* AppDelegate.m in Sources */,

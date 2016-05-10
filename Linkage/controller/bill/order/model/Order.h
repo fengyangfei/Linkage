@@ -50,6 +50,7 @@ typedef NS_ENUM(NSUInteger, ObjectStatus) {
 @property (nonatomic, strong) NSDate       *updateTime;//更新时间
 @property (nonatomic, assign) BOOL         isTransferPort;//是否转关
 @property (nonatomic, strong) NSArray      *cargos;//货柜
+@property (nonatomic, strong) NSArray      *tasks;//任务
 @property (nonatomic, assign) ObjectStatus objStatus;//对象状态
 @end
 

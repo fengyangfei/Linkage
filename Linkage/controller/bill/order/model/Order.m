@@ -11,7 +11,7 @@
 #import "OrderModel.h"
 #import "SOImage.h"
 
-#define kOrderRemoveKeys @[@"cargos",@"userId",@"objStatus",@"soImages"]
+#define kOrderRemoveKeys @[@"cargos",@"tasks",@"userId",@"objStatus",@"soImages"]
 @implementation Order
 
 #pragma mark - MTLJSONSerializing
