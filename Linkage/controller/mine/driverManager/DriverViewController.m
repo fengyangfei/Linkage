@@ -12,7 +12,7 @@
 #import "DriverUtil.h"
 #import "AddDriverViewController.h"
 #import "FormDescriptorCell.h"
-#import "CargoToDriverCell.h"
+#import "TaskCell.h"
 #import "Task.h"
 #import <Mantle/Mantle.h>
 
@@ -33,7 +33,7 @@
 {
     XLFormSectionDescriptor *currentSection = self.rowDescriptor.sectionDescriptor;
     id<MTLJSONSerializing,XLFormTitleOptionObject> chosenValue = chosenRow.value;
-    XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:DriverEditDescriporType title:[chosenValue formTitleText]];
+    XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TaskEditDescriporType title:[chosenValue formTitleText]];
     row.value = [Task createWithDriver:(Driver *)chosenValue cargo:(Cargo *)self.rowDescriptor.value];
     [currentSection addFormRow:row beforeRow:self.rowDescriptor];
     

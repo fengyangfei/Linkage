@@ -6,21 +6,21 @@
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import "CargoToDriverCell.h"
+#import "TaskCell.h"
 #import "Task.h"
 #import "NSString+Hint.h"
 #import "LinkUtil.h"
 
-NSString *const DriverInfoDescriporType = @"DriverInfoRowType";
-NSString *const DriverEditDescriporType = @"DriverEditRowType";
+NSString *const TaskInfoDescriporType = @"TaskInfoRowType";
+NSString *const TaskEditDescriporType = @"TaskEditRowType";
 
-@interface DriverBaseCell()<UITextFieldDelegate>
+@interface TaskCell()<UITextFieldDelegate>
 @property (nonatomic, readonly) UILabel *textLabel;
 @property (nonatomic, readonly) UILabel *detailLabel;
 @property (nonatomic, readonly) UITextField *textField;
 @end
 
-@implementation DriverBaseCell
+@implementation TaskCell
 @synthesize textLabel = _textLabel;
 @synthesize detailLabel = _detailLabel;
 @synthesize textField = _textField;
@@ -132,23 +132,23 @@ NSString *const DriverEditDescriporType = @"DriverEditRowType";
 @end
 
 //编辑Cell
-@implementation DriverEditCell
+@implementation TaskEditCell
 +(void)load
 {
-    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:DriverEditDescriporType];
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:TaskEditDescriporType];
 }
 @end
 
 //查看cell
-@interface DriverInfoCell()
+@interface TaskInfoCell()
 @property (nonatomic, readonly) UILabel *statusLabel;
 @end
 
-@implementation DriverInfoCell
+@implementation TaskInfoCell
 @synthesize statusLabel = _statusLabel;
 +(void)load
 {
-    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:DriverInfoDescriporType];
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:TaskInfoDescriporType];
 }
 
 -(void)configure

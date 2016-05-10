@@ -193,7 +193,7 @@
 		9A23A3211C7E8EA900FB5EB6 /* ICETutorialStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A31E1C7E8EA900FB5EB6 /* ICETutorialStyle.m */; };
 		9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A3231C7E900500FB5EB6 /* TutorialController.m */; };
 		9A2F5C2A1CE01E5B00E7E2DD /* NSString+Hint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */; };
-		9A2F5C311CE0634700E7E2DD /* CargoToDriverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C301CE0634700E7E2DD /* CargoToDriverCell.m */; };
+		9A2F5C341CE16B9D00E7E2DD /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C331CE16B9D00E7E2DD /* TaskCell.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -595,8 +595,8 @@
 		9A23A3231C7E900500FB5EB6 /* TutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialController.m; sourceTree = "<group>"; };
 		9A2F5C281CE01E5B00E7E2DD /* NSString+Hint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hint.h"; sourceTree = "<group>"; };
 		9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hint.m"; sourceTree = "<group>"; };
-		9A2F5C2F1CE0634700E7E2DD /* CargoToDriverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoToDriverCell.h; sourceTree = "<group>"; };
-		9A2F5C301CE0634700E7E2DD /* CargoToDriverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoToDriverCell.m; sourceTree = "<group>"; };
+		9A2F5C321CE16B9D00E7E2DD /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
+		9A2F5C331CE16B9D00E7E2DD /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -1471,8 +1471,8 @@
 		8BCA5FB41CA9646D002601F6 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				9A2F5C2F1CE0634700E7E2DD /* CargoToDriverCell.h */,
-				9A2F5C301CE0634700E7E2DD /* CargoToDriverCell.m */,
+				9A2F5C321CE16B9D00E7E2DD /* TaskCell.h */,
+				9A2F5C331CE16B9D00E7E2DD /* TaskCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2170,7 +2170,6 @@
 				9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */,
 				8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */,
 				9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */,
-				9A2F5C311CE0634700E7E2DD /* CargoToDriverCell.m in Sources */,
 				9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */,
 				9A11F05C1CD041BA002E8F6F /* Driver.m in Sources */,
 				8B5DC61B1C79B8A700D29292 /* IFTTTAnimatedScrollViewController.m in Sources */,
@@ -2183,6 +2182,7 @@
 				8B5DC6221C79B8A700D29292 /* IFTTTEasingFunction.m in Sources */,
 				9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */,
 				9AEF89C61CA2907D00C5EB90 /* Address.m in Sources */,
+				9A2F5C341CE16B9D00E7E2DD /* TaskCell.m in Sources */,
 				9A95FF091C858B0E00C5F492 /* SettingViewController.m in Sources */,
 				8BA1305A1C9D951B007607F9 /* SOImage.m in Sources */,
 				8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */,

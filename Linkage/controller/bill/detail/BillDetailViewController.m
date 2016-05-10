@@ -14,7 +14,7 @@
 #import "Task.h"
 #import "OrderUtil.h"
 #import "Driver.h"
-#import "CargoToDriverCell.h"
+#import "TaskCell.h"
 #import "LinkUtil.h"
 #import "SpecialFormSectionDescriptor.h"
 #import "DriverViewController.h"
@@ -219,7 +219,7 @@
         section = [XLFormSectionDescriptor formSectionWithTitle:cargoTitle];
         [form addFormSection:section];
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:DriverInfoDescriporType];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TaskInfoDescriporType];
         RowUI
         row.value = [Task createWithDriver:nil cargo:cargo];
         [section addFormRow:row];
