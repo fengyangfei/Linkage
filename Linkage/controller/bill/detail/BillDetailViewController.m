@@ -27,12 +27,14 @@
 @interface BillDetailViewController()<XLFormRowDescriptorViewController>
 @property (nonatomic, strong) XLFormDataSource *detailDS;
 @property (nonatomic, strong) CargosDataSource *tasksDataSource;
+@property (nonatomic, readonly) UIToolbar *toolBar;
 @end
 
 @implementation BillDetailViewController
 @synthesize rowDescriptor = _rowDescriptor;
 @synthesize leftTableView = _leftTableView;
 @synthesize rightTableView = _rightTableView;
+@synthesize toolBar = _toolBar;
 
 -(void)dealloc
 {
@@ -56,6 +58,13 @@
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         }];
     }
+    [self.view addSubview:self.toolBar];
+    [self.toolBar makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view.bottom);
+        make.left.equalTo(self.view.left);
+        make.right.equalTo(self.view.right);
+    }];
+    
 }
 
 -(void)setupData:(Order *)order
@@ -279,6 +288,18 @@
     HMSegmentedControl *segmentedControl = [super segmentedControl];
     segmentedControl.sectionTitles = @[@"订单详情", @"货柜详情"];
     return segmentedControl;
+}
+
+-(UIToolbar *)toolBar
+{
+    if (!_toolBar) {
+        _toolBar = [[UIToolbar alloc]init];
+        UIBarButtonItem *add = [[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:nil];
+        UIBarButtonItem *add = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *mod = [[UIBarButtonItem alloc]initWithTitle:@"修改" style:UIBarButtonItemStylePlain target:self action:nil];
+        [_toolBar setItems:@[add,mod]];
+    }
+    return _toolBar;
 }
 
 -(UITableView *)leftTableView
