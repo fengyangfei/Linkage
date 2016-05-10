@@ -239,7 +239,9 @@
     NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:self.count];
     for (OrderModel *manageObj in self) {
         Order *order = (Order *)[OrderUtil modelFromManagedObject:manageObj];
-        [mutableArray addObject:order];
+        if (order) {
+            [mutableArray addObject:order];
+        }
     }
     return [mutableArray copy];
 }

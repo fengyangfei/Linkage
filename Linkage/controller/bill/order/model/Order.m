@@ -12,6 +12,7 @@
 #import "SOImage.h"
 
 #define kOrderRemoveKeys @[@"cargos",@"tasks",@"userId",@"objStatus",@"soImages"]
+#define kOrderManageObjectRemoveKeys @[@"objStatus",@"tasks"]
 @implementation Order
 
 #pragma mark - MTLJSONSerializing
@@ -111,7 +112,7 @@
 + (NSDictionary *)managedObjectKeysByPropertyKey
 {
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"objStatus"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:kOrderManageObjectRemoveKeys];
     return keys;
 }
 
@@ -171,7 +172,7 @@
 + (NSDictionary *)managedObjectKeysByPropertyKey
 {
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"objStatus"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:kOrderManageObjectRemoveKeys];
     return keys;
 }
 @end
@@ -229,7 +230,7 @@
 + (NSDictionary *)managedObjectKeysByPropertyKey
 {
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"so",@"objStatus"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"so",@"objStatus",@"tasks"]];
     return keys;
 }
 
@@ -287,7 +288,7 @@
 + (NSDictionary *)managedObjectKeysByPropertyKey
 {
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"objStatus"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:kOrderManageObjectRemoveKeys];
     return keys;
 }
 
