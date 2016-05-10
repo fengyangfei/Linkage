@@ -182,6 +182,13 @@
 {
     NSArray *orderModelArray = [OrderModel MR_findAllSortedBy:@"updateTime" ascending:NO withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
     NSArray *orders = [orderModelArray modelsFromManagedObject];
+    orders = [orders sortedArrayUsingComparator:^NSComparisonResult(Order *obj1, Order *obj2) {
+        if (obj1.updateTime && obj2.updateTime) {
+            return [obj2.updateTime compare:obj1.updateTime];
+        }else{
+            return NSOrderedDescending;
+        }
+    }];
     if (completion) {
         completion(orders);
     }
@@ -198,6 +205,7 @@
         [result mergeValueForKey:@"orderId" fromModel:order];
         [result mergeValueForKey:@"type" fromModel:order];
         [result mergeValueForKey:@"status" fromModel:order];
+        [result mergeValueForKey:@"updateTime" fromModel:order];
         return result;
     };
     if ([order isKindOfClass:[ImportOrder class]]) {
