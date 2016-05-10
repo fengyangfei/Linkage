@@ -26,7 +26,7 @@
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
 @interface BillDetailViewController()<XLFormRowDescriptorViewController>
 @property (nonatomic, strong) XLFormDataSource *detailDS;
-@property (nonatomic, strong) CargosDataSource *cargosDataSource;
+@property (nonatomic, strong) CargosDataSource *tasksDataSource;
 @end
 
 @implementation BillDetailViewController
@@ -37,7 +37,7 @@
 -(void)dealloc
 {
     _detailDS = nil;
-    _cargosDataSource = nil;
+    _tasksDataSource = nil;
 }
 
 -(void)viewDidLoad
@@ -63,11 +63,11 @@
     if (_detailDS) {
         [_detailDS setForm:[self createDetailForm:order]];
     }
-    if (_cargosDataSource) {
+    if (_tasksDataSource) {
         if([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin){
-            [_cargosDataSource setForm:[self createCargosEditForm:order]];
+            [_tasksDataSource setForm:[self createEditTasksForm:order]];
         }else{
-            [_cargosDataSource setForm:[self createCargosInfoForm:order]];
+            [_tasksDataSource setForm:[self createInfoTasksForm:order]];
         }
     }
 }
@@ -173,7 +173,7 @@
 }
 
 //可编辑的form
--(XLFormDescriptor *)createCargosEditForm:(Order *)order
+-(XLFormDescriptor *)createEditTasksForm:(Order *)order
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
@@ -206,7 +206,7 @@
 }
 
 //查看详情的form
--(XLFormDescriptor *)createCargosInfoForm:(Order *)order
+-(XLFormDescriptor *)createInfoTasksForm:(Order *)order
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
@@ -239,13 +239,13 @@
 //分配任务给司机
 -(void)allocateTask:(XLFormRowDescriptor *)row
 {
-    NSMutableArray *cargos = [[NSMutableArray alloc]init];
-    NSDictionary *formValues = [self.cargosDataSource.form formValues];
+    NSMutableArray *tasks = [[NSMutableArray alloc]init];
+    NSDictionary *formValues = [self.tasksDataSource.form formValues];
     [formValues enumerateKeysAndObjectsUsingBlock:^(NSString *key, id drivers, BOOL * stop) {
         if ([drivers isKindOfClass:[NSArray class]]) {
             [drivers enumerateObjectsUsingBlock:^(id task, NSUInteger idx, BOOL * stop) {
                 if ([task isKindOfClass:[Task class]]) {
-                    [cargos addObject:@{
+                    [tasks addObject:@{
                                         @"driver_id":((Task *)task).driverId,
                                         @"cargo_type":((Task *)task).cargoType,
                                         @"cargo_no": ((Task *)task).cargoNo ?:@""
@@ -255,14 +255,14 @@
         }
     }];
     
-    NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"cargos":cargos} options:0 error:NULL];
-    NSString *cargoString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"cargos":tasks} options:0 error:NULL];
+    NSString *tasksString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     
     Order *order = self.rowDescriptor.value;
     if (order.orderId) {
         NSDictionary *parameter = @{
                                     @"order_id":order.orderId,
-                                    @"dispatch_info":cargoString
+                                    @"dispatch_info":tasksString
                                     };
         parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
         [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl form:parameter success:^(id responseObject) {
@@ -301,9 +301,9 @@
         _rightTableView.sectionFooterHeight = 0;
         _rightTableView.tableFooterView = [UIView new];
         _rightTableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 0.1)];
-        _cargosDataSource = [[CargosDataSource alloc] initWithViewController:self tableView:_rightTableView];
-        _rightTableView.dataSource = _cargosDataSource;
-        _rightTableView.delegate = _cargosDataSource;
+        _tasksDataSource = [[CargosDataSource alloc] initWithViewController:self tableView:_rightTableView];
+        _rightTableView.dataSource = _tasksDataSource;
+        _rightTableView.delegate = _tasksDataSource;
         _rightTableView.rowHeight = UITableViewAutomaticDimension;
         _rightTableView.estimatedRowHeight = 44.0;
         [_rightTableView setEditing:YES animated:NO];

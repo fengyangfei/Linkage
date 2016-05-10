@@ -10,8 +10,9 @@
 #import "Cargo.h"
 #import "OrderModel.h"
 #import "SOImage.h"
+#import "Task.h"
 
-#define kOrderRemoveKeys @[@"cargos",@"tasks",@"userId",@"objStatus",@"soImages"]
+#define kOrderRemoveKeys @[@"cargos",@"userId",@"objStatus",@"soImages"]
 #define kOrderManageObjectRemoveKeys @[@"objStatus",@"tasks"]
 @implementation Order
 
@@ -61,6 +62,10 @@
     } reverseBlock:^id(id value, BOOL *success, NSError **error) {
         return value;
     }];
+}
+
++ (NSValueTransformer *)tasksJSONTransformer {
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[Task class]];
 }
 
 + (NSValueTransformer *)JSONTransformerForKey:(NSString *)key

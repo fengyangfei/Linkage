@@ -40,12 +40,8 @@ NSString *const TaskEditDescriporType = @"TaskEditRowType";
     [super update];
     Task *model = self.rowDescriptor.value;
     if (model) {
-        if(model.driverName){
-            self.textLabel.attributedText = [model.driverName attributedStringWithTitle:@"司机："];
-        }
-        if (model.driverLicense) {
-            self.detailLabel.attributedText = [model.driverLicense attributedStringWithTitle:@"牌号："];
-        }
+        self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机："];
+        self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌号："];
         if (model.cargoNo && model.cargoNo.length > 0) {
             self.textField.text = model.cargoNo;
         }
