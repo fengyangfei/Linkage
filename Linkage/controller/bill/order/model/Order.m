@@ -38,7 +38,24 @@
                                @(2): @(OrderTypeMainland),
                                @(3): @(OrderTypeSelf)
                                };
-    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(OrderTypeExport) reverseDefaultValue:@(0)];
+    return [MTLValueTransformer
+            transformerUsingForwardBlock:^ id (id key, BOOL *success, NSError **error) {
+                if ([key isKindOfClass:[NSString class]]) {
+                    return transDic[@([key integerValue]) ?: NSNull.null] ?: @(OrderTypeExport);
+                }else{
+                    return transDic[key ?: NSNull.null] ?: @(OrderTypeExport);
+                }
+            }
+            reverseBlock:^ id (id value, BOOL *success, NSError **error) {
+                __block id result = nil;
+                [transDic enumerateKeysAndObjectsUsingBlock:^(id key, id anObject, BOOL *stop) {
+                    if ([value isEqual:anObject]) {
+                        result = key;
+                        *stop = YES;
+                    }
+                }];
+                return result ?: @(0);
+            }];
 }
 
 + (NSValueTransformer *)statusJSONTransformer

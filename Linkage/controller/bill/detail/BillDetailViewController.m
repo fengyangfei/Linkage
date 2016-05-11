@@ -342,6 +342,7 @@
         _leftTableView.delegate = _detailDS;
         _leftTableView.sectionFooterHeight = 0;
         _leftTableView.tableFooterView = [UIView new];
+        _leftTableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
     }
     return _leftTableView;
 }
@@ -360,6 +361,7 @@
         _rightTableView.estimatedRowHeight = 44.0;
         [_rightTableView setEditing:YES animated:NO];
         _rightTableView.allowsSelectionDuringEditing = YES;
+        _rightTableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
     }
     return _rightTableView;
 }
