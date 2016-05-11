@@ -28,6 +28,11 @@
 @property (nonatomic, strong) XLFormDataSource *detailDS;
 @property (nonatomic, strong) CargosDataSource *tasksDataSource;
 @property (nonatomic, readonly) UIToolbar *toolBar;
+@property (nonatomic, readonly) UIBarButtonItem *acceptItem;
+@property (nonatomic, readonly) UIBarButtonItem *confirmItem;
+@property (nonatomic, readonly) UIBarButtonItem *rejectItem;
+@property (nonatomic, readonly) UIBarButtonItem *flexibleItem;
+@property (nonatomic, readonly) UIBarButtonItem *fixedItem;
 @end
 
 @implementation BillDetailViewController
@@ -35,6 +40,11 @@
 @synthesize leftTableView = _leftTableView;
 @synthesize rightTableView = _rightTableView;
 @synthesize toolBar = _toolBar;
+@synthesize acceptItem = _acceptItem;
+@synthesize confirmItem = _confirmItem;
+@synthesize rejectItem = _rejectItem;
+@synthesize flexibleItem = _flexibleItem;
+@synthesize fixedItem = _fixedItem;
 
 -(void)dealloc
 {
@@ -58,13 +68,19 @@
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         }];
     }
-    if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin) {
+    if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin && (order.status == OrderStatusPending || order.status == OrderStatusExecuting)) {
         [self.view addSubview:self.toolBar];
         [self.toolBar makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(self.view.bottom);
             make.left.equalTo(self.view.left);
             make.right.equalTo(self.view.right);
         }];
+        
+        if (order.status == OrderStatusPending) {
+            [self.toolBar setItems:@[self.fixedItem, self.acceptItem,self.flexibleItem, self.rejectItem,self.fixedItem]];
+        }else if (order.status == OrderStatusExecuting){
+            [self.toolBar setItems:@[self.fixedItem, self.confirmItem,self.fixedItem]];
+        }
     }
 }
 
@@ -322,15 +338,49 @@
 {
     if (!_toolBar) {
         _toolBar = [[UIToolbar alloc]init];
-        UIBarButtonItem *fixItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        fixItem.width = 20;
-        UIBarButtonItem *flex = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UIBarButtonItem *accpet = [[UIBarButtonItem alloc]initWithTitle:@"接单" style:UIBarButtonItemStyleBordered target:self action:@selector(acceptAction)];
-        UIBarButtonItem *confirm = [[UIBarButtonItem alloc]initWithTitle:@"结单" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmAction)];
-        UIBarButtonItem *reject = [[UIBarButtonItem alloc]initWithTitle:@"拒绝" style:UIBarButtonItemStyleBordered target:self action:@selector(rejectAction)];
-        [_toolBar setItems:@[fixItem, accpet,flex,confirm,flex,reject, fixItem]];
     }
     return _toolBar;
+}
+
+-(UIBarButtonItem *)acceptItem
+{
+    if (!_acceptItem) {
+        _acceptItem = [[UIBarButtonItem alloc]initWithTitle:@"接单" style:UIBarButtonItemStyleBordered target:self action:@selector(acceptAction)];
+    }
+    return _acceptItem;
+}
+
+-(UIBarButtonItem *)confirmItem
+{
+    if (!_confirmItem) {
+        _confirmItem = [[UIBarButtonItem alloc]initWithTitle:@"结单" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmAction)];
+    }
+    return _confirmItem;
+}
+
+-(UIBarButtonItem *)rejectItem
+{
+    if (!_rejectItem) {
+        _rejectItem = [[UIBarButtonItem alloc]initWithTitle:@"拒绝" style:UIBarButtonItemStyleBordered target:self action:@selector(rejectAction)];
+    }
+    return _rejectItem;
+}
+
+-(UIBarButtonItem *)fixedItem
+{
+    if (!_fixedItem) {
+        _fixedItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        _fixedItem.width = 20;
+    }
+    return _fixedItem;
+}
+
+-(UIBarButtonItem *)flexibleItem
+{
+    if (!_flexibleItem) {
+        _flexibleItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    }
+    return _flexibleItem;
 }
 
 -(UITableView *)leftTableView

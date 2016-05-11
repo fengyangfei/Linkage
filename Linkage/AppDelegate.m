@@ -16,6 +16,7 @@
 #import "LoginViewController.h"
 #import <IQKeyboardManager/KeyboardManager.h>
 #import <XLFormViewController.h>
+#import <PgyUpdate/PgyUpdateManager.h>
 
 #import "UMSocialData.h"
 #import "UMSocialWechatHandler.h"
@@ -31,6 +32,7 @@ static NSString *const kStoreName = @"linkage.sqlite";
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:kPgyerAppKey];
     
     [self setupDataBase];
     
