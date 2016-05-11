@@ -11,6 +11,7 @@
 #import "BillTypeViewController.h"
 #import "LoginUser.h"
 #import "Company.h"
+#import "SearchViewController.h"
 
 @interface MainViewController ()
 
@@ -21,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupData];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction:)];
 }
 
 -(void)setupData
@@ -46,6 +48,12 @@
     }
 
     return form;
+}
+
+-(void)searchAction:(id)sender
+{
+    SearchViewController *searchViewController = [[SearchViewController alloc]init];
+    [self.navigationController pushViewController:searchViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

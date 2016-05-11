@@ -34,6 +34,7 @@
 		8B53F4DF1CE368640020E218 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B53F4DE1CE368640020E218 /* AudioToolbox.framework */; };
 		8B53F4E11CE3687A0020E218 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B53F4E01CE3687A0020E218 /* OpenGLES.framework */; };
 		8B53F4E31CE368820020E218 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B53F4E21CE368820020E218 /* CoreMotion.framework */; };
+		8B53F4E61CE37C820020E218 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B53F4E51CE37C820020E218 /* SearchViewController.m */; };
 		8B5DC5671C7992E900D29292 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC5661C7992E900D29292 /* main.m */; };
 		8B5DC56A1C7992E900D29292 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC5691C7992E900D29292 /* AppDelegate.m */; };
 		8B5DC5721C7992E900D29292 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B5DC5711C7992E900D29292 /* Assets.xcassets */; };
@@ -284,6 +285,8 @@
 		8B53F4DE1CE368640020E218 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8B53F4E01CE3687A0020E218 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		8B53F4E21CE368820020E218 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		8B53F4E41CE37C820020E218 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		8B53F4E51CE37C820020E218 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		8B5DC5621C7992E900D29292 /* Linkage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linkage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5DC5661C7992E900D29292 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8B5DC5681C7992E900D29292 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1628,6 +1631,8 @@
 				9A23A2B21C7AB38400FB5EB6 /* baseController */,
 				9A23A2AF1C7AAA3D00FB5EB6 /* MainViewController.h */,
 				9A23A2B01C7AAA3D00FB5EB6 /* MainViewController.m */,
+				8B53F4E41CE37C820020E218 /* SearchViewController.h */,
+				8B53F4E51CE37C820020E218 /* SearchViewController.m */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -2268,6 +2273,7 @@
 				8BB17AB71C9AF60D002708C4 /* BillApplyViewController.m in Sources */,
 				8B5DC61E1C79B8A700D29292 /* IFTTTBackgroundColorAnimation.m in Sources */,
 				8B958B3C1CD65301003BD74B /* Message.m in Sources */,
+				8B53F4E61CE37C820020E218 /* SearchViewController.m in Sources */,
 				8BCA5FBB1CA97FB8002601F6 /* MessageViewController.m in Sources */,
 				8BEEA7851CD3A7BB0088D70A /* AddressUtil.m in Sources */,
 				9A23A2FD1C7DAA2500FB5EB6 /* UIViewController+Extensions.m in Sources */,
