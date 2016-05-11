@@ -75,12 +75,14 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setupData];
+    [self setupTodoData];
 }
 
--(void)setupData
+- (void)segmentedControlChangeIndex:(NSInteger)index
 {
-    [self setupTodoData];
+    if (index == 1) {
+        [self setupDoneData];
+    }
 }
 
 -(void)setupTodoData
@@ -88,7 +90,11 @@
     WeakSelf
     NSPredicate *todoPredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status != %@", [LoginUser shareInstance].cid, @(OrderStatusCompletion)];
     [OrderUtil queryModelsFromDataBase:todoPredicate completion:^(NSArray *orders) {
-        [weakSelf.todoDS setForm:[weakSelf createForm:orders]];
+        if (orders.count > 0) {
+            [weakSelf.todoDS setForm:[weakSelf createForm:orders]];
+        }else{
+            [weakSelf.leftTableView.mj_header beginRefreshing];
+        }
     }];
 }
 
@@ -97,7 +103,11 @@
     WeakSelf
     NSPredicate *donePredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status == %@", [LoginUser shareInstance].cid, @(OrderStatusCompletion)];
     [OrderUtil queryModelsFromDataBase:donePredicate completion:^(NSArray *orders) {
-        [weakSelf.doneDS setForm:[weakSelf createForm:orders]];
+        if (orders.count > 0) {
+            [weakSelf.doneDS setForm:[weakSelf createForm:orders]];
+        }else{
+            [weakSelf.rightTableView.mj_header beginRefreshing];
+        }
     }];
 }
 

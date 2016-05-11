@@ -79,7 +79,7 @@
         if (order.status == OrderStatusPending) {
             [self.toolBar setItems:@[self.fixedItem, self.acceptItem,self.flexibleItem, self.rejectItem,self.fixedItem]];
         }else if (order.status == OrderStatusExecuting){
-            [self.toolBar setItems:@[self.fixedItem, self.confirmItem,self.fixedItem]];
+            [self.toolBar setItems:@[self.flexibleItem, self.confirmItem,self.flexibleItem]];
         }
     }
 }
@@ -90,7 +90,8 @@
         [_detailDS setForm:[self createDetailForm:order]];
     }
     if (_tasksDataSource) {
-        if([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin){
+        if([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin &&
+           (order.status == OrderStatusPending || order.status ==OrderStatusExecuting)){
             [_tasksDataSource setForm:[self createEditTasksForm:order]];
         }else{
             [_tasksDataSource setForm:[self createInfoTasksForm:order]];
@@ -198,7 +199,7 @@
     return form;
 }
 
-//可编辑的form
+//分配任务的form
 -(XLFormDescriptor *)createEditTasksForm:(Order *)order
 {
     XLFormDescriptor * form;
@@ -231,7 +232,7 @@
     return form;
 }
 
-//查看详情的form
+//查看任务详情的form
 -(XLFormDescriptor *)createInfoTasksForm:(Order *)order
 {
     XLFormDescriptor * form;

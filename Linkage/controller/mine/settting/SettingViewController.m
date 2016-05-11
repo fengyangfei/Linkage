@@ -13,6 +13,7 @@
 #import "LoginUser.h"
 #import "YGRestClient.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <PgyUpdate/PgyUpdateManager.h>
 
 @interface SettingViewController ()<UMSocialUIDelegate>
 
@@ -148,6 +149,7 @@
 -(void)updateAction:(XLFormRowDescriptor *)row
 {
     [self deselectFormRow:row];
+    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:kPgyerAppKey];
 }
 
 -(void)aboutUSAction:(XLFormRowDescriptor *)row
