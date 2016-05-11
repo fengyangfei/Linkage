@@ -44,10 +44,30 @@
 + (NSValueTransformer *)statusJSONTransformer
 {
     NSDictionary *transDic = @{
-                               @(0): @(OrderStatusToDo),
-                               @(1): @(OrderStatusDone)
+                               @(0): @(OrderStatusPending),
+                               @(1): @(OrderStatusExecuting),
+                               @(2): @(OrderStatusDenied),
+                               @(3): @(OrderStatusCompletion),
+                               @(4): @(OrderStatusCancelled)
                                };
-    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(OrderStatusToDo) reverseDefaultValue:@(0)];
+    return [MTLValueTransformer
+            transformerUsingForwardBlock:^ id (id key, BOOL *success, NSError **error) {
+                if ([key isKindOfClass:[NSString class]]) {
+                    return transDic[@([key integerValue]) ?: NSNull.null] ?: @(OrderStatusPending);
+                }else{
+                    return transDic[key ?: NSNull.null] ?: @(OrderStatusPending);
+                }
+            }
+            reverseBlock:^ id (id value, BOOL *success, NSError **error) {
+                __block id result = nil;
+                [transDic enumerateKeysAndObjectsUsingBlock:^(id key, id anObject, BOOL *stop) {
+                    if ([value isEqual:anObject]) {
+                        result = key;
+                        *stop = YES;
+                    }
+                }];
+                return result ?: @(0);
+            }];
 }
 
 +(NSValueTransformer *)isTransferPortJSONTransformer

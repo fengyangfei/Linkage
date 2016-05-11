@@ -9,6 +9,7 @@
 #import "BillTableViewCell.h"
 #import "Order.h"
 #import "NSString+Hint.h"
+#import "LinkUtil.h"
 
 NSString *const TodoBillDescriporType = @"TodoBillRowType";
 NSString *const DoneBillDescriporType = @"DoneBillRowType";
@@ -43,11 +44,7 @@ NSString *const DoneBillDescriporType = @"DoneBillRowType";
     [super update];
     Order *order = self.rowDescriptor.value;
     self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
-    if (order.status == OrderStatusToDo) {
-        self.ratingLable.attributedText = [@"未完成" attributedStringWithTitle:@"状态："];
-    }else{
-        self.ratingLable.attributedText = [@"已完成" attributedStringWithTitle:@"状态："];
-    }
+    self.ratingLable.attributedText = [[LinkUtil.orderStatus objectForKey:@(order.status)] attributedStringWithTitle:@"状态："];
     self.timeLable.attributedText = [[[BillTableViewCell dateFormatter] stringFromDate:order.updateTime] attributedStringWithTitle:@"下单时间："];
 }
 

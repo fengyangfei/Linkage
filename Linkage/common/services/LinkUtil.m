@@ -8,6 +8,7 @@
 
 #import "LinkUtil.h"
 #import "LoginUser.h"
+#import "Order.h"
 #import <AFNetworking/AFNetworking.h>
 #import <SDWebImage/NSData+ImageContentType.h>
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -76,6 +77,22 @@
                        };
     });
     return _taskStatus;
+}
+
++ (NSDictionary *)orderStatus
+{
+    static NSDictionary * _orderStatus;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _orderStatus = @{
+                        @(OrderStatusPending):@"订单待处理",
+                        @(OrderStatusExecuting):@"订单处理中",
+                        @(OrderStatusDenied):@"订单被拒绝",
+                        @(OrderStatusCompletion):@"订单确认完成",
+                        @(OrderStatusCancelled):@"订单已取消"
+                        };
+    });
+    return _orderStatus;
 }
 
 + (NSArray *)userTypeOptions

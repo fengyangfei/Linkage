@@ -18,8 +18,11 @@ typedef NS_ENUM(NSUInteger, OrderType) {
 };
 
 typedef NS_ENUM(NSUInteger, OrderStatus) {
-    OrderStatusToDo,
-    OrderStatusDone
+    OrderStatusPending,     //下单待定
+    OrderStatusExecuting,   //处理中
+    OrderStatusDenied,      //被拒绝
+    OrderStatusCompletion,  //确认完成
+    OrderStatusCancelled    //取消
 };
 
 typedef NS_ENUM(NSUInteger, ObjectStatus) {

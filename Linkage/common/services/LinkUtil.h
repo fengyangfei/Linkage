@@ -18,6 +18,8 @@
 
 + (NSDictionary *)taskStatus;
 
++ (NSDictionary *)orderStatus;
+
 + (NSArray *)userTypeOptions;
 
 //上传到服务器
