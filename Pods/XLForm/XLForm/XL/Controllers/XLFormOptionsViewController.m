@@ -91,7 +91,7 @@
         cell.accessoryType = ([self selectedValuesContainsOption:cellObject] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone);
     }
     else{
-        if ([[self.rowDescriptor.value valueData] isEqual:[cellObject valueData]]){
+        if ([[self.rowDescriptor.value displayText] isEqualToString:[cellObject displayText]]){
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
         else{
