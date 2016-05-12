@@ -115,6 +115,7 @@ static LoginUser *user;
 @implementation LoginUser(Extensions)
 UserDefault_AttrBoolImpl(receiveSms, BOOL)//接收平台短信
 UserDefault_AttrBoolImpl(receiveEmail, BOOL)//接收平台邮件
+UserDefault_AttrImpl(searchKeys, NSArray *)//搜索历史
 
 +(Company *)findCompanyById:(NSString *)companyId
 {

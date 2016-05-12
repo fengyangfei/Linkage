@@ -40,6 +40,8 @@
 
 +(void)queryModelsFromServer:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion;
 
++(void)queryModelsFromServer:(NSDictionary *)parameter url:(NSString *)url completion:(void(^)(NSArray *models))completion;
+
 +(void)queryModelFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model completion:(void(^)(id<MTLJSONSerializing> result))completion;
 
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion;

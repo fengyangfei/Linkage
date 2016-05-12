@@ -204,6 +204,7 @@
 		9A2F5C461CE1724A00E7E2DD /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C431CE1724A00E7E2DD /* BillTableViewCell.m */; };
 		9A2F5C4A1CE18DE300E7E2DD /* OrderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C491CE18DE300E7E2DD /* OrderUtil.m */; };
 		9A2F5C4E1CE1C2E500E7E2DD /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C4D1CE1C2E500E7E2DD /* CommentViewController.m */; };
+		9A2F5C521CE4015000E7E2DD /* SearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C511CE4015000E7E2DD /* SearchViewModel.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -619,6 +620,8 @@
 		9A2F5C491CE18DE300E7E2DD /* OrderUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderUtil.m; sourceTree = "<group>"; };
 		9A2F5C4C1CE1C2E500E7E2DD /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		9A2F5C4D1CE1C2E500E7E2DD /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		9A2F5C501CE4015000E7E2DD /* SearchViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewModel.h; sourceTree = "<group>"; };
+		9A2F5C511CE4015000E7E2DD /* SearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewModel.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -1626,6 +1629,7 @@
 		9A23A2AC1C7AAA0100FB5EB6 /* main */ = {
 			isa = PBXGroup;
 			children = (
+				9A2F5C4F1CE400CE00E7E2DD /* viewmodel */,
 				8B33028E1C8BC0A90088DAE2 /* view */,
 				8B0D50981C8B074200EB6B3A /* dataSource */,
 				9A23A2B21C7AB38400FB5EB6 /* baseController */,
@@ -1772,6 +1776,15 @@
 				9A2F5C4D1CE1C2E500E7E2DD /* CommentViewController.m */,
 			);
 			path = comment;
+			sourceTree = "<group>";
+		};
+		9A2F5C4F1CE400CE00E7E2DD /* viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				9A2F5C501CE4015000E7E2DD /* SearchViewModel.h */,
+				9A2F5C511CE4015000E7E2DD /* SearchViewModel.m */,
+			);
+			path = viewmodel;
 			sourceTree = "<group>";
 		};
 		9A7D0E901CD885C400EE005F /* util */ = {
@@ -2162,6 +2175,7 @@
 				9A2F5C461CE1724A00E7E2DD /* BillTableViewCell.m in Sources */,
 				8BA3E3D11CD465AD0047AC6B /* StaffModel.m in Sources */,
 				9A2F5C391CE1702400E7E2DD /* Cargo.m in Sources */,
+				9A2F5C521CE4015000E7E2DD /* SearchViewModel.m in Sources */,
 				9A23A2C41C7AE1B100FB5EB6 /* LoginViewController.m in Sources */,
 				8B986F651CC50A7E002DDA68 /* ChangePasswordController.m in Sources */,
 				8BE25B111CC7D0540073BD8D /* CocoaSecurity.m in Sources */,

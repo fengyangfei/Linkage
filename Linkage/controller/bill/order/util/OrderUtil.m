@@ -156,7 +156,12 @@
 
 +(void)queryModelsFromServer:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
 {
-    [[YGRestClient sharedInstance] postForObjectWithUrl:ListByStatusUrl form:parameter success:^(id responseObject) {
+    [self queryModelsFromServer:parameter url:ListByStatusUrl completion:completion];
+}
+
++(void)queryModelsFromServer:(NSDictionary *)parameter url:(NSString *)url completion:(void(^)(NSArray *models))completion
+{
+    [[YGRestClient sharedInstance] postForObjectWithUrl:url form:parameter success:^(id responseObject) {
         if (responseObject[@"orders"] && [responseObject[@"orders"] isKindOfClass:[NSArray class]]) {
             NSError *error;
             NSArray *array = [MTLJSONAdapter modelsOfClass:[Order class] fromJSONArray:responseObject[@"orders"] error:&error];

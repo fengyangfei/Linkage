@@ -7,7 +7,6 @@
 //
 
 #import <XLForm/XLForm.h>
-
 @interface SearchViewController : XLFormViewController
 
 @end

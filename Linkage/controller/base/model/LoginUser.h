@@ -61,6 +61,7 @@ typedef NS_ENUM(NSUInteger,UserType) {
 @interface LoginUser (Extensions)
 UserDefault_Attr(receiveSms, BOOL)//接收平台短信
 UserDefault_Attr(receiveEmail, BOOL)//接收平台邮件
+UserDefault_Attr(searchKeys, NSArray *)//搜索历史
 
 +(Company *)findCompanyById:(NSString *)companyId;
 @end
