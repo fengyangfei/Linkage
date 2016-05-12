@@ -1,21 +1,20 @@
 //
-//  BillTableViewCell.m
+//  OrderCell.m
 //  Linkage
 //
-//  Created by lihaijian on 16/3/15.
+//  Created by Mac mini on 16/5/12.
 //  Copyright © 2016年 LA. All rights reserved.
 //
 
-#import "BillTableViewCell.h"
+#import "OrderCell.h"
 #import "Order.h"
 #import "NSString+Hint.h"
 #import "LinkUtil.h"
 
-NSString *const TodoBillDescriporType = @"TodoBillRowType";
-NSString *const DoneBillDescriporType = @"DoneBillRowType";
+NSString *const PendingOrderDescriporType = @"PendingOrderRowType";
+NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
 
-@interface BillTableViewCell()
-
+@interface OrderCell()
 @property (nonatomic, readonly) UILabel *billNumLable;
 @property (nonatomic, readonly) UILabel *timeLable;
 @property (nonatomic, readonly) UILabel *detailLable;
@@ -23,7 +22,7 @@ NSString *const DoneBillDescriporType = @"DoneBillRowType";
 @property (nonatomic, readonly) UIButton *detailButton;
 @end
 
-@implementation BillTableViewCell
+@implementation OrderCell
 @synthesize billNumLable = _billNumLable;
 @synthesize timeLable = _timeLable;
 @synthesize detailLable = _detailLable;
@@ -45,7 +44,7 @@ NSString *const DoneBillDescriporType = @"DoneBillRowType";
     Order *order = self.rowDescriptor.value;
     self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
     self.ratingLable.attributedText = [[LinkUtil.orderStatus objectForKey:@(order.status)] attributedStringWithTitle:@"状态："];
-    self.timeLable.attributedText = [[[BillTableViewCell dateFormatter] stringFromDate:order.updateTime] attributedStringWithTitle:@"下单时间："];
+    self.timeLable.attributedText = [[[LinkUtil dateFormatter] stringFromDate:order.updateTime] attributedStringWithTitle:@"下单时间："];
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
@@ -126,15 +125,6 @@ NSString *const DoneBillDescriporType = @"DoneBillRowType";
         make.left.equalTo(self.contentView.left).offset(12);
         make.top.equalTo(self.ratingLable.bottom).offset(5);
     }];
-    
-//    [self.contentView addSubview:self.detailButton];
-//    [self.detailButton makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.equalTo(self.contentView.right).offset(-12);
-//        make.centerY.equalTo(self.contentView.centerY);
-//        make.height.equalTo(@28);
-//        make.width.equalTo(@80);
-//    }];
-    
 }
 
 -(UILabel *)billNumLable
@@ -184,25 +174,16 @@ NSString *const DoneBillDescriporType = @"DoneBillRowType";
 
 @end
 
-@implementation CompanyTableViewCell
-
+@implementation PendingOrderCell
 +(void)load
 {
-    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:TodoBillDescriporType];
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:PendingOrderDescriporType];
 }
-
 @end
 
-@implementation SubCompanyTableViewCell
-
+@implementation CompletionOrderCell
 +(void)load
 {
-    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:DoneBillDescriporType];
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:CompletionOrderDescriporType];
 }
-
--(void)formDescriptorCellDidSelectedWithViewController:(UIViewController *)controller
-{
-    
-}
-
 @end

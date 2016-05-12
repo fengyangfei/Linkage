@@ -7,7 +7,7 @@
 //
 
 #import "BillViewController.h"
-#import "BillTableViewCell.h"
+#import "OrderCell.h"
 #import "BillTypeViewController.h"
 #import "BillDetailViewController.h"
 #import <MJRefresh/MJRefresh.h>
@@ -128,7 +128,7 @@
     [form addFormSection:section];
     
     for (Order *order in orders) {
-        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
+        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:PendingOrderDescriporType];
         row.value = order;
         row.action.viewControllerClass = [BillDetailViewController class];
         [section addFormRow:row];

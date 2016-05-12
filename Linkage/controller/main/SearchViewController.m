@@ -9,7 +9,7 @@
 #import "SearchViewController.h"
 #import "Order.h"
 #import "OrderUtil.h"
-#import "BillTableViewCell.h"
+#import "OrderCell.h"
 #import "BillDetailViewController.h"
 #import "LoginUser.h"
 
@@ -93,7 +93,7 @@
     [form addFormSection:section];
     
     for (Order *order in results) {
-        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TodoBillDescriporType];
+        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:PendingOrderDescriporType];
         row.value = order;
         row.action.viewControllerClass = [BillDetailViewController class];
         [section addFormRow:row];

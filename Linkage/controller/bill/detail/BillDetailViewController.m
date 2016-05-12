@@ -20,6 +20,7 @@
 #import "DriverViewController.h"
 #import "CargosDataSource.h"
 #import "YGRestClient.h"
+#import "CommentViewController.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
@@ -67,6 +68,8 @@
             [SVProgressHUD dismiss];
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         }];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
     }
     if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin && (order.status == OrderStatusPending || order.status == OrderStatusExecuting)) {
         [self.view addSubview:self.toolBar];
@@ -255,6 +258,12 @@
 }
 
 #pragma mark - 事件处理
+-(void)gotoCommentViewController
+{
+    CommentViewController *viewController = [[CommentViewController alloc]init];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 //添加司机
 -(void)addDriverRow:(XLFormRowDescriptor *)row
 {
