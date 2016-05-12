@@ -53,6 +53,30 @@ NSString *const DoneBillDescriporType = @"DoneBillRowType";
     return 80;
 }
 
+-(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
+{
+    if (self.rowDescriptor.action.formBlock){
+        self.rowDescriptor.action.formBlock(self.rowDescriptor);
+    }
+    else if (self.rowDescriptor.action.formSelector){
+        [controller performFormSelector:self.rowDescriptor.action.formSelector withObject:self.rowDescriptor];
+    }
+    else{
+        UIViewController * controllerToPresent = [[self.rowDescriptor.action.viewControllerClass alloc] init];
+        if (controllerToPresent){
+            if ([controllerToPresent conformsToProtocol:@protocol(XLFormRowDescriptorViewController)]){
+                ((UIViewController<XLFormRowDescriptorViewController> *)controllerToPresent).rowDescriptor = self.rowDescriptor;
+            }
+            if (controller.navigationController == nil || [controllerToPresent isKindOfClass:[UINavigationController class]] || self.rowDescriptor.action.viewControllerPresentationMode == XLFormPresentationModePresent){
+                [controller presentViewController:controllerToPresent animated:YES completion:nil];
+            }
+            else{
+                [controller.navigationController pushViewController:controllerToPresent animated:YES];
+            }
+        }
+    }
+}
+
 -(void)formDescriptorCellDidSelectedWithViewController:(UIViewController *)controller
 {
     if (self.rowDescriptor.action.formBlock){

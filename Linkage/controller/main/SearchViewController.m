@@ -13,6 +13,7 @@
 #import "BillDetailViewController.h"
 #import "LoginUser.h"
 
+#define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
 @interface SearchViewController()<UISearchBarDelegate>
 @property (nonatomic, readonly) UISearchBar *searchBar;
 @property (nonatomic, strong) NSString *searchKey;
@@ -65,6 +66,7 @@
         
         for (NSString *key in historys) {
             row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:key];
+            RowUI
             row.value = key;
             row.action.formSelector = @selector(searchWithKey:);
             [section addFormRow:row];
@@ -147,12 +149,11 @@
 {
     WeakSelf
     NSDictionary *parameter = @{
-                                @"order_id":self.searchKey,
-                                @"cargo_no":self.searchKey,
-                                @"license":self.searchKey
+                                @"type":@(-1),
+                                @"status":@(0)
                                 };
     parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
-    [OrderUtil queryModelsFromServer:parameter url:SearchOrderUrl completion:^(NSArray *orders) {
+    [OrderUtil queryModelsFromServer:parameter url:ListByStatusUrl completion:^(NSArray *orders) {
         XLFormDescriptor *form = [weakSelf createResultForm:orders];
         [weakSelf setForm:form];
     }];
@@ -174,8 +175,10 @@
     if (!_searchBar) {
         _searchBar = [[UISearchBar alloc]init];
         _searchBar.barStyle = UIBarStyleDefault;
-        _searchBar.translucent = NO;
+        _searchBar.translucent = YES;
         _searchBar.delegate = self;
+        _searchBar.backgroundColor = HeaderColor;
+        _searchBar.tintColor = HeaderColor;
         _searchBar.placeholder = @"请输入订单信息";
     }
     return _searchBar;

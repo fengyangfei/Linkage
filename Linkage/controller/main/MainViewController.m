@@ -53,6 +53,7 @@
 -(void)searchAction:(id)sender
 {
     SearchViewController *searchViewController = [[SearchViewController alloc]init];
+    searchViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:searchViewController animated:YES];
 }
 
