@@ -93,9 +93,12 @@
         [_detailDS setForm:[self createDetailForm:order]];
     }
     if (_tasksDataSource) {
-        if([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin &&
-           (order.status == OrderStatusPending || order.status ==OrderStatusExecuting)){
-            [_tasksDataSource setForm:[self createEditTasksForm:order]];
+        if([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin){
+            if (order.tasks && order.tasks.count > 0) {
+                [_tasksDataSource setForm:[self createInfoTasksForm:order]];
+            }else{
+                [_tasksDataSource setForm:[self createEditTasksForm:order]];
+            }
         }else{
             [_tasksDataSource setForm:[self createInfoTasksForm:order]];
         }

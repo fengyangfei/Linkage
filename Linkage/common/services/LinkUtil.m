@@ -117,12 +117,14 @@
     parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
     AFHTTPRequestOperationManager *manager = [[YGRestClient sharedInstance] getJSONRequestManager];
     manager.requestSerializer.timeoutInterval = 300.0f;
+    dLog(@"请求服务：%@\n 参数：%@", url, parameter);
     AFHTTPRequestOperation *operation = [manager POST:url parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:image
                                     name:@"file"
                                 fileName:fileName
                                 mimeType:[NSData sd_contentTypeForImageData:image]];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        iLog(@"URL：%@\r\n服务成功返回结果：%@", operation.request.URL, responseObject);
         [SVProgressHUD showSuccessWithStatus:@"上传成功"];
         if (success) {
             success(responseObject);

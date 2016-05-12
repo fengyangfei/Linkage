@@ -104,7 +104,7 @@
 //蒲公英key
 #define kPgyerAppKey @"05cba0a3523866bc0d8d3792bbf4cab7"
 
-#define kSocialTitle @"【XXXX】"
+#define kSocialTitle @"【物流拖车宝】"
 #define kAppIndexHtml @"https://www.pgyer.com/linkage"
 
 #endif /* LinkConstants_h */
