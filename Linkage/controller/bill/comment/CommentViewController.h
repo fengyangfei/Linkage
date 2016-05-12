@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CommentViewController : UIViewController
+@interface CommentViewController : UIViewController<XLFormRowDescriptorViewController>
 
 @end

@@ -261,6 +261,7 @@
 -(void)gotoCommentViewController
 {
     CommentViewController *viewController = [[CommentViewController alloc]init];
+    viewController.rowDescriptor = self.rowDescriptor;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

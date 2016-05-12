@@ -7,7 +7,11 @@
 //
 
 #import "CommentViewController.h"
+#import "Order.h"
 #import "AXRatingView.h"
+#import "LoginUser.h"
+#import "YGRestClient.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 #import <XLForm/XLFormTextView.h>
 
 @interface CommentViewController()
@@ -18,6 +22,7 @@
 @end
 
 @implementation CommentViewController
+@synthesize rowDescriptor = _rowDescriptor;
 @synthesize titleLabel = _titleLabel;
 @synthesize ratingView = _ratingView;
 @synthesize textView = _textView;
@@ -32,6 +37,17 @@
 
 -(void)submitComment
 {
+    NSDictionary *parameter = @{
+                                @"order_id":((Order *)self.rowDescriptor.value).orderId,
+                                @"score":@(self.ratingView.value),
+                                @"comment":self.textView.text ?:@""
+                                };
+    parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+    [[YGRestClient sharedInstance]postForObjectWithUrl:CommentUrl form:parameter success:^(id responseObject) {
+        [SVProgressHUD showSuccessWithStatus:@"评论成功"];
+    } failure:^(NSError *error) {
+        
+    }];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
