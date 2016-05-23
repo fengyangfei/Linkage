@@ -36,6 +36,26 @@
     self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectZero];
     self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;
+    [self bindViewModel:self.form];
+}
+
+-(void)bindViewModel:(XLFormDescriptor *)form
+{
+    NSMutableArray *signals = [NSMutableArray array];
+    for (XLFormSectionDescriptor * section in form.formSections) {
+        for (XLFormRowDescriptor * row in section.formRows) {
+            if (row.tag.length > 0){
+                [signals addObject:RACObserve(row, value)];
+            }
+        }
+    }
+    XLFormRowDescriptor *lastRow = [form formRowAtIndex:[NSIndexPath indexPathForRow:0 inSection:1]];
+    RAC(lastRow, hidden) = [RACSignal combineLatest:signals reduce:^id(NSString *password, NSString *newpassword, NSString *confirmpassword){
+        if (password && password.length > 0 && newpassword && newpassword.length > 0 && confirmpassword && confirmpassword.length > 0 && [newpassword isEqualToString:confirmpassword]) {
+            return @(NO);
+        }
+        return @(YES);
+    }];
 }
 
 -(XLFormDescriptor *)createForm
