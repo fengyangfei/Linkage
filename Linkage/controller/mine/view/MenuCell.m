@@ -71,6 +71,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 {
     if (!_iconView) {
         _iconView = [UIImageView new];
+        _iconView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _iconView;
 }
@@ -94,8 +95,8 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
     [self.iconView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.left).offset(8);
         make.centerY.equalTo(self.contentView.centerY);
-        make.width.equalTo(@(24));
-        make.height.equalTo(@(24));
+        make.width.equalTo(@(16));
+        make.height.equalTo(@(16));
     }];
     
     [self.contentView addSubview:self.titleLabel];
