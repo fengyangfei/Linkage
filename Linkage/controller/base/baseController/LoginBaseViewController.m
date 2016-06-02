@@ -91,6 +91,18 @@
             make.height.equalTo(54);
         }];
         
+        UIImageView *imageView = ({
+            UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"phone_icon"]];
+            imageView;
+        });
+        [nameContentView addSubview:imageView];
+        [imageView makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(nameContentView.left).offset(16);
+            make.centerY.equalTo(nameContentView.centerY);
+            make.width.equalTo(14);
+            make.height.equalTo(17);
+        }];
+        
         UILabel *nameLabel = ({
             UILabel *label = [UILabel new];
             label.font = [UIFont systemFontOfSize:16];
@@ -100,7 +112,7 @@
         });
         [nameContentView addSubview:nameLabel];
         [nameLabel makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(nameContentView.left).offset(kMarginWidth);
+            make.left.equalTo(imageView.right).offset(16);
             make.width.equalTo(50);
             make.top.equalTo(nameContentView.top);
             make.bottom.equalTo(nameContentView.bottom);
@@ -113,7 +125,6 @@
             make.top.equalTo(nameContentView.top);
             make.bottom.equalTo(nameContentView.bottom);
         }];
-        
     }
     {
         //密码列
@@ -126,6 +137,18 @@
             make.height.equalTo(54);
         }];
         
+        UIImageView *imageView = ({
+            UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"password_icon"]];
+            imageView;
+        });
+        [passwordContentView addSubview:imageView];
+        [imageView makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(passwordContentView.left).offset(16);
+            make.centerY.equalTo(passwordContentView.centerY);
+            make.width.equalTo(14);
+            make.height.equalTo(17);
+        }];
+        
         UILabel *passwordLabel = ({
             UILabel *label = [UILabel new];
             label.font = [UIFont systemFontOfSize:16];
@@ -135,7 +158,7 @@
         });
         [passwordContentView addSubview:passwordLabel];
         [passwordLabel makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(passwordContentView.left).offset(kMarginWidth);
+            make.left.equalTo(imageView.right).offset(16);
             make.width.equalTo(50);
             make.top.equalTo(passwordContentView.top);
             make.bottom.equalTo(passwordContentView.bottom);
@@ -236,7 +259,7 @@
 {
     if (!_registerButton) {
         _registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"用户注册" attributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:16], NSUnderlineStyleAttributeName:@1}];
+        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"用户注册" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:16], NSUnderlineStyleAttributeName:@1}];
         [_registerButton setAttributedTitle:title forState:UIControlStateNormal];
         [_registerButton addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -247,7 +270,7 @@
 {
     if (!_forgotPasswordButton) {
         _forgotPasswordButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"忘记密码" attributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:16],NSUnderlineStyleAttributeName:@1}];
+        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"忘记密码" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:16],NSUnderlineStyleAttributeName:@1}];
         [_forgotPasswordButton setAttributedTitle:title forState:UIControlStateNormal];
         [_forgotPasswordButton addTarget:self action:@selector(forgotPasswordAction:) forControlEvents:UIControlEventTouchUpInside];
     }
