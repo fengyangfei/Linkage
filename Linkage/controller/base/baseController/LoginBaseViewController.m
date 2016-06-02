@@ -46,49 +46,38 @@
 
 -(void)setupUI
 {
-    self.view.backgroundColor = [UIColor whiteColor];
-    UIView *allContentView = [UIView new];
-    
-    UIView *lineView = ({
-        UIView *view = [UIView new];
-        view.backgroundColor = [UIColor paperColorGray];
-        view;
-    });
-    
-    UIView *lineView1 = ({
-        UIView *view = [UIView new];
-        view.backgroundColor = [UIColor paperColorGray];
-        view;
-    });
-    
+    {
+        //背景图
+        UIView *backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"login_bg"]];
+        [self.view addSubview:backgroundView];
+        [backgroundView makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view);
+        }];
+    }
+    UIView *allContentView = [[UIView alloc]init];
     {
         [self.view addSubview:self.logoImageView];
         [self.logoImageView makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.view.centerX);
             make.top.equalTo(self.view.top).offset(100);
-            make.width.equalTo(@150);
-            make.height.equalTo(@150);
-        }];
-        
-        UILabel *titleLabel = ({
-            UILabel *label = [UILabel new];
-            label.font = [UIFont systemFontOfSize:22];
-            label.textAlignment = NSTextAlignmentCenter;
-            label.text = @"Link APP";
-            label;
-        });
-        [self.view addSubview:titleLabel];
-        [titleLabel makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.centerX);
-            make.top.equalTo(self.logoImageView.bottom).offset(5);
         }];
         
         [self.view addSubview:allContentView];
         [allContentView makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.view.left);
-            make.right.equalTo(self.view.right);
-            make.top.equalTo(titleLabel.bottom).offset(20);
-            make.height.equalTo(300);
+            make.left.equalTo(self.view.left).offset(38);
+            make.right.equalTo(self.view.right).offset(-38);
+            make.top.equalTo(self.logoImageView.bottom).offset(82);
+            make.height.equalTo(108);
+        }];
+        
+        UIImageView *contentImageView = ({
+            UIImage *inputBgImage = [[UIImage imageNamed:@"login_input_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(100, 10, 100, 10) resizingMode:UIImageResizingModeStretch];
+            UIImageView *imageView = [[UIImageView alloc]initWithImage:inputBgImage];
+            imageView;
+        });
+        [allContentView addSubview:contentImageView];
+        [contentImageView makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(allContentView);
         }];
     }
     {
@@ -99,12 +88,13 @@
             make.left.equalTo(allContentView.left);
             make.right.equalTo(allContentView.right);
             make.top.equalTo(allContentView.top);
-            make.height.equalTo(44);
+            make.height.equalTo(54);
         }];
         
         UILabel *nameLabel = ({
             UILabel *label = [UILabel new];
             label.font = [UIFont systemFontOfSize:16];
+            label.textColor = [UIColor whiteColor];
             label.text = @"账号";
             label;
         });
@@ -124,13 +114,6 @@
             make.bottom.equalTo(nameContentView.bottom);
         }];
         
-        [allContentView addSubview:lineView];
-        [lineView makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(allContentView.left).offset(kMarginWidth);
-            make.right.equalTo(allContentView.right);
-            make.top.equalTo(nameContentView.bottom);
-            make.height.equalTo(SINGLE_LINE_WIDTH);
-        }];
     }
     {
         //密码列
@@ -139,13 +122,14 @@
         [passwordContentView makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(allContentView.left);
             make.right.equalTo(allContentView.right);
-            make.top.equalTo(lineView.bottom);
-            make.height.equalTo(44);
+            make.bottom.equalTo(allContentView.bottom);
+            make.height.equalTo(54);
         }];
         
         UILabel *passwordLabel = ({
             UILabel *label = [UILabel new];
             label.font = [UIFont systemFontOfSize:16];
+            label.textColor = [UIColor whiteColor];
             label.text = @"密码";
             label;
         });
@@ -164,23 +148,15 @@
             make.top.equalTo(passwordContentView.top);
             make.bottom.equalTo(passwordContentView.bottom);
         }];
-        
-        [allContentView addSubview:lineView1];
-        [lineView1 makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(allContentView.left).offset(kMarginWidth);
-            make.right.equalTo(allContentView.right);
-            make.top.equalTo(passwordContentView.bottom);
-            make.height.equalTo(SINGLE_LINE_WIDTH);
-        }];
     }
     {
         //登录按钮
-        [allContentView addSubview:self.loginButton];
+        [self.view addSubview:self.loginButton];
         [self.loginButton makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(allContentView.left).offset(kMarginWidth);
-            make.right.equalTo(allContentView.right).offset(-kMarginWidth);
-            make.top.equalTo(lineView1.bottom).offset(25);
-            make.height.equalTo(48);
+            make.left.equalTo(allContentView.left);
+            make.right.equalTo(allContentView.right);
+            make.top.equalTo(allContentView.bottom).offset(20);
+            make.height.equalTo(50);
         }];
     }
     [self.view addSubview:self.registerButton];
@@ -211,6 +187,7 @@
         _nameTextField = [UITextField new];
         _nameTextField.placeholder = @"请输入用户名";
         _nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _nameTextField.textColor = [UIColor whiteColor];
         _nameTextField.keyboardDistanceFromTextField = 150.0;
     }
     return _nameTextField;
@@ -224,6 +201,7 @@
         _passwordTextField.secureTextEntry = YES;
         _passwordTextField.keyboardType = UIKeyboardTypeASCIICapable;
         _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _passwordTextField.textColor = [UIColor whiteColor];
         _passwordTextField.keyboardDistanceFromTextField = 150.0 - 44.0;
 
     }
