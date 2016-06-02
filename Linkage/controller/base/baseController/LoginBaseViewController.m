@@ -236,9 +236,11 @@
     if (!_loginButton) {
         _loginButton = ({
             BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
-            button.cornerRadius = 6;
-            [button setBackgroundColor:[UIColor paperColorBlue]];
+            button.cornerRadius = 10;
             [button setTitle:@"登录" forState:UIControlStateNormal];
+            UIImage *image =[[UIImage imageNamed:@"btn_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(25, 11, 25, 11) resizingMode:UIImageResizingModeStretch];
+            [button setBackgroundImage:image forState:UIControlStateNormal];
+            [button setBackgroundImage:image forState:UIControlStateHighlighted];
             button;
         });
         [_loginButton addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
