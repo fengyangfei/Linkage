@@ -147,9 +147,10 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
     if (!_button) {
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         [_button setTitle:@"下单" forState:UIControlStateNormal];
-        [_button setBackgroundColor:ButtonColor];
-        _button.layer.masksToBounds = YES;
-        _button.layer.cornerRadius = 6;
+        [_button setTitleColor:HeaderColor forState:UIControlStateNormal];
+        UIImage *backImage = [[UIImage imageNamed:@"frame_btn"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 5, 12, 5) resizingMode:UIImageResizingModeStretch];
+        [_button setBackgroundImage:backImage forState:UIControlStateNormal];
+        [_button setBackgroundImage:backImage forState:UIControlStateHighlighted];
         [_button addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button;

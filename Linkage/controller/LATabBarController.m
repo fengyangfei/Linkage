@@ -41,7 +41,7 @@
         MainViewController *viewController = [[MainViewController alloc] init];
         viewController.view.backgroundColor = [UIColor paperColorCyan400];
         viewController.title = title;
-        viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"icon_tab_shouye_normal"] selectedImage:[UIImage imageNamed:@"icon_tab_shouye_normal_light"]];
+        viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"icon_tab_shouye_normal"] selectedImage:[UIImage imageNamed:@"icon_tab_shouye_light"]];
         viewController;
     });
     
@@ -49,7 +49,7 @@
         NSString *title = @"订单";
         BillViewController *viewController = [[BillViewController alloc]init];
         viewController.title = title;
-        viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"tab_icon_selection_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_selection_normal_light"]];
+        viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"tab_icon_selection_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_selection_light"]];
         viewController;
     });
     
@@ -57,7 +57,7 @@
         NSString *title = @"消息";
         MessageViewController *viewController = [[MessageViewController alloc]init];
         viewController.title = title;
-        viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"icon_tab_fujin_normal"] selectedImage:[UIImage imageNamed:@"icon_tab_fujin_normal_light"]];
+        viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"icon_tab_fujin_normal"] selectedImage:[UIImage imageNamed:@"icon_tab_fujin_light"]];
         viewController;
     });
     
@@ -65,7 +65,7 @@
         NSString *title = @"我的";
         MineViewController *viewController = [[MineViewController alloc]init];
         viewController.title = title;
-        viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"icon_tab_wode_normal"] selectedImage:[UIImage imageNamed:@"icon_tab_wode_normal_light"]];
+        viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"icon_tab_wode_normal"] selectedImage:[UIImage imageNamed:@"icon_tab_wode_light"]];
         viewController;
     });
     
@@ -77,6 +77,7 @@
                              ];
     
     self.tabBar.translucent = NO;
+    self.tabBar.backgroundImage = [UIImage imageNamed:@"tab_bar_bg"];
 }
 
 - (void)didReceiveMemoryWarning {
