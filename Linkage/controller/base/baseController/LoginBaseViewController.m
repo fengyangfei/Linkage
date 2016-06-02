@@ -71,7 +71,7 @@
         }];
         
         UIImageView *contentImageView = ({
-            UIImage *inputBgImage = [[UIImage imageNamed:@"login_input_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(100, 10, 100, 10) resizingMode:UIImageResizingModeStretch];
+            UIImage *inputBgImage = [[UIImage imageNamed:@"login_input_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(56, 8, 56, 8) resizingMode:UIImageResizingModeStretch];
             UIImageView *imageView = [[UIImageView alloc]initWithImage:inputBgImage];
             imageView;
         });
