@@ -261,7 +261,7 @@
 {
     if (!_registerButton) {
         _registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"用户注册" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:16], NSUnderlineStyleAttributeName:@1}];
+        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"用户注册 ?" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:16]}];
         [_registerButton setAttributedTitle:title forState:UIControlStateNormal];
         [_registerButton addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -272,7 +272,7 @@
 {
     if (!_forgotPasswordButton) {
         _forgotPasswordButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"忘记密码" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:16],NSUnderlineStyleAttributeName:@1}];
+        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"忘记密码" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:16]}];
         [_forgotPasswordButton setAttributedTitle:title forState:UIControlStateNormal];
         [_forgotPasswordButton addTarget:self action:@selector(forgotPasswordAction:) forControlEvents:UIControlEventTouchUpInside];
     }

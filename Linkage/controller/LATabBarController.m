@@ -77,7 +77,6 @@
                              ];
     
     self.tabBar.translucent = NO;
-    self.tabBar.backgroundImage = [UIImage imageNamed:@"tab_bar_bg"];
 }
 
 - (void)didReceiveMemoryWarning {
