@@ -15,8 +15,15 @@
 #define HeaderColor [TRThemeManager shareInstance].theme.headerBackgroundColor
 #define ButtonColor [TRThemeManager shareInstance].theme.buttonBackgroundColor
 #define TableBackgroundColor [TRThemeManager shareInstance].theme.tableViewBackgroundColor
+#define TitleFontColor HEXCOLOR(0x676767)
 #define ButtonFrameImage [[UIImage imageNamed:@"frame_btn"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 5, 12, 5) resizingMode:UIImageResizingModeStretch]
 #define ButtonBgImage [[UIImage imageNamed:@"btn_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(25, 11, 25, 11) resizingMode:UIImageResizingModeStretch]
+
+//首页UI
+#define IndexFontColor HEXCOLOR(0x606060)
+#define IndexTitleFont [UIFont systemFontOfSize:14]
+
+//订单UI
 
 #define BaseUrl @"http://120.25.82.122:8000"
 //个人

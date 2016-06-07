@@ -117,6 +117,7 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 {
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
+        _titleLabel.textColor = IndexFontColor;
     }
     return _titleLabel;
 }
@@ -148,9 +149,8 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         [_button setTitle:@"下单" forState:UIControlStateNormal];
         [_button setTitleColor:HeaderColor forState:UIControlStateNormal];
-        UIImage *backImage = [[UIImage imageNamed:@"frame_btn"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 5, 12, 5) resizingMode:UIImageResizingModeStretch];
-        [_button setBackgroundImage:backImage forState:UIControlStateNormal];
-        [_button setBackgroundImage:backImage forState:UIControlStateHighlighted];
+        [_button setBackgroundImage:ButtonFrameImage forState:UIControlStateNormal];
+        [_button setBackgroundImage:ButtonFrameImage forState:UIControlStateHighlighted];
         [_button addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button;
