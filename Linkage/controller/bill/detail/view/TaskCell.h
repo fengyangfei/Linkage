@@ -11,8 +11,13 @@
 
 extern NSString *const TaskInfoDescriporType;
 extern NSString *const TaskEditDescriporType;
+extern NSString *const TaskAddDescriporType;
+
 
 @interface TaskCell : XLFormBaseCell<FormDescriptorCell>
+@end
+
+@interface TaskAddCell : TaskCell
 @end
 
 @interface TaskEditCell : TaskCell

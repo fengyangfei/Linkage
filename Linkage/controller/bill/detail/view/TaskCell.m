@@ -13,6 +13,8 @@
 
 NSString *const TaskInfoDescriporType = @"TaskInfoRowType";
 NSString *const TaskEditDescriporType = @"TaskEditRowType";
+NSString *const TaskAddDescriporType = @"TaskAddRowType";
+
 
 @interface TaskCell()<UITextFieldDelegate>
 @property (nonatomic, readonly) UILabel *textLabel;
@@ -76,6 +78,18 @@ NSString *const TaskEditDescriporType = @"TaskEditRowType";
     }
 }
 
+-(UIViewController *)formViewController
+{
+    id responder = self;
+    while (responder){
+        if ([responder isKindOfClass:[UIViewController class]]){
+            return responder;
+        }
+        responder = [responder nextResponder];
+    }
+    return nil;
+}
+
 #pragma mark - updateUI
 -(void)setupUI
 {
@@ -127,15 +141,104 @@ NSString *const TaskEditDescriporType = @"TaskEditRowType";
 }
 @end
 
-//编辑Cell
+/**
+ * 添加Cell
+ */
+@implementation TaskAddCell
++(void)load
+{
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:TaskAddDescriporType];
+}
+@end
+
+/**
+ * 编辑Cell
+ */
+@interface TaskEditCell()
+@property (nonatomic, readonly) UIButton *statusBtn;
+@end
+
 @implementation TaskEditCell
+@synthesize statusBtn = _statusBtn;
 +(void)load
 {
     [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:TaskEditDescriporType];
 }
+
+-(void)configure
+{
+    [super configure];
+    [self.textField setEnabled:NO];
+}
+
+-(void)setupUI
+{
+    [super setupUI];
+    [self.contentView addSubview:self.statusBtn];
+    [self.statusBtn makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView.right).offset(-12);
+        make.centerY.equalTo(self.contentView.centerY);
+        make.width.equalTo(80);
+        make.height.equalTo(30);
+    }];
+}
+
+-(void)update
+{
+    Task *model = self.rowDescriptor.value;
+    if (model) {
+        self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机："];
+        self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌号："];
+        self.textField.attributedText = [model.cargoNo ?:@"" attributedStringWithTitle:@"货柜号："];
+        NSString *title = [[LinkUtil taskStatus] objectForKey:@([model.status intValue])];
+        [self.statusBtn setTitle:title forState:UIControlStateNormal];
+    }
+}
+
+-(UIButton *)statusBtn
+{
+    if (!_statusBtn) {
+        _statusBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_statusBtn setTitleColor:HeaderColor forState:UIControlStateNormal];
+        [_statusBtn setBackgroundImage:ButtonFrameImage forState:UIControlStateNormal];
+        [_statusBtn setBackgroundImage:ButtonFrameImage forState:UIControlStateHighlighted];
+        [_statusBtn addTarget:self action:@selector(changeStatusAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _statusBtn;
+}
+
+-(void)changeStatusAction:(id)sender
+{
+    Task *model = self.rowDescriptor.value;
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请更新状态" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+        
+    }]];
+    
+    WeakSelf
+    for (NSNumber *key in [LinkUtil taskStatus].allKeys) {
+        if ([model.status compare:key] == NSOrderedSame) {
+            continue;
+        }
+        UIAlertAction *action = [UIAlertAction actionWithTitle:[[LinkUtil taskStatus] objectForKey:key] style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            NSString *title = [[LinkUtil taskStatus] objectForKey:key];
+            [weakSelf.statusBtn setTitle:title forState:UIControlStateNormal];
+            ((Task *)weakSelf.rowDescriptor.value).status = key;
+        }];
+        [alertController addAction:action];
+    }
+    if (self.formViewController) {
+        [self.formViewController presentViewController:alertController animated:YES completion:^{
+            
+        }];
+    }
+}
 @end
 
-//查看cell
+/**
+ * 查看cell
+ */
 @interface TaskInfoCell()
 @property (nonatomic, readonly) UILabel *statusLabel;
 @end

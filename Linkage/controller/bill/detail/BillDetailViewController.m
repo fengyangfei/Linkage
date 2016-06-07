@@ -252,7 +252,7 @@
         section = [XLFormSectionDescriptor formSectionWithTitle:cargoName];
         [form addFormSection:section];
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TaskInfoDescriporType];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TaskEditDescriporType];
         RowUI
         row.value = task;
         [section addFormRow:row];

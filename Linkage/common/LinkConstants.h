@@ -10,9 +10,13 @@
 #define LinkConstants_h
 
 #define PhoneNumRegex @"^((13[0-9])|(147)|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"
+
+//UI
 #define HeaderColor [TRThemeManager shareInstance].theme.headerBackgroundColor
 #define ButtonColor [TRThemeManager shareInstance].theme.buttonBackgroundColor
 #define TableBackgroundColor [TRThemeManager shareInstance].theme.tableViewBackgroundColor
+#define ButtonFrameImage [[UIImage imageNamed:@"frame_btn"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 5, 12, 5) resizingMode:UIImageResizingModeStretch]
+#define ButtonBgImage [[UIImage imageNamed:@"btn_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(25, 11, 25, 11) resizingMode:UIImageResizingModeStretch]
 
 #define BaseUrl @"http://120.25.82.122:8000"
 //个人

@@ -33,7 +33,7 @@
 {
     XLFormSectionDescriptor *currentSection = self.rowDescriptor.sectionDescriptor;
     id<MTLJSONSerializing,XLFormTitleOptionObject> chosenValue = chosenRow.value;
-    XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TaskEditDescriporType title:[chosenValue formTitleText]];
+    XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TaskAddDescriporType title:[chosenValue formTitleText]];
     row.value = [Task createWithDriver:(Driver *)chosenValue cargo:(Cargo *)self.rowDescriptor.value];
     [currentSection addFormRow:row beforeRow:self.rowDescriptor];
     
