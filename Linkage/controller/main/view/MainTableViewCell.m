@@ -117,7 +117,8 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 {
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
-        _titleLabel.textColor = IndexFontColor;
+        _titleLabel.textColor = IndexTitleFontColor;
+        _titleLabel.font = IndexTitleFont;
     }
     return _titleLabel;
 }
@@ -126,9 +127,9 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 {
     if (!_subTitleLabel) {
         _subTitleLabel = [UILabel new];
-        _subTitleLabel.font = [UIFont systemFontOfSize:14];
+        _subTitleLabel.font = IndexDetailFont;
         _subTitleLabel.textAlignment = NSTextAlignmentRight;
-        _subTitleLabel.textColor =[UIColor grayColor];
+        _subTitleLabel.textColor = IndexDetailFontColor;
     }
     return _subTitleLabel;
 }
@@ -148,7 +149,7 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
     if (!_button) {
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         [_button setTitle:@"下单" forState:UIControlStateNormal];
-        [_button setTitleColor:HeaderColor forState:UIControlStateNormal];
+        [_button setTitleColor:IndexButtonColor forState:UIControlStateNormal];
         [_button setBackgroundImage:ButtonFrameImage forState:UIControlStateNormal];
         [_button setBackgroundImage:ButtonFrameImage forState:UIControlStateHighlighted];
         [_button addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];

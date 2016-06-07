@@ -20,8 +20,12 @@
 #define ButtonBgImage [[UIImage imageNamed:@"btn_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(25, 11, 25, 11) resizingMode:UIImageResizingModeStretch]
 
 //首页UI
-#define IndexFontColor HEXCOLOR(0x606060)
+#define IndexTitleFontColor HEXCOLOR(0x606060)
+#define IndexDetailFontColor HEXCOLOR(0xa8a8a8)
+#define IndexButtonColor HEXCOLOR(0x2aa1ff)
 #define IndexTitleFont [UIFont systemFontOfSize:14]
+#define IndexDetailFont [UIFont systemFontOfSize:14]
+
 
 //订单UI
 
