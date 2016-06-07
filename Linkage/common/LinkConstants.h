@@ -31,7 +31,6 @@
 #define OrderDetailFontColor HEXCOLOR(0xaaaaaa)
 #define OrderDetailFont [UIFont systemFontOfSize:12]
 
-
 #define BaseUrl @"http://120.25.82.122:8000"
 //个人
 #define Register4AdminUrl [NSString stringWithFormat:@"%@/api/session/register4admin", BaseUrl]//注册

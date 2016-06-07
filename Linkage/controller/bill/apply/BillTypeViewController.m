@@ -49,7 +49,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 48;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -59,13 +59,15 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"typeCell"];
     }
     cell.textLabel.text = [kBillTypeArray objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = IndexTitleFontColor;
+    /*
     if (indexPath.row == OrderTypeExport) {
         cell.imageView.image = [UIImage imageNamed:@"order_type_export"];
     }else if(indexPath.row == OrderTypeImport){
         cell.imageView.image = [UIImage imageNamed:@"order_type_import"];
     }else if(indexPath.row == OrderTypeSelf){
         cell.imageView.image = [UIImage imageNamed:@"order_type_self"];
-    }
+    }*/
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
