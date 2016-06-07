@@ -89,8 +89,8 @@
 #define SoUrl [NSString stringWithFormat:@"%@/api/upload/so",BaseUrl]//上传公司头像
 
 //微信key
-#define kWXAppId @"wxc88cd091086c438a"
-#define kWXAppSecret @"d4624c36b6795d1d99dcf0547af5443d"
+#define kWXAppId @"wxc67be6173b1fdd64"
+#define kWXAppSecret @"54c72b1b05e4cf38e27fc20e53d699bd"
 
 //QQ对应key
 #define kQQAppId @"1104981294"
