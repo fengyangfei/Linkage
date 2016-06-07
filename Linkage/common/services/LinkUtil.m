@@ -20,7 +20,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"yyyy年MM月dd日";
+        dateFormatter.dateFormat = @"yyyy-MM-dd";
     });
     return dateFormatter;
 }

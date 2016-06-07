@@ -195,6 +195,7 @@
     NSDictionary *keyMap = @{
                              @"orderId":@"order_id",
                              @"companyId":@"company_id",
+                             @"companyName":@"company_name",
                              @"takeAddress":@"take_address",
                              @"takeTime":@"take_time",
                              @"deliveryAddress":@"delivery_address",
@@ -238,6 +239,7 @@
     NSDictionary *keyMap = @{
                              @"orderId":@"order_id",
                              @"companyId":@"company_id",
+                             @"companyName":@"company_name",
                              @"takeAddress":@"take_address",
                              @"takeTime":@"take_time",
                              @"deliveryAddress":@"delivery_address",
@@ -299,6 +301,7 @@
 {
     NSDictionary *keyMap = @{
                              @"companyId":@"company_id",
+                             @"companyName":@"company_name",
                              @"takeAddress":@"take_address",
                              @"takeTime":@"take_time",
                              @"deliveryAddress":@"delivery_address",

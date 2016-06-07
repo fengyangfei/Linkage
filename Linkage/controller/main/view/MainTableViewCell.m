@@ -86,13 +86,13 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
     [self.contentView addSubview:self.ratingView];
     [self.ratingView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconView.right).offset(12);
-        make.top.equalTo(self.titleLabel.bottom);
+        make.centerY.equalTo(self.contentView.centerY);
     }];
     
     [self.contentView addSubview:self.subTitleLabel];
     [self.subTitleLabel makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconView.right).offset(12);
-        make.top.equalTo(self.ratingView.bottom);
+        make.bottom.equalTo(self.contentView.bottom).offset(-10);
     }];
     
     [self.contentView addSubview:self.button];
@@ -138,6 +138,8 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 {
     if (!_ratingView) {
         _ratingView = [[AXRatingView alloc]initWithFrame:CGRectZero];
+        _ratingView.markImage = [UIImage imageNamed:@"star_off_score"];
+        _ratingView.baseColor = [UIColor lightGrayColor];
         _ratingView.enabled = NO;
         _ratingView.value = 0;
     }

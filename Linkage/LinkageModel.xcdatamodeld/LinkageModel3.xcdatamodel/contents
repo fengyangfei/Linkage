@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="AddressModel" representedClassName="AddressModel" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addressId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CargoModel" representedClassName="CargoModel" syncable="YES">
+        <attribute name="cargoCount" optional="YES" attributeType="Integer 64" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="cargoId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="cargoName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cargoNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cargoType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="CarModel" representedClassName="CarModel" syncable="YES">
+        <attribute name="applyDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="businessInsureData" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="carId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="engineNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="examineData" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="frameNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="insureCompany" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="license" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maintainData" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="memo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trafficInsureData" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="DriverModel" representedClassName="DriverModel" syncable="YES">
+        <attribute name="driverId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="license" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ExportOrderModel" representedClassName="ExportOrderModel" parentEntity="OrderModel" syncable="YES">
+        <attribute name="customsIn" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isBookCargo" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="port" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shipCompany" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shipName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shipScheduleNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="so" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="soImages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SOImageModel" syncable="YES"/>
+    </entity>
+    <entity name="FavoriteModel" representedClassName="FavoriteModel" syncable="YES">
+        <attribute name="companyId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="companyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderNum" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="servicePhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ImportOrderModel" representedClassName="ImportOrderModel" parentEntity="OrderModel" syncable="YES">
+        <attribute name="billNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cargoCompany" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cargoNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customsBroker" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customsHouseContact" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MessageModel" representedClassName="MessageModel" syncable="YES">
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="introduction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="OrderModel" representedClassName="OrderModel" syncable="YES">
+        <attribute name="cargosRentExpire" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="companyId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="companyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deliverTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deliveryAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isTransferPort" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="manufactureContactName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="manufactureContactTel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="manufactureId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="memo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="takeAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="takeTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="transporterContactName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transporterContractTel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transporterId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cargos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CargoModel" syncable="YES"/>
+    </entity>
+    <entity name="SelfOrderModel" parentEntity="OrderModel" syncable="YES">
+        <attribute name="cargoTakeTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="customsIn" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isCustomsDeclare" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
+    <entity name="SOImageModel" representedClassName="SOImageModel" syncable="YES">
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="StaffModel" representedClassName="StaffModel" syncable="YES">
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="realname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="staffIcon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="staffId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AddressModel" positionX="-63" positionY="0" width="128" height="105"/>
+        <element name="CargoModel" positionX="-54" positionY="162" width="128" height="120"/>
+        <element name="CarModel" positionX="-45" positionY="153" width="128" height="225"/>
+        <element name="DriverModel" positionX="-45" positionY="153" width="128" height="150"/>
+        <element name="ExportOrderModel" positionX="-45" positionY="153" width="128" height="165"/>
+        <element name="FavoriteModel" positionX="-36" positionY="162" width="128" height="165"/>
+        <element name="ImportOrderModel" positionX="-36" positionY="171" width="128" height="120"/>
+        <element name="MessageModel" positionX="-45" positionY="153" width="128" height="135"/>
+        <element name="OrderModel" positionX="-63" positionY="27" width="128" height="375"/>
+        <element name="SelfOrderModel" positionX="-45" positionY="153" width="128" height="90"/>
+        <element name="SOImageModel" positionX="-63" positionY="9" width="128" height="75"/>
+        <element name="StaffModel" positionX="-45" positionY="153" width="128" height="135"/>
+    </elements>
+</model>

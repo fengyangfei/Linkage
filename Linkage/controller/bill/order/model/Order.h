@@ -36,6 +36,7 @@ typedef NS_ENUM(NSUInteger, ObjectStatus) {
 @property (nonatomic, assign) OrderType    type;//订单类型
 @property (nonatomic, assign) OrderStatus  status;//订单状态
 @property (nonatomic, copy  ) NSString     *companyId;//承运商ID
+@property (nonatomic, copy  ) NSString     *companyName;//承运商
 @property (nonatomic, copy  ) NSString     *userId;//创建人
 @property (nonatomic, copy  ) NSString     *manufactureId;//生产商ID
 @property (nonatomic, copy  ) NSString     *transporterId;//输送商ID

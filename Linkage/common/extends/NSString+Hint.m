@@ -13,7 +13,7 @@
 -(NSAttributedString *)attributedStringWithTitle:(NSString *)title
 {
     NSMutableAttributedString *titleString = [[[NSAttributedString alloc]initWithString:title attributes:@{NSForegroundColorAttributeName:[UIColor grayColor],NSFontAttributeName:[UIFont systemFontOfSize:14]}] mutableCopy];
-    NSAttributedString *valueString = [[NSAttributedString alloc]initWithString:self attributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:14]}];
+    NSAttributedString *valueString = [[NSAttributedString alloc]initWithString:self attributes:@{NSForegroundColorAttributeName:OrderTitleFontColor,NSFontAttributeName:[UIFont systemFontOfSize:14]}];
     [titleString appendAttributedString:valueString];
     return [titleString copy];
 }

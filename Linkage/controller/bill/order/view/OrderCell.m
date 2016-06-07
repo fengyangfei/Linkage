@@ -20,6 +20,7 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
 @property (nonatomic, readonly) UILabel *detailLable;
 @property (nonatomic, readonly) UILabel *ratingLable;
 @property (nonatomic, readonly) UIButton *detailButton;
+@property (nonatomic, readonly) UILabel *statusLable;
 @end
 
 @implementation OrderCell
@@ -28,13 +29,14 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
 @synthesize detailLable = _detailLable;
 @synthesize ratingLable = _ratingLable;
 @synthesize detailButton = _detailButton;
+@synthesize statusLable = _statusLable;
 
 #pragma mark - 生命周期
 -(void)configure
 {
     [super configure];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    //self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     [self setupUI];
 }
 
@@ -43,13 +45,14 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
     [super update];
     Order *order = self.rowDescriptor.value;
     self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
-    self.ratingLable.attributedText = [[LinkUtil.orderStatus objectForKey:@(order.status)] attributedStringWithTitle:@"状态："];
-    self.timeLable.attributedText = [[[LinkUtil dateFormatter] stringFromDate:order.updateTime] attributedStringWithTitle:@"下单时间："];
+    self.ratingLable.text = order.companyName;
+    self.statusLable.text = [LinkUtil.orderStatus objectForKey:@(order.status)];
+    self.timeLable.text = [[LinkUtil dateFormatter] stringFromDate:order.updateTime];
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
-    return 80;
+    return 60;
 }
 
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
@@ -101,29 +104,35 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
 
 + (NSDateFormatter *)dateFormatter {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy年MM月dd日";
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
     return dateFormatter;
 }
 
 #pragma mark - UI
 -(void)setupUI
 {
-    [self.contentView addSubview:self.ratingLable];
-    [self.ratingLable makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(12);
-        make.centerY.equalTo(self.contentView.centerY);
-    }];
-    
     [self.contentView addSubview:self.billNumLable];
     [self.billNumLable makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(12);
-        make.bottom.equalTo(self.ratingLable.top).offset(-5);
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.top.equalTo(self.contentView.top).offset(12);
+    }];
+    
+    [self.contentView addSubview:self.ratingLable];
+    [self.ratingLable makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.bottom.equalTo(self.contentView.bottom).offset(-12);
+    }];
+    
+    [self.contentView addSubview:self.statusLable];
+    [self.statusLable makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView.right).offset(-12);
+        make.top.equalTo(self.contentView.top).offset(12);
     }];
     
     [self.contentView addSubview:self.timeLable];
     [self.timeLable makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(12);
-        make.top.equalTo(self.ratingLable.bottom).offset(5);
+        make.right.equalTo(self.contentView.right).offset(-12);
+        make.bottom.equalTo(self.contentView.bottom).offset(-12);
     }];
 }
 
@@ -139,6 +148,8 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
 {
     if (!_timeLable) {
         _timeLable = [UILabel new];
+        _timeLable.textColor = OrderDetailFontColor;
+        _timeLable.font = OrderDetailFont;
     }
     return _timeLable;
 }
@@ -155,8 +166,20 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
 {
     if (!_ratingLable) {
         _ratingLable = [UILabel new];
+        _ratingLable.textColor = OrderDetailFontColor;
+        _ratingLable.font = OrderDetailFont;
     }
     return _ratingLable;
+}
+
+-(UILabel *)statusLable
+{
+    if (!_statusLable) {
+        _statusLable = [UILabel new];
+        _statusLable.textColor = HeaderColor;
+        _statusLable.font = OrderDetailFont;
+    }
+    return _statusLable;
 }
 
 -(UIButton *)detailButton
