@@ -56,7 +56,7 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
-    return 85.0;
+    return 84.0;
 }
 
 -(void)clickAction:(id)sender
@@ -71,36 +71,36 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
     [super setupUI];
     [self.contentView addSubview:self.iconView];
     [self.iconView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(8);
+        make.left.equalTo(self.contentView.left).offset(12);
         make.centerY.equalTo(self.contentView.centerY);
-        make.width.equalTo(@(52));
-        make.height.equalTo(@(52));
+        make.width.equalTo(@(60));
+        make.height.equalTo(@(60));
     }];
     
     [self.contentView addSubview:self.titleLabel];
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.iconView.right).offset(5);
+        make.left.equalTo(self.iconView.right).offset(12);
         make.top.equalTo(self.contentView.top).offset(10);
     }];
     
     [self.contentView addSubview:self.ratingView];
     [self.ratingView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.iconView.right).offset(5);
+        make.left.equalTo(self.iconView.right).offset(12);
         make.top.equalTo(self.titleLabel.bottom);
     }];
     
     [self.contentView addSubview:self.subTitleLabel];
     [self.subTitleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.iconView.right).offset(5);
+        make.left.equalTo(self.iconView.right).offset(12);
         make.top.equalTo(self.ratingView.bottom);
     }];
     
     [self.contentView addSubview:self.button];
     [self.button makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView.right).offset(-8);
+        make.right.equalTo(self.contentView.right).offset(-12);
         make.centerY.equalTo(self.contentView.centerY);
         make.height.equalTo(@30);
-        make.width.equalTo(@60);
+        make.width.equalTo(@66);
     }];
 }
 

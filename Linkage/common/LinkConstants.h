@@ -23,9 +23,8 @@
 #define IndexTitleFontColor HEXCOLOR(0x606060)
 #define IndexDetailFontColor HEXCOLOR(0xa8a8a8)
 #define IndexButtonColor HEXCOLOR(0x2aa1ff)
-#define IndexTitleFont [UIFont systemFontOfSize:14]
+#define IndexTitleFont [UIFont systemFontOfSize:16]
 #define IndexDetailFont [UIFont systemFontOfSize:14]
-
 
 //订单UI
 
