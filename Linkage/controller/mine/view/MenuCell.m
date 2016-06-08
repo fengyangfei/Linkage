@@ -80,6 +80,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 {
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
+        _titleLabel.textColor = IndexTitleFontColor;
     }
     return _titleLabel;
 }
@@ -201,6 +202,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
     if (!_subTitleLabel) {
         _subTitleLabel = [UILabel new];
         _subTitleLabel.font = [UIFont systemFontOfSize:14];
+        _subTitleLabel.textColor = IndexTitleFontColor;
     }
     return _subTitleLabel;
 }

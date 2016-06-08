@@ -17,7 +17,7 @@
     #import <Mantle/Mantle.h>
     #import <BlocksKit/BlocksKit+UIKit.h>
     #import <ReactiveCocoa/ReactiveCocoa.h>
-    #import "TRFormTextFieldCell.h"
+    #import "HJFormCell.h"
     #import "TRConstants.h"
     #import "LinkConstants.h"
     #import "TRThemeManager.h"

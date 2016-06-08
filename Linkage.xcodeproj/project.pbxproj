@@ -113,7 +113,6 @@
 		8B8284891CA57EA9001B36C1 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8284881CA57EA9001B36C1 /* Company.m */; };
 		8B8B7BE61CCE4BA100080609 /* MessageTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B7BE51CCE4BA100080609 /* MessageTableCell.m */; };
 		8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F266F1C89C83D001B187E /* RegisterViewController.m */; };
-		8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */; };
 		8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F26761C89DD89001B187E /* ForgotPasswordController.m */; };
 		8B941BAB1CD102270059BE13 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B941BAA1CD102270059BE13 /* Car.m */; };
 		8B941BB11CD107060059BE13 /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B941BAF1CD107060059BE13 /* CarModel.m */; };
@@ -204,6 +203,7 @@
 		9A2F5C4E1CE1C2E500E7E2DD /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C4D1CE1C2E500E7E2DD /* CommentViewController.m */; };
 		9A2F5C521CE4015000E7E2DD /* SearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C511CE4015000E7E2DD /* SearchViewModel.m */; };
 		9A2F5C551CE4717800E7E2DD /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C541CE4717800E7E2DD /* OrderCell.m */; };
+		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -455,8 +455,6 @@
 		8B8B7BE51CCE4BA100080609 /* MessageTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableCell.m; sourceTree = "<group>"; };
 		8B8F266E1C89C83D001B187E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		8B8F266F1C89C83D001B187E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		8B8F26721C89DC72001B187E /* TRFormTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRFormTextFieldCell.h; sourceTree = "<group>"; };
-		8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRFormTextFieldCell.m; sourceTree = "<group>"; };
 		8B8F26751C89DD88001B187E /* ForgotPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordController.h; sourceTree = "<group>"; };
 		8B8F26761C89DD89001B187E /* ForgotPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordController.m; sourceTree = "<group>"; };
 		8B941BA91CD102270059BE13 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
@@ -620,6 +618,8 @@
 		9A2F5C511CE4015000E7E2DD /* SearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewModel.m; sourceTree = "<group>"; };
 		9A2F5C531CE4717800E7E2DD /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
 		9A2F5C541CE4717800E7E2DD /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
+		9A49E6B61D07ACA600F51C2F /* HJFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFormCell.h; sourceTree = "<group>"; };
+		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -1321,8 +1321,6 @@
 				8BEC33C11CA61423007B924B /* XLFormViewController+ImagePicker.m */,
 				9AEF89C91CA4CD5400C5EB90 /* ImageToDataTransformer.h */,
 				9AEF89CA1CA4CD5400C5EB90 /* ImageToDataTransformer.m */,
-				8B8F26721C89DC72001B187E /* TRFormTextFieldCell.h */,
-				8B8F26731C89DC72001B187E /* TRFormTextFieldCell.m */,
 				9AEF89D21CA518BA00C5EB90 /* ImageCacheManager.h */,
 				9AEF89D31CA518BA00C5EB90 /* ImageCacheManager.m */,
 				9AEF89D51CA8B02900C5EB90 /* XLFormDataSource.h */,
@@ -1332,6 +1330,8 @@
 				9A11F0631CD04AF9002E8F6F /* ModelOperation.h */,
 				9A2F5C281CE01E5B00E7E2DD /* NSString+Hint.h */,
 				9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */,
+				9A49E6B61D07ACA600F51C2F /* HJFormCell.h */,
+				9A49E6B71D07ACA600F51C2F /* HJFormCell.m */,
 			);
 			path = extends;
 			sourceTree = "<group>";
@@ -2161,7 +2161,6 @@
 				9A23A31F1C7E8EA900FB5EB6 /* ICETutorialController.m in Sources */,
 				8B5DC61D1C79B8A700D29292 /* IFTTTAnimator.m in Sources */,
 				8B5DC6291C79B8A700D29292 /* IFTTTLayerStrokeStartAnimation.m in Sources */,
-				8B8F26741C89DC72001B187E /* TRFormTextFieldCell.m in Sources */,
 				8BE25B101CC7D0540073BD8D /* Base64.m in Sources */,
 				8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */,
 				9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */,
@@ -2209,6 +2208,7 @@
 				8B0060411CAC08E3001B0FC9 /* Order.m in Sources */,
 				9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */,
 				8B5DC6331C79B8A700D29292 /* IFTTTViewAnimation.m in Sources */,
+				9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */,
 				8B5DC6281C79B8A700D29292 /* IFTTTLayerStrokeEndAnimation.m in Sources */,
 				8B5DC6371C79B8A700D29292 /* TRThemeBaseViewController.m in Sources */,
 				8BA3E3DD1CD487490047AC6B /* Favorite.m in Sources */,
