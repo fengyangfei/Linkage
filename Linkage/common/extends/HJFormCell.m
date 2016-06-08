@@ -86,5 +86,85 @@
     textLabel.textColor = IndexTitleFontColor;
     return textLabel;
 }
+@end
+
+
+@implementation HJFormSelectorCell
+
++(void)load
+{
+    NSDictionary *otherDic = @{
+                               XLFormRowDescriptorTypeSelectorPush: [self class],
+                               XLFormRowDescriptorTypeSelectorPopover: [self class],
+                               XLFormRowDescriptorTypeSelectorActionSheet: [self class],
+                               XLFormRowDescriptorTypeSelectorAlertView: [self class],
+                               XLFormRowDescriptorTypeSelectorPickerView: [self class],
+                               XLFormRowDescriptorTypeMultipleSelector: [self class],
+                               XLFormRowDescriptorTypeMultipleSelectorPopover: [self class],
+                               XLFormRowDescriptorTypeInfo: [self class]
+                               };
+    [XLFormViewController.cellClassesForRowDescriptorTypes addEntriesFromDictionary:otherDic];
+}
+
+-(UILabel *)textLabel
+{
+    UILabel *textLabel = [super textLabel];
+    textLabel.textColor = IndexTitleFontColor;
+    return textLabel;
+}
+
+-(UILabel *)detailTextLabel
+{
+    UILabel *detailTextLabel = [super detailTextLabel];
+    detailTextLabel.textColor = IndexTitleFontColor;
+    return detailTextLabel;
+}
 
 @end
+
+@implementation HJFormTextViewCell
+
++(void)load
+{
+    NSDictionary *otherDic = @{
+                               XLFormRowDescriptorTypeTextView: [self class],
+                               };
+    [XLFormViewController.cellClassesForRowDescriptorTypes addEntriesFromDictionary:otherDic];
+}
+
+-(UILabel *)textLabel
+{
+    UILabel *textLabel = [super textLabel];
+    textLabel.textColor = IndexTitleFontColor;
+    return textLabel;
+}
+
+@end
+
+@implementation HJFormButtonCell
+
++(void)load
+{
+    NSDictionary *otherDic = @{
+                               XLFormRowDescriptorTypeButton: [self class]
+                               };
+    [XLFormViewController.cellClassesForRowDescriptorTypes addEntriesFromDictionary:otherDic];
+}
+
+-(UILabel *)textLabel
+{
+    UILabel *textLabel = [super textLabel];
+    textLabel.textColor = IndexTitleFontColor;
+    return textLabel;
+}
+
+-(UILabel *)detailTextLabel
+{
+    UILabel *detailTextLabel = [super detailTextLabel];
+    detailTextLabel.textColor = IndexTitleFontColor;
+    return detailTextLabel;
+}
+
+@end
+
+

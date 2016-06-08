@@ -19,3 +19,15 @@
 @interface HJFormSwitchCell : XLFormSwitchCell
 
 @end
+
+@interface HJFormSelectorCell : XLFormSelectorCell
+
+@end
+
+@interface HJFormTextViewCell : XLFormTextViewCell
+
+@end
+
+@interface HJFormButtonCell : XLFormButtonCell
+
+@end
