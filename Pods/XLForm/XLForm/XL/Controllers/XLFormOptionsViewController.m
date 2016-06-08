@@ -87,6 +87,7 @@
     XLFormRightDetailCell * cell = [tableView dequeueReusableCellWithIdentifier:CELL_REUSE_IDENTIFIER forIndexPath:indexPath];
     id cellObject =  [[self selectorOptions] objectAtIndex:indexPath.row];
     cell.textLabel.text = [self valueDisplayTextForOption:cellObject];
+    cell.textLabel.textColor = [UIColor colorWithRed:96.0/255 green:96.0/255 blue:96.0/255 alpha:1];
     if ([self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeMultipleSelector] || [self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeMultipleSelectorPopover]){
         cell.accessoryType = ([self selectedValuesContainsOption:cellObject] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone);
     }

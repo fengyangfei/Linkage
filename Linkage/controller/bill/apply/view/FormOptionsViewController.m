@@ -73,6 +73,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     id<XLFormOptionObject> option = [self.options objectAtIndex:indexPath.row];
     cell.textLabel.text = [option formDisplayText];
+    cell.textLabel.textColor = IndexTitleFontColor;
     if ([[self.rowDescriptor.value valueData] isEqual:[option formValue]]){
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
