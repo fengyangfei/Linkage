@@ -13,8 +13,6 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
-[row.cellConfig setObject:[UIColor blackColor] forKey:@"textLabel.textColor"];\
-[row.cellConfig setObject:[UIColor blackColor] forKey:@"detailTextLabel.textColor"];\
 row.cellStyle = UITableViewCellStyleValue1;
 
 @interface ModelBaseViewController()

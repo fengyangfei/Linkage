@@ -22,7 +22,6 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
-[row.cellConfig setObject:[UIColor blackColor] forKey:@"textLabel.textColor"];\
 row.cellStyle = UITableViewCellStyleValue1;
 #define RowPlaceHolderUI(str) [row.cellConfigAtConfigure setObject:str forKey:@"detailTextLabel.text"];
 
