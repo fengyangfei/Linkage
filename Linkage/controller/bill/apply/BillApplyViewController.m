@@ -111,12 +111,14 @@ row.cellStyle = UITableViewCellStyleValue1;
     }];
     
     BFPaperButton *saveButton = ({
-        BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:YES];
+        BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
         button.cornerRadius = 4;
-        [button setBackgroundColor:ButtonColor];
+        [button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
+        [button setBackgroundImage:ButtonBgImage forState:UIControlStateHighlighted];
+        [button setBackgroundImage:ButtonDisableBgImage forState:UIControlStateDisabled];
         [button setTitleFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.f]];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
         [button setTitle:@"提交订单" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(submitForm:) forControlEvents:UIControlEventTouchUpInside];
         button;

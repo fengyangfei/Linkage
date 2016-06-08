@@ -18,8 +18,8 @@
 #define TitleFontColor HEXCOLOR(0x676767)
 #define ButtonFrameImage [[UIImage imageNamed:@"frame_btn"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 5, 12, 5) resizingMode:UIImageResizingModeStretch]
 #define ButtonBgImage [[UIImage imageNamed:@"btn_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(25, 11, 25, 11) resizingMode:UIImageResizingModeStretch]
+#define ButtonDisableBgImage [[UIImage imageNamed:@"btn_disable"] resizableImageWithCapInsets:UIEdgeInsetsMake(25, 11, 25, 11) resizingMode:UIImageResizingModeStretch]
 #define RowTitleColor [row.cellConfig setObject:IndexTitleFontColor forKey:@"textLabel.textColor"];
-#define RowFieldColor [row.cellConfig setObject:IndexTitleFontColor forKey:@"textField.textColor"];
 
 //首页UI
 #define IndexTitleFontColor HEXCOLOR(0x606060)
