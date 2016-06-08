@@ -58,9 +58,6 @@
         [self.tintColor getRed:&red green:&green blue:&blue alpha:&alpha];
         self.textLabel.textColor  = [UIColor colorWithRed:red green:green blue:blue alpha:(isDisabled ? 0.3 : 1.0)];
     }
-    else{
-        self.textLabel.textColor = nil;
-    }
     if (self.rowDescriptor.value) {
         self.detailTextLabel.text = [self.rowDescriptor.value displayText];
     }

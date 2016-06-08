@@ -21,7 +21,6 @@ NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
 
 @implementation AvatarFormCell
 @synthesize imageView = _imageView;
-@synthesize textLabel = _textLabel;
 
 +(void)load
 {
@@ -74,24 +73,20 @@ NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
 
 -(UIImageView *)imageView
 {
-    if (_imageView) {
-        return _imageView;
+    if (!_imageView) {
+        _imageView = [UIImageView new];
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+        _imageView.layer.masksToBounds = YES;
+        _imageView.layer.cornerRadius = 5;
     }
-    _imageView = [UIImageView new];
-    _imageView.contentMode = UIViewContentModeScaleAspectFill;
-    _imageView.layer.masksToBounds = YES;
-    _imageView.layer.cornerRadius = 5;
     return _imageView;
 }
 
 -(UILabel *)textLabel
 {
-    if (_textLabel) {
-        return _textLabel;
-    }
-    _textLabel = [UILabel new];
-    _textLabel.font = [UIFont systemFontOfSize:16];
-    return _textLabel;
+    UILabel *label = [super textLabel];
+    label.textColor = IndexTitleFontColor;
+    return label;
 }
 
 -(void)configureUI
