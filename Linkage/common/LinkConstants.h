@@ -20,6 +20,8 @@
 #define ButtonFrameImage [[UIImage imageNamed:@"frame_btn"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 5, 12, 5) resizingMode:UIImageResizingModeStretch]
 #define ButtonBgImage [[UIImage imageNamed:@"btn_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(25, 11, 25, 11) resizingMode:UIImageResizingModeStretch]
 #define ButtonDisableBgImage [[UIImage imageNamed:@"btn_disable"] resizableImageWithCapInsets:UIEdgeInsetsMake(25, 11, 25, 11) resizingMode:UIImageResizingModeStretch]
+#define CodeButtonImage [[UIImage imageNamed:@"get_code_btn"] resizableImageWithCapInsets:UIEdgeInsetsMake(16, 6, 16, 6) resizingMode:UIImageResizingModeStretch]
+
 #define RowTitleColor [row.cellConfig setObject:IndexTitleFontColor forKey:@"textLabel.textColor"];
 
 //首页UI

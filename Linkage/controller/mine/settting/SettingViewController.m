@@ -72,7 +72,9 @@
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"update" rowType:XLFormRowDescriptorTypeButton title:@"版本更新"];
+    row.value = [NSString stringWithFormat:@"当前版本 V%@", MAIN_VERSION];
     [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
+    row.cellStyle = UITableViewCellStyleValue1;
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf updateAction:sender];
     };
