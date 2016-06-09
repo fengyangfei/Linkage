@@ -16,6 +16,9 @@
 #import <SVProgressHUD.h>
 #import <Mantle/Mantle.h>
 
+#define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
+row.cellStyle = UITableViewCellStyleValue1;
+
 @interface PersonalSettingController ()
 
 @end
@@ -103,6 +106,18 @@
         row.value = user.email;
     }
     [section addFormRow:row];
+    
+    Company *company = [Company shareInstance];
+    if (company && company.companyName) {
+        section = [XLFormSectionDescriptor formSection];
+        [form addFormSection:section];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"所属企业"];
+        RowUI
+        row.disabled = @YES;
+        row.value = company.companyName;
+        [section addFormRow:row];
+    }
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];

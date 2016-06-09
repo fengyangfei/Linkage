@@ -104,7 +104,7 @@
     NSArray *shareArray = [NSArray arrayWithObjects:UMShareToWechatTimeline,UMShareToWechatFavorite,UMShareToSina,UMShareToWechatSession,UMShareToQQ,UMShareToQzone,UMShareToYXSession,UMShareToYXTimeline,nil];
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:@"56f67ddce0f55a76730018f5"
-                                      shareText:@"XXXX"
+                                      shareText:kAppInfomation
                                      shareImage:[UIImage imageNamed:@"logo"]
                                 shareToSnsNames:shareArray
                                        delegate:self];
