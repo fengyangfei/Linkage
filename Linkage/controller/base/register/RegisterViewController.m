@@ -11,6 +11,7 @@
 #import "FormTextFieldAndButtonCell.h"
 #import "TimerManager.h"
 #import "LinkUtil.h"
+#import "CocoaSecurity.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface RegisterViewController ()
@@ -137,7 +138,7 @@
     }
     
     NSDictionary *paramter = @{@"mobile":NilStringWrapper(formValues[@"phoneNum"]),
-                               @"password":NilStringWrapper(formValues[@"password"]),
+                               @"password":[NilStringWrapper(formValues[@"password"]) md5],
                                @"company_name":NilStringWrapper(formValues[@"companyName"]),
                                @"ctype":[formValues[@"ctype"] valueData],
                                @"verify_code":NilStringWrapper(formValues[@"verifyCode"])};

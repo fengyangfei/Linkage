@@ -13,6 +13,7 @@
 #import "YGRestClient.h"
 #import "LoginUser.h"
 #import "Company.h"
+#import "CocoaSecurity.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface LoginViewController ()
@@ -30,7 +31,7 @@
     NSString *password = self.passwordTextField.text;
     NSDictionary *paramter = @{
                                @"mobile":userName,
-                               @"password":password
+                               @"password":[password md5]
                                };
     [[YGRestClient sharedInstance] postForObjectWithUrl:LoginUrl form:paramter success:^(id responseObject) {
         NSError *error = nil;

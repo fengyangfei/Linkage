@@ -11,6 +11,7 @@
 #import <Mantle/Mantle.h>
 #import "YGRestClient.h"
 #import "LoginUser.h"
+#import "CocoaSecurity.h"
 
 @implementation ChangePasswordController
 
@@ -101,8 +102,8 @@
         return;
     }
     NSDictionary *parameter = @{
-                                @"new_password":forValues[@"newpassword"],
-                                @"old_password":forValues[@"password"]
+                                @"new_password":[forValues[@"newpassword"] md5],
+                                @"old_password":[forValues[@"password"] md5]
                                 };
     parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
     [[YGRestClient sharedInstance]postForObjectWithUrl:ModPasswordUrl form:parameter success:^(id responseObject) {
