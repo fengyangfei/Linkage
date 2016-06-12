@@ -153,6 +153,7 @@
 		8BEEA7851CD3A7BB0088D70A /* AddressUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEEA7841CD3A7BB0088D70A /* AddressUtil.m */; };
 		9A04D2C81D0CF67C004C4FE1 /* AddStaffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2C71D0CF67C004C4FE1 /* AddStaffViewController.m */; };
 		9A04D2CC1D0CFBFE004C4FE1 /* StaffTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2CB1D0CFBFE004C4FE1 /* StaffTableViewCell.m */; };
+		9A04D2CF1D0D5C90004C4FE1 /* CompanyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2CE1D0D5C90004C4FE1 /* CompanyInfoViewController.m */; };
 		9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3741CC8BBB0009BC8C9 /* FormOptionsViewController.m */; };
 		9A05C37A1CC8C413009BC8C9 /* ExpandFormSectionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3771CC8C413009BC8C9 /* ExpandFormSectionDescriptor.m */; };
 		9A05C37B1CC8C413009BC8C9 /* XLFormButtonCell+Push.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3791CC8C413009BC8C9 /* XLFormButtonCell+Push.m */; };
@@ -535,6 +536,8 @@
 		9A04D2C71D0CF67C004C4FE1 /* AddStaffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddStaffViewController.m; sourceTree = "<group>"; };
 		9A04D2CA1D0CFBFE004C4FE1 /* StaffTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffTableViewCell.h; sourceTree = "<group>"; };
 		9A04D2CB1D0CFBFE004C4FE1 /* StaffTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffTableViewCell.m; sourceTree = "<group>"; };
+		9A04D2CD1D0D5C90004C4FE1 /* CompanyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyInfoViewController.h; sourceTree = "<group>"; };
+		9A04D2CE1D0D5C90004C4FE1 /* CompanyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyInfoViewController.m; sourceTree = "<group>"; };
 		9A05C3731CC8BBB0009BC8C9 /* FormOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormOptionsViewController.h; sourceTree = "<group>"; };
 		9A05C3741CC8BBB0009BC8C9 /* FormOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormOptionsViewController.m; sourceTree = "<group>"; };
 		9A05C3761CC8C413009BC8C9 /* ExpandFormSectionDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandFormSectionDescriptor.h; sourceTree = "<group>"; };
@@ -1481,6 +1484,8 @@
 			children = (
 				8BBE05EC1C9EA5670018EB2A /* CompanySettingViewController.h */,
 				8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */,
+				9A04D2CD1D0D5C90004C4FE1 /* CompanyInfoViewController.h */,
+				9A04D2CE1D0D5C90004C4FE1 /* CompanyInfoViewController.m */,
 			);
 			path = company;
 			sourceTree = "<group>";
@@ -2165,6 +2170,7 @@
 				8BA3E3E31CD489A50047AC6B /* FavoriteModel.m in Sources */,
 				9ACEBCAA1C9BF25F0000ACBF /* TimerManager.m in Sources */,
 				9A04D2CC1D0CFBFE004C4FE1 /* StaffTableViewCell.m in Sources */,
+				9A04D2CF1D0D5C90004C4FE1 /* CompanyInfoViewController.m in Sources */,
 				9A126DE71CD1DE9000648184 /* CarViewController.m in Sources */,
 				8B5DC6201C79B8A700D29292 /* IFTTTConstraintMultiplierAnimation.m in Sources */,
 				9A11F0711CD08894002E8F6F /* Task.m in Sources */,
