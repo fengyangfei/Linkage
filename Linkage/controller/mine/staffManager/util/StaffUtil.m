@@ -71,7 +71,7 @@
 //数据库查询
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
 {
-    NSArray *managerObjects = [StaffModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].cid inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSArray *managerObjects = [StaffModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].cid andOrderBy:@"userName" ascending:YES inContext:[NSManagedObjectContext MR_defaultContext]];
     NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:managerObjects.count];
     for (NSManagedObject *manageObj in managerObjects) {
         id<MTLJSONSerializing> model = [self modelFromManagedObject:manageObj];

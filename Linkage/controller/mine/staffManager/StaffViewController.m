@@ -9,6 +9,8 @@
 #import "StaffViewController.h"
 #import "StaffUtil.h"
 #import "StaffViewController.h"
+#import "AddStaffViewController.h"
+#import "StaffTableViewCell.h"
 
 @implementation StaffViewController
 
@@ -19,7 +21,26 @@
 
 -(Class)viewControllerClass
 {
-    return [StaffViewController class];
+    return [AddStaffViewController class];
+}
+
+- (void)initializeForm:(NSArray *)models
+{
+    XLFormDescriptor * form;
+    XLFormSectionDescriptor * section;
+    XLFormRowDescriptor * row;
+    
+    form = [XLFormDescriptor formDescriptorWithTitle:@""];
+    section = [XLFormSectionDescriptor formSectionWithTitle:@""];
+    [form addFormSection:section];
+    
+    for (id model in models) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:StaffDescriporRowType];
+        row.value = model;
+        row.action.viewControllerClass = self.viewControllerClass;
+        [section addFormRow:row];
+    }
+    self.form = form;
 }
 
 -(void)setupNavigationItem
