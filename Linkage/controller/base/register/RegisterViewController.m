@@ -12,6 +12,7 @@
 #import "TimerManager.h"
 #import "LinkUtil.h"
 #import "CocoaSecurity.h"
+#import "BFPaperButton.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface RegisterViewController ()
@@ -81,16 +82,6 @@
     row.required = YES;
     [section addFormRow:row];
     
-    section = [XLFormSectionDescriptor formSection];
-    [form addFormSection:section];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"register" rowType:XLFormRowDescriptorTypeButton title:@"注册"];
-    //row.disabled = @YES;
-    row.action.formBlock = ^(XLFormRowDescriptor *sender){
-        [weakSelf registerAction:sender];
-    };
-    [section addFormRow:row];
-    
     self.form = form;
 }
 
@@ -101,10 +92,41 @@
         make.top.equalTo(self.view.top);
         make.left.equalTo(self.view.left);
         make.right.equalTo(self.view.right);
-        make.bottom.equalTo(self.view.bottom);
+        make.bottom.equalTo(self.view.bottom).offset(-54);
     }];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
     //self.navigationItem.titleView = self.segementedControl;
+    
+    UIView *bottomView = [UIView new];
+    bottomView.backgroundColor = self.tableView.backgroundColor;
+    [self.view addSubview:bottomView];
+    [bottomView makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.left);
+        make.right.equalTo(self.view.right);
+        make.top.equalTo(self.tableView.bottom);
+        make.bottom.equalTo(self.view.bottom);
+    }];
+    
+    BFPaperButton *button = ({
+        BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
+        button.cornerRadius = 4;
+        [button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
+        [button setBackgroundImage:ButtonBgImage forState:UIControlStateHighlighted];
+        [button setBackgroundImage:ButtonDisableBgImage forState:UIControlStateDisabled];
+        [button setTitleFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.f]];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+        [button setTitle:@"注 册" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
+        button;
+    });
+    [bottomView addSubview:button];
+    [button makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(bottomView.left).offset(10);
+        make.right.equalTo(bottomView.right).offset(-10);
+        make.top.equalTo(bottomView.top).offset(5);
+        make.height.equalTo(@44);
+    }];
 }
 
 -(UISegmentedControl *)segementedControl
@@ -121,10 +143,9 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)registerAction:(XLFormRowDescriptor *)row
+- (void)registerAction:(id)row
 {
     WeakSelf
-    [self deselectFormRow:row];
     [self.tableView endEditing:YES];
     NSDictionary *formValues = [self.form formValues];
     NSArray *errors = [self formValidationErrors];
@@ -172,7 +193,7 @@
     __weak FormTextFieldAndButtonCell *weakCell = cell;
     [TimerManager shareInstance].block = ^(NSInteger second){
         if (second > 0) {
-            NSString *title = [NSString stringWithFormat:@"(%ld)秒后重新获取", (long)second];
+            NSString *title = [NSString stringWithFormat:@"(%ld)后重新获取", (long)second];
             [weakCell.button setTitle:title forState:UIControlStateNormal];
         }else{
             [weakCell.button setTitle:@"获取验证码" forState:UIControlStateNormal];

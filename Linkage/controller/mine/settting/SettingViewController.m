@@ -72,7 +72,9 @@
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"update" rowType:XLFormRowDescriptorTypeButton title:@"版本更新"];
+    row.value = [NSString stringWithFormat:@"当前版本 V%@", MAIN_VERSION];
     [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
+    row.cellStyle = UITableViewCellStyleValue1;
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf updateAction:sender];
     };
@@ -104,7 +106,7 @@
     NSArray *shareArray = [NSArray arrayWithObjects:UMShareToWechatTimeline,UMShareToWechatFavorite,UMShareToSina,UMShareToWechatSession,UMShareToQQ,UMShareToQzone,UMShareToYXSession,UMShareToYXTimeline,nil];
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:@"56f67ddce0f55a76730018f5"
-                                      shareText:@"XXXX"
+                                      shareText:kAppInfomation
                                      shareImage:[UIImage imageNamed:@"logo"]
                                 shareToSnsNames:shareArray
                                        delegate:self];

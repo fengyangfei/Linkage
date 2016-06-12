@@ -68,23 +68,33 @@
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"apply_date" rowType:XLFormRowDescriptorTypeDate title:@"上牌日期"];
-    row.value = car?car.applyDate :nil;
+    if(car && car.applyDate){
+        row.value = car.applyDate;
+    }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"examine_data" rowType:XLFormRowDescriptorTypeDate title:@"年审日期"];
-    row.value = car?car.examineData :nil;
+    if(car && car.examineData){
+        row.value = car.examineData;
+    }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"maintain_data" rowType:XLFormRowDescriptorTypeDate title:@"二级维护月份"];
-    row.value = car?car.maintainData :nil;
+    if(car && car.maintainData){
+        row.value = car.maintainData;
+    }
     [section addFormRow:row];
 
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"traffic_insure_data" rowType:XLFormRowDescriptorTypeDate title:@"交强险日期"];
-    row.value = car?car.trafficInsureData :nil;
+    if(car && car.trafficInsureData){
+        row.value = car.trafficInsureData;
+    }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"business_insure_data" rowType:XLFormRowDescriptorTypeDate title:@"商业险日期"];
-    row.value = car?car.businessInsureData :nil;
+    if(car && car.businessInsureData){
+        row.value = car.businessInsureData;
+    }
     [section addFormRow:row];
 
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"insure_company" rowType:XLFormRowDescriptorTypeText title:@"保险公司名称"];
@@ -95,16 +105,14 @@
     row.value = car?car.memo :@"";
     [section addFormRow:row];
     
-    if(!car){
-        section = [XLFormSectionDescriptor formSection];
-        [form addFormSection:section];
-        
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"保存"];
-        row.action.formBlock  = ^(XLFormRowDescriptor * sender){
-            [weakSelf submitForm:sender];
-        };
-        [section addFormRow:row];
-    }
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"保存"];
+    row.action.formBlock  = ^(XLFormRowDescriptor * sender){
+        [weakSelf submitForm:sender];
+    };
+    [section addFormRow:row];
     
     return form;
 }

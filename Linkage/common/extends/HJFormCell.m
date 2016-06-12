@@ -139,6 +139,13 @@
     return textLabel;
 }
 
+-(XLFormTextView *)textView
+{
+    XLFormTextView *textView = [super textView];
+    textView.textColor = IndexTitleFontColor;
+    return textView;
+}
+
 @end
 
 @implementation HJFormButtonCell

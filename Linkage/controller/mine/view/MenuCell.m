@@ -94,7 +94,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
     [super configure];
     [self.contentView addSubview:self.iconView];
     [self.iconView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(8);
+        make.left.equalTo(self.contentView.left).offset(12);
         make.centerY.equalTo(self.contentView.centerY);
         make.width.equalTo(@(16));
         make.height.equalTo(@(16));
@@ -102,7 +102,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
     
     [self.contentView addSubview:self.titleLabel];
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.iconView.right).offset(3);
+        make.left.equalTo(self.iconView.right).offset(15);
         make.right.equalTo(self.contentView.right);
         make.top.equalTo(self.contentView.top);
         make.bottom.equalTo(self.contentView.bottom);
@@ -136,24 +136,24 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
     [super configure];
     [self.contentView addSubview:self.iconView];
     [self.iconView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(8);
+        make.left.equalTo(self.contentView.left).offset(12);
         make.centerY.equalTo(self.contentView.centerY);
-        make.width.equalTo(@(52));
-        make.height.equalTo(@(52));
+        make.width.equalTo(@(64));
+        make.height.equalTo(@(64));
     }];
     
     [self.contentView addSubview:self.titleLabel];
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.iconView.right).offset(8);
+        make.left.equalTo(self.iconView.right).offset(14);
         make.right.equalTo(self.contentView.right);
-        make.top.equalTo(self.iconView.top).offset(5);
+        make.top.equalTo(self.iconView.top).offset(10);
     }];
     
     [self.contentView addSubview:self.subTitleLabel];
     [self.subTitleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.iconView.right).offset(8);
+        make.left.equalTo(self.iconView.right).offset(14);
         make.right.equalTo(self.contentView.right);
-        make.bottom.equalTo(self.iconView.bottom).offset(-3);
+        make.bottom.equalTo(self.iconView.bottom).offset(-10);
     }];
 }
 
@@ -194,7 +194,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
-    return 80;
+    return 82;
 }
 
 -(UILabel *)subTitleLabel
@@ -215,6 +215,14 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
     imageView.layer.masksToBounds = YES;
     imageView.layer.cornerRadius = 6;
     return imageView;
+}
+
+-(UILabel *)titleLabel
+{
+    UILabel *label = [super titleLabel];
+    label.textColor = HeaderColor;
+    label.font = [UIFont systemFontOfSize:18];
+    return label;
 }
 
 @end

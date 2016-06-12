@@ -100,12 +100,9 @@
     static NSArray * _options;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSMutableArray *_mutableOptions = [[NSMutableArray alloc]init];
-        [self.userTypes enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            XLFormOptionsObject *option = [XLFormOptionsObject formOptionsObjectWithValue:key displayText:obj];
-            [_mutableOptions addObject:option];
-        }];
-        _options = [_mutableOptions copy];
+        XLFormOptionsObject *op1 = [XLFormOptionsObject formOptionsObjectWithValue:@0 displayText:[self.userTypes objectForKey:@0]];
+        XLFormOptionsObject *op2 = [XLFormOptionsObject formOptionsObjectWithValue:@2 displayText:[self.userTypes objectForKey:@2]];
+        _options = @[op1, op2];
     });
     return _options;
 }
