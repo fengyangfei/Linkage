@@ -44,11 +44,11 @@
 +(void)queryModelsFromServer:(NSDictionary *)parameter url:(NSString *)url completion:(void(^)(NSArray *models))completion;
 
 //服务端查询详情
-+(void)queryModelFromServer:(void(^)(id model))completion;
++(void)queryModelFromServer:(void(^)(id<MTLJSONSerializing> model))completion;
 
 +(void)queryModelFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model completion:(void(^)(id<MTLJSONSerializing> result))completion;
 
-+(void)queryModelFromServer:(NSDictionary *)parameter url:(NSString *)url completion:(void(^)(id model))completion;
++(void)queryModelFromServer:(NSDictionary *)parameter url:(NSString *)url completion:(void(^)(id<MTLJSONSerializing> model))completion;
 
 //数据库查询
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion;

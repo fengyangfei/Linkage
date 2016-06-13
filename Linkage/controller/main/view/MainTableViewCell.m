@@ -10,6 +10,7 @@
 #import "BillTypeViewController.h"
 #import "Favorite.h"
 #import "Company.h"
+#import "CompanyInfoViewController.h"
 
 NSString *const CompanyDescriporType = @"CompanyRowType";
 
@@ -57,6 +58,14 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
     return 84.0;
+}
+
+-(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
+{
+    CompanyInfoViewController *infoController = [[CompanyInfoViewController alloc]init];
+    infoController.rowDescriptor = self.rowDescriptor;
+    infoController.hidesBottomBarWhenPushed = YES;
+    [controller.navigationController pushViewController:infoController animated:YES];
 }
 
 -(void)clickAction:(id)sender

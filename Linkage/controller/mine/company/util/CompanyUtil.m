@@ -17,7 +17,7 @@
     return [Company class];
 }
 
-+(void)queryModelFromServer:(void(^)(id model))completion
++(void)queryModelFromServer:(void(^)(id<MTLJSONSerializing> model))completion
 {
     [self queryModelFromServer:[Company shareInstance] completion:completion];
 }

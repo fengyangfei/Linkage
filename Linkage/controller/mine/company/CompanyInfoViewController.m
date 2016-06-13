@@ -8,6 +8,7 @@
 
 #import "CompanyInfoViewController.h"
 #import "Company.h"
+#import "CompanyUtil.h"
 
 #define RowUI row.cellStyle = UITableViewCellStyleValue1;\
 [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
@@ -18,6 +19,7 @@
 @end
 
 @implementation CompanyInfoViewController
+@synthesize rowDescriptor = _rowDescriptor;
 
 - (instancetype)init
 {
@@ -44,10 +46,16 @@
 
 -(void)setupData
 {
+    Favorite *favorite = self.rowDescriptor.value;
+    if (favorite) {
+        [CompanyUtil queryModelFromServer:favorite completion:^(id<MTLJSONSerializing> result) {
+            XLFormDescriptor *form = [self createForm:(Company *)result];
+            [self setForm:form];
+        }];
+    }
+    
     Company *company = [Company shareInstance];
     if(company){
-        XLFormDescriptor *form = [self createForm:company];
-        [self setForm:form];
     }
 }
 

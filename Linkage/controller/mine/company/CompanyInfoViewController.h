@@ -8,6 +8,6 @@
 
 #import <XLForm/XLForm.h>
 
-@interface CompanyInfoViewController : XLFormViewController
+@interface CompanyInfoViewController : XLFormViewController<XLFormRowDescriptorViewController>
 
 @end
