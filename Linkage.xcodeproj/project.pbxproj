@@ -154,6 +154,7 @@
 		9A04D2C81D0CF67C004C4FE1 /* AddStaffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2C71D0CF67C004C4FE1 /* AddStaffViewController.m */; };
 		9A04D2CC1D0CFBFE004C4FE1 /* StaffTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2CB1D0CFBFE004C4FE1 /* StaffTableViewCell.m */; };
 		9A04D2CF1D0D5C90004C4FE1 /* CompanyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2CE1D0D5C90004C4FE1 /* CompanyInfoViewController.m */; };
+		9A04D2D31D0E48A7004C4FE1 /* CompanyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2D21D0E48A7004C4FE1 /* CompanyUtil.m */; };
 		9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3741CC8BBB0009BC8C9 /* FormOptionsViewController.m */; };
 		9A05C37A1CC8C413009BC8C9 /* ExpandFormSectionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3771CC8C413009BC8C9 /* ExpandFormSectionDescriptor.m */; };
 		9A05C37B1CC8C413009BC8C9 /* XLFormButtonCell+Push.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05C3791CC8C413009BC8C9 /* XLFormButtonCell+Push.m */; };
@@ -538,6 +539,8 @@
 		9A04D2CB1D0CFBFE004C4FE1 /* StaffTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffTableViewCell.m; sourceTree = "<group>"; };
 		9A04D2CD1D0D5C90004C4FE1 /* CompanyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyInfoViewController.h; sourceTree = "<group>"; };
 		9A04D2CE1D0D5C90004C4FE1 /* CompanyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyInfoViewController.m; sourceTree = "<group>"; };
+		9A04D2D11D0E48A7004C4FE1 /* CompanyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyUtil.h; sourceTree = "<group>"; };
+		9A04D2D21D0E48A7004C4FE1 /* CompanyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyUtil.m; sourceTree = "<group>"; };
 		9A05C3731CC8BBB0009BC8C9 /* FormOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormOptionsViewController.h; sourceTree = "<group>"; };
 		9A05C3741CC8BBB0009BC8C9 /* FormOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormOptionsViewController.m; sourceTree = "<group>"; };
 		9A05C3761CC8C413009BC8C9 /* ExpandFormSectionDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandFormSectionDescriptor.h; sourceTree = "<group>"; };
@@ -1482,6 +1485,7 @@
 		8BBE05EB1C9EA5150018EB2A /* company */ = {
 			isa = PBXGroup;
 			children = (
+				9A04D2D01D0E4869004C4FE1 /* util */,
 				8BBE05EC1C9EA5670018EB2A /* CompanySettingViewController.h */,
 				8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */,
 				9A04D2CD1D0D5C90004C4FE1 /* CompanyInfoViewController.h */,
@@ -1576,6 +1580,15 @@
 				9A04D2CB1D0CFBFE004C4FE1 /* StaffTableViewCell.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		9A04D2D01D0E4869004C4FE1 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				9A04D2D11D0E48A7004C4FE1 /* CompanyUtil.h */,
+				9A04D2D21D0E48A7004C4FE1 /* CompanyUtil.m */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		9A11F0641CD059C0002E8F6F /* model */ = {
@@ -2254,6 +2267,7 @@
 				9A11F05C1CD041BA002E8F6F /* Driver.m in Sources */,
 				8B5DC61B1C79B8A700D29292 /* IFTTTAnimatedScrollViewController.m in Sources */,
 				8B5DC6361C79B8A700D29292 /* TRTheme.m in Sources */,
+				9A04D2D31D0E48A7004C4FE1 /* CompanyUtil.m in Sources */,
 				8B44450F1C7C9EFE00160DC2 /* UIView+SDExtension.m in Sources */,
 				8B44450C1C7C9EFE00160DC2 /* TAPageControl.m in Sources */,
 				8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */,
