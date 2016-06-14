@@ -13,6 +13,7 @@
 #import "SOImage.h"
 #import "SOImageFormCell.h"
 #import "AvatarFormCell.h"
+#import "CompanyUtil.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <Mantle/Mantle.h>
 
@@ -181,7 +182,7 @@
     formValues[@"companyImages"] = companyImages;
     //保存到UserDefault
     Company *company = [MTLJSONAdapter modelOfClass:[Company class] fromJSONDictionary:formValues error:nil];
-    [Company syncToServer:company success:^(id responseData) {
+    [CompanyUtil syncToServer:company success:^(id responseData) {
         BOOL saveSuccess = [company save];
         if (saveSuccess) {
             [SVProgressHUD showSuccessWithStatus:@"保存成功"];

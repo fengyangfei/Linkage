@@ -19,7 +19,9 @@
 
 +(void)queryModelFromServer:(void(^)(id<MTLJSONSerializing> model))completion
 {
-    [self queryModelFromServer:[Company shareInstance] completion:completion];
+    Company *temp = [[Company alloc]init];
+    temp.companyId = [LoginUser shareInstance].companyId;
+    [self queryModelFromServer:temp completion:completion];
 }
 
 +(void)queryModelFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)parameter completion:(void(^)(id<MTLJSONSerializing> result))completion
@@ -38,6 +40,13 @@
     } failure:^(NSError *error) {
         
     }];
+}
+
++(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
+{
+    NSDictionary *parameter = [self jsonFromModel:model];
+    parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+    [[YGRestClient sharedInstance] postForObjectWithUrl:ModCompanyUrl form:parameter success:success failure:failure];
 }
 
 @end

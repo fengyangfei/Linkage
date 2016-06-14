@@ -15,17 +15,11 @@
 @property (nonatomic,copy  ) NSString *email;
 @property (nonatomic,copy  ) NSString *fax;
 @property (nonatomic,copy  ) NSString *url;
-@property (nonatomic,copy  ) NSString *phone1;
-@property (nonatomic,copy  ) NSString *phone2;
-@property (nonatomic,copy  ) NSString *phone3;
-@property (nonatomic,copy  ) NSString *phone4;
+@property (nonatomic,copy  ) NSString *servicePhone2;
+@property (nonatomic,copy  ) NSString *servicePhone3;
+@property (nonatomic,copy  ) NSString *servicePhone4;
 @property (nonatomic,strong) NSArray  *companyImages;
 @property (nonatomic,strong) NSArray  *customerPhones;
 -(BOOL)save;
 +(Company *)shareInstance;
-@end
-
-@interface Company(Operation)
-+(void)queryFromServer:(void(^)(Company *company))completion;
-+(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 @end

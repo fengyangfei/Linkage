@@ -14,6 +14,7 @@
 #import "LoginUser.h"
 #import "Company.h"
 #import "CocoaSecurity.h"
+#import "CompanyUtil.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface LoginViewController ()
@@ -45,7 +46,9 @@
                 [TRThemeManager shareInstance].themeType = TRThemeTypeSubCompany;
             }
             //获取企业信息
-            [Company queryFromServer:nil];
+            [CompanyUtil queryModelFromServer:^(Company *model) {
+                [model save];
+            }];
             
             LATabBarController *tabBarController = [[LATabBarController alloc]init];
             [weakSelf presentViewController:tabBarController animated:YES completion:nil];

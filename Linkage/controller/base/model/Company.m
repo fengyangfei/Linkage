@@ -19,6 +19,10 @@
     NSDictionary *keyMap = @{
                                 @"address":@"contact_address",
                                 @"contactorPhone":@"contact_phone",
+                                @"url":@"home_page",
+                                @"servicePhone2":@"service_phone2",
+                                @"servicePhone3":@"service_phone3",
+                                @"servicePhone4":@"service_phone4",
                                 @"introduction":@"contact_description"
                              };
     NSDictionary *keyDic = [super JSONKeyPathsByPropertyKey];
@@ -46,37 +50,4 @@ static Company *company;
     return company;
 }
 
-@end
-
-@implementation Company(Operation)
-+(void)queryFromServer:(void(^)(Company *company))completion
-{
-    NSDictionary *parameter = @{
-                                @"company_id":[LoginUser shareInstance].companyId
-                                };
-    parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
-    [[YGRestClient sharedInstance] postForObjectWithUrl:CompanyInfomationUrl form:parameter success:^(id responseObject) {
-        NSError *error = nil;
-        Company *company = [MTLJSONAdapter modelOfClass:[Company class] fromJSONDictionary:responseObject error:&error];
-        if (company) {
-            [company save];
-            if (completion) {
-                completion(company);
-            }
-        }
-        if (error) {
-            NSLog(@"%@",error);
-        }
-    } failure:^(NSError *error) {
-        
-    }];
-}
-
-+(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
-{
-    NSError *error;
-    NSDictionary *parameter = [MTLJSONAdapter JSONDictionaryFromModel:model error:&error];
-    parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
-    [[YGRestClient sharedInstance] postForObjectWithUrl:ModCompanyUrl form:parameter success:success failure:failure];
-}
 @end

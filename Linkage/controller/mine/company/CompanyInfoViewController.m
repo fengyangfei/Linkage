@@ -12,7 +12,7 @@
 
 #define RowUI row.cellStyle = UITableViewCellStyleValue1;\
 [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
-[row.cellConfig setObject:[UIColor blackColor] forKey:@"textLabel.textColor"];\
+[row.cellConfig setObject:@(UITableViewCellSelectionStyleNone) forKey:@"selectionStyle"];
 
 @interface CompanyInfoViewController ()
 
@@ -70,12 +70,14 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company_name" rowType:XLFormRowDescriptorTypeButton title:@"企业名称"];
+    RowUI
     if (company) {
         row.value = company.companyName;
     }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"description" rowType:XLFormRowDescriptorTypeButton title:@"企业简介"];
+    RowUI
     if (company) {
         row.value = company.introduction;
     }
@@ -85,32 +87,59 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"contact_name" rowType:XLFormRowDescriptorTypeButton title:@"企业联系人"];
+    RowUI
     if (company) {
         row.value = company.contactName;
     }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"contact_address" rowType:XLFormRowDescriptorTypeButton title:@"企业地址"];
+    RowUI
     if (company) {
         row.value = company.address;
     }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"email" rowType:XLFormRowDescriptorTypeButton title:@"企业邮箱"];
+    RowUI
     if (company) {
         row.value = company.email;
     }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"fax" rowType:XLFormRowDescriptorTypeButton title:@"传真"];
+    RowUI
     if (company) {
         row.value = company.fax;
     }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"url" rowType:XLFormRowDescriptorTypeButton title:@"企业网址"];
+    RowUI
     if (company) {
         row.value = company.url;
+    }
+    [section addFormRow:row];
+    
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话2"];
+    RowUI
+        if (company && company.servicePhone2) {
+            row.value = company.servicePhone2;
+        }
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话3"];
+    RowUI
+    if (company && company.servicePhone3) {
+        row.value = company.servicePhone3;
+    }
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话4"];
+    RowUI
+    if (company && company.servicePhone4) {
+        row.value = company.servicePhone4;
     }
     [section addFormRow:row];
     
