@@ -34,6 +34,7 @@ static NSString *const kStoreName = @"linkage.sqlite";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:kPgyerAppKey];
+    [[PgyUpdateManager sharedPgyManager] checkUpdate];
     
     [self setupDataBase];
     

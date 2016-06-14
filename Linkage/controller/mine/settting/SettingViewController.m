@@ -152,6 +152,7 @@
 {
     [self deselectFormRow:row];
     [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:kPgyerAppKey];
+    [[PgyUpdateManager sharedPgyManager] checkUpdate];
 }
 
 -(void)aboutUSAction:(XLFormRowDescriptor *)row
