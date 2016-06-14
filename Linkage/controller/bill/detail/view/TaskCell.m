@@ -112,11 +112,12 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     }];
 }
 
-#pragma mark - 属性
+// 属性
 -(UILabel *)textLabel
 {
     if (!_textLabel) {
         _textLabel = [UILabel new];
+        _textLabel.textColor = IndexTitleFontColor;
     }
     return _textLabel;
 }
@@ -125,6 +126,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 {
     if (!_detailLabel) {
         _detailLabel = [UILabel new];
+        _detailLabel.textColor = [UIColor grayColor];
     }
     return _detailLabel;
 }
@@ -151,15 +153,18 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 }
 @end
 
-/**
- * 编辑Cell
- */
+#pragma mark - 编辑Cell
 @interface TaskEditCell()
 @property (nonatomic, readonly) UIButton *statusBtn;
+@property (nonatomic, readonly) UILabel *subTextLabel;
+@property (nonatomic, readonly) UILabel *subDetailLabel;
 @end
 
 @implementation TaskEditCell
 @synthesize statusBtn = _statusBtn;
+@synthesize subTextLabel = _subTextLabel;
+@synthesize subDetailLabel = _subDetailLabel;
+
 +(void)load
 {
     [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:TaskEditDescriporType];
@@ -167,13 +172,41 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 
 -(void)configure
 {
-    [super configure];
-    [self.textField setEnabled:NO];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self setupUI];
+}
+
++(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    return 64;
 }
 
 -(void)setupUI
 {
-    [super setupUI];
+    [self.contentView addSubview:self.textLabel];
+    [self.textLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.top.equalTo(self.contentView.top).offset(10);
+    }];
+    
+    [self.contentView addSubview:self.subTextLabel];
+    [self.subTextLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.textLabel.right).offset(18);
+        make.top.equalTo(self.contentView.top).offset(10);
+    }];
+    
+    [self.contentView addSubview:self.detailLabel];
+    [self.detailLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.bottom.equalTo(self.contentView.bottom).offset(-10);
+    }];
+    
+    [self.contentView addSubview:self.subDetailLabel];
+    [self.subDetailLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.detailLabel.right).offset(18);
+        make.bottom.equalTo(self.contentView.bottom).offset(-10);
+    }];
+    
     [self.contentView addSubview:self.statusBtn];
     [self.statusBtn makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView.right).offset(-12);
@@ -187,24 +220,14 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 {
     Task *model = self.rowDescriptor.value;
     if (model) {
-        self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机："];
-        self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌号："];
-        self.textField.attributedText = [model.cargoNo ?:@"" attributedStringWithTitle:@"货柜号："];
-        NSString *title = [[LinkUtil taskStatus] objectForKey:@([model.status intValue])];
+        NSString *cargoType = [LinkUtil.cargoTypes objectForKey:model.cargoType];
+        NSString *title = [[LinkUtil taskStatus] objectForKey:model.status];
+        self.textLabel.text = cargoType;
+        self.subTextLabel.text = model.cargoNo;
+        self.detailLabel.text = [NSString stringWithFormat:@"%@%@",@"司机：", model.driverName];
+        self.subDetailLabel.text = [NSString stringWithFormat:@"%@%@",@"车牌：", model.driverLicense];;
         [self.statusBtn setTitle:title forState:UIControlStateNormal];
     }
-}
-
--(UIButton *)statusBtn
-{
-    if (!_statusBtn) {
-        _statusBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_statusBtn setTitleColor:HeaderColor forState:UIControlStateNormal];
-        [_statusBtn setBackgroundImage:ButtonFrameImage forState:UIControlStateNormal];
-        [_statusBtn setBackgroundImage:ButtonFrameImage forState:UIControlStateHighlighted];
-        [_statusBtn addTarget:self action:@selector(changeStatusAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _statusBtn;
 }
 
 -(void)changeStatusAction:(id)sender
@@ -234,11 +257,43 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
         }];
     }
 }
+
+// 属性
+-(UIButton *)statusBtn
+{
+    if (!_statusBtn) {
+        _statusBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_statusBtn setTitleColor:HeaderColor forState:UIControlStateNormal];
+        [_statusBtn setBackgroundImage:ButtonFrameImage forState:UIControlStateNormal];
+        [_statusBtn setBackgroundImage:ButtonFrameImage forState:UIControlStateHighlighted];
+        [_statusBtn addTarget:self action:@selector(changeStatusAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _statusBtn;
+}
+
+-(UILabel *)subTextLabel
+{
+    if (!_subTextLabel) {
+        _subTextLabel = [UILabel new];
+        _subTextLabel.textColor = IndexTitleFontColor;
+        _subTextLabel.font = [UIFont systemFontOfSize:16];
+    }
+    return _subTextLabel;
+}
+
+-(UILabel *)subDetailLabel
+{
+    if (!_subDetailLabel) {
+        _subDetailLabel = [UILabel new];
+        _subDetailLabel.textColor = [UIColor grayColor];
+        _subDetailLabel.font = [UIFont systemFontOfSize:16];
+    }
+    return _subDetailLabel;
+}
+
 @end
 
-/**
- * 查看cell
- */
+#pragma mark - 查看cell
 @interface TaskInfoCell()
 @property (nonatomic, readonly) UILabel *statusLabel;
 @end

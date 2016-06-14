@@ -247,11 +247,10 @@
     form = [XLFormDescriptor formDescriptorWithTitle:@""];
     form.disabled = YES;
     
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+
     for (Task *task in order.tasks) {
-        NSString *cargoName = task.cargoType ? [LinkUtil.cargoTypes objectForKey:task.cargoType] :@"";
-        section = [XLFormSectionDescriptor formSectionWithTitle:cargoName];
-        [form addFormSection:section];
-        
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TaskEditDescriporType];
         RowUI
         row.value = task;
