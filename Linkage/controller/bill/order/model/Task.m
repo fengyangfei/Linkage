@@ -15,6 +15,7 @@
 {
     NSDictionary *keyMap = @{
                              @"cargoNo":@"cargo_no",
+                             @"cargoType":@"cargo_type",
                              @"driverName":@"driver_name",
                              @"driverLicense":@"license"
                              };
