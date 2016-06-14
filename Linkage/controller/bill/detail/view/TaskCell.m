@@ -34,7 +34,6 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     [self setupUI];
     [self.textField setEnabled:!self.rowDescriptor.disabled];
     [self.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    
 }
 
 -(void)update
@@ -42,8 +41,8 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     [super update];
     Task *model = self.rowDescriptor.value;
     if (model) {
-        self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机："];
-        self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌号："];
+        self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机：" font:[UIFont systemFontOfSize:16]];
+        self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌：" font:[UIFont systemFontOfSize:16]];
         if (model.cargoNo && model.cargoNo.length > 0) {
             self.textField.text = model.cargoNo;
         }
@@ -57,15 +56,25 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
-    return 80;
+    return 64;
+}
+
+-(UIView *)inputAccessoryView
+{
+    return nil;
 }
 
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [self textFieldDidChange:textField];
-    [self.formViewController endEditing:self.rowDescriptor];
-    [self.formViewController textFieldDidEndEditing:textField];
+    [self unhighlight];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - Helper
@@ -95,20 +104,20 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 {
     [self.contentView addSubview:self.textLabel];
     [self.textLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(12);
-        make.top.equalTo(self.contentView.top).offset(5);
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.top.equalTo(self.contentView.top).offset(10);
     }];
     
     [self.contentView addSubview:self.detailLabel];
     [self.detailLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(12);
-        make.centerY.equalTo(self.contentView.centerY);
+        make.left.equalTo(self.textLabel.right).offset(18);
+        make.top.equalTo(self.contentView.top).offset(10);
     }];
     
     [self.contentView addSubview:self.textField];
     [self.textField makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(12);
-        make.bottom.equalTo(self.contentView.bottom).offset(-6);
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.bottom.equalTo(self.contentView.bottom).offset(-10);
     }];
 }
 
@@ -135,17 +144,17 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 {
     if (!_textField) {
         _textField = [[UITextField alloc]init];
-        _textField.font = [UIFont systemFontOfSize:14];
+        _textField.font = [UIFont systemFontOfSize:16];
+        _textField.textColor = IndexTitleFontColor;
         _textField.placeholder = @"请填入货柜号";
         _textField.delegate = self;
+        _textField.returnKeyType = UIReturnKeyDone;
     }
     return _textField;
 }
 @end
 
-/**
- * 添加Cell
- */
+#pragma mark - 添加Cell
 @implementation TaskAddCell
 +(void)load
 {
@@ -327,9 +336,9 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 {
     Task *model = self.rowDescriptor.value;
     if (model) {
-        self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机："];
-        self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌号："];
-        self.textField.attributedText = [model.cargoNo ?:@"" attributedStringWithTitle:@"货柜号："];
+        self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机：" font:[UIFont systemFontOfSize:16]];
+        self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌：" font:[UIFont systemFontOfSize:16]];
+        self.textField.attributedText = [model.cargoNo ?:@"" attributedStringWithTitle:@"货柜号：" font:[UIFont systemFontOfSize:16]];
         self.statusLabel.text = [[LinkUtil taskStatus] objectForKey:@([model.status intValue])];
     }
 }

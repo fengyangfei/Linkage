@@ -10,4 +10,6 @@
 
 @interface NSString (Hint)
 -(NSAttributedString *)attributedStringWithTitle:(NSString *)title;
+-(NSAttributedString *)attributedStringWithTitle:(NSString *)title font:(UIFont *)font;
+-(NSAttributedString *)attributedStringWithTitle:(NSString *)title titleFont:(UIFont *)titleFont valueFont:(UIFont *)valueFont;
 @end

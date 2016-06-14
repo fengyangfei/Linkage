@@ -12,8 +12,18 @@
 
 -(NSAttributedString *)attributedStringWithTitle:(NSString *)title
 {
-    NSMutableAttributedString *titleString = [[[NSAttributedString alloc]initWithString:title attributes:@{NSForegroundColorAttributeName:[UIColor grayColor],NSFontAttributeName:[UIFont systemFontOfSize:14]}] mutableCopy];
-    NSAttributedString *valueString = [[NSAttributedString alloc]initWithString:self attributes:@{NSForegroundColorAttributeName:OrderTitleFontColor,NSFontAttributeName:[UIFont systemFontOfSize:14]}];
+    return [self attributedStringWithTitle:title font:[UIFont systemFontOfSize:14]];
+}
+
+-(NSAttributedString *)attributedStringWithTitle:(NSString *)title font:(UIFont *)font
+{
+    return [self attributedStringWithTitle:title titleFont:font valueFont:font];
+}
+
+-(NSAttributedString *)attributedStringWithTitle:(NSString *)title titleFont:(UIFont *)titleFont valueFont:(UIFont *)valueFont
+{
+    NSMutableAttributedString *titleString = [[[NSAttributedString alloc]initWithString:title attributes:@{NSForegroundColorAttributeName:[UIColor grayColor],NSFontAttributeName:titleFont}] mutableCopy];
+    NSAttributedString *valueString = [[NSAttributedString alloc]initWithString:self attributes:@{NSForegroundColorAttributeName:OrderTitleFontColor,NSFontAttributeName:valueFont}];
     [titleString appendAttributedString:valueString];
     return [titleString copy];
 }
