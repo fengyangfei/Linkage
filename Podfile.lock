@@ -36,6 +36,7 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - FlatUIKit (1.6.2)
   - HMSegmentedControl (1.5.2)
   - IQKeyboardManager (3.3.7)
   - MagicalRecord (2.3.2):
@@ -67,6 +68,7 @@ DEPENDENCIES:
   - AFNetworking (= 2.5.4)
   - AHKActionSheet
   - BlocksKit (= 2.2.5)
+  - FlatUIKit
   - HMSegmentedControl
   - IQKeyboardManager
   - MagicalRecord (~> 2.3.0)
@@ -86,6 +88,7 @@ SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   AHKActionSheet: f0b312b5c689f72924d231c39dae140ecd5c1d46
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  FlatUIKit: 1b41f0d4952ce8d970d8479ce79df54a960242c4
   HMSegmentedControl: 83b9686022d2176fb6457d2bdb61e5d6393fed7d
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
