@@ -48,12 +48,15 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"title" rowType:XLFormRowDescriptorTypeSelectorPush title:@"地址类型"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"addOption" rowType:XLFormRowDescriptorTypeSelectorPush title:@"地址类型"];
+    if (address && address.title) {
+        row.value = [XLFormOptionsObject formOptionsObjectWithValue:address.title displayText:[[LinkUtil addressTypes] objectForKey:address.title]];
+    }
     row.selectorOptions = [LinkUtil addressTypeOptions];
     row.required = YES;
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"address" rowType:XLFormRowDescriptorTypeText title:@"地址"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"address" rowType:XLFormRowDescriptorTypeTextView title:@"地址"];
     row.value = address?address.address:@"";
     row.required = YES;
     [section addFormRow:row];

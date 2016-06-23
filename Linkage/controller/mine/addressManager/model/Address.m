@@ -20,8 +20,22 @@
                              };
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keyDic = [keyDic mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
-    keyDic = [keyDic mtl_dictionaryByRemovingValuesForKeys:@[@"title"]];
     return keyDic;
+}
+
++(NSValueTransformer *)titleJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if ([value isKindOfClass:[NSString class]]) {
+            return @([value intValue]);
+        }else if ([value isKindOfClass:[NSNumber class]]){
+            return value;
+        }else{
+            return @(0);
+        }
+    } reverseBlock:^id(id value, BOOL *success, NSError **error) {
+        return value;
+    }];
 }
 
 #pragma mark - MTLManagedObjectSerializing

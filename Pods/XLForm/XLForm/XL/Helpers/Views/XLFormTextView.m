@@ -84,6 +84,9 @@
     if( [[self text] length] == 0 && [[self placeholder] length] > 0 ){
         [[self viewWithTag:999] setAlpha:1];
     }
+//    self.layer.borderColor = [[UIColor colorWithRed:215.0 / 255.0 green:215.0 / 255.0 blue:215.0 / 255.0 alpha:1] CGColor];
+//    self.layer.borderWidth = 0.6f;
+//    self.layer.cornerRadius = 6.0f;
     [super drawRect:rect];
 }
 

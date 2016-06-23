@@ -12,6 +12,7 @@
 #import "YGRestClient.h"
 #import "LoginUser.h"
 #import "CocoaSecurity.h"
+#import "XLFormValidator+Regex.h"
 
 @implementation ChangePasswordController
 
@@ -37,7 +38,7 @@
     self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectZero];
     self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;
-    [self bindViewModel:self.form];
+    //[self bindViewModel:self.form];
 }
 
 -(void)bindViewModel:(XLFormDescriptor *)form
@@ -51,7 +52,7 @@
         }
     }
     XLFormRowDescriptor *lastRow = [form formRowAtIndex:[NSIndexPath indexPathForRow:0 inSection:1]];
-    RAC(lastRow, hidden) = [RACSignal combineLatest:signals reduce:^id(NSString *password, NSString *newpassword, NSString *confirmpassword){
+    RAC(lastRow, disabled) = [RACSignal combineLatest:signals reduce:^id(NSString *password, NSString *newpassword, NSString *confirmpassword){
         if (password && password.length > 0 && newpassword && newpassword.length > 0 && confirmpassword && confirmpassword.length > 0 && [newpassword isEqualToString:confirmpassword]) {
             return @(NO);
         }
@@ -71,12 +72,17 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"password" rowType:XLFormRowDescriptorTypePassword title:@"当前密码"];
+    row.required = @YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"newpassword" rowType:XLFormRowDescriptorTypePassword title:@"新密码"];
+    row.required = @YES;
+    [row addValidator:[XLFormValidator passswordValidator]];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"confirmpassword" rowType:XLFormRowDescriptorTypePassword title:@"确认新密码"];
+    row.required = @YES;
+    [row addValidator:[XLFormValidator passswordValidator]];
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
@@ -95,6 +101,15 @@
 //修改
 -(void)clickAction:(XLFormRowDescriptor *)sender
 {
+    [self deselectFormRow:sender];
+    
+    NSArray *validationErrors = [self formValidationErrors];
+    if (validationErrors.count > 0){
+        NSError *error = [validationErrors firstObject];
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription maskType:SVProgressHUDMaskTypeBlack];
+        return;
+    }
+    
     WeakSelf
     NSDictionary *forValues = [self.form formValues];
     if (![forValues[@"newpassword"] isEqualToString:forValues[@"confirmpassword"] ]) {

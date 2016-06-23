@@ -12,4 +12,5 @@
 
 +(XLFormValidator *)emailRegexValidator;
 +(XLFormValidator *)phoneNumValidator;
++(XLFormValidator *)passswordValidator;
 @end

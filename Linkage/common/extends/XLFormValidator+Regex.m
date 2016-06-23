@@ -20,4 +20,9 @@
     return [XLFormRegexValidator formRegexValidatorWithMsg:@"手机格式不正确" regex:PhoneNumRegex];
 }
 
++(XLFormValidator *)passswordValidator
+{
+    return [XLFormRegexValidator formRegexValidatorWithMsg:@"密码格式不正确" regex:UserNameRegex];
+}
+
 @end

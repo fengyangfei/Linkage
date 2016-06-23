@@ -22,7 +22,7 @@
 {
     NSError *error;
     Address *model = [MTLJSONAdapter modelOfClass:[self modelClass] fromJSONDictionary:formValues error:&error];
-    model.title = [formValues[@"title"] valueData];
+    model.title = [formValues[@"addOption"] valueData];
     if (error) {
         NSLog(@"Form转对象失败 - %@",error);
     }
@@ -33,6 +33,7 @@
 {
     NSDictionary *paramter = [self jsonFromModel:model];
     paramter = [paramter mtl_dictionaryByAddingEntriesFromDictionary:[LoginUser shareInstance].baseHttpParameter];
+    //paramter = [paramter mtl_dictionaryByAddingEntriesFromDictionary:@{@"title": ((Address *)model).title}];
     if (paramter) {
         [[YGRestClient sharedInstance] postForObjectWithUrl:AddAddressUrl form:paramter success:success failure:failure];
     }

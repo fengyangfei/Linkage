@@ -12,6 +12,10 @@
 #import "UMSocial.h"
 #import "LoginUser.h"
 #import "YGRestClient.h"
+#import "LoginBaseViewController.h"
+#import "LoginViewController.h"
+#import "AppDelegate.h"
+#import "TutorialController.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <PgyUpdate/PgyUpdateManager.h>
 
@@ -91,6 +95,15 @@
     };
     [section addFormRow:row];
     
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"退出"];
+    row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        [weakSelf logoutAction];
+    };
+    [section addFormRow:row];
+    
     self.form = form;
 }
 
@@ -101,9 +114,22 @@
     self.tableView.sectionFooterHeight = 0;
 }
 
+//退出
+-(void)logoutAction
+{
+    [LoginUser clearUserInfo];
+    UIViewController *rootViewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
+    if ([rootViewController isKindOfClass:[TutorialController class]] || [rootViewController isKindOfClass:[LoginBaseViewController class]]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        LoginViewController *loginVC = [[LoginViewController alloc]init];
+        [self presentViewController:loginVC animated:YES completion:nil];
+    }
+}
+
 -(void)presentSns
 {
-    NSArray *shareArray = [NSArray arrayWithObjects:UMShareToWechatTimeline,UMShareToWechatFavorite,UMShareToSina,UMShareToWechatSession,UMShareToQQ,UMShareToQzone,UMShareToYXSession,UMShareToYXTimeline,nil];
+    NSArray *shareArray = [NSArray arrayWithObjects:UMShareToWechatTimeline,UMShareToWechatFavorite,UMShareToSina,UMShareToWechatSession,nil];
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:@"56f67ddce0f55a76730018f5"
                                       shareText:kAppInfomation

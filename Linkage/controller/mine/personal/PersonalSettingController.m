@@ -138,12 +138,6 @@ row.cellStyle = UITableViewCellStyleValue1;
     };
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"退出"];
-    row.action.formBlock = ^(XLFormRowDescriptor *sender){
-        [weakSelf logoutAction];
-    };
-    [section addFormRow:row];
-    
     return form;
 }
 
@@ -182,19 +176,5 @@ row.cellStyle = UITableViewCellStyleValue1;
         [SVProgressHUD showSuccessWithStatus:@"保存成功"];
     }
 }
-
-//退出
--(void)logoutAction
-{
-    [LoginUser clearUserInfo];
-    UIViewController *rootViewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
-    if ([rootViewController isKindOfClass:[TutorialController class]] || [rootViewController isKindOfClass:[LoginBaseViewController class]]) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }else{
-        LoginViewController *loginVC = [[LoginViewController alloc]init];
-        [self presentViewController:loginVC animated:YES completion:nil];
-    }
-}
-
 
 @end
