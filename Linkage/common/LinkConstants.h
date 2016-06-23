@@ -10,10 +10,14 @@
 #define LinkConstants_h
 
 #define PhoneNumRegex @"^((13[0-9])|(147)|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"
+#define EmailRegex @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+#define CarRegex @"^[\u4e00-\u9fa5]{1}[a-zA-Z]{1}[a-zA-Z_0-9]{4}[a-zA-Z_0-9_\u4e00-\u9fa5]$"
+#define UserNameRegex @"^[A-Za-z0-9]{6,20}+$"
+#define IdentityCardRegex @"^(\\d{14}|\\d{17})(\\d|[xX])$"
 
 //UI
-#define HeaderColor [TRThemeManager shareInstance].theme.headerBackgroundColor
-#define ButtonColor [TRThemeManager shareInstance].theme.buttonBackgroundColor
+#define HeaderColor HEXCOLOR(0x10bce6)
+#define ButtonColor HEXCOLOR(0x10bce6)
 #define TableBackgroundColor [TRThemeManager shareInstance].theme.tableViewBackgroundColor
 #define BackgroundColor HEXCOLOR(0xeeefef)
 #define TitleFontColor HEXCOLOR(0x676767)

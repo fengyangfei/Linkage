@@ -215,6 +215,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"提货时间"];
+    row.value= [NSDate date];
     row.required = YES;
     [section addFormRow:row];
     
@@ -258,7 +259,6 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"memo" rowType:XLFormRowDescriptorTypeTextView title:@"备注"];
-    row.required = YES;
     [row.cellConfigAtConfigure setObject:@"请填写备注" forKey:@"textView.placeholder"];
     [section addFormRow:row];
 }
@@ -343,7 +343,6 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"memo" rowType:XLFormRowDescriptorTypeTextView title:@"备注"];
-    row.required = YES;
     [row.cellConfigAtConfigure setObject:@"请填写备注" forKey:@"textView.placeholder"];
     [section addFormRow:row];
 }
@@ -390,6 +389,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"装货时间"];
+    row.value= [NSDate date];
     row.required = YES;
     [section addFormRow:row];
     
@@ -398,6 +398,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDate title:@"送货时间"];
+    row.value= [NSDate date];
     row.required = YES;
     [section addFormRow:row];
     
@@ -406,10 +407,12 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_in" rowType:XLFormRowDescriptorTypeDate title:@"报关时间"];
+    row.value= [NSDate date];
     row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"cargo_take_time" rowType:XLFormRowDescriptorTypeDate title:@"提货时间"];
+    row.value= [NSDate date];
     row.required = YES;
     [section addFormRow:row];
     

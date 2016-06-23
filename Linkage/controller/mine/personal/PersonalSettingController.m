@@ -13,6 +13,7 @@
 #import "AvatarFormCell.h"
 #import "LoginUser.h"
 #import "ChangePasswordController.h"
+#import "XLFormValidator+Regex.h"
 #import <SVProgressHUD.h>
 #import <Mantle/Mantle.h>
 
@@ -99,12 +100,14 @@ row.cellStyle = UITableViewCellStyleValue1;
     if (user) {
         row.value = user.mobile;
     }
+    [row addValidator:[XLFormValidator phoneNumValidator]];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"email" rowType:XLFormRowDescriptorTypeEmail title:@"邮箱"];
     if (user) {
         row.value = user.email;
     }
+    [row addValidator:[XLFormValidator emailRegexValidator]];
     [section addFormRow:row];
     
     Company *company = [Company shareInstance];
@@ -148,6 +151,14 @@ row.cellStyle = UITableViewCellStyleValue1;
 -(void)saveAction:(XLFormRowDescriptor *)sender
 {
     [self deselectFormRow:sender];
+    
+    NSArray *validationErrors = [self formValidationErrors];
+    if (validationErrors.count > 0){
+        NSError *error = [validationErrors firstObject];
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription maskType:SVProgressHUDMaskTypeBlack];
+        return;
+    }
+    
     NSMutableDictionary *dic = [[self formValues] mutableCopy];
     dic[@"gender"] = [dic[@"gender"] valueData];
     LoginUser *modifyUser = [MTLJSONAdapter modelOfClass:[LoginUser class] fromJSONDictionary:dic error:nil];

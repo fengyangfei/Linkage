@@ -238,6 +238,7 @@
 		9AEF89CB1CA4CD5400C5EB90 /* ImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89CA1CA4CD5400C5EB90 /* ImageToDataTransformer.m */; };
 		9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89D31CA518BA00C5EB90 /* ImageCacheManager.m */; };
 		9AEF89D71CA8B02900C5EB90 /* XLFormDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89D61CA8B02900C5EB90 /* XLFormDataSource.m */; };
+		9AF476D11D1B75E300A905A0 /* XLFormValidator+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF476D01D1B75E300A905A0 /* XLFormValidator+Regex.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -692,6 +693,8 @@
 		9AEF89D51CA8B02900C5EB90 /* XLFormDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLFormDataSource.h; sourceTree = "<group>"; };
 		9AEF89D61CA8B02900C5EB90 /* XLFormDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLFormDataSource.m; sourceTree = "<group>"; };
 		9AEF89D81CA8B2D700C5EB90 /* FormDescriptorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormDescriptorCell.h; sourceTree = "<group>"; };
+		9AF476CF1D1B75E300A905A0 /* XLFormValidator+Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XLFormValidator+Regex.h"; sourceTree = "<group>"; };
+		9AF476D01D1B75E300A905A0 /* XLFormValidator+Regex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XLFormValidator+Regex.m"; sourceTree = "<group>"; };
 		B30457667634636F561BC865 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1344,6 +1347,8 @@
 				9A2F5C291CE01E5B00E7E2DD /* NSString+Hint.m */,
 				9A49E6B61D07ACA600F51C2F /* HJFormCell.h */,
 				9A49E6B71D07ACA600F51C2F /* HJFormCell.m */,
+				9AF476CF1D1B75E300A905A0 /* XLFormValidator+Regex.h */,
+				9AF476D01D1B75E300A905A0 /* XLFormValidator+Regex.m */,
 			);
 			path = extends;
 			sourceTree = "<group>";
@@ -2242,6 +2247,7 @@
 				9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */,
 				8B5DC6281C79B8A700D29292 /* IFTTTLayerStrokeEndAnimation.m in Sources */,
 				8B5DC6371C79B8A700D29292 /* TRThemeBaseViewController.m in Sources */,
+				9AF476D11D1B75E300A905A0 /* XLFormValidator+Regex.m in Sources */,
 				8BA3E3DD1CD487490047AC6B /* Favorite.m in Sources */,
 				9A2F5C4A1CE18DE300E7E2DD /* OrderUtil.m in Sources */,
 				8B4445091C7C9EFE00160DC2 /* TAAbstractDotView.m in Sources */,
