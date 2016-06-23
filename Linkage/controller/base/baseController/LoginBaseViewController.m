@@ -182,21 +182,23 @@
             make.height.equalTo(50);
         }];
     }
-    [self.view addSubview:self.registerButton];
-    [self.registerButton makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.left);
-        make.right.equalTo(self.view.centerX);
-        make.bottom.equalTo(self.view.bottom).offset(-20);
-        make.height.equalTo(@44);
-    }];
-    
-    [self.view addSubview:self.forgotPasswordButton];
-    [self.forgotPasswordButton makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.centerX);
-        make.right.equalTo(self.view.right);
-        make.bottom.equalTo(self.view.bottom).offset(-20);
-        make.height.equalTo(@44);
-    }];
+    {
+        [self.view addSubview:self.registerButton];
+        [self.registerButton makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.view.left);
+            make.right.equalTo(self.view.centerX);
+            make.top.equalTo(self.loginButton.bottom).offset(20);
+            make.height.equalTo(@44);
+        }];
+        
+        [self.view addSubview:self.forgotPasswordButton];
+        [self.forgotPasswordButton makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.view.centerX);
+            make.right.equalTo(self.view.right);
+            make.top.equalTo(self.loginButton.bottom).offset(20);
+            make.height.equalTo(@44);
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -208,7 +210,7 @@
 {
     if (!_nameTextField) {
         _nameTextField = [UITextField new];
-        _nameTextField.placeholder = @"请输入用户名";
+        _nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入用户名" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
         _nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _nameTextField.textColor = [UIColor whiteColor];
         _nameTextField.keyboardDistanceFromTextField = 150.0;
@@ -220,13 +222,12 @@
 {
     if(!_passwordTextField){
         _passwordTextField = [UITextField new];
-        _passwordTextField.placeholder = @"请输入密码";
+        _passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入密码" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
         _passwordTextField.secureTextEntry = YES;
         _passwordTextField.keyboardType = UIKeyboardTypeASCIICapable;
         _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _passwordTextField.textColor = [UIColor whiteColor];
         _passwordTextField.keyboardDistanceFromTextField = 150.0 - 44.0;
-
     }
     return _passwordTextField;
 }
@@ -237,10 +238,11 @@
         _loginButton = ({
             BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
             button.cornerRadius = 10;
-            [button setTitle:@"登录" forState:UIControlStateNormal];
-            UIImage *image =[[UIImage imageNamed:@"btn_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(25, 11, 25, 11) resizingMode:UIImageResizingModeStretch];
-            [button setBackgroundImage:image forState:UIControlStateNormal];
-            [button setBackgroundImage:image forState:UIControlStateHighlighted];
+            NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"登 录" attributes:@{NSForegroundColorAttributeName:HeaderColor,NSFontAttributeName:[UIFont systemFontOfSize:20]}];
+            [button setAttributedTitle:title forState:UIControlStateNormal];
+            //[button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
+            //[button setBackgroundImage:ButtonBgImage forState:UIControlStateHighlighted];
+            [button setBackgroundColor:[UIColor whiteColor]];
             button;
         });
         [_loginButton addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -251,8 +253,9 @@
 -(UIImageView *)logoImageView
 {
     if (!_logoImageView) {
-        UIImage *logoImage = [UIImage imageNamed:@"logo"];
-        _logoImageView = [[UIImageView alloc]initWithImage:logoImage];
+        //UIImage *logoImage = [UIImage imageNamed:@"logo"];
+        //_logoImageView = [[UIImageView alloc]initWithImage:logoImage];
+        _logoImageView = [[UIImageView alloc]init];
     }
     return _logoImageView;
 }
