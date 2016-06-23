@@ -96,8 +96,8 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
     [self.iconView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.left).offset(12);
         make.centerY.equalTo(self.contentView.centerY);
-        make.width.equalTo(@(16));
-        make.height.equalTo(@(16));
+        make.width.equalTo(@(22));
+        make.height.equalTo(@(22));
     }];
     
     [self.contentView addSubview:self.titleLabel];

@@ -10,6 +10,7 @@
 #import "Address.h"
 #import "AddressModel.h"
 #import "AddressUtil.h"
+#import "LinkUtil.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @implementation AddAddressViewController
@@ -47,8 +48,8 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"title" rowType:XLFormRowDescriptorTypeText title:@"标题"];
-    row.value = address?address.title:@"";
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"title" rowType:XLFormRowDescriptorTypeSelectorPush title:@"地址类型"];
+    row.selectorOptions = [LinkUtil addressTypeOptions];
     row.required = YES;
     [section addFormRow:row];
     

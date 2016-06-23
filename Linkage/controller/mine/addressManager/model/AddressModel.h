@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AddressModel : NSManagedObject
 @property (nullable, nonatomic, retain) NSString *addressId;
 @property (nullable, nonatomic, retain) NSString *address;
-@property (nullable, nonatomic, retain) NSString *title;
+@property (nullable, nonatomic, retain) NSNumber *title;
 @property (nullable, nonatomic, retain) NSString *userId;
 @end
 

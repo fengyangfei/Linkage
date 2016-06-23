@@ -58,6 +58,16 @@
 			<string>StaffViewController</string>
 		</dict>
 	</array>
+    <array>
+        <dict>
+            <key>title</key>
+            <string>地址管理</string>
+            <key>iconName</key>
+            <string>setting_address</string>
+            <key>className</key>
+            <string>AddressViewController</string>
+        </dict>
+    </array>
 	<array>
 		<dict>
 			<key>title</key>

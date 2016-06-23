@@ -18,6 +18,7 @@
 #import "OrderUtil.h"
 #import "XLFormDataSource.h"
 #import "BillDataSource.h"
+#import "SearchViewController.h"
 
 @interface BillViewController ()
 @property (nonatomic, strong) XLFormDataSource *todoDS;
@@ -38,7 +39,9 @@
 {
     WeakSelf
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction:)];
+    self.navigationItem.rightBarButtonItems = @[addItem, searchItem];
     self.leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         NSDictionary *parameter = @{
                                     @"type":@(-1),
@@ -116,6 +119,13 @@
     BillTypeViewController *controller = [[BillTypeViewController alloc]init];
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)searchAction:(id)sender
+{
+    SearchViewController *searchViewController = [[SearchViewController alloc]init];
+    searchViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:searchViewController animated:YES];
 }
 
 -(XLFormDescriptor *)createForm:(NSArray *)orders

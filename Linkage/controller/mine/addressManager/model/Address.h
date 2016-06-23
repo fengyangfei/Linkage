@@ -13,7 +13,7 @@
 
 @interface Address : MTLModel<MTLJSONSerializing,MTLManagedObjectSerializing,ModelHttpParameter,XLFormTitleOptionObject>
 @property (nonatomic, copy) NSString *addressId;
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSNumber *title;
 @property (nonatomic, copy) NSString *address;
 @property (nonatomic, copy) NSString *userId;
 @end

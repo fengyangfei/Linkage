@@ -20,7 +20,11 @@
 
 + (NSDictionary *)orderStatus;
 
++ (NSDictionary *)addressTypes;
+
 + (NSArray *)userTypeOptions;
+
++ (NSArray *)addressTypeOptions;
 
 //上传到服务器
 + (void)uploadWithUrl:(NSString *)url image:(NSData *)image name:(NSString *)fileName success:(void(^)(id responseObject))success;

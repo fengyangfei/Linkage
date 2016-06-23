@@ -10,11 +10,23 @@
 #import "Address.h"
 #import "AddressModel.h"
 #import "LoginUser.h"
+#import <XLForm/XLForm.h>
 
 @implementation AddressUtil
 +(Class)modelClass
 {
     return [Address class];
+}
+
++(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues
+{
+    NSError *error;
+    Address *model = [MTLJSONAdapter modelOfClass:[self modelClass] fromJSONDictionary:formValues error:&error];
+    model.title = [formValues[@"title"] valueData];
+    if (error) {
+        NSLog(@"Form转对象失败 - %@",error);
+    }
+    return model;
 }
 
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure

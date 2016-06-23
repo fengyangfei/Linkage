@@ -9,6 +9,7 @@
 #import "Address.h"
 #import "AddressModel.h"
 #import "LoginUser.h"
+#import "LinkUtil.h"
 
 @implementation Address
 
@@ -19,6 +20,7 @@
                              };
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     keyDic = [keyDic mtl_dictionaryByAddingEntriesFromDictionary:keyMap];
+    keyDic = [keyDic mtl_dictionaryByRemovingValuesForKeys:@[@"title"]];
     return keyDic;
 }
 
@@ -49,7 +51,7 @@
 #pragma mark - XLFormTitleOptionObject
 -(NSString *)formTitleText
 {
-    return self.title;
+    return [[LinkUtil addressTypes] objectForKey:self.title];
 }
 
 -(NSString *)formDisplayText

@@ -17,7 +17,7 @@
 
 +(XLFormValidator *)phoneNumValidator
 {
-    return [XLFormRegexValidator formRegexValidatorWithMsg:@"电话格式不正确" regex:PhoneNumRegex];
+    return [XLFormRegexValidator formRegexValidatorWithMsg:@"手机格式不正确" regex:PhoneNumRegex];
 }
 
 @end

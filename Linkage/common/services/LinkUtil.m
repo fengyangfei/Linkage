@@ -95,6 +95,20 @@
     return _orderStatus;
 }
 
++ (NSDictionary *)addressTypes
+{
+    static NSDictionary * _addressTypes;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _addressTypes = @{
+                         @0:@"送货地址",
+                         @1:@"装货地址",
+                         @2:@"提货港口"
+                         };
+    });
+    return _addressTypes;
+}
+
 + (NSArray *)userTypeOptions
 {
     static NSArray * _options;
@@ -105,6 +119,20 @@
         _options = @[op1, op2];
     });
     return _options;
+}
+
++ (NSArray *)addressTypeOptions
+{
+    static NSArray * _addressTypeOptions;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSMutableArray *array = [NSMutableArray array];
+        for (NSNumber *key in [self.addressTypes allKeys]) {
+            [array addObject:[XLFormOptionsObject formOptionsObjectWithValue:key displayText:[self.addressTypes objectForKey:key]]];
+        }
+        _addressTypeOptions = [array copy];
+    });
+    return _addressTypeOptions;
 }
 
 //上传到服务器
