@@ -21,5 +21,6 @@ typedef NS_ENUM(NSUInteger, ControllerType) {
 @interface ModelBaseViewController : XLFormViewController<ModelBaseControllerConfigure, XLFormRowDescriptorViewController>
 
 - (instancetype)initWithControllerType:(ControllerType)controllerType;
+- (void)initializeForm:(NSArray *)models;
 
 @end

@@ -84,7 +84,13 @@
 //数据库查询
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
 {
-    NSArray *managerObjects = [AddressModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].cid inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"userId", [LoginUser shareInstance].cid];
+    [self queryModelsFromDataBase:predicate completion:completion];
+}
+
++(void)queryModelsFromDataBase:(NSPredicate *)predicate completion:(void(^)(NSArray *models))completion
+{
+    NSArray *managerObjects = [AddressModel MR_findAllSortedBy:@"address" ascending:NO withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
     NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:managerObjects.count];
     for (NSManagedObject *manageObj in managerObjects) {
         id<MTLJSONSerializing> model = [self modelFromManagedObject:manageObj];

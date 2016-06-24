@@ -184,7 +184,15 @@ row.cellStyle = UITableViewCellStyleValue1;
 #pragma mark - 方法(添加地址)
 -(void)addAddressRow:(XLFormRowDescriptor *)row
 {
-    UIViewController<XLFormRowDescriptorViewController> *controller = [[AddressViewController alloc]initWithControllerType:ControllerTypeQuery];
+    AddressType type = AddressTypeTake;
+    if ([row.tag isEqualToString:@"take_address"]) {
+        type = AddressTypeTake;
+    }else if ([row.tag isEqualToString:@"delivery_address"]){
+        type = AddressTypeDelivery;
+    }else if ([row.tag isEqualToString:@"port"]){
+        type = AddressTypePort;
+    }
+    AddressViewController *controller = [[AddressViewController alloc]initWithControllerType:ControllerTypeQuery addressType:type];
     controller.rowDescriptor = row;
     [self.navigationController pushViewController:controller animated:YES];
 }

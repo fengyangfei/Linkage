@@ -8,12 +8,27 @@
 
 #import "AddressViewController.h"
 #import "AddressUtil.h"
+#import "LoginUser.h"
 #import "AddAddressViewController.h"
 #import "ModelOperation.h"
 #import "FormDescriptorCell.h"
+#import <MJRefresh/MJRefresh.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
+@interface AddressViewController()
+@property (nonatomic, assign) AddressType addressType;
+@end
+
 @implementation AddressViewController
+
+-(instancetype)initWithControllerType:(ControllerType)controllerType addressType:(AddressType)addType
+{
+    self = [super initWithControllerType:controllerType];
+    if (self) {
+        self.addressType = addType;
+    }
+    return self;
+}
 
 -(Class)modelUtilClass
 {
@@ -29,6 +44,17 @@
 {
     UIBarButtonItem *addBtn = self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
     self.navigationItem.rightBarButtonItem = addBtn;
+}
+
+- (void)setupData
+{
+    WeakSelf
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId = %@ AND title = %@", [LoginUser shareInstance].cid, @(self.addressType)];
+    [self.modelUtilClass queryModelsFromDataBase:predicate completion:^(NSArray *models) {
+        if (models.count > 0) {
+            [weakSelf initializeForm:models];
+        }
+    }];
 }
 
 -(void)didSelectModel:(XLFormRowDescriptor *)chosenRow

@@ -33,6 +33,11 @@ row.cellStyle = UITableViewCellStyleValue1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupUI];
+}
+
+-(void)setupUI
+{
     WeakSelf
     self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;

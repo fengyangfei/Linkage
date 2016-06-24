@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
 };
 
 typedef NS_ENUM(NSUInteger, AddressType) {
-    AddressTypeTake,     //装货地址
+    AddressTypeTake = 1, //装货地址
     AddressTypeDelivery, //送货地址
     AddressTypePort      //提货港口
 };
