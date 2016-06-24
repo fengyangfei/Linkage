@@ -18,6 +18,7 @@
 
 @implementation SOImageModel : NSManagedObject
 @dynamic imageName;
+@dynamic imageUrl;
 @dynamic createDate;
 @end
 

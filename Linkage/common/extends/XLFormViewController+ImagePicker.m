@@ -10,18 +10,49 @@
 #import "SOImage.h"
 #import "UIViewController+TRImagePicker.h"
 #import "SOImageFormCell.h"
+#import "LinkUtil.h"
 
 @implementation XLFormViewController (ImagePicker)
 
 -(void)addPhotoButtonTapped:(XLFormRowDescriptor *)formRow
 {
     [self deselectFormRow:formRow];
-    [self addMultiplePhoto:^(UIImage *image, NSString *fileName) {
+    [self addSignalPhoto:^(UIImage *image, NSString *fileName) {
         //添加到当前列的value里面
         SOImage *model = [[SOImage alloc]init];
         model.imageName = fileName;
         model.createDate = [NSDate date];
         model.image = image;
+        
+        //上传到服务端
+        [LinkUtil uploadWithUrl:CompanyLogoUrl image:UIImageJPEGRepresentation(image, 0.75) name:fileName success:^(id responseObject) {
+            NSString *imageUrl = responseObject[@"result"][@"icon"];
+            model.imageUrl = imageUrl;
+        }];
+        
+        //添加新的一列
+        XLFormRowDescriptor *newRow = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:SOImageRowDescriporType];
+        newRow.value = model;
+        XLFormSectionDescriptor *currentFormSection = formRow.sectionDescriptor;
+        [currentFormSection addFormRow:newRow afterRow:formRow];
+    }];
+}
+
+-(void)addSoImage:(XLFormRowDescriptor *)formRow
+{
+    [self deselectFormRow:formRow];
+    [self addSignalPhoto:^(UIImage *image, NSString *fileName) {
+        //添加到当前列的value里面
+        SOImage *model = [[SOImage alloc]init];
+        model.imageName = fileName;
+        model.createDate = [NSDate date];
+        model.image = image;
+        
+        //上传到服务端
+        [LinkUtil uploadWithUrl:SoUrl image:UIImageJPEGRepresentation(image, 0.75) name:fileName success:^(id responseObject) {
+            NSString *imageUrl = responseObject[@"result"][@"icon"];
+            model.imageUrl = imageUrl;
+        }];
         
         //添加新的一列
         XLFormRowDescriptor *newRow = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:SOImageRowDescriporType];
@@ -42,7 +73,7 @@
         if (rowDescriptor.isDisabled || !rowDescriptor.sectionDescriptor.isMultivaluedSection){
             return NO;
         }
-        XLFormBaseCell * baseCell = [rowDescriptor cellForFormController:self];
+        UITableViewCell<XLFormDescriptorCell> * baseCell = [rowDescriptor cellForFormController:self];
         if ([baseCell conformsToProtocol:@protocol(XLFormInlineRowDescriptorCell)] && ((id<XLFormInlineRowDescriptorCell>)baseCell).inlineRowDescriptor){
             return NO;
         }
@@ -93,7 +124,7 @@
     }
     //原来的处理方式
     if ([row.sectionDescriptor isKindOfClass:[SpecialFormSectionDescriptor class]] && editingStyle == UITableViewCellEditingStyleInsert) {
-            [self addPhotoButtonTapped:row];
+            [self addSoImage:row];
     }else{
         if (editingStyle == UITableViewCellEditingStyleDelete){
             XLFormRowDescriptor * multivaluedFormRow = [self.form formRowAtIndex:indexPath];

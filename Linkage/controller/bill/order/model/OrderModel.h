@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SOImageModel : NSManagedObject
 @property (nullable, nonatomic, retain) NSString *imageName;
-@property (nullable, nonatomic, retain) NSDate *createDate;
+@property (nullable, nonatomic, retain) NSString *imageUrl;
+@property (nullable, nonatomic, retain) NSDate   *createDate;
 @end
 
 @interface OrderModel : NSManagedObject

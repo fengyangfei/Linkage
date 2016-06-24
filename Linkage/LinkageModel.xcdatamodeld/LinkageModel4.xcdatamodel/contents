@@ -103,6 +103,7 @@
     <entity name="SOImageModel" representedClassName="SOImageModel" syncable="YES">
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="StaffModel" representedClassName="StaffModel" syncable="YES">
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
@@ -123,7 +124,7 @@
         <element name="MessageModel" positionX="-45" positionY="153" width="128" height="135"/>
         <element name="OrderModel" positionX="-63" positionY="27" width="128" height="375"/>
         <element name="SelfOrderModel" positionX="-45" positionY="153" width="128" height="90"/>
-        <element name="SOImageModel" positionX="-63" positionY="9" width="128" height="75"/>
+        <element name="SOImageModel" positionX="-63" positionY="9" width="128" height="90"/>
         <element name="StaffModel" positionX="-45" positionY="153" width="128" height="135"/>
     </elements>
 </model>

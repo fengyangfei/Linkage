@@ -10,9 +10,10 @@
 #import "MTLManagedObjectAdapter.h"
 
 @interface SOImage : MTLModel<MTLJSONSerializing, MTLManagedObjectSerializing>
-@property (nonatomic,strong) UIImage *image;
-@property (nonatomic,strong) NSDate *createDate;
-@property (nonatomic,copy) NSString *imageName;
+@property (nonatomic,strong) UIImage  *image;
+@property (nonatomic,strong) NSDate   *createDate;
+@property (nonatomic,copy  ) NSString *imageName;
+@property (nonatomic,copy  ) NSString *imageUrl;
 @end
 
 @interface NSArray(SOImageModel)

@@ -352,7 +352,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [form addFormSection:section];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"SO图片"];
     [row.cellConfig setObject:@(NSTextAlignmentNatural) forKey:@"textLabel.textAlignment"];
-    row.action.formSelector = NSSelectorFromString(@"addPhotoButtonTapped:");
+    row.action.formSelector = NSSelectorFromString(@"addSoImage:");
     section.multivaluedTag = @"soImages";
     [section addFormRow:row];
     

@@ -103,6 +103,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"退出"];
+    [row.cellConfig setObject:[UIColor redColor] forKey:@"textLabel.textColor"];
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf logoutAction];
     };
