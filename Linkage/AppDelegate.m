@@ -135,7 +135,8 @@ static NSString *const kStoreName = @"linkage.sqlite";
     UIImage *image = [UIImage imageWithColor:HeaderColor];
     [[UINavigationBar appearance] setBackgroundImage:image forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
-    
+    //设置tabBar属性
+    [[UITabBar appearance] setSelectedImageTintColor:HeaderColor];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

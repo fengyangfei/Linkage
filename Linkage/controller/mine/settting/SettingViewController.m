@@ -16,8 +16,15 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "TutorialController.h"
+#import <SDWebImage/SDImageCache.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <PgyUpdate/PgyUpdateManager.h>
+
+
+#define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
+row.cellStyle = UITableViewCellStyleValue1;
+#define RowPlaceHolderUI(str) [row.cellConfigAtConfigure setObject:str forKey:@"detailTextLabel.text"];
+#define RowAccessoryUI [row.cellConfig setObject:@(UITableViewCellAccessoryDisclosureIndicator) forKey:@"accessoryType"];
 
 @interface SettingViewController ()<UMSocialUIDelegate>
 
@@ -58,7 +65,9 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"clearCache" rowType:XLFormRowDescriptorTypeButton title:@"清除缓存"];
-    [row.cellConfig setObject:@(NSTextAlignmentNatural) forKey:@"textLabel.textAlignment"];
+    NSUInteger totalSize = [[SDImageCache sharedImageCache] getSize];
+    row.value = [NSString stringWithFormat:@"%.2fM",(unsigned long)totalSize/(1024.0*1024.0)];
+    RowUI
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf clearCacheAction:sender];
     };
@@ -69,7 +78,7 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"share" rowType:XLFormRowDescriptorTypeButton title:@"分享好友"];
-    [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
+    RowUI
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf shareAction:sender];
     };
@@ -77,19 +86,17 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"update" rowType:XLFormRowDescriptorTypeButton title:@"版本更新"];
     row.value = [NSString stringWithFormat:@"当前版本 V%@", MAIN_VERSION];
-    [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
-    row.cellStyle = UITableViewCellStyleValue1;
+    RowUI
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf updateAction:sender];
     };
     [section addFormRow:row];
-
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"about" rowType:XLFormRowDescriptorTypeButton title:@"关于我们"];
-    [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
+    RowUI
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf aboutUSAction:sender];
     };
@@ -131,7 +138,7 @@
 {
     NSArray *shareArray = [NSArray arrayWithObjects:UMShareToWechatTimeline,UMShareToWechatFavorite,UMShareToSina,UMShareToWechatSession,nil];
     [UMSocialSnsService presentSnsIconSheetView:self
-                                         appKey:@"56f67ddce0f55a76730018f5"
+                                         appKey:kUmengSocialAppKey
                                       shareText:kAppInfomation
                                      shareImage:[UIImage imageNamed:@"logo"]
                                 shareToSnsNames:shareArray
@@ -163,8 +170,11 @@
 -(void)clearCacheAction:(XLFormRowDescriptor *)row
 {
     [self deselectFormRow:row];
-    [[ImageCacheManager sharedManger] clearDiskOnCompletion:^{
-        
+    [SVProgressHUD show];
+    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+        [SVProgressHUD dismiss];
+        NSUInteger totalSize = [[SDImageCache sharedImageCache] getSize];
+        row.value = [NSString stringWithFormat:@"%.2fM",(unsigned long)totalSize/(1024.0*1024.0)];
     }];
 }
 

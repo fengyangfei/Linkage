@@ -165,29 +165,17 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
     if ([item.entityName isEqualToString:@"LoginUser"]) {
         LoginUser *user = [LoginUser shareInstance];
         if (user) {
-            if (user.icon) {
-                [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.icon]];
-            }
+            [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.icon] placeholderImage:[UIImage imageNamed:@"person_pic"]];
             self.titleLabel.text = NilStringWrapper(user.userName);
             self.subTitleLabel.text = NilStringWrapper(user.mobile);
-        }else{
-            self.iconView.image = [UIImage imageNamed:@"user_header"];
-            self.titleLabel.text = @"登录名";
-            self.subTitleLabel.text = @"电话信息";
         }
     }
     else if ([item.entityName isEqualToString:@"Company"]) {
         Company *company = [Company shareInstance];
         if (company) {
-            if (company.logo) {
-                [self.iconView sd_setImageWithURL:[NSURL URLWithString:company.logo]];
-            }
+            [self.iconView sd_setImageWithURL:[NSURL URLWithString:company.logo] placeholderImage:[UIImage imageNamed:@"building_pic"]];
             self.titleLabel.text = company.companyName;
             self.subTitleLabel.text = company.address;
-        }else{
-            self.iconView.image = [UIImage imageNamed:@"user_header"];
-            self.titleLabel.text = @"公司名称";
-            self.subTitleLabel.text = @"详细信息";
         }
     }
 }
