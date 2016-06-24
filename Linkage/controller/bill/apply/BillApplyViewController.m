@@ -19,11 +19,13 @@
 #import "OrderModel.h"
 #import "OrderUtil.h"
 #import "LinkUtil.h"
+#import "AddressViewController.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
 row.cellStyle = UITableViewCellStyleValue1;
 #define RowPlaceHolderUI(str) [row.cellConfigAtConfigure setObject:str forKey:@"detailTextLabel.text"];
+#define RowAccessoryUI [row.cellConfig setObject:@(UITableViewCellAccessoryDisclosureIndicator) forKey:@"accessoryType"];
 
 @interface BillApplyViewController ()
 
@@ -179,6 +181,14 @@ row.cellStyle = UITableViewCellStyleValue1;
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - 方法(添加地址)
+-(void)addAddressRow:(XLFormRowDescriptor *)row
+{
+    UIViewController<XLFormRowDescriptorViewController> *controller = [[AddressViewController alloc]initWithControllerType:ControllerTypeQuery];
+    controller.rowDescriptor = row;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 @end
 
 #pragma mark - 进口订单
@@ -210,8 +220,12 @@ row.cellStyle = UITableViewCellStyleValue1;
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address" rowType:XLFormRowDescriptorTypeText title:@"提货港口"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address" rowType:XLFormRowDescriptorTypeButton title:@"提货港口"];
+    RowUI
+    RowAccessoryUI
+    RowPlaceHolderUI(@"请选择提货港口")
     row.required = YES;
+    row.action.formSelector = @selector(addAddressRow:);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"提货时间"];
@@ -219,8 +233,12 @@ row.cellStyle = UITableViewCellStyleValue1;
     row.required = YES;
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_address" rowType:XLFormRowDescriptorTypeText title:@"送货地址"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_address" rowType:XLFormRowDescriptorTypeButton title:@"送货地址"];
+    RowUI
+    RowAccessoryUI
+    RowPlaceHolderUI(@"请选择送货地址")
     row.required = YES;
+    row.action.formSelector = @selector(addAddressRow:);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDate title:@"送货时间"];
@@ -285,24 +303,36 @@ row.cellStyle = UITableViewCellStyleValue1;
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address" rowType:XLFormRowDescriptorTypeText title:@"装货地址"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address" rowType:XLFormRowDescriptorTypeButton title:@"装货地址"];
+    RowUI
+    RowAccessoryUI
+    RowPlaceHolderUI(@"请选择装货地址")
     row.required = YES;
+    row.action.formSelector = @selector(addAddressRow:);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"到厂时间"];
     row.value = [NSDate date];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_address" rowType:XLFormRowDescriptorTypeText title:@"送货地址"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_address" rowType:XLFormRowDescriptorTypeButton title:@"送货地址"];
+    RowUI
+    RowAccessoryUI
+    RowPlaceHolderUI(@"请选择送货地址")
     row.required = YES;
+    row.action.formSelector = @selector(addAddressRow:);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDate title:@"送货时间"];
     row.value = [NSDate date];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"port" rowType:XLFormRowDescriptorTypeText title:@"提货港口"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"port" rowType:XLFormRowDescriptorTypeButton title:@"提货港口"];
+    RowUI
+    RowAccessoryUI
+    RowPlaceHolderUI(@"请选择提货港口")
     row.required = YES;
+    row.action.formSelector = @selector(addAddressRow:);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_in" rowType:XLFormRowDescriptorTypeDate title:@"截关日期"];
@@ -424,5 +454,4 @@ row.cellStyle = UITableViewCellStyleValue1;
     [row.cellConfigAtConfigure setObject:@"请填写备注" forKey:@"textView.placeholder"];
     [section addFormRow:row];
 }
-
 @end

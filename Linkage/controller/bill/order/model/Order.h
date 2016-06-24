@@ -25,6 +25,12 @@ typedef NS_ENUM(NSUInteger, OrderStatus) {
     OrderStatusCancelled    //取消
 };
 
+typedef NS_ENUM(NSUInteger, AddressType) {
+    AddressTypeTake,     //装货地址
+    AddressTypeDelivery, //送货地址
+    AddressTypePort      //提货港口
+};
+
 typedef NS_ENUM(NSUInteger, ObjectStatus) {
     Transient,//引用状态
     Persistent//持久状态

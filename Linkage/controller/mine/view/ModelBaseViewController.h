@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, ControllerType) {
 @optional
 -(Class)modelUtilClass;
 -(Class)viewControllerClass;
+-(void)didSelectModel:(XLFormRowDescriptor *)chosenRow;
 @end
 
 @interface ModelBaseViewController : XLFormViewController<ModelBaseControllerConfigure, XLFormRowDescriptorViewController>

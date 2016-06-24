@@ -101,9 +101,9 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _addressTypes = @{
-                         @0:@"送货地址",
-                         @1:@"装货地址",
-                         @2:@"提货港口"
+                         @(AddressTypeTake):@"装货地址",
+                         @(AddressTypeDelivery):@"送货地址",
+                         @(AddressTypePort):@"提货港口"
                          };
     });
     return _addressTypes;

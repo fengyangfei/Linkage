@@ -28,7 +28,6 @@
     return [AddDriverViewController class];
 }
 
-//选择行
 -(void)didSelectModel:(XLFormRowDescriptor *)chosenRow
 {
     XLFormSectionDescriptor *currentSection = self.rowDescriptor.sectionDescriptor;
