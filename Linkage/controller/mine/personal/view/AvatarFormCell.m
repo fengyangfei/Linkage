@@ -69,8 +69,7 @@ NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
     }];
 }
 
-#pragma mark - Properties
-
+// 属性
 -(UIImageView *)imageView
 {
     if (!_imageView) {
@@ -110,6 +109,7 @@ NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
 
 @end
 
+#pragma mark - 企业头像设置Cell
 @implementation CompanyLogoFormCell
 
 +(void)load

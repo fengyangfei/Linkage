@@ -42,7 +42,9 @@
     NSString *fileName = [NSString stringWithFormat:@"%@.JPG", [[[NSUUID UUID] UUIDString] stringByReplacingOccurrencesOfString:@"-" withString:@""]];
     [picker dismissViewControllerAnimated:YES completion:^{
         if (self.selectBlock) {
-            self.selectBlock(info[UIImagePickerControllerOriginalImage], fileName);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.selectBlock(info[UIImagePickerControllerOriginalImage], fileName);
+            });
         }
     }];
 }
@@ -57,7 +59,9 @@
 
     [imagePickerController dismissViewControllerAnimated:YES completion:^{
         if (self.selectBlock) {
-            self.selectBlock(image, fileName);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.selectBlock(image, fileName);
+            });
         }
     }];
 }
@@ -75,7 +79,9 @@ static NSMutableArray *imageIndentifies;
             CGImageRef ref = [representation fullScreenImage];
             UIImage *image = [[UIImage alloc]initWithCGImage:ref];
             if (self.selectBlock) {
-                self.selectBlock(image, fileName);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.selectBlock(image, fileName);
+                });
             }
             [imageIndentifies addObject:fileName];
         }

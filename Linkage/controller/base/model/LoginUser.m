@@ -49,6 +49,10 @@ static LoginUser *user;
     return [MTLJSONAdapter arrayTransformerWithModelClass:[Company class]];
 }
 
++ (NSValueTransformer *)advertesJSONTransformer {
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[Advert class]];
+}
+
 - (NSSet *)propertyMergeKeys
 {
     return [NSSet setWithArray:@[@"userName",@"gender",@"email",@"avatar"]];
@@ -127,6 +131,15 @@ UserDefault_AttrImpl(searchKeys, NSArray *)//搜索历史
         }
     }];
     return company;
+}
+@end
+
+@implementation Advert
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    return keyDic;
 }
 @end
 

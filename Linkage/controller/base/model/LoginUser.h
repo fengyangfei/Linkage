@@ -56,6 +56,7 @@ typedef NS_ENUM(NSUInteger,UserType) {
 @property (nonatomic, strong) NSDate     *updateTime;
 @property (nonatomic, assign) UserType   ctype;
 @property (nonatomic, strong) NSArray    *companies;
+@property (nonatomic, strong) NSArray    *advertes;//广告
 @end
 
 @interface LoginUser (Extensions)
@@ -64,4 +65,10 @@ UserDefault_Attr(receiveEmail, BOOL)//接收平台邮件
 UserDefault_Attr(searchKeys, NSArray *)//搜索历史
 
 +(Company *)findCompanyById:(NSString *)companyId;
+@end
+
+@interface Advert : MTLModel<MTLJSONSerializing>
+@property (nonatomic,copy) NSString *icon;
+@property (nonatomic,copy) NSString *link;
+@property (nonatomic,copy) NSString *title;
 @end

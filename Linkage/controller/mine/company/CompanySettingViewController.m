@@ -14,6 +14,7 @@
 #import "SOImageFormCell.h"
 #import "AvatarFormCell.h"
 #import "CompanyUtil.h"
+#import "XLFormValidator+Regex.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <Mantle/Mantle.h>
 
@@ -103,6 +104,7 @@
     if (company) {
         row.value = company.email;
     }
+    [row addValidator:[XLFormValidator emailRegexValidator]];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"fax" rowType:XLFormRowDescriptorTypeText title:@"传真"];
@@ -182,6 +184,8 @@
     formValues[@"companyImages"] = companyImages;
     //保存到UserDefault
     Company *company = [MTLJSONAdapter modelOfClass:[Company class] fromJSONDictionary:formValues error:nil];
+    //设置企业头像值
+    company.logo = [Company shareInstance].logo;
     [CompanyUtil syncToServer:company success:^(id responseData) {
         BOOL saveSuccess = [company save];
         if (saveSuccess) {

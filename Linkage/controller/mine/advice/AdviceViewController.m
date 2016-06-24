@@ -32,12 +32,13 @@
     
     [self.view addSubview:self.textView];
     [self.textView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.top).offset(12);
-        make.left.equalTo(self.view.left).offset(12);
-        make.right.equalTo(self.view.right).offset(-12);
+        make.top.equalTo(self.view.top).offset(13);
+        make.left.equalTo(self.view.left).offset(18);
+        make.right.equalTo(self.view.right).offset(-18);
         make.height.equalTo(@(200));
     }];
     
+    /*
     UIView *bottomView = [UIView new];
     bottomView.backgroundColor = BackgroundColor;
     [self.view addSubview:bottomView];
@@ -69,6 +70,7 @@
         make.top.equalTo(bottomView.top).offset(5);
         make.height.equalTo(@44);
     }];
+     */
 }
 
 
@@ -92,9 +94,12 @@
 {
     if (!_textView) {
         _textView = [XLFormTextView new];
-        _textView.placeholder = @"请输入您的意见";
+        _textView.placeholder = @"请输入您的建议";
         _textView.font = [UIFont systemFontOfSize:14];
         _textView.textColor = [UIColor blackColor];
+        _textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        _textView.layer.borderWidth = 0.5;
+        _textView.layer.cornerRadius = 5;
     }
     return _textView;
 }
