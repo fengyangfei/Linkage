@@ -49,7 +49,12 @@
 - (void)setupData
 {
     WeakSelf
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId = %@ AND title = %@", [LoginUser shareInstance].cid, @(self.addressType)];
+    NSPredicate *predicate;
+    if (self.addressType != 0) {
+        predicate = [NSPredicate predicateWithFormat:@"userId = %@ AND title = %@", [LoginUser shareInstance].cid, @(self.addressType)];
+    }else{
+        predicate = [NSPredicate predicateWithFormat:@"userId = %@", [LoginUser shareInstance].cid];
+    }
     [self.modelUtilClass queryModelsFromDataBase:predicate completion:^(NSArray *models) {
         if (models.count > 0) {
             [weakSelf initializeForm:models];
