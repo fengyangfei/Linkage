@@ -19,6 +19,7 @@
 NSString *const AvatarDescriporType = @"AvatarRowType";
 NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
 
+#pragma mark - 个人头像
 @implementation AvatarFormCell
 @synthesize imageView = _imageView;
 
@@ -41,7 +42,7 @@ NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
     [super update];
     self.textLabel.text = self.rowDescriptor.title;
     if (self.rowDescriptor.value) {
-        [self.imageView sd_setImageWithURL:self.rowDescriptor.value];
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.rowDescriptor.value] placeholderImage:[UIImage imageNamed:@"person_pic"]];
     }
 }
 
@@ -115,6 +116,14 @@ NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
 +(void)load
 {
     [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:CompanyLogoDescriporType];
+}
+
+-(void)update
+{
+    [super update];
+    if (self.rowDescriptor.value) {
+        [self.imageView sd_setImageWithURL:self.rowDescriptor.value placeholderImage:[UIImage imageNamed:@"building_pic"]];
+    }
 }
 
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller

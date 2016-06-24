@@ -15,7 +15,6 @@
 		8B0254E11CA2C4E4005F5CA7 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0254DF1CA2C4E4005F5CA7 /* AddressModel.m */; };
 		8B10AD2D1C88744E00F5B0D6 /* PersonalSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */; };
 		8B3302911C8BC0D70088DAE2 /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3302901C8BC0D70088DAE2 /* MainTableViewCell.m */; };
-		8B3302941C8BC7510088DAE2 /* MainDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3302931C8BC7510088DAE2 /* MainDataSource.m */; };
 		8B38230C1CDB5CC20046A6F1 /* UINavigationController+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B38230B1CDB5CC20046A6F1 /* UINavigationController+Custom.m */; };
 		8B3C31921C956EEB00FC6323 /* FormTextFieldAndButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C31901C9568B900FC6323 /* FormTextFieldAndButtonCell.m */; };
 		8B4221181CA428BF00F58D77 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B4221171CA428BF00F58D77 /* Localizable.strings */; };
@@ -259,8 +258,6 @@
 		8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalSettingController.m; sourceTree = "<group>"; };
 		8B33028F1C8BC0D70088DAE2 /* MainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewCell.h; sourceTree = "<group>"; };
 		8B3302901C8BC0D70088DAE2 /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
-		8B3302921C8BC7510088DAE2 /* MainDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainDataSource.h; sourceTree = "<group>"; };
-		8B3302931C8BC7510088DAE2 /* MainDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainDataSource.m; sourceTree = "<group>"; };
 		8B38230A1CDB5CC20046A6F1 /* UINavigationController+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Custom.h"; sourceTree = "<group>"; };
 		8B38230B1CDB5CC20046A6F1 /* UINavigationController+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Custom.m"; sourceTree = "<group>"; };
 		8B3C318F1C9568B900FC6323 /* FormTextFieldAndButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormTextFieldAndButtonCell.h; sourceTree = "<group>"; };
@@ -817,15 +814,6 @@
 				9A11F0701CD08894002E8F6F /* Task.m */,
 			);
 			path = model;
-			sourceTree = "<group>";
-		};
-		8B0D50981C8B074200EB6B3A /* dataSource */ = {
-			isa = PBXGroup;
-			children = (
-				8B3302921C8BC7510088DAE2 /* MainDataSource.h */,
-				8B3302931C8BC7510088DAE2 /* MainDataSource.m */,
-			);
-			path = dataSource;
 			sourceTree = "<group>";
 		};
 		8B10AD2A1C8873EC00F5B0D6 /* personal */ = {
@@ -1661,7 +1649,6 @@
 			children = (
 				9A2F5C4F1CE400CE00E7E2DD /* viewmodel */,
 				8B33028E1C8BC0A90088DAE2 /* view */,
-				8B0D50981C8B074200EB6B3A /* dataSource */,
 				9A23A2B21C7AB38400FB5EB6 /* baseController */,
 				9A23A2AF1C7AAA3D00FB5EB6 /* MainViewController.h */,
 				9A23A2B01C7AAA3D00FB5EB6 /* MainViewController.m */,
@@ -2279,7 +2266,6 @@
 				8B44450C1C7C9EFE00160DC2 /* TAPageControl.m in Sources */,
 				8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */,
 				8B5DC63C1C79B8A700D29292 /* UIImage+TRTheme.m in Sources */,
-				8B3302941C8BC7510088DAE2 /* MainDataSource.m in Sources */,
 				8B5DC6221C79B8A700D29292 /* IFTTTEasingFunction.m in Sources */,
 				9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */,
 				9AEF89C61CA2907D00C5EB90 /* Address.m in Sources */,

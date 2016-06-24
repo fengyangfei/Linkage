@@ -11,6 +11,7 @@
 #import "Favorite.h"
 #import "Company.h"
 #import "CompanyInfoViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 NSString *const CompanyDescriporType = @"CompanyRowType";
 
@@ -45,11 +46,7 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 {
     [super update];
     Favorite *favorite = self.rowDescriptor.value;
-    if (StringIsNotEmpty(favorite.logo)) {
-        self.iconView.image = [UIImage imageNamed:favorite.logo];
-    }else{
-        self.iconView.image = [UIImage imageNamed:@"logo"];
-    }
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:favorite.logo] placeholderImage:[UIImage imageNamed:@"building_pic"]];
     self.titleLabel.text = favorite.companyName;
     self.subTitleLabel.text  = [NSString stringWithFormat:@"已接%d单", [favorite.orderNum intValue]];
     self.ratingView.value = MIN(MAX([favorite.score intValue], 0),5);
