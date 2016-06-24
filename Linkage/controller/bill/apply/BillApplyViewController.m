@@ -152,18 +152,20 @@ row.cellStyle = UITableViewCellStyleValue1;
 }
 
 #pragma mark - 事件
--(void)submitForm:(id)sender
+-(void)submitForm:(UIButton *)sender
 {
     NSArray *errors = [self formValidationErrors];
     if (errors && errors.count > 0) {
         [self showFormValidationError:errors[0]];
         return;
     }
+    sender.enabled = NO;
     WeakSelf
     NSDictionary *formValues =  [self.form formValues];
     Order *order = (Order *)[OrderUtil modelFromXLFormValue:formValues];
     //同步到服务端
     [OrderUtil syncToServer:order success:^(id responseData) {
+        sender.enabled = YES;
         NSString *orderId = responseData[@"order_id"];
         order.orderId = orderId;
         //同步到数据库
@@ -173,6 +175,7 @@ row.cellStyle = UITableViewCellStyleValue1;
         [SVProgressHUD showSuccessWithStatus:@"单据保存成功"];
         [weakSelf.navigationController popToRootViewControllerAnimated:YES];
     } failure:^(NSError *error) {
+        sender.enabled = YES;
         [SVProgressHUD showSuccessWithStatus:@"单据保存失败"];
     }];
 }

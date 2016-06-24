@@ -50,7 +50,7 @@
         
         //上传到服务端
         [LinkUtil uploadWithUrl:SoUrl image:UIImageJPEGRepresentation(image, 0.75) name:fileName success:^(id responseObject) {
-            NSString *imageUrl = responseObject[@"result"][@"icon"];
+            NSString *imageUrl = responseObject[@"result"][@"so"];
             model.imageUrl = imageUrl;
         }];
         
