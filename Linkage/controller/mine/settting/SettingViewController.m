@@ -68,11 +68,8 @@ row.cellStyle = UITableViewCellStyleValue1;
     NSUInteger totalSize = [[SDImageCache sharedImageCache] getSize];
     row.value = [NSString stringWithFormat:@"%.2fM",(unsigned long)totalSize/(1024.0*1024.0)];
     RowUI
-    row.action.formBlock = ^(XLFormRowDescriptor *sender){
-        [weakSelf clearCacheAction:sender];
-    };
+    row.action.formSelector = @selector(clearCacheAction:);
     [section addFormRow:row];
-    
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
@@ -171,10 +168,10 @@ row.cellStyle = UITableViewCellStyleValue1;
 {
     [self deselectFormRow:row];
     [SVProgressHUD show];
+    row.value = @"0.00M";
+    [self reloadFormRow:row];
     [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
         [SVProgressHUD dismiss];
-        NSUInteger totalSize = [[SDImageCache sharedImageCache] getSize];
-        row.value = [NSString stringWithFormat:@"%.2fM",(unsigned long)totalSize/(1024.0*1024.0)];
     }];
 }
 
