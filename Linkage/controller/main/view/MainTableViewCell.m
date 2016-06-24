@@ -46,7 +46,7 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 {
     [super update];
     Favorite *favorite = self.rowDescriptor.value;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:favorite.logo] placeholderImage:[UIImage imageNamed:@"building_pic"]];
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:favorite.logo] placeholderImage:[UIImage imageNamed:@"building_pic"]];
     self.titleLabel.text = favorite.companyName;
     self.subTitleLabel.text  = [NSString stringWithFormat:@"已接%d单", [favorite.orderNum intValue]];
     self.ratingView.value = MIN(MAX([favorite.score intValue], 0),5);

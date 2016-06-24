@@ -122,7 +122,7 @@ NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
 {
     [super update];
     if (self.rowDescriptor.value) {
-        [self.imageView sd_setImageWithURL:self.rowDescriptor.value placeholderImage:[UIImage imageNamed:@"building_pic"]];
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.rowDescriptor.value] placeholderImage:[UIImage imageNamed:@"building_pic"]];
     }
 }
 
