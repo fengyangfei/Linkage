@@ -31,11 +31,15 @@
 
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
 {
+    Address *address = (Address *)model;
     NSDictionary *paramter = [self jsonFromModel:model];
     paramter = [paramter mtl_dictionaryByAddingEntriesFromDictionary:[LoginUser shareInstance].baseHttpParameter];
-    //paramter = [paramter mtl_dictionaryByAddingEntriesFromDictionary:@{@"title": ((Address *)model).title}];
     if (paramter) {
-        [[YGRestClient sharedInstance] postForObjectWithUrl:AddAddressUrl form:paramter success:success failure:failure];
+        if(address.addressId){
+            [[YGRestClient sharedInstance] postForObjectWithUrl:ModAddressUrl form:paramter success:success failure:failure];
+        }else{
+            [[YGRestClient sharedInstance] postForObjectWithUrl:AddAddressUrl form:paramter success:success failure:failure];
+        }
     }
 }
 
