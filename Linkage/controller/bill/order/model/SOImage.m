@@ -37,7 +37,12 @@
 {
     NSMutableString *str = [NSMutableString string];
     for (SOImage *model in self) {
-        NSString *mStr = [NSString stringWithFormat:@"%@;", model.imageName];
+        NSString *mStr;
+        if(model == self.firstObject){
+            mStr = [NSString stringWithFormat:@"%@", model.imageUrl];
+        }else{
+            mStr = [NSString stringWithFormat:@";%@", model.imageUrl];
+        }
         [str appendString:mStr];
     }
     return str;

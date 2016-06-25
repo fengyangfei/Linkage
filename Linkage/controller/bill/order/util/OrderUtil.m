@@ -41,11 +41,11 @@
     NSError *error;
     Order *order = [MTLJSONAdapter modelOfClass:[Order class] fromJSONDictionary:formValues error:&error];
     if (!error) {
+        order.userId = [LoginUser shareInstance].cid;
         order.cargos = formValues[@"cargos"];
         if (formValues[@"company"] && [formValues[@"company"] isKindOfClass:[Company class]]) {
             order.companyId = ((Company *)formValues[@"company"]).companyId;
         }
-        order.userId = [LoginUser shareInstance].cid;
         if ([order isKindOfClass:[ExportOrder class]]) {
             ((ExportOrder *)order).soImages = formValues[@"soImages"];
         }
