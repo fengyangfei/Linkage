@@ -55,6 +55,7 @@
 #define GenInvitecodeUrl [NSString stringWithFormat:@"%@/api/code/inviteurl",BaseUrl]//生成邀请链接
 #define SystemSettingUrl [NSString stringWithFormat:@"%@/api/profile/updatesysset",BaseUrl]//系统设置
 #define UserIconUrl [NSString stringWithFormat:@"%@/api/upload/usericon",BaseUrl]//上传个人头像
+#define UploadFileUrl [NSString stringWithFormat:@"%@/api/upload/uploadFiles",BaseUrl]//公有上传图片
 
 //企业
 #define CompanyInfomationUrl [NSString stringWithFormat:@"%@/api/company/information", BaseUrl]//获取企业信息
@@ -69,10 +70,14 @@
 #define DriversUrl [NSString stringWithFormat:@"%@/api/transporter/drivers",BaseUrl]//司机查询接口
 #define AddDriverUrl [NSString stringWithFormat:@"%@/api/transporter/adddriver",BaseUrl]//添加司机接口
 #define DelDriverUrl [NSString stringWithFormat:@"%@/api/transporter/deldriver",BaseUrl]//删除司机接口
+#define ModDriverUrl [NSString stringWithFormat:@"%@/api/transporter/moddriver",BaseUrl]//修改司机接口
 #define DriverDetailUrl [NSString stringWithFormat:@"%@/api/transporter/driverdetail",BaseUrl]//司机详情接口
+
+//车辆接口
 #define CarsUrl [NSString stringWithFormat:@"%@/api/transporter/cars",BaseUrl]//车辆查询接口
 #define AddCarUrl [NSString stringWithFormat:@"%@/api/transporter/addcar",BaseUrl]//添加车辆接口
 #define DelCarUrl [NSString stringWithFormat:@"%@/api/transporter/delcar",BaseUrl]//删除车辆接口
+#define ModCarUrl [NSString stringWithFormat:@"%@/api/transporter/modcar",BaseUrl]//修改车辆接口
 #define CarDetailUrl [NSString stringWithFormat:@"%@/api/transporter/cardetail",BaseUrl]//车辆详情查询接口
 #define DispatchUrl [NSString stringWithFormat:@"%@/api/transporter/dispatch",BaseUrl]//分配司机接口
 
@@ -80,6 +85,7 @@
 #define AddressUrl [NSString stringWithFormat:@"%@/api/profile/addrlist",BaseUrl]//地址查询接口
 #define AddAddressUrl [NSString stringWithFormat:@"%@/api/profile/addaddr",BaseUrl]//添加地址接口
 #define DelAddressUrl [NSString stringWithFormat:@"%@/api/transporter/deladdr",BaseUrl]//删除地址接口
+#define ModAddressUrl [NSString stringWithFormat:@"%@/api/profile/modAddr",BaseUrl]//修改地址接口
 
 //员工
 #define StaffsUrl [NSString stringWithFormat:@"%@/api/user/staff",BaseUrl]//员工查询接口

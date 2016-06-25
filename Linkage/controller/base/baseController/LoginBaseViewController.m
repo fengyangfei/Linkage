@@ -191,6 +191,19 @@
             make.height.equalTo(@44);
         }];
         
+        UIView *separateView = ({
+            UIView *view = [UIView new];
+            view.backgroundColor = [UIColor whiteColor];
+            view;
+        });
+        [self.view addSubview:separateView];
+        [separateView makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.registerButton.centerY);
+            make.centerX.equalTo(self.view.centerX);
+            make.width.equalTo(1);
+            make.height.equalTo(18);
+        }];
+        
         [self.view addSubview:self.forgotPasswordButton];
         [self.forgotPasswordButton makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.view.centerX);
