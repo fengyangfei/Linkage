@@ -12,6 +12,7 @@
 #import "MJPhoto.h"
 #import "UIImageView+Cache.h"
 #import "ImageCacheManager.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 NSString *const SOImageRowDescriporType = @"SOImageRowType";
 
@@ -36,16 +37,24 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
 -(void)update
 {
     [super update];
-    SOImage *model = (SOImage *)self.rowDescriptor.value;
-    if (model.image) {
-        self.imageView.image = model.image;
-    }else{
-        [self.imageView imageWithCacheKey:model.imageName];
+    
+    if(self.rowDescriptor.value && [self.rowDescriptor.value isKindOfClass:[SOImage class]]){
+        SOImage *model = (SOImage *)self.rowDescriptor.value;
+        if (model.image) {
+            self.imageView.image = model.image;
+        }else if(model.imageName) {
+            [self.imageView imageWithCacheKey:model.imageName];
+        }else if (model.imageUrl) {
+            [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"logo"]];
+        }
+        self.nameLabel.text = model.imageName;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+        self.dateLabel.text = [formatter stringFromDate:model.createDate];
+    }else if (self.rowDescriptor.value && [self.rowDescriptor.value isKindOfClass:[NSString class]]){
+        NSString *imageUrl = self.rowDescriptor.value;
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"logo"]];
     }
-    self.nameLabel.text = model.imageName;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
-    self.dateLabel.text = [formatter stringFromDate:model.createDate];
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor

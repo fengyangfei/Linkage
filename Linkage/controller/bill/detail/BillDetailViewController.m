@@ -21,6 +21,7 @@
 #import "CargosDataSource.h"
 #import "YGRestClient.h"
 #import "CommentViewController.h"
+#import "ImageInfoCell.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
@@ -148,21 +149,30 @@
     [section addFormRow:row];
     
     if ([order isKindOfClass:[ExportOrder class]]) {
+        ExportOrder *exportOrder = (ExportOrder *)order;
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程公司"];
-        row.value = order? ((ExportOrder *)order).shipCompany :@"";
+        row.value = order? exportOrder.shipCompany :@"";
         [section addFormRow:row];
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程船名"];
-        row.value = order? ((ExportOrder *)order).shipName :@"";
+        row.value = order? exportOrder.shipName :@"";
         [section addFormRow:row];
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否约好"];
-        if (order && ((ExportOrder *)order).isBookCargo) {
+        if (order && exportOrder.isBookCargo) {
             row.value = @"是";
         }else{
             row.value = @"否";
         }
         [section addFormRow:row];
+        
+        if (order && exportOrder.soImageUrl) {
+            for (NSString *imageUrl in [exportOrder.soImageUrl componentsSeparatedByString:@";"]) {
+                row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:ImageInfoDescriporTypeCell title:@"SO图片"];
+                row.value = imageUrl;
+                [section addFormRow:row];
+            }
+        }
     }
     
     if([order isKindOfClass:[ImportOrder class]]) {
@@ -343,7 +353,7 @@
 - (HMSegmentedControl *)segmentedControl
 {
     HMSegmentedControl *segmentedControl = [super segmentedControl];
-    segmentedControl.sectionTitles = @[@"订单详情", @"货柜详情"];
+    segmentedControl.sectionTitles = @[@"订单详情", @"任务详情"];
     return segmentedControl;
 }
 

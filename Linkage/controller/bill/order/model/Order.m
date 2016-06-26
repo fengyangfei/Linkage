@@ -186,9 +186,7 @@
 
 @end
 
-/**
- * 进口
- */
+#pragma mark - 进口订单
 @implementation ImportOrder
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
@@ -230,9 +228,7 @@
 }
 @end
 
-/**
- * 出口
- */
+#pragma mark - 出口订单
 @implementation ExportOrder
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
@@ -252,6 +248,7 @@
                              @"isBookCargo":@"is_book_cargo",
                              @"isTransferPort":@"is_transfer_port",
                              @"updateTime":@"update_time",
+                             @"soImageUrl":@"so_images",
                              @"memo":@"memo"
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
@@ -284,7 +281,7 @@
 + (NSDictionary *)managedObjectKeysByPropertyKey
 {
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"so",@"objStatus",@"tasks"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"so",@"soImageUrl",@"objStatus",@"tasks"]];
     return keys;
 }
 
@@ -295,8 +292,8 @@
 
 @end
 
+#pragma mark - 自备柜
 @implementation SelfOrder
-//自备柜
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyMap = @{

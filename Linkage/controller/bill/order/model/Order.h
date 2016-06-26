@@ -83,6 +83,7 @@ typedef NS_ENUM(NSUInteger, ObjectStatus) {
 @property (nonatomic, assign) BOOL     isBookCargo;//是否与头程越好柜
 @property (nonatomic, copy  ) NSString *port;//港口
 @property (nonatomic, strong) NSArray  *soImages;//so图片
+@property (nonatomic, strong) NSString *soImageUrl;//服务端返回关键字"so_images",以;号分割图片连接
 @end
 
 //自备柜订单
