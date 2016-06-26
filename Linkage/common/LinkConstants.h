@@ -66,20 +66,23 @@
 #define MessagesUrl [NSString stringWithFormat:@"%@/api/message/list",BaseUrl]//消息列表
 #define MessageDetailUrl [NSString stringWithFormat:@"%@/api/message/detail",BaseUrl]//消息详情
 
-//车辆与司机
+//司机
 #define DriversUrl [NSString stringWithFormat:@"%@/api/transporter/drivers",BaseUrl]//司机查询接口
 #define AddDriverUrl [NSString stringWithFormat:@"%@/api/transporter/adddriver",BaseUrl]//添加司机接口
 #define DelDriverUrl [NSString stringWithFormat:@"%@/api/transporter/deldriver",BaseUrl]//删除司机接口
 #define ModDriverUrl [NSString stringWithFormat:@"%@/api/transporter/moddriver",BaseUrl]//修改司机接口
 #define DriverDetailUrl [NSString stringWithFormat:@"%@/api/transporter/driverdetail",BaseUrl]//司机详情接口
 
-//车辆接口
+//车辆
 #define CarsUrl [NSString stringWithFormat:@"%@/api/transporter/cars",BaseUrl]//车辆查询接口
 #define AddCarUrl [NSString stringWithFormat:@"%@/api/transporter/addcar",BaseUrl]//添加车辆接口
 #define DelCarUrl [NSString stringWithFormat:@"%@/api/transporter/delcar",BaseUrl]//删除车辆接口
 #define ModCarUrl [NSString stringWithFormat:@"%@/api/transporter/modcar",BaseUrl]//修改车辆接口
 #define CarDetailUrl [NSString stringWithFormat:@"%@/api/transporter/cardetail",BaseUrl]//车辆详情查询接口
-#define DispatchUrl [NSString stringWithFormat:@"%@/api/transporter/dispatch",BaseUrl]//分配司机接口
+
+//任务
+#define DispatchUrl [NSString stringWithFormat:@"%@/api/transporter/dispatch",BaseUrl]//分配任务
+#define UpdataTaskStatusUrl [NSString stringWithFormat:@"%@/api/transporter/updateTaskStatus",BaseUrl]//更新任务状态
 
 //地址
 #define AddressUrl [NSString stringWithFormat:@"%@/api/profile/addrlist",BaseUrl]//地址查询接口

@@ -14,6 +14,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyMap = @{
+                             @"taskId":@"task_id",
                              @"cargoNo":@"cargo_no",
                              @"cargoType":@"cargo_type",
                              @"driverName":@"driver_name",

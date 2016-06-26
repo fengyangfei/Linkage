@@ -10,6 +10,9 @@
 #import "Task.h"
 #import "NSString+Hint.h"
 #import "LinkUtil.h"
+#import "YGRestClient.h"
+#import "LoginUser.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 NSString *const TaskInfoDescriporType = @"TaskInfoRowType";
 NSString *const TaskEditDescriporType = @"TaskEditRowType";
@@ -22,6 +25,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 @property (nonatomic, readonly) UITextField *textField;
 @end
 
+#pragma mark - 任务基类
 @implementation TaskCell
 @synthesize textLabel = _textLabel;
 @synthesize detailLabel = _detailLabel;
@@ -245,7 +249,6 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请更新状态" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
-        
     }]];
     
     WeakSelf
@@ -254,9 +257,21 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
             continue;
         }
         UIAlertAction *action = [UIAlertAction actionWithTitle:[[LinkUtil taskStatus] objectForKey:key] style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            //改变按钮状态的文字
             NSString *title = [[LinkUtil taskStatus] objectForKey:key];
             [weakSelf.statusBtn setTitle:title forState:UIControlStateNormal];
             ((Task *)weakSelf.rowDescriptor.value).status = key;
+            //同步状态到服务端
+            NSDictionary *parameter = @{
+                                        @"task_id":model.taskId ?:@"1",
+                                        @"status":key
+                                        };
+            parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+            [[YGRestClient sharedInstance] postForObjectWithUrl:UpdataTaskStatusUrl form:parameter success:^(id responseObject) {
+                [SVProgressHUD showSuccessWithStatus:@"任务状态更新成功"];
+            } failure:^(NSError *error) {
+                [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+            }];
         }];
         [alertController addAction:action];
     }
