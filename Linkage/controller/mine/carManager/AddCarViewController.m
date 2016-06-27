@@ -108,7 +108,8 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"保存"];
+    NSString *title = car ? @"保存": @"修改";
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:title];
     row.action.formBlock  = ^(XLFormRowDescriptor * sender){
         [weakSelf submitForm:sender];
     };
@@ -128,6 +129,9 @@
     }
     NSDictionary *formValues = [self formValues];
     Car *model = (Car *)[CarUtil modelFromXLFormValue:formValues];
+    if (_rowDescriptor.value) {
+        model.carId = ((Car *)_rowDescriptor.value).carId;
+    }
     //同步到服务端
     [SVProgressHUD show];
     [CarUtil syncToServer:model success:^(id responseData) {

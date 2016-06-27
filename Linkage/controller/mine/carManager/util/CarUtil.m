@@ -21,10 +21,15 @@
 
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
 {
+    Car *car = (Car*)model;
     NSDictionary *paramter = [self jsonFromModel:model];
     paramter = [paramter mtl_dictionaryByAddingEntriesFromDictionary:[LoginUser shareInstance].baseHttpParameter];
     if (paramter) {
-        [[YGRestClient sharedInstance] postForObjectWithUrl:AddCarUrl form:paramter success:success failure:failure];
+        if (car.carId) {
+            [[YGRestClient sharedInstance] postForObjectWithUrl:ModCarUrl form:paramter success:success failure:failure];
+        }else{
+            [[YGRestClient sharedInstance] postForObjectWithUrl:AddCarUrl form:paramter success:success failure:failure];
+        }
     }
 }
 

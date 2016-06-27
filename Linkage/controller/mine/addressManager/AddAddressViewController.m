@@ -104,11 +104,9 @@
     }
     NSDictionary *formValues = [self formValues];
     Address *model = (Address *)[AddressUtil modelFromXLFormValue:formValues];
-    
     if (_rowDescriptor.value) {
         model.addressId = ((Address *)_rowDescriptor.value).addressId;
     }
-    
     //同步到服务端
     [SVProgressHUD show];
     [AddressUtil syncToServer:model success:^(id responseData) {

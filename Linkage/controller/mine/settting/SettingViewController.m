@@ -76,6 +76,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"share" rowType:XLFormRowDescriptorTypeButton title:@"分享好友"];
     RowUI
+    RowAccessoryUI
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf shareAction:sender];
     };

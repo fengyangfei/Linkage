@@ -65,16 +65,15 @@
     row.required = YES;
     [section addFormRow:row];
     
-    if(!driver){
-        section = [XLFormSectionDescriptor formSection];
-        [form addFormSection:section];
-        
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"保存"];
-        row.action.formBlock  = ^(XLFormRowDescriptor * sender){
-            [weakSelf submitForm:sender];
-        };
-        [section addFormRow:row];
-    }
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    NSString *title = driver?@"修改":@"保存";
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:title];
+    row.action.formBlock  = ^(XLFormRowDescriptor * sender){
+        [weakSelf submitForm:sender];
+    };
+    [section addFormRow:row];
     
     self.form = form;
 }
@@ -103,6 +102,9 @@
     }
     NSDictionary *formValues = [self formValues];
     Driver *driver = (Driver *)[DriverUtil modelFromXLFormValue:formValues];
+    if (_rowDescriptor.value) {
+        driver.driverId = ((Driver *)_rowDescriptor.value).driverId;
+    }
     //同步到服务端
     [SVProgressHUD show];
     [DriverUtil syncToServer:driver success:^(id responseData) {

@@ -56,10 +56,15 @@
 
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
 {
+    Driver *driver = (Driver *)model;
     NSDictionary *paramter = [self jsonFromModel:model];
     paramter = [paramter mtl_dictionaryByAddingEntriesFromDictionary:[LoginUser shareInstance].baseHttpParameter];
     if (paramter) {
-        [[YGRestClient sharedInstance] postForObjectWithUrl:AddDriverUrl form:paramter success:success failure:failure];
+        if (driver.driverId) {
+            [[YGRestClient sharedInstance] postForObjectWithUrl:ModDriverUrl form:paramter success:success failure:failure];
+        }else{
+            [[YGRestClient sharedInstance] postForObjectWithUrl:AddDriverUrl form:paramter success:success failure:failure];
+        }
     }
 }
 
