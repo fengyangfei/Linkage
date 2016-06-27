@@ -107,6 +107,9 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
         return _imageView;
     }
     _imageView = [UIImageView new];
+    _imageView.contentMode = UIViewContentModeScaleAspectFill;
+    _imageView.layer.masksToBounds = YES;
+    _imageView.layer.cornerRadius = 5;
     [_imageView setUserInteractionEnabled:YES];
     return _imageView;
 }
