@@ -20,4 +20,22 @@
 -(void)setupNavigationItem
 {
 }
+
+- (void)initializeForm:(NSArray *)models
+{
+    XLFormDescriptor * form;
+    XLFormSectionDescriptor * section;
+    XLFormRowDescriptor * row;
+    
+    form = [XLFormDescriptor formDescriptorWithTitle:@""];
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    for (id model in models) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:MessageDescriporType];
+        row.value = model;
+        [section addFormRow:row];
+    }
+    self.form = form;
+}
 @end

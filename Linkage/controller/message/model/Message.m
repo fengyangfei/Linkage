@@ -14,7 +14,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyMap = @{
-                             @"messageId":@"mid",
+                             @"messageId":@"message_id",
                              @"introduction":@"description"
                              };
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];

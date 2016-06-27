@@ -9,6 +9,7 @@
 #import <XLForm/XLForm.h>
 
 extern NSString *const MessageDescriporType;
+
 @interface MessageTableCell : XLFormBaseCell
 
 @end

@@ -9,19 +9,22 @@
 #import "MessageTableCell.h"
 #import "Message.h"
 #import "LinkUtil.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 NSString *const MessageDescriporType = @"MessageDescriporType";
 
 @interface MessageTableCell()
+@property (nonatomic, readonly) UIImageView *iconView;
 @property (nonatomic, readonly) UILabel *titleLable;
-@property (nonatomic, readonly) UILabel *timeLable;
 @property (nonatomic, readonly) UILabel *detailLable;
+@property (nonatomic, readonly) UILabel *timeLable;
 @end
 
 @implementation MessageTableCell
+@synthesize iconView = _iconView;
 @synthesize titleLable = _titleLable;
-@synthesize timeLable = _timeLable;
 @synthesize detailLable = _detailLable;
+@synthesize timeLable = _timeLable;
 
 +(void)load
 {
@@ -43,6 +46,7 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
     self.titleLable.text = message.title;
     self.timeLable.text = [LinkUtil.dateFormatter stringFromDate:message.createTime];
     self.detailLable.text = message.introduction;
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:message.icon] placeholderImage:nil];
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
@@ -69,13 +73,20 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
                 [controller.navigationController pushViewController:controllerToPresent animated:YES];
             }
         }
-        
     }
 }
 
 #pragma mark - UI
 -(void)setupUI
 {
+    [self.contentView addSubview:self.iconView];
+    [self.iconView makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.contentView.centerY);
+        make.left.equalTo(self.contentView.left).offset(12);
+        make.width.equalTo(45);
+        make.height.equalTo(45);
+    }];
+    
     [self.contentView addSubview:self.titleLable];
     [self.titleLable makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.left).offset(12);
@@ -96,11 +107,20 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
     }];
 }
 
+-(UIImageView *)iconView
+{
+    if (!_iconView) {
+        _iconView = [[UIImageView alloc]init];
+    }
+    return _iconView;
+}
+
 -(UILabel *)titleLable
 {
     if (!_titleLable) {
         _titleLable = [UILabel new];
         _titleLable.font = [UIFont boldSystemFontOfSize:12];
+        _titleLable.textColor = IndexTitleFontColor;
     }
     return _titleLable;
 }
@@ -111,6 +131,7 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
         _timeLable = [UILabel new];
         _timeLable.font = [UIFont systemFontOfSize:12];
         _timeLable.textAlignment = NSTextAlignmentRight;
+        _timeLable.textColor = IndexTitleFontColor;
     }
     return _timeLable;
 }
@@ -122,6 +143,7 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
         _detailLable.font = [UIFont systemFontOfSize:12];
         _detailLable.textColor = [UIColor lightGrayColor];
         _detailLable.numberOfLines = 0;
+        _detailLable.textColor = IndexTitleFontColor;
     }
     return _detailLable;
 }
