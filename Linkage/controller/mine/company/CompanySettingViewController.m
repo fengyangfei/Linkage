@@ -124,7 +124,7 @@
     [form addFormSection:section];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"企业图片"];
     [row.cellConfig setObject:@(NSTextAlignmentNatural) forKey:@"textLabel.textAlignment"];
-    row.action.formSelector = NSSelectorFromString(@"addPhotoButtonTapped:");
+    row.action.formSelector = NSSelectorFromString(@"addImage:");
     section.multivaluedTag = @"photos";
     [section addFormRow:row];
     if (company) {
@@ -168,24 +168,9 @@
 -(void)saveAction:(id)sender
 {
     NSMutableDictionary *formValues = [[self formValues] mutableCopy];
-    //保存图片到硬盘
-    NSMutableArray *companyImages = [NSMutableArray array];
     NSArray *formPhotos = formValues[@"photos"];
-    if (formPhotos) {
-        for (SOImage *imageModel in formPhotos) {
-            [[ImageCacheManager sharedManger] diskImageExistsWithKey:imageModel.imageName completion:^(BOOL isInCache) {
-                if (!isInCache) {
-                    [[ImageCacheManager sharedManger] storeImage:imageModel.image forKey:imageModel.imageName];
-                }
-            }];
-            [companyImages addObject:imageModel.imageName];
-        }
-    }
-    formValues[@"companyImages"] = companyImages;
-    //保存到UserDefault
-    Company *company = [MTLJSONAdapter modelOfClass:[Company class] fromJSONDictionary:formValues error:nil];
-    //设置企业头像值
-    company.logo = [Company shareInstance].logo;
+    formValues[@"images"] = [formPhotos soImageStringValue];
+    Company *company = (Company *)[CompanyUtil modelFromXLFormValue:formValues];
     [CompanyUtil syncToServer:company success:^(id responseData) {
         BOOL saveSuccess = [company save];
         if (saveSuccess) {

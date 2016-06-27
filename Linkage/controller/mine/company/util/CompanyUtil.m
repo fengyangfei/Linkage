@@ -9,12 +9,33 @@
 #import "CompanyUtil.h"
 #import "Company.h"
 #import "LoginUser.h"
+#import "SOImage.h"
 
 @implementation CompanyUtil
 
 +(Class)modelClass
 {
     return [Company class];
+}
+
++(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues
+{
+    //NSArray *formPhotos = formValues[@"photos"];
+    //formValues[@"images"] = [formPhotos soImageStringValue];
+    Company *company = [MTLJSONAdapter modelOfClass:[Company class] fromJSONDictionary:formValues error:nil];
+    //设置企业头像值
+    company.logo = [Company shareInstance].logo;
+    return company;
+}
+
++(NSDictionary *)jsonFromModel:(id<MTLJSONSerializing>)model
+{
+    NSError *error;
+    NSDictionary *dic = [MTLJSONAdapter JSONDictionaryFromModel:model error:&error];
+    if (error) {
+        NSLog(@"对象转换字典失败 - %@",error);
+    }
+    return dic;
 }
 
 +(void)queryModelFromServer:(void(^)(id<MTLJSONSerializing> model))completion

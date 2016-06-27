@@ -14,7 +14,7 @@
 
 @implementation XLFormViewController (ImagePicker)
 
--(void)addPhotoButtonTapped:(XLFormRowDescriptor *)formRow
+-(void)addImage:(XLFormRowDescriptor *)formRow
 {
     [self deselectFormRow:formRow];
     [self addSignalPhoto:^(UIImage *image, NSString *fileName) {
@@ -25,8 +25,8 @@
         model.image = image;
         
         //上传到服务端
-        [LinkUtil uploadWithUrl:CompanyLogoUrl image:UIImageJPEGRepresentation(image, 0.75) name:fileName success:^(id responseObject) {
-            NSString *imageUrl = responseObject[@"result"][@"icon"];
+        [LinkUtil uploadWithUrl:UploadFileUrl image:UIImageJPEGRepresentation(image, 0.75) name:fileName success:^(id responseObject) {
+            NSString *imageUrl = responseObject[@"result"][@"file"];
             model.imageUrl = imageUrl;
         }];
         

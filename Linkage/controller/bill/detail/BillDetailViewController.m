@@ -70,7 +70,9 @@
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         }];
         
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
+        if(order.status == OrderStatusCompletion){
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
+        }
     }
     if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin && (order.status == OrderStatusPending || order.status == OrderStatusExecuting)) {
         [self.view addSubview:self.toolBar];
