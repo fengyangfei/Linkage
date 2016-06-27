@@ -20,6 +20,7 @@
 @property (nonatomic,copy  ) NSString *servicePhone4;
 @property (nonatomic,strong) NSArray  *companyImages;
 @property (nonatomic,strong) NSArray  *customerPhones;
+@property (nonatomic,copy  ) NSString *images;//上传到服务端字段
 -(BOOL)save;
 +(Company *)shareInstance;
 @end

@@ -127,15 +127,10 @@
     row.action.formSelector = NSSelectorFromString(@"addImage:");
     section.multivaluedTag = @"photos";
     [section addFormRow:row];
-    if (company) {
-        for (NSString *imageKey in company.companyImages) {
-            //添加到当前列的value里面
-            SOImage *model = [[SOImage alloc]init];
-            model.imageName = imageKey;
-            model.createDate = [NSDate date];
-            
+    if (company && company.images) {
+        for (NSString *imageKey in [company.images componentsSeparatedByString:@";"]) {
             row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:SOImageRowDescriporType];
-            row.value = model;
+            row.value = imageKey;
             [section addFormRow:row];
         }
     }
@@ -167,10 +162,7 @@
 #pragma mark - 按钮事件
 -(void)saveAction:(id)sender
 {
-    NSMutableDictionary *formValues = [[self formValues] mutableCopy];
-    NSArray *formPhotos = formValues[@"photos"];
-    formValues[@"images"] = [formPhotos soImageStringValue];
-    Company *company = (Company *)[CompanyUtil modelFromXLFormValue:formValues];
+    Company *company = (Company *)[CompanyUtil modelFromXLFormValue:[self formValues]];
     [CompanyUtil syncToServer:company success:^(id responseData) {
         BOOL saveSuccess = [company save];
         if (saveSuccess) {

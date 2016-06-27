@@ -20,11 +20,11 @@
 
 +(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues
 {
-    //NSArray *formPhotos = formValues[@"photos"];
-    //formValues[@"images"] = [formPhotos soImageStringValue];
+    NSArray *formPhotos = formValues[@"photos"];
     Company *company = [MTLJSONAdapter modelOfClass:[Company class] fromJSONDictionary:formValues error:nil];
     //设置企业头像值
     company.logo = [Company shareInstance].logo;
+    company.images = [formPhotos soImageStringValue];
     return company;
 }
 

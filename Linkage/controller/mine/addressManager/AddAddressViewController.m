@@ -104,8 +104,8 @@
     }
     NSDictionary *formValues = [self formValues];
     Address *model = (Address *)[AddressUtil modelFromXLFormValue:formValues];
-    if (_rowDescriptor.value) {
-        model.addressId = ((Address *)_rowDescriptor.value).addressId;
+    if (self.rowDescriptor.value) {
+        model.addressId = ((Address *)self.rowDescriptor.value).addressId;
     }
     //同步到服务端
     [SVProgressHUD show];
@@ -114,14 +114,14 @@
         if (addressId) {
             model.addressId = addressId;
             //同步到数据库
-            StrongSelf
             [AddressUtil syncToDataBase:model completion:^{
                 [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
                     [SVProgressHUD dismiss];
                 }];
-                [strongSelf.navigationController popViewControllerAnimated:YES];
+                
             }];
         }
+        [weakSelf.navigationController popViewControllerAnimated:YES];
         [SVProgressHUD showSuccessWithStatus:@"保存成功"];
     } failure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:error.localizedDescription];

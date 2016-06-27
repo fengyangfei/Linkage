@@ -69,16 +69,20 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
     NSMutableArray * photoArray = [NSMutableArray new];
     for (XLFormRowDescriptor * row in section.formRows) {
         if (row.value){
-            SOImage *model = (SOImage *)row.value;
             MJPhoto *photo = ({
                 MJPhoto *photo = [[MJPhoto alloc] init];
-                if(model.image){
-                    photo.image = model.image;
-                }else{
-                    __weak __typeof(photo) weakPhoto = photo;
-                    [[ImageCacheManager sharedManger] queryDiskCacheForKey:model.imageName done:^(UIImage *image, SDImageCacheType cacheType) {
-                        weakPhoto.image = image;
-                    }];
+                if ([row.value isKindOfClass:[SOImage class]]) {
+                    SOImage *model = (SOImage *)row.value;
+                    if(model.image){
+                        photo.image = model.image;
+                    }else{
+                        __weak __typeof(photo) weakPhoto = photo;
+                        [[ImageCacheManager sharedManger] queryDiskCacheForKey:model.imageName done:^(UIImage *image, SDImageCacheType cacheType) {
+                            weakPhoto.image = image;
+                        }];
+                    }
+                }else if([row.value isKindOfClass:[NSString class]]){
+                    photo.url = [NSURL URLWithString:row.value];
                 }
                 photo;
             });
