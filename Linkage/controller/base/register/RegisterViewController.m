@@ -156,6 +156,7 @@
     
     if([formValues[@"password"] isEqualToString:formValues[@"confirmPassword"]]){
         [SVProgressHUD showErrorWithStatus:@"两次填入密码不一致"];
+        return;
     }
     
     NSDictionary *paramter = @{@"mobile":NilStringWrapper(formValues[@"phoneNum"]),

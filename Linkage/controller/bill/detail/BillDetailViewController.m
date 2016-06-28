@@ -328,8 +328,11 @@
 
 -(void)acceptAction
 {
-    [OrderUtil acceptOrder:self.rowDescriptor.value success:^(id responseData) {
+    Order *order = (Order *)self.rowDescriptor.value;
+    [OrderUtil acceptOrder:order success:^(id responseData) {
         [SVProgressHUD showSuccessWithStatus:@"接单成功"];
+        order.status = OrderStatusExecuting;
+        [OrderUtil syncToDataBase:order completion:nil];
     } failure:^(NSError *error) {
         
     }];
@@ -337,8 +340,11 @@
 
 -(void)confirmAction
 {
-    [OrderUtil confirmOrder:self.rowDescriptor.value success:^(id responseData) {
+    Order *order = (Order *)self.rowDescriptor.value;
+    [OrderUtil confirmOrder:order success:^(id responseData) {
         [SVProgressHUD showSuccessWithStatus:@"结单成功"];
+        order.status = OrderStatusCompletion;
+        [OrderUtil syncToDataBase:order completion:nil];
     } failure:^(NSError *error) {
         
     }];
@@ -346,8 +352,11 @@
 
 -(void)rejectAction
 {
-    [OrderUtil rejectOrder:self.rowDescriptor.value success:^(id responseData) {
+    Order *order = (Order *)self.rowDescriptor.value;
+    [OrderUtil rejectOrder:order success:^(id responseData) {
         [SVProgressHUD showSuccessWithStatus:@"拒绝成功"];
+        order.status = OrderStatusDenied;
+        [OrderUtil syncToDataBase:order completion:nil];
     } failure:^(NSError *error) {
         
     }];
