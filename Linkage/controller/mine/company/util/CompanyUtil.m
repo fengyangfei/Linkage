@@ -21,17 +21,49 @@
 +(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues
 {
     NSArray *formPhotos = formValues[@"photos"];
+    NSArray *formPhones = formValues[@"customerPhones"];
     Company *company = [MTLJSONAdapter modelOfClass:[Company class] fromJSONDictionary:formValues error:nil];
     //设置企业头像值
     company.logo = [Company shareInstance].logo;
     company.images = [formPhotos soImageStringValue];
+    if (formPhones && formPhones.count > 0) {
+        company.servicePhone = formPhones[0];
+    }
+    if (formPhones && formPhones.count > 1) {
+        company.servicePhone2 = formPhones[1];
+    }
+    if (formPhones && formPhones.count > 2) {
+        company.servicePhone3 = formPhones[2];
+    }
+    if (formPhones && formPhones.count > 3) {
+        company.servicePhone4 = formPhones[3];
+    }
     return company;
 }
 
 +(NSDictionary *)jsonFromModel:(id<MTLJSONSerializing>)model
 {
+    Company *company = (Company *)model;
     NSError *error;
     NSDictionary *dic = [MTLJSONAdapter JSONDictionaryFromModel:model error:&error];
+    if (StringIsNotEmpty(company.address)) {
+        [dic setValue:company.address forKey:@"address"];
+    }
+    if (StringIsNotEmpty(company.introduction)) {
+        [dic setValue:company.introduction forKey:@"description"];
+    }
+    if (StringIsNotEmpty(company.servicePhone)) {
+        [dic setValue:company.servicePhone forKey:@"phone_1"];
+    }
+    if (StringIsNotEmpty(company.servicePhone2)) {
+        [dic setValue:company.servicePhone2 forKey:@"phone_2"];
+    }
+    if (StringIsNotEmpty(company.servicePhone3)) {
+        [dic setValue:company.servicePhone3 forKey:@"phone_3"];
+    }
+    if (StringIsNotEmpty(company.servicePhone4)) {
+        [dic setValue:company.servicePhone4 forKey:@"phone_4"];
+    }
     if (error) {
         NSLog(@"对象转换字典失败 - %@",error);
     }

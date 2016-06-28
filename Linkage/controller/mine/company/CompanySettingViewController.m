@@ -79,7 +79,7 @@
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"description" rowType:XLFormRowDescriptorTypeTextView title:@"企业简介"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"contact_description" rowType:XLFormRowDescriptorTypeTextView title:@"企业简介"];
     if (company) {
         row.value = company.introduction;
     }
@@ -113,7 +113,7 @@
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"url" rowType:XLFormRowDescriptorTypeURL title:@"企业网址"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"home_page" rowType:XLFormRowDescriptorTypeURL title:@"企业网址"];
     if (company) {
         row.value = company.url;
     }
@@ -129,9 +129,11 @@
     [section addFormRow:row];
     if (company && company.images) {
         for (NSString *imageKey in [company.images componentsSeparatedByString:@";"]) {
-            row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:SOImageRowDescriporType];
-            row.value = imageKey;
-            [section addFormRow:row];
+            if (StringIsNotEmpty(imageKey)) {
+                row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:SOImageRowDescriporType];
+                row.value = imageKey;
+                [section addFormRow:row];
+            }
         }
     }
     
@@ -143,9 +145,19 @@
     section.multivaluedRowTemplate = row;
     section.multivaluedTag = @"customerPhones";
     if (company) {
-        for (NSString *photoNum in company.customerPhones) {
+        if(StringIsNotEmpty(company.servicePhone2)){
             row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypePhone title:@"客户电话"];
-            row.value = photoNum;
+            row.value = company.servicePhone2;
+            [section addFormRow:row];
+        }
+        if(StringIsNotEmpty(company.servicePhone3)){
+            row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypePhone title:@"客户电话"];
+            row.value = company.servicePhone3;
+            [section addFormRow:row];
+        }
+        if(StringIsNotEmpty(company.servicePhone4)){
+            row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypePhone title:@"客户电话"];
+            row.value = company.servicePhone4;
             [section addFormRow:row];
         }
     }else{

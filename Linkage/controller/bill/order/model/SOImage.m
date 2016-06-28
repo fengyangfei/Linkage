@@ -36,14 +36,25 @@
 -(NSString *)soImageStringValue
 {
     NSMutableString *str = [NSMutableString string];
-    for (SOImage *model in self) {
+    for (id each in self) {
         NSString *mStr;
-        if(model == self.firstObject){
-            mStr = [NSString stringWithFormat:@"%@", model.imageUrl];
-        }else{
-            mStr = [NSString stringWithFormat:@";%@", model.imageUrl];
+        if ([each isKindOfClass:[SOImage class]]) {
+            SOImage *model = (SOImage *)each;
+            if(model == self.firstObject){
+                mStr = [NSString stringWithFormat:@"%@", model.imageUrl];
+            }else{
+                mStr = [NSString stringWithFormat:@";%@", model.imageUrl];
+            }
+        }else if([each isKindOfClass:[NSString class]]){
+            if(each == self.firstObject){
+                mStr = [NSString stringWithFormat:@"%@", each];
+            }else{
+                mStr = [NSString stringWithFormat:@";%@", each];
+            }
         }
-        [str appendString:mStr];
+        if (StringIsNotEmpty(mStr)) {
+            [str appendString:mStr];
+        }
     }
     return str;
 }

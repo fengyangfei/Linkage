@@ -170,9 +170,11 @@
         
         if (order && exportOrder.soImageUrl) {
             for (NSString *imageUrl in [exportOrder.soImageUrl componentsSeparatedByString:@";"]) {
-                row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:ImageInfoDescriporTypeCell title:@"SO图片"];
-                row.value = imageUrl;
-                [section addFormRow:row];
+                if(StringIsNotEmpty(imageUrl)){
+                    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:ImageInfoDescriporTypeCell title:@"SO图片"];
+                    row.value = imageUrl;
+                    [section addFormRow:row];
+                }
             }
         }
     }
