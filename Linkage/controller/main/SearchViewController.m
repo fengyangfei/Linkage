@@ -30,7 +30,7 @@
     RAC(self.navigationItem, rightBarButtonItem) = [[RACObserve(self, searchKey) distinctUntilChanged] map:^id(NSString *key) {
         @strongify(self);
         if (key.length > 0) {
-            return [[UIBarButtonItem alloc]initWithTitle:@"搜索" style:UIBarButtonItemStylePlain target:self action:@selector(searchAction)];
+            return [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction)];
         }else{
             return nil;
         }
@@ -121,11 +121,35 @@
 
 -(void)searchAction
 {
+    WeakSelf
     if ([self.searchBar isFirstResponder]) {
         [self.searchBar resignFirstResponder];
     }
     [self saveHistoryKey];
-    [self searchFromServer];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"搜索条件" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    }];
+    UIAlertAction *beginDateAction = [UIAlertAction actionWithTitle:@"开始日期" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf searchFromServer];
+    }];
+    UIAlertAction *endDateAction = [UIAlertAction actionWithTitle:@"开始日期" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf searchFromServer];
+    }];
+    UIAlertAction *billAction = [UIAlertAction actionWithTitle:@"单号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf searchFromServer];
+    }];
+    UIAlertAction *carAction = [UIAlertAction actionWithTitle:@"车牌号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf searchFromServer];
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:beginDateAction];
+    [alertController addAction:endDateAction];
+    [alertController addAction:billAction];
+    [alertController addAction:carAction];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
 }
 
 -(void)saveHistoryKey
