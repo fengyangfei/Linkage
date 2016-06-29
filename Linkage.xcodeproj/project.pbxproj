@@ -665,6 +665,7 @@
 		9A95FF3D1C89824F00C5F492 /* TRImagePickerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRImagePickerDelegate.m; sourceTree = "<group>"; };
 		9A95FF3E1C89824F00C5F492 /* UIViewController+TRImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TRImagePicker.h"; sourceTree = "<group>"; };
 		9A95FF3F1C89824F00C5F492 /* UIViewController+TRImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TRImagePicker.m"; sourceTree = "<group>"; };
+		9AAD81EE1D23480200E3ACD5 /* LinkageModel5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkageModel5.xcdatamodel; sourceTree = "<group>"; };
 		9ACEBC6E1C99492A0000ACBF /* CargoFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoFormCell.h; sourceTree = "<group>"; };
 		9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoFormCell.m; sourceTree = "<group>"; };
 		9ACEBC731C9950E90000ACBF /* CargoTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoTypeViewController.h; sourceTree = "<group>"; };
@@ -2534,12 +2535,13 @@
 		8B5DC66E1C79CB2C00D29292 /* LinkageModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				9AAD81EE1D23480200E3ACD5 /* LinkageModel5.xcdatamodel */,
 				9AF476D21D1B8BD700A905A0 /* LinkageModel4.xcdatamodel */,
 				8B7F36131D07127E00D51356 /* LinkageModel3.xcdatamodel */,
 				8B5DC6781C79CF1500D29292 /* LinkageModel2.xcdatamodel */,
 				8B5DC66F1C79CB2C00D29292 /* LinkageModel.xcdatamodel */,
 			);
-			currentVersion = 9AF476D21D1B8BD700A905A0 /* LinkageModel4.xcdatamodel */;
+			currentVersion = 9AAD81EE1D23480200E3ACD5 /* LinkageModel5.xcdatamodel */;
 			path = LinkageModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

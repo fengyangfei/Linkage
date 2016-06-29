@@ -41,12 +41,12 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
 
 -(void)update
 {
-    Message *message = self.rowDescriptor.value;
     [super update];
-    self.titleLable.text = message.title;
-    self.timeLable.text = [LinkUtil.dateFormatter stringFromDate:message.createTime];
-    self.detailLable.text = message.introduction;
+    Message *message = self.rowDescriptor.value;
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:message.icon] placeholderImage:nil];
+    self.titleLable.text = message.title;
+    self.detailLable.text = message.introduction;
+    self.timeLable.text = [LinkUtil.dateFormatter stringFromDate:message.createTime];
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
@@ -89,21 +89,20 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
     
     [self.contentView addSubview:self.titleLable];
     [self.titleLable makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(12);
-        make.top.equalTo(self.contentView.top).offset(5);
+        make.left.equalTo(self.iconView.right).offset(12);
+        make.top.equalTo(self.iconView.top);
+    }];
+    
+    [self.contentView addSubview:self.detailLable];
+    [self.detailLable makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.iconView.right).offset(12);
+        make.bottom.equalTo(self.iconView.bottom);
     }];
     
     [self.contentView addSubview:self.timeLable];
     [self.timeLable makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView.right).offset(-12);
-        make.top.equalTo(self.contentView.top).offset(5);
-    }];
-    
-    [self.contentView addSubview:self.detailLable];
-    [self.detailLable makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(12);
-        make.top.equalTo(self.titleLable.bottom).offset(5);
-        make.right.equalTo(self.contentView.right).offset(-12);
+        make.bottom.equalTo(self.iconView.bottom);
     }];
 }
 
@@ -119,32 +118,33 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
 {
     if (!_titleLable) {
         _titleLable = [UILabel new];
-        _titleLable.font = [UIFont boldSystemFontOfSize:12];
+        _titleLable.font = [UIFont boldSystemFontOfSize:16];
         _titleLable.textColor = IndexTitleFontColor;
     }
     return _titleLable;
-}
-
--(UILabel *)timeLable
-{
-    if (!_timeLable) {
-        _timeLable = [UILabel new];
-        _timeLable.font = [UIFont systemFontOfSize:12];
-        _timeLable.textAlignment = NSTextAlignmentRight;
-        _timeLable.textColor = IndexTitleFontColor;
-    }
-    return _timeLable;
 }
 
 -(UILabel *)detailLable
 {
     if (!_detailLable) {
         _detailLable = [UILabel new];
-        _detailLable.font = [UIFont systemFontOfSize:12];
+        _detailLable.font = [UIFont systemFontOfSize:14];
         _detailLable.textColor = [UIColor lightGrayColor];
         _detailLable.numberOfLines = 0;
         _detailLable.textColor = IndexTitleFontColor;
     }
     return _detailLable;
 }
+
+-(UILabel *)timeLable
+{
+    if (!_timeLable) {
+        _timeLable = [UILabel new];
+        _timeLable.font = [UIFont systemFontOfSize:14];
+        _timeLable.textAlignment = NSTextAlignmentRight;
+        _timeLable.textColor = IndexTitleFontColor;
+    }
+    return _timeLable;
+}
+
 @end
