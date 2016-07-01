@@ -252,7 +252,10 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     }]];
     
     WeakSelf
-    for (NSNumber *key in [LinkUtil taskStatus].allKeys) {
+    NSArray *sortKeys = [[LinkUtil taskStatus].allKeys sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2];
+    }];
+    for (NSNumber *key in sortKeys) {
         if ([model.status compare:key] == NSOrderedSame) {
             continue;
         }

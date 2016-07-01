@@ -154,7 +154,7 @@
         return;
     }
     
-    if([formValues[@"password"] isEqualToString:formValues[@"confirmPassword"]]){
+    if(![formValues[@"password"] isEqualToString:formValues[@"confirmPassword"]]){
         [SVProgressHUD showErrorWithStatus:@"两次填入密码不一致"];
         return;
     }
