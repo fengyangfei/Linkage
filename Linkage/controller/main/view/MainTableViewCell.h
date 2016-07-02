@@ -10,17 +10,20 @@
 #import "AXRatingView.h"
 
 extern NSString *const CompanyDescriporType;
+extern NSString *const CompanyInfoDescriporType;
 
 @interface MainTableViewCell : XLFormBaseCell
-
+@property (nonatomic, readonly) UIImageView *iconView;
+@property (nonatomic, readonly) UILabel *titleLabel;
 @end
 
 
 @interface CompanyTableCell : MainTableViewCell
-@property (nonatomic, readonly) UIImageView *iconView;
-@property (nonatomic, readonly) UILabel *titleLabel;
 @property (nonatomic, readonly) UILabel *subTitleLabel;
 @property (nonatomic, readonly) AXRatingView *ratingView;
 @property (nonatomic, readonly) UIButton *button;
 
+@end
+
+@interface CompanyInfoTableCell : MainTableViewCell
 @end

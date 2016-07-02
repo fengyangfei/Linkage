@@ -14,8 +14,11 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 NSString *const CompanyDescriporType = @"CompanyRowType";
+NSString *const CompanyInfoDescriporType = @"CompanyInfoRowType";
 
 @implementation MainTableViewCell
+@synthesize iconView = _iconView;
+@synthesize titleLabel = _titleLabel;
 
 -(void)configure
 {
@@ -28,11 +31,28 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
+#pragma mark - 属性
+-(UIImageView *)iconView
+{
+    if (!_iconView) {
+        _iconView = [UIImageView new];
+    }
+    return _iconView;
+}
+
+-(UILabel *)titleLabel
+{
+    if (!_titleLabel) {
+        _titleLabel = [UILabel new];
+        _titleLabel.textColor = IndexTitleFontColor;
+        _titleLabel.font = IndexTitleFont;
+    }
+    return _titleLabel;
+}
+
 @end
 
 @implementation CompanyTableCell
-@synthesize iconView = _iconView;
-@synthesize titleLabel = _titleLabel;
 @synthesize subTitleLabel = _subTitleLabel;
 @synthesize ratingView = _ratingView;
 @synthesize button = _button;
@@ -111,23 +131,6 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
 }
 
 #pragma mark - 属性
--(UIImageView *)iconView
-{
-    if (!_iconView) {
-        _iconView = [UIImageView new];
-    }
-    return _iconView;
-}
-
--(UILabel *)titleLabel
-{
-    if (!_titleLabel) {
-        _titleLabel = [UILabel new];
-        _titleLabel.textColor = IndexTitleFontColor;
-        _titleLabel.font = IndexTitleFont;
-    }
-    return _titleLabel;
-}
 
 -(UILabel *)subTitleLabel
 {
@@ -164,4 +167,53 @@ NSString *const CompanyDescriporType = @"CompanyRowType";
     }
     return _button;
 }
+@end
+
+@implementation CompanyInfoTableCell
+
++(void)load
+{
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:CompanyInfoDescriporType];
+}
+
+-(void)update
+{
+    [super update];
+    Favorite *favorite = self.rowDescriptor.value;
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:favorite.logo] placeholderImage:[UIImage imageNamed:@"building_pic"]];
+    self.titleLabel.text = favorite.companyName;
+}
+
++(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    return 84.0;
+}
+
+-(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
+{
+    CompanyInfoViewController *infoController = [[CompanyInfoViewController alloc]init];
+    infoController.rowDescriptor = self.rowDescriptor;
+    infoController.hidesBottomBarWhenPushed = YES;
+    [controller.navigationController pushViewController:infoController animated:YES];
+}
+
+
+-(void)setupUI
+{
+    [super setupUI];
+    [self.contentView addSubview:self.iconView];
+    [self.iconView makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(12);
+        make.centerY.equalTo(self.contentView.centerY);
+        make.width.equalTo(@(60));
+        make.height.equalTo(@(60));
+    }];
+    
+    [self.contentView addSubview:self.titleLabel];
+    [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.iconView.right).offset(12);
+        make.centerY.equalTo(self.contentView.centerY);
+    }];
+}
+
 @end

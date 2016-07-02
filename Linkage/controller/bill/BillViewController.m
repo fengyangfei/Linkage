@@ -39,9 +39,14 @@
 {
     WeakSelf
     [super viewDidLoad];
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
     UIBarButtonItem *searchItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction:)];
-    self.navigationItem.rightBarButtonItems = @[addItem, searchItem];
+    if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
+        //只有厂商才能下订单
+        UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
+        self.navigationItem.rightBarButtonItems = @[addItem, searchItem];
+    }else{
+        self.navigationItem.rightBarButtonItem = searchItem;
+    }
     self.leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         NSDictionary *parameter = @{
                                     @"type":@(-1),

@@ -42,7 +42,13 @@
     [form addFormSection:section];
     
     for (Company *company in [LoginUser shareInstance].companies) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:CompanyDescriporType];
+        NSString *rowType = CompanyDescriporType;
+        if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
+            rowType = CompanyDescriporType;
+        }else if([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin) {
+            rowType = CompanyInfoDescriporType;
+        }
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowType];
         row.value = company;
         [section addFormRow:row];
     }
