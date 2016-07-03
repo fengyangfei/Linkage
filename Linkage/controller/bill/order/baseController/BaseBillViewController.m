@@ -97,7 +97,7 @@
         _segmentedControl.selectionIndicatorColor = ButtonColor;
         _segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
         _segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
-        _segmentedControl.selectionIndicatorHeight = 3.f;
+        _segmentedControl.selectionIndicatorHeight = 2.f;
         //_segmentedControl.selectionIndicatorEdgeInsets = UIEdgeInsetsMake(0, 0, -2, 0);
         [_segmentedControl setIndexChangeBlock:^(NSInteger index) {
             if (index == 0) {

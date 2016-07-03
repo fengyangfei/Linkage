@@ -208,7 +208,6 @@
     }
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否转关"];
-    row.value = @YES;
     if (order && order.isTransferPort) {
         row.value = @"是";
     }else{
@@ -274,6 +273,7 @@
 }
 
 #pragma mark - 事件处理
+//跳转到评论
 -(void)gotoCommentViewController
 {
     CommentViewController *viewController = [[CommentViewController alloc]init];
