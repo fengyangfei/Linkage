@@ -24,6 +24,7 @@
 #import "ImageInfoCell.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
 @interface BillDetailViewController()<XLFormRowDescriptorViewController>
@@ -58,10 +59,11 @@
 {
     WeakSelf
     [super viewDidLoad];
+    self.title = @"订单详情";
     Order *order = self.rowDescriptor.value;
     [self setupData:order];
+    [self bindViewModel:order];
     if (order.orderId) {
-        self.title = @"订单详情";
         [SVProgressHUD show];
         [OrderUtil queryModelFromServer:order completion:^(Order *result) {
             [OrderUtil syncToDataBase:result completion:nil];
@@ -69,12 +71,25 @@
             [SVProgressHUD dismiss];
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         }];
-        
-        if(order.status == OrderStatusCompletion){
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
-        }
     }
-    if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin && (order.status == OrderStatusPending || order.status == OrderStatusExecuting)) {
+}
+
+-(void)bindViewModel:(Order *)order
+{
+    @weakify(self)
+    RACSignal *signal = RACObserve(order, status);
+    [signal subscribeNext:^(NSNumber *x) {
+        @strongify(self)
+        [self updateUIWhenOrderState:x];
+    }];
+}
+
+-(void)updateUIWhenOrderState:(NSNumber *)x
+{
+    if([x integerValue] == OrderStatusCompletion){
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
+    }
+    if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin && ([x integerValue] == OrderStatusPending || [x integerValue] == OrderStatusExecuting)) {
         [self.view addSubview:self.toolBar];
         [self.toolBar makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(self.view.bottom);
@@ -82,10 +97,14 @@
             make.right.equalTo(self.view.right);
         }];
         
-        if (order.status == OrderStatusPending) {
+        if ([x integerValue] == OrderStatusPending) {
             [self.toolBar setItems:@[self.fixedItem, self.acceptItem,self.flexibleItem, self.rejectItem,self.fixedItem]];
-        }else if (order.status == OrderStatusExecuting){
+        }else if ([x integerValue] == OrderStatusExecuting){
             [self.toolBar setItems:@[self.flexibleItem, self.confirmItem,self.flexibleItem]];
+        }
+    }else{
+        if (_toolBar) {
+            [_toolBar removeFromSuperview];
         }
     }
 }
