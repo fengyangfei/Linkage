@@ -57,12 +57,18 @@
 
 -(void)viewDidLoad
 {
-    WeakSelf
     [super viewDidLoad];
     self.title = @"订单详情";
     Order *order = self.rowDescriptor.value;
     [self setupData:order];
+    [self loadDataFromServer:order];
     [self bindViewModel:order];
+}
+
+//从服务端加载详情
+-(void)loadDataFromServer:(Order *)order
+{
+    WeakSelf
     if (order.orderId) {
         [SVProgressHUD show];
         [OrderUtil queryModelFromServer:order completion:^(Order *result) {
@@ -84,6 +90,7 @@
     }];
 }
 
+//订单状态改变UI更新
 -(void)updateUIWhenOrderState:(NSNumber *)x
 {
     if([x integerValue] == OrderStatusCompletion){
@@ -109,17 +116,21 @@
     }
 }
 
+//设置表格的数据源
 -(void)setupData:(Order *)order
 {
     if (_detailDS) {
         [_detailDS setForm:[self createDetailForm:order]];
     }
     if (_tasksDataSource) {
+        //承运商可分配任务，厂商只能查看任务
         if([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin){
             if (order.tasks && order.tasks.count > 0) {
                 [_tasksDataSource setForm:[self createInfoTasksForm:order]];
             }else{
-                [_tasksDataSource setForm:[self createEditTasksForm:order]];
+                if(order.status != OrderStatusCompletion){
+                    [_tasksDataSource setForm:[self createEditTasksForm:order]];
+                }
             }
         }else{
             [_tasksDataSource setForm:[self createInfoTasksForm:order]];
@@ -282,8 +293,14 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
 
+    //承运商在订单未完成的前提下可修改任务状态
+    BOOL allowEdit = NO;
+    if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin && order.status != OrderStatusCompletion) {
+        allowEdit = YES;
+    }
+    NSString *rowType = allowEdit? TaskEditDescriporType:TaskInfoDescriporType;
     for (Task *task in order.tasks) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:TaskEditDescriporType];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowType];
         RowUI
         row.value = task;
         [section addFormRow:row];
