@@ -15,6 +15,8 @@ extern NSString *const TaskAddDescriporType;
 
 
 @interface TaskCell : XLFormBaseCell<FormDescriptorCell>
+@property (nonatomic, readonly) UILabel *textLabel;
+@property (nonatomic, readonly) UILabel *detailLabel;
 @end
 
 @interface TaskAddCell : TaskCell

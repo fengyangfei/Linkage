@@ -18,24 +18,76 @@ NSString *const TaskInfoDescriporType = @"TaskInfoRowType";
 NSString *const TaskEditDescriporType = @"TaskEditRowType";
 NSString *const TaskAddDescriporType = @"TaskAddRowType";
 
-
-@interface TaskCell()<UITextFieldDelegate>
-@property (nonatomic, readonly) UILabel *textLabel;
-@property (nonatomic, readonly) UILabel *detailLabel;
-@property (nonatomic, readonly) UITextField *textField;
-@end
-
 #pragma mark - 任务基类
 @implementation TaskCell
 @synthesize textLabel = _textLabel;
 @synthesize detailLabel = _detailLabel;
-@synthesize textField = _textField;
-
 -(void)configure
 {
     [super configure];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self setupUI];
+}
+
+-(void)setupUI
+{
+    //子类实现
+}
+
++(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+{
+    return 64;
+}
+
+-(UIViewController *)formViewController
+{
+    id responder = self;
+    while (responder){
+        if ([responder isKindOfClass:[UIViewController class]]){
+            return responder;
+        }
+        responder = [responder nextResponder];
+    }
+    return nil;
+}
+
+// 属性
+-(UILabel *)textLabel
+{
+    if (!_textLabel) {
+        _textLabel = [UILabel new];
+        _textLabel.textColor = IndexTitleFontColor;
+    }
+    return _textLabel;
+}
+
+-(UILabel *)detailLabel
+{
+    if (!_detailLabel) {
+        _detailLabel = [UILabel new];
+        _detailLabel.textColor = [UIColor grayColor];
+    }
+    return _detailLabel;
+}
+
+@end
+
+#pragma mark - 添加Cell
+@interface TaskAddCell()<UITextFieldDelegate>
+@property (nonatomic, readonly) UITextField *textField;
+@end
+
+@implementation TaskAddCell
+@synthesize textField = _textField;
+
++(void)load
+{
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:TaskAddDescriporType];
+}
+
+-(void)configure
+{
+    [super configure];
     [self.textField setEnabled:!self.rowDescriptor.disabled];
     [self.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
@@ -58,9 +110,26 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     [self.textField becomeFirstResponder];
 }
 
-+(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
+#pragma mark - updateUI
+-(void)setupUI
 {
-    return 64;
+    [self.contentView addSubview:self.textLabel];
+    [self.textLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.top.equalTo(self.contentView.top).offset(10);
+    }];
+    
+    [self.contentView addSubview:self.detailLabel];
+    [self.detailLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.textLabel.right).offset(18);
+        make.top.equalTo(self.contentView.top).offset(10);
+    }];
+    
+    [self.contentView addSubview:self.textField];
+    [self.textField makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.bottom.equalTo(self.contentView.bottom).offset(-10);
+    }];
 }
 
 -(UIView *)inputAccessoryView
@@ -91,59 +160,6 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     }
 }
 
--(UIViewController *)formViewController
-{
-    id responder = self;
-    while (responder){
-        if ([responder isKindOfClass:[UIViewController class]]){
-            return responder;
-        }
-        responder = [responder nextResponder];
-    }
-    return nil;
-}
-
-#pragma mark - updateUI
--(void)setupUI
-{
-    [self.contentView addSubview:self.textLabel];
-    [self.textLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(16);
-        make.top.equalTo(self.contentView.top).offset(10);
-    }];
-    
-    [self.contentView addSubview:self.detailLabel];
-    [self.detailLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.textLabel.right).offset(18);
-        make.top.equalTo(self.contentView.top).offset(10);
-    }];
-    
-    [self.contentView addSubview:self.textField];
-    [self.textField makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(16);
-        make.bottom.equalTo(self.contentView.bottom).offset(-10);
-    }];
-}
-
-// 属性
--(UILabel *)textLabel
-{
-    if (!_textLabel) {
-        _textLabel = [UILabel new];
-        _textLabel.textColor = IndexTitleFontColor;
-    }
-    return _textLabel;
-}
-
--(UILabel *)detailLabel
-{
-    if (!_detailLabel) {
-        _detailLabel = [UILabel new];
-        _detailLabel.textColor = [UIColor grayColor];
-    }
-    return _detailLabel;
-}
-
 -(UITextField *)textField
 {
     if (!_textField) {
@@ -155,14 +171,6 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
         _textField.returnKeyType = UIReturnKeyDone;
     }
     return _textField;
-}
-@end
-
-#pragma mark - 添加Cell
-@implementation TaskAddCell
-+(void)load
-{
-    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:TaskAddDescriporType];
 }
 @end
 
@@ -187,11 +195,6 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self setupUI];
-}
-
-+(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
-{
-    return 64;
 }
 
 -(void)setupUI
@@ -322,11 +325,16 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 
 #pragma mark - 查看cell
 @interface TaskInfoCell()
+@property (nonatomic, readonly) UILabel *subTextLabel;
+@property (nonatomic, readonly) UILabel *subDetailLabel;
 @property (nonatomic, readonly) UILabel *statusLabel;
 @end
 
 @implementation TaskInfoCell
 @synthesize statusLabel = _statusLabel;
+@synthesize subTextLabel = _subTextLabel;
+@synthesize subDetailLabel = _subDetailLabel;
+
 +(void)load
 {
     [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:TaskInfoDescriporType];
@@ -335,18 +343,41 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 -(void)configure
 {
     [super configure];
-    [self.textField setEnabled:NO];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 -(void)setupUI
 {
-    [super setupUI];
+    [self.contentView addSubview:self.textLabel];
+    [self.textLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.top.equalTo(self.contentView.top).offset(10);
+    }];
+    
+    [self.contentView addSubview:self.subTextLabel];
+    [self.subTextLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.textLabel.right).offset(18);
+        make.top.equalTo(self.contentView.top).offset(10);
+    }];
+    
+    [self.contentView addSubview:self.detailLabel];
+    [self.detailLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.bottom.equalTo(self.contentView.bottom).offset(-10);
+    }];
+    
+    [self.contentView addSubview:self.subDetailLabel];
+    [self.subDetailLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.detailLabel.right).offset(18);
+        make.bottom.equalTo(self.contentView.bottom).offset(-10);
+    }];
+    
     [self.contentView addSubview:self.statusLabel];
     [self.statusLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView.top);
-        make.bottom.equalTo(self.contentView.bottom);
-        make.right.equalTo(self.contentView.right);
+        make.right.equalTo(self.contentView.right).offset(-12);
+        make.centerY.equalTo(self.contentView.centerY);
         make.width.equalTo(80);
+        make.height.equalTo(30);
     }];
 }
 
@@ -354,13 +385,17 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 {
     Task *model = self.rowDescriptor.value;
     if (model) {
-        self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机：" font:[UIFont systemFontOfSize:16]];
-        self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌：" font:[UIFont systemFontOfSize:16]];
-        self.textField.attributedText = [model.cargoNo ?:@"" attributedStringWithTitle:@"货柜号：" font:[UIFont systemFontOfSize:16]];
-        self.statusLabel.text = [[LinkUtil taskStatus] objectForKey:@([model.status intValue])];
+        NSString *cargoType = [LinkUtil.cargoTypes objectForKey:model.cargoType];
+        NSString *title = [[LinkUtil taskStatus] objectForKey:model.status];
+        self.textLabel.text = cargoType;
+        self.subTextLabel.text = model.cargoNo;
+        self.detailLabel.text = [NSString stringWithFormat:@"%@%@",@"司机：", model.driverName];
+        self.subDetailLabel.text = [NSString stringWithFormat:@"%@%@",@"车牌：", model.driverLicense];;
+        self.statusLabel.text = title;
     }
 }
 
+//属性
 -(UILabel *)statusLabel
 {
     if (!_statusLabel) {
@@ -371,5 +406,25 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
         _statusLabel.font = [UIFont systemFontOfSize:14];
     }
     return _statusLabel;
+}
+
+-(UILabel *)subTextLabel
+{
+    if (!_subTextLabel) {
+        _subTextLabel = [UILabel new];
+        _subTextLabel.textColor = IndexTitleFontColor;
+        _subTextLabel.font = [UIFont systemFontOfSize:16];
+    }
+    return _subTextLabel;
+}
+
+-(UILabel *)subDetailLabel
+{
+    if (!_subDetailLabel) {
+        _subDetailLabel = [UILabel new];
+        _subDetailLabel.textColor = [UIColor grayColor];
+        _subDetailLabel.font = [UIFont systemFontOfSize:16];
+    }
+    return _subDetailLabel;
 }
 @end
