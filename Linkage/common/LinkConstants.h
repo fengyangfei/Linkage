@@ -34,6 +34,7 @@
 #define IndexButtonColor HEXCOLOR(0x2aa1ff)
 #define IndexTitleFont [UIFont systemFontOfSize:16]
 #define IndexDetailFont [UIFont systemFontOfSize:14]
+#define BobcatFont(s) [UIFont fontWithName:@"bobcat" size:s]
 
 //订单UI
 #define OrderTitleFontColor HEXCOLOR(0x676767)
