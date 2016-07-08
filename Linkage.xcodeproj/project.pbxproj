@@ -239,6 +239,7 @@
 		9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89D31CA518BA00C5EB90 /* ImageCacheManager.m */; };
 		9AEF89D71CA8B02900C5EB90 /* XLFormDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89D61CA8B02900C5EB90 /* XLFormDataSource.m */; };
 		9AF476D11D1B75E300A905A0 /* XLFormValidator+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF476D01D1B75E300A905A0 /* XLFormValidator+Regex.m */; };
+		9AFBE19E1D2F55DC004C0CC3 /* bobcat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AFBE19D1D2F55DC004C0CC3 /* bobcat.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -697,6 +698,7 @@
 		9AF476CF1D1B75E300A905A0 /* XLFormValidator+Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XLFormValidator+Regex.h"; sourceTree = "<group>"; };
 		9AF476D01D1B75E300A905A0 /* XLFormValidator+Regex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XLFormValidator+Regex.m"; sourceTree = "<group>"; };
 		9AF476D21D1B8BD700A905A0 /* LinkageModel4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkageModel4.xcdatamodel; sourceTree = "<group>"; };
+		9AFBE19D1D2F55DC004C0CC3 /* bobcat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bobcat.ttf; sourceTree = "<group>"; };
 		B30457667634636F561BC865 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -947,6 +949,7 @@
 		8B5DC5651C7992E900D29292 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9AFBE19D1D2F55DC004C0CC3 /* bobcat.ttf */,
 				8B4221171CA428BF00F58D77 /* Localizable.strings */,
 				8B5DC6541C79B8FF00D29292 /* Linkage-Prefix.pch */,
 				8B5DC5661C7992E900D29292 /* main.m */,
@@ -2095,6 +2098,7 @@
 				9A23A3171C7E8E7500FB5EB6 /* tutorial_background_04@2x.jpg in Resources */,
 				8B5DC6421C79B8A700D29292 /* UMSCommentInputController.xib in Resources */,
 				8B5DC6481C79B8A700D29292 /* UMSShareListController.xib in Resources */,
+				9AFBE19E1D2F55DC004C0CC3 /* bobcat.ttf in Resources */,
 				9AEF89BD1CA1274600C5EB90 /* MJPhotoBrowser.bundle in Resources */,
 				8B5DC6451C79B8A700D29292 /* UMShareEditViewControlleriPad.xib in Resources */,
 				9A23A30C1C7E8E7500FB5EB6 /* background-gradient.png in Resources */,
