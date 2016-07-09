@@ -13,6 +13,7 @@ extern NSString *const CompanyLogoDescriporType;
 
 @interface AvatarFormCell : XLFormBaseCell
 @property (nonatomic,readonly) UIImageView *imageView;
+@property (nonatomic,readonly) UILabel *titleLabel;
 @end
 
 @interface CompanyLogoFormCell : AvatarFormCell

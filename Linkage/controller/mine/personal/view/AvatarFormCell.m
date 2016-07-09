@@ -22,6 +22,7 @@ NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
 #pragma mark - 个人头像
 @implementation AvatarFormCell
 @synthesize imageView = _imageView;
+@synthesize titleLabel = _titleLabel;
 
 +(void)load
 {
@@ -40,7 +41,7 @@ NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
 -(void)update
 {
     [super update];
-    self.textLabel.text = self.rowDescriptor.title;
+    self.titleLabel.text = self.rowDescriptor.title;
     if (self.rowDescriptor.value) {
         [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.rowDescriptor.value] placeholderImage:[UIImage imageNamed:@"person_pic"]];
     }
@@ -82,17 +83,19 @@ NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
     return _imageView;
 }
 
--(UILabel *)textLabel
+-(UILabel *)titleLabel
 {
-    UILabel *label = [super textLabel];
-    label.textColor = IndexTitleFontColor;
-    return label;
+    if (!_titleLabel) {
+        _titleLabel = [UILabel new];
+        _titleLabel.textColor = IndexTitleFontColor;
+    }
+    return _titleLabel;
 }
 
 -(void)configureUI
 {
     [self.contentView addSubview:self.imageView];
-    [self.contentView addSubview:self.textLabel];
+    [self.contentView addSubview:self.titleLabel];
     
     [self.imageView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView.top).offset(11);
@@ -101,7 +104,7 @@ NSString *const CompanyLogoDescriporType = @"CompanyLogoRowType";
         make.width.equalTo(44);
     }];
     
-    [self.textLabel makeConstraints:^(MASConstraintMaker *make) {
+    [self.titleLabel updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.left).offset(18);
         make.right.equalTo(self.imageView.left);
         make.centerY.equalTo(self.contentView.centerY);

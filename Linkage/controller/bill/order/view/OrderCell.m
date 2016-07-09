@@ -111,22 +111,23 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
 #pragma mark - UI
 -(void)setupUI
 {
+    [self.contentView addSubview:self.statusLable];
+    [self.statusLable makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView.right).offset(-12);
+        make.top.equalTo(self.contentView.top).offset(12);
+    }];
+    
     [self.contentView addSubview:self.billNumLable];
     [self.billNumLable makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.left).offset(16);
         make.top.equalTo(self.contentView.top).offset(12);
+        make.right.equalTo(self.statusLable.left);
     }];
     
     [self.contentView addSubview:self.ratingLable];
     [self.ratingLable makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.left).offset(16);
         make.bottom.equalTo(self.contentView.bottom).offset(-12);
-    }];
-    
-    [self.contentView addSubview:self.statusLable];
-    [self.statusLable makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView.right).offset(-12);
-        make.top.equalTo(self.contentView.top).offset(12);
     }];
     
     [self.contentView addSubview:self.timeLable];
@@ -140,6 +141,7 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
 {
     if (!_billNumLable) {
         _billNumLable = [UILabel new];
+        _billNumLable.lineBreakMode = NSLineBreakByTruncatingMiddle;
     }
     return _billNumLable;
 }
