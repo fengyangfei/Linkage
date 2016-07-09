@@ -63,6 +63,8 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
                 [controller.navigationController pushViewController:controllerToPresent animated:YES];
             }
         }
+    }else if (self.rowDescriptor.action.formSelector){
+        [controller performFormSelector:self.rowDescriptor.action.formSelector withObject:self.rowDescriptor];
     }
 }
 

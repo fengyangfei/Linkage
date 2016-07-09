@@ -57,6 +57,14 @@
 			<key>className</key>
 			<string>StaffViewController</string>
 		</dict>
+        <dict>
+            <key>title</key>
+            <string>邀请员工</string>
+            <key>iconName</key>
+            <string>setting_invert</string>
+            <key>selectorName</key>
+            <string>inviteAction:</string>
+        </dict>
 	</array>
     <array>
         <dict>

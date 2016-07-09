@@ -18,6 +18,7 @@ typedef NS_ENUM(NSUInteger, MenuItemType) {
 @property (nonatomic, copy) NSString *iconName;
 @property (nonatomic, strong) UIImage *icon;
 @property (nonatomic, copy) NSString *className;
+@property (nonatomic, copy) NSString *selectorName;
 @property (nonatomic, strong) Class viewControllerClass;
 @property (nonatomic, assign) MenuItemType type;
 @property (nonatomic, copy) NSString *entityName;

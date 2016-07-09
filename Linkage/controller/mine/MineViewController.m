@@ -10,6 +10,11 @@
 #import "MenuCell.h"
 #import "MenuItem.h"
 #import "SettingViewController.h"
+#import "LoginUser.h"
+#import "YGRestClient.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+#import "WXApiManager.h"
+#import "WXApiRequestHandler.h"
 
 @interface MineViewController ()
 @end
@@ -41,7 +46,11 @@
             NSString *rowTypeIndentifier = menu.type == MenuItemTypeHeader ? FormRowDescriptorTypeMineHeader: FormRowDescriptorTypeMine;
             row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowTypeIndentifier];
             row.value = menu;
-            row.action.viewControllerClass = menu.viewControllerClass;
+            if (menu.viewControllerClass) {
+                row.action.viewControllerClass = menu.viewControllerClass;
+            }else if (menu.selectorName){
+                row.action.formSelector = NSSelectorFromString(menu.selectorName);
+            }
             [section addFormRow:row];
         }
     }
@@ -53,5 +62,19 @@
     self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;
 }
+
+-(void)inviteAction:(XLFormRowDescriptor *)sender
+{
+    [self deselectFormRow:sender];
+    [SVProgressHUD show];
+    [[YGRestClient sharedInstance] postForObjectWithUrl:GenInvitecodeUrl form:[LoginUser shareInstance].baseHttpParameter success:^(id responseObject) {
+        [SVProgressHUD dismiss];
+        NSString *shareUrl = responseObject[@"URL"];
+        [WXApiRequestHandler sendLinkURL:shareUrl TagName:@"邀请员工" Title:@"邀请员工" Description:@"邀请员工加入" ThumbImage:[UIImage imageNamed:@"logo"] InScene:WXSceneSession];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 
 @end
