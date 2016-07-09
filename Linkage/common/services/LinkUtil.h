@@ -20,6 +20,8 @@
 
 + (NSDictionary *)orderStatus;
 
++ (NSDictionary *)ports;
+
 + (NSDictionary *)addressTypes;
 
 + (NSArray *)userTypeOptions;

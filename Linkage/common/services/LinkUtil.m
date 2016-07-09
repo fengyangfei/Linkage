@@ -97,6 +97,23 @@
     return _orderStatus;
 }
 
++ (NSDictionary *)ports
+{
+    static NSDictionary * _ports;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _ports = @{
+                          @1:@"洪湾",
+                          @2:@"西域",
+                          @3:@"湾仔",
+                          @4:@"高栏",
+                          @5:@"斗门",
+                          @6:@"其他"
+                };
+    });
+    return _ports;
+}
+
 + (NSDictionary *)addressTypes
 {
     static NSDictionary * _addressTypes;
@@ -104,8 +121,7 @@
     dispatch_once(&onceToken, ^{
         _addressTypes = @{
                          @(AddressTypeTake):@"装货地址",
-                         @(AddressTypeDelivery):@"送货地址",
-                         @(AddressTypePort):@"提货港口"
+                         @(AddressTypeDelivery):@"送货地址"
                          };
     });
     return _addressTypes;

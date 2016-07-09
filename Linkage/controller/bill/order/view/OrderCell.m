@@ -180,6 +180,7 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
         _statusLable = [UILabel new];
         _statusLable.textColor = HeaderColor;
         _statusLable.font = OrderDetailFont;
+        _statusLable.textAlignment = NSTextAlignmentRight;
     }
     return _statusLable;
 }
