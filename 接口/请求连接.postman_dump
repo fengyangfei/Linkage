@@ -1,0 +1,126 @@
+{
+	"version": 1,
+	"collections": [
+		{
+			"id": "2092f03e-3799-fbd6-c93f-f85a8a090a31",
+			"name": "物流拖车宝",
+			"description": "",
+			"order": [
+				"0bf4062e-3f0e-edb7-3ffa-1ad203d63155",
+				"5a04cd52-bdff-960e-8249-1aa6fb2cfc3c"
+			],
+			"folders": [],
+			"timestamp": 1468054237025,
+			"synced": false,
+			"remote_id": 0,
+			"owner": 0,
+			"sharedWithTeam": false,
+			"subscribed": false,
+			"remoteLink": "",
+			"public": false,
+			"createdAt": 1468054237025,
+			"updatedAt": 1468054988907,
+			"write": true,
+			"requests": [
+				{
+					"id": "0bf4062e-3f0e-edb7-3ffa-1ad203d63155",
+					"headers": "",
+					"url": "http://120.25.82.122:8000/api/order/listbystatus",
+					"pathVariables": {},
+					"preRequestScript": "",
+					"method": "POST",
+					"collectionId": "2092f03e-3799-fbd6-c93f-f85a8a090a31",
+					"data": [
+						{
+							"key": "cid",
+							"value": "1000065",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "pagination",
+							"value": "0",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "size",
+							"value": "1000",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "status",
+							"value": "1",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJtb2JpbGUiLCJzdWIiOiIxMDAwMDY1IiwiaWF0IjoxNDY3NDcyMjQ1LCJleHAiOjI5MzUwMDQ0OTB9.E3D44955bObxtTruR0WPXVpwoG0HjoPAdBRQwOyF-28",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "type",
+							"value": "-1",
+							"type": "text",
+							"enabled": true
+						}
+					],
+					"dataMode": "urlencoded",
+					"name": "未完成订单接口",
+					"description": "",
+					"descriptionFormat": "html",
+					"time": 1468054864817,
+					"version": 2,
+					"responses": [],
+					"tests": "tests[\"response code is 200\"] = responseCode.code === 200;\ntests[\"response is sent in chunks\"] = (postman.getResponseHeader('Transfer-Encoding') === 'chunked')\n",
+					"currentHelper": "normal",
+					"helperAttributes": {}
+				},
+				{
+					"id": "5a04cd52-bdff-960e-8249-1aa6fb2cfc3c",
+					"headers": "",
+					"url": "http://120.25.82.122:8000/api/code/inviteurl",
+					"preRequestScript": "",
+					"pathVariables": {},
+					"method": "POST",
+					"data": [
+						{
+							"key": "cid",
+							"value": "1000065",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJtb2JpbGUiLCJzdWIiOiIxMDAwMDY1IiwiaWF0IjoxNDY3NDcyMjQ1LCJleHAiOjI5MzUwMDQ0OTB9.E3D44955bObxtTruR0WPXVpwoG0HjoPAdBRQwOyF-28",
+							"type": "text",
+							"enabled": true
+						}
+					],
+					"dataMode": "urlencoded",
+					"version": 2,
+					"tests": "tests[\"response code is 200\"] = responseCode.code === 200;\ntests[\"response is sent in chunks\"] = (postman.getResponseHeader('Transfer-Encoding') === 'chunked')\n",
+					"currentHelper": "normal",
+					"helperAttributes": {},
+					"time": 1468055057501,
+					"name": "生成邀请链接",
+					"description": "",
+					"collectionId": "2092f03e-3799-fbd6-c93f-f85a8a090a31",
+					"responses": []
+				}
+			]
+		}
+	],
+	"environments": [],
+	"headerPresets": [],
+	"globals": []
+}
