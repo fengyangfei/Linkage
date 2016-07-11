@@ -229,7 +229,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address" rowType:XLFormRowDescriptorTypeSelectorPush title:@"提货港口"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address_option" rowType:XLFormRowDescriptorTypeSelectorPush title:@"提货港口"];
     row.noValueDisplayText = @"请选择提货港口";
     row.required = YES;
     row.selectorOptions = [LinkUtil portOptions];
@@ -334,7 +334,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     row.value = [NSDate date];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"port" rowType:XLFormRowDescriptorTypeSelectorPush title:@"出口港口"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"port_option" rowType:XLFormRowDescriptorTypeSelectorPush title:@"出口港口"];
     row.noValueDisplayText = @"请选择出口港口";
     row.required = YES;
     row.selectorOptions = [LinkUtil portOptions];

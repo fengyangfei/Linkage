@@ -48,6 +48,9 @@
         }
         if ([order isKindOfClass:[ExportOrder class]]) {
             ((ExportOrder *)order).soImages = formValues[@"soImages"];
+            ((ExportOrder *)order).port = [formValues[@"port_option"] formValue];
+        }else if ([order isKindOfClass:[ImportOrder class]]) {
+            order.takeAddress = [formValues[@"take_address_option"] formValue];
         }
     }else{
         NSLog(@"表单转换成对象失败 - %@",error);
