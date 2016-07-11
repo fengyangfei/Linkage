@@ -130,7 +130,7 @@
             if (order.tasks && order.tasks.count > 0) {
                 [_tasksDataSource setForm:[self createInfoTasksForm:order]];
             }else{
-                if(order.status != OrderStatusCompletion){
+                if(order.status != OrderStatusCompletion && order.status != OrderStatusDenied){
                     [_tasksDataSource setForm:[self createEditTasksForm:order]];
                 }
             }
