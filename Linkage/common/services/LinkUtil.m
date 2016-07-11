@@ -129,14 +129,14 @@
 
 + (NSArray *)userTypeOptions
 {
-    static NSArray * _options;
+    static NSArray * _userTypeOptions;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         XLFormOptionsObject *op1 = [XLFormOptionsObject formOptionsObjectWithValue:@0 displayText:[self.userTypes objectForKey:@0]];
         XLFormOptionsObject *op2 = [XLFormOptionsObject formOptionsObjectWithValue:@2 displayText:[self.userTypes objectForKey:@2]];
-        _options = @[op1, op2];
+        _userTypeOptions = @[op1, op2];
     });
-    return _options;
+    return _userTypeOptions;
 }
 
 + (NSArray *)addressTypeOptions
@@ -151,6 +151,25 @@
         _addressTypeOptions = [array copy];
     });
     return _addressTypeOptions;
+}
+
++ (NSArray *)portOptions
+{
+    static NSArray * _portOptions;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSMutableArray *array = [NSMutableArray array];
+        NSArray *sortKeys = [[self.ports allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2)
+        {
+            return [obj1 compare:obj2];
+        }];
+        for (NSNumber *key in sortKeys) {
+            NSString *value = [self.ports objectForKey:key];
+            [array addObject:[XLFormOptionsObject formOptionsObjectWithValue:value displayText:value]];
+        }
+        _portOptions = [array copy];
+    });
+    return _portOptions;
 }
 
 //上传到服务器

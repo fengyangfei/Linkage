@@ -192,8 +192,6 @@ row.cellStyle = UITableViewCellStyleValue1;
         type = AddressTypeTake;
     }else if ([row.tag isEqualToString:@"delivery_address"]){
         type = AddressTypeDelivery;
-    }else if ([row.tag isEqualToString:@"port"]){
-        type = AddressTypePort;
     }
     AddressViewController *controller = [[AddressViewController alloc]initWithControllerType:ControllerTypeQuery addressType:type];
     controller.rowDescriptor = row;
@@ -231,12 +229,10 @@ row.cellStyle = UITableViewCellStyleValue1;
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address" rowType:XLFormRowDescriptorTypeButton title:@"提货港口"];
-    RowUI
-    RowAccessoryUI
-    RowPlaceHolderUI(@"请选择提货港口")
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address" rowType:XLFormRowDescriptorTypeSelectorPush title:@"提货港口"];
+    row.noValueDisplayText = @"请选择提货港口";
     row.required = YES;
-    row.action.formSelector = @selector(addAddressRow:);
+    row.selectorOptions = [LinkUtil portOptions];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"提货时间"];
@@ -338,12 +334,10 @@ row.cellStyle = UITableViewCellStyleValue1;
     row.value = [NSDate date];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"port" rowType:XLFormRowDescriptorTypeButton title:@"提货港口"];
-    RowUI
-    RowAccessoryUI
-    RowPlaceHolderUI(@"请选择提货港口")
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"port" rowType:XLFormRowDescriptorTypeSelectorPush title:@"出口港口"];
+    row.noValueDisplayText = @"请选择出口港口";
     row.required = YES;
-    row.action.formSelector = @selector(addAddressRow:);
+    row.selectorOptions = [LinkUtil portOptions];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_in" rowType:XLFormRowDescriptorTypeDate title:@"截关日期"];

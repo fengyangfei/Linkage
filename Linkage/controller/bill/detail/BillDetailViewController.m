@@ -114,6 +114,8 @@
             [_toolBar removeFromSuperview];
         }
     }
+    Order *order = self.rowDescriptor.value;
+    [self loadDataFromServer:order];
 }
 
 //设置表格的数据源
@@ -362,37 +364,43 @@
     }
 }
 
+//接单
 -(void)acceptAction
 {
     Order *order = (Order *)self.rowDescriptor.value;
+    __weak Order *weakOrder = order;
     [OrderUtil acceptOrder:order success:^(id responseData) {
         [SVProgressHUD showSuccessWithStatus:@"接单成功"];
-        order.status = OrderStatusExecuting;
-        [OrderUtil syncToDataBase:order completion:nil];
+        weakOrder.status = OrderStatusExecuting;
+        [OrderUtil syncToDataBase:weakOrder completion:nil];
     } failure:^(NSError *error) {
         
     }];
 }
 
+//结单
 -(void)confirmAction
 {
     Order *order = (Order *)self.rowDescriptor.value;
+    __weak Order *weakOrder = order;
     [OrderUtil confirmOrder:order success:^(id responseData) {
         [SVProgressHUD showSuccessWithStatus:@"结单成功"];
-        order.status = OrderStatusCompletion;
-        [OrderUtil syncToDataBase:order completion:nil];
+        weakOrder.status = OrderStatusCompletion;
+        [OrderUtil syncToDataBase:weakOrder completion:nil];
     } failure:^(NSError *error) {
         
     }];
 }
 
+//拒绝
 -(void)rejectAction
 {
     Order *order = (Order *)self.rowDescriptor.value;
+    __weak Order *weakOrder = order;
     [OrderUtil rejectOrder:order success:^(id responseData) {
         [SVProgressHUD showSuccessWithStatus:@"拒绝成功"];
-        order.status = OrderStatusDenied;
-        [OrderUtil syncToDataBase:order completion:nil];
+        weakOrder.status = OrderStatusDenied;
+        [OrderUtil syncToDataBase:weakOrder completion:nil];
     } failure:^(NSError *error) {
         
     }];
