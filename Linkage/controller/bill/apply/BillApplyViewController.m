@@ -322,14 +322,6 @@ row.cellStyle = UITableViewCellStyleValue1;
     row.value = [NSDate date];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_address" rowType:XLFormRowDescriptorTypeButton title:@"送货地址"];
-    RowUI
-    RowAccessoryUI
-    RowPlaceHolderUI(@"请选择送货地址")
-    row.required = YES;
-    row.action.formSelector = @selector(addAddressRow:);
-    [section addFormRow:row];
-    
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDate title:@"送货时间"];
     row.value = [NSDate date];
     [section addFormRow:row];
