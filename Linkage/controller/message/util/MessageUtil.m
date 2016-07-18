@@ -51,6 +51,21 @@
     }
 }
 
+//数据库查询
++(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"userId", [LoginUser shareInstance].cid];
+    NSArray *modelArray = [MessageModel MR_findAllSortedBy:@"createTime" ascending:NO withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:modelArray.count];
+    for (NSManagedObject *manageObj in modelArray) {
+        id<MTLJSONSerializing> model = [self modelFromManagedObject:manageObj];
+        [mutableArray addObject:model];
+    }
+    if (completion) {
+        completion([mutableArray copy]);
+    }
+}
+
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
     [[YGRestClient sharedInstance] postForObjectWithUrl:MessagesUrl form:[LoginUser shareInstance].basePageHttpParameter success:^(id responseObject) {
