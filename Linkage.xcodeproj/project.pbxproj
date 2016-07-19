@@ -214,6 +214,7 @@
 		9A2F5C521CE4015000E7E2DD /* SearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C511CE4015000E7E2DD /* SearchViewModel.m */; };
 		9A2F5C551CE4717800E7E2DD /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C541CE4717800E7E2DD /* OrderCell.m */; };
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
+		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -652,6 +653,8 @@
 		9A2F5C541CE4717800E7E2DD /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
 		9A49E6B61D07ACA600F51C2F /* HJFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFormCell.h; sourceTree = "<group>"; };
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
+		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
+		9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollCell.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -883,6 +886,8 @@
 			children = (
 				8B33028F1C8BC0D70088DAE2 /* MainTableViewCell.h */,
 				8B3302901C8BC0D70088DAE2 /* MainTableViewCell.m */,
+				9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */,
+				9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2378,6 +2383,7 @@
 				9A95FF191C89221C00C5F492 /* UIImage+ImageWithColor.m in Sources */,
 				8BE25B091CC7AF970073BD8D /* MTLModel+Merge.m in Sources */,
 				9A05C37A1CC8C413009BC8C9 /* ExpandFormSectionDescriptor.m in Sources */,
+				9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */,
 				9A2F5C2A1CE01E5B00E7E2DD /* NSString+Hint.m in Sources */,
 				8B6E17BA1D1FC80E00DBA897 /* ImageInfoCell.m in Sources */,
 				8B5DC6231C79B8A700D29292 /* IFTTTFilmstrip.m in Sources */,

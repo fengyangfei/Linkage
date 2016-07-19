@@ -11,18 +11,19 @@
 #import "BillTypeViewController.h"
 #import "LoginUser.h"
 #import "Company.h"
-#import "SearchViewController.h"
+#import "CycleScrollCell.h"
+
 
 @interface MainViewController ()
 
 @end
 
 @implementation MainViewController
+@synthesize tableView = _tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupData];
-    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction:)];
 }
 
 -(void)setupData
@@ -41,6 +42,9 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:CycleScrollDescriporRowType];
+    [section addFormRow:row];
+    
     for (Company *company in [LoginUser shareInstance].companies) {
         NSString *rowType = CompanyDescriporType;
         if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
@@ -52,15 +56,16 @@
         row.value = company;
         [section addFormRow:row];
     }
-
     return form;
 }
 
--(void)searchAction:(id)sender
+-(UITableView *)tableView
 {
-    SearchViewController *searchViewController = [[SearchViewController alloc]init];
-    searchViewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:searchViewController animated:YES];
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    }
+    return _tableView;
 }
 
 - (void)didReceiveMemoryWarning {
