@@ -12,7 +12,7 @@
 
 NSString *const CycleScrollDescriporRowType = @"CycleScrollRow";
 @interface CycleScrollCell()<SDCycleScrollViewDelegate>
-@property (nonatomic, readonly) UIView *scrollView;
+@property (nonatomic, readonly) SDCycleScrollView *scrollView;
 
 @end
 
@@ -33,36 +33,36 @@ NSString *const CycleScrollDescriporRowType = @"CycleScrollRow";
     }];
 }
 
+-(void)update
+{
+    [super update];
+    NSArray *adverts = self.rowDescriptor.value;
+    //文字
+    NSMutableArray *titleNames = [NSMutableArray array];
+    //图片
+    NSMutableArray *imagesURLStrings = [NSMutableArray array];
+    for (Advert *advert in adverts) {
+        [titleNames addObject: advert.title];
+        [imagesURLStrings addObject:advert.icon];
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.scrollView.titlesGroup = [titleNames copy];
+        self.scrollView.imageURLStringsGroup = [imagesURLStrings copy];
+    });
+}
+
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
     return IPHONE_WIDTH * 3 / 5;
 }
 
--(UIView *)scrollView
+-(SDCycleScrollView *)scrollView
 {
     if (!_scrollView) {
-        _scrollView = ({
-            //文字
-            NSMutableArray *titleNames = [NSMutableArray array];
-            //图片
-            NSMutableArray *imagesURLStrings = [NSMutableArray array];
-            [[LoginUser shareInstance].advertes enumerateObjectsUsingBlock:^(Advert *advert, NSUInteger idx, BOOL * stop) {
-                [titleNames addObject: advert.title];
-                [imagesURLStrings addObject:advert.icon];
-            }];
-            
-            SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
-            
-            cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
-            cycleScrollView.titlesGroup = [titleNames copy];
-            cycleScrollView.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
-            cycleScrollView.delegate = self;
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                cycleScrollView.imageURLStringsGroup = [imagesURLStrings copy];
-            });
-            cycleScrollView;
-        });
+        _scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        _scrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+        _scrollView.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
+        _scrollView.delegate = self;
     }
     return _scrollView;
 }
@@ -71,7 +71,8 @@ NSString *const CycleScrollDescriporRowType = @"CycleScrollRow";
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
     NSLog(@"---点击了第%ld张图片", (long)index);
-    Advert *advert = [[LoginUser shareInstance].advertes objectAtIndex:index];
+    NSArray *adverts = self.rowDescriptor.value;
+    Advert *advert = [adverts objectAtIndex:index];
     if (advert && advert.link) {
         [[UIApplication sharedApplication]openURL:[NSURL URLWithString:advert.link]];
     }

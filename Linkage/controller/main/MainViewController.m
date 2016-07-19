@@ -43,6 +43,7 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:CycleScrollDescriporRowType];
+    row.value = [LoginUser shareInstance].advertes;
     [section addFormRow:row];
     
     for (Company *company in [LoginUser shareInstance].companies) {

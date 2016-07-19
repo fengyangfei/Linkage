@@ -16,6 +16,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 0.1)];
     self.tableView.tableFooterView = [[UIView alloc]init];
 }
 
