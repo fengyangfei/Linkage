@@ -61,6 +61,7 @@
     [super viewDidLoad];
     self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 18)];
 }
 
 -(void)inviteAction:(XLFormRowDescriptor *)sender

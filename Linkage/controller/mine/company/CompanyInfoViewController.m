@@ -38,9 +38,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.tableHeaderView = [UIView new];
     self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 18)];
     [self setupData];
 }
 

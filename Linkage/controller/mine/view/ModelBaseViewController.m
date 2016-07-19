@@ -41,6 +41,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     WeakSelf
     self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 18)];
     [self.tableView setEditing:NO];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.modelUtilClass queryModelsFromServer:^(NSArray *models) {
