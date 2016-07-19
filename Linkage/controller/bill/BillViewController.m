@@ -54,11 +54,17 @@
                                     };
         parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
         [OrderUtil queryModelsFromServer:parameter completion:^(NSArray *orders) {
-            for (Order *order in orders) {
-                [OrderUtil syncToDataBase:order completion:nil];
+            if (orders.count > 0) {
+                for (Order *order in orders) {
+                    [OrderUtil syncToDataBase:order completion:nil];
+                }
+            }else{
+                [OrderUtil truncateTodoOrders];
             }
-            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
-            [weakSelf setupTodoData];
+            StrongSelf
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError *error) {
+                [strongSelf setupTodoData];
+            }];
             [weakSelf.leftTableView.mj_header endRefreshing];
         }];
     }];
@@ -70,11 +76,17 @@
                                     };
         parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
         [OrderUtil queryModelsFromServer:parameter completion:^(NSArray *orders) {
-            for (Order *order in orders) {
-                [OrderUtil syncToDataBase:order completion:nil];
+            if (orders.count > 0) {
+                for (Order *order in orders) {
+                    [OrderUtil syncToDataBase:order completion:nil];
+                }
+            }else{
+                [OrderUtil truncateDoneOrders];
             }
-            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
-            [weakSelf setupDoneData];
+            StrongSelf
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+                [strongSelf setupDoneData];
+            }];
             [weakSelf.rightTableView.mj_header endRefreshing];
         }];
     }];
@@ -83,7 +95,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setupTodoData];
+    [self.leftTableView.mj_header beginRefreshing];
 }
 
 - (void)segmentedControlChangeIndex:(NSInteger)index
@@ -98,11 +110,7 @@
     WeakSelf
     NSPredicate *todoPredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status != %@", [LoginUser shareInstance].cid, @(OrderStatusCompletion)];
     [OrderUtil queryModelsFromDataBase:todoPredicate completion:^(NSArray *orders) {
-        if (orders.count > 0) {
-            [weakSelf.todoDS setForm:[weakSelf createForm:orders]];
-        }else{
-            [weakSelf.leftTableView.mj_header beginRefreshing];
-        }
+        [weakSelf.todoDS setForm:[weakSelf createForm:orders]];
     }];
 }
 
@@ -111,11 +119,7 @@
     WeakSelf
     NSPredicate *donePredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status == %@", [LoginUser shareInstance].cid, @(OrderStatusCompletion)];
     [OrderUtil queryModelsFromDataBase:donePredicate completion:^(NSArray *orders) {
-        if (orders.count > 0) {
-            [weakSelf.doneDS setForm:[weakSelf createForm:orders]];
-        }else{
-            [weakSelf.rightTableView.mj_header beginRefreshing];
-        }
+        [weakSelf.doneDS setForm:[weakSelf createForm:orders]];
     }];
 }
 

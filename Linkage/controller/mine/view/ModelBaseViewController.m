@@ -45,15 +45,17 @@ row.cellStyle = UITableViewCellStyleValue1;
     [self.tableView setEditing:NO];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.modelUtilClass queryModelsFromServer:^(NSArray *models) {
-            for (id model in models) {
-                [self.modelUtilClass syncToDataBase:model completion:nil];
-            }
             if(models.count > 0){
-                StrongSelf
-                [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
-                    [strongSelf setupData];
-                }];
+                for (id model in models) {
+                    [self.modelUtilClass syncToDataBase:model completion:nil];
+                }
+            }else{
+                [self.modelUtilClass truncateAll];
             }
+            StrongSelf
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+                [strongSelf setupData];
+            }];
             if([weakSelf.tableView.mj_header isRefreshing]){
                 [weakSelf.tableView.mj_header endRefreshing];
             }
@@ -75,20 +77,14 @@ row.cellStyle = UITableViewCellStyleValue1;
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setupData];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)setupData
 {
     WeakSelf
     [self.modelUtilClass queryModelsFromDataBase:^(NSArray *models) {
-        if (models.count > 0) {
-            [weakSelf initializeForm:models];
-        }else{
-            if(![weakSelf.tableView.mj_header isRefreshing]){
-                [weakSelf.tableView.mj_header beginRefreshing];
-            }
-        }
+        [weakSelf initializeForm:models];
     }];
 }
 

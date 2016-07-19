@@ -66,4 +66,9 @@
     }
 }
 
++ (void)truncateAll
+{
+    [self.managedObjectClass MR_truncateAllInContext:[NSManagedObjectContext MR_defaultContext]];
+}
+
 @end

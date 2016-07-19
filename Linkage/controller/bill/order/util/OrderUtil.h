@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "YGRestClient.h"
-#import "ModelOperation.h"
+#import "ModelUtil.h"
 @class Order;
 @class OrderModel;
-@interface OrderUtil : NSObject<ModelOperation>
+@interface OrderUtil : ModelUtil
++(void)truncateTodoOrders;
++(void)truncateDoneOrders;
 +(void)acceptOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 +(void)confirmOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 +(void)rejectOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;

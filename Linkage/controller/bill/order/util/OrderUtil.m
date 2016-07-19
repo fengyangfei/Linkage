@@ -143,6 +143,28 @@
     }
 }
 
+//删除未完成订单
++(void)truncateTodoOrders
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status != %@", [LoginUser shareInstance].cid, @(OrderStatusCompletion)];
+    NSArray *objectsToDelete = [OrderModel MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+    for (NSManagedObject *objectToDelete in objectsToDelete)
+    {
+        [objectToDelete MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+    }
+}
+
+//删除已完成订单
++(void)truncateDoneOrders
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status == %@", [LoginUser shareInstance].cid, @(OrderStatusCompletion)];
+    NSArray *objectsToDelete = [OrderModel MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+    for (NSManagedObject *objectToDelete in objectsToDelete)
+    {
+        [objectToDelete MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+    }
+}
+
 //服务端查询
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
@@ -157,11 +179,13 @@
     [self queryModelsFromServer:parameter completion:completion];
 }
 
+//服务端查询
 +(void)queryModelsFromServer:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
 {
     [self queryModelsFromServer:parameter url:ListByStatusUrl completion:completion];
 }
 
+//服务端查询
 +(void)queryModelsFromServer:(NSDictionary *)parameter url:(NSString *)url completion:(void(^)(NSArray *models))completion
 {
     [[YGRestClient sharedInstance] postForObjectWithUrl:url form:parameter success:^(id responseObject) {
@@ -186,6 +210,7 @@
     [self queryModelsFromDataBase:predicate completion:completion];
 }
 
+//数据库查询
 +(void)queryModelsFromDataBase:(NSPredicate *)predicate completion:(void(^)(NSArray *models))completion
 {
     NSArray *orderModelArray = [OrderModel MR_findAllSortedBy:@"updateTime" ascending:NO withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
@@ -202,7 +227,7 @@
     }
 }
 
-//查询详情
+//服务端查询详情
 +(void)queryModelFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model completion:(void(^)(id<MTLJSONSerializing> result))completion
 {
     Order *order = (Order *)model;
