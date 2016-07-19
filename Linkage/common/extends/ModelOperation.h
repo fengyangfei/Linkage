@@ -15,7 +15,6 @@
 @protocol ModelOperation <NSObject>
 @optional
 +(Class)modelClass;
-
 +(Class)managedObjectClass;
 
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json;

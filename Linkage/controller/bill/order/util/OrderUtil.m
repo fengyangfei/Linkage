@@ -18,6 +18,16 @@
 
 @implementation OrderUtil
 
++(Class)modelClass
+{
+    return [Order class];
+}
+
++(Class)managedObjectClass
+{
+    return [OrderModel class];
+}
+
 //json转换成对象
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
 {

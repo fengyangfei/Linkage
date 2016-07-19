@@ -17,6 +17,11 @@
     return [Staff class];
 }
 
++(Class)managedObjectClass
+{
+    return [StaffModel class];
+}
+
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
 {
     NSDictionary *paramter = [self jsonFromModel:model];

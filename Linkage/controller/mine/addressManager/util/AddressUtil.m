@@ -18,6 +18,11 @@
     return [Address class];
 }
 
++(Class)managedObjectClass
+{
+    return [AddressModel class];
+}
+
 +(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues
 {
     NSError *error;

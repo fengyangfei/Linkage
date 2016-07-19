@@ -19,6 +19,11 @@
     return [Car class];
 }
 
++(Class)managedObjectClass
+{
+    return [CarModel class];
+}
+
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
 {
     Car *car = (Car*)model;
