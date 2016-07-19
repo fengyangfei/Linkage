@@ -88,7 +88,7 @@
 //地址
 #define AddressUrl [NSString stringWithFormat:@"%@/api/profile/addrlist",BaseUrl]//地址查询接口
 #define AddAddressUrl [NSString stringWithFormat:@"%@/api/profile/addaddr",BaseUrl]//添加地址接口
-#define DelAddressUrl [NSString stringWithFormat:@"%@/api/transporter/deladdr",BaseUrl]//删除地址接口
+#define DelAddressUrl [NSString stringWithFormat:@"%@/api/profile/deladdr",BaseUrl]//删除地址接口
 #define ModAddressUrl [NSString stringWithFormat:@"%@/api/profile/modAddr",BaseUrl]//修改地址接口
 
 //员工
