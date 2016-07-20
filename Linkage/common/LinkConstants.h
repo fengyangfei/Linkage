@@ -58,6 +58,7 @@
 #define SystemSettingUrl [NSString stringWithFormat:@"%@/api/profile/updatesysset",BaseUrl]//系统设置
 #define UserIconUrl [NSString stringWithFormat:@"%@/api/upload/usericon",BaseUrl]//上传个人头像
 #define UploadFileUrl [NSString stringWithFormat:@"%@/api/upload/uploadFiles",BaseUrl]//公有上传图片
+#define AdviceUrl [NSString stringWithFormat:@"%@/api/contact/advice",BaseUrl]//建议投诉
 
 //企业
 #define CompanyInfomationUrl [NSString stringWithFormat:@"%@/api/company/information", BaseUrl]//获取企业信息

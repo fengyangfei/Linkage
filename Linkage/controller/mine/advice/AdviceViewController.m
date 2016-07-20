@@ -8,8 +8,12 @@
 
 #import "AdviceViewController.h"
 #import "BFPaperButton.h"
+#import "LoginUser.h"
+#import "YGRestClient.h"
 #import <IQKeyboardManager/KeyboardManager.h>
 #import <XLForm/XLFormTextView.h>
+#import <Mantle/NSDictionary+MTLJSONKeyPath.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 @interface AdviceViewController ()
 
 @property (strong, nonatomic) XLFormTextView *textView;
@@ -82,6 +86,17 @@
 - (void)doneAction
 {
     [self.textView resignFirstResponder];
+    NSDictionary *paramter = @{
+                               @"content":self.textView.text,
+                               @"mobile":[LoginUser shareInstance].mobile ?:@"",
+                               @"email":[LoginUser shareInstance].email ?:@""
+                               };
+    paramter = [paramter mtl_dictionaryByAddingEntriesFromDictionary:[LoginUser shareInstance].baseHttpParameter];
+    [[YGRestClient sharedInstance] postForObjectWithUrl:AdviceUrl form:paramter success:^(id responseObject) {
+        [SVProgressHUD showSuccessWithStatus:@"提交成功"];
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"提交失败"];
+    }];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
