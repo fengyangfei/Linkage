@@ -159,7 +159,7 @@ row.cellStyle = UITableViewCellStyleValue1;
                 [strongSelf setupData];
             }];
         } failure:^(NSError *error) {
-            
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
         }];
     }
 }

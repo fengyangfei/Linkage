@@ -56,9 +56,7 @@
         predicate = [NSPredicate predicateWithFormat:@"userId = %@", [LoginUser shareInstance].cid];
     }
     [self.modelUtilClass queryModelsFromDataBase:predicate completion:^(NSArray *models) {
-        if (models.count > 0) {
-            [weakSelf initializeForm:models];
-        }
+        [weakSelf initializeForm:models];
     }];
 }
 
