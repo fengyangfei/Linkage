@@ -74,10 +74,12 @@ row.cellStyle = UITableViewCellStyleValue1;
     }
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    [self.tableView.mj_header beginRefreshing];
+    [super viewDidAppear:animated];
+    if (![self.tableView.mj_header isRefreshing]) {
+        [self.tableView.mj_header beginRefreshing];
+    }
 }
 
 - (void)setupData

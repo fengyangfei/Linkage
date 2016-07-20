@@ -92,10 +92,12 @@
     }];
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    [self.leftTableView.mj_header beginRefreshing];
+    [super viewDidAppear:animated];
+    if (![self.leftTableView.mj_header isRefreshing]) {
+        [self.leftTableView.mj_header beginRefreshing];
+    }
 }
 
 - (void)segmentedControlChangeIndex:(NSInteger)index
