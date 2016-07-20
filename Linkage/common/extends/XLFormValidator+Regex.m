@@ -25,4 +25,10 @@
     return [XLFormRegexValidator formRegexValidatorWithMsg:@"密码格式不正确" regex:UserNameRegex];
 }
 
++(XLFormValidator *)httpUrlValidator
+{
+    return [XLFormRegexValidator formRegexValidatorWithMsg:@"网址格式不正确" regex:HttpUrlRegex];
+}
+
+
 @end

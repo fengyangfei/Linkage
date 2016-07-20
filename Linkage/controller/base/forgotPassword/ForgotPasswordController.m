@@ -12,6 +12,7 @@
 #import "CocoaSecurity.h"
 #import "YGRestClient.h"
 #import "TimerManager.h"
+#import "XLFormValidator+Regex.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface ForgotPasswordController ()
@@ -41,14 +42,17 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeText title:@"手机号"];
+    [row addValidator:[XLFormValidator phoneNumValidator]];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"newpassword" rowType:XLFormRowDescriptorTypePassword title:@"新密码"];
     row.required = YES;
+    [row addValidator:[XLFormValidator passswordValidator]];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"confirmPassword" rowType:XLFormRowDescriptorTypePassword title:@"确认密码"];
     row.required = YES;
+    [row addValidator:[XLFormValidator passswordValidator]];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"verifyCode" rowType:XLFormRowDescriptorTypeTextAndButton title:@"验证码"];
@@ -109,15 +113,18 @@
 {
     WeakSelf
     [self.tableView endEditing:YES];
+    
     NSDictionary *formValues = [self.form formValues];
     NSArray *errors = [self formValidationErrors];
     if (errors && errors.count > 0) {
-        [self showFormValidationError:errors[0]];
+        NSError *error = [errors firstObject];
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription maskType:SVProgressHUDMaskTypeBlack];
         return;
     }
     
-    if([formValues[@"newpassword"] isEqualToString:formValues[@"confirmPassword"]]){
+    if(![formValues[@"newpassword"] isEqualToString:formValues[@"confirmPassword"]]){
         [SVProgressHUD showErrorWithStatus:@"两次填入密码不一致"];
+        return;
     }
     
     NSDictionary *paramter = @{@"mobile":NilStringWrapper(formValues[@"phoneNum"]),

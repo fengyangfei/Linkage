@@ -117,6 +117,7 @@
     if (company) {
         row.value = company.url;
     }
+    [row addValidator:[XLFormValidator httpUrlValidator]];
     [section addFormRow:row];
     
     //图片
@@ -174,6 +175,13 @@
 #pragma mark - 按钮事件
 -(void)saveAction:(id)sender
 {
+    NSArray *errors = [self formValidationErrors];
+    if (errors && errors.count > 0) {
+        NSError *error = [errors firstObject];
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription maskType:SVProgressHUDMaskTypeBlack];
+        return;
+    }
+    
     Company *company = (Company *)[CompanyUtil modelFromXLFormValue:[self formValues]];
     [CompanyUtil syncToServer:company success:^(id responseData) {
         BOOL saveSuccess = [company save];

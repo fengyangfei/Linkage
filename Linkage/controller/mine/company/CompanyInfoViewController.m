@@ -124,9 +124,9 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话"];
     RowUI
-        if (company && company.servicePhone2) {
-            row.value = company.servicePhone2;
-        }
+    if (company && company.servicePhone2) {
+        row.value = company.servicePhone2;
+    }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话"];

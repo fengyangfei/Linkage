@@ -14,6 +14,7 @@
 #define CarRegex @"^[\u4e00-\u9fa5]{1}[a-zA-Z]{1}[a-zA-Z_0-9]{4}[a-zA-Z_0-9_\u4e00-\u9fa5]$"
 #define UserNameRegex @"^[A-Za-z0-9]{6,20}+$"
 #define IdentityCardRegex @"^(\\d{14}|\\d{17})(\\d|[xX])$"
+#define HttpUrlRegex @"(http|ftp|https):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?"
 
 //UI
 #define HeaderColor HEXCOLOR(0x10bce6)

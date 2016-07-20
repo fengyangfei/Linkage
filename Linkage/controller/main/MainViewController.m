@@ -47,7 +47,7 @@
     [section addFormRow:row];
     
     for (Company *company in [LoginUser shareInstance].companies) {
-        NSString *rowType = CompanyDescriporType;
+        NSString *rowType = CompanyInfoDescriporType;
         if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
             rowType = CompanyDescriporType;
         }else if([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin) {
