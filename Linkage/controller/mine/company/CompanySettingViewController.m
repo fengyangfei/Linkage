@@ -107,7 +107,7 @@
     [row addValidator:[XLFormValidator emailRegexValidator]];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"fax" rowType:XLFormRowDescriptorTypeText title:@"传真"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"fax" rowType:XLFormRowDescriptorTypePhone title:@"传真"];
     if (company) {
         row.value = company.fax;
     }
