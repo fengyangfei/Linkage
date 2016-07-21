@@ -9,6 +9,9 @@
 #import "CompanyInfoViewController.h"
 #import "Company.h"
 #import "CompanyUtil.h"
+#import "LoginUser.h"
+#import <Mantle/NSDictionary+MTLJSONKeyPath.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #define RowUI row.cellStyle = UITableViewCellStyleValue1;\
 [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
@@ -41,6 +44,8 @@
     self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 18)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStylePlain target:self action:@selector(collectAction:)];
+    self.navigationItem.rightBarButtonItem = rightItem;
     [self setupData];
 }
 
@@ -146,5 +151,16 @@
     return form;
 }
 
+#pragma mark - 按钮事件
+-(void)collectAction:(id)sender
+{
+    Favorite *favorite = self.rowDescriptor.value;
+    NSDictionary *parameter = [favorite httpParameterForDetail];
+    [[YGRestClient sharedInstance] postForObjectWithUrl:AddFavoriteUrl form:parameter success:^(id responseObject) {
+        [SVProgressHUD showSuccessWithStatus:@"收藏成功"];
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"收藏失败"];
+    }];
+}
 
 @end

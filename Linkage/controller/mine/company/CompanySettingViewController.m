@@ -189,7 +189,7 @@
             [SVProgressHUD showSuccessWithStatus:@"保存成功"];
         }
     } failure:^(NSError *error) {
-        [SVProgressHUD showSuccessWithStatus:@"保存失败"];
+        [SVProgressHUD showErrorWithStatus:@"保存失败"];
     }];
 }
 
