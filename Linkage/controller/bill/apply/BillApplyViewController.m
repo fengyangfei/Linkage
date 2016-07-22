@@ -84,7 +84,13 @@ row.cellStyle = UITableViewCellStyleValue1;
     [form addFormSection:section];
     [section.multivaluedAddButton.cellConfig setObject:@"添加货柜" forKey:@"textLabel.text"];
     section.multivaluedTag = @"cargos";
-    [section addFormRow:[self generateCargoRow]];
+    if (order && order.cargos) {
+        for (Cargo *cargo in order.cargos) {
+            [section addFormRow:[self generateCargoRowWithType:cargo.cargoType andCount:cargo.cargoCount]];
+        }
+    }else{
+        [section addFormRow:[self generateCargoRowWithType:@(1) andCount:@(0)]];
+    }
     
     //自定义Cell
     [self addCustomCell:form order:order];
@@ -160,13 +166,12 @@ row.cellStyle = UITableViewCellStyleValue1;
     }
 }
 
--(CargoFormRowDescriptor *)generateCargoRow
+-(CargoFormRowDescriptor *)generateCargoRowWithType:(NSNumber *)typeKey andCount:(NSNumber *)count
 {
     CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
     [row.cellConfigAtConfigure setObject:@"填入货柜数量" forKey:@"rightTextField.placeholder"];
     NSDictionary *dic = [LinkUtil cargoTypes];
-    NSNumber *key = @(1);
-    row.value = [Cargo cargoWithType:key name:[dic objectForKey:key] count:@(0)];
+    row.value = [Cargo cargoWithType:typeKey name:[dic objectForKey:typeKey] count:count];
     row.action.viewControllerClass = [CargoTypeViewController class];
     return row;
 }
@@ -174,7 +179,7 @@ row.cellStyle = UITableViewCellStyleValue1;
 //重写获取货柜的cell
 -(XLFormRowDescriptor *)formRowFormMultivaluedFormSection:(XLFormSectionDescriptor *)formSection
 {
-    return [self generateCargoRow];
+    return [self generateCargoRowWithType:@(1) andCount:@(0)];
 }
 
 #pragma mark - 事件
@@ -258,6 +263,9 @@ row.cellStyle = UITableViewCellStyleValue1;
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address_option" rowType:XLFormRowDescriptorTypeSelectorPush title:@"提货港口"];
     row.noValueDisplayText = @"请选择提货港口";
     row.required = YES;
+    if (order && order.takeAddress) {
+        row.value = [XLFormOptionsObject formOptionsObjectWithValue:order.takeAddress displayText:order.takeAddress];
+    }
     row.selectorOptions = [LinkUtil portOptions];
     [section addFormRow:row];
     
@@ -403,7 +411,8 @@ row.cellStyle = UITableViewCellStyleValue1;
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"port_option" rowType:XLFormRowDescriptorTypeSelectorPush title:@"出口港口"];
     row.noValueDisplayText = @"请选择出口港口";
     if (order && ((ExportOrder *)order).port) {
-        row.value = ((ExportOrder *)order).port;
+        NSString *p = ((ExportOrder *)order).port;
+        row.value = [XLFormOptionsObject formOptionsObjectWithValue:p displayText:p];
     }
     row.required = YES;
     row.selectorOptions = [LinkUtil portOptions];
