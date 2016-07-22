@@ -10,6 +10,7 @@
 #import "Company.h"
 #import "CompanyUtil.h"
 #import "LoginUser.h"
+#import "CycleScrollCell.h"
 #import <Mantle/NSDictionary+MTLJSONKeyPath.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
@@ -74,6 +75,18 @@
     form = [XLFormDescriptor formDescriptor];
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
+    
+    
+    NSArray *images = [company.images componentsSeparatedByString:@";"];
+    NSMutableArray *imageArray = [[NSMutableArray alloc]init];
+    for (NSString *imageUrl in images) {
+        Advert *ad = [[Advert alloc]init];
+        ad.icon = imageUrl;
+        [imageArray addObject:ad];
+    }
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:CycleScrollDescriporRowType];
+    row.value = imageArray;
+    [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company_name" rowType:XLFormRowDescriptorTypeButton title:@"企业名称"];
     RowUI
