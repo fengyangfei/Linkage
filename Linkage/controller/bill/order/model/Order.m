@@ -206,6 +206,7 @@
                              @"customsHouseContact":@"customs_contact",
                              @"isTransferPort":@"is_transfer_port",
                              @"updateTime":@"update_time",
+                             @"createTime":@"create_time",
                              @"memo":@"memo"
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
@@ -248,6 +249,7 @@
                              @"isBookCargo":@"is_book_cargo",
                              @"isTransferPort":@"is_transfer_port",
                              @"updateTime":@"update_time",
+                             @"createTime":@"create_time",
                              @"soImageUrl":@"so_images",
                              @"memo":@"memo"
                              };
@@ -308,6 +310,7 @@
                              @"cargoTakeTime":@"cargo_take_time",
                              @"isTransferPort":@"is_transfer_port",
                              @"updateTime":@"update_time",
+                             @"createTime":@"create_time",
                              @"memo":@"memo"
                              };
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];

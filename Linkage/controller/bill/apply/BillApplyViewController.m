@@ -15,6 +15,7 @@
 #import "BFPaperButton.h"
 #import "FormOptionsViewController.h"
 #import "Company.h"
+#import "SOImage.h"
 #import "Order.h"
 #import "OrderModel.h"
 #import "OrderUtil.h"
@@ -434,6 +435,19 @@ row.cellStyle = UITableViewCellStyleValue1;
     row.action.formSelector = NSSelectorFromString(@"addSoImage:");
     section.multivaluedTag = @"soImages";
     [section addFormRow:row];
+    
+    if (order && ((ExportOrder *)order).soImageUrl) {
+        for (NSString *imageUrl in [((ExportOrder *)order).soImageUrl componentsSeparatedByString:@";"]) {
+            if(StringIsNotEmpty(imageUrl)){
+                SOImage *model = [[SOImage alloc]init];
+                model.imageUrl = imageUrl;
+                
+                row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:SOImageRowDescriporType];
+                row.value = model;
+                [section addFormRow:row];
+            }
+        }
+    }
     
     //公司信息
     section = [XLFormSectionDescriptor formSection];

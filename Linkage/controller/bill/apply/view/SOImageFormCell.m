@@ -75,6 +75,8 @@ NSString *const SOImageRowDescriporType = @"SOImageRowType";
                     SOImage *model = (SOImage *)row.value;
                     if(model.image){
                         photo.image = model.image;
+                    }else if(model.imageUrl){
+                        photo.url = [NSURL URLWithString:model.imageUrl];
                     }else{
                         __weak __typeof(photo) weakPhoto = photo;
                         [[ImageCacheManager sharedManger] queryDiskCacheForKey:model.imageName done:^(UIImage *image, SDImageCacheType cacheType) {

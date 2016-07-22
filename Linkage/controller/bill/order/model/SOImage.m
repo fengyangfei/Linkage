@@ -13,7 +13,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"image"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"image",@"createDate"]];
     return keys;
 }
 
@@ -26,7 +26,7 @@
 + (NSDictionary *)managedObjectKeysByPropertyKey
 {
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"image"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"image",@"createDate"]];
     return keys;
 }
 
