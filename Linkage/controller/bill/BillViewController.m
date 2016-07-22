@@ -96,9 +96,9 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (![self.leftTableView.mj_header isRefreshing]) {
-        [self.leftTableView.mj_header beginRefreshing];
-    }
+//    if (![self.leftTableView.mj_header isRefreshing]) {
+//        [self.leftTableView.mj_header beginRefreshing];
+//    }
 }
 
 - (void)segmentedControlChangeIndex:(NSInteger)index
@@ -152,8 +152,16 @@
     for (Order *order in orders) {
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:PendingOrderDescriporType];
         row.value = order;
-        if (order.status == OrderStatusPending || order.status == OrderStatusDenied) {
-            row.action.viewControllerClass = [BillApplyViewController class];
+        if ((order.status == OrderStatusPending || order.status == OrderStatusDenied) && [LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
+            if(order.type == OrderTypeExport){
+                row.action.viewControllerClass = [BillExportApplyViewController class];
+            }else if(order.type == OrderTypeImport){
+                row.action.viewControllerClass = [BillImportApplyViewController class];
+            }else if(order.type == OrderTypeSelf){
+                row.action.viewControllerClass = [BillSelfApplyViewController class];
+            }else{
+                row.action.viewControllerClass = [BillApplyViewController class];
+            }
         }else{
             row.action.viewControllerClass = [BillDetailViewController class];
         }

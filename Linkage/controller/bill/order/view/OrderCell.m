@@ -207,45 +207,6 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
 {
     [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:PendingOrderDescriporType];
 }
-
--(void)formDescriptorCellDidSelectedWithViewController:(UIViewController *)controller
-{
-    WeakSelf
-    __block UIViewController * controllerToPresent;
-    if (self.rowDescriptor.value) {
-        Order *order = self.rowDescriptor.value;
-        if (order.status == OrderStatusPending || order.status == OrderStatusDenied) {
-            [OrderUtil queryModelFromServer:order completion:^(Order *result) {
-                weakSelf.rowDescriptor.value = result;
-                if([result isKindOfClass:[ExportOrder class]]){
-                    controllerToPresent = [[BillExportApplyViewController alloc] init];
-                }else if ([result isKindOfClass:[ImportOrder class]]){
-                    controllerToPresent = [[BillImportApplyViewController alloc] init];
-                }else if([result isKindOfClass:[SelfOrder class]]){
-                    controllerToPresent = [[BillSelfApplyViewController alloc] init];
-                }else{
-                    controllerToPresent = [[BillApplyViewController alloc] init];
-                }
-                ((UIViewController<XLFormRowDescriptorViewController> *)controllerToPresent).rowDescriptor = weakSelf.rowDescriptor;
-            }];
-        }
-    }else{
-        controllerToPresent = [[self.rowDescriptor.action.viewControllerClass alloc] init];
-    }
-    if (controllerToPresent){
-        if ([controllerToPresent conformsToProtocol:@protocol(XLFormRowDescriptorViewController)]){
-            ((UIViewController<XLFormRowDescriptorViewController> *)controllerToPresent).rowDescriptor = self.rowDescriptor;
-        }
-        if (controller.navigationController == nil || [controllerToPresent isKindOfClass:[UINavigationController class]] || self.rowDescriptor.action.viewControllerPresentationMode == XLFormPresentationModePresent){
-            [controller presentViewController:controllerToPresent animated:YES completion:nil];
-        }
-        else{
-            controllerToPresent.hidesBottomBarWhenPushed = YES;
-            [controller.navigationController pushViewController:controllerToPresent animated:YES];
-        }
-    }
-}
-
 @end
 
 @implementation CompletionOrderCell

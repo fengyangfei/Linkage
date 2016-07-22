@@ -48,12 +48,13 @@ row.cellStyle = UITableViewCellStyleValue1;
 {
     self = [super init];
     if (self) {
-        [self initializeForm:company];
+        XLFormDescriptor *form = [self initializeForm:company order:nil];
+        self.form = form;
     }
     return self;
 }
 
-- (void)initializeForm:(Company *)company
+- (XLFormDescriptor *)initializeForm:(Company *)company order:(Order *)order
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
@@ -69,6 +70,11 @@ row.cellStyle = UITableViewCellStyleValue1;
     RowPlaceHolderUI(@"请选择承运商")
     if (company) {
         row.value = company;
+    }else if (order && order.companyId){
+        Company *tmpComp = [[Company alloc]init];
+        tmpComp.companyId = order.companyId;
+        tmpComp.companyName = order.companyName;
+        row.value = tmpComp;
     }
     row.action.viewControllerClass = [CompanyOptionsViewController class];
     [section addFormRow:row];
@@ -81,9 +87,9 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:[self generateCargoRow]];
     
     //自定义Cell
-    [self addCustomCell:form order:nil];
+    [self addCustomCell:form order:order];
     
-    self.form = form;
+    return form;
 }
 
 -(void)addCustomCell:(XLFormDescriptor *)form order:(Order *)order
@@ -133,6 +139,25 @@ row.cellStyle = UITableViewCellStyleValue1;
         make.top.equalTo(bottomView.top).offset(5);
         make.height.equalTo(@44);
     }];
+    
+    Order *order = self.rowDescriptor.value;
+    [self loadDataFromServer:order];
+}
+
+//从服务端加载详情
+-(void)loadDataFromServer:(Order *)order
+{
+    WeakSelf
+    if (order && order.orderId) {
+        [SVProgressHUD show];
+        [OrderUtil queryModelFromServer:order completion:^(Order *result) {
+            XLFormDescriptor *form = [weakSelf initializeForm:nil order:result];
+            [weakSelf setForm:form];
+            [SVProgressHUD dismiss];
+            [OrderUtil syncToDataBase:result completion:nil];
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
+        }];
+    }
 }
 
 -(CargoFormRowDescriptor *)generateCargoRow

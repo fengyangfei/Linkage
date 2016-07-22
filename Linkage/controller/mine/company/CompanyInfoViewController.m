@@ -51,11 +51,12 @@
 
 -(void)setupData
 {
+    WeakSelf
     Favorite *favorite = self.rowDescriptor.value;
     if (favorite) {
         [CompanyUtil queryModelFromServer:favorite completion:^(id<MTLJSONSerializing> result) {
             XLFormDescriptor *form = [self createForm:(Company *)result];
-            [self setForm:form];
+            [weakSelf setForm:form];
         }];
     }
     
