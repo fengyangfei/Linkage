@@ -231,6 +231,8 @@
 		9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3A1C897EE800C5F492 /* TRFloatingModel.m */; };
 		9A95FF401C89824F00C5F492 /* TRImagePickerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3D1C89824F00C5F492 /* TRImagePickerDelegate.m */; };
 		9A95FF411C89824F00C5F492 /* UIViewController+TRImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3F1C89824F00C5F492 /* UIViewController+TRImagePicker.m */; };
+		9ABD8F8B1D4213FE00D03A84 /* Contact.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9ABD8F891D4213FE00D03A84 /* Contact.bundle */; };
+		9ABD8F8C1D4213FE00D03A84 /* SubContact.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9ABD8F8A1D4213FE00D03A84 /* SubContact.bundle */; };
 		9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */; };
 		9ACEBC751C9950E90000ACBF /* CargoTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC741C9950E90000ACBF /* CargoTypeViewController.m */; };
 		9ACEBCAA1C9BF25F0000ACBF /* TimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBCA91C9BF25F0000ACBF /* TimerManager.m */; };
@@ -688,6 +690,8 @@
 		9A95FF3E1C89824F00C5F492 /* UIViewController+TRImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TRImagePicker.h"; sourceTree = "<group>"; };
 		9A95FF3F1C89824F00C5F492 /* UIViewController+TRImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TRImagePicker.m"; sourceTree = "<group>"; };
 		9AAD81EE1D23480200E3ACD5 /* LinkageModel5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkageModel5.xcdatamodel; sourceTree = "<group>"; };
+		9ABD8F891D4213FE00D03A84 /* Contact.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Contact.bundle; sourceTree = "<group>"; };
+		9ABD8F8A1D4213FE00D03A84 /* SubContact.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SubContact.bundle; sourceTree = "<group>"; };
 		9ACEBC6E1C99492A0000ACBF /* CargoFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoFormCell.h; sourceTree = "<group>"; };
 		9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoFormCell.m; sourceTree = "<group>"; };
 		9ACEBC731C9950E90000ACBF /* CargoTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoTypeViewController.h; sourceTree = "<group>"; };
@@ -1120,6 +1124,8 @@
 		8B5DC5BE1C79B8A700D29292 /* TRTheme */ = {
 			isa = PBXGroup;
 			children = (
+				9ABD8F891D4213FE00D03A84 /* Contact.bundle */,
+				9ABD8F8A1D4213FE00D03A84 /* SubContact.bundle */,
 				8B7BD7C41CDE4C69004B4752 /* SubCompany.bundle */,
 				8BDBB7C91C98509D00D60207 /* Company.bundle */,
 				8B5DC5BF1C79B8A700D29292 /* TRTheme.h */,
@@ -2159,7 +2165,9 @@
 				8B5DC63F1C79B8A700D29292 /* UMSocialLocalizable.strings in Resources */,
 				8B5DC6471C79B8A700D29292 /* UMSnsAccountViewController.xib in Resources */,
 				8B5DC6491C79B8A700D29292 /* UMSocialSDKResourcesNew.bundle in Resources */,
+				9ABD8F8B1D4213FE00D03A84 /* Contact.bundle in Resources */,
 				8B5DC6461C79B8A700D29292 /* UMSLoginViewController.xib in Resources */,
+				9ABD8F8C1D4213FE00D03A84 /* SubContact.bundle in Resources */,
 				8B4221181CA428BF00F58D77 /* Localizable.strings in Resources */,
 				9A23A3161C7E8E7500FB5EB6 /* tutorial_background_03@2x.jpg in Resources */,
 				8B5DC6431C79B8A700D29292 /* UMSCommentInputControlleriPad.xib in Resources */,
