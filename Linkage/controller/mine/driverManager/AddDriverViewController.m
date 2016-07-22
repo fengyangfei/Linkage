@@ -10,6 +10,7 @@
 #import "DriverUtil.h"
 #import "Driver.h"
 #import "DriverModel.h"
+#import "XLFormValidator+Regex.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface AddDriverViewController ()
@@ -58,6 +59,7 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"driver_mobile" rowType:XLFormRowDescriptorTypeText title:@"司机电话"];
     row.value = driver?driver.mobile:@"";
     row.required = YES;
+    [row addValidator:[XLFormValidator phoneNumValidator]];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"license" rowType:XLFormRowDescriptorTypeText title:@"车牌"];
@@ -98,7 +100,8 @@
     [self deselectFormRow:row];
     NSArray *errors = [self formValidationErrors];
     if (errors && errors.count > 0) {
-        [self showFormValidationError:errors[0]];
+        NSError *error = [errors firstObject];
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription maskType:SVProgressHUDMaskTypeBlack];
         return;
     }
     NSDictionary *formValues = [self formValues];

@@ -9,7 +9,7 @@
 #import <XLForm/XLForm.h>
 @class Company;
 
-@interface BillApplyViewController : XLFormViewController
+@interface BillApplyViewController : XLFormViewController<XLFormRowDescriptorViewController>
 - (instancetype)initWithCompany:(Company *)company;
 @end
 

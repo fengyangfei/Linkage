@@ -19,6 +19,7 @@
 #import "XLFormDataSource.h"
 #import "BillDataSource.h"
 #import "SearchViewController.h"
+#import "BillApplyViewController.h"
 
 @interface BillViewController ()
 @property (nonatomic, strong) XLFormDataSource *todoDS;
@@ -42,7 +43,7 @@
     UIBarButtonItem *searchItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction:)];
     if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
         //只有厂商才能下订单
-        UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillApplyViewController)];
+        UIBarButtonItem *addItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushBillTypeViewController)];
         self.navigationItem.rightBarButtonItems = @[addItem, searchItem];
     }else{
         self.navigationItem.rightBarButtonItem = searchItem;
@@ -125,7 +126,7 @@
     }];
 }
 
--(void)pushBillApplyViewController
+-(void)pushBillTypeViewController
 {
     BillTypeViewController *controller = [[BillTypeViewController alloc]init];
     controller.hidesBottomBarWhenPushed = YES;
@@ -151,7 +152,11 @@
     for (Order *order in orders) {
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:PendingOrderDescriporType];
         row.value = order;
-        row.action.viewControllerClass = [BillDetailViewController class];
+        if (order.status == OrderStatusPending || order.status == OrderStatusDenied) {
+            row.action.viewControllerClass = [BillApplyViewController class];
+        }else{
+            row.action.viewControllerClass = [BillDetailViewController class];
+        }
         [section addFormRow:row];
     }
     return form;

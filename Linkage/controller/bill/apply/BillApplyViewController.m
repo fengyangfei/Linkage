@@ -32,6 +32,7 @@ row.cellStyle = UITableViewCellStyleValue1;
 @end
 
 @implementation BillApplyViewController
+@synthesize rowDescriptor = _rowDescriptor;
 
 -(void)dealloc
 {
