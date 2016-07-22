@@ -44,6 +44,10 @@
                 [TRThemeManager shareInstance].themeType = TRThemeTypeCompany;
             }else if (loginUser.ctype == UserTypeSubCompanyAdmin){
                 [TRThemeManager shareInstance].themeType = TRThemeTypeSubCompany;
+            }else if (loginUser.ctype == UserTypeCompanyUser){
+                [TRThemeManager shareInstance].themeType = TRThemeTypeContact;
+            }else if (loginUser.ctype == UserTypeSubCompanyUser){
+                [TRThemeManager shareInstance].themeType = TRThemeTypeSubContact;
             }
             //获取企业信息
             [CompanyUtil queryModelFromServer:^(Company *model) {
