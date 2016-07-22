@@ -81,12 +81,12 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:[self generateCargoRow]];
     
     //自定义Cell
-    [self addCustomCell:form];
+    [self addCustomCell:form order:nil];
     
     self.form = form;
 }
 
--(void)addCustomCell:(XLFormDescriptor *)form
+-(void)addCustomCell:(XLFormDescriptor *)form order:(Order *)order
 {
     //子类实现
 }
@@ -221,7 +221,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     return row;
 }
 
--(void)addCustomCell:(XLFormDescriptor *)form
+-(void)addCustomCell:(XLFormDescriptor *)form order:(Order *)order
 {
     XLFormSectionDescriptor *section;
     XLFormRowDescriptor *row;
@@ -237,7 +237,11 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"提货时间"];
-    row.value= [NSDate date];
+    if (order && order.takeTime) {
+        row.value = order.takeTime;
+    }else{
+        row.value = [NSDate date];
+    }
     row.required = YES;
     [section addFormRow:row];
     
@@ -245,47 +249,80 @@ row.cellStyle = UITableViewCellStyleValue1;
     RowUI
     RowAccessoryUI
     RowPlaceHolderUI(@"请选择送货地址")
+    if (order && order.deliveryAddress) {
+        row.value = order.deliveryAddress;
+    }
     row.required = YES;
     row.action.formSelector = @selector(addAddressRow:);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDate title:@"送货时间"];
-    row.value= [NSDate date];
+    if (order && order.deliverTime) {
+        row.value = order.deliverTime;
+    }else{
+        row.value= [NSDate date];
+    }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"cargos_rent_expire" rowType:XLFormRowDescriptorTypeDate title:@"柜租到期日期"];
-    row.value= [NSDate date];
+    if (order && order.cargosRentExpire) {
+        row.value = order.cargosRentExpire;
+    }else{
+        row.value= [NSDate date];
+    }
     [section addFormRow:row];
     
     //订单信息
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"bill_no" rowType:XLFormRowDescriptorTypeText title:@"提单号"];
+    if (order && ((ImportOrder *)order).billNo) {
+        row.value = ((ImportOrder *)order).billNo;
+    }
     row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"cargo_no" rowType:XLFormRowDescriptorTypeText title:@"柜号"];
+    if (order && ((ImportOrder *)order).cargoNo) {
+        row.value = ((ImportOrder *)order).cargoNo;
+    }
     row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"cargo_company" rowType:XLFormRowDescriptorTypeText title:@"二程公司"];
+    if (order && ((ImportOrder *)order).cargoCompany) {
+        row.value = ((ImportOrder *)order).cargoCompany;
+    }
     row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_broker" rowType:XLFormRowDescriptorTypeText title:@"报关行联系人"];
+    if (order && ((ImportOrder *)order).customsBroker) {
+        row.value = ((ImportOrder *)order).customsBroker;
+    }
     row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_contact" rowType:XLFormRowDescriptorTypeText title:@"报关行联系人电话"];
+    if (order && ((ImportOrder *)order).customsHouseContact) {
+        row.value = ((ImportOrder *)order).customsHouseContact;
+    }
     row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"is_transfer_port" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否转关"];
-    row.value = @(YES);
+    if (order && ((ImportOrder *)order).isTransferPort) {
+        row.value = @(((ImportOrder *)order).isTransferPort);
+    }else{
+        row.value = @(YES);
+    }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"memo" rowType:XLFormRowDescriptorTypeTextView title:@"备注"];
     [row.cellConfigAtConfigure setObject:@"请填写备注" forKey:@"textView.placeholder"];
+    if (order && order.memo) {
+        row.value = order.memo;
+    }
     [section addFormRow:row];
 }
 
@@ -302,7 +339,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     self.title = @"出口订单";
 }
 
--(void)addCustomCell:(XLFormDescriptor *)form
+-(void)addCustomCell:(XLFormDescriptor *)form order:(Order *)order
 {
     XLFormSectionDescriptor *section;
     XLFormRowDescriptor *row;
@@ -315,26 +352,44 @@ row.cellStyle = UITableViewCellStyleValue1;
     RowUI
     RowAccessoryUI
     RowPlaceHolderUI(@"请选择装货地址")
+    if (order && order.takeAddress) {
+        row.value = order.takeAddress;
+    }
     row.required = YES;
     row.action.formSelector = @selector(addAddressRow:);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"到厂时间"];
-    row.value = [NSDate date];
+    if (order && order.takeTime) {
+        row.value = order.takeTime;
+    }else{
+        row.value = [NSDate date];
+    }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDate title:@"送货时间"];
-    row.value = [NSDate date];
+    if (order && order.deliverTime) {
+        row.value = order.deliverTime;
+    }else{
+        row.value = [NSDate date];
+    }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"port_option" rowType:XLFormRowDescriptorTypeSelectorPush title:@"出口港口"];
     row.noValueDisplayText = @"请选择出口港口";
+    if (order && ((ExportOrder *)order).port) {
+        row.value = ((ExportOrder *)order).port;
+    }
     row.required = YES;
     row.selectorOptions = [LinkUtil portOptions];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_in" rowType:XLFormRowDescriptorTypeDate title:@"截关日期"];
-    row.value = [NSDate date];
+    if (order && ((ExportOrder *)order).customsIn) {
+        row.value = ((ExportOrder *)order).customsIn;
+    }else{
+        row.value = [NSDate date];
+    }
     [section addFormRow:row];
     
     //SO图片
@@ -351,27 +406,47 @@ row.cellStyle = UITableViewCellStyleValue1;
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"ship_company" rowType:XLFormRowDescriptorTypeText title:@"头程公司"];
+    if (order && ((ExportOrder *)order).shipCompany) {
+        row.value = ((ExportOrder *)order).shipCompany;
+    }
     row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"ship_name" rowType:XLFormRowDescriptorTypeText title:@"头程船名"];
+    if (order && ((ExportOrder *)order).shipName) {
+        row.value = ((ExportOrder *)order).shipName;
+    }
     row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"ship_schedule_no" rowType:XLFormRowDescriptorTypeText title:@"头程班次"];
+    if (order && ((ExportOrder *)order).shipScheduleNo) {
+        row.value = ((ExportOrder *)order).shipScheduleNo;
+    }
     row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"is_book_cargo" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否与头程约好柜"];
-    row.value = @YES;
+    if (order && ((ExportOrder *)order).isBookCargo) {
+        row.value = @(((ExportOrder *)order).isBookCargo);
+    }else{
+        row.value = @YES;
+    }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"is_transfer_port" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否转关"];
-    row.value = @YES;
+    if (order && ((ExportOrder *)order).isTransferPort) {
+        row.value = @(((ExportOrder *)order).isTransferPort);
+    }else{
+        row.value = @YES;
+    }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"memo" rowType:XLFormRowDescriptorTypeTextView title:@"备注"];
     [row.cellConfigAtConfigure setObject:@"请填写备注" forKey:@"textView.placeholder"];
+    if (order && ((ExportOrder *)order).memo) {
+        row.value = ((ExportOrder *)order).memo;
+    }
     [section addFormRow:row];
 }
 
@@ -403,7 +478,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     self.title = @"自备柜配送";
 }
 
--(void)addCustomCell:(XLFormDescriptor *)form
+-(void)addCustomCell:(XLFormDescriptor *)form order:(Order *)order
 {
     XLFormSectionDescriptor *section;
     XLFormRowDescriptor *row;
@@ -416,12 +491,19 @@ row.cellStyle = UITableViewCellStyleValue1;
     RowUI
     RowAccessoryUI
     RowPlaceHolderUI(@"请选择装货地址")
+    if (order && order.takeAddress) {
+        row.value = order.takeAddress;
+    }
     row.required = YES;
     row.action.formSelector = @selector(addAddressRow:);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"装货时间"];
-    row.value= [NSDate date];
+    if (order && order.takeTime) {
+        row.value = order.takeTime;
+    }else{
+        row.value = [NSDate date];
+    }
     row.required = YES;
     [section addFormRow:row];
     
@@ -429,35 +511,61 @@ row.cellStyle = UITableViewCellStyleValue1;
     RowUI
     RowAccessoryUI
     RowPlaceHolderUI(@"请选择送货地址")
+    if (order && order.deliveryAddress) {
+        row.value = order.deliveryAddress;
+    }
     row.required = YES;
     row.action.formSelector = @selector(addAddressRow:);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDate title:@"送货时间"];
-    row.value= [NSDate date];
+    if (order && order.deliverTime) {
+        row.value = order.deliverTime;
+    }else{
+        row.value = [NSDate date];
+    }
     row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"is_customs_declare" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否需要报关"];
-    row.value = @(YES);
+    if (order && ((SelfOrder *)order).isCustomsDeclare) {
+        row.value = @(((SelfOrder *)order).isCustomsDeclare);
+    }else{
+        row.value = @(YES);
+    }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_in" rowType:XLFormRowDescriptorTypeDate title:@"报关时间"];
-    row.value= [NSDate date];
+    if (order && ((SelfOrder *)order).customsIn) {
+        row.value = ((SelfOrder *)order).customsIn;
+    }else{
+        row.value = [NSDate date];
+    }
     row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"cargo_take_time" rowType:XLFormRowDescriptorTypeDate title:@"提货时间"];
-    row.value= [NSDate date];
+    if (order && ((SelfOrder *)order).cargoTakeTime) {
+        row.value = ((SelfOrder *)order).cargoTakeTime;
+    }else{
+        row.value = [NSDate date];
+    }
     row.required = YES;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"is_transfer_port" rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"是否转关"];
-    row.value = @(YES);
+    if (order && order.isTransferPort) {
+        row.value = @(order.isTransferPort);
+    }else{
+        row.value = @(YES);
+    }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"memo" rowType:XLFormRowDescriptorTypeTextView title:@"备注"];
     [row.cellConfigAtConfigure setObject:@"请填写备注" forKey:@"textView.placeholder"];
+    if (order && order.memo) {
+        row.value = order.memo;
+    }
     [section addFormRow:row];
 }
 @end
