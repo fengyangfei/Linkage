@@ -92,4 +92,19 @@
         NSLog(@"%@",error);
     }];
 }
+
+//数据库查询
++(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
+{
+    NSArray *managerObjects = [FavoriteModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].cid andOrderBy:@"companyId" ascending:YES inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:managerObjects.count];
+    for (NSManagedObject *manageObj in managerObjects) {
+        id<MTLJSONSerializing> model = [self modelFromManagedObject:manageObj];
+        [mutableArray addObject:model];
+    }
+    if (completion) {
+        completion([mutableArray copy]);
+    }
+}
+
 @end

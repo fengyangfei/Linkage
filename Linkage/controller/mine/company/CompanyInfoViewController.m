@@ -44,7 +44,7 @@
     [super viewDidLoad];
     self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 18)];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 16)];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStylePlain target:self action:@selector(collectAction:)];
     self.navigationItem.rightBarButtonItem = rightItem;
     [self setupData];
@@ -73,20 +73,25 @@
     XLFormRowDescriptor * row;
     
     form = [XLFormDescriptor formDescriptor];
+    
+    if(StringIsNotEmpty(company.images)){
+        section = [XLFormSectionDescriptor formSection];
+        [form addFormSection:section];
+        
+        NSArray *images = [company.images componentsSeparatedByString:@";"];
+        NSMutableArray *imageArray = [[NSMutableArray alloc]init];
+        for (NSString *imageUrl in images) {
+            Advert *ad = [[Advert alloc]init];
+            ad.icon = imageUrl;
+            [imageArray addObject:ad];
+        }
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:CycleScrollDescriporRowType];
+        row.value = imageArray;
+        [section addFormRow:row];
+    }
+    
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
-    
-    
-    NSArray *images = [company.images componentsSeparatedByString:@";"];
-    NSMutableArray *imageArray = [[NSMutableArray alloc]init];
-    for (NSString *imageUrl in images) {
-        Advert *ad = [[Advert alloc]init];
-        ad.icon = imageUrl;
-        [imageArray addObject:ad];
-    }
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:CycleScrollDescriporRowType];
-    row.value = imageArray;
-    [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company_name" rowType:XLFormRowDescriptorTypeButton title:@"企业名称"];
     RowUI

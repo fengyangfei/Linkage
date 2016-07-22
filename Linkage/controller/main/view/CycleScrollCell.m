@@ -42,8 +42,8 @@ NSString *const CycleScrollDescriporRowType = @"CycleScrollRow";
     //图片
     NSMutableArray *imagesURLStrings = [NSMutableArray array];
     for (Advert *advert in adverts) {
-        [titleNames addObject: advert.title];
-        [imagesURLStrings addObject:advert.icon];
+    [titleNames addObject:advert.title?:@""];
+        [imagesURLStrings addObject:advert.icon?:@""];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         self.scrollView.titlesGroup = [titleNames copy];
