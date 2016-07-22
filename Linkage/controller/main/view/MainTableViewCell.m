@@ -126,7 +126,7 @@ NSString *const CompanyInfoDescriporType = @"CompanyInfoRowType";
         make.right.equalTo(self.contentView.right).offset(-12);
         make.centerY.equalTo(self.contentView.centerY);
         make.height.equalTo(@30);
-        make.width.equalTo(@66);
+        make.width.equalTo(@88);
     }];
 }
 
@@ -159,7 +159,7 @@ NSString *const CompanyInfoDescriporType = @"CompanyInfoRowType";
 {
     if (!_button) {
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_button setTitle:@"下单" forState:UIControlStateNormal];
+        [_button setTitle:@"下  单" forState:UIControlStateNormal];
         [_button setTitleColor:IndexButtonColor forState:UIControlStateNormal];
         [_button setBackgroundImage:ButtonFrameImage forState:UIControlStateNormal];
         [_button setBackgroundImage:ButtonFrameImage forState:UIControlStateHighlighted];

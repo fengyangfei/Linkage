@@ -3,6 +3,20 @@
 <plist version="1.0">
 <array>
     <array>
+        <dict>
+            <key>title</key>
+            <string>公司</string>
+            <key>iconName</key>
+            <string>side_company_logo</string>
+            <key>className</key>
+            <string>CompanySettingViewController</string>
+            <key>type</key>
+            <integer>1</integer>
+            <key>entityName</key>
+            <string>Company</string>
+        </dict>
+    </array>
+    <array>
 		<dict>
 			<key>title</key>
 			<string>个人</string>
@@ -16,6 +30,16 @@
 			<string>LoginUser</string>
 		</dict>
 	</array>
+    <array>
+        <dict>
+            <key>title</key>
+            <string>投诉与建议</string>
+            <key>iconName</key>
+            <string>setting_sms</string>
+            <key>className</key>
+            <string>AdviceViewController</string>
+        </dict>
+    </array>
 	<array>
 		<dict>
 			<key>title</key>

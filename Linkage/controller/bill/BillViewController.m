@@ -113,7 +113,7 @@
     WeakSelf
     NSPredicate *todoPredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status != %@", [LoginUser shareInstance].cid, @(OrderStatusCompletion)];
     [OrderUtil queryModelsFromDataBase:todoPredicate completion:^(NSArray *orders) {
-        [weakSelf.todoDS setForm:[weakSelf createForm:orders]];
+        [weakSelf.todoDS setForm:[weakSelf createTodoForm:orders]];
     }];
 }
 
@@ -122,7 +122,7 @@
     WeakSelf
     NSPredicate *donePredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status == %@", [LoginUser shareInstance].cid, @(OrderStatusCompletion)];
     [OrderUtil queryModelsFromDataBase:donePredicate completion:^(NSArray *orders) {
-        [weakSelf.doneDS setForm:[weakSelf createForm:orders]];
+        [weakSelf.doneDS setForm:[weakSelf createDoneForm:orders]];
     }];
 }
 
@@ -140,15 +140,43 @@
     [self.navigationController pushViewController:searchViewController animated:YES];
 }
 
--(XLFormDescriptor *)createForm:(NSArray *)orders
+-(XLFormDescriptor *)createDoneForm:(NSArray *)orders
+{
+    XLFormDescriptor * form;
+    XLFormSectionDescriptor * section;
+    
+    form = [XLFormDescriptor formDescriptor];
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    [self addOrders:orders toSection:section];
+    return form;
+}
+
+-(XLFormDescriptor *)createTodoForm:(NSArray *)orders
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
 
     form = [XLFormDescriptor formDescriptor];
-    section = [XLFormSectionDescriptor formSection];
+    section = [XLFormSectionDescriptor formSectionWithTitle:@"未接单"];
     [form addFormSection:section];
     
+    NSPredicate *todoPredicate = [NSPredicate predicateWithFormat:@"status == %@", @(OrderStatusPending)];
+    NSArray *todoOrders = [orders filteredArrayUsingPredicate:todoPredicate];
+    [self addOrders:todoOrders toSection:section];
+    
+    section = [XLFormSectionDescriptor formSectionWithTitle:@"已接单"];
+    [form addFormSection:section];
+    
+    NSPredicate *doingPredicate = [NSPredicate predicateWithFormat:@"status != %@", @(OrderStatusPending)];
+    NSArray *doingOrders = [orders filteredArrayUsingPredicate:doingPredicate];
+    [self addOrders:doingOrders toSection:section];
+
+    return form;
+}
+
+-(void)addOrders:(NSArray *)orders toSection:(XLFormSectionDescriptor *)section
+{
     for (Order *order in orders) {
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:PendingOrderDescriporType];
         row.value = order;
@@ -167,14 +195,13 @@
         }
         [section addFormRow:row];
     }
-    return form;
 }
 
 #pragma mark - 属性
 -(UITableView *)leftTableView
 {
     if (!_leftTableView) {
-        _leftTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _leftTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _todoDS = [[TodoDataSource alloc] initWithViewController:self tableView:_leftTableView];
         _leftTableView.dataSource = _todoDS;
         _leftTableView.delegate = _todoDS;

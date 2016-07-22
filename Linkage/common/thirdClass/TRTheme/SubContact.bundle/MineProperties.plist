@@ -3,6 +3,20 @@
 <plist version="1.0">
 <array>
     <array>
+        <dict>
+            <key>title</key>
+            <string>公司</string>
+            <key>iconName</key>
+            <string>side_company_logo</string>
+            <key>className</key>
+            <string>CompanySettingViewController</string>
+            <key>type</key>
+            <integer>1</integer>
+            <key>entityName</key>
+            <string>Company</string>
+        </dict>
+    </array>
+    <array>
 		<dict>
 			<key>title</key>
 			<string>个人</string>
@@ -19,30 +33,42 @@
     <array>
         <dict>
             <key>title</key>
-            <string>员工管理</string>
+            <string>地址管理</string>
             <key>iconName</key>
-            <string>setting_staff</string>
+            <string>setting_address</string>
             <key>className</key>
-            <string>StaffViewController</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>邀请员工</string>
-            <key>iconName</key>
-            <string>setting_invert</string>
-            <key>selectorName</key>
-            <string>inviteAction:</string>
+            <string>AddressViewController</string>
         </dict>
     </array>
-	<array>
-		<dict>
-			<key>title</key>
-			<string>系统设置</string>
-			<key>iconName</key>
-			<string>setting_system</string>
-			<key>className</key>
-			<string>SettingViewController</string>
-		</dict>
-	</array>
+    <array>
+        <dict>
+            <key>title</key>
+            <string>我的收藏</string>
+            <key>iconName</key>
+            <string>setting_favorite</string>
+            <key>className</key>
+            <string>FavoriteViewController</string>
+        </dict>
+    </array>
+    <array>
+        <dict>
+            <key>title</key>
+            <string>投诉与建议</string>
+            <key>iconName</key>
+            <string>setting_sms</string>
+            <key>className</key>
+            <string>AdviceViewController</string>
+        </dict>
+    </array>
+    <array>
+        <dict>
+            <key>title</key>
+            <string>系统设置</string>
+            <key>iconName</key>
+            <string>setting_system</string>
+            <key>className</key>
+            <string>SettingViewController</string>
+        </dict>
+    </array>
 </array>
 </plist>
