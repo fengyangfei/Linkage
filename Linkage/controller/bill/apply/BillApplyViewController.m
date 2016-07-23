@@ -316,12 +316,14 @@ row.cellStyle = UITableViewCellStyleValue1;
     row.required = YES;
     [section addFormRow:row];
     
+    /*
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"cargo_no" rowType:XLFormRowDescriptorTypeText title:@"柜号"];
     if (order && ((ImportOrder *)order).cargoNo) {
         row.value = ((ImportOrder *)order).cargoNo;
     }
     row.required = YES;
     [section addFormRow:row];
+     */
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"cargo_company" rowType:XLFormRowDescriptorTypeText title:@"二程公司"];
     if (order && ((ImportOrder *)order).cargoCompany) {

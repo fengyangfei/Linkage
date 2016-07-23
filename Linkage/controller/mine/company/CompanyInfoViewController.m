@@ -145,27 +145,26 @@
     }
     [section addFormRow:row];
     
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话"];
-    RowUI
     if (company && company.servicePhone2) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话"];
+        RowUI
         row.value = company.servicePhone2;
+        [section addFormRow:row];
     }
-    [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话"];
-    RowUI
     if (company && company.servicePhone3) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话"];
+        RowUI
         row.value = company.servicePhone3;
+        [section addFormRow:row];
     }
-    [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话"];
-    RowUI
     if (company && company.servicePhone4) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话"];
+        RowUI
         row.value = company.servicePhone4;
+        [section addFormRow:row];
     }
-    [section addFormRow:row];
     
     return form;
 }

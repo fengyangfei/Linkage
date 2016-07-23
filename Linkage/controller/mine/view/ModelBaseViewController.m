@@ -67,11 +67,9 @@ row.cellStyle = UITableViewCellStyleValue1;
 
 -(void)setupNavigationItem
 {
-    if (self.controllerType == ControllerTypeManager) {
-        UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
-        UIBarButtonItem *addBtn = self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
-        self.navigationItem.rightBarButtonItems = @[editBtn, addBtn];
-    }
+    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
+    UIBarButtonItem *addBtn = self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
+    self.navigationItem.rightBarButtonItems = @[editBtn, addBtn];
 }
 
 -(void)viewDidAppear:(BOOL)animated
