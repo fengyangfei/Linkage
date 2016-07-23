@@ -162,6 +162,8 @@
     NSDictionary *paramter = @{@"mobile":NilStringWrapper(formValues[@"phoneNum"]),
                                @"password":[NilStringWrapper(formValues[@"password"]) md5],
                                @"company_name":NilStringWrapper(formValues[@"companyName"]),
+                               @"name":NilStringWrapper(formValues[@"name"]),
+                               @"gender":[formValues[@"name"] valueData],
                                @"ctype":[formValues[@"ctype"] valueData],
                                @"verify_code":NilStringWrapper(formValues[@"verifyCode"])};
     [[YGRestClient sharedInstance] postForObjectWithUrl:Register4AdminUrl form:paramter success:^(id responseObject) {

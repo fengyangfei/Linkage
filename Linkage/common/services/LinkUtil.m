@@ -87,11 +87,11 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _orderStatus = @{
-                        @(OrderStatusPending):@"订单待处理",
-                        @(OrderStatusExecuting):@"订单处理中",
-                        @(OrderStatusDenied):@"订单被拒绝",
-                        @(OrderStatusCompletion):@"订单确认完成",
-                        @(OrderStatusCancelled):@"订单已取消"
+                        @(OrderStatusPending):@"待处理",
+                        @(OrderStatusExecuting):@"处理中",
+                        @(OrderStatusDenied):@"被拒绝",
+                        @(OrderStatusCompletion):@"确认完成",
+                        @(OrderStatusCancelled):@"已取消"
                         };
     });
     return _orderStatus;
