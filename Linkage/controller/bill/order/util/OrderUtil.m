@@ -119,13 +119,24 @@
 //同步到服务端
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
 {
+    Order *order = (Order *)model;
     NSDictionary *paramter = [self jsonFromModel:model];
-    if (paramter) {
-        if ([model isKindOfClass:[ImportOrder class]]) {
+    if (paramter && StringIsNotEmpty(order.orderId)) {
+        //修改接口
+        if (order.type == OrderTypeImport || [model isKindOfClass:[ImportOrder class]]) {
+            [[YGRestClient sharedInstance] postForObjectWithUrl:Mod4importUrl form:paramter success:success failure:failure];
+        }else if(order.type == OrderTypeExport || [model isKindOfClass:[ExportOrder class]]){
+            [[YGRestClient sharedInstance] postForObjectWithUrl:Mod4exportUrl form:paramter success:success failure:failure];
+        }else if(order.type == OrderTypeSelf || [model isKindOfClass:[SelfOrder class]]){
+            [[YGRestClient sharedInstance] postForObjectWithUrl:Mod4selfUrl form:paramter success:success failure:failure];
+        }
+    }else if(paramter){
+        //新增接口
+        if (order.type == OrderTypeImport || [model isKindOfClass:[ImportOrder class]]) {
             [[YGRestClient sharedInstance] postForObjectWithUrl:Place4importUrl form:paramter success:success failure:failure];
-        }else if([model isKindOfClass:[ExportOrder class]]){
+        }else if(order.type == OrderTypeExport || [model isKindOfClass:[ExportOrder class]]){
             [[YGRestClient sharedInstance] postForObjectWithUrl:Place4exportUrl form:paramter success:success failure:failure];
-        }else if([model isKindOfClass:[SelfOrder class]]){
+        }else if(order.type == OrderTypeSelf || [model isKindOfClass:[SelfOrder class]]){
             [[YGRestClient sharedInstance] postForObjectWithUrl:Place4selfUrl form:paramter success:success failure:failure];
         }
     }
@@ -251,7 +262,7 @@
         [result mergeValueForKey:@"updateTime" fromModel:order];
         return result;
     };
-    if ([order isKindOfClass:[ImportOrder class]] || order.type == OrderTypeImport) {
+    if (order.type == OrderTypeImport || [order isKindOfClass:[ImportOrder class]]) {
         [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4importUrl form:paramter success:^(id responseObject) {
             Order *result = mergeOrder(responseObject);
             if (completion) {
@@ -262,7 +273,7 @@
                 failure(error);
             }
         }];
-    }else if([order isKindOfClass:[ExportOrder class]] || order.type == OrderTypeExport){
+    }else if(order.type == OrderTypeExport || [order isKindOfClass:[ExportOrder class]]){
         [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4exportUrl form:paramter success:^(id responseObject) {
             Order *result = mergeOrder(responseObject);
             if (completion) {
@@ -273,7 +284,7 @@
                 failure(error);
             }
         }];
-    }else if([order isKindOfClass:[SelfOrder class]] || order.type == OrderTypeSelf){
+    }else if(order.type == OrderTypeSelf || [order isKindOfClass:[SelfOrder class]]){
         [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4selfUrl form:paramter success:^(id responseObject) {
             Order *result = mergeOrder(responseObject);
             if (completion) {
