@@ -49,46 +49,16 @@
         self.navigationItem.rightBarButtonItem = searchItem;
     }
     self.leftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        NSDictionary *parameter = @{
-                                    @"type":@(-1),
-                                    @"status":@(1)
-                                    };
-        parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
-        [OrderUtil queryModelsFromServer:parameter completion:^(NSArray *orders) {
-            if (orders.count > 0) {
-                for (Order *order in orders) {
-                    [OrderUtil syncToDataBase:order completion:nil];
-                }
-            }else{
-                [OrderUtil truncateTodoOrders];
-            }
+        [weakSelf queryTodoDataFromServer:^{
             StrongSelf
-            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError *error) {
-                [strongSelf setupTodoData];
-            }];
-            [weakSelf.leftTableView.mj_header endRefreshing];
+            [strongSelf.leftTableView.mj_header endRefreshing];
         }];
     }];
     
     self.rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        NSDictionary *parameter = @{
-                                    @"type":@(-1),
-                                    @"status":@(2)
-                                    };
-        parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
-        [OrderUtil queryModelsFromServer:parameter completion:^(NSArray *orders) {
-            if (orders.count > 0) {
-                for (Order *order in orders) {
-                    [OrderUtil syncToDataBase:order completion:nil];
-                }
-            }else{
-                [OrderUtil truncateDoneOrders];
-            }
+        [weakSelf queryDoneDataFromServer:^{
             StrongSelf
-            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
-                [strongSelf setupDoneData];
-            }];
-            [weakSelf.rightTableView.mj_header endRefreshing];
+            [strongSelf.rightTableView.mj_header endRefreshing];
         }];
     }];
 }
@@ -97,15 +67,67 @@
 {
     [super viewDidAppear:animated];
     if (![self.leftTableView.mj_header isRefreshing]) {
-        [self.leftTableView.mj_header beginRefreshing];
+        [self queryTodoDataFromServer:nil];
     }
 }
 
 - (void)segmentedControlChangeIndex:(NSInteger)index
 {
     if (index == 1) {
-        [self setupDoneData];
+        [self queryDoneDataFromServer:nil];
     }
+}
+
+-(void)queryTodoDataFromServer:(void(^)(void))block
+{
+    NSDictionary *parameter = @{
+                                @"type":@(-1),
+                                @"status":@(1)
+                                };
+    WeakSelf
+    parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+    [OrderUtil queryModelsFromServer:parameter completion:^(NSArray *orders) {
+        if (orders.count > 0) {
+            for (Order *order in orders) {
+                [OrderUtil syncToDataBase:order completion:nil];
+            }
+        }else{
+            [OrderUtil truncateTodoOrders];
+        }
+        StrongSelf
+        [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError *error) {
+            [strongSelf setupTodoData];
+        }];
+        if (block) {
+            block();
+        }
+    }];
+}
+
+-(void)queryDoneDataFromServer:(void(^)(void))block
+{
+    NSDictionary *parameter = @{
+                                @"type":@(-1),
+                                @"status":@(2)
+                                };
+    WeakSelf
+    parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+    [OrderUtil queryModelsFromServer:parameter completion:^(NSArray *orders) {
+        if (orders.count > 0) {
+            for (Order *order in orders) {
+                [OrderUtil syncToDataBase:order completion:nil];
+            }
+        }else{
+            [OrderUtil truncateDoneOrders];
+        }
+        StrongSelf
+        [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+            [strongSelf setupDoneData];
+        }];
+        if (block) {
+            block();
+        }
+    }];
 }
 
 -(void)setupTodoData

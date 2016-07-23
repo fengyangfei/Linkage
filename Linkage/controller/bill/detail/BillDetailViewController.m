@@ -372,7 +372,7 @@
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         [weakSelf acceptAction];
     }];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
     }];
     [alertController addAction:action];
     [alertController addAction:cancel];
@@ -384,8 +384,6 @@
 
 -(void)acceptAction
 {
-
-
     Order *order = (Order *)self.rowDescriptor.value;
     __weak Order *weakOrder = order;
     [OrderUtil acceptOrder:order success:^(id responseData) {
@@ -393,6 +391,24 @@
         weakOrder.status = OrderStatusExecuting;
         [OrderUtil syncToDataBase:weakOrder completion:nil];
     } failure:^(NSError *error) {
+        
+    }];
+}
+
+//结单
+-(void)confirmCompletion
+{
+    WeakSelf
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否结单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf confirmAction];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    }];
+    [alertController addAction:action];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:^{
         
     }];
 }
@@ -407,6 +423,24 @@
         weakOrder.status = OrderStatusCompletion;
         [OrderUtil syncToDataBase:weakOrder completion:nil];
     } failure:^(NSError *error) {
+        
+    }];
+}
+
+//拒绝
+-(void)confirmReject
+{
+    WeakSelf
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否拒绝？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf rejectAction];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    }];
+    [alertController addAction:action];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:^{
         
     }];
 }
@@ -452,7 +486,7 @@
 -(UIBarButtonItem *)confirmItem
 {
     if (!_confirmItem) {
-        _confirmItem = [[UIBarButtonItem alloc]initWithTitle:@"结单" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmAction)];
+        _confirmItem = [[UIBarButtonItem alloc]initWithTitle:@"结单" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmCompletion)];
     }
     return _confirmItem;
 }
@@ -460,7 +494,7 @@
 -(UIBarButtonItem *)rejectItem
 {
     if (!_rejectItem) {
-        _rejectItem = [[UIBarButtonItem alloc]initWithTitle:@"拒绝" style:UIBarButtonItemStyleBordered target:self action:@selector(rejectAction)];
+        _rejectItem = [[UIBarButtonItem alloc]initWithTitle:@"拒绝" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmReject)];
     }
     return _rejectItem;
 }
