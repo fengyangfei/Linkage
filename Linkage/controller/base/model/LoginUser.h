@@ -55,7 +55,7 @@ typedef NS_ENUM(NSUInteger,UserType) {
 @property (nonatomic, strong) NSDate     *createTime;
 @property (nonatomic, strong) NSDate     *updateTime;
 @property (nonatomic, assign) UserType   ctype;
-@property (nonatomic, strong) NSArray    *companies;
+@property (nonatomic, strong) NSArray    *companies;//首页的公司
 @property (nonatomic, strong) NSArray    *advertes;//广告
 @end
 

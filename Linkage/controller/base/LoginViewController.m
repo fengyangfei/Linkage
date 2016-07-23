@@ -30,14 +30,17 @@
     WeakSelf
     NSString *userName = self.nameTextField.text;
     NSString *password = self.passwordTextField.text;
+    NSString *md5Password = [password md5];
     NSDictionary *paramter = @{
                                @"mobile":userName,
-                               @"password":[password md5]
+                               @"password":md5Password
                                };
     [[YGRestClient sharedInstance] postForObjectWithUrl:LoginUrl form:paramter success:^(id responseObject) {
         NSError *error = nil;
         LoginUser *loginUser = [MTLJSONAdapter modelOfClass:[LoginUser class] fromJSONDictionary:responseObject error:&error];
         if (loginUser && !error) {
+            loginUser.mobile = userName;
+            loginUser.password = md5Password;
             [loginUser save];
             //主题变更
             if (loginUser.ctype == UserTypeCompanyAdmin) {

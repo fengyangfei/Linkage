@@ -316,8 +316,8 @@ NSString* __GetMethodName(HTTPRequestMethod method) {
                                        };
             NSError *error = [NSError errorWithDomain:@"NSHTTPRequestFailureError" code:-1000 userInfo:userInfo];
             if (self.showProgressHUD) {
-                [SVProgressHUD show];
-                [SVProgressHUD showInfoWithStatus:error.localizedDescription];
+                //[SVProgressHUD show];
+                //[SVProgressHUD showInfoWithStatus:error.localizedDescription];
             }
             failure(nil, error);
         }

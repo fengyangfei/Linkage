@@ -223,7 +223,7 @@
 {
     if (!_nameTextField) {
         _nameTextField = [UITextField new];
-        _nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入用户名" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+        _nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入手机号" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
         _nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _nameTextField.textColor = [UIColor whiteColor];
         _nameTextField.keyboardDistanceFromTextField = 150.0;
