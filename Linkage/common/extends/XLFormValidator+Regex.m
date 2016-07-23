@@ -27,7 +27,7 @@
 
 +(XLFormValidator *)httpUrlValidator
 {
-    return [XLFormRegexValidator formRegexValidatorWithMsg:@"网址格式不正确" regex:HttpUrlRegex];
+    return [XLFormRegexValidator formRegexValidatorWithMsg:@"网址格式为:www.XXXX.com" regex:HttpUrlRegex];
 }
 
 
