@@ -100,7 +100,8 @@
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"description" rowType:XLFormRowDescriptorTypeButton title:@"企业简介"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"description" rowType:XLFormRowDescriptorTypeTextView title:@"企业简介"];
+    row.disabled = @YES;
     RowUI
     if (company) {
         row.value = company.introduction;
@@ -145,21 +146,21 @@
     }
     [section addFormRow:row];
     
-    if (company && company.servicePhone2) {
+    if (company && company.servicePhone2 && StringIsNotEmpty(company.servicePhone2)) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话"];
         RowUI
         row.value = company.servicePhone2;
         [section addFormRow:row];
     }
     
-    if (company && company.servicePhone3) {
+    if (company && company.servicePhone3 && StringIsNotEmpty(company.servicePhone3)) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话"];
         RowUI
         row.value = company.servicePhone3;
         [section addFormRow:row];
     }
     
-    if (company && company.servicePhone4) {
+    if (company && company.servicePhone4 && StringIsNotEmpty(company.servicePhone4)) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:@"联系电话"];
         RowUI
         row.value = company.servicePhone4;
