@@ -47,6 +47,8 @@
 
 +(void)queryModelFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model completion:(void(^)(id<MTLJSONSerializing> result))completion;
 
++(void)queryModelFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model completion:(void(^)(id<MTLJSONSerializing> result))completion failure:(void(^)(NSError *error))failure;
+
 +(void)queryModelFromServer:(NSDictionary *)parameter url:(NSString *)url completion:(void(^)(id<MTLJSONSerializing> model))completion;
 
 //数据库查询

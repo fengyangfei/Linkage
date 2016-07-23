@@ -163,6 +163,8 @@ row.cellStyle = UITableViewCellStyleValue1;
             [SVProgressHUD dismiss];
             [OrderUtil syncToDataBase:result completion:nil];
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
+        } failure:^(NSError *error) {
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
         }];
     }
 }
@@ -261,8 +263,8 @@ row.cellStyle = UITableViewCellStyleValue1;
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address_option" rowType:XLFormRowDescriptorTypeSelectorPush title:@"提货港口"];
-    row.noValueDisplayText = @"请选择提货港口";
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_address_option" rowType:XLFormRowDescriptorTypeSelectorPush title:@"进口港口"];
+    row.noValueDisplayText = @"请选择进口港口";
     row.required = YES;
     if (order && order.takeAddress) {
         row.value = [XLFormOptionsObject formOptionsObjectWithValue:order.takeAddress displayText:order.takeAddress];

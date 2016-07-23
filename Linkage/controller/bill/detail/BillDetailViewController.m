@@ -76,6 +76,8 @@
             [weakSelf setupData:result];
             [SVProgressHUD dismiss];
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
+        } failure:^(NSError *error) {
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
         }];
     }
 }

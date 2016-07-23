@@ -238,7 +238,7 @@
 }
 
 //服务端查询详情
-+(void)queryModelFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model completion:(void(^)(id<MTLJSONSerializing> result))completion
++(void)queryModelFromServer:(id<MTLJSONSerializing,ModelHttpParameter>)model completion:(void(^)(id<MTLJSONSerializing> result))completion failure:(void (^)(NSError *))failure
 {
     Order *order = (Order *)model;
     NSDictionary *paramter = @{@"order_id":order.orderId};
@@ -251,32 +251,38 @@
         [result mergeValueForKey:@"updateTime" fromModel:order];
         return result;
     };
-    if ([order isKindOfClass:[ImportOrder class]]) {
+    if ([order isKindOfClass:[ImportOrder class]] || order.type == OrderTypeImport) {
         [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4importUrl form:paramter success:^(id responseObject) {
             Order *result = mergeOrder(responseObject);
             if (completion) {
                 completion(result);
             }
         } failure:^(NSError *error) {
-            
+            if (failure) {
+                failure(error);
+            }
         }];
-    }else if([order isKindOfClass:[ExportOrder class]]){
+    }else if([order isKindOfClass:[ExportOrder class]] || order.type == OrderTypeExport){
         [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4exportUrl form:paramter success:^(id responseObject) {
             Order *result = mergeOrder(responseObject);
             if (completion) {
                 completion(result);
             }
         } failure:^(NSError *error) {
-            
+            if (failure) {
+                failure(error);
+            }
         }];
-    }else if([order isKindOfClass:[SelfOrder class]]){
+    }else if([order isKindOfClass:[SelfOrder class]] || order.type == OrderTypeSelf){
         [[YGRestClient sharedInstance] postForObjectWithUrl:Detail4selfUrl form:paramter success:^(id responseObject) {
             Order *result = mergeOrder(responseObject);
             if (completion) {
                 completion(result);
             }
         } failure:^(NSError *error) {
-            
+            if (failure) {
+                failure(error);
+            }
         }];
     }
 }
