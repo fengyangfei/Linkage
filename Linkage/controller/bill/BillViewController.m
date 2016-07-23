@@ -96,9 +96,9 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    if (![self.leftTableView.mj_header isRefreshing]) {
-//        [self.leftTableView.mj_header beginRefreshing];
-//    }
+    if (![self.leftTableView.mj_header isRefreshing]) {
+        [self.leftTableView.mj_header beginRefreshing];
+    }
 }
 
 - (void)segmentedControlChangeIndex:(NSInteger)index

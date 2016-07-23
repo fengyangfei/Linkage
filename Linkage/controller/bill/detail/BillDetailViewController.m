@@ -96,7 +96,7 @@
     if([x integerValue] == OrderStatusCompletion){
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
     }
-    if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin && ([x integerValue] == OrderStatusPending || [x integerValue] == OrderStatusExecuting)) {
+    if (([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin || [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) && ([x integerValue] == OrderStatusPending || [x integerValue] == OrderStatusExecuting)) {
         [self.view addSubview:self.toolBar];
         [self.toolBar makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(self.view.bottom);
@@ -365,8 +365,27 @@
 }
 
 //接单
+-(void)confirmAccept
+{
+    WeakSelf
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否接单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf acceptAction];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    }];
+    [alertController addAction:action];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+}
+
 -(void)acceptAction
 {
+
+
     Order *order = (Order *)self.rowDescriptor.value;
     __weak Order *weakOrder = order;
     [OrderUtil acceptOrder:order success:^(id responseData) {
@@ -425,7 +444,7 @@
 -(UIBarButtonItem *)acceptItem
 {
     if (!_acceptItem) {
-        _acceptItem = [[UIBarButtonItem alloc]initWithTitle:@"接单" style:UIBarButtonItemStyleBordered target:self action:@selector(acceptAction)];
+        _acceptItem = [[UIBarButtonItem alloc]initWithTitle:@"接单" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmAccept)];
     }
     return _acceptItem;
 }
