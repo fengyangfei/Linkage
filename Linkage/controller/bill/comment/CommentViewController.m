@@ -131,7 +131,7 @@
         _ratingView.markImage = [UIImage imageNamed:@"star_off_score"];
         _ratingView.baseColor = [UIColor lightGrayColor];
         _ratingView.stepInterval = 1;
-        _ratingView.value = 1;
+        _ratingView.value = 5;
     }
     return _ratingView;
 }

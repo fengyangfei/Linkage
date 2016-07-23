@@ -117,7 +117,6 @@
     if (company) {
         row.value = company.url;
     }
-    [row addValidator:[XLFormValidator httpUrlValidator]];
     [section addFormRow:row];
     
     //图片

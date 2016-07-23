@@ -168,9 +168,31 @@
     XLFormSectionDescriptor * section;
     
     form = [XLFormDescriptor formDescriptor];
-    section = [XLFormSectionDescriptor formSection];
-    [form addFormSection:section];
-    [self addOrders:orders toSection:section];
+    
+    NSPredicate *donePredicate = [NSPredicate predicateWithFormat:@"status == %@", @(OrderStatusCompletion)];
+    NSArray *doneOrders = [orders filteredArrayUsingPredicate:donePredicate];
+    if (doneOrders && doneOrders.count > 0) {
+        section = [XLFormSectionDescriptor formSectionWithTitle:@"已完成"];
+        [form addFormSection:section];
+        [self addOrders:doneOrders toSection:section];
+    }
+    
+    NSPredicate *deniedPredicate = [NSPredicate predicateWithFormat:@"status == %@", @(OrderStatusDenied)];
+    NSArray *deniedOrders = [orders filteredArrayUsingPredicate:deniedPredicate];
+    if (deniedOrders && deniedOrders.count > 0) {
+        section = [XLFormSectionDescriptor formSectionWithTitle:@"被拒绝"];
+        [form addFormSection:section];
+        [self addOrders:deniedOrders toSection:section];
+    }
+    
+    NSPredicate *cancelledPredicate = [NSPredicate predicateWithFormat:@"status == %@", @(OrderStatusCancelled)];
+    NSArray *cancelledOrders = [orders filteredArrayUsingPredicate:cancelledPredicate];
+    if (cancelledOrders && cancelledOrders.count > 0) {
+        section = [XLFormSectionDescriptor formSectionWithTitle:@"被拒绝"];
+        [form addFormSection:section];
+        [self addOrders:cancelledOrders toSection:section];
+    }
+    
     return form;
 }
 
@@ -239,7 +261,7 @@
 -(UITableView *)rightTableView
 {
     if (!_rightTableView) {
-        _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _rightTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _doneDS = [[DoneDataSource alloc] initWithViewController:self tableView:_rightTableView];
         _rightTableView.dataSource = _doneDS;
         _rightTableView.delegate = _doneDS;

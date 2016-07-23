@@ -22,6 +22,7 @@
 #import "YGRestClient.h"
 #import "CommentViewController.h"
 #import "ImageInfoCell.h"
+#import "BFPaperButton.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -107,9 +108,9 @@
         }];
         
         if ([x integerValue] == OrderStatusPending) {
-            [self.toolBar setItems:@[self.fixedItem, self.acceptItem,self.flexibleItem, self.rejectItem,self.fixedItem]];
+            [self.toolBar setItems:@[self.acceptItem, self.rejectItem]];
         }else if ([x integerValue] == OrderStatusExecuting){
-            [self.toolBar setItems:@[self.flexibleItem, self.confirmItem,self.flexibleItem]];
+            [self.toolBar setItems:@[self.confirmItem]];
         }
     }else{
         if (_toolBar) {
@@ -401,7 +402,7 @@
 -(void)confirmCompletion
 {
     WeakSelf
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否结单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否完成订单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         [weakSelf confirmAction];
     }];
@@ -480,7 +481,19 @@
 -(UIBarButtonItem *)acceptItem
 {
     if (!_acceptItem) {
-        _acceptItem = [[UIBarButtonItem alloc]initWithTitle:@"接单" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmAccept)];
+        //_acceptItem = [[UIBarButtonItem alloc]initWithTitle:@"接单" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmAccept)];
+        BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
+        button.cornerRadius = 4;
+        [button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
+        [button setBackgroundImage:ButtonBgImage forState:UIControlStateHighlighted];
+        [button setBackgroundImage:ButtonDisableBgImage forState:UIControlStateDisabled];
+        [button setTitleFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.f]];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+        [button setTitle:@"接单" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(confirmAccept) forControlEvents:UIControlEventTouchUpInside];
+        button.frame = CGRectMake(0, 0, IPHONE_WIDTH / 2 - 22 , 40);
+        _acceptItem = [[UIBarButtonItem alloc]initWithCustomView:button];
     }
     return _acceptItem;
 }
@@ -488,7 +501,20 @@
 -(UIBarButtonItem *)confirmItem
 {
     if (!_confirmItem) {
-        _confirmItem = [[UIBarButtonItem alloc]initWithTitle:@"结单" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmCompletion)];
+        //_confirmItem = [[UIBarButtonItem alloc]initWithTitle:@"结单" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmCompletion)];
+        BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
+        button.cornerRadius = 4;
+        [button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
+        [button setBackgroundImage:ButtonBgImage forState:UIControlStateHighlighted];
+        [button setBackgroundImage:ButtonDisableBgImage forState:UIControlStateDisabled];
+        [button setTitleFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.f]];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+        [button setTitle:@"完成订单" forState:UIControlStateNormal];
+        button.frame = CGRectMake(0, 0, IPHONE_WIDTH - 34 , 40);
+        [button addTarget:self action:@selector(confirmCompletion) forControlEvents:UIControlEventTouchUpInside];
+        _confirmItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+
     }
     return _confirmItem;
 }
@@ -496,7 +522,19 @@
 -(UIBarButtonItem *)rejectItem
 {
     if (!_rejectItem) {
-        _rejectItem = [[UIBarButtonItem alloc]initWithTitle:@"拒绝" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmReject)];
+        //_rejectItem = [[UIBarButtonItem alloc]initWithTitle:@"拒绝" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmReject)];
+        BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
+        button.cornerRadius = 4;
+        [button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
+        [button setBackgroundImage:ButtonBgImage forState:UIControlStateHighlighted];
+        [button setBackgroundImage:ButtonDisableBgImage forState:UIControlStateDisabled];
+        [button setTitleFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.f]];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+        [button setTitle:@"拒绝" forState:UIControlStateNormal];
+        button.frame = CGRectMake(0, 0, IPHONE_WIDTH / 2 - 22, 40);
+        [button addTarget:self action:@selector(confirmReject) forControlEvents:UIControlEventTouchUpInside];
+        _rejectItem = [[UIBarButtonItem alloc]initWithCustomView:button];
     }
     return _rejectItem;
 }

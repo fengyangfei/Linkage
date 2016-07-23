@@ -68,6 +68,16 @@
 			<string>AddressViewController</string>
 		</dict>
 	</array>
+    <array>
+        <dict>
+            <key>title</key>
+            <string>我的收藏</string>
+            <key>iconName</key>
+            <string>setting_favorite</string>
+            <key>className</key>
+            <string>FavoriteViewController</string>
+        </dict>
+    </array>
 	<array>
 		<dict>
 			<key>title</key>
