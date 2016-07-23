@@ -180,19 +180,22 @@
     XLFormSectionDescriptor * section;
 
     form = [XLFormDescriptor formDescriptor];
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"未接单"];
-    [form addFormSection:section];
-    
+
     NSPredicate *todoPredicate = [NSPredicate predicateWithFormat:@"status == %@", @(OrderStatusPending)];
     NSArray *todoOrders = [orders filteredArrayUsingPredicate:todoPredicate];
-    [self addOrders:todoOrders toSection:section];
+    if (todoOrders && todoOrders.count > 0) {
+        section = [XLFormSectionDescriptor formSectionWithTitle:@"未接单"];
+        [form addFormSection:section];
+        [self addOrders:todoOrders toSection:section];
+    }
     
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"已接单"];
-    [form addFormSection:section];
-    
-    NSPredicate *doingPredicate = [NSPredicate predicateWithFormat:@"status != %@", @(OrderStatusPending)];
+    NSPredicate *doingPredicate = [NSPredicate predicateWithFormat:@"status == %@", @(OrderStatusExecuting)];
     NSArray *doingOrders = [orders filteredArrayUsingPredicate:doingPredicate];
-    [self addOrders:doingOrders toSection:section];
+    if (doingOrders && doingOrders.count > 0) {
+        section = [XLFormSectionDescriptor formSectionWithTitle:@"处理中"];
+        [form addFormSection:section];
+        [self addOrders:doingOrders toSection:section];
+    }
 
     return form;
 }
