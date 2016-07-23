@@ -127,6 +127,20 @@
     return _addressTypes;
 }
 
++ (NSDictionary *)orderTitles
+{
+    static NSDictionary * _orderTitles;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _orderTitles = @{
+                         @(OrderTypeExport):@"出口订单",
+                         @(OrderTypeImport):@"进口订单",
+                         @(OrderTypeSelf):@"自备柜订单"
+                         };
+    });
+    return _orderTitles;
+}
+
 + (NSArray *)userTypeOptions
 {
     static NSArray * _userTypeOptions;

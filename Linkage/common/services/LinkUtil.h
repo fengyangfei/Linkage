@@ -24,6 +24,8 @@
 
 + (NSDictionary *)addressTypes;
 
++ (NSDictionary *)orderTitles;
+
 + (NSArray *)userTypeOptions;
 
 + (NSArray *)addressTypeOptions;

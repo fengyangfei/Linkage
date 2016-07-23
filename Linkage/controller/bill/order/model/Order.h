@@ -11,9 +11,9 @@
 #import "ModelOperation.h"
 
 typedef NS_ENUM(NSUInteger, OrderType) {
-    OrderTypeExport,
-    OrderTypeImport,
-    OrderTypeSelf,
+    OrderTypeExport,    //出口订单
+    OrderTypeImport,    //进口订单
+    OrderTypeSelf,      //自备柜订单
     OrderTypeMainland
 };
 

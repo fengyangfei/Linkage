@@ -59,8 +59,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"订单详情";
     Order *order = self.rowDescriptor.value;
+    self.title = [[LinkUtil orderTitles] objectForKey:@(order.type)];
     [self setupData:order];
     [self loadDataFromServer:order];
     [self bindViewModel:order];
@@ -105,12 +105,13 @@
             make.bottom.equalTo(self.view.bottom);
             make.left.equalTo(self.view.left);
             make.right.equalTo(self.view.right);
+            make.height.equalTo(58);
         }];
         
         if ([x integerValue] == OrderStatusPending) {
-            [self.toolBar setItems:@[self.acceptItem, self.rejectItem]];
+            [self.toolBar setItems:@[self.acceptItem, self.flexibleItem, self.rejectItem]];
         }else if ([x integerValue] == OrderStatusExecuting){
-            [self.toolBar setItems:@[self.confirmItem]];
+            [self.toolBar setItems:@[self.flexibleItem, self.confirmItem, self.flexibleItem]];
         }
     }else{
         if (_toolBar) {
@@ -371,7 +372,7 @@
 -(void)confirmAccept
 {
     WeakSelf
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否接单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请确认是否接受该订单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         [weakSelf acceptAction];
     }];
@@ -402,7 +403,7 @@
 -(void)confirmCompletion
 {
     WeakSelf
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否完成订单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请确认是否完成订单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         [weakSelf confirmAction];
     }];
@@ -434,7 +435,7 @@
 -(void)confirmReject
 {
     WeakSelf
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否拒绝？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请确认是否拒绝该订单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         [weakSelf rejectAction];
     }];
@@ -481,7 +482,6 @@
 -(UIBarButtonItem *)acceptItem
 {
     if (!_acceptItem) {
-        //_acceptItem = [[UIBarButtonItem alloc]initWithTitle:@"接单" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmAccept)];
         BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
         button.cornerRadius = 4;
         [button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
@@ -492,7 +492,7 @@
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
         [button setTitle:@"接单" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(confirmAccept) forControlEvents:UIControlEventTouchUpInside];
-        button.frame = CGRectMake(0, 0, IPHONE_WIDTH / 2 - 22 , 40);
+        button.frame = CGRectMake(0, 0, IPHONE_WIDTH / 2 - 36 , 44);
         _acceptItem = [[UIBarButtonItem alloc]initWithCustomView:button];
     }
     return _acceptItem;
@@ -501,7 +501,6 @@
 -(UIBarButtonItem *)confirmItem
 {
     if (!_confirmItem) {
-        //_confirmItem = [[UIBarButtonItem alloc]initWithTitle:@"结单" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmCompletion)];
         BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
         button.cornerRadius = 4;
         [button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
@@ -511,7 +510,7 @@
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
         [button setTitle:@"完成订单" forState:UIControlStateNormal];
-        button.frame = CGRectMake(0, 0, IPHONE_WIDTH - 34 , 40);
+        button.frame = CGRectMake(0, 0, IPHONE_WIDTH - 40 , 44);
         [button addTarget:self action:@selector(confirmCompletion) forControlEvents:UIControlEventTouchUpInside];
         _confirmItem = [[UIBarButtonItem alloc]initWithCustomView:button];
 
@@ -522,7 +521,6 @@
 -(UIBarButtonItem *)rejectItem
 {
     if (!_rejectItem) {
-        //_rejectItem = [[UIBarButtonItem alloc]initWithTitle:@"拒绝" style:UIBarButtonItemStyleBordered target:self action:@selector(confirmReject)];
         BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
         button.cornerRadius = 4;
         [button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
@@ -532,7 +530,7 @@
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
         [button setTitle:@"拒绝" forState:UIControlStateNormal];
-        button.frame = CGRectMake(0, 0, IPHONE_WIDTH / 2 - 22, 40);
+        button.frame = CGRectMake(0, 0, IPHONE_WIDTH / 2 - 36, 44);
         [button addTarget:self action:@selector(confirmReject) forControlEvents:UIControlEventTouchUpInside];
         _rejectItem = [[UIBarButtonItem alloc]initWithCustomView:button];
     }
