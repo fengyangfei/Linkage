@@ -52,6 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *status;
 @property (nullable, nonatomic, retain) NSNumber *isTransferPort;
 @property (nullable, nonatomic, retain) NSSet<CargoModel *> *cargos;
+@property (nullable, nonatomic, retain) CommentModel *comments;
 @end
 
 @interface OrderModel (CoreDataGeneratedAccessors)

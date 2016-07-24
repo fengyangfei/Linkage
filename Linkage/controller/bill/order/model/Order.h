@@ -9,7 +9,7 @@
 #import <Mantle/Mantle.h>
 #import "MTLManagedObjectAdapter.h"
 #import "ModelOperation.h"
-@class Comment;
+#import "Comment.h"
 
 typedef NS_ENUM(NSUInteger, OrderType) {
     OrderTypeExport,    //出口订单

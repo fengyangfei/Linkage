@@ -11,11 +11,10 @@
 #import "OrderModel.h"
 #import "SOImage.h"
 #import "Task.h"
-#import "Comment.h"
 #import "LoginUser.h"
 
 #define kOrderRemoveKeys @[@"cargos",@"userId",@"objStatus",@"soImages"]
-#define kOrderManageObjectRemoveKeys @[@"objStatus",@"tasks",@"comments"]
+#define kOrderManageObjectRemoveKeys @[@"objStatus",@"tasks"]
 @implementation Order
 
 #pragma mark - MTLJSONSerializing
@@ -172,9 +171,14 @@
     return [MTLManagedObjectAdapter transformerForModelPropertiesOfClass:[CargoModel class]];
 }
 
++ (NSValueTransformer *)commentsEntityAttributeTransformer
+{
+    return [MTLManagedObjectAdapter transformerForModelPropertiesOfClass:[CommentModel class]];
+}
+
 + (NSDictionary *)relationshipModelClassesByPropertyKey
 {
-    return @{@"cargos":[Cargo class],@"soImages":[SOImage class]};
+    return @{@"cargos":[Cargo class],@"soImages":[SOImage class],@"comments":[Comment class]};
 }
 
 #pragma mark - ModelHttpParameter

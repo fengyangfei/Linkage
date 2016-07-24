@@ -50,6 +50,7 @@
 @dynamic status;
 @dynamic cargos;
 @dynamic isTransferPort;
+@dynamic comments;
 @end
 
 @implementation ImportOrderModel

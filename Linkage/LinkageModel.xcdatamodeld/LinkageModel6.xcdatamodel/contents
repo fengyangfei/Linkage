@@ -27,7 +27,7 @@
         <attribute name="trafficInsureData" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="CommentModel" syncable="YES">
+    <entity name="CommentModel" representedClassName="CommentModel" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="commentId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="score" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>

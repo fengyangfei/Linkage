@@ -7,6 +7,7 @@
 //
 
 #import "Comment.h"
+#import "OrderModel.h"
 
 @implementation Comment
 
@@ -38,7 +39,7 @@
 #pragma mark - MTLManagedObjectSerializing
 + (NSString *)managedObjectEntityName
 {
-    return @"CommentModel";
+    return NSStringFromClass([CommentModel class]);
 }
 
 + (NSDictionary *)managedObjectKeysByPropertyKey
