@@ -247,9 +247,11 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
     self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
     self.ratingLable.text = [NSString stringWithFormat:@"%@  %@",order.companyName, [[LinkUtil dateFormatter] stringFromDate:order.updateTime]];
     if (order && order.comments && StringIsNotEmpty(order.comments.commentId)) {
-        [self.button setTitle:@"查看评论" forState:UIControlStateNormal];
+        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"查看评论" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:IndexButtonColor}];
+        [self.button setAttributedTitle:title forState:UIControlStateNormal];
     }else{
-        [self.button setTitle:@"评  价" forState:UIControlStateNormal];
+        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"评  价" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:IndexButtonColor}];
+        [self.button setAttributedTitle:title forState:UIControlStateNormal];
     }
 }
 
@@ -281,8 +283,8 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
 {
     if (!_button) {
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_button setTitle:@"评  价" forState:UIControlStateNormal];
-        [_button setTitleColor:IndexButtonColor forState:UIControlStateNormal];
+        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"评  价" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:IndexButtonColor}];
+        [_button setAttributedTitle:title forState:UIControlStateNormal];
         [_button setBackgroundImage:ButtonFrameImage forState:UIControlStateNormal];
         [_button setBackgroundImage:ButtonFrameImage forState:UIControlStateHighlighted];
         [_button addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
