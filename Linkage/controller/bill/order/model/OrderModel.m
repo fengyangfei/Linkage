@@ -8,7 +8,7 @@
 
 #import "OrderModel.h"
 
-@implementation CargoModel : NSManagedObject
+@implementation CargoModel
 @dynamic cargoCount;
 @dynamic cargoId;
 @dynamic cargoType;
@@ -16,10 +16,16 @@
 @dynamic cargoName;
 @end
 
-@implementation SOImageModel : NSManagedObject
+@implementation SOImageModel
 @dynamic imageName;
 @dynamic imageUrl;
 @dynamic createDate;
+@end
+
+@implementation CommentModel
+@dynamic comment;
+@dynamic commentId;
+@dynamic score;
 @end
 
 @implementation OrderModel

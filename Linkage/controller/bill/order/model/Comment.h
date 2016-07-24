@@ -9,7 +9,7 @@
 #import <Mantle/Mantle.h>
 #import "MTLManagedObjectAdapter.h"
 
-@interface Comment : MTLModel<MTLJSONSerializing>
+@interface Comment : MTLModel<MTLJSONSerializing, MTLManagedObjectSerializing>
 @property (nonatomic,copy  ) NSString *comment;
 @property (nonatomic,copy  ) NSString *commentId;
 @property (nonatomic,strong) NSNumber *score;

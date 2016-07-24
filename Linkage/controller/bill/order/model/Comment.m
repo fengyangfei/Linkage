@@ -35,4 +35,15 @@
     }];
 }
 
+#pragma mark - MTLManagedObjectSerializing
++ (NSString *)managedObjectEntityName
+{
+    return @"CommentModel";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+}
+
 @end

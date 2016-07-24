@@ -27,6 +27,11 @@
         <attribute name="trafficInsureData" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="CommentModel" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commentId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="DriverModel" representedClassName="DriverModel" syncable="YES">
         <attribute name="driverId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -95,6 +100,7 @@
         <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cargos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CargoModel" syncable="YES"/>
+        <relationship name="comments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CommentModel" syncable="YES"/>
     </entity>
     <entity name="SelfOrderModel" parentEntity="OrderModel" syncable="YES">
         <attribute name="cargoTakeTime" optional="YES" attributeType="Date" syncable="YES"/>
@@ -123,9 +129,10 @@
         <element name="FavoriteModel" positionX="-36" positionY="162" width="128" height="165"/>
         <element name="ImportOrderModel" positionX="-36" positionY="171" width="128" height="120"/>
         <element name="MessageModel" positionX="-45" positionY="153" width="128" height="150"/>
-        <element name="OrderModel" positionX="-63" positionY="27" width="128" height="375"/>
+        <element name="OrderModel" positionX="-63" positionY="27" width="128" height="390"/>
         <element name="SelfOrderModel" positionX="-45" positionY="153" width="128" height="90"/>
         <element name="SOImageModel" positionX="-63" positionY="9" width="128" height="90"/>
         <element name="StaffModel" positionX="-45" positionY="153" width="128" height="135"/>
+        <element name="CommentModel" positionX="-36" positionY="162" width="128" height="90"/>
     </elements>
 </model>

@@ -24,6 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSDate   *createDate;
 @end
 
+@interface CommentModel : NSManagedObject
+@property (nullable, nonatomic, retain) NSString *comment;
+@property (nullable, nonatomic, retain) NSString *commentId;
+@property (nullable, nonatomic, retain) NSNumber *score;
+@end
+
 @interface OrderModel : NSManagedObject
 @property (nullable, nonatomic, retain) NSString *orderId;
 @property (nullable, nonatomic, retain) NSString *companyId;
