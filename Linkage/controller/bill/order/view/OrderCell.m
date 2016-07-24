@@ -12,6 +12,7 @@
 #import "LinkUtil.h"
 #import "BillApplyViewController.h"
 #import "OrderUtil.h"
+#import "Comment.h"
 #import "CommentViewController.h"
 
 NSString *const PendingOrderDescriporType = @"PendingOrderRowType";
@@ -245,6 +246,11 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
     Order *order = self.rowDescriptor.value;
     self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
     self.ratingLable.text = [NSString stringWithFormat:@"%@  %@",order.companyName, [[LinkUtil dateFormatter] stringFromDate:order.updateTime]];
+    if (order && order.comments && StringIsNotEmpty(order.comments.commentId)) {
+        [self.button setTitle:@"查看评论" forState:UIControlStateNormal];
+    }else{
+        [self.button setTitle:@"评  价" forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark - UI

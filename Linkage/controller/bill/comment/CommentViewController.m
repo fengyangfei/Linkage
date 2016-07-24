@@ -121,10 +121,14 @@
     Order *order = self.rowDescriptor.value;
     if (order && order.comments) {
         Comment *comment = order.comments;
-        [self.ratingView setEnabled:NO];
-        self.ratingView.value = [comment.score floatValue];
-        [self.textView setEditable:NO];
-        self.textView.text = comment.comment;
+        if (StringIsNotEmpty(comment.commentId)) {
+            [self.ratingView setEnabled:NO];
+            self.ratingView.value = [comment.score intValue];
+            [self.textView setEditable:NO];
+            self.textView.text = comment.comment;
+            [self.hintLabel setHidden:YES];
+            [self.navigationItem.rightBarButtonItem setEnabled:NO];
+        }
     }
 }
 
