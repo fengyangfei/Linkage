@@ -216,10 +216,6 @@
     }
     
     if([order isKindOfClass:[ImportOrder class]]) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"柜号"];
-        row.value = order? ((ImportOrder *)order).cargoNo :@"";
-        [section addFormRow:row];
-        
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"报关行联系人"];
         row.value = order? ((ImportOrder *)order).customsBroker :@"";
         [section addFormRow:row];

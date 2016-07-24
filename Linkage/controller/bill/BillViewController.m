@@ -227,7 +227,8 @@
     for (Order *order in orders) {
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:PendingOrderDescriporType];
         row.value = order;
-        if ((order.status == OrderStatusPending || order.status == OrderStatusDenied) && [LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
+        //只有厂商管理员与被拒绝的订单能修改订单，其他状态只能查看订单详情
+        if (order.status == OrderStatusDenied && [LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
             if(order.type == OrderTypeExport){
                 row.action.viewControllerClass = [BillExportApplyViewController class];
             }else if(order.type == OrderTypeImport){

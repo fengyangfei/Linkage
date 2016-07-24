@@ -22,9 +22,20 @@
 @implementation SearchViewController
 @synthesize searchBar = _searchBar;
 
+-(instancetype)init
+{
+    self = [super init];
+    if (self) {
+        NSArray *historys = [LoginUser searchKeys];
+        self.form = [self createHistoryForm:historys];
+    }
+    return self;
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 18)];
     self.navigationItem.titleView = self.searchBar;
     @weakify(self);
     RAC(self.navigationItem, rightBarButtonItem) = [[RACObserve(self, searchKey) distinctUntilChanged] map:^id(NSString *key) {
@@ -35,8 +46,7 @@
             return nil;
         }
     }];
-    NSArray *historys = [LoginUser searchKeys];
-    [self setForm:[self createHistoryForm:historys]];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -89,7 +99,8 @@
     XLFormSectionDescriptor * section;
     
     form = [XLFormDescriptor formDescriptor];
-    section = [XLFormSectionDescriptor formSection];
+    NSString *title = [NSString stringWithFormat:@"搜索结果(共%lu条)", (unsigned long)results.count];
+    section = [XLFormSectionDescriptor formSectionWithTitle:title];
     [form addFormSection:section];
     
     for (Order *order in results) {
@@ -190,6 +201,16 @@
         XLFormDescriptor *form = [weakSelf createResultForm:orders];
         [weakSelf setForm:form];
     }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 18;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0;
 }
 
 #pragma mark - UISearchBarDelegate
