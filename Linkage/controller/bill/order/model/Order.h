@@ -9,6 +9,7 @@
 #import <Mantle/Mantle.h>
 #import "MTLManagedObjectAdapter.h"
 #import "ModelOperation.h"
+@class Comment;
 
 typedef NS_ENUM(NSUInteger, OrderType) {
     OrderTypeExport,    //出口订单
@@ -62,6 +63,7 @@ typedef NS_ENUM(NSUInteger, ObjectStatus) {
 @property (nonatomic, strong) NSArray      *cargos;//货柜
 @property (nonatomic, strong) NSArray      *tasks;//任务
 @property (nonatomic, assign) ObjectStatus objStatus;//对象状态
+@property (nonatomic, strong) Comment      *comments;//评论
 @end
 
 //进口订单

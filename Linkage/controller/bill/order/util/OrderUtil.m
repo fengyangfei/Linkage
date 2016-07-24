@@ -218,8 +218,10 @@
         if (responseObject[@"orders"] && [responseObject[@"orders"] isKindOfClass:[NSArray class]]) {
             NSError *error;
             NSArray *array = [MTLJSONAdapter modelsOfClass:[Order class] fromJSONArray:responseObject[@"orders"] error:&error];
-            if (completion) {
+            if (completion && !error) {
                 completion(array);
+            }else if (error){
+                NSLog(@"订单列表-json数组转对象数组失败 - %@",error);
             }
         }else{
             completion(nil);

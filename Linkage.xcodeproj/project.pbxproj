@@ -148,6 +148,7 @@
 		8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC624F91CA18EBC00C70325 /* AddressCell.m */; };
 		8BCA5FB31CA95EE3002601F6 /* BillDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA5FB21CA95EE3002601F6 /* BillDetailViewController.m */; };
 		8BCA5FBB1CA97FB8002601F6 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA5FBA1CA97FB8002601F6 /* MessageViewController.m */; };
+		8BD1A4701D44C64B00469324 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1A46F1D44C64B00469324 /* Comment.m */; };
 		8BDBB7CA1C98509D00D60207 /* Company.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8BDBB7C91C98509D00D60207 /* Company.bundle */; };
 		8BE25B091CC7AF970073BD8D /* MTLModel+Merge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE25B081CC7AF970073BD8D /* MTLModel+Merge.m */; };
 		8BE25B101CC7D0540073BD8D /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE25B0D1CC7D0540073BD8D /* Base64.m */; };
@@ -538,6 +539,8 @@
 		8BCA5FB21CA95EE3002601F6 /* BillDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillDetailViewController.m; sourceTree = "<group>"; };
 		8BCA5FB91CA97FB8002601F6 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		8BCA5FBA1CA97FB8002601F6 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		8BD1A46E1D44C64B00469324 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		8BD1A46F1D44C64B00469324 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		8BDBB7C91C98509D00D60207 /* Company.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Company.bundle; sourceTree = "<group>"; };
 		8BE25B071CC7AF970073BD8D /* MTLModel+Merge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTLModel+Merge.h"; sourceTree = "<group>"; };
 		8BE25B081CC7AF970073BD8D /* MTLModel+Merge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTLModel+Merge.m"; sourceTree = "<group>"; };
@@ -843,6 +846,8 @@
 				9A05C3871CCA095D009BC8C9 /* OrderModel.m */,
 				9A11F06F1CD08894002E8F6F /* Task.h */,
 				9A11F0701CD08894002E8F6F /* Task.m */,
+				8BD1A46E1D44C64B00469324 /* Comment.h */,
+				8BD1A46F1D44C64B00469324 /* Comment.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2383,6 +2388,7 @@
 				8B5DC61E1C79B8A700D29292 /* IFTTTBackgroundColorAnimation.m in Sources */,
 				8B958B3C1CD65301003BD74B /* Message.m in Sources */,
 				8B53F4E61CE37C820020E218 /* SearchViewController.m in Sources */,
+				8BD1A4701D44C64B00469324 /* Comment.m in Sources */,
 				8B2D18D41D3101BC00A9183E /* WXMediaMessage+messageConstruct.m in Sources */,
 				8BCA5FBB1CA97FB8002601F6 /* MessageViewController.m in Sources */,
 				8BEEA7851CD3A7BB0088D70A /* AddressUtil.m in Sources */,

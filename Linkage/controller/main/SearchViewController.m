@@ -35,7 +35,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 18)];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 14)];
     self.navigationItem.titleView = self.searchBar;
     @weakify(self);
     RAC(self.navigationItem, rightBarButtonItem) = [[RACObserve(self, searchKey) distinctUntilChanged] map:^id(NSString *key) {

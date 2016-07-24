@@ -11,10 +11,11 @@
 #import "OrderModel.h"
 #import "SOImage.h"
 #import "Task.h"
+#import "Comment.h"
 #import "LoginUser.h"
 
 #define kOrderRemoveKeys @[@"cargos",@"userId",@"objStatus",@"soImages"]
-#define kOrderManageObjectRemoveKeys @[@"objStatus",@"tasks"]
+#define kOrderManageObjectRemoveKeys @[@"objStatus",@"tasks",@"comments"]
 @implementation Order
 
 #pragma mark - MTLJSONSerializing
@@ -28,6 +29,11 @@
 + (NSValueTransformer *)cargosJSONTransformer
 {
     return [MTLJSONAdapter arrayTransformerWithModelClass:[Cargo class]];
+}
+
++ (NSValueTransformer *)commentsJSONTransformer
+{
+    return [MTLJSONAdapter dictionaryTransformerWithModelClass:[Comment class]];
 }
 
 + (NSValueTransformer *)typeJSONTransformer
@@ -285,7 +291,8 @@
 + (NSDictionary *)managedObjectKeysByPropertyKey
 {
     NSDictionary *keys = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
-    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"so",@"soImageUrl",@"objStatus",@"tasks"]];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:kOrderManageObjectRemoveKeys];
+    keys = [keys mtl_dictionaryByRemovingValuesForKeys:@[@"so",@"soImageUrl"]];
     return keys;
 }
 
