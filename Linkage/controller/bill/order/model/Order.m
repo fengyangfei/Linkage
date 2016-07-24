@@ -125,6 +125,7 @@
 
 + (Class)classForParsingJSONDictionary:(NSDictionary *)JSONDictionary
 {
+    /*
     if (JSONDictionary[@"cargo_no"] != nil) {
         return [ImportOrder class];
     }
@@ -134,6 +135,7 @@
     if (JSONDictionary[@"is_customs_declare"] != nil) {
         return [SelfOrder class];
     }
+     */
     
     if ([JSONDictionary[@"type"] integerValue] == OrderTypeExport) {
         return [ExportOrder class];
@@ -299,6 +301,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyMap = @{
+                             @"orderId":@"order_id",
                              @"companyId":@"company_id",
                              @"companyName":@"company_name",
                              @"takeAddress":@"take_address",

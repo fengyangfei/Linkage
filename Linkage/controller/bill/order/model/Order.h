@@ -13,8 +13,8 @@
 typedef NS_ENUM(NSUInteger, OrderType) {
     OrderTypeExport,    //出口订单
     OrderTypeImport,    //进口订单
-    OrderTypeSelf,      //自备柜订单
-    OrderTypeMainland
+    OrderTypeMainland,  //未知订单
+    OrderTypeSelf       //自备柜订单
 };
 
 typedef NS_ENUM(NSUInteger, OrderStatus) {

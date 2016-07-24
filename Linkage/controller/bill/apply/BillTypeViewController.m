@@ -81,7 +81,8 @@
         billApplyVC = [[BillExportApplyViewController alloc]initWithCompany:self.company];
     }else if(indexPath.row == OrderTypeImport){
         billApplyVC = [[BillImportApplyViewController alloc]initWithCompany:self.company];
-    }else if(indexPath.row == OrderTypeSelf){
+    }else{
+        //跳转到自备柜
         billApplyVC = [[BillSelfApplyViewController alloc]initWithCompany:self.company];
     }
     [self.navigationController pushViewController:billApplyVC animated:YES];

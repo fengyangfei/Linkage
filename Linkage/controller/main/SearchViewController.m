@@ -129,23 +129,31 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"搜索条件" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
     }];
-    UIAlertAction *beginDateAction = [UIAlertAction actionWithTitle:@"开始日期" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [weakSelf searchFromServer];
+    UIAlertAction *billAction = [UIAlertAction actionWithTitle:@"订单号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf searchFromServerWithType:@(0)];
     }];
-    UIAlertAction *endDateAction = [UIAlertAction actionWithTitle:@"开始日期" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [weakSelf searchFromServer];
+    UIAlertAction *cargoAction = [UIAlertAction actionWithTitle:@"柜号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf searchFromServerWithType:@(1)];
     }];
-    UIAlertAction *billAction = [UIAlertAction actionWithTitle:@"单号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [weakSelf searchFromServer];
+    UIAlertAction *carAction = [UIAlertAction actionWithTitle:@"车牌" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf searchFromServerWithType:@(2)];
     }];
-    UIAlertAction *carAction = [UIAlertAction actionWithTitle:@"车牌号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [weakSelf searchFromServer];
+    UIAlertAction *beginDateAction = [UIAlertAction actionWithTitle:@"开始结束日期" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf searchFromServerWithType:@(3)];
+    }];
+    UIAlertAction *subCompanyAction = [UIAlertAction actionWithTitle:@"厂商名" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf searchFromServerWithType:@(4)];
+    }];
+    UIAlertAction *companyAction = [UIAlertAction actionWithTitle:@"承运商名" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf searchFromServerWithType:@(5)];
     }];
     [alertController addAction:cancelAction];
-    [alertController addAction:beginDateAction];
-    [alertController addAction:endDateAction];
     [alertController addAction:billAction];
+    [alertController addAction:cargoAction];
     [alertController addAction:carAction];
+    [alertController addAction:beginDateAction];
+    [alertController addAction:subCompanyAction];
+    [alertController addAction:companyAction];
     
     [self presentViewController:alertController animated:YES completion:^{
         
@@ -169,15 +177,16 @@
     [LoginUser setsearchKeys:[mutableKeys copy]];
 }
 
--(void)searchFromServer
+-(void)searchFromServerWithType:(NSNumber *)searchType
 {
     WeakSelf
     NSDictionary *parameter = @{
-                                @"type":@(-1),
-                                @"status":@(0)
+                                @"company_id":[LoginUser shareInstance].companyId,
+                                @"searchType":searchType,
+                                @"value":self.searchKey
                                 };
-    parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
-    [OrderUtil queryModelsFromServer:parameter url:ListByStatusUrl completion:^(NSArray *orders) {
+    parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+    [OrderUtil queryModelsFromServer:parameter url:SearchOrderUrl completion:^(NSArray *orders) {
         XLFormDescriptor *form = [weakSelf createResultForm:orders];
         [weakSelf setForm:form];
     }];

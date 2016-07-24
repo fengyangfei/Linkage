@@ -148,25 +148,25 @@ row.cellStyle = UITableViewCellStyleValue1;
     }];
     
     Order *order = self.rowDescriptor.value;
-    [self loadDataFromServer:order];
+    if (order && order.orderId) {
+        [self loadDataFromServer:order];
+    }
 }
 
 //从服务端加载详情
 -(void)loadDataFromServer:(Order *)order
 {
     WeakSelf
-    if (order && order.orderId) {
-        [SVProgressHUD show];
-        [OrderUtil queryModelFromServer:order completion:^(Order *result) {
-            XLFormDescriptor *form = [weakSelf initializeForm:nil order:result];
-            [weakSelf setForm:form];
-            [SVProgressHUD dismiss];
-            [OrderUtil syncToDataBase:result completion:nil];
-            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
-        } failure:^(NSError *error) {
-            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-        }];
-    }
+    [SVProgressHUD show];
+    [OrderUtil queryModelFromServer:order completion:^(Order *result) {
+        XLFormDescriptor *form = [weakSelf initializeForm:nil order:result];
+        [weakSelf setForm:form];
+        [SVProgressHUD dismiss];
+        [OrderUtil syncToDataBase:result completion:nil];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+    }];
 }
 
 -(CargoFormRowDescriptor *)generateCargoRowWithType:(NSNumber *)typeKey andCount:(NSNumber *)count
@@ -195,8 +195,19 @@ row.cellStyle = UITableViewCellStyleValue1;
     }
     sender.enabled = NO;
     WeakSelf
-    NSDictionary *formValues =  [self.form formValues];
-    Order *order = (Order *)[OrderUtil modelFromXLFormValue:formValues];
+    NSMutableDictionary *formValues =  [[self.form formValues] mutableCopy];
+    Order *existOrder = self.rowDescriptor.value;
+    if (existOrder && existOrder.orderId) {
+        formValues[@"order_id"] = existOrder.orderId;
+    }
+    if ([self isKindOfClass:[BillExportApplyViewController class]]) {
+        formValues[@"type"] = @(OrderTypeExport);
+    }else if([self isKindOfClass:[BillImportApplyViewController class]]){
+        formValues[@"type"] = @(OrderTypeImport);
+    }else if ([self isKindOfClass:[BillExportApplyViewController class]]){
+        formValues[@"type"] = @(OrderTypeSelf);
+    }
+    Order *order = (Order *)[OrderUtil modelFromXLFormValue:[formValues copy]];
     //同步到服务端
     [OrderUtil syncToServer:order success:^(id responseData) {
         sender.enabled = YES;

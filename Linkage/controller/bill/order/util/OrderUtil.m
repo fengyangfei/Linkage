@@ -123,6 +123,12 @@
     NSDictionary *paramter = [self jsonFromModel:model];
     if (paramter && StringIsNotEmpty(order.orderId)) {
         //修改接口
+        NSDictionary *extendKey = @{
+                                    @"rejected_order_id":order.orderId,
+                                    @"rejected_order_status":@(OrderStatusDenied)
+                                    };
+        paramter = [paramter mtl_dictionaryByAddingEntriesFromDictionary:extendKey];
+        
         if (order.type == OrderTypeImport || [model isKindOfClass:[ImportOrder class]]) {
             [[YGRestClient sharedInstance] postForObjectWithUrl:Mod4importUrl form:paramter success:success failure:failure];
         }else if(order.type == OrderTypeExport || [model isKindOfClass:[ExportOrder class]]){
