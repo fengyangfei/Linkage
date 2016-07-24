@@ -133,7 +133,7 @@
 -(void)setupTodoData
 {
     WeakSelf
-    NSPredicate *todoPredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status != %@", [LoginUser shareInstance].cid, @(OrderStatusCompletion)];
+    NSPredicate *todoPredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND (status == %@ OR status == %@)", [LoginUser shareInstance].cid, @(OrderStatusPending), @(OrderStatusExecuting)];
     [OrderUtil queryModelsFromDataBase:todoPredicate completion:^(NSArray *orders) {
         [weakSelf.todoDS setForm:[weakSelf createTodoForm:orders]];
     }];
@@ -142,7 +142,7 @@
 -(void)setupDoneData
 {
     WeakSelf
-    NSPredicate *donePredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status == %@", [LoginUser shareInstance].cid, @(OrderStatusCompletion)];
+    NSPredicate *donePredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND (status == %@ OR status == %@ OR status == %@)", [LoginUser shareInstance].cid, @(OrderStatusCompletion), @(OrderStatusDenied), @(OrderStatusCancelled)];
     [OrderUtil queryModelsFromDataBase:donePredicate completion:^(NSArray *orders) {
         [weakSelf.doneDS setForm:[weakSelf createDoneForm:orders]];
     }];
@@ -188,7 +188,7 @@
     NSPredicate *cancelledPredicate = [NSPredicate predicateWithFormat:@"status == %@", @(OrderStatusCancelled)];
     NSArray *cancelledOrders = [orders filteredArrayUsingPredicate:cancelledPredicate];
     if (cancelledOrders && cancelledOrders.count > 0) {
-        section = [XLFormSectionDescriptor formSectionWithTitle:@"被拒绝"];
+        section = [XLFormSectionDescriptor formSectionWithTitle:@"已取消"];
         [form addFormSection:section];
         [self addOrders:cancelledOrders toSection:section];
     }
@@ -225,7 +225,8 @@
 -(void)addOrders:(NSArray *)orders toSection:(XLFormSectionDescriptor *)section
 {
     for (Order *order in orders) {
-        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:PendingOrderDescriporType];
+        NSString *rowType = order.status == OrderStatusCompletion ? CompletionOrderDescriporType:PendingOrderDescriporType;
+        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowType];
         row.value = order;
         //只有厂商管理员与被拒绝的订单能修改订单，其他状态只能查看订单详情
         if (order.status == OrderStatusDenied && [LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {

@@ -11,6 +11,7 @@
 #import "AXRatingView.h"
 #import "LoginUser.h"
 #import "YGRestClient.h"
+#import "Comment.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <XLForm/XLFormTextView.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -35,6 +36,7 @@
     self.title = @"评论";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(submitComment)];
     [self setupUI];
+    [self setupData];
     @weakify(self);
     [[self.textView rac_textSignal] subscribeNext:^(NSString *x) {
         @strongify(self);
@@ -111,6 +113,18 @@
             make.top.equalTo(self.textView.bottom).offset(5);
             make.right.equalTo(self.textView.right);
         }];
+    }
+}
+
+-(void)setupData
+{
+    Order *order = self.rowDescriptor.value;
+    if (order && order.comments) {
+        Comment *comment = order.comments;
+        [self.ratingView setEnabled:NO];
+        self.ratingView.value = [comment.score floatValue];
+        [self.textView setEditable:NO];
+        self.textView.text = comment.comment;
     }
 }
 

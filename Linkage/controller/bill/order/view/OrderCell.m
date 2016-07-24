@@ -12,6 +12,7 @@
 #import "LinkUtil.h"
 #import "BillApplyViewController.h"
 #import "OrderUtil.h"
+#import "CommentViewController.h"
 
 NSString *const PendingOrderDescriporType = @"PendingOrderRowType";
 NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
@@ -40,16 +41,6 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     //self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     [self setupUI];
-}
-
--(void)update
-{
-    [super update];
-    Order *order = self.rowDescriptor.value;
-    self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
-    self.ratingLable.text = order.companyName;
-    self.statusLable.text = [LinkUtil.orderStatus objectForKey:@(order.status)];
-    self.timeLable.text = [[LinkUtil dateFormatter] stringFromDate:order.updateTime];
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
@@ -110,33 +101,21 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
     return dateFormatter;
 }
 
+-(UIViewController *)formViewController
+{
+    id responder = self;
+    while (responder){
+        if ([responder isKindOfClass:[UIViewController class]]){
+            return responder;
+        }
+        responder = [responder nextResponder];
+    }
+    return nil;
+}
+
 #pragma mark - UI
 -(void)setupUI
 {
-    [self.contentView addSubview:self.statusLable];
-    [self.statusLable makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView.right).offset(-12);
-        make.top.equalTo(self.contentView.top).offset(12);
-    }];
-    
-    [self.contentView addSubview:self.billNumLable];
-    [self.billNumLable makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(16);
-        make.top.equalTo(self.contentView.top).offset(12);
-        make.right.equalTo(self.statusLable.left);
-    }];
-    
-    [self.contentView addSubview:self.ratingLable];
-    [self.ratingLable makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(16);
-        make.bottom.equalTo(self.contentView.bottom).offset(-12);
-    }];
-    
-    [self.contentView addSubview:self.timeLable];
-    [self.timeLable makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView.right).offset(-12);
-        make.bottom.equalTo(self.contentView.bottom).offset(-12);
-    }];
 }
 
 -(UILabel *)billNumLable
@@ -202,16 +181,113 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
 
 @end
 
+//未完成订单cell
 @implementation PendingOrderCell
 +(void)load
 {
     [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:PendingOrderDescriporType];
 }
+
+-(void)update
+{
+    [super update];
+    Order *order = self.rowDescriptor.value;
+    self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
+    self.ratingLable.text = order.companyName;
+    self.statusLable.text = [LinkUtil.orderStatus objectForKey:@(order.status)];
+    self.timeLable.text = [[LinkUtil dateFormatter] stringFromDate:order.updateTime];
+}
+
+-(void)setupUI
+{
+    [self.contentView addSubview:self.statusLable];
+    [self.statusLable makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView.right).offset(-12);
+        make.top.equalTo(self.contentView.top).offset(12);
+    }];
+    
+    [self.contentView addSubview:self.billNumLable];
+    [self.billNumLable makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.top.equalTo(self.contentView.top).offset(12);
+        make.right.equalTo(self.statusLable.left);
+    }];
+    
+    [self.contentView addSubview:self.ratingLable];
+    [self.ratingLable makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.bottom.equalTo(self.contentView.bottom).offset(-12);
+    }];
+    
+    [self.contentView addSubview:self.timeLable];
+    [self.timeLable makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView.right).offset(-12);
+        make.bottom.equalTo(self.contentView.bottom).offset(-12);
+    }];
+}
+@end
+
+//已完成订单Cell
+@interface CompletionOrderCell()
+@property (nonatomic, readonly) UIButton *button;
 @end
 
 @implementation CompletionOrderCell
+@synthesize button = _button;
 +(void)load
 {
     [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:CompletionOrderDescriporType];
+}
+
+-(void)update
+{
+    [super update];
+    Order *order = self.rowDescriptor.value;
+    self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
+    self.ratingLable.text = [NSString stringWithFormat:@"%@  %@",order.companyName, [[LinkUtil dateFormatter] stringFromDate:order.updateTime]];
+}
+
+#pragma mark - UI
+-(void)setupUI
+{
+    [self.contentView addSubview:self.billNumLable];
+    [self.billNumLable makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.top.equalTo(self.contentView.top).offset(12);
+    }];
+    
+    [self.contentView addSubview:self.ratingLable];
+    [self.ratingLable makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(16);
+        make.bottom.equalTo(self.contentView.bottom).offset(-12);
+    }];
+    
+    [self.contentView addSubview:self.button];
+    [self.button makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView.right).offset(-12);
+        make.centerY.equalTo(self.contentView.centerY);
+        make.height.equalTo(@30);
+        make.width.equalTo(@80);
+    }];
+}
+
+-(UIButton *)button
+{
+    if (!_button) {
+        _button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_button setTitle:@"评  价" forState:UIControlStateNormal];
+        [_button setTitleColor:IndexButtonColor forState:UIControlStateNormal];
+        [_button setBackgroundImage:ButtonFrameImage forState:UIControlStateNormal];
+        [_button setBackgroundImage:ButtonFrameImage forState:UIControlStateHighlighted];
+        [_button addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _button;
+}
+
+-(void)clickAction:(id)sender
+{
+    CommentViewController *commentVC = [[CommentViewController alloc]init];
+    commentVC.rowDescriptor = self.rowDescriptor;
+    [self.formViewController.navigationController pushViewController:commentVC animated:YES];
 }
 @end
