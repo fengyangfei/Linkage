@@ -27,6 +27,7 @@
 row.cellStyle = UITableViewCellStyleValue1;
 #define RowPlaceHolderUI(str) [row.cellConfigAtConfigure setObject:str forKey:@"detailTextLabel.text"];
 #define RowAccessoryUI [row.cellConfig setObject:@(UITableViewCellAccessoryDisclosureIndicator) forKey:@"accessoryType"];
+#define RowDateInit [row.cellConfigAtConfigure setObject:[NSDate date] forKey:@"minimumDate"];
 
 @interface BillApplyViewController ()
 
