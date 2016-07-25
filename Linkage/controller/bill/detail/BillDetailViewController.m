@@ -62,9 +62,7 @@
     [super viewDidLoad];
     Order *order = self.rowDescriptor.value;
     self.title = [[LinkUtil orderTitles] objectForKey:@(order.type)];
-    [self setupData:order];
     [self loadDataFromServer:order];
-    [self bindViewModel:order];
 }
 
 //从服务端加载详情
@@ -74,8 +72,14 @@
     if (order.orderId) {
         [SVProgressHUD show];
         [OrderUtil queryModelFromServer:order completion:^(Order *result) {
+            //回写值
+            weakSelf.rowDescriptor.value = result;
+            //同步到数据库
             [OrderUtil syncToDataBase:result completion:nil];
+            //设置UI
             [weakSelf setupData:result];
+            //绑定属性
+            [weakSelf bindViewModel:result];
             [SVProgressHUD dismiss];
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         } failure:^(NSError *error) {
@@ -119,8 +123,6 @@
             [_toolBar removeFromSuperview];
         }
     }
-    Order *order = self.rowDescriptor.value;
-    [self loadDataFromServer:order];
 }
 
 //设置表格的数据源
@@ -298,7 +300,7 @@
 
     //承运商在订单未完成的前提下可修改任务状态
     BOOL allowEdit = NO;
-    if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin && order.status != OrderStatusCompletion) {
+    if (([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin || [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) && order.status != OrderStatusCompletion) {
         allowEdit = YES;
     }
     NSString *rowType = allowEdit? TaskEditDescriporType:TaskInfoDescriporType;
@@ -359,6 +361,11 @@
         parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
         [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl form:parameter success:^(id responseObject) {
             [SVProgressHUD showSuccessWithStatus:@"分配成功"];
+            //分配完任务之后，重新渲染界面
+            order.tasks = nil;
+            if (_tasksDataSource) {
+                [_tasksDataSource setForm:[self createInfoTasksForm:order]];
+            }
         } failure:^(NSError *error) {
             [SVProgressHUD showErrorWithStatus:error.localizedDescription];
         }];
