@@ -132,6 +132,24 @@ UserDefault_AttrImpl(searchKeys, NSArray *)//搜索历史
     }];
     return company;
 }
+
+-(void)setupTheme
+{
+    //主题变更
+    if (self.ctype == UserTypeCompanyAdmin) {
+        [TRThemeManager shareInstance].themeType = TRThemeTypeCompany;
+    }else if (self.ctype == UserTypeSubCompanyAdmin){
+        [TRThemeManager shareInstance].themeType = TRThemeTypeSubCompany;
+    }else if (self.ctype == UserTypeCompanyUser){
+        [TRThemeManager shareInstance].themeType = TRThemeTypeContact;
+    }else if (self.ctype == UserTypeSubCompanyUser){
+        [TRThemeManager shareInstance].themeType = TRThemeTypeSubContact;
+    }else{
+        [TRThemeManager shareInstance].themeType = TRThemeTypeCompany;
+    }
+}
+
+
 @end
 
 @implementation Advert

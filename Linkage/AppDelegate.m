@@ -61,8 +61,6 @@ static NSString *const kStoreName = @"linkage.sqlite";
     [[IQKeyboardManager sharedManager] disableDistanceHandlingInViewControllerClass:[XLFormViewController class]];
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     
-    [TRThemeManager shareInstance].themeType = TRThemeTypeCompany;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupGlobalAppearance) name:kTRThemeChangeNofication object:nil];
     
     return YES;

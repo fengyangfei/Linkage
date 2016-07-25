@@ -164,7 +164,7 @@ row.cellStyle = UITableViewCellStyleValue1;
         NSError *error;
         NSDictionary *parameter = [MTLJSONAdapter JSONDictionaryFromModel:modifyUser error:&error];
         parameter = [parameter mtl_dictionaryByAddingEntriesFromDictionary:[LoginUser shareInstance].baseHttpParameter];
-        NSLog(@"%@", parameter);
+        parameter = [parameter mtl_dictionaryByAddingEntriesFromDictionary:@{@"realname":[LoginUser shareInstance].userName}];
         if (!error) {
             [[YGRestClient sharedInstance] postForObjectWithUrl:ModInfomationUrl form:parameter success:^(id responseObject) {
                 

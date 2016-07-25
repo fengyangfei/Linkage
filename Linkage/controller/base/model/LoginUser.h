@@ -65,6 +65,7 @@ UserDefault_Attr(receiveEmail, BOOL)//接收平台邮件
 UserDefault_Attr(searchKeys, NSArray *)//搜索历史
 
 +(Company *)findCompanyById:(NSString *)companyId;
+-(void)setupTheme;
 @end
 
 @interface Advert : MTLModel<MTLJSONSerializing>
