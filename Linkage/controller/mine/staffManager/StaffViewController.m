@@ -11,6 +11,7 @@
 #import "StaffViewController.h"
 #import "AddStaffViewController.h"
 #import "StaffTableViewCell.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @implementation StaffViewController
 
@@ -48,4 +49,48 @@
     UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
     self.navigationItem.rightBarButtonItem = editBtn;
 }
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete){
+        [self confirmDelete:indexPath];
+    }
+}
+
+-(void)confirmDelete:(NSIndexPath *)indexPath
+{
+    WeakSelf
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请确认是否删除?" message:@"删除后该名员工将无法再登陆平台!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf deleteAtRow:indexPath];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    }];
+    [alertController addAction:action];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+}
+
+-(void)deleteAtRow:(NSIndexPath *)indexPath
+{
+    WeakSelf
+    XLFormRowDescriptor * row = [self.form formRowAtIndex:indexPath];
+    [row.sectionDescriptor removeFormRowAtIndex:indexPath.row];
+    [SVProgressHUD show];
+    [self.modelUtilClass deleteFromServer:row.value success:^(id responseData) {
+        StrongSelf
+        [self.modelUtilClass deleteFromDataBase:row.value completion:^{
+            [SVProgressHUD dismiss];
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
+            [strongSelf setupData];
+        }];
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+    }];
+}
+
+
 @end
