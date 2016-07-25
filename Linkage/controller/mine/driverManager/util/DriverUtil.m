@@ -14,6 +14,16 @@
 
 @implementation DriverUtil
 
++(Class)modelClass
+{
+    return [Driver class];
+}
+
++(Class)managedObjectClass
+{
+    return [DriverModel class];
+}
+
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
 {
     NSError *error;

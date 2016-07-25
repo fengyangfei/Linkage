@@ -168,7 +168,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
         LoginUser *user = [LoginUser shareInstance];
         if (user) {
             [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.icon] placeholderImage:[UIImage imageNamed:@"person_pic"]];
-            self.titleLabel.text = NilStringWrapper(user.userName);
+            self.titleLabel.text = NilStringWrapper(user.realName);
             self.subTitleLabel.text = NilStringWrapper(user.mobile);
         }
     }

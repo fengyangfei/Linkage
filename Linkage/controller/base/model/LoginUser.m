@@ -16,7 +16,7 @@ static LoginUser *user;
 {
     NSDictionary *keys = @{
                           @"userName":@"username",
-                          @"realName":@"realname",
+                          @"realName":@"name",
                           @"companyId":@"company_id"
                           };
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];

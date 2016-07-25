@@ -80,9 +80,9 @@ row.cellStyle = UITableViewCellStyleValue1;
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"username" rowType:XLFormRowDescriptorTypeText title:@"姓名"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"name" rowType:XLFormRowDescriptorTypeText title:@"姓名"];
     if (user) {
-        row.value = user.userName;
+        row.value = user.realName;
     }
     [section addFormRow:row];
     
@@ -155,6 +155,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     
     NSMutableDictionary *dic = [[self formValues] mutableCopy];
     dic[@"gender"] = [dic[@"gender"] valueData];
+    dic[@"username"] = dic[@"name"];
     LoginUser *modifyUser = [MTLJSONAdapter modelOfClass:[LoginUser class] fromJSONDictionary:dic error:nil];
     LoginUser *defalutUser = [LoginUser shareInstance];
     [defalutUser mergeValuesForMergeKeysFromModel:modifyUser];

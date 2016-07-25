@@ -13,10 +13,11 @@
 @end
 
 @protocol ModelOperation <NSObject>
-@optional
+@required
 +(Class)modelClass;
 +(Class)managedObjectClass;
 
+@optional
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json;
 
 +(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues;

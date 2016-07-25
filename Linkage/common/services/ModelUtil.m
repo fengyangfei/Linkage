@@ -11,6 +11,8 @@
 #import "LoginUser.h"
 
 @implementation ModelUtil
++(Class)modelClass{ MustOverride(); }
++(Class)managedObjectClass{ MustOverride(); }
 
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
 {
@@ -68,7 +70,12 @@
 
 + (void)truncateAll
 {
-    [self.managedObjectClass MR_truncateAllInContext:[NSManagedObjectContext MR_defaultContext]];
+    @try {
+        [self.managedObjectClass MR_truncateAllInContext:[NSManagedObjectContext MR_defaultContext]];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"error - %@", exception.reason);
+    }
 }
 
 @end
