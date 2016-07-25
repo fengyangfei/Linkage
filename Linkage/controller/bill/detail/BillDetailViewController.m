@@ -385,20 +385,38 @@
 
 -(void)acceptAction
 {
+    WeakSelf
     Order *order = (Order *)self.rowDescriptor.value;
     __weak Order *weakOrder = order;
     [OrderUtil acceptOrder:order success:^(id responseData) {
         [SVProgressHUD showSuccessWithStatus:@"接单成功"];
         weakOrder.status = OrderStatusExecuting;
         [OrderUtil syncToDataBase:weakOrder completion:nil];
+        //接单后跳转到分配任务界面
+        [weakSelf.segmentedControl setSelectedSegmentIndex:1 animated:YES];
+        if (weakSelf.segmentedControl.indexChangeBlock){
+            weakSelf.segmentedControl.indexChangeBlock(1);
+        }
     } failure:^(NSError *error) {
-        
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
 }
 
 //结单
 -(void)confirmCompletion
 {
+    Order *order = self.rowDescriptor.value;
+    if (order && order.tasks) {
+        for (Task *task in order.tasks) {
+            //任务状态不是完成状态，不能结单
+            if ([task.status integerValue] != 8) {
+                NSString *error = [NSString stringWithFormat:@"司机任务未完成，不能完成订单!"];
+                [SVProgressHUD showErrorWithStatus:error];
+                return;
+            }
+        }
+    }
+    
     WeakSelf
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请确认是否完成订单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
@@ -424,7 +442,7 @@
         weakOrder.status = OrderStatusCompletion;
         [OrderUtil syncToDataBase:weakOrder completion:nil];
     } failure:^(NSError *error) {
-        
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
 }
 
@@ -449,14 +467,16 @@
 //拒绝
 -(void)rejectAction
 {
+    WeakSelf
     Order *order = (Order *)self.rowDescriptor.value;
     __weak Order *weakOrder = order;
     [OrderUtil rejectOrder:order success:^(id responseData) {
         [SVProgressHUD showSuccessWithStatus:@"拒绝成功"];
         weakOrder.status = OrderStatusDenied;
         [OrderUtil syncToDataBase:weakOrder completion:nil];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     } failure:^(NSError *error) {
-        
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
 }
 
