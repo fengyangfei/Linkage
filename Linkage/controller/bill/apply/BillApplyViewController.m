@@ -137,7 +137,7 @@ row.cellStyle = UITableViewCellStyleValue1;
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
         [button setTitle:@"提交订单" forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(submitForm:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(confirmSubmit:) forControlEvents:UIControlEventTouchUpInside];
         button;
     });
     [bottomView addSubview:saveButton];
@@ -187,13 +187,32 @@ row.cellStyle = UITableViewCellStyleValue1;
 }
 
 #pragma mark - 事件
--(void)submitForm:(UIButton *)sender
+-(void)confirmSubmit:(UIButton *)sender
 {
     NSArray *errors = [self formValidationErrors];
     if (errors && errors.count > 0) {
-        [self showFormValidationError:errors[0]];
+        NSError *error = [errors firstObject];
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription maskType:SVProgressHUDMaskTypeBlack];
         return;
     }
+    
+    WeakSelf
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请确认是否提交订单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf submitForm:sender];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    }];
+    [alertController addAction:action];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+}
+
+-(void)submitForm:(UIButton *)sender
+{
     sender.enabled = NO;
     WeakSelf
     NSMutableDictionary *formValues =  [[self.form formValues] mutableCopy];
@@ -205,7 +224,7 @@ row.cellStyle = UITableViewCellStyleValue1;
         formValues[@"type"] = @(OrderTypeExport);
     }else if([self isKindOfClass:[BillImportApplyViewController class]]){
         formValues[@"type"] = @(OrderTypeImport);
-    }else if ([self isKindOfClass:[BillExportApplyViewController class]]){
+    }else if ([self isKindOfClass:[BillSelfApplyViewController class]]){
         formValues[@"type"] = @(OrderTypeSelf);
     }
     Order *order = (Order *)[OrderUtil modelFromXLFormValue:[formValues copy]];
