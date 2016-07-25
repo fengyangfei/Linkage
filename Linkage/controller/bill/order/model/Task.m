@@ -17,6 +17,7 @@
                              @"taskId":@"task_id",
                              @"cargoNo":@"cargo_no",
                              @"cargoType":@"cargo_type",
+                             @"driverId":@"driver_id",
                              @"driverName":@"driver_name",
                              @"driverLicense":@"license"
                              };

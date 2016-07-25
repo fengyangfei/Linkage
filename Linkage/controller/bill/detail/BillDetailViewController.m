@@ -352,7 +352,9 @@
     NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"cargos":tasks} options:0 error:NULL];
     NSString *tasksString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     
+    WeakSelf
     Order *order = self.rowDescriptor.value;
+    __weak Order *weakOrder = order;
     if (order.orderId) {
         NSDictionary *parameter = @{
                                     @"order_id":order.orderId,
@@ -361,10 +363,18 @@
         parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
         [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl form:parameter success:^(id responseObject) {
             [SVProgressHUD showSuccessWithStatus:@"分配成功"];
-            //分配完任务之后，重新渲染界面
-            order.tasks = nil;
-            if (_tasksDataSource) {
-                [_tasksDataSource setForm:[self createInfoTasksForm:order]];
+            if (responseObject[@"task"] && [responseObject[@"task"] isKindOfClass:[NSArray class]]) {
+                NSError *error;
+                NSArray *tasks = [MTLJSONAdapter modelsOfClass:[Task class] fromJSONArray:responseObject[@"task"] error:&error];
+                if (error){
+                    NSLog(@"任务列表-json数组转对象数组失败 - %@",error);
+                }else{
+                    //分配完任务之后，重新渲染界面
+                    weakOrder.tasks = tasks;
+                    if (_tasksDataSource) {
+                        [_tasksDataSource setForm:[weakSelf createInfoTasksForm:weakOrder]];
+                    }
+                }
             }
         } failure:^(NSError *error) {
             [SVProgressHUD showErrorWithStatus:error.localizedDescription];
