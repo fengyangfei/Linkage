@@ -9,6 +9,7 @@
 #import "MessageTableCell.h"
 #import "Message.h"
 #import "LinkUtil.h"
+#import "NSDate+Format.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 NSString *const MessageDescriporType = @"MessageDescriporType";
@@ -46,7 +47,7 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:message.icon] placeholderImage:nil];
     self.titleLable.text = message.title;
     self.detailLable.text = message.introduction;
-    self.timeLable.text = [LinkUtil.dateFormatter stringFromDate:message.createTime];
+    self.timeLable.text = [message.createTime stringFromDate];
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor

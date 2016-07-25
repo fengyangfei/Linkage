@@ -14,6 +14,7 @@
 #import "OrderUtil.h"
 #import "Comment.h"
 #import "CommentViewController.h"
+#import "NSDate+Format.h"
 
 NSString *const PendingOrderDescriporType = @"PendingOrderRowType";
 NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
@@ -94,12 +95,6 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
         }
         
     }
-}
-
-+ (NSDateFormatter *)dateFormatter {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd";
-    return dateFormatter;
 }
 
 -(UIViewController *)formViewController
@@ -196,7 +191,7 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
     self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
     self.ratingLable.text = order.companyName;
     self.statusLable.text = [LinkUtil.orderStatus objectForKey:@(order.status)];
-    self.timeLable.text = [[LinkUtil dateFormatter] stringFromDate:order.updateTime];
+    self.timeLable.text = [order.updateTime stringFromDate];
 }
 
 -(void)setupUI
@@ -245,7 +240,7 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
     [super update];
     Order *order = self.rowDescriptor.value;
     self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
-    self.ratingLable.text = [NSString stringWithFormat:@"%@  %@",order.companyName, [[LinkUtil dateFormatter] stringFromDate:order.updateTime]];
+    self.ratingLable.text = [NSString stringWithFormat:@"%@  %@",order.companyName, [order.updateTime stringFromDate]];
     if (order && order.comments && StringIsNotEmpty(order.comments.commentId)) {
         NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"查看评论" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:IndexButtonColor}];
         [self.button setAttributedTitle:title forState:UIControlStateNormal];

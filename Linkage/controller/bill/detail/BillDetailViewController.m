@@ -23,6 +23,7 @@
 #import "CommentViewController.h"
 #import "ImageInfoCell.h"
 #import "BFPaperButton.h"
+#import "NSDate+Format.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -179,7 +180,7 @@
     [section addFormRow:row];
 
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"到厂时间"];
-    row.value = order? [[LinkUtil dateFormatter] stringFromDate:order.deliverTime]: @"";
+    row.value = order? [order.deliverTime stringFromDate]: @"";
     [section addFormRow:row];
 
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"送货地址"];
@@ -231,11 +232,11 @@
     
     if([order isKindOfClass:[SelfOrder class]]) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"报关时间"];
-        row.value = order? [[LinkUtil dateFormatter] stringFromDate:((SelfOrder *)order).customsIn] :@"";
+        row.value = order? [((SelfOrder *)order).customsIn stringFromDate] :@"";
         [section addFormRow:row];
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"提货时间"];
-        row.value = order? [[LinkUtil dateFormatter] stringFromDate:((SelfOrder *)order).cargoTakeTime] :@"";
+        row.value = order? [((SelfOrder *)order).cargoTakeTime stringFromDate] :@"";
         [section addFormRow:row];
     }
     

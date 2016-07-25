@@ -234,6 +234,7 @@
 		9A95FF411C89824F00C5F492 /* UIViewController+TRImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FF3F1C89824F00C5F492 /* UIViewController+TRImagePicker.m */; };
 		9ABD8F8B1D4213FE00D03A84 /* Contact.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9ABD8F891D4213FE00D03A84 /* Contact.bundle */; };
 		9ABD8F8C1D4213FE00D03A84 /* SubContact.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9ABD8F8A1D4213FE00D03A84 /* SubContact.bundle */; };
+		9ABD8F8F1D45F3B500D03A84 /* NSDate+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABD8F8E1D45F3B500D03A84 /* NSDate+Format.m */; };
 		9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */; };
 		9ACEBC751C9950E90000ACBF /* CargoTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC741C9950E90000ACBF /* CargoTypeViewController.m */; };
 		9ACEBCAA1C9BF25F0000ACBF /* TimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBCA91C9BF25F0000ACBF /* TimerManager.m */; };
@@ -696,6 +697,8 @@
 		9AAD81EE1D23480200E3ACD5 /* LinkageModel5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkageModel5.xcdatamodel; sourceTree = "<group>"; };
 		9ABD8F891D4213FE00D03A84 /* Contact.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Contact.bundle; sourceTree = "<group>"; };
 		9ABD8F8A1D4213FE00D03A84 /* SubContact.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SubContact.bundle; sourceTree = "<group>"; };
+		9ABD8F8D1D45F3B500D03A84 /* NSDate+Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Format.h"; sourceTree = "<group>"; };
+		9ABD8F8E1D45F3B500D03A84 /* NSDate+Format.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Format.m"; sourceTree = "<group>"; };
 		9ACEBC6E1C99492A0000ACBF /* CargoFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoFormCell.h; sourceTree = "<group>"; };
 		9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoFormCell.m; sourceTree = "<group>"; };
 		9ACEBC731C9950E90000ACBF /* CargoTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoTypeViewController.h; sourceTree = "<group>"; };
@@ -1778,6 +1781,8 @@
 				8BEC33CB1CA6A43E007B924B /* UIImageView+Cache.m */,
 				8B38230A1CDB5CC20046A6F1 /* UINavigationController+Custom.h */,
 				8B38230B1CDB5CC20046A6F1 /* UINavigationController+Custom.m */,
+				9ABD8F8D1D45F3B500D03A84 /* NSDate+Format.h */,
+				9ABD8F8E1D45F3B500D03A84 /* NSDate+Format.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -2241,6 +2246,7 @@
 				9A23A2B51C7AB3A300FB5EB6 /* MainBaseViewController.m in Sources */,
 				8B5DC63D1C79B8A700D29292 /* UIViewController+TRTheme.m in Sources */,
 				9A2F5C451CE1724A00E7E2DD /* BillDataSource.m in Sources */,
+				9ABD8F8F1D45F3B500D03A84 /* NSDate+Format.m in Sources */,
 				8B5DC6261C79B8A700D29292 /* IFTTTInterpolatable.m in Sources */,
 				8B5DC6271C79B8A700D29292 /* IFTTTLayerFillColorAnimation.m in Sources */,
 				9AEF89D71CA8B02900C5EB90 /* XLFormDataSource.m in Sources */,
