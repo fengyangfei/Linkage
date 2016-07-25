@@ -16,6 +16,7 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "TutorialController.h"
+#import "LinkUtil.h"
 #import <SDWebImage/SDImageCache.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <PgyUpdate/PgyUpdateManager.h>
@@ -127,10 +128,14 @@ row.cellStyle = UITableViewCellStyleValue1;
     [LoginUser clearUserInfo];
     UIViewController *rootViewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
     if ([rootViewController isKindOfClass:[TutorialController class]] || [rootViewController isKindOfClass:[LoginBaseViewController class]]) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [LinkUtil clearCache];
+        }];
     }else{
         LoginViewController *loginVC = [[LoginViewController alloc]init];
-        [self presentViewController:loginVC animated:YES completion:nil];
+        [self presentViewController:loginVC animated:YES completion:^{
+            [LinkUtil clearCache];
+        }];
     }
 }
 

@@ -65,16 +65,28 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    WeakSelf
     [super viewDidAppear:animated];
-    if (![self.leftTableView.mj_header isRefreshing]) {
-        [self queryTodoDataFromServer:nil];
-    }
+    [self setupTodoData:^(NSArray *orders) {
+        if (orders.count <= 0) {
+            if (![weakSelf.leftTableView.mj_header isRefreshing]) {
+                [weakSelf.leftTableView.mj_header beginRefreshing];
+            }
+        }
+    }];
 }
 
 - (void)segmentedControlChangeIndex:(NSInteger)index
 {
     if (index == 1) {
-        [self queryDoneDataFromServer:nil];
+        WeakSelf
+        [self setupDoneData:^(NSArray *orders) {
+            if (orders.count <= 0) {
+                if(![weakSelf.rightTableView.mj_header isRefreshing]){
+                    [weakSelf.rightTableView.mj_header beginRefreshing];
+                }
+            }
+        }];
     }
 }
 
@@ -96,7 +108,7 @@
         }
         StrongSelf
         [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError *error) {
-            [strongSelf setupTodoData];
+            [strongSelf setupTodoData:nil];
         }];
         if (block) {
             block();
@@ -122,7 +134,7 @@
         }
         StrongSelf
         [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
-            [strongSelf setupDoneData];
+            [strongSelf setupDoneData:nil];
         }];
         if (block) {
             block();
@@ -130,21 +142,27 @@
     }];
 }
 
--(void)setupTodoData
+-(void)setupTodoData:(void(^)(NSArray *orders))completion
 {
     WeakSelf
     NSPredicate *todoPredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND (status == %@ OR status == %@)", [LoginUser shareInstance].cid, @(OrderStatusPending), @(OrderStatusExecuting)];
     [OrderUtil queryModelsFromDataBase:todoPredicate completion:^(NSArray *orders) {
         [weakSelf.todoDS setForm:[weakSelf createTodoForm:orders]];
+        if (completion) {
+            completion(orders);
+        }
     }];
 }
 
--(void)setupDoneData
+-(void)setupDoneData:(void(^)(NSArray *orders))completion
 {
     WeakSelf
     NSPredicate *donePredicate = [NSPredicate predicateWithFormat:@"userId = %@ AND (status == %@ OR status == %@ OR status == %@)", [LoginUser shareInstance].cid, @(OrderStatusCompletion), @(OrderStatusDenied), @(OrderStatusCancelled)];
     [OrderUtil queryModelsFromDataBase:donePredicate completion:^(NSArray *orders) {
         [weakSelf.doneDS setForm:[weakSelf createDoneForm:orders]];
+        if (completion) {
+            completion(orders);
+        }
     }];
 }
 

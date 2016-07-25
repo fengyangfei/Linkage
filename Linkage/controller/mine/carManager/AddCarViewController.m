@@ -70,30 +70,40 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"apply_date" rowType:XLFormRowDescriptorTypeDate title:@"上牌日期"];
     if(car && car.applyDate){
         row.value = car.applyDate;
+    }else{
+        row.value = [NSDate date];
     }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"examine_data" rowType:XLFormRowDescriptorTypeDate title:@"年审日期"];
     if(car && car.examineData){
         row.value = car.examineData;
+    }else{
+        row.value = [NSDate date];
     }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"maintain_data" rowType:XLFormRowDescriptorTypeDate title:@"二级维护月份"];
     if(car && car.maintainData){
         row.value = car.maintainData;
+    }else{
+        row.value = [NSDate date];
     }
     [section addFormRow:row];
 
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"traffic_insure_data" rowType:XLFormRowDescriptorTypeDate title:@"交强险日期"];
     if(car && car.trafficInsureData){
         row.value = car.trafficInsureData;
+    }else{
+        row.value = [NSDate date];
     }
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"business_insure_data" rowType:XLFormRowDescriptorTypeDate title:@"商业险日期"];
     if(car && car.businessInsureData){
         row.value = car.businessInsureData;
+    }else{
+        row.value = [NSDate date];
     }
     [section addFormRow:row];
 

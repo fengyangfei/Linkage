@@ -9,6 +9,7 @@
 #import "LinkUtil.h"
 #import "LoginUser.h"
 #import "Order.h"
+#import "OrderUtil.h"
 #import <AFNetworking/AFNetworking.h>
 #import <SDWebImage/NSData+ImageContentType.h>
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -184,6 +185,12 @@
         _portOptions = [array copy];
     });
     return _portOptions;
+}
+
+//清除缓存
++ (void)clearCache
+{
+    [OrderUtil truncateAll];
 }
 
 //上传到服务器

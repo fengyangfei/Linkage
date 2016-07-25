@@ -55,7 +55,7 @@ static LoginUser *user;
 
 - (NSSet *)propertyMergeKeys
 {
-    return [NSSet setWithArray:@[@"userName",@"gender",@"email",@"avatar"]];
+    return [NSSet setWithArray:@[@"userName",@"gender",@"email",@"avatar",@"realName"]];
 }
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error

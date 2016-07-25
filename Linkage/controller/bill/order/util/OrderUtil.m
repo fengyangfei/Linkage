@@ -172,7 +172,7 @@
 //删除未完成订单
 +(void)truncateTodoOrders
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status != %@", [LoginUser shareInstance].cid, @(OrderStatusCompletion)];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId = %@ AND (status == %@ OR status == %@)", [LoginUser shareInstance].cid, @(OrderStatusPending), @(OrderStatusExecuting)];
     NSArray *objectsToDelete = [OrderModel MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
     for (NSManagedObject *objectToDelete in objectsToDelete)
     {
@@ -183,7 +183,7 @@
 //删除已完成订单
 +(void)truncateDoneOrders
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId = %@ AND status == %@", [LoginUser shareInstance].cid, @(OrderStatusCompletion)];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId = %@ AND (status == %@ OR status == %@ OR status == %@)", [LoginUser shareInstance].cid, @(OrderStatusCompletion), @(OrderStatusDenied), @(OrderStatusCancelled)];
     NSArray *objectsToDelete = [OrderModel MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
     for (NSManagedObject *objectToDelete in objectsToDelete)
     {

@@ -285,6 +285,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"提货时间"];
+    RowDateInit
     if (order && order.takeTime) {
         row.value = order.takeTime;
     }else{
@@ -305,6 +306,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDate title:@"送货时间"];
+    RowDateInit
     if (order && order.deliverTime) {
         row.value = order.deliverTime;
     }else{
@@ -313,6 +315,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"cargos_rent_expire" rowType:XLFormRowDescriptorTypeDate title:@"柜租到期日期"];
+    RowDateInit
     if (order && order.cargosRentExpire) {
         row.value = order.cargosRentExpire;
     }else{
@@ -410,6 +413,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"到厂时间"];
+    RowDateInit
     if (order && order.takeTime) {
         row.value = order.takeTime;
     }else{
@@ -418,6 +422,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDate title:@"送货时间"];
+    RowDateInit
     if (order && order.deliverTime) {
         row.value = order.deliverTime;
     }else{
@@ -436,6 +441,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_in" rowType:XLFormRowDescriptorTypeDate title:@"截关日期"];
+    RowDateInit
     if (order && ((ExportOrder *)order).customsIn) {
         row.value = ((ExportOrder *)order).customsIn;
     }else{
@@ -563,6 +569,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"take_time" rowType:XLFormRowDescriptorTypeDate title:@"装货时间"];
+    RowDateInit
     if (order && order.takeTime) {
         row.value = order.takeTime;
     }else{
@@ -583,6 +590,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDate title:@"送货时间"];
+    RowDateInit
     if (order && order.deliverTime) {
         row.value = order.deliverTime;
     }else{
@@ -600,6 +608,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"customs_in" rowType:XLFormRowDescriptorTypeDate title:@"报关时间"];
+    RowDateInit
     if (order && ((SelfOrder *)order).customsIn) {
         row.value = ((SelfOrder *)order).customsIn;
     }else{
@@ -609,6 +618,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"cargo_take_time" rowType:XLFormRowDescriptorTypeDate title:@"提货时间"];
+    RowDateInit
     if (order && ((SelfOrder *)order).cargoTakeTime) {
         row.value = ((SelfOrder *)order).cargoTakeTime;
     }else{

@@ -83,9 +83,10 @@
 //数据库查询
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
 {
-    NSArray *managerObjects = [CarModel MR_findByAttribute:@"userId" withValue:[LoginUser shareInstance].cid inContext:[NSManagedObjectContext MR_defaultContext]];
-    NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:managerObjects.count];
-    for (NSManagedObject *manageObj in managerObjects) {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"userId", [LoginUser shareInstance].cid];
+    NSArray *modelArray = [CarModel MR_findAllSortedBy:@"carId" ascending:NO withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:modelArray.count];
+    for (NSManagedObject *manageObj in modelArray) {
         id<MTLJSONSerializing> model = [self modelFromManagedObject:manageObj];
         [mutableArray addObject:model];
     }
