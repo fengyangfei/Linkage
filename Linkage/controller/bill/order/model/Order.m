@@ -130,18 +130,6 @@
 
 + (Class)classForParsingJSONDictionary:(NSDictionary *)JSONDictionary
 {
-    /*
-    if (JSONDictionary[@"cargo_no"] != nil) {
-        return [ImportOrder class];
-    }
-    if (JSONDictionary[@"ship_name"] != nil) {
-        return [ExportOrder class];
-    }
-    if (JSONDictionary[@"is_customs_declare"] != nil) {
-        return [SelfOrder class];
-    }
-     */
-    
     if ([JSONDictionary[@"type"] integerValue] == OrderTypeExport) {
         return [ExportOrder class];
     }else if ([JSONDictionary[@"type"] integerValue] == OrderTypeImport){

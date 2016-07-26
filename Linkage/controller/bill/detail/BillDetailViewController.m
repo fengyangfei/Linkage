@@ -183,35 +183,28 @@
         }
         [section addFormRow:row];
     }
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"装货地址"];
-    row.value = order? order.takeAddress:@"";
-    [section addFormRow:row];
 
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"到厂时间"];
-    row.value = order? [order.deliverTime stringFromDate]: @"";
-    [section addFormRow:row];
-
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"送货地址"];
-    row.value = order? order.deliveryAddress:@"";
-    [section addFormRow:row];
-    
     if ([order isKindOfClass:[ExportOrder class]]) {
         ExportOrder *exportOrder = (ExportOrder *)order;
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程公司"];
-        row.value = order? exportOrder.shipCompany :@"";
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"装货地址"];
+        row.value = exportOrder? exportOrder.takeAddress:@"";
         [section addFormRow:row];
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程船名"];
-        row.value = order? exportOrder.shipName :@"";
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"到厂时间"];
+        row.value = order? [order.takeTime stringFromDate]: @"";
         [section addFormRow:row];
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否约好"];
-        if (order && exportOrder.isBookCargo) {
-            row.value = @"是";
-        }else{
-            row.value = @"否";
-        }
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"送货时间"];
+        row.value = order? [order.deliverTime stringFromDate]: @"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"出口港口"];
+        row.value = order? exportOrder.port:@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"截关日期"];
+        row.value = order? [exportOrder.customsIn stringFromDate]:@"";
         [section addFormRow:row];
         
         if (order && exportOrder.soImageUrl) {
@@ -223,37 +216,123 @@
                 }
             }
         }
-    }
-    
-    if([order isKindOfClass:[ImportOrder class]]) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"报关行联系人"];
-        row.value = order? ((ImportOrder *)order).customsBroker :@"";
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程公司"];
+        row.value = order? exportOrder.shipCompany :@"";
         [section addFormRow:row];
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"联系人电话"];
-        row.value = order? ((ImportOrder *)order).customsHouseContact :@"";
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程船名"];
+        row.value = order? exportOrder.shipName :@"";
         [section addFormRow:row];
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"二程公司"];
-        row.value = order? ((ImportOrder *)order).cargoCompany :@"";
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头程班次"];
+        row.value = order? exportOrder.shipScheduleNo :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否与头程约好柜"];
+        if (order && exportOrder.isBookCargo) {
+            row.value = @"是";
+        }else{
+            row.value = @"否";
+        }
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否转关"];
+        if (order && exportOrder.isTransferPort) {
+            row.value = @"是";
+        }else{
+            row.value = @"否";
+        }
         [section addFormRow:row];
     }
     
-    if([order isKindOfClass:[SelfOrder class]]) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"报关时间"];
-        row.value = order? [((SelfOrder *)order).customsIn stringFromDate] :@"";
+    else if([order isKindOfClass:[ImportOrder class]]) {
+        ImportOrder *importOrder = (ImportOrder *)order;
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"进口港口"];
+        row.value = importOrder? importOrder.takeAddress:@"";
         [section addFormRow:row];
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"提货时间"];
-        row.value = order? [((SelfOrder *)order).cargoTakeTime stringFromDate] :@"";
+        row.value = order? [order.takeTime stringFromDate]: @"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"送货地址"];
+        row.value = order? order.deliveryAddress:@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"送货时间"];
+        row.value = order? [order.deliverTime stringFromDate]: @"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"柜租到期日期"];
+        row.value = order? [importOrder.cargosRentExpire stringFromDate]: @"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"提单号"];
+        row.value = order? importOrder.billNo :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"二程公司"];
+        row.value = order? importOrder.cargoCompany :@"";
+        [section addFormRow:row];
+
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"报关行联系人"];
+        row.value = order? importOrder.customsBroker :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"联系人电话"];
+        row.value = order? importOrder.customsHouseContact :@"";
         [section addFormRow:row];
     }
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否转关"];
-    if (order && order.isTransferPort) {
-        row.value = @"是";
-    }else{
-        row.value = @"否";
+    else if([order isKindOfClass:[SelfOrder class]]) {
+        SelfOrder *selfOrder = (SelfOrder *)order;
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"装货地址"];
+        row.value = order? order.takeAddress:@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"装货时间"];
+        row.value = order? [order.deliverTime stringFromDate]: @"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"送货地址"];
+        row.value = order? order.deliveryAddress:@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"送货时间"];
+        row.value = order? [selfOrder.cargoTakeTime stringFromDate] :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否转关"];
+        if (order && selfOrder.isCustomsDeclare) {
+            row.value = @"是";
+        }else{
+            row.value = @"否";
+        }
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"报关时间"];
+        row.value = order? [selfOrder.customsIn stringFromDate] :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"提货时间"];
+        row.value = order? [selfOrder.cargoTakeTime stringFromDate] :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否转关"];
+        if (order && order.isTransferPort) {
+            row.value = @"是";
+        }else{
+            row.value = @"否";
+        }
+        [section addFormRow:row];
+    }
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeTextView title:@"备注"];
+    row.disabled = @YES;
+    if (order && order.memo) {
+        row.value = order.memo;
     }
     [section addFormRow:row];
     

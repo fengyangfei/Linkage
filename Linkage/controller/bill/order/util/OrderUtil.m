@@ -263,11 +263,19 @@
     NSDictionary *paramter = @{@"order_id":order.orderId};
     paramter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:paramter];
     Order *(^mergeOrder)(id responseObject) = ^(id responseObject) {
-        Order *result = (Order *)[OrderUtil modelFromJson:responseObject];
-        [result mergeValueForKey:@"orderId" fromModel:order];
-        [result mergeValueForKey:@"type" fromModel:order];
-        [result mergeValueForKey:@"status" fromModel:order];
-        [result mergeValueForKey:@"updateTime" fromModel:order];
+        long long updateTime = [[NSNumber numberWithDouble:[order.updateTime timeIntervalSince1970]] longLongValue];
+        long long createTime = [[NSNumber numberWithDouble:[order.createTime timeIntervalSince1970]] longLongValue];
+        NSDictionary *mergeResponse = @{
+                                        @"order_id":order.orderId,
+                                        @"type":@(order.type),
+                                        @"status":@(order.status),
+                                        @"update_time":@(updateTime),
+                                        @"create_time":@(createTime)
+                                        };
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            mergeResponse = [responseObject mtl_dictionaryByAddingEntriesFromDictionary:mergeResponse];
+        }
+        Order *result = (Order *)[OrderUtil modelFromJson:mergeResponse];
         return result;
     };
     if (order.type == OrderTypeImport || [order isKindOfClass:[ImportOrder class]]) {
