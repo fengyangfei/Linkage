@@ -44,7 +44,7 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
 {
     [super update];
     Message *message = self.rowDescriptor.value;
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:message.icon] placeholderImage:nil];
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:message.icon] placeholderImage:[UIImage imageNamed:@"message_pic"]];
     self.titleLable.text = message.title;
     self.detailLable.text = message.introduction;
     self.timeLable.text = [message.createTime stringFromDate];

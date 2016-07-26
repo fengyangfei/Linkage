@@ -118,7 +118,12 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    NSString *title = car ? @"保存": @"修改";
+    NSString *title;
+    if (car && StringIsNotEmpty(car.carId)) {
+        title = @"修改";
+    }else{
+        title = @"保存";
+    }
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:title];
     row.action.formBlock  = ^(XLFormRowDescriptor * sender){
         [weakSelf submitForm:sender];
@@ -149,15 +154,14 @@
         if (carId) {
             model.carId = carId;
             //同步到数据库
-            StrongSelf
             [CarUtil syncToDataBase:model completion:^{
                 [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
                     [SVProgressHUD dismiss];
                 }];
-                [strongSelf.navigationController popViewControllerAnimated:YES];
             }];
         }
         [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     } failure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];

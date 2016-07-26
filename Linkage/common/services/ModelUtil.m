@@ -17,7 +17,8 @@
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
 {
     NSError *error;
-    id model = [MTLJSONAdapter modelOfClass:self.modelClass fromJSONDictionary:json error:&error];
+    NSDictionary *mergeJson = [json mtl_dictionaryByAddingEntriesFromDictionary:@{@"userId":[LoginUser shareInstance].cid}];
+    id model = [MTLJSONAdapter modelOfClass:self.modelClass fromJSONDictionary:mergeJson error:&error];
     if (error) {
         NSLog(@"Json转成对象失败 - %@",error);
     }
@@ -27,7 +28,8 @@
 +(id<MTLJSONSerializing>)modelFromXLFormValue:(NSDictionary *)formValues
 {
     NSError *error;
-    id model = [MTLJSONAdapter modelOfClass:self.modelClass fromJSONDictionary:formValues error:&error];
+    NSDictionary *json = [formValues mtl_dictionaryByAddingEntriesFromDictionary:@{@"userId":[LoginUser shareInstance].cid}];
+    id model = [MTLJSONAdapter modelOfClass:self.modelClass fromJSONDictionary:json error:&error];
     if (error) {
         NSLog(@"Form转对象失败 - %@",error);
     }
@@ -48,6 +50,7 @@
 {
     NSError *error;
     NSDictionary *dic = [MTLJSONAdapter JSONDictionaryFromModel:model error:&error];
+    dic = [dic mtl_dictionaryByAddingEntriesFromDictionary:@{@"userId":[LoginUser shareInstance].cid}];
     if (error) {
         NSLog(@"对象转换字典失败 - %@",error);
     }
