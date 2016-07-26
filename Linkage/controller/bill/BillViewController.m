@@ -240,7 +240,7 @@
         NSString *rowType = order.status == OrderStatusCompletion ? CompletionOrderDescriporType:PendingOrderDescriporType;
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowType];
         row.value = order;
-        //只有厂商管理员与被拒绝的订单能修改订单，其他状态只能查看订单详情
+        //只有厂商管理员并被拒绝的订单才能修改订单，其他状态只能查看订单详情
         if (order.status == OrderStatusDenied && [LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
             if(order.type == OrderTypeExport){
                 row.action.viewControllerClass = [BillExportApplyViewController class];

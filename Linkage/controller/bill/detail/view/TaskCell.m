@@ -402,7 +402,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     if (!_statusLabel) {
         _statusLabel = [UILabel new];
         _statusLabel.textColor = IndexButtonColor;
-        _statusLabel.textAlignment = NSTextAlignmentCenter;
+        _statusLabel.textAlignment = NSTextAlignmentRight;
         _statusLabel.font = [UIFont systemFontOfSize:14];
     }
     return _statusLabel;

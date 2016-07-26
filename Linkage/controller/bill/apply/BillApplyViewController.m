@@ -346,7 +346,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"bill_no" rowType:XLFormRowDescriptorTypeText title:@"提单号"];
-    if (order && ((ImportOrder *)order).billNo) {
+    if (order && [order isKindOfClass:[ImportOrder class]] && ((ImportOrder *)order).billNo) {
         row.value = ((ImportOrder *)order).billNo;
     }
     row.required = YES;
