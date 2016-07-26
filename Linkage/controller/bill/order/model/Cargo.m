@@ -107,7 +107,7 @@
 @end
 
 @implementation NSArray(CargoModel)
--(NSString *)cargosStringValue
+-(NSString *)cargosStringValue4ExportOrSelf
 {
     NSMutableString *str = [NSMutableString string];
     for (Cargo *model in self) {

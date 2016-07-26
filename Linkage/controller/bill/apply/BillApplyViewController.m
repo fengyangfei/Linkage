@@ -88,16 +88,37 @@ row.cellStyle = UITableViewCellStyleValue1;
     section.multivaluedTag = @"cargos";
     if (order && order.cargos) {
         for (Cargo *cargo in order.cargos) {
-            [section addFormRow:[self generateCargoRowWithType:cargo.cargoType andCount:cargo.cargoCount]];
+            [section addFormRow:[self generateCargoRowWithType:cargo.cargoType andCount:cargo.cargoCount cargoNo:cargo.cargoNo]];
         }
     }else{
-        [section addFormRow:[self generateCargoRowWithType:@(1) andCount:@(0)]];
+        //初始化添加一行记录
+        [section addFormRow:[self generateCargoRowWithType:@(1) andCount:nil cargoNo:nil]];
     }
     
     //自定义Cell
     [self addCustomCell:form order:order];
     
     return form;
+}
+
+-(CargoFormRowDescriptor *)generateCargoRowWithType:(NSNumber *)typeKey andCount:(NSNumber *)count cargoNo:(NSString *)cargoNo
+{
+    CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
+    if ([self isKindOfClass:[BillImportApplyViewController class]]) {
+        [row.cellConfigAtConfigure setObject:@"填入货柜号" forKey:@"rightTextField.placeholder"];
+    }else{
+        [row.cellConfigAtConfigure setObject:@"填入货柜数量" forKey:@"rightTextField.placeholder"];
+    }
+    NSDictionary *dic = [LinkUtil cargoTypes];
+    row.value = [Cargo cargoWithType:typeKey name:[dic objectForKey:typeKey] count:count cargoNo:cargoNo];
+    row.action.viewControllerClass = [CargoTypeViewController class];
+    return row;
+}
+
+//重写获取货柜的cell
+-(XLFormRowDescriptor *)formRowFormMultivaluedFormSection:(XLFormSectionDescriptor *)formSection
+{
+    return [self generateCargoRowWithType:@(1) andCount:nil cargoNo:nil];
 }
 
 -(void)addCustomCell:(XLFormDescriptor *)form order:(Order *)order
@@ -168,22 +189,6 @@ row.cellStyle = UITableViewCellStyleValue1;
     } failure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
-}
-
--(CargoFormRowDescriptor *)generateCargoRowWithType:(NSNumber *)typeKey andCount:(NSNumber *)count
-{
-    CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
-    [row.cellConfigAtConfigure setObject:@"填入货柜数量" forKey:@"rightTextField.placeholder"];
-    NSDictionary *dic = [LinkUtil cargoTypes];
-    row.value = [Cargo cargoWithType:typeKey name:[dic objectForKey:typeKey] count:count];
-    row.action.viewControllerClass = [CargoTypeViewController class];
-    return row;
-}
-
-//重写获取货柜的cell
--(XLFormRowDescriptor *)formRowFormMultivaluedFormSection:(XLFormSectionDescriptor *)formSection
-{
-    return [self generateCargoRowWithType:@(1) andCount:@(0)];
 }
 
 #pragma mark - 事件

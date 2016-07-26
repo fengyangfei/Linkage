@@ -109,10 +109,14 @@
         mutableDic[@"cid"] = [LoginUser shareInstance].cid;
         mutableDic[@"token"] = [LoginUser shareInstance].token;
         mutableDic[@"company_id"] = order.companyId;
-        mutableDic[@"cargo"] = [order.cargos cargosStringValue];
         if ([order isKindOfClass:[ExportOrder class]]) {
             mutableDic[@"so"] = @"so";
             mutableDic[@"so_images"] = [((ExportOrder *)order).soImages soImageStringValue];
+            mutableDic[@"cargo"] = [order.cargos cargosStringValue4ExportOrSelf];
+        }else if ([order isKindOfClass:[ImportOrder class]]){
+            mutableDic[@"cargo"] = [order.cargos cargosStringValue4Import];
+        }else if ([order isKindOfClass:[ImportOrder class]]){
+            mutableDic[@"cargo"] = [order.cargos cargosStringValue4ExportOrSelf];
         }
         return [mutableDic copy];
     }else{
