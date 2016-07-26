@@ -99,12 +99,9 @@
     WeakSelf
     parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
     [OrderUtil queryModelsFromServer:parameter completion:^(NSArray *orders) {
-        if (orders.count > 0) {
-            for (Order *order in orders) {
-                [OrderUtil syncToDataBase:order completion:nil];
-            }
-        }else{
-            [OrderUtil truncateTodoOrders];
+        [OrderUtil truncateTodoOrders];
+        for (Order *order in orders) {
+            [OrderUtil syncToDataBase:order completion:nil];
         }
         StrongSelf
         [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError *error) {
@@ -125,12 +122,9 @@
     WeakSelf
     parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
     [OrderUtil queryModelsFromServer:parameter completion:^(NSArray *orders) {
-        if (orders.count > 0) {
-            for (Order *order in orders) {
-                [OrderUtil syncToDataBase:order completion:nil];
-            }
-        }else{
-            [OrderUtil truncateDoneOrders];
+        [OrderUtil truncateDoneOrders];
+        for (Order *order in orders) {
+            [OrderUtil syncToDataBase:order completion:nil];
         }
         StrongSelf
         [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
