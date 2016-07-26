@@ -56,6 +56,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 {
     if (!_textLabel) {
         _textLabel = [UILabel new];
+        _textLabel.font = [UIFont systemFontOfSize:14];
         _textLabel.textColor = IndexTitleFontColor;
     }
     return _textLabel;
@@ -65,6 +66,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 {
     if (!_detailLabel) {
         _detailLabel = [UILabel new];
+        _detailLabel.font = [UIFont systemFontOfSize:14];
         _detailLabel.textColor = [UIColor grayColor];
     }
     return _detailLabel;
@@ -97,8 +99,8 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     [super update];
     Task *model = self.rowDescriptor.value;
     if (model) {
-        self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机：" font:[UIFont systemFontOfSize:16]];
-        self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌：" font:[UIFont systemFontOfSize:16]];
+        self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机："];
+        self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌："];
         if (model.cargoNo && model.cargoNo.length > 0) {
             self.textField.text = model.cargoNo;
         }
@@ -164,7 +166,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 {
     if (!_textField) {
         _textField = [[UITextField alloc]init];
-        _textField.font = [UIFont systemFontOfSize:16];
+        _textField.font = [UIFont systemFontOfSize:14];
         _textField.textColor = IndexTitleFontColor;
         _textField.placeholder = @"请填入货柜号";
         _textField.delegate = self;
@@ -305,7 +307,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     if (!_subTextLabel) {
         _subTextLabel = [UILabel new];
         _subTextLabel.textColor = IndexTitleFontColor;
-        _subTextLabel.font = [UIFont systemFontOfSize:16];
+        _subTextLabel.font = [UIFont systemFontOfSize:14];
     }
     return _subTextLabel;
 }
@@ -315,7 +317,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     if (!_subDetailLabel) {
         _subDetailLabel = [UILabel new];
         _subDetailLabel.textColor = [UIColor grayColor];
-        _subDetailLabel.font = [UIFont systemFontOfSize:16];
+        _subDetailLabel.font = [UIFont systemFontOfSize:14];
     }
     return _subDetailLabel;
 }
@@ -399,9 +401,8 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 {
     if (!_statusLabel) {
         _statusLabel = [UILabel new];
-        _statusLabel.backgroundColor = ButtonColor;
+        _statusLabel.textColor = IndexButtonColor;
         _statusLabel.textAlignment = NSTextAlignmentCenter;
-        _statusLabel.textColor = [UIColor whiteColor];
         _statusLabel.font = [UIFont systemFontOfSize:14];
     }
     return _statusLabel;
@@ -412,7 +413,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     if (!_subTextLabel) {
         _subTextLabel = [UILabel new];
         _subTextLabel.textColor = IndexTitleFontColor;
-        _subTextLabel.font = [UIFont systemFontOfSize:16];
+        _subTextLabel.font = [UIFont systemFontOfSize:14];
     }
     return _subTextLabel;
 }
@@ -422,7 +423,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     if (!_subDetailLabel) {
         _subDetailLabel = [UILabel new];
         _subDetailLabel.textColor = [UIColor grayColor];
-        _subDetailLabel.font = [UIFont systemFontOfSize:16];
+        _subDetailLabel.font = [UIFont systemFontOfSize:14];
     }
     return _subDetailLabel;
 }

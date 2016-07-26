@@ -342,15 +342,21 @@
 {
     NSMutableArray *tasks = [[NSMutableArray alloc]init];
     NSDictionary *formValues = [self.tasksDataSource.form formValues];
-    for (NSArray *drivers in formValues) {
-        for (Task *task in drivers) {
-            [tasks addObject:@{
-                               @"driver_id":((Task *)task).driverId,
-                               @"cargo_type":((Task *)task).cargoType,
-                               @"cargo_no": ((Task *)task).cargoNo ?:@""
-                               }];
+    for (id drivers in formValues.allValues) {
+        if ([drivers isKindOfClass:[NSArray class]]) {
+            for (id driver in drivers) {
+                if ([driver isKindOfClass:[Task class]]) {
+                    Task *task = (Task *)driver;
+                    [tasks addObject:@{
+                                       @"driver_id":task.driverId,
+                                       @"cargo_type":task.cargoType,
+                                       @"cargo_no":task.cargoNo ?:@""
+                                       }];
+                }
+            }
         }
     }
+
     NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"cargos":tasks} options:0 error:NULL];
     NSString *tasksString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     
