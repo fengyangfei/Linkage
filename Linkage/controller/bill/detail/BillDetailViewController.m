@@ -340,6 +340,14 @@
 //分配任务给司机
 -(void)allocateTask:(XLFormRowDescriptor *)row
 {
+    WeakSelf
+    Order *order = self.rowDescriptor.value;
+    if (order.status != OrderStatusExecuting) {
+        NSString *info = [NSString stringWithFormat:@"请先接单！再给司机分配任务！"];
+        [SVProgressHUD showErrorWithStatus:info];
+        return;
+    }
+    
     NSMutableArray *tasks = [[NSMutableArray alloc]init];
     NSDictionary *formValues = [self.tasksDataSource.form formValues];
     for (id drivers in formValues.allValues) {
@@ -360,8 +368,6 @@
     NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"cargos":tasks} options:0 error:NULL];
     NSString *tasksString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     
-    WeakSelf
-    Order *order = self.rowDescriptor.value;
     __weak Order *weakOrder = order;
     if (order.orderId) {
         NSDictionary *parameter = @{
