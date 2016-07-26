@@ -28,4 +28,20 @@
     return [titleString copy];
 }
 
+-(NSAttributedString *)attributedString
+{
+    return [self attributedStringWithFont:[UIFont systemFontOfSize:14]];
+}
+
+-(NSAttributedString *)attributedStringWithFont:(UIFont *)font
+{
+    return [self attributedStringWithFont:font color:IndexButtonColor];
+}
+
+-(NSAttributedString *)attributedStringWithFont:(UIFont *)font color:(UIColor *)color
+{
+    NSAttributedString *title = [[NSAttributedString alloc]initWithString:self attributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:color}];
+    return title;
+}
+
 @end

@@ -103,7 +103,14 @@
 {
     if([x integerValue] == OrderStatusCompletion){
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
+        
+        //刷新任务界面
+        XLFormDescriptor *form = [self createInfoTasksForm:self.rowDescriptor.value];
+        if (_tasksDataSource) {
+            [_tasksDataSource setForm:form];
+        }
     }
+    //底下工具栏
     if (([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin || [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) && ([x integerValue] == OrderStatusPending || [x integerValue] == OrderStatusExecuting)) {
         [self.view addSubview:self.toolBar];
         [self.toolBar makeConstraints:^(MASConstraintMaker *make) {
@@ -335,20 +342,15 @@
 {
     NSMutableArray *tasks = [[NSMutableArray alloc]init];
     NSDictionary *formValues = [self.tasksDataSource.form formValues];
-    [formValues enumerateKeysAndObjectsUsingBlock:^(NSString *key, id drivers, BOOL * stop) {
-        if ([drivers isKindOfClass:[NSArray class]]) {
-            [drivers enumerateObjectsUsingBlock:^(id task, NSUInteger idx, BOOL * stop) {
-                if ([task isKindOfClass:[Task class]]) {
-                    [tasks addObject:@{
-                                        @"driver_id":((Task *)task).driverId,
-                                        @"cargo_type":((Task *)task).cargoType,
-                                        @"cargo_no": ((Task *)task).cargoNo ?:@""
-                                        }];
-                }
-            }];
+    for (NSArray *drivers in formValues) {
+        for (Task *task in drivers) {
+            [tasks addObject:@{
+                               @"driver_id":((Task *)task).driverId,
+                               @"cargo_type":((Task *)task).cargoType,
+                               @"cargo_no": ((Task *)task).cargoNo ?:@""
+                               }];
         }
-    }];
-    
+    }
     NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"cargos":tasks} options:0 error:NULL];
     NSString *tasksString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     
@@ -361,20 +363,12 @@
                                     @"dispatch_info":tasksString
                                     };
         parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
-        [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl form:parameter success:^(id responseObject) {
+        [OrderUtil dispatchTask:parameter success:^(NSArray *tasks) {
             [SVProgressHUD showSuccessWithStatus:@"分配成功"];
-            if (responseObject[@"task"] && [responseObject[@"task"] isKindOfClass:[NSArray class]]) {
-                NSError *error;
-                NSArray *tasks = [MTLJSONAdapter modelsOfClass:[Task class] fromJSONArray:responseObject[@"task"] error:&error];
-                if (error){
-                    NSLog(@"任务列表-json数组转对象数组失败 - %@",error);
-                }else{
-                    //分配完任务之后，重新渲染界面
-                    weakOrder.tasks = tasks;
-                    if (_tasksDataSource) {
-                        [_tasksDataSource setForm:[weakSelf createInfoTasksForm:weakOrder]];
-                    }
-                }
+            //分配完任务之后，重新渲染界面
+            weakOrder.tasks = tasks;
+            if (_tasksDataSource) {
+                [_tasksDataSource setForm:[weakSelf createInfoTasksForm:weakOrder]];
             }
         } failure:^(NSError *error) {
             [SVProgressHUD showErrorWithStatus:error.localizedDescription];

@@ -17,6 +17,7 @@
 +(void)acceptOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 +(void)confirmOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 +(void)rejectOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
++(void)dispatchTask:(NSDictionary *)parameter success:(void(^)(NSArray *tasks))success failure:(void(^)(NSError *error))failure;
 @end
 
 @interface NSArray (OrderModel)

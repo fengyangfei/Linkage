@@ -13,6 +13,7 @@
 #import "Company.h"
 #import "SOImage.h"
 #import "LoginUser.h"
+#import "Task.h"
 #import "MTLManagedObjectAdapter.h"
 #import <Mantle/Mantle.h>
 
@@ -321,6 +322,28 @@
 +(void)rejectOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
 {
     [[YGRestClient sharedInstance] postForObjectWithUrl:RejectOrderUrl form:model.httpParameterForDetail success:success failure:failure];
+}
+
++(void)dispatchTask:(NSDictionary *)parameter success:(void(^)(NSArray *tasks))success failure:(void(^)(NSError *error))failure
+{
+
+    [[YGRestClient sharedInstance] postForObjectWithUrl:DispatchUrl form:parameter success:^(id responseObject) {
+        if (responseObject[@"task"] && [responseObject[@"task"] isKindOfClass:[NSArray class]]) {
+            NSError *error;
+            NSArray *tasks = [MTLJSONAdapter modelsOfClass:[Task class] fromJSONArray:responseObject[@"task"] error:&error];
+            if (error){
+                NSLog(@"任务列表-json数组转对象数组失败 - %@",error);
+            }else{
+                if (success) {
+                    success(tasks);
+                }
+            }
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 }
 
 @end

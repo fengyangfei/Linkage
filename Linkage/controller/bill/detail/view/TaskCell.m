@@ -241,8 +241,8 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
         self.textLabel.text = cargoType;
         self.subTextLabel.text = model.cargoNo;
         self.detailLabel.text = [NSString stringWithFormat:@"%@%@",@"司机：", model.driverName];
-        self.subDetailLabel.text = [NSString stringWithFormat:@"%@%@",@"车牌：", model.driverLicense];;
-        [self.statusBtn setTitle:title forState:UIControlStateNormal];
+        self.subDetailLabel.text = [NSString stringWithFormat:@"%@%@",@"车牌：", model.driverLicense];
+        [self.statusBtn setAttributedTitle:[title attributedString] forState:UIControlStateNormal];
     }
 }
 
@@ -265,7 +265,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
         UIAlertAction *action = [UIAlertAction actionWithTitle:[[LinkUtil taskStatus] objectForKey:key] style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
             //改变按钮状态的文字
             NSString *title = [[LinkUtil taskStatus] objectForKey:key];
-            [weakSelf.statusBtn setTitle:title forState:UIControlStateNormal];
+            [weakSelf.statusBtn setAttributedTitle:[title attributedString] forState:UIControlStateNormal];
             ((Task *)weakSelf.rowDescriptor.value).status = key;
             //同步状态到服务端
             NSDictionary *parameter = @{
@@ -293,7 +293,6 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
 {
     if (!_statusBtn) {
         _statusBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_statusBtn setTitleColor:HeaderColor forState:UIControlStateNormal];
         [_statusBtn setBackgroundImage:ButtonFrameImage forState:UIControlStateNormal];
         [_statusBtn setBackgroundImage:ButtonFrameImage forState:UIControlStateHighlighted];
         [_statusBtn addTarget:self action:@selector(changeStatusAction:) forControlEvents:UIControlEventTouchUpInside];
