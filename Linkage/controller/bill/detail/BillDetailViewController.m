@@ -296,7 +296,7 @@
         [section addFormRow:row];
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"装货时间"];
-        row.value = order? [order.deliverTime stringFromDate]: @"";
+        row.value = order? [order.takeTime stringFromDate]: @"";
         [section addFormRow:row];
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"送货地址"];
@@ -304,7 +304,7 @@
         [section addFormRow:row];
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"送货时间"];
-        row.value = order? [selfOrder.cargoTakeTime stringFromDate] :@"";
+        row.value = order? [selfOrder.deliverTime stringFromDate] :@"";
         [section addFormRow:row];
         
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否转关"];
