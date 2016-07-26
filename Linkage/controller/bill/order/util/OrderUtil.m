@@ -53,9 +53,12 @@
     Order *order = [MTLJSONAdapter modelOfClass:[Order class] fromJSONDictionary:formValues error:&error];
     if (!error) {
         order.userId = [LoginUser shareInstance].cid;
+        order.updateTime = [NSDate date];
         order.cargos = formValues[@"cargos"];
         if (formValues[@"company"] && [formValues[@"company"] isKindOfClass:[Company class]]) {
-            order.companyId = ((Company *)formValues[@"company"]).companyId;
+            Company *company = (Company *)formValues[@"company"];
+            order.companyId = company.companyId;
+            order.companyName = company.companyName;
         }
         if ([order isKindOfClass:[ExportOrder class]]) {
             ((ExportOrder *)order).soImages = formValues[@"soImages"];
@@ -189,6 +192,21 @@
     for (NSManagedObject *objectToDelete in objectsToDelete)
     {
         [objectToDelete MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+    }
+}
+
+//删掉数据库对象
++(void)deleteFromDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion
+{
+    Order *order = (Order *)model;
+    if (order.orderId) {
+        OrderModel *model = [OrderModel MR_findFirstByAttribute:@"orderId" withValue:order.orderId inContext:[NSManagedObjectContext MR_defaultContext]];
+        if (model) {
+            [model MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+        }
+        if (completion) {
+            completion();
+        }
     }
 }
 

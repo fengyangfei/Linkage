@@ -22,5 +22,5 @@ typedef NS_ENUM(NSUInteger, ControllerType) {
 
 - (instancetype)initWithControllerType:(ControllerType)controllerType;
 - (void)initializeForm:(NSArray *)models;
-- (void)setupData;
+- (void)setupData:(void(^)(NSArray *models))completion;
 @end

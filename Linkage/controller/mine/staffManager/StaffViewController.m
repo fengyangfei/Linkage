@@ -41,7 +41,7 @@
         row.action.viewControllerClass = self.viewControllerClass;
         [section addFormRow:row];
     }
-    self.form = form;
+    [self setForm:form];
 }
 
 -(void)setupNavigationItem
@@ -85,7 +85,7 @@
         [self.modelUtilClass deleteFromDataBase:row.value completion:^{
             [SVProgressHUD dismiss];
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
-            [strongSelf setupData];
+            [strongSelf setupData:nil];
         }];
     } failure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:error.localizedDescription];

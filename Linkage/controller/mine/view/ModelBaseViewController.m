@@ -44,20 +44,10 @@ row.cellStyle = UITableViewCellStyleValue1;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 18)];
     [self.tableView setEditing:NO];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self.modelUtilClass queryModelsFromServer:^(NSArray *models) {
-            if(models.count > 0){
-                for (id model in models) {
-                    [self.modelUtilClass syncToDataBase:model completion:nil];
-                }
-            }else{
-                [self.modelUtilClass truncateAll];
-            }
-            StrongSelf
-            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
-                [strongSelf setupData];
-            }];
-            if([weakSelf.tableView.mj_header isRefreshing]){
-                [weakSelf.tableView.mj_header endRefreshing];
+        StrongSelf
+        [weakSelf queryDataFromServer:^{
+            if([strongSelf.tableView.mj_header isRefreshing]){
+                [strongSelf.tableView.mj_header endRefreshing];
             }
         }];
     }];
@@ -72,19 +62,45 @@ row.cellStyle = UITableViewCellStyleValue1;
     self.navigationItem.rightBarButtonItems = @[editBtn, addBtn];
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
-    if (![self.tableView.mj_header isRefreshing]) {
-        [self.tableView.mj_header beginRefreshing];
-    }
+    [super viewWillAppear:animated];
+    WeakSelf
+    [self setupData:^(NSArray *models) {
+        if (models.count <= 0) {
+            if (![weakSelf.tableView.mj_header isRefreshing]) {
+                [weakSelf.tableView.mj_header beginRefreshing];
+            }
+        }
+    }];
 }
 
-- (void)setupData
+- (void)queryDataFromServer:(void(^)(void))block
+{
+    WeakSelf
+    [self.modelUtilClass queryModelsFromServer:^(NSArray *models) {
+        [self.modelUtilClass truncateAll];
+        for (id model in models) {
+            [self.modelUtilClass syncToDataBase:model completion:nil];
+        }
+        StrongSelf
+        [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+            [strongSelf setupData:nil];
+        }];
+        if (block) {
+            block();
+        }
+    }];
+}
+
+- (void)setupData:(void(^)(NSArray *models))completion
 {
     WeakSelf
     [self.modelUtilClass queryModelsFromDataBase:^(NSArray *models) {
         [weakSelf initializeForm:models];
+        if (completion) {
+            completion(models);
+        }
     }];
 }
 
@@ -111,7 +127,7 @@ row.cellStyle = UITableViewCellStyleValue1;
         }
         [section addFormRow:row];
     }
-    self.form = form;
+    [self setForm:form];
 }
 
 #pragma mark - action
@@ -154,7 +170,7 @@ row.cellStyle = UITableViewCellStyleValue1;
             [self.modelUtilClass deleteFromDataBase:row.value completion:^{
                 [SVProgressHUD dismiss];
                 [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
-                [strongSelf setupData];
+                [strongSelf setupData:nil];
             }];
         } failure:^(NSError *error) {
             [SVProgressHUD showErrorWithStatus:error.localizedDescription];

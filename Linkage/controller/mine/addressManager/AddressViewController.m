@@ -46,7 +46,7 @@
     self.navigationItem.rightBarButtonItem = addBtn;
 }
 
-- (void)setupData
+- (void)setupData:(void(^)(NSArray *models))completion
 {
     WeakSelf
     NSPredicate *predicate;
@@ -57,6 +57,9 @@
     }
     [self.modelUtilClass queryModelsFromDataBase:predicate completion:^(NSArray *models) {
         [weakSelf initializeForm:models];
+        if (completion) {
+            completion(models);
+        }
     }];
 }
 

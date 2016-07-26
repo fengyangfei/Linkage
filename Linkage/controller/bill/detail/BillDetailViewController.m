@@ -61,6 +61,7 @@
 {
     [super viewDidLoad];
     Order *order = self.rowDescriptor.value;
+    [self setupData:order];
     self.title = [[LinkUtil orderTitles] objectForKey:@(order.type)];
     [self loadDataFromServer:order];
 }
@@ -84,6 +85,9 @@
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
         } failure:^(NSError *error) {
             [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+            [OrderUtil deleteFromDataBase:order completion:^{
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }];
         }];
     }
 }
@@ -170,8 +174,7 @@
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"接单承运商"];
-    Company *company = [LoginUser findCompanyById:order.companyId];
-    row.value = company ? company.companyName :@"";
+    row.value = order ? order.companyName :@"";
     [section addFormRow:row];
     
     for (Cargo *cargo in order.cargos) {
