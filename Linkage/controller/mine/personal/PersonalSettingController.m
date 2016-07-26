@@ -80,7 +80,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"name" rowType:XLFormRowDescriptorTypeText title:@"姓名"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"realname" rowType:XLFormRowDescriptorTypeText title:@"姓名"];
     if (user) {
         row.value = user.realName;
     }
@@ -155,7 +155,6 @@ row.cellStyle = UITableViewCellStyleValue1;
     
     NSMutableDictionary *dic = [[self formValues] mutableCopy];
     dic[@"gender"] = [dic[@"gender"] valueData];
-    dic[@"username"] = dic[@"name"];
     LoginUser *modifyUser = [MTLJSONAdapter modelOfClass:[LoginUser class] fromJSONDictionary:dic error:nil];
     LoginUser *defalutUser = [LoginUser shareInstance];
     [defalutUser mergeValuesForMergeKeysFromModel:modifyUser];
@@ -164,7 +163,6 @@ row.cellStyle = UITableViewCellStyleValue1;
         NSError *error;
         NSDictionary *parameter = [MTLJSONAdapter JSONDictionaryFromModel:modifyUser error:&error];
         parameter = [parameter mtl_dictionaryByAddingEntriesFromDictionary:[LoginUser shareInstance].baseHttpParameter];
-        parameter = [parameter mtl_dictionaryByAddingEntriesFromDictionary:@{@"realname":[LoginUser shareInstance].userName}];
         if (!error) {
             [[YGRestClient sharedInstance] postForObjectWithUrl:ModInfomationUrl form:parameter success:^(id responseObject) {
                 
