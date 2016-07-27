@@ -116,7 +116,9 @@
 -(void)updateUIWhenOrderState:(NSNumber *)x
 {
     if([x integerValue] == OrderStatusCompletion){
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
+        if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
+        }
         
         //刷新任务界面
         XLFormDescriptor *form = [self createInfoTasksForm:self.rowDescriptor.value];
@@ -725,7 +727,7 @@
         [button setTitleFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.f]];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
-        [button setTitle:@"取消" forState:UIControlStateNormal];
+        [button setTitle:@"取消订单" forState:UIControlStateNormal];
         button.frame = CGRectMake(0, 0, IPHONE_WIDTH - 40 , 44);
         [button addTarget:self action:@selector(confirmCancel) forControlEvents:UIControlEventTouchUpInside];
         _cancelItem = [[UIBarButtonItem alloc]initWithCustomView:button];
