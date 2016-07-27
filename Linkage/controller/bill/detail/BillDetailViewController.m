@@ -125,25 +125,21 @@
         }
     }
     //底下工具栏
+    [self.toolBar setHidden:YES];
     if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin ||
-          [LoginUser shareInstance].ctype == UserTypeSubCompanyUser ||
-        [LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
-        [self.toolBar setHidden:NO];
-        
-        if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin ||
-            [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) {
-            if ([x integerValue] == OrderStatusPending) {
-                [self.toolBar setItems:@[self.acceptItem, self.flexibleItem, self.rejectItem]];
-            }else if ([x integerValue] == OrderStatusExecuting){
-                [self.toolBar setItems:@[self.flexibleItem, self.confirmItem, self.flexibleItem]];
-            }
-        }else if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin){
-            if ([x integerValue] == OrderStatusPending) {
-                [self.toolBar setItems:@[self.flexibleItem, self.cancelItem, self.flexibleItem]];
-            }
+        [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) {
+        if ([x integerValue] == OrderStatusPending) {
+            [self.toolBar setHidden:NO];
+            [self.toolBar setItems:@[self.acceptItem, self.flexibleItem, self.rejectItem]];
+        }else if ([x integerValue] == OrderStatusExecuting){
+            [self.toolBar setHidden:NO];
+            [self.toolBar setItems:@[self.flexibleItem, self.confirmItem, self.flexibleItem]];
         }
-    }else{
-        [self.toolBar setHidden:YES];
+    }else if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin){
+        if ([x integerValue] == OrderStatusPending) {
+            [self.toolBar setHidden:NO];
+            [self.toolBar setItems:@[self.flexibleItem, self.cancelItem, self.flexibleItem]];
+        }
     }
 }
 
