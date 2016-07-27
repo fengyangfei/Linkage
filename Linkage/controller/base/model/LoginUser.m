@@ -72,9 +72,12 @@ static LoginUser *user;
 -(BOOL)save
 {
     user = self;
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefalutLoginUserKey];
-    return [[NSUserDefaults standardUserDefaults] synchronize];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserDefalutLoginUserKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    });
+    return YES;
 }
 
 //获取用户信息
@@ -93,8 +96,11 @@ static LoginUser *user;
 +(BOOL)clearUserInfo
 {
     user = nil;
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefalutLoginUserKey];
-    return [[NSUserDefaults standardUserDefaults] synchronize];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefalutLoginUserKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    });
+    return YES;
 }
 
 -(NSDictionary *)baseHttpParameter

@@ -12,7 +12,7 @@
 #import "LoginUser.h"
 #import "Company.h"
 #import "CycleScrollCell.h"
-
+#import <MJRefresh/MJRefresh.h>
 
 @interface MainViewController ()
 
@@ -21,32 +21,31 @@
 @implementation MainViewController
 @synthesize tableView = _tableView;
 
-- (instancetype)init
+-(void)viewDidLoad
 {
-    self = [super init];
-    if (self) {
-        [self initializeForm];
-    }
-    return self;
+    [super viewDidLoad];
+    [self initializeForm];
+    WeakSelf
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        StrongSelf
+        [self login:^(LoginUser *user) {
+            XLFormDescriptor *form = [strongSelf createForm:user];
+            [strongSelf setForm:form];
+            if ([strongSelf.tableView.mj_header isRefreshing]) {
+                [strongSelf.tableView.mj_header endRefreshing];
+            }
+        }];
+    }];
 }
 
-- (void)initializeForm
+-(void)initializeForm
 {
-    XLFormDescriptor *form = [self createForm];
+    XLFormDescriptor *form = [self createForm:[LoginUser shareInstance]];
     self.form = form;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    WeakSelf
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf setupData];
-    });
-}
-
--(void)setupData
+-(void)login:(void(^)(LoginUser *user))completion
 {
-    WeakSelf
     NSDictionary *paramter = @{
                                @"mobile":[LoginUser shareInstance].mobile?:@"",
                                @"password":[LoginUser shareInstance].password?:@""
@@ -58,15 +57,18 @@
             loginUser.mobile = [LoginUser shareInstance].mobile;
             loginUser.password = [LoginUser shareInstance].password;
             [loginUser save];
-            XLFormDescriptor *form = [weakSelf createForm];
-            [weakSelf setForm:form];
+            if (completion) {
+                completion(loginUser);
+            }
+        }else{
+            NSLog(@"%@",error.localizedDescription);
         }
     } failure:^(NSError *error) {
         NSLog(@"%@",error.localizedDescription);
     }];
 }
 
--(XLFormDescriptor *)createForm
+-(XLFormDescriptor *)createForm:(LoginUser *)user
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
@@ -77,14 +79,14 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:CycleScrollDescriporRowType];
-    row.value = [LoginUser shareInstance].advertes;
+    row.value = user.advertes;
     [section addFormRow:row];
     
-    for (Company *company in [LoginUser shareInstance].companies) {
+    for (Company *company in user.companies) {
         NSString *rowType = CompanyInfoDescriporType;
-        if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
+        if (user.ctype == UserTypeCompanyAdmin) {
             rowType = CompanyDescriporType;
-        }else if([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin) {
+        }else if(user.ctype == UserTypeSubCompanyAdmin) {
             rowType = CompanyInfoDescriporType;
         }
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowType];
