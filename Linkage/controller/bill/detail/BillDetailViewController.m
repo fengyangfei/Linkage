@@ -363,6 +363,9 @@
     
     for (Cargo *cargo in order.cargos) {
         NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoType];
+        if (![order isKindOfClass:[ImportOrder class]]) {
+            cargoTitle = [NSString stringWithFormat:@"%@ 数量：%@", cargoTitle, cargo.cargoCount];
+        }
         section = [XLFormSectionDescriptor formSectionWithTitle:cargoTitle sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
         section.multivaluedTag = [NSUUID UUID].UUIDString;
         [form addFormSection:section];
@@ -425,6 +428,16 @@
 //添加司机
 -(void)addDriverRow:(XLFormRowDescriptor *)row
 {
+    Cargo *cargo = row.value;
+    if (cargo.cargoCount) {
+        NSInteger totalRow = [row.sectionDescriptor.formRows count];
+        if (totalRow > [cargo.cargoCount integerValue]) {
+            NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoType];
+            NSString *errorMessage = [NSString stringWithFormat:@"%@已超出货柜数量", cargoTitle];
+            [SVProgressHUD showInfoWithStatus:errorMessage];
+            return;
+        }
+    }
     UIViewController<XLFormRowDescriptorViewController> *controller = [[DriverViewController alloc]initWithControllerType:ControllerTypeQuery];
     controller.rowDescriptor = row;
     [self.navigationController pushViewController:controller animated:YES];
