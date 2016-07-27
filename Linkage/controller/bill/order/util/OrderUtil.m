@@ -354,6 +354,12 @@
     [[YGRestClient sharedInstance] postForObjectWithUrl:RejectOrderUrl form:model.httpParameterForDetail success:success failure:failure];
 }
 
+//取消
++(void)cancelOrder:(Order *)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure
+{
+    [[YGRestClient sharedInstance] postForObjectWithUrl:CancelUrl form:model.httpParameterForDetail success:success failure:failure];
+}
+
 +(void)dispatchTask:(NSDictionary *)parameter success:(void(^)(NSArray *tasks))success failure:(void(^)(NSError *error))failure
 {
 

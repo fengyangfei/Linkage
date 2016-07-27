@@ -103,10 +103,12 @@ row.cellStyle = UITableViewCellStyleValue1;
 
 -(CargoFormRowDescriptor *)generateCargoRowWithType:(NSNumber *)typeKey andCount:(NSNumber *)count cargoNo:(NSString *)cargoNo
 {
-    CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kCargoRowDescriptroType];
+    CargoFormRowDescriptor *row;
     if ([self isKindOfClass:[BillImportApplyViewController class]]) {
+        row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kImportCargoRowDescriptroType];
         [row.cellConfigAtConfigure setObject:@"填入货柜号" forKey:@"rightTextField.placeholder"];
     }else{
+        row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kExportOrSelfCargoRowDescriptroType];
         [row.cellConfigAtConfigure setObject:@"填入货柜数量" forKey:@"rightTextField.placeholder"];
     }
     NSDictionary *dic = [LinkUtil cargoTypes];
@@ -277,17 +279,6 @@ row.cellStyle = UITableViewCellStyleValue1;
 {
     [super viewDidLoad];
     self.title = @"进口订单";
-}
-
--(CargoFormRowDescriptor *)generateCargoRow
-{
-    CargoFormRowDescriptor *row = [CargoFormRowDescriptor formRowDescriptorWithTag:nil rowType:kImportCargoRowDescriptroType];
-    [row.cellConfigAtConfigure setObject:@"填入货柜号" forKey:@"rightTextField.placeholder"];
-    NSDictionary *dic = [LinkUtil cargoTypes];
-    NSNumber *key = @(0);
-    row.value = [Cargo cargoWithType:key name:[dic objectForKey:key]];
-    row.action.viewControllerClass = [CargoTypeViewController class];
-    return row;
 }
 
 -(void)addCustomCell:(XLFormDescriptor *)form order:(Order *)order

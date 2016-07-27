@@ -34,8 +34,9 @@
 @property (nonatomic, strong) CargosDataSource *tasksDataSource;
 @property (nonatomic, readonly) UIToolbar *toolBar;
 @property (nonatomic, readonly) UIBarButtonItem *acceptItem;
-@property (nonatomic, readonly) UIBarButtonItem *confirmItem;
 @property (nonatomic, readonly) UIBarButtonItem *rejectItem;
+@property (nonatomic, readonly) UIBarButtonItem *confirmItem;
+@property (nonatomic, readonly) UIBarButtonItem *cancelItem;
 @property (nonatomic, readonly) UIBarButtonItem *flexibleItem;
 @property (nonatomic, readonly) UIBarButtonItem *fixedItem;
 @end
@@ -48,6 +49,7 @@
 @synthesize acceptItem = _acceptItem;
 @synthesize confirmItem = _confirmItem;
 @synthesize rejectItem = _rejectItem;
+@synthesize cancelItem = _cancelItem;
 @synthesize flexibleItem = _flexibleItem;
 @synthesize fixedItem = _fixedItem;
 
@@ -64,6 +66,14 @@
     [self setupData:order];
     self.title = [[LinkUtil orderTitles] objectForKey:@(order.type)];
     [self loadDataFromServer:order];
+    
+    [self.view addSubview:self.toolBar];
+    [self.toolBar makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view.bottom);
+        make.left.equalTo(self.view.left);
+        make.right.equalTo(self.view.right);
+        make.height.equalTo(58);
+    }];
 }
 
 //从服务端加载详情
@@ -115,23 +125,20 @@
         }
     }
     //底下工具栏
-    if (([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin || [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) && ([x integerValue] == OrderStatusPending || [x integerValue] == OrderStatusExecuting)) {
-        [self.view addSubview:self.toolBar];
-        [self.toolBar makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.view.bottom);
-            make.left.equalTo(self.view.left);
-            make.right.equalTo(self.view.right);
-            make.height.equalTo(58);
-        }];
-        
+    [self.toolBar setHidden:YES];
+    if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin ||
+        [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) {
         if ([x integerValue] == OrderStatusPending) {
+            [self.toolBar setHidden:NO];
             [self.toolBar setItems:@[self.acceptItem, self.flexibleItem, self.rejectItem]];
         }else if ([x integerValue] == OrderStatusExecuting){
+            [self.toolBar setHidden:NO];
             [self.toolBar setItems:@[self.flexibleItem, self.confirmItem, self.flexibleItem]];
         }
-    }else{
-        if (_toolBar) {
-            [_toolBar removeFromSuperview];
+    }else if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin){
+        if ([x integerValue] == OrderStatusPending) {
+            [self.toolBar setHidden:NO];
+            [self.toolBar setItems:@[self.flexibleItem, self.cancelItem, self.flexibleItem]];
         }
     }
 }
@@ -180,9 +187,9 @@
     for (Cargo *cargo in order.cargos) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:[LinkUtil.cargoTypes objectForKey:cargo.cargoType]];
         if ([order isKindOfClass:[ImportOrder class]]) {
-            row.value = cargo.cargoNo;
+            row.value = [NSString stringWithFormat:@"货柜号：%@", cargo.cargoNo?:@""];
         }else{
-            row.value = cargo.cargoCount;
+            row.value = [NSString stringWithFormat:@"数量：%@", cargo.cargoCount?:@""];
         }
         [section addFormRow:row];
     }
@@ -352,6 +359,9 @@
     
     for (Cargo *cargo in order.cargos) {
         NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoType];
+        if (![order isKindOfClass:[ImportOrder class]]) {
+            cargoTitle = [NSString stringWithFormat:@"%@ 数量：%@", cargoTitle, cargo.cargoCount];
+        }
         section = [XLFormSectionDescriptor formSectionWithTitle:cargoTitle sectionOptions:XLFormSectionOptionCanInsert|XLFormSectionOptionCanDelete];
         section.multivaluedTag = [NSUUID UUID].UUIDString;
         [form addFormSection:section];
@@ -414,6 +424,16 @@
 //添加司机
 -(void)addDriverRow:(XLFormRowDescriptor *)row
 {
+    Cargo *cargo = row.value;
+    if (cargo.cargoCount) {
+        NSInteger totalRow = [row.sectionDescriptor.formRows count];
+        if (totalRow > [cargo.cargoCount integerValue]) {
+            NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoType];
+            NSString *errorMessage = [NSString stringWithFormat:@"%@已超出货柜数量", cargoTitle];
+            [SVProgressHUD showInfoWithStatus:errorMessage];
+            return;
+        }
+    }
     UIViewController<XLFormRowDescriptorViewController> *controller = [[DriverViewController alloc]initWithControllerType:ControllerTypeQuery];
     controller.rowDescriptor = row;
     [self.navigationController pushViewController:controller animated:YES];
@@ -488,6 +508,7 @@
     }];
 }
 
+//接单
 -(void)acceptAction
 {
     WeakSelf
@@ -585,6 +606,40 @@
     }];
 }
 
+//取消
+-(void)confirmCancel
+{
+    WeakSelf
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请确认是否取消订单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf cancelAction];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    }];
+    [alertController addAction:action];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+}
+
+//取消
+-(void)cancelAction
+{
+    WeakSelf
+    Order *order = (Order *)self.rowDescriptor.value;
+    __weak Order *weakOrder = order;
+    [OrderUtil cancelOrder:order success:^(id responseData) {
+        [SVProgressHUD showSuccessWithStatus:@"取消成功"];
+        weakOrder.status = OrderStatusCancelled;
+        [OrderUtil syncToDataBase:weakOrder completion:nil];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+    }];
+}
+
 #pragma mark - 属性
 - (HMSegmentedControl *)segmentedControl
 {
@@ -657,6 +712,25 @@
         _rejectItem = [[UIBarButtonItem alloc]initWithCustomView:button];
     }
     return _rejectItem;
+}
+
+-(UIBarButtonItem *)cancelItem
+{
+    if (!_cancelItem) {
+        BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
+        button.cornerRadius = 4;
+        [button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
+        [button setBackgroundImage:ButtonBgImage forState:UIControlStateHighlighted];
+        [button setBackgroundImage:ButtonDisableBgImage forState:UIControlStateDisabled];
+        [button setTitleFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.f]];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+        [button setTitle:@"取消" forState:UIControlStateNormal];
+        button.frame = CGRectMake(0, 0, IPHONE_WIDTH - 40 , 44);
+        [button addTarget:self action:@selector(confirmCancel) forControlEvents:UIControlEventTouchUpInside];
+        _cancelItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+    }
+    return _cancelItem;
 }
 
 -(UIBarButtonItem *)fixedItem

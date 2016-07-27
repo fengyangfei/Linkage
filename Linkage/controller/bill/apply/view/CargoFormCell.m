@@ -10,7 +10,7 @@
 #import "Cargo.h"
 #import <BlocksKit/UIView+BlocksKit.h>
 
-NSString * const kCargoRowDescriptroType = @"cargoRowType";
+NSString * const kExportOrSelfCargoRowDescriptroType = @"exportcargoRowType";
 NSString * const kImportCargoRowDescriptroType = @"importCargoRowType";
 
 @interface CargoFormCell()<UITextFieldDelegate>
@@ -23,7 +23,7 @@ NSString * const kImportCargoRowDescriptroType = @"importCargoRowType";
 
 +(void)load
 {
-    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:kCargoRowDescriptroType];
+    [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:kExportOrSelfCargoRowDescriptroType];
     [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:kImportCargoRowDescriptroType];
 
 }
@@ -51,10 +51,18 @@ NSString * const kImportCargoRowDescriptroType = @"importCargoRowType";
     [super update];
     Cargo *model = self.rowDescriptor.value;
     [self.leftButton setTitle:[model displayText] forState:UIControlStateNormal];
-    if(model.cargoCount){
-        self.rightTextField.text = [NSString stringWithFormat:@"%@", model.cargoCount];
-    }else if(model.cargoNo){
-        self.rightTextField.text = model.cargoNo;
+    self.rightTextField.delegate = self;
+    if ([self.rowDescriptor.rowType isEqualToString:kExportOrSelfCargoRowDescriptroType]){
+        self.rightTextField.keyboardType = UIKeyboardTypeNumberPad;
+        if (model.cargoCount) {
+            self.rightTextField.text = [NSString stringWithFormat:@"%@", model.cargoCount];
+        }
+    }
+    else if ([self.rowDescriptor.rowType isEqualToString:kImportCargoRowDescriptroType]){
+        self.rightTextField.keyboardType = UIKeyboardTypeDefault;
+        if (model.cargoNo) {
+            self.rightTextField.text = model.cargoNo;
+        }
     }
 }
 
@@ -91,14 +99,12 @@ NSString * const kImportCargoRowDescriptroType = @"importCargoRowType";
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidChange:(UITextField *)textField{
     Cargo *cargoModel = (Cargo *)self.rowDescriptor.value;
-    if([self.rightTextField.text length] > 0) {
-        if ([self.rowDescriptor.rowType isEqualToString:kCargoRowDescriptroType]) {
-            cargoModel.cargoCount = @([self.rightTextField.text integerValue]);
+    if([textField.text length] > 0) {
+        if ([self.rowDescriptor.rowType isEqualToString:kExportOrSelfCargoRowDescriptroType]) {
+            cargoModel.cargoCount = @([textField.text integerValue]);
         }else if ([self.rowDescriptor.rowType isEqualToString:kImportCargoRowDescriptroType]){
-            cargoModel.cargoNo = self.rightTextField.text;
+            cargoModel.cargoNo = textField.text;
         }
-    } else {
-        cargoModel.cargoCount = @(0);
     }
 }
 
@@ -107,6 +113,12 @@ NSString * const kImportCargoRowDescriptroType = @"importCargoRowType";
     if ([textField.text isEqualToString:@"0"]) {
         textField.text = @"";
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - 各种属性
@@ -145,6 +157,7 @@ NSString * const kImportCargoRowDescriptroType = @"importCargoRowType";
         [_rightTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_rightTextField setTextColor:[UIColor grayColor]];
         [_rightTextField setTextAlignment:NSTextAlignmentRight];
+        _rightTextField.returnKeyType = UIReturnKeyDone;
         _rightTextField.delegate = self;
     }
     return _rightTextField;
