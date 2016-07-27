@@ -8,7 +8,7 @@
 
 #import <XLForm/XLForm.h>
 
-extern NSString * const kCargoRowDescriptroType;
+extern NSString * const kExportOrSelfCargoRowDescriptroType;
 extern NSString * const kImportCargoRowDescriptroType;
 
 @interface CargoFormCell : XLFormBaseCell

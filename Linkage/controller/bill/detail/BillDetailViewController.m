@@ -180,9 +180,9 @@
     for (Cargo *cargo in order.cargos) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:[LinkUtil.cargoTypes objectForKey:cargo.cargoType]];
         if ([order isKindOfClass:[ImportOrder class]]) {
-            row.value = cargo.cargoNo;
+            row.value = [NSString stringWithFormat:@"货柜号：%@", cargo.cargoNo?:@""];
         }else{
-            row.value = cargo.cargoCount;
+            row.value = [NSString stringWithFormat:@"数量：%@", cargo.cargoCount?:@""];
         }
         [section addFormRow:row];
     }
