@@ -101,7 +101,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
     if (model) {
         self.textLabel.attributedText = [model.driverName ?:@"" attributedStringWithTitle:@"司机："];
         self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌："];
-        if (model.cargoNo && model.cargoNo.length > 0) {
+        if (StringIsNotEmpty(model.cargoNo)) {
             self.textField.text = model.cargoNo;
         }
     }
