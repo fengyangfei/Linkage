@@ -173,6 +173,9 @@ row.cellStyle = UITableViewCellStyleValue1;
     
     Order *order = self.rowDescriptor.value;
     if (order && order.orderId) {
+        if (order.status == OrderStatusDenied) {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(confirmCancel)];
+        }
         [self loadDataFromServer:order];
     }
 }
@@ -249,6 +252,37 @@ row.cellStyle = UITableViewCellStyleValue1;
     } failure:^(NSError *error) {
         sender.enabled = YES;
         [SVProgressHUD showSuccessWithStatus:@"单据保存失败"];
+    }];
+}
+
+//取消
+-(void)confirmCancel
+{
+    WeakSelf
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请确认是否取消订单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [weakSelf cancelAction];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    }];
+    [alertController addAction:action];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+}
+
+//取消
+-(void)cancelAction
+{
+    WeakSelf
+    Order *order = (Order *)self.rowDescriptor.value;
+    [OrderUtil cancelOrder:order success:^(id responseData) {
+        [SVProgressHUD showSuccessWithStatus:@"取消成功"];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
 }
 
