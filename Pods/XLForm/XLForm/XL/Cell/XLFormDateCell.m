@@ -218,7 +218,6 @@
 {
     if (_datePicker) return _datePicker;
     _datePicker = [[UIDatePicker alloc] init];
-    //_datePicker.minimumDate = [NSDate date];
     [self setModeToDatePicker:_datePicker];
     [_datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
     return _datePicker;

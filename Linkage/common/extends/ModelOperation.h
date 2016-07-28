@@ -8,7 +8,7 @@
 #import "YGRestClient.h"
 #import <Mantle/MTLJSONAdapter.h>
 @protocol ModelHttpParameter <NSObject>
-@optional
+@required
 -(NSDictionary *)httpParameterForDetail;
 @end
 

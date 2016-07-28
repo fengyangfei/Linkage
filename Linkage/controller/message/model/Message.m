@@ -8,6 +8,7 @@
 
 #import "Message.h"
 #import "MessageModel.h"
+#import "LoginUser.h"
 
 @implementation Message
 
@@ -63,6 +64,17 @@
         long long dTime = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] longLongValue];
         return @(dTime);
     }];
+}
+
+#pragma mark - ModelHttpParameter
+-(NSDictionary *)httpParameterForDetail
+{
+    if (!self.messageId) {
+        return nil;
+    }
+    NSDictionary *baseParameter = [LoginUser shareInstance].baseHttpParameter;
+    NSDictionary *paramter = [baseParameter mtl_dictionaryByAddingEntriesFromDictionary:@{@"message_id": self.messageId}];
+    return paramter;
 }
 
 @end

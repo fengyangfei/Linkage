@@ -11,7 +11,7 @@
 #import "ModelOperation.h"
 #import "FormDescriptorCell.h"
 
-@interface Message : MTLModel<MTLJSONSerializing,MTLManagedObjectSerializing>
+@interface Message : MTLModel<MTLJSONSerializing,MTLManagedObjectSerializing,ModelHttpParameter>
 @property (nonatomic,copy  ) NSString *messageId;
 @property (nonatomic,strong) NSNumber *type;
 @property (nonatomic,copy  ) NSString *icon;
