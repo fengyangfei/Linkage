@@ -178,7 +178,7 @@
     [[YGRestClient sharedInstance] postForObjectWithUrl:AddFavoriteUrl form:parameter success:^(id responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"收藏成功"];
     } failure:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"收藏失败"];
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
 }
 

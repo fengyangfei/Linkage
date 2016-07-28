@@ -217,7 +217,7 @@
     }];
     [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
         float p = (totalBytesWritten + 0.0f) / totalBytesExpectedToWrite;
-        [SVProgressHUD showProgress:p status:@"上传中"];
+        [SVProgressHUD showProgress:p status:@"上传中" maskType:SVProgressHUDMaskTypeBlack];
     }];
 }
 

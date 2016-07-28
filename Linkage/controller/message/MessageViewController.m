@@ -55,4 +55,13 @@
     }
     return _tableView;
 }
+
+//重写父类方法
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete){
+        XLFormRowDescriptor * row = [self.form formRowAtIndex:indexPath];
+        [row.sectionDescriptor removeFormRowAtIndex:indexPath.row];
+    }
+}
 @end

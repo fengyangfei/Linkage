@@ -217,9 +217,10 @@
 -(UIDatePicker *)datePicker
 {
     if (_datePicker) return _datePicker;
-    _datePicker = [[UIDatePicker alloc] init];
-    [self setModeToDatePicker:_datePicker];
-    [_datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+    UIDatePicker *picker = [[UIDatePicker alloc] init];
+    [self setModeToDatePicker:picker];
+    [picker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+    _datePicker = picker;
     return _datePicker;
 }
 

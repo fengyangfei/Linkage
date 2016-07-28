@@ -116,7 +116,7 @@
 -(void)updateUIWhenOrderState:(NSNumber *)x
 {
     if([x integerValue] == OrderStatusCompletion){
-        if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin) {
+        if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin || [LoginUser shareInstance].ctype == UserTypeCompanyUser) {
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
         }
         
@@ -293,8 +293,16 @@
         row.value = order? importOrder.customsBroker :@"";
         [section addFormRow:row];
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"联系人电话"];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"报关行联系人电话"];
         row.value = order? importOrder.customsHouseContact :@"";
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"是否转关"];
+        if (order && importOrder.isTransferPort) {
+            row.value = @"是";
+        }else{
+            row.value = @"否";
+        }
         [section addFormRow:row];
     }
     

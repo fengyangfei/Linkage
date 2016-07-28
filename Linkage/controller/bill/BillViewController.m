@@ -237,7 +237,12 @@
 -(void)addOrders:(NSArray *)orders toSection:(XLFormSectionDescriptor *)section
 {
     for (Order *order in orders) {
-        NSString *rowType = order.status == OrderStatusCompletion ? CompletionOrderDescriporType:PendingOrderDescriporType;
+        NSString *rowType = PendingOrderDescriporType;
+        if(order.status == OrderStatusCompletion){
+            if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin || [LoginUser shareInstance].ctype == UserTypeCompanyUser) {
+                rowType = CompletionOrderDescriporType;
+            }
+        }
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowType];
         row.value = order;
         //只有厂商管理员并被拒绝的订单才能修改订单，其他状态只能查看订单详情

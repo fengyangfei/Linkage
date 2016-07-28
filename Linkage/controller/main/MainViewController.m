@@ -84,7 +84,7 @@
     
     for (Company *company in user.companies) {
         NSString *rowType = CompanyInfoDescriporType;
-        if (user.ctype == UserTypeCompanyAdmin) {
+        if (user.ctype == UserTypeCompanyAdmin || user.ctype == UserTypeCompanyUser) {
             rowType = CompanyDescriporType;
         }else if(user.ctype == UserTypeSubCompanyAdmin) {
             rowType = CompanyInfoDescriporType;
