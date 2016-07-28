@@ -22,7 +22,7 @@
 
 +(XLFormValidator *)passswordValidator
 {
-    return [XLFormRegexValidator formRegexValidatorWithMsg:@"密码格式不正确" regex:UserNameRegex];
+    return [XLFormRegexValidator formRegexValidatorWithMsg:@"密码长度不能少于6位" regex:UserNameRegex];
 }
 
 +(XLFormValidator *)httpUrlValidator

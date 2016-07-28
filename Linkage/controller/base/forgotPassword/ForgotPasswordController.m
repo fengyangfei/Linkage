@@ -56,6 +56,9 @@
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"verifyCode" rowType:XLFormRowDescriptorTypeTextAndButton title:@"验证码"];
+    row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        [weakSelf generateVerifyCode:sender];
+    };
     [section addFormRow:row];
     
     self.form = form;
