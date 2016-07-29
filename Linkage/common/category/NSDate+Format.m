@@ -19,7 +19,7 @@
 - (NSString*)todayStringFromDate
 {
     NSDate* nowDate = [NSDate date];
-    NSCalendar *greCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *greCalendar = [NSCalendar currentCalendar];
     NSDateComponents *nowDateComponents = [greCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:nowDate];
     NSDateComponents *selfDateComponents = [greCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:self];
     
