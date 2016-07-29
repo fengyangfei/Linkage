@@ -11,6 +11,7 @@
 #import "FavoriteUtil.h"
 #import "FavoriteViewController.h"
 #import "MainTableViewCell.h"
+#import "LoginUser.h"
 
 @implementation FavoriteViewController
 
@@ -41,7 +42,11 @@
     [form addFormSection:section];
     
     for (Favorite *model in models) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:CompanyDescriporType];
+        NSString *rowType = CompanyInfoDescriporType;
+        if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin || [LoginUser shareInstance].ctype == UserTypeCompanyUser) {
+            rowType = CompanyDescriporType;
+        }
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowType];
         row.value = model;
         [section addFormRow:row];
     }
