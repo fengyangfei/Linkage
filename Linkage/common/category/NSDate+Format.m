@@ -13,6 +13,11 @@
 
 - (NSString*)stringFromDate
 {
+    return [[LinkUtil dateFormatter] stringFromDate:self];
+}
+
+- (NSString*)todayStringFromDate
+{
     NSDate* nowDate = [NSDate date];
     NSCalendar *greCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *nowDateComponents = [greCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:nowDate];

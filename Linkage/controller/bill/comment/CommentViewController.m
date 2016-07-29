@@ -52,10 +52,10 @@
                                 @"comment":self.textView.text ?:@""
                                 };
     parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
-    [[YGRestClient sharedInstance]postForObjectWithUrl:CommentUrl form:parameter success:^(id responseObject) {
+    [[YGRestClient sharedInstance] postForObjectWithUrl:CommentUrl form:parameter success:^(id responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"评论成功"];
     } failure:^(NSError *error) {
-        
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
     [self.navigationController popViewControllerAnimated:YES];
 }
