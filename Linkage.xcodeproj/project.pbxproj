@@ -476,6 +476,7 @@
 		8B7172E31CA0436C00DBEB9F /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 		8B7172E51CA0443300DBEB9F /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAddressViewController.h; sourceTree = "<group>"; };
 		8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAddressViewController.m; sourceTree = "<group>"; };
+		8B732BE11D504D0400CE8D41 /* LinkageModel7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkageModel7.xcdatamodel; sourceTree = "<group>"; };
 		8B7BD7C41CDE4C69004B4752 /* SubCompany.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SubCompany.bundle; sourceTree = "<group>"; };
 		8B7F36131D07127E00D51356 /* LinkageModel3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkageModel3.xcdatamodel; sourceTree = "<group>"; };
 		8B8284871CA57EA9001B36C1 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
@@ -2618,6 +2619,7 @@
 		8B5DC66E1C79CB2C00D29292 /* LinkageModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				8B732BE11D504D0400CE8D41 /* LinkageModel7.xcdatamodel */,
 				8BD1A4711D44E3A200469324 /* LinkageModel6.xcdatamodel */,
 				9AAD81EE1D23480200E3ACD5 /* LinkageModel5.xcdatamodel */,
 				9AF476D21D1B8BD700A905A0 /* LinkageModel4.xcdatamodel */,
@@ -2625,7 +2627,7 @@
 				8B5DC6781C79CF1500D29292 /* LinkageModel2.xcdatamodel */,
 				8B5DC66F1C79CB2C00D29292 /* LinkageModel.xcdatamodel */,
 			);
-			currentVersion = 8BD1A4711D44E3A200469324 /* LinkageModel6.xcdatamodel */;
+			currentVersion = 8B732BE11D504D0400CE8D41 /* LinkageModel7.xcdatamodel */;
 			path = LinkageModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

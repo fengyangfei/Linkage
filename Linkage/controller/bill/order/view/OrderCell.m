@@ -241,7 +241,7 @@ NSString *const CompletionOrderDescriporType = @"CompletionOrderRowType";
     Order *order = self.rowDescriptor.value;
     self.billNumLable.attributedText = [order.orderId attributedStringWithTitle:@"订单号："];
     self.ratingLable.text = [NSString stringWithFormat:@"%@  %@",order.companyName, [order.updateTime stringFromDate]];
-    if (order && order.comments && StringIsNotEmpty(order.comments.commentId)) {
+    if (order && order.comment && StringIsNotEmpty(order.comment.commentId)) {
         NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"查看评论" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:IndexButtonColor}];
         [self.button setAttributedTitle:title forState:UIControlStateNormal];
     }else{

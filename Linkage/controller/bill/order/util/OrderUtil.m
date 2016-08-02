@@ -33,6 +33,10 @@
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
 {
     NSError *error;
+    //多余的代码，因为列表接口返回的comments,详情返回的comment,加的兼容代码
+    if (json[@"comments"]) {
+        json = [json mtl_dictionaryByAddingEntriesFromDictionary:@{@"comment":json[@"comments"]}];
+    }
     Order *order = [MTLJSONAdapter modelOfClass:[Order class] fromJSONDictionary:json error:&error];
     if (!error) {
         if (json[@"cargos"] && [json[@"cargos"] isKindOfClass:[NSArray class]]) {
@@ -239,12 +243,15 @@
 {
     [[YGRestClient sharedInstance] postForObjectWithUrl:url form:parameter success:^(id responseObject) {
         if (responseObject[@"orders"] && [responseObject[@"orders"] isKindOfClass:[NSArray class]]) {
-            NSError *error;
-            NSArray *array = [MTLJSONAdapter modelsOfClass:[Order class] fromJSONArray:responseObject[@"orders"] error:&error];
-            if (completion && !error) {
-                completion(array);
-            }else if (error){
-                NSLog(@"订单列表-json数组转对象数组失败 - %@",error);
+            NSArray *jsonArray = responseObject[@"orders"];
+            NSMutableArray *models = [NSMutableArray arrayWithCapacity:jsonArray.count];
+            for (NSDictionary *JSONDictionary in jsonArray){
+                id<MTLJSONSerializing> model = [self modelFromJson:JSONDictionary];
+                if (model == nil){continue;}
+                [models addObject:model];
+            }
+            if (completion) {
+                completion(models);
             }
         }else{
             completion(nil);

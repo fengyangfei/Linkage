@@ -119,8 +119,8 @@
 -(void)setupData
 {
     Order *order = self.rowDescriptor.value;
-    if (order && order.comments) {
-        Comment *comment = order.comments;
+    if (order && order.comment) {
+        Comment *comment = order.comment;
         if (StringIsNotEmpty(comment.commentId)) {
             [self.ratingView setEnabled:NO];
             self.ratingView.value = [comment.score intValue];
