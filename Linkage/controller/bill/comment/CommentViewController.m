@@ -46,6 +46,7 @@
 
 -(void)submitComment
 {
+    WeakSelf
     NSDictionary *parameter = @{
                                 @"order_id":((Order *)self.rowDescriptor.value).orderId,
                                 @"score":@(self.ratingView.value),
@@ -54,6 +55,14 @@
     parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
     [[YGRestClient sharedInstance] postForObjectWithUrl:CommentUrl form:parameter success:^(id responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"评论成功"];
+        if (responseObject[@"id"]) {
+            Order *order = weakSelf.rowDescriptor.value;
+            Comment *comment = [[Comment alloc]init];
+            comment.commentId = responseObject[@"id"];
+            comment.comment = parameter[@"comment"];
+            comment.score = parameter[@"score"];
+            order.comment = comment;
+        }
     } failure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];

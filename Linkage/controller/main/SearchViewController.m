@@ -162,7 +162,7 @@
     [alertController addAction:billAction];
     [alertController addAction:cargoAction];
     [alertController addAction:carAction];
-    [alertController addAction:beginDateAction];
+    //[alertController addAction:beginDateAction];
     [alertController addAction:subCompanyAction];
     [alertController addAction:companyAction];
     

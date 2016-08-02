@@ -65,6 +65,7 @@
     Order *order = self.rowDescriptor.value;
     [self setupData:order];
     self.title = [[LinkUtil orderTitles] objectForKey:@(order.type)];
+    [self loadDataFromServer:order];
     
     [self.view addSubview:self.toolBar];
     [self.toolBar makeConstraints:^(MASConstraintMaker *make) {
@@ -73,13 +74,6 @@
         make.right.equalTo(self.view.right);
         make.height.equalTo(58);
     }];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    Order *order = self.rowDescriptor.value;
-    [self loadDataFromServer:order];
 }
 
 //从服务端加载详情
@@ -557,6 +551,12 @@
                 return;
             }
         }
+    }
+    
+    if ((!order.tasks || order.tasks.count <= 0) && (order.cargos && order.cargos.count > 0)){
+        NSString *error = [NSString stringWithFormat:@"请先给司机分配货柜!"];
+        [SVProgressHUD showErrorWithStatus:error];
+        return;
     }
     
     WeakSelf
