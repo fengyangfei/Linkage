@@ -69,16 +69,6 @@
 	<array>
 		<dict>
 			<key>title</key>
-			<string>我的收藏</string>
-			<key>iconName</key>
-			<string>setting_favorite</string>
-			<key>className</key>
-			<string>FavoriteViewController</string>
-		</dict>
-	</array>
-	<array>
-		<dict>
-			<key>title</key>
 			<string>投诉与建议</string>
 			<key>iconName</key>
 			<string>setting_sms</string>

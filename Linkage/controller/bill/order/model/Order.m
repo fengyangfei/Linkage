@@ -30,7 +30,7 @@
     return [MTLJSONAdapter arrayTransformerWithModelClass:[Cargo class]];
 }
 
-+ (NSValueTransformer *)commentsJSONTransformer
++ (NSValueTransformer *)commentJSONTransformer
 {
     return [MTLJSONAdapter dictionaryTransformerWithModelClass:[Comment class]];
 }
@@ -159,14 +159,14 @@
     return [MTLManagedObjectAdapter transformerForModelPropertiesOfClass:[CargoModel class]];
 }
 
-+ (NSValueTransformer *)commentsEntityAttributeTransformer
++ (NSValueTransformer *)commentEntityAttributeTransformer
 {
     return [MTLManagedObjectAdapter transformerForModelPropertiesOfClass:[CommentModel class]];
 }
 
 + (NSDictionary *)relationshipModelClassesByPropertyKey
 {
-    return @{@"cargos":[Cargo class],@"soImages":[SOImage class],@"comments":[Comment class]};
+    return @{@"cargos":[Cargo class],@"soImages":[SOImage class],@"comment":[Comment class]};
 }
 
 #pragma mark - ModelHttpParameter

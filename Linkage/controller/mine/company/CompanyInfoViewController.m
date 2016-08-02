@@ -45,8 +45,11 @@
     self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 16)];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStylePlain target:self action:@selector(collectAction:)];
-    self.navigationItem.rightBarButtonItem = rightItem;
+    //只有厂商能收藏承运商，承运商不能收藏厂商
+    if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin || [LoginUser shareInstance].ctype == UserTypeCompanyUser) {
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStylePlain target:self action:@selector(collectAction:)];
+        self.navigationItem.rightBarButtonItem = rightItem;
+    }
     [self setupData];
 }
 
