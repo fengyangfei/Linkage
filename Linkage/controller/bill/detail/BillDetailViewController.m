@@ -65,7 +65,6 @@
     Order *order = self.rowDescriptor.value;
     [self setupData:order];
     self.title = [[LinkUtil orderTitles] objectForKey:@(order.type)];
-    [self loadDataFromServer:order];
     
     [self.view addSubview:self.toolBar];
     [self.toolBar makeConstraints:^(MASConstraintMaker *make) {
@@ -74,6 +73,13 @@
         make.right.equalTo(self.view.right);
         make.height.equalTo(58);
     }];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    Order *order = self.rowDescriptor.value;
+    [self loadDataFromServer:order];
 }
 
 //从服务端加载详情
