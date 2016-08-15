@@ -13,6 +13,7 @@
 #import "Company.h"
 #import "CycleScrollCell.h"
 #import <MJRefresh/MJRefresh.h>
+#import "SearchViewController.h"
 
 @interface MainViewController ()
 
@@ -24,6 +25,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction:)];
+    self.navigationItem.rightBarButtonItem = searchItem;    
     [self initializeForm];
     WeakSelf
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -95,6 +98,14 @@
     }
     return form;
 }
+
+-(void)searchAction:(id)sender
+{
+    SearchViewController *searchViewController = [[SearchViewController alloc]init];
+    searchViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:searchViewController animated:YES];
+}
+
 
 -(UITableView *)tableView
 {

@@ -63,6 +63,7 @@
 //企业
 #define CompanyInfomationUrl [NSString stringWithFormat:@"%@/api/company/information", BaseUrl]//获取企业信息
 #define ModCompanyUrl [NSString stringWithFormat:@"%@/api/company/modcompany",BaseUrl]//修改厂商
+#define SearchCompanyUrl [NSString stringWithFormat:@"%@/api/company/search",BaseUrl]//搜索厂商接口
 #define CompanyLogoUrl [NSString stringWithFormat:@"%@/api/upload/companylogo",BaseUrl]//上传公司头像
 
 //消息

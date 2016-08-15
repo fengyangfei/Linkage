@@ -461,7 +461,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDate title:@"送货时间"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"delivery_time" rowType:XLFormRowDescriptorTypeDate title:@"还柜时间"];
     RowDateInit
     if (order && order.deliverTime) {
         row.value = order.deliverTime;

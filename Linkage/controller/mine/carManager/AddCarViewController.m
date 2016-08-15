@@ -83,7 +83,7 @@
     }
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"maintain_data" rowType:XLFormRowDescriptorTypeDate title:@"二级维护月份"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"maintain_data" rowType:XLFormRowDescriptorTypeDate title:@"车辆营运证年审月份"];
     if(car && car.maintainData){
         row.value = car.maintainData;
     }else{

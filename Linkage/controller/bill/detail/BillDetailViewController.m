@@ -207,7 +207,7 @@
         row.value = order? [order.takeTime stringFromDate]: @"";
         [section addFormRow:row];
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"送货时间"];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"还柜时间"];
         row.value = order? [order.deliverTime stringFromDate]: @"";
         [section addFormRow:row];
         
