@@ -250,6 +250,7 @@
 		9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89D31CA518BA00C5EB90 /* ImageCacheManager.m */; };
 		9AEF89D71CA8B02900C5EB90 /* XLFormDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89D61CA8B02900C5EB90 /* XLFormDataSource.m */; };
 		9AF476D11D1B75E300A905A0 /* XLFormValidator+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF476D01D1B75E300A905A0 /* XLFormValidator+Regex.m */; };
+		9AFA762D1D62E55C00A690C9 /* SearchCompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFA762C1D62E55C00A690C9 /* SearchCompanyViewController.m */; };
 		9AFBE19E1D2F55DC004C0CC3 /* bobcat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AFBE19D1D2F55DC004C0CC3 /* bobcat.ttf */; };
 /* End PBXBuildFile section */
 
@@ -731,6 +732,8 @@
 		9AF476CF1D1B75E300A905A0 /* XLFormValidator+Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XLFormValidator+Regex.h"; sourceTree = "<group>"; };
 		9AF476D01D1B75E300A905A0 /* XLFormValidator+Regex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XLFormValidator+Regex.m"; sourceTree = "<group>"; };
 		9AF476D21D1B8BD700A905A0 /* LinkageModel4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkageModel4.xcdatamodel; sourceTree = "<group>"; };
+		9AFA762B1D62E55C00A690C9 /* SearchCompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCompanyViewController.h; sourceTree = "<group>"; };
+		9AFA762C1D62E55C00A690C9 /* SearchCompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCompanyViewController.m; sourceTree = "<group>"; };
 		9AFBE19D1D2F55DC004C0CC3 /* bobcat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bobcat.ttf; sourceTree = "<group>"; };
 		B30457667634636F561BC865 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1730,6 +1733,8 @@
 				9A23A2B01C7AAA3D00FB5EB6 /* MainViewController.m */,
 				8B53F4E41CE37C820020E218 /* SearchViewController.h */,
 				8B53F4E51CE37C820020E218 /* SearchViewController.m */,
+				9AFA762B1D62E55C00A690C9 /* SearchCompanyViewController.h */,
+				9AFA762C1D62E55C00A690C9 /* SearchCompanyViewController.m */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -2400,6 +2405,7 @@
 				8B2D18D41D3101BC00A9183E /* WXMediaMessage+messageConstruct.m in Sources */,
 				8BCA5FBB1CA97FB8002601F6 /* MessageViewController.m in Sources */,
 				8BEEA7851CD3A7BB0088D70A /* AddressUtil.m in Sources */,
+				9AFA762D1D62E55C00A690C9 /* SearchCompanyViewController.m in Sources */,
 				9A23A2FD1C7DAA2500FB5EB6 /* UIViewController+Extensions.m in Sources */,
 				9A95FF401C89824F00C5F492 /* TRImagePickerDelegate.m in Sources */,
 				9A95FF191C89221C00C5F492 /* UIImage+ImageWithColor.m in Sources */,
