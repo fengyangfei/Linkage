@@ -7,10 +7,10 @@
 //
 
 #import "SearchCompanyViewController.h"
-#import "Order.h"
-#import "OrderUtil.h"
-#import "OrderCell.h"
-#import "BillDetailViewController.h"
+#import "Company.h"
+#import "CompanyUtil.h"
+#import "MainTableViewCell.h"
+#import "CompanyInfoViewController.h"
 #import "LoginUser.h"
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
@@ -26,7 +26,7 @@
 {
     self = [super init];
     if (self) {
-        NSArray *historys = [LoginUser searchKeys];
+        NSArray *historys = [LoginUser searchCompanyKeys];
         self.form = [self createHistoryForm:historys];
     }
     return self;
@@ -103,10 +103,17 @@
     section = [XLFormSectionDescriptor formSectionWithTitle:title];
     [form addFormSection:section];
     
-    for (Order *order in results) {
-        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:PendingOrderDescriporType];
-        row.value = order;
-        row.action.viewControllerClass = [BillDetailViewController class];
+    NSString *rowType = CompanyInfoDescriporType;
+    LoginUser *user = [LoginUser shareInstance];
+    if (user.ctype == UserTypeCompanyAdmin || user.ctype == UserTypeCompanyUser) {
+        rowType = CompanyDescriporType;
+    }else if(user.ctype == UserTypeSubCompanyAdmin) {
+        rowType = CompanyInfoDescriporType;
+    }
+    for (Company *model in results) {
+        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowType];
+        row.value = model;
+        row.action.viewControllerClass = [CompanyInfoViewController class];
         [section addFormRow:row];
     }
     return form;
@@ -116,7 +123,7 @@
 -(void)clearHistorys:(XLFormRowDescriptor *)row
 {
     [self deselectFormRow:row];
-    [LoginUser setsearchKeys:nil];
+    [LoginUser setsearchCompanyKeys:nil];
     [self setForm:[self createHistoryForm:nil]];
 }
 
@@ -136,11 +143,12 @@
         [self.searchBar resignFirstResponder];
     }
     [self saveHistoryKey];
+    [self searchFromServer];
 }
 
 -(void)saveHistoryKey
 {
-    NSArray *keys = [LoginUser searchKeys];
+    NSArray *keys = [LoginUser searchCompanyKeys];
     NSMutableArray *mutableKeys;
     if (!keys) {
         mutableKeys = [NSMutableArray array];
@@ -152,20 +160,18 @@
             [mutableKeys addObject:self.searchKey];
         }
     }
-    [LoginUser setsearchKeys:[mutableKeys copy]];
+    [LoginUser setsearchCompanyKeys:[mutableKeys copy]];
 }
 
--(void)searchFromServerWithType:(NSNumber *)searchType
+-(void)searchFromServer
 {
     WeakSelf
     NSDictionary *parameter = @{
-                                @"company_id":[LoginUser shareInstance].companyId,
-                                @"searchType":searchType,
-                                @"value":self.searchKey
+                                @"name":self.searchKey
                                 };
-    parameter = [[LoginUser shareInstance].baseHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
-    [OrderUtil queryModelsFromServer:parameter url:SearchOrderUrl completion:^(NSArray *orders) {
-        XLFormDescriptor *form = [weakSelf createResultForm:orders];
+    parameter = [[LoginUser shareInstance].basePageHttpParameter mtl_dictionaryByAddingEntriesFromDictionary:parameter];
+    [CompanyUtil queryModelsFromServer:parameter url:SearchCompanyUrl completion:^(NSArray *models) {
+        XLFormDescriptor *form = [weakSelf createResultForm:models];
         [weakSelf setForm:form];
     }];
 }
@@ -185,7 +191,7 @@
 {
     self.searchKey = searchText;
     if (StringIsEmpty(searchText)) {
-        NSArray *keys = [LoginUser searchKeys];
+        NSArray *keys = [LoginUser searchCompanyKeys];
         [self setForm:[self createHistoryForm:keys]];
     }
 }
@@ -200,7 +206,7 @@
         _searchBar.delegate = self;
         _searchBar.backgroundColor = HeaderColor;
         _searchBar.tintColor = HeaderColor;
-        _searchBar.placeholder = @"请输入订单信息";
+        _searchBar.placeholder = @"请搜索关键字";
     }
     return _searchBar;
 }

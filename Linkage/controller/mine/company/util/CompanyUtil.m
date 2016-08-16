@@ -95,6 +95,29 @@
     }];
 }
 
+//服务端查询
++(void)queryModelsFromServer:(NSDictionary *)parameter url:(NSString *)url completion:(void(^)(NSArray *models))completion
+{
+    [[YGRestClient sharedInstance] postForObjectWithUrl:url form:parameter success:^(id responseObject) {
+        if (responseObject[@"companies"] && [responseObject[@"companies"] isKindOfClass:[NSArray class]]) {
+            NSArray *jsonArray = responseObject[@"companies"];
+            NSMutableArray *models = [NSMutableArray arrayWithCapacity:jsonArray.count];
+            for (NSDictionary *JSONDictionary in jsonArray){
+                id<MTLJSONSerializing> model = [self modelFromJson:JSONDictionary];
+                if (model == nil){continue;}
+                [models addObject:model];
+            }
+            if (completion) {
+                completion(models);
+            }
+        }else{
+            completion(nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
 +(void)syncToServer:(id<MTLJSONSerializing>)model success:(HTTPSuccessHandler)success failure:(HTTPFailureHandler)failure;
 {
     NSDictionary *parameter = [self jsonFromModel:model];

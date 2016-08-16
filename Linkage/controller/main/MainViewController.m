@@ -13,7 +13,7 @@
 #import "Company.h"
 #import "CycleScrollCell.h"
 #import <MJRefresh/MJRefresh.h>
-#import "SearchViewController.h"
+#import "SearchCompanyViewController.h"
 
 @interface MainViewController ()
 
@@ -101,7 +101,7 @@
 
 -(void)searchAction:(id)sender
 {
-    SearchViewController *searchViewController = [[SearchViewController alloc]init];
+    SearchCompanyViewController *searchViewController = [[SearchCompanyViewController alloc]init];
     searchViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:searchViewController animated:YES];
 }
