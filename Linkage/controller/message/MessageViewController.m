@@ -9,6 +9,7 @@
 #import "MessageViewController.h"
 #import "MessageTableCell.h"
 #import "MessageUtil.h"
+#import "MessageDetailViewController.h"
 
 @implementation MessageViewController
 @synthesize tableView = _tableView;
@@ -42,6 +43,7 @@
     for (id model in models) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:MessageDescriporType];
         row.value = model;
+        row.action.viewControllerClass = [MessageDetailViewController class];
         [section addFormRow:row];
     }
     self.form = form;

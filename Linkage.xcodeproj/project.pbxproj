@@ -251,6 +251,7 @@
 		9AEF89D71CA8B02900C5EB90 /* XLFormDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF89D61CA8B02900C5EB90 /* XLFormDataSource.m */; };
 		9AF476D11D1B75E300A905A0 /* XLFormValidator+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF476D01D1B75E300A905A0 /* XLFormValidator+Regex.m */; };
 		9AFA762D1D62E55C00A690C9 /* SearchCompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFA762C1D62E55C00A690C9 /* SearchCompanyViewController.m */; };
+		9AFA76301D6301AD00A690C9 /* MessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFA762F1D6301AD00A690C9 /* MessageDetailViewController.m */; };
 		9AFBE19E1D2F55DC004C0CC3 /* bobcat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AFBE19D1D2F55DC004C0CC3 /* bobcat.ttf */; };
 /* End PBXBuildFile section */
 
@@ -734,6 +735,8 @@
 		9AF476D21D1B8BD700A905A0 /* LinkageModel4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkageModel4.xcdatamodel; sourceTree = "<group>"; };
 		9AFA762B1D62E55C00A690C9 /* SearchCompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCompanyViewController.h; sourceTree = "<group>"; };
 		9AFA762C1D62E55C00A690C9 /* SearchCompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCompanyViewController.m; sourceTree = "<group>"; };
+		9AFA762E1D6301AD00A690C9 /* MessageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailViewController.h; sourceTree = "<group>"; };
+		9AFA762F1D6301AD00A690C9 /* MessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailViewController.m; sourceTree = "<group>"; };
 		9AFBE19D1D2F55DC004C0CC3 /* bobcat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bobcat.ttf; sourceTree = "<group>"; };
 		B30457667634636F561BC865 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE28DEF6C4E675556200C660 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1604,6 +1607,8 @@
 				8B8B7BE31CCE4B7A00080609 /* view */,
 				8BCA5FB91CA97FB8002601F6 /* MessageViewController.h */,
 				8BCA5FBA1CA97FB8002601F6 /* MessageViewController.m */,
+				9AFA762E1D6301AD00A690C9 /* MessageDetailViewController.h */,
+				9AFA762F1D6301AD00A690C9 /* MessageDetailViewController.m */,
 			);
 			path = message;
 			sourceTree = "<group>";
@@ -2404,6 +2409,7 @@
 				8BD1A4701D44C64B00469324 /* Comment.m in Sources */,
 				8B2D18D41D3101BC00A9183E /* WXMediaMessage+messageConstruct.m in Sources */,
 				8BCA5FBB1CA97FB8002601F6 /* MessageViewController.m in Sources */,
+				9AFA76301D6301AD00A690C9 /* MessageDetailViewController.m in Sources */,
 				8BEEA7851CD3A7BB0088D70A /* AddressUtil.m in Sources */,
 				9AFA762D1D62E55C00A690C9 /* SearchCompanyViewController.m in Sources */,
 				9A23A2FD1C7DAA2500FB5EB6 /* UIViewController+Extensions.m in Sources */,
