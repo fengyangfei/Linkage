@@ -55,7 +55,7 @@ NSString *const MessageDescriporType = @"MessageDescriporType";
     return 65;
 }
 
--(void)formDescriptorCellDidSelectedWithViewController:(UIViewController *)controller
+-(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
 {
     if (self.rowDescriptor.action.formBlock){
         self.rowDescriptor.action.formBlock(self.rowDescriptor);
