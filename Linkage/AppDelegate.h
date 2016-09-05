@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static BOOL isProduction = FALSE;
+static BOOL isProduction = YES;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
