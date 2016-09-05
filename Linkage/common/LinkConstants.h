@@ -143,6 +143,9 @@
 //蒲公英key
 #define kPgyerAppKey @"05cba0a3523866bc0d8d3792bbf4cab7"
 
+//极光推送key
+#define kJPushAppKey @"886e799b9063abb80fb6a4db"
+
 #define kSocialTitle @"【物流拖车宝】"
 #define kAppIndexHtml @"https://www.pgyer.com/linkage"
 #define kAppInfomation @"欢迎使用物流拖车宝"
