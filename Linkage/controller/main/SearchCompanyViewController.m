@@ -196,6 +196,12 @@
     }
 }
 
+//键盘的搜索按钮点击
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self searchAction];
+}
+
 #pragma mark - 属性
 -(UISearchBar *)searchBar
 {
