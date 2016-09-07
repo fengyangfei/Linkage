@@ -466,7 +466,7 @@
     
     NSMutableArray *sections = [self.tasksDataSource.form formSections];
     for (XLFormSectionDescriptor *section in sections) {
-        if ([section formRows].count <= 1) {
+        if (StringIsNotEmpty(section.multivaluedTag) && [section formRows].count <= 1) {
             NSString *info = [NSString stringWithFormat:@"请把所有任务都安排司机！"];
             [SVProgressHUD showErrorWithStatus:info];
             return;
