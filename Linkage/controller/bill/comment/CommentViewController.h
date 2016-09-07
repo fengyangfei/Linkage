@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface CommentViewController : UIViewController<XLFormRowDescriptorViewController>
+#import "ViewControllerProtocol.h"
+@interface CommentViewController : UIViewController<XLFormRowDescriptorViewController, ViewControllerProtocol>
 
 @end

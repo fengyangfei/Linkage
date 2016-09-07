@@ -607,6 +607,7 @@
 		9A126DE61CD1DE9000648184 /* CarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarViewController.m; sourceTree = "<group>"; };
 		9A126DEC1CD3095400648184 /* CargosDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargosDataSource.h; sourceTree = "<group>"; };
 		9A126DED1CD3095400648184 /* CargosDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargosDataSource.m; sourceTree = "<group>"; };
+		9A21A3161D7FEB3A00FBCA38 /* ViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerProtocol.h; sourceTree = "<group>"; };
 		9A23A2A51C7A91D400FB5EB6 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
 		9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
 		9A23A2A71C7A91D400FB5EB6 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -1954,6 +1955,7 @@
 				9A95FF041C83E74E00C5F492 /* MenuCell.m */,
 				9A11F0761CD1BBBA002E8F6F /* ModelBaseViewController.h */,
 				9A11F0771CD1BBBA002E8F6F /* ModelBaseViewController.m */,
+				9A21A3161D7FEB3A00FBCA38 /* ViewControllerProtocol.h */,
 			);
 			path = view;
 			sourceTree = "<group>";

@@ -121,7 +121,7 @@
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
         } else if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin ||
                   [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) {
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"查看评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"查看评论" style:UIBarButtonItemStylePlain target:self action:@selector(showCommentViewController)];
         }
         
         //刷新任务界面
@@ -434,6 +434,14 @@
 -(void)gotoCommentViewController
 {
     CommentViewController *viewController = [[CommentViewController alloc]init];
+    viewController.rowDescriptor = self.rowDescriptor;
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+-(void)showCommentViewController
+{
+    CommentViewController *viewController = [[CommentViewController alloc]init];
+    viewController.controllerType = ControllerTypeQuery;
     viewController.rowDescriptor = self.rowDescriptor;
     [self.navigationController pushViewController:viewController animated:YES];
 }

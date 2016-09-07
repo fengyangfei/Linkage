@@ -25,6 +25,7 @@
 
 @implementation CommentViewController
 @synthesize rowDescriptor = _rowDescriptor;
+@synthesize controllerType = _controllerType;
 @synthesize titleLabel = _titleLabel;
 @synthesize ratingView = _ratingView;
 @synthesize textView = _textView;
@@ -131,7 +132,7 @@
     if (order && order.comment) {
         Comment *comment = order.comment;
         //comment的Id为空时为查看视图
-        if (StringIsNotEmpty(comment.commentId)) {
+        if (StringIsNotEmpty(comment.commentId) || self.controllerType == ControllerTypeQuery) {
             [self.ratingView setEnabled:NO];
             self.ratingView.value = [comment.score intValue];
             [self.textView setEditable:NO];

@@ -16,11 +16,11 @@
 row.cellStyle = UITableViewCellStyleValue1;
 
 @interface ModelBaseViewController()
-@property (nonatomic, assign) ControllerType controllerType;
 @end
 
 @implementation ModelBaseViewController
 @synthesize rowDescriptor = _rowDescriptor;
+@synthesize controllerType = _controllerType;
 
 - (instancetype)initWithControllerType:(ControllerType)controllerType
 {

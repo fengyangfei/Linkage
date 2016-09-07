@@ -7,10 +7,7 @@
 //
 
 #import <XLForm/XLForm.h>
-typedef NS_ENUM(NSUInteger, ControllerType) {
-    ControllerTypeQuery,
-    ControllerTypeManager
-};
+#import "ViewControllerProtocol.h"
 @protocol ModelBaseControllerConfigure <NSObject>
 @optional
 -(Class)modelUtilClass;
@@ -18,7 +15,7 @@ typedef NS_ENUM(NSUInteger, ControllerType) {
 -(void)didSelectModel:(XLFormRowDescriptor *)chosenRow;
 @end
 
-@interface ModelBaseViewController : XLFormViewController<ModelBaseControllerConfigure, XLFormRowDescriptorViewController>
+@interface ModelBaseViewController : XLFormViewController<ModelBaseControllerConfigure, XLFormRowDescriptorViewController, ViewControllerProtocol>
 
 - (instancetype)initWithControllerType:(ControllerType)controllerType;
 - (void)initializeForm:(NSArray *)models;
