@@ -67,9 +67,9 @@ row.cellStyle = UITableViewCellStyleValue1;
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company" rowType:XLFormRowDescriptorTypeButton title:@"承运商"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"company" rowType:XLFormRowDescriptorTypeButton title:@"厂商"];
     RowUI
-    RowPlaceHolderUI(@"请选择承运商")
+    RowPlaceHolderUI(@"请选择厂商")
     if (company) {
         row.value = company;
     }else if (order && order.companyId){

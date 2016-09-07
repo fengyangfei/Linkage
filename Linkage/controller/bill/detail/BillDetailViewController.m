@@ -152,8 +152,9 @@
         [_detailDS setForm:[self createDetailForm:order]];
     }
     if (_tasksDataSource) {
-        //承运商可分配任务，厂商只能查看任务
-        if([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin){
+        //承运商管理员与普通员工可分配任务，厂商只能查看任务
+        if([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin ||
+           [LoginUser shareInstance].ctype == UserTypeSubCompanyUser){
             if (order.tasks && order.tasks.count > 0) {
                 [_tasksDataSource setForm:[self createInfoTasksForm:order]];
             }else{
@@ -182,7 +183,7 @@
     row.value = order.orderId;
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"接单承运商"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"厂商"];
     row.value = order ? order.companyName :@"";
     [section addFormRow:row];
     
@@ -395,7 +396,7 @@
     return form;
 }
 
-//查看任务详情的form
+//查看任务进度的form
 -(XLFormDescriptor *)createInfoTasksForm:(Order *)order
 {
     XLFormDescriptor * form;
@@ -660,7 +661,7 @@
 - (HMSegmentedControl *)segmentedControl
 {
     HMSegmentedControl *segmentedControl = [super segmentedControl];
-    segmentedControl.sectionTitles = @[@"订单详情", @"任务详情"];
+    segmentedControl.sectionTitles = @[@"订单详情", @"任务进度"];
     return segmentedControl;
 }
 
