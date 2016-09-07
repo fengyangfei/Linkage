@@ -117,10 +117,11 @@
 {
     if([x integerValue] == OrderStatusCompletion){
         if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin ||
-            [LoginUser shareInstance].ctype == UserTypeCompanyUser ||
-            [LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin ||
-            [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) {
+            [LoginUser shareInstance].ctype == UserTypeCompanyUser) {
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
+        } else if ([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin ||
+                  [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"查看评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
         }
         
         //刷新任务界面

@@ -130,6 +130,7 @@
     Order *order = self.rowDescriptor.value;
     if (order && order.comment) {
         Comment *comment = order.comment;
+        //comment的Id为空时为查看视图
         if (StringIsNotEmpty(comment.commentId)) {
             [self.ratingView setEnabled:NO];
             self.ratingView.value = [comment.score intValue];
