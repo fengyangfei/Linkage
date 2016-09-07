@@ -480,10 +480,15 @@
             for (id driver in drivers) {
                 if ([driver isKindOfClass:[Task class]]) {
                     Task *task = (Task *)driver;
+                    if(!task.cargoNo){
+                        NSString *info = @"货柜号不能为空！";
+                        [SVProgressHUD showErrorWithStatus:info];
+                        return;
+                    }
                     [tasks addObject:@{
                                        @"driver_id":task.driverId,
                                        @"cargo_type":task.cargoType,
-                                       @"cargo_no":task.cargoNo ?:@""
+                                       @"cargo_no":task.cargoNo
                                        }];
                 }
             }
