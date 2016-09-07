@@ -464,6 +464,15 @@
         return;
     }
     
+    NSMutableArray *sections = [self.tasksDataSource.form formSections];
+    for (XLFormSectionDescriptor *section in sections) {
+        if ([section formRows].count <= 1) {
+            NSString *info = [NSString stringWithFormat:@"请把所有任务都安排司机！"];
+            [SVProgressHUD showErrorWithStatus:info];
+            return;
+        }
+    }
+    
     NSMutableArray *tasks = [[NSMutableArray alloc]init];
     NSDictionary *formValues = [self.tasksDataSource.form formValues];
     for (id drivers in formValues.allValues) {
