@@ -43,6 +43,12 @@
         section = [XLFormSectionDescriptor formSection];
         [form addFormSection:section];
         for (MenuItem *menu in subArray) {
+            //通过后台审核的登录用户才能邀请员工
+            if ([menu.title isEqualToString:@"邀请员工"] &&
+                [LoginUser shareInstance].status == UserStatusActive) {
+                continue;
+            }
+            
             NSString *rowTypeIndentifier = menu.type == MenuItemTypeHeader ? FormRowDescriptorTypeMineHeader: FormRowDescriptorTypeMine;
             row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowTypeIndentifier];
             row.value = menu;

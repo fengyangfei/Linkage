@@ -117,7 +117,9 @@
 {
     if([x integerValue] == OrderStatusCompletion){
         if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin ||
-            [LoginUser shareInstance].ctype == UserTypeCompanyUser) {
+            [LoginUser shareInstance].ctype == UserTypeCompanyUser ||
+            [LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin ||
+            [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) {
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
         }
         
@@ -443,7 +445,7 @@
         NSInteger totalRow = [row.sectionDescriptor.formRows count];
         if (totalRow > [cargo.cargoCount integerValue]) {
             NSString *cargoTitle = [LinkUtil.cargoTypes objectForKey:cargo.cargoType];
-            NSString *errorMessage = [NSString stringWithFormat:@"%@已超出货柜数量", cargoTitle];
+            NSString *errorMessage = [NSString stringWithFormat:@"%@不能超出货柜的数量", cargoTitle];
             [SVProgressHUD showInfoWithStatus:errorMessage];
             return;
         }
