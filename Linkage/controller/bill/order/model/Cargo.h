@@ -11,11 +11,11 @@
 #import "MTLManagedObjectAdapter.h"
 @class OrderModel;
 @interface Cargo : MTLModel<XLFormOptionObject, MTLJSONSerializing, MTLManagedObjectSerializing>
-@property (nonatomic, strong) NSNumber *cargoId;
-@property (nonatomic, strong) NSNumber *cargoType;
-@property (nonatomic, copy  ) NSString *cargoNo;
-@property (nonatomic, copy  ) NSString *cargoName;
-@property (nonatomic, strong) NSNumber *cargoCount;
+@property (nonatomic, strong) NSNumber *cargoId;//货柜ID
+@property (nonatomic, strong) NSNumber *cargoType;//货柜类型
+@property (nonatomic, copy  ) NSString *cargoNo;//货柜号
+@property (nonatomic, copy  ) NSString *cargoName;//货柜名
+@property (nonatomic, strong) NSNumber *cargoCount;//货柜数量
 +(Cargo *)cargoWithType:(NSNumber *)type name:(NSString *)cargoName;
 +(Cargo *)cargoWithType:(NSNumber *)type name:(NSString *)cargoName count:(NSNumber *)cargoCount;
 +(Cargo *)cargoWithType:(NSNumber *)type name:(NSString *)cargoName count:(NSNumber *)cargoCount cargoNo:(NSString *)cargoNo;

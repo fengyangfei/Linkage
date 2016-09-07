@@ -14,8 +14,8 @@
 @property (nonatomic,copy  ) NSString *driverId;
 @property (nonatomic,copy  ) NSString *driverName;
 @property (nonatomic,copy  ) NSString *driverLicense;
-@property (nonatomic,copy  ) NSString *cargoNo;
-@property (nonatomic,strong) NSNumber *cargoType;
+@property (nonatomic,copy  ) NSString *cargoNo;//货柜号
+@property (nonatomic,strong) NSNumber *cargoType;//货柜类型
 @property (nonatomic,strong) NSNumber *status;
 @property (nonatomic,strong) NSDate   *updateTime;
 @end

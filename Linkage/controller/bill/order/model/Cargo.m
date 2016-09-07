@@ -107,6 +107,7 @@
 @end
 
 @implementation NSArray(CargoModel)
+//出口与自备柜
 -(NSString *)cargosStringValue4ExportOrSelf
 {
     NSMutableString *str = [NSMutableString string];
@@ -120,6 +121,7 @@
     return str;
 }
 
+//进口
 -(NSString *)cargosStringValue4Import
 {
     NSMutableString *str = [NSMutableString string];
