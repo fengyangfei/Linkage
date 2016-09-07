@@ -116,7 +116,8 @@
 -(void)updateUIWhenOrderState:(NSNumber *)x
 {
     if([x integerValue] == OrderStatusCompletion){
-        if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin || [LoginUser shareInstance].ctype == UserTypeCompanyUser) {
+        if ([LoginUser shareInstance].ctype == UserTypeCompanyAdmin ||
+            [LoginUser shareInstance].ctype == UserTypeCompanyUser) {
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self action:@selector(gotoCommentViewController)];
         }
         
@@ -384,7 +385,7 @@
         [section addFormRow:row];
     }
     
-    if (order.cargos.count > 0) {
+    if (order && order.cargos.count > 0) {
         section = [XLFormSectionDescriptor formSection];
         [form addFormSection:section];
         
@@ -410,7 +411,9 @@
 
     //承运商在订单未完成的前提下可修改任务状态
     BOOL allowEdit = NO;
-    if (([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin || [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) && order.status != OrderStatusCompletion) {
+    if (([LoginUser shareInstance].ctype == UserTypeSubCompanyAdmin ||
+         [LoginUser shareInstance].ctype == UserTypeSubCompanyUser) &&
+        order.status != OrderStatusCompletion) {
         allowEdit = YES;
     }
     NSString *rowType = allowEdit? TaskEditDescriporType:TaskInfoDescriporType;
