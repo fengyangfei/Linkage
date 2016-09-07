@@ -10,4 +10,7 @@
 
 @interface BillDetailViewController : BaseBillViewController
 
+//添加司机(方法发布给数据源使用)
+-(void)addDriverRow:(XLFormRowDescriptor *)row;
+
 @end

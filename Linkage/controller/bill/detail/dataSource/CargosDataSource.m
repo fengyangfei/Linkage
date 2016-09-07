@@ -7,7 +7,7 @@
 //
 
 #import "CargosDataSource.h"
-#import "DriverViewController.h"
+#import "BillDetailViewController.h"
 
 @implementation CargosDataSource
 
@@ -31,10 +31,8 @@
             self.tableView.editing = !self.tableView.editing;
         });
     }else if (editingStyle == UITableViewCellEditingStyleInsert){
-        UIViewController<XLFormRowDescriptorViewController> *controller = [[DriverViewController alloc]initWithControllerType:ControllerTypeQuery];
         XLFormRowDescriptor * multivaluedFormRow = [self.form formRowAtIndex:indexPath];
-        controller.rowDescriptor = multivaluedFormRow;
-        [self.viewController.navigationController pushViewController:controller animated:YES];
+        [(BillDetailViewController *)self.viewController addDriverRow:multivaluedFormRow];
     }
 }
 
