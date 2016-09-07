@@ -83,7 +83,7 @@
 + (Task*)createWithDriver:(Driver *)driver cargo:(Cargo *)cargo
 {
     Task *task = [[Task alloc]init];
-    if (self) {
+    if (task) {
         if (driver) {
             task.driverId = driver.driverId;
             task.driverName = driver.name;
