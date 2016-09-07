@@ -11,10 +11,11 @@
 #import "Favorite.h"
 #import "Company.h"
 #import "CompanyInfoViewController.h"
+#import "LoginUser.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-NSString *const CompanyDescriporType = @"CompanyRowType";
-NSString *const CompanyInfoDescriporType = @"CompanyInfoRowType";
+NSString *const CompanyDescriporType = @"CompanyRowType";//厂商样式
+NSString *const CompanyInfoDescriporType = @"CompanyInfoRowType";//承运商样式
 
 @implementation MainTableViewCell
 @synthesize iconView = _iconView;
@@ -121,13 +122,16 @@ NSString *const CompanyInfoDescriporType = @"CompanyInfoRowType";
         make.bottom.equalTo(self.contentView.bottom).offset(-10);
     }];
     
-    [self.contentView addSubview:self.button];
-    [self.button makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView.right).offset(-12);
-        make.centerY.equalTo(self.contentView.centerY);
-        make.height.equalTo(@30);
-        make.width.equalTo(@88);
-    }];
+    //只有通过后台审核才能下单
+    if ([LoginUser shareInstance].status == UserStatusActive) {
+        [self.contentView addSubview:self.button];
+        [self.button makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.contentView.right).offset(-12);
+            make.centerY.equalTo(self.contentView.centerY);
+            make.height.equalTo(@30);
+            make.width.equalTo(@88);
+        }];
+    }
 }
 
 #pragma mark - 属性

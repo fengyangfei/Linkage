@@ -268,7 +268,7 @@
 // Setup the Title Label.
 - (void)setOverlayTitle {
     // ...or change by an UIImageView if you need it.
-    [self.overlayTitle setText:@"Welcome"];
+    //[self.overlayTitle setText:@"Welcome"];
 }
 
 // Setup the Title/Subtitle style/text.

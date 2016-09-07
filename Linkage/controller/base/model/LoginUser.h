@@ -25,6 +25,14 @@ typedef NS_ENUM(NSUInteger,UserType) {
     UserTypeSubCompanyDriver//承运商司机
 };
 
+typedef NS_ENUM(NSUInteger,UserStatus) {
+    UserStatusActive,//已通过后台审核
+    UserStatusInactive,//未通过后台审核
+    UserStatusPending,//等待后台审核
+    UserStatusBanned,//...
+    UserStatusDeleted//已删除
+};
+
 @class LoginUser;
 @protocol LoginUserDelegate <NSObject>
 @required
@@ -54,7 +62,8 @@ typedef NS_ENUM(NSUInteger,UserType) {
 @property (nonatomic,copy   ) NSString   *identity;
 @property (nonatomic, strong) NSDate     *createTime;
 @property (nonatomic, strong) NSDate     *updateTime;
-@property (nonatomic, assign) UserType   ctype;
+@property (nonatomic, assign) UserType   ctype;//用户类型
+@property (nonatomic, assign) UserStatus status;//用户状态
 @property (nonatomic, strong) NSArray    *companies;//首页的公司
 @property (nonatomic, strong) NSArray    *advertes;//广告
 @end

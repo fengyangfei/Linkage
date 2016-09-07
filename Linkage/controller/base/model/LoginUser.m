@@ -45,6 +45,36 @@ static LoginUser *user;
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:transDic defaultValue:@(UserTypeCompanyAdmin) reverseDefaultValue:@(0)];
 }
 
++ (NSValueTransformer *)statusJSONTransformer
+{
+    NSDictionary *dictionary = @{
+                               @(0): @(UserStatusActive),
+                               @(1): @(UserStatusInactive),
+                               @(2): @(UserStatusPending),
+                               @(3): @(UserStatusBanned),
+                               @(4): @(UserStatusDeleted)
+                               };
+    
+    return [MTLValueTransformer
+            transformerUsingForwardBlock:^ id (id key, BOOL *success, NSError **error) {
+                if ([key isKindOfClass:[NSString class]]) {
+                    return dictionary[@([key integerValue]) ?: NSNull.null] ?: @(UserStatusInactive);
+                }else{
+                    return dictionary[key ?: NSNull.null] ?: @(UserStatusInactive);
+                }
+            }
+            reverseBlock:^ id (id value, BOOL *success, NSError **error) {
+                __block id result = nil;
+                [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id anObject, BOOL *stop) {
+                    if ([value isEqual:anObject]) {
+                        result = key;
+                        *stop = YES;
+                    }
+                }];
+                return result ?: @(0);
+            }];
+}
+
 + (NSValueTransformer *)companiesJSONTransformer {
     return [MTLJSONAdapter arrayTransformerWithModelClass:[Company class]];
 }
