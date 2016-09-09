@@ -103,6 +103,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
         self.detailLabel.attributedText = [model.driverLicense ?:@"" attributedStringWithTitle:@"车牌："];
         if (StringIsNotEmpty(model.cargoNo)) {
             self.textField.text = model.cargoNo;
+            self.textField.enabled = NO;
         }
     }
 }
@@ -241,7 +242,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
         NSString *cargoType = [LinkUtil.cargoTypes objectForKey:model.cargoType];
         NSString *title = [[LinkUtil taskStatus] objectForKey:model.status];
         self.textLabel.text = cargoType;
-        self.subTextLabel.text = model.cargoNo;
+        self.subTextLabel.text = [NSString stringWithFormat:@"%@%@",@"货柜号：", model.cargoNo];
         self.detailLabel.text = [NSString stringWithFormat:@"%@%@",@"司机：", model.driverName];
         self.subDetailLabel.text = [NSString stringWithFormat:@"%@%@",@"车牌：", model.driverLicense];
         [self.statusBtn setAttributedTitle:[title attributedString] forState:UIControlStateNormal];
@@ -389,7 +390,7 @@ NSString *const TaskAddDescriporType = @"TaskAddRowType";
         NSString *cargoType = [LinkUtil.cargoTypes objectForKey:model.cargoType];
         NSString *title = [[LinkUtil taskStatus] objectForKey:model.status];
         self.textLabel.text = cargoType;
-        self.subTextLabel.text = model.cargoNo;
+        self.subTextLabel.text = [NSString stringWithFormat:@"%@%@",@"货柜号：", model.cargoNo];
         self.detailLabel.text = [NSString stringWithFormat:@"%@%@",@"司机：", model.driverName];
         self.subDetailLabel.text = [NSString stringWithFormat:@"%@%@",@"车牌：", model.driverLicense];;
         self.statusLabel.text = title;
