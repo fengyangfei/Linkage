@@ -25,6 +25,9 @@
 #import "UMSocialQQHandler.h"
 #import "UMSocialYixinHandler.h"
 
+#import "Message.h"
+#import "MessageUtil.h"
+
 static NSString *const kStoreName = @"linkage.sqlite";
 
 @interface AppDelegate ()
@@ -91,7 +94,8 @@ static NSString *const kStoreName = @"linkage.sqlite";
  */
 -(void)registerJPushWithOptions:(NSDictionary *)launchOptions{
     // Override point for customization after application launch.
-    NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    //不需要用到advertisingIndentifier
+    //NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
         //可以添加自定义categories
@@ -111,6 +115,9 @@ static NSString *const kStoreName = @"linkage.sqlite";
                           channel:@"web"
                  apsForProduction:isProduction
             advertisingIdentifier:nil];
+    
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
 }
 
 //友盟sdk
@@ -238,12 +245,20 @@ static NSString *const kStoreName = @"linkage.sqlite";
 #endif
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [JPUSHService handleRemoteNotification:userInfo];
+    [JPUSHService handleRemoteNotification:userInfo];//这句注释掉，依然可收到消息
+    NSDictionary *aps = [userInfo valueForKey:@"aps"];
+    NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
+    NSInteger badge = [[aps valueForKey:@"badge"] integerValue]; //badge数量
+    NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
     NSLog(@"收到通知:%@", [self logDic:userInfo]);
+    
+    // 取得Extras字段内容
+    NSString *customizeField1 = [userInfo valueForKey:@"customizeExtras"]; //服务端中Extras字段，key是自己定义的
+    NSLog(@"content =[%@], badge=[%ld], sound=[%@], customize field  =[%@]",content, (long)badge,sound,customizeField1);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    [JPUSHService handleRemoteNotification:userInfo];
+    [JPUSHService handleRemoteNotification:userInfo];//这句注释掉，依然可收到消息
     NSLog(@"收到通知:%@", [self logDic:userInfo]);
     completionHandler(UIBackgroundFetchResultNewData);
 }
@@ -272,6 +287,21 @@ static NSString *const kStoreName = @"linkage.sqlite";
                                                format:NULL
                                      errorDescription:NULL];
     return str;
+}
+
+//获取自定义消息推送内容
+- (void)networkDidReceiveMessage:(NSNotification *)notification {
+    @try {
+        NSDictionary * userInfo = [notification userInfo];
+        NSString *content = [userInfo valueForKey:@"content"];
+        NSData *tempData = [content dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:tempData options:NSJSONReadingMutableContainers error:nil];
+        Message *message = (Message *)[MessageUtil modelFromJson:dic];
+        [JPUSHService setLocalNotification:[NSDate date] alertBody:message.content badge:0 alertAction:@"打开" identifierKey:message.messageId userInfo:nil soundName:nil];
+    }
+    @catch (NSException *exception) {
+        
+    }
 }
 
 @end

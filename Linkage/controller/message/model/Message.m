@@ -37,6 +37,21 @@
 }
 
 #pragma mark - 属性转换
++ (NSValueTransformer *)messageIdJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if ([value isKindOfClass:[NSString class]]) {
+            return value;
+        }else if ([value isKindOfClass:[NSNumber class]]){
+            return [NSString stringWithFormat:@"%@", value];
+        }else{
+            return @"";
+        }
+    } reverseBlock:^id(id value, BOOL *success, NSError **error) {
+        return value;
+    }];
+}
+
 +(NSValueTransformer *)typeJSONTransformer
 {
     return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {

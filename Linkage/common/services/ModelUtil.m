@@ -17,8 +17,10 @@
 +(id<MTLJSONSerializing>)modelFromJson:(NSDictionary *)json
 {
     NSError *error;
-    NSDictionary *mergeJson = [json mtl_dictionaryByAddingEntriesFromDictionary:@{@"userId":[LoginUser shareInstance].cid}];
-    id model = [MTLJSONAdapter modelOfClass:self.modelClass fromJSONDictionary:mergeJson error:&error];
+    if ([LoginUser shareInstance]) {
+        json = [json mtl_dictionaryByAddingEntriesFromDictionary:@{@"userId":[LoginUser shareInstance].cid}];
+    }
+    id model = [MTLJSONAdapter modelOfClass:self.modelClass fromJSONDictionary:json error:&error];
     if (error) {
         NSLog(@"Json转成对象失败 - %@",error);
     }
@@ -50,7 +52,9 @@
 {
     NSError *error;
     NSDictionary *dic = [MTLJSONAdapter JSONDictionaryFromModel:model error:&error];
-    dic = [dic mtl_dictionaryByAddingEntriesFromDictionary:@{@"userId":[LoginUser shareInstance].cid}];
+    if ([LoginUser shareInstance]) {
+        dic = [dic mtl_dictionaryByAddingEntriesFromDictionary:@{@"userId":[LoginUser shareInstance].cid}];
+    }
     if (error) {
         NSLog(@"对象转换字典失败 - %@",error);
     }

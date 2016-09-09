@@ -176,6 +176,7 @@
 		9A11F0781CD1BBBA002E8F6F /* ModelBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A11F0771CD1BBBA002E8F6F /* ModelBaseViewController.m */; };
 		9A126DE71CD1DE9000648184 /* CarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A126DE61CD1DE9000648184 /* CarViewController.m */; };
 		9A126DEE1CD3095400648184 /* CargosDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A126DED1CD3095400648184 /* CargosDataSource.m */; };
+		9A21A3191D828D1F00FBCA38 /* NSString+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A21A3181D828D1F00FBCA38 /* NSString+JSON.m */; };
 		9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */; };
 		9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2A81C7A91D400FB5EB6 /* UIColor+BFPaperColors.m */; };
 		9A23A2B11C7AAA3D00FB5EB6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A23A2B01C7AAA3D00FB5EB6 /* MainViewController.m */; };
@@ -608,6 +609,8 @@
 		9A126DEC1CD3095400648184 /* CargosDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargosDataSource.h; sourceTree = "<group>"; };
 		9A126DED1CD3095400648184 /* CargosDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargosDataSource.m; sourceTree = "<group>"; };
 		9A21A3161D7FEB3A00FBCA38 /* ViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerProtocol.h; sourceTree = "<group>"; };
+		9A21A3171D828D1F00FBCA38 /* NSString+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSON.h"; sourceTree = "<group>"; };
+		9A21A3181D828D1F00FBCA38 /* NSString+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSON.m"; sourceTree = "<group>"; };
 		9A23A2A51C7A91D400FB5EB6 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
 		9A23A2A61C7A91D400FB5EB6 /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
 		9A23A2A71C7A91D400FB5EB6 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -1444,6 +1447,8 @@
 				9A49E6B71D07ACA600F51C2F /* HJFormCell.m */,
 				9AF476CF1D1B75E300A905A0 /* XLFormValidator+Regex.h */,
 				9AF476D01D1B75E300A905A0 /* XLFormValidator+Regex.m */,
+				9A21A3171D828D1F00FBCA38 /* NSString+JSON.h */,
+				9A21A3181D828D1F00FBCA38 /* NSString+JSON.m */,
 			);
 			path = extends;
 			sourceTree = "<group>";
@@ -2429,6 +2434,7 @@
 				8B5DC61C1C79B8A700D29292 /* IFTTTAnimation.m in Sources */,
 				8B3302911C8BC0D70088DAE2 /* MainTableViewCell.m in Sources */,
 				8BCA5FB31CA95EE3002601F6 /* BillDetailViewController.m in Sources */,
+				9A21A3191D828D1F00FBCA38 /* NSString+JSON.m in Sources */,
 				8B5DC62D1C79B8A700D29292 /* IFTTTScaleAnimation.m in Sources */,
 				8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */,
 				9A23A2CD1C7C316C00FB5EB6 /* LATabBarController.m in Sources */,
