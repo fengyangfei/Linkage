@@ -297,11 +297,22 @@ static NSString *const kStoreName = @"linkage.sqlite";
         NSData *tempData = [content dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:tempData options:NSJSONReadingMutableContainers error:nil];
         Message *message = (Message *)[MessageUtil modelFromJson:dic];
-        [JPUSHService setLocalNotification:[NSDate date] alertBody:message.content badge:0 alertAction:@"打开" identifierKey:message.messageId userInfo:nil soundName:nil];
+        
+        [self notificationMessage:message];
     }
     @catch (NSException *exception) {
         
     }
+}
+
+//发送通知,在线与离线都可以收到消息
+-(void)notificationMessage:(Message *)message
+{
+    UILocalNotification *localNotification = [[UILocalNotification alloc]init];
+    localNotification.alertBody = message.content;
+    localNotification.alertTitle = message.title;
+    localNotification.alertAction = @"打开";
+    [JPUSHService showLocalNotificationAtFront:localNotification identifierKey:nil];
 }
 
 @end
