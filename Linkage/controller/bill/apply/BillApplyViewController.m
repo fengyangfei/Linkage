@@ -206,6 +206,20 @@ row.cellStyle = UITableViewCellStyleValue1;
         return;
     }
     
+    NSDictionary *formValues = [self.form formValues];
+    NSArray *cargos = formValues[@"cargos"];
+    if (cargos && cargos.count > 0) {
+        for (Cargo *cargo in cargos) {
+            if([self isKindOfClass:[BillImportApplyViewController class]] && StringIsEmpty(cargo.cargoNo)){
+                [SVProgressHUD showErrorWithStatus:@"请填入货柜号" maskType:SVProgressHUDMaskTypeBlack];
+                return;
+            }else if (![self isKindOfClass:[BillImportApplyViewController class]] && [cargo.cargoCount integerValue] == 0){
+                [SVProgressHUD showErrorWithStatus:@"请填入货柜数量" maskType:SVProgressHUDMaskTypeBlack];
+                return;
+            }
+        }
+    }
+    
     WeakSelf
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请确认是否提交订单？" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
