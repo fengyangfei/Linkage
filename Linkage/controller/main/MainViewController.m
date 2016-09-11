@@ -14,6 +14,9 @@
 #import "CycleScrollCell.h"
 #import <MJRefresh/MJRefresh.h>
 #import "SearchCompanyViewController.h"
+#import "AppDelegate.h"
+#import "LATabBarController.h"
+#import "UITabBar+Badge.h"
 
 @interface MainViewController ()
 
@@ -38,6 +41,24 @@
                 [strongSelf.tableView.mj_header endRefreshing];
             }
         }];
+    }];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[YGRestClient sharedInstance] postForObjectWithUrl:ReadUrl form:[LoginUser shareInstance].baseHttpParameter success:^(id responseObject) {
+        AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;
+        if([appdelegate.window.rootViewController isKindOfClass:[LATabBarController class]]){
+            LATabBarController *tabbarController = (LATabBarController *)appdelegate.window.rootViewController;
+            if([responseObject[@"read"] integerValue] > 0){
+                [tabbarController.tabBar showBadgeOnItemIndex:1];
+            }else{
+                [tabbarController.tabBar hideBadgeOnItemIndex:1];
+            }
+        }
+    } failure:^(NSError *error) {
+        
     }];
 }
 

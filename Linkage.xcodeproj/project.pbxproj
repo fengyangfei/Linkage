@@ -23,6 +23,7 @@
 		8B3302911C8BC0D70088DAE2 /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3302901C8BC0D70088DAE2 /* MainTableViewCell.m */; };
 		8B38230C1CDB5CC20046A6F1 /* UINavigationController+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B38230B1CDB5CC20046A6F1 /* UINavigationController+Custom.m */; };
 		8B3C31921C956EEB00FC6323 /* FormTextFieldAndButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C31901C9568B900FC6323 /* FormTextFieldAndButtonCell.m */; };
+		8B3DB5C71D854E6F00AABCE9 /* UITabBar+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DB5C61D854E6F00AABCE9 /* UITabBar+Badge.m */; };
 		8B4221181CA428BF00F58D77 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B4221171CA428BF00F58D77 /* Localizable.strings */; };
 		8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B42211B1CA42AD600F58D77 /* FavoriteViewController.m */; };
 		8B4221201CA42C6900F58D77 /* InvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B42211F1CA42C6900F58D77 /* InvitationViewController.m */; };
@@ -296,6 +297,8 @@
 		8B38230B1CDB5CC20046A6F1 /* UINavigationController+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Custom.m"; sourceTree = "<group>"; };
 		8B3C318F1C9568B900FC6323 /* FormTextFieldAndButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormTextFieldAndButtonCell.h; sourceTree = "<group>"; };
 		8B3C31901C9568B900FC6323 /* FormTextFieldAndButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormTextFieldAndButtonCell.m; sourceTree = "<group>"; };
+		8B3DB5C51D854E6F00AABCE9 /* UITabBar+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+Badge.h"; sourceTree = "<group>"; };
+		8B3DB5C61D854E6F00AABCE9 /* UITabBar+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+Badge.m"; sourceTree = "<group>"; };
 		8B4221171CA428BF00F58D77 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		8B42211A1CA42AD600F58D77 /* FavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteViewController.h; sourceTree = "<group>"; };
 		8B42211B1CA42AD600F58D77 /* FavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
@@ -1825,6 +1828,8 @@
 				8B38230B1CDB5CC20046A6F1 /* UINavigationController+Custom.m */,
 				9ABD8F8D1D45F3B500D03A84 /* NSDate+Format.h */,
 				9ABD8F8E1D45F3B500D03A84 /* NSDate+Format.m */,
+				8B3DB5C51D854E6F00AABCE9 /* UITabBar+Badge.h */,
+				8B3DB5C61D854E6F00AABCE9 /* UITabBar+Badge.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -2453,6 +2458,7 @@
 				8B5DC61E1C79B8A700D29292 /* IFTTTBackgroundColorAnimation.m in Sources */,
 				8B958B3C1CD65301003BD74B /* Message.m in Sources */,
 				8B53F4E61CE37C820020E218 /* SearchViewController.m in Sources */,
+				8B3DB5C71D854E6F00AABCE9 /* UITabBar+Badge.m in Sources */,
 				8BD1A4701D44C64B00469324 /* Comment.m in Sources */,
 				8B2D18D41D3101BC00A9183E /* WXMediaMessage+messageConstruct.m in Sources */,
 				8BCA5FBB1CA97FB8002601F6 /* MessageViewController.m in Sources */,

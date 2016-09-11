@@ -123,6 +123,9 @@
 #define CommentUrl [NSString stringWithFormat:@"%@/api/order/comment",BaseUrl]//订单评价接口
 #define SoUrl [NSString stringWithFormat:@"%@/api/upload/so",BaseUrl]//上传公司头像
 
+//消息提醒接口
+#define ReadUrl [NSString stringWithFormat:@"%@/api/order/read",BaseUrl]//消息提醒接口
+
 //微信key
 #define kWXAppId @"wxc67be6173b1fdd64"
 #define kWXAppSecret @"54c72b1b05e4cf38e27fc20e53d699bd"
