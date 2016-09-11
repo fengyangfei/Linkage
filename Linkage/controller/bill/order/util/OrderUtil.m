@@ -119,7 +119,7 @@
             mutableDic[@"cargo"] = [order.cargos cargosStringValue4ExportOrSelf];
         }else if ([order isKindOfClass:[ImportOrder class]]){
             mutableDic[@"cargo"] = [order.cargos cargosStringValue4Import];
-        }else if ([order isKindOfClass:[ImportOrder class]]){
+        }else if ([order isKindOfClass:[SelfOrder class]]){
             mutableDic[@"cargo"] = [order.cargos cargosStringValue4ExportOrSelf];
         }
         return [mutableDic copy];
