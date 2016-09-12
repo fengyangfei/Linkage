@@ -16,6 +16,7 @@
 #import "CocoaSecurity.h"
 #import "CompanyUtil.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "JPUSHService.h"
 
 @interface LoginViewController ()
 
@@ -48,6 +49,12 @@
             [CompanyUtil queryModelFromServer:^(Company *model) {
                 [model save];
             }];
+            
+            //设置tags和alias
+            if([LoginUser shareInstance]){
+                NSSet *tags = [[NSSet alloc]initWithArray:@[@"web",@"test",@"message"]];
+                [JPUSHService setTags:tags aliasInbackground:[LoginUser shareInstance].cid];
+            }
             
             LATabBarController *tabBarController = [[LATabBarController alloc]init];
             [weakSelf presentViewController:tabBarController animated:YES completion:nil];

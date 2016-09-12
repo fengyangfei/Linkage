@@ -116,6 +116,12 @@ static NSString *const kStoreName = @"linkage.sqlite";
                  apsForProduction:isProduction
             advertisingIdentifier:nil];
     
+    //设置tags和alias
+    if([LoginUser shareInstance]){
+        NSSet *tags = [[NSSet alloc]initWithArray:@[@"web",@"test",@"message"]];
+        [JPUSHService setTags:tags aliasInbackground:[LoginUser shareInstance].cid];
+    }
+    
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
 }
@@ -189,6 +195,7 @@ static NSString *const kStoreName = @"linkage.sqlite";
     // and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down
     // OpenGL ES frame rates. Games should use this method to pause the game.
+    NSLog(@"WillResignActive");
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -212,6 +219,8 @@ static NSString *const kStoreName = @"linkage.sqlite";
     // Restart any tasks that were paused (or not yet started) while the
     // application was inactive. If the application was previously in the
     // background, optionally refresh the user interface.
+    
+    NSLog(@"didbeconemactive");
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
