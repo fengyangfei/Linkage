@@ -27,6 +27,7 @@
 
 #import "Message.h"
 #import "MessageUtil.h"
+#import "MessageDetailViewController.h"
 
 static NSString *const kStoreName = @"linkage.sqlite";
 
@@ -35,6 +36,9 @@ static NSString *const kStoreName = @"linkage.sqlite";
 @end
 
 @implementation AppDelegate
+{
+    UINavigationController *_navController;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -211,16 +215,26 @@ static NSString *const kStoreName = @"linkage.sqlite";
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [application setApplicationIconBadgeNumber:0];
     [application cancelAllLocalNotifications];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the
-    // application was inactive. If the application was previously in the
-    // background, optionally refresh the user interface.
-    
-    NSLog(@"didbeconemactive");
+    if (self.message) {
+        MessageDetailViewController *controller = [[MessageDetailViewController alloc]init];
+        XLFormRowDescriptor *des = [[XLFormRowDescriptor alloc]initWithTag:nil rowType:@"" title:nil];
+        des.value = self.message;
+        controller.rowDescriptor = des;
+        _navController = [[UINavigationController alloc]initWithRootViewController:controller];
+        controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
+        [self.window.rootViewController presentViewController:_navController animated:YES completion:nil];
+    }
+}
+
+-(void)backAction:(id)sender
+{
+    if(_navController){
+        [_navController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -255,21 +269,35 @@ static NSString *const kStoreName = @"linkage.sqlite";
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [JPUSHService handleRemoteNotification:userInfo];//这句注释掉，依然可收到消息
-    NSDictionary *aps = [userInfo valueForKey:@"aps"];
-    NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
-    NSInteger badge = [[aps valueForKey:@"badge"] integerValue]; //badge数量
-    NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
     NSLog(@"收到通知:%@", [self logDic:userInfo]);
     
+    NSString *title = [userInfo valueForKey:@"title"];//标题:Extras字段内容
+    NSString *messageId = [userInfo valueForKey:@"id"];//id:Extras字段内容
+    NSDictionary *aps = [userInfo valueForKey:@"aps"];
+    NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
     // 取得Extras字段内容
-    NSString *customizeField1 = [userInfo valueForKey:@"customizeExtras"]; //服务端中Extras字段，key是自己定义的
-    NSLog(@"content =[%@], badge=[%ld], sound=[%@], customize field  =[%@]",content, (long)badge,sound,customizeField1);
+    Message *message = [[Message alloc]init];
+    message.messageId = messageId;
+    message.title = title;
+    message.introduction = content;
+    self.message = message;
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     [JPUSHService handleRemoteNotification:userInfo];//这句注释掉，依然可收到消息
     NSLog(@"收到通知:%@", [self logDic:userInfo]);
     completionHandler(UIBackgroundFetchResultNewData);
+    
+    NSString *title = [userInfo valueForKey:@"title"];//标题:Extras字段内容
+    NSString *messageId = [userInfo valueForKey:@"id"];//id:Extras字段内容
+    NSDictionary *aps = [userInfo valueForKey:@"aps"];
+    NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
+    // 取得Extras字段内容
+    Message *message = [[Message alloc]init];
+    message.messageId = messageId;
+    message.title = title;
+    message.introduction = content;
+    self.message = message;
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
@@ -318,10 +346,10 @@ static NSString *const kStoreName = @"linkage.sqlite";
 -(void)notificationMessage:(Message *)message
 {
     UILocalNotification *localNotification = [[UILocalNotification alloc]init];
-    localNotification.alertBody = message.content;
+    localNotification.alertBody = message.introduction;
     localNotification.alertTitle = message.title;
     localNotification.alertAction = @"打开";
-    [JPUSHService showLocalNotificationAtFront:localNotification identifierKey:nil];
+    //[JPUSHService showLocalNotificationAtFront:localNotification identifierKey:nil];
 }
 
 @end

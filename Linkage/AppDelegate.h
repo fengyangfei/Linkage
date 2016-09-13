@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Message;
 static BOOL isProduction = YES;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) Message *message;
 
 @end
 

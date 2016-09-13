@@ -19,5 +19,4 @@
 @property (nonatomic,copy  ) NSString *introduction;
 @property (nonatomic,strong) NSDate   *createTime;
 @property (nonatomic,copy  ) NSString *userId;
-@property (nonatomic,copy  ) NSString *content;//apns消息提醒增加的属性
 @end
