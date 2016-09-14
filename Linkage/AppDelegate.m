@@ -220,7 +220,7 @@ static NSString *const kStoreName = @"linkage.sqlite";
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     NSArray *messages = [LoginUser notificationMessages];
-    if (![messages containsObject:self.message.messageId]) {
+    if (self.message && self.message.messageId && ![messages containsObject:self.message.messageId]) {
         [self presentViewController:self.message];
     }
 }
