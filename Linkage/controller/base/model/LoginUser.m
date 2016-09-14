@@ -157,6 +157,7 @@ UserDefault_AttrBoolImpl(receiveSms, BOOL)//接收平台短信
 UserDefault_AttrBoolImpl(receiveEmail, BOOL)//接收平台邮件
 UserDefault_AttrImpl(searchKeys, NSArray *)//搜索历史
 UserDefault_AttrImpl(searchCompanyKeys, NSArray *)//搜索历史
+UserDefault_AttrImpl(notificationMessages, NSArray *)//已查看的消息列表
 
 +(Company *)findCompanyById:(NSString *)companyId
 {

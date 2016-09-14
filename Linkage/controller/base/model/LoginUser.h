@@ -73,6 +73,7 @@ UserDefault_Attr(receiveSms, BOOL)//接收平台短信
 UserDefault_Attr(receiveEmail, BOOL)//接收平台邮件
 UserDefault_Attr(searchKeys, NSArray *)//搜索历史
 UserDefault_Attr(searchCompanyKeys, NSArray *)//搜索历史
+UserDefault_Attr(notificationMessages, NSArray *)//已查看的消息列表
 
 +(Company *)findCompanyById:(NSString *)companyId;
 -(void)setupTheme;

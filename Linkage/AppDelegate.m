@@ -219,7 +219,10 @@ static NSString *const kStoreName = @"linkage.sqlite";
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [self presentViewController:self.message];
+    NSArray *messages = [LoginUser notificationMessages];
+    if (![messages containsObject:self.message.messageId]) {
+        [self presentViewController:self.message];
+    }
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -352,6 +355,17 @@ static NSString *const kStoreName = @"linkage.sqlite";
 -(void)presentViewController:(Message *)message
 {
     if(message) {
+        if (message.messageId) {
+            NSArray *keys = [LoginUser notificationMessages];
+            NSMutableArray *mutableKeys;
+            if (!keys) {
+                mutableKeys = [NSMutableArray array];
+            }else{
+                mutableKeys = [keys mutableCopy];
+            }
+            [mutableKeys addObject:message.messageId];
+            [LoginUser setnotificationMessages:[mutableKeys copy]];
+        }
         MessageDetailViewController *controller = [[MessageDetailViewController alloc]init];
         XLFormRowDescriptor *des = [[XLFormRowDescriptor alloc]initWithTag:nil rowType:@"" title:nil];
         des.value = message;
