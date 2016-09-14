@@ -219,22 +219,7 @@ static NSString *const kStoreName = @"linkage.sqlite";
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    if (self.message) {
-        MessageDetailViewController *controller = [[MessageDetailViewController alloc]init];
-        XLFormRowDescriptor *des = [[XLFormRowDescriptor alloc]initWithTag:nil rowType:@"" title:nil];
-        des.value = self.message;
-        controller.rowDescriptor = des;
-        _navController = [[UINavigationController alloc]initWithRootViewController:controller];
-        controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
-        [self.window.rootViewController presentViewController:_navController animated:YES completion:nil];
-    }
-}
-
--(void)backAction:(id)sender
-{
-    if(_navController){
-        [_navController dismissViewControllerAnimated:YES completion:nil];
-    }
+    [self presentViewController:self.message];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -304,6 +289,8 @@ static NSString *const kStoreName = @"linkage.sqlite";
     [JPUSHService showLocalNotificationAtFront:notification identifierKey:nil];
 }
 
+#pragma mark - 帮助类
+
 // log NSSet with UTF8
 // if not ,log will be \Uxxx
 - (NSString *)logDic:(NSDictionary *)dic {
@@ -334,7 +321,7 @@ static NSString *const kStoreName = @"linkage.sqlite";
         NSData *tempData = [content dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:tempData options:NSJSONReadingMutableContainers error:nil];
         Message *message = (Message *)[MessageUtil modelFromJson:dic];
-        
+        message.introduction = dic[@"content"];
         [self notificationMessage:message];
     }
     @catch (NSException *exception) {
@@ -349,7 +336,37 @@ static NSString *const kStoreName = @"linkage.sqlite";
     localNotification.alertBody = message.introduction;
     localNotification.alertTitle = message.title;
     localNotification.alertAction = @"打开";
-    //[JPUSHService showLocalNotificationAtFront:localNotification identifierKey:nil];
+    WeakSelf
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:message.title message:message.introduction preferredStyle:UIAlertControllerStyleAlert];
+        [controller addAction:[UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:nil]];
+        [controller addAction:[UIAlertAction actionWithTitle:@"打开" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [weakSelf presentViewController:message];
+        }]];
+        [self.window.rootViewController presentViewController:controller animated:YES completion:nil];
+    }else{
+        [JPUSHService showLocalNotificationAtFront:localNotification identifierKey:nil];
+    }
+}
+    
+-(void)presentViewController:(Message *)message
+{
+    if(message) {
+        MessageDetailViewController *controller = [[MessageDetailViewController alloc]init];
+        XLFormRowDescriptor *des = [[XLFormRowDescriptor alloc]initWithTag:nil rowType:@"" title:nil];
+        des.value = message;
+        controller.rowDescriptor = des;
+        _navController = [[UINavigationController alloc]initWithRootViewController:controller];
+        controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
+        [self.window.rootViewController presentViewController:_navController animated:YES completion:nil];
+    }
+}
+
+-(void)backAction:(id)sender
+{
+    if(_navController){
+        [_navController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end
