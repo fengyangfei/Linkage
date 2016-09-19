@@ -259,15 +259,15 @@ static NSString *const kStoreName = @"linkage.sqlite";
     [JPUSHService handleRemoteNotification:userInfo];//这句注释掉，依然可收到消息
     NSLog(@"收到通知:%@", [self logDic:userInfo]);
     
-    NSString *title = [userInfo valueForKey:@"title"];//标题:Extras字段内容
+    //NSString *title = [userInfo valueForKey:@"title"];//标题:Extras字段内容
     NSString *messageId = [userInfo valueForKey:@"id"];//id:Extras字段内容
     NSDictionary *aps = [userInfo valueForKey:@"aps"];
-    NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
+    NSDictionary *content = [aps valueForKey:@"alert"]; //推送显示的内容
     // 取得Extras字段内容
     Message *message = [[Message alloc]init];
     message.messageId = messageId;
-    message.title = title;
-    message.introduction = content;
+    message.title = content[@"title"];
+    message.introduction = content[@"body"];
     self.message = message;
     [self notificationMessage:message];
 }
@@ -277,15 +277,15 @@ static NSString *const kStoreName = @"linkage.sqlite";
     NSLog(@"收到通知:%@", [self logDic:userInfo]);
     completionHandler(UIBackgroundFetchResultNewData);
     
-    NSString *title = [userInfo valueForKey:@"title"];//标题:Extras字段内容
+    //NSString *title = [userInfo valueForKey:@"title"];//标题:Extras字段内容
     NSString *messageId = [userInfo valueForKey:@"id"];//id:Extras字段内容
     NSDictionary *aps = [userInfo valueForKey:@"aps"];
-    NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
+    NSDictionary *content = [aps valueForKey:@"alert"]; //推送显示的内容
     // 取得Extras字段内容
     Message *message = [[Message alloc]init];
     message.messageId = messageId;
-    message.title = title;
-    message.introduction = content;
+    message.title = content[@"title"];
+    message.introduction = content[@"body"];
     self.message = message;
     [self notificationMessage:message];
 }
