@@ -269,6 +269,7 @@ static NSString *const kStoreName = @"linkage.sqlite";
     message.title = title;
     message.introduction = content;
     self.message = message;
+    [self notificationMessage:message];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
@@ -286,6 +287,7 @@ static NSString *const kStoreName = @"linkage.sqlite";
     message.title = title;
     message.introduction = content;
     self.message = message;
+    [self notificationMessage:message];
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
@@ -343,9 +345,11 @@ static NSString *const kStoreName = @"linkage.sqlite";
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:message.title message:message.introduction preferredStyle:UIAlertControllerStyleAlert];
         [controller addAction:[UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:nil]];
-        [controller addAction:[UIAlertAction actionWithTitle:@"打开" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [weakSelf presentViewController:message];
-        }]];
+        if (message && message.messageId) {
+            [controller addAction:[UIAlertAction actionWithTitle:@"打开" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [weakSelf presentViewController:message];
+            }]];
+        }
         [self.window.rootViewController presentViewController:controller animated:YES completion:nil];
     }else{
         [JPUSHService showLocalNotificationAtFront:localNotification identifierKey:nil];
