@@ -20,5 +20,6 @@
     #import "HJFormCell.h"
     #import "TRConstants.h"
     #import "LinkConstants.h"
+    #import "VcodeConstants.h"
     #import "TRThemeManager.h"
 #endif
