@@ -222,6 +222,7 @@
 		9A403E021E1B5CCB00829EC4 /* VCFavorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E011E1B5CCB00829EC4 /* VCFavorViewController.m */; };
 		9A403E081E1B5DB200829EC4 /* VCRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E071E1B5DB200829EC4 /* VCRank.m */; };
 		9A403E0B1E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E091E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld */; };
+		9A403E181E1B729800829EC4 /* VCRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E171E1B729800829EC4 /* VCRankModel.m */; };
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
@@ -697,6 +698,8 @@
 		9A403E071E1B5DB200829EC4 /* VCRank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRank.m; sourceTree = "<group>"; };
 		9A403E0A1E1B6D8F00829EC4 /* VcodeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VcodeModel.xcdatamodel; sourceTree = "<group>"; };
 		9A403E0C1E1B6ED600829EC4 /* VcodeModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VcodeModel2.xcdatamodel; sourceTree = "<group>"; };
+		9A403E161E1B729800829EC4 /* VCRankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRankModel.h; sourceTree = "<group>"; };
+		9A403E171E1B729800829EC4 /* VCRankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRankModel.m; sourceTree = "<group>"; };
 		9A49E6B61D07ACA600F51C2F /* HJFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFormCell.h; sourceTree = "<group>"; };
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
@@ -2038,6 +2041,8 @@
 		9A403E031E1B5D5B00829EC4 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				9A403E161E1B729800829EC4 /* VCRankModel.h */,
+				9A403E171E1B729800829EC4 /* VCRankModel.m */,
 				9A403E061E1B5DB200829EC4 /* VCRank.h */,
 				9A403E071E1B5DB200829EC4 /* VCRank.m */,
 			);
@@ -2468,6 +2473,7 @@
 				8B8B7BE61CCE4BA100080609 /* MessageTableCell.m in Sources */,
 				9A403DF91E1B5C7300829EC4 /* VCMineViewController.m in Sources */,
 				9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */,
+				9A403E181E1B729800829EC4 /* VCRankModel.m in Sources */,
 				8BA3E3E61CD489FA0047AC6B /* FavoriteUtil.m in Sources */,
 				9A95FF341C89731100C5F492 /* TRPopManager.m in Sources */,
 				8B8F26701C89C83D001B187E /* RegisterViewController.m in Sources */,
