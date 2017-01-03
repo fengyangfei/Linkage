@@ -6,8 +6,7 @@
 //  Copyright © 2017年 LA. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <XLForm/XLForm.h>
 
-@interface VCMineViewController : UIViewController
-
+@interface VCMineViewController : XLFormViewController
 @end

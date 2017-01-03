@@ -38,8 +38,36 @@
 
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
+    [self queryGlobalRank:completion];
+}
+
+//全球排行
++(void)queryGlobalRank:(void(^)(NSArray *models))completion
+{
     NSDictionary *parameter = @{@"deviceCode":@"123123123"};
     [[YGRestClient sharedInstance] postForObjectWithUrl:GlobalRankUrl form:parameter success:^(id responseObject) {
+        if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
+            NSError *error;
+            NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:responseObject error:&error];
+            if (error) {
+                NSLog(@"%@",error);
+            }
+            if (completion) {
+                completion(array);
+            }
+        }else{
+            completion(nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+//地区查询
++(void)queryLocalRank:(void(^)(NSArray *models))completion
+{
+    NSDictionary *parameter = @{@"deviceCode":@"123123123",@"countryCode":@"CN"};
+    [[YGRestClient sharedInstance] postForObjectWithUrl:CountryRankUrl form:parameter success:^(id responseObject) {
         if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
             NSError *error;
             NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:responseObject error:&error];

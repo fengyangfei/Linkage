@@ -7,6 +7,7 @@
 //
 
 #import "VCMineViewController.h"
+#import "MenuItem.h"
 
 @interface VCMineViewController ()
 
@@ -14,24 +15,60 @@
 
 @implementation VCMineViewController
 
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self initializeForm];
+    }
+    return self;
+}
+
+- (void)initializeForm
+{
+    XLFormDescriptor * form;
+    XLFormSectionDescriptor * section;
+    XLFormRowDescriptor * row;
+    
+    form = [XLFormDescriptor formDescriptorWithTitle:@"我的信息"];
+    
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:@""];
+    row.value = [MenuItem createItemWithTitle:@"头像"];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:@""];
+    row.value = [MenuItem createItemWithTitle:@"昵称"];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:@""];
+    row.value = [MenuItem createItemWithTitle:@"手机号码"];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:@""];
+    row.value = [MenuItem createItemWithTitle:@"性别"];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:@""];
+    row.value = [MenuItem createItemWithTitle:@"所属国家"];
+    [section addFormRow:row];
+    
+    self.form = form;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.tableView.sectionHeaderHeight = 20;
+    self.tableView.sectionFooterHeight = 0;
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 18)];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)inviteAction:(XLFormRowDescriptor *)sender
+{
+    [self deselectFormRow:sender];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
