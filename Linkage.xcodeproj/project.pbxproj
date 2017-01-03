@@ -224,6 +224,8 @@
 		9A403E0B1E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E091E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld */; };
 		9A403E181E1B729800829EC4 /* VCRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E171E1B729800829EC4 /* VCRankModel.m */; };
 		9A403E1B1E1B747E00829EC4 /* VCRankUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E1A1E1B747E00829EC4 /* VCRankUtil.m */; };
+		9A403E1E1E1B76EB00829EC4 /* VCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E1D1E1B76EB00829EC4 /* VCTabBarController.m */; };
+		9A403E221E1B785300829EC4 /* VCTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E211E1B785300829EC4 /* VCTutorialController.m */; };
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
@@ -703,6 +705,10 @@
 		9A403E171E1B729800829EC4 /* VCRankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRankModel.m; sourceTree = "<group>"; };
 		9A403E191E1B747E00829EC4 /* VCRankUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRankUtil.h; sourceTree = "<group>"; };
 		9A403E1A1E1B747E00829EC4 /* VCRankUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRankUtil.m; sourceTree = "<group>"; };
+		9A403E1C1E1B76EB00829EC4 /* VCTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTabBarController.h; sourceTree = "<group>"; };
+		9A403E1D1E1B76EB00829EC4 /* VCTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTabBarController.m; sourceTree = "<group>"; };
+		9A403E201E1B785300829EC4 /* VCTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTutorialController.h; sourceTree = "<group>"; };
+		9A403E211E1B785300829EC4 /* VCTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTutorialController.m; sourceTree = "<group>"; };
 		9A49E6B61D07ACA600F51C2F /* HJFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFormCell.h; sourceTree = "<group>"; };
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
@@ -1994,10 +2000,13 @@
 		9A403DF21E1B5C1700829EC4 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				9A403E1F1E1B782600829EC4 /* base */,
 				9A403DF31E1B5C1700829EC4 /* favor */,
 				9A403DF41E1B5C1700829EC4 /* hot */,
 				9A403DF51E1B5C1700829EC4 /* mine */,
 				9A403DF61E1B5C1700829EC4 /* rank */,
+				9A403E1C1E1B76EB00829EC4 /* VCTabBarController.h */,
+				9A403E1D1E1B76EB00829EC4 /* VCTabBarController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2066,6 +2075,15 @@
 			children = (
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		9A403E1F1E1B782600829EC4 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				9A403E201E1B785300829EC4 /* VCTutorialController.h */,
+				9A403E211E1B785300829EC4 /* VCTutorialController.m */,
+			);
+			path = base;
 			sourceTree = "<group>";
 		};
 		9A7D0E901CD885C400EE005F /* util */ = {
@@ -2495,6 +2513,7 @@
 				8BEC33CC1CA6A43E007B924B /* UIImageView+Cache.m in Sources */,
 				8B5DC62C1C79B8A700D29292 /* IFTTTRotationAnimation.m in Sources */,
 				9A403DFC1E1B5C8800829EC4 /* VCRankViewController.m in Sources */,
+				9A403E1E1E1B76EB00829EC4 /* VCTabBarController.m in Sources */,
 				8B5DC6251C79B8A700D29292 /* IFTTTHideAnimation.m in Sources */,
 				8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */,
 				8B5DC6351C79B8A700D29292 /* JRToast.m in Sources */,
@@ -2539,6 +2558,7 @@
 				8B44450D1C7C9EFE00160DC2 /* SDCollectionViewCell.m in Sources */,
 				9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */,
 				8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */,
+				9A403E221E1B785300829EC4 /* VCTutorialController.m in Sources */,
 				9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */,
 				9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */,
 				9A11F05C1CD041BA002E8F6F /* Driver.m in Sources */,

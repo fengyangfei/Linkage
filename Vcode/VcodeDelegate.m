@@ -7,8 +7,8 @@
 //
 
 #import "VcodeDelegate.h"
-#import "TutorialController.h"
-#import "LATabBarController.h"
+#import "VCTutorialController.h"
+#import "VCTabBarController.h"
 #import "UIColor+BFPaperColors.h"
 #import "MobClick.h"
 #import "UIImage+ImageWithColor.h"
@@ -56,13 +56,9 @@ static NSString *const kStoreName = @"vcode.sqlite";
     
     UIViewController *rooViewController;
     if (kNeedShowIntroduce) {
-        rooViewController = [TutorialController shareViewController];
+        rooViewController = [VCTutorialController shareViewController];
     }else{
-        if ([LoginUser shareInstance]) {
-            rooViewController = [[LATabBarController alloc]init];
-        }else{
-            rooViewController = [[LoginViewController alloc]init];
-        }
+        rooViewController = [[VCTabBarController alloc]init];
     }
     self.window.rootViewController = rooViewController;
     
