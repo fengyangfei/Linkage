@@ -36,22 +36,7 @@
     style.gradualChangeTitleColor = YES;
     // 设置附加按钮的背景图片
     
-    [VCCategoryUtil queryModelsFromServer:^(NSArray *models) {
-        NSLog(@"models - %@", models);
-    }];
-    self.titles = @[@"新闻头条",
-                    @"国际要闻",
-                    @"体育",
-                    @"中国足球",
-                    @"汽车",
-                    @"囧途旅游",
-                    @"幽默搞笑",
-                    @"视频",
-                    @"无厘头",
-                    @"美女图片",
-                    @"今日房价",
-                    @"头像",
-                    ];
+    self.titles = [VCCategoryUtil queryAllCategoryTitles];
     // 初始化
     ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
     // 这里可以设置头部视图的属性(背景色, 圆角, 背景图片...)

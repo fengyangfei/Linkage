@@ -46,4 +46,52 @@
     completion(array);
 }
 
+//数据库查询
++(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
+{
+    NSArray *managerObjects = [VCCategoryModel MR_findAllSortedBy:@"sort" ascending:YES inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:managerObjects.count];
+    for (NSManagedObject *manageObj in managerObjects) {
+        id<MTLJSONSerializing> model = [self modelFromManagedObject:manageObj];
+        [mutableArray addObject:model];
+    }
+    if (completion) {
+        completion([mutableArray copy]);
+    }
+}
+
++(void)syncCategory:(void(^)(NSArray *models))completion
+{
+    @weakify(self)
+    [self queryModelsFromServer:^(NSArray *models) {
+        @strongify(self)
+        for (id model in models) {
+            [self syncToDataBase:model completion:nil];
+        }
+        [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+            completion(models);
+        }];
+    }];
+}
+
++(NSArray *)queryAllCategoryTitles
+{
+    __block NSMutableArray *titles = [[NSMutableArray alloc]init];
+    void(^addToList)(NSArray *models) = ^(NSArray *models) {
+        for (VCCategory *model in models) {
+            [titles addObject:model.title];
+        }
+    };
+    [self queryModelsFromDataBase:^(NSArray *models) {
+        if (models.count == 0) {
+            [self syncCategory:^(NSArray *models) {
+                addToList(models);
+            }];
+        }else{
+            addToList(models);
+        }
+    }];
+    return [titles copy];
+}
+
 @end

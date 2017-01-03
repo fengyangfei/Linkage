@@ -12,6 +12,6 @@
 @property (nullable, nonatomic, copy) NSString *title;
 @property (nullable, nonatomic, copy) NSString *code;
 @property (nullable, nonatomic, copy) NSString *imageName;
-@property (nonatomic) int16_t sort;
+@property (nullable, nonatomic, retain) NSNumber *sort;
 
 @end

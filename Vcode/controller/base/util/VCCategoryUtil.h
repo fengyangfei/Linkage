@@ -10,4 +10,7 @@
 
 @interface VCCategoryUtil : ModelUtil
 
++(void)syncCategory:(void(^)(NSArray *models))completion;
++(NSArray *)queryAllCategoryTitles;
+
 @end
