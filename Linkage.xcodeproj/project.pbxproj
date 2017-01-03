@@ -157,6 +157,8 @@
 		8BEC33C61CA6160D007B924B /* AvatarFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C51CA6160D007B924B /* AvatarFormCell.m */; };
 		8BEC33CC1CA6A43E007B924B /* UIImageView+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33CB1CA6A43E007B924B /* UIImageView+Cache.m */; };
 		8BEEA7851CD3A7BB0088D70A /* AddressUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEEA7841CD3A7BB0088D70A /* AddressUtil.m */; };
+		8BFEBF6A1E1BC31D008A60D5 /* category.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBF681E1BC31D008A60D5 /* category.plist */; };
+		8BFEBF6B1E1BC31D008A60D5 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBF691E1BC31D008A60D5 /* country.plist */; };
 		9A04D2C81D0CF67C004C4FE1 /* AddStaffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2C71D0CF67C004C4FE1 /* AddStaffViewController.m */; };
 		9A04D2CC1D0CFBFE004C4FE1 /* StaffTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2CB1D0CFBFE004C4FE1 /* StaffTableViewCell.m */; };
 		9A04D2CF1D0D5C90004C4FE1 /* CompanyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2CE1D0D5C90004C4FE1 /* CompanyInfoViewController.m */; };
@@ -586,6 +588,8 @@
 		8BEC33CB1CA6A43E007B924B /* UIImageView+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cache.m"; sourceTree = "<group>"; };
 		8BEEA7831CD3A7BB0088D70A /* AddressUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressUtil.h; sourceTree = "<group>"; };
 		8BEEA7841CD3A7BB0088D70A /* AddressUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressUtil.m; sourceTree = "<group>"; };
+		8BFEBF681E1BC31D008A60D5 /* category.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = category.plist; sourceTree = "<group>"; };
+		8BFEBF691E1BC31D008A60D5 /* country.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = country.plist; sourceTree = "<group>"; };
 		9A04D2C61D0CF67C004C4FE1 /* AddStaffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddStaffViewController.h; sourceTree = "<group>"; };
 		9A04D2C71D0CF67C004C4FE1 /* AddStaffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddStaffViewController.m; sourceTree = "<group>"; };
 		9A04D2CA1D0CFBFE004C4FE1 /* StaffTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffTableViewCell.h; sourceTree = "<group>"; };
@@ -2055,6 +2059,8 @@
 		9A403E031E1B5D5B00829EC4 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				8BFEBF681E1BC31D008A60D5 /* category.plist */,
+				8BFEBF691E1BC31D008A60D5 /* country.plist */,
 				9A403E161E1B729800829EC4 /* VCRankModel.h */,
 				9A403E171E1B729800829EC4 /* VCRankModel.m */,
 				9A403E061E1B5DB200829EC4 /* VCRank.h */,
@@ -2379,12 +2385,14 @@
 				8BDBB7CA1C98509D00D60207 /* Company.bundle in Resources */,
 				9A23A30F1C7E8E7500FB5EB6 /* button-background@2x.png in Resources */,
 				9A23A3171C7E8E7500FB5EB6 /* tutorial_background_04@2x.jpg in Resources */,
+				8BFEBF6B1E1BC31D008A60D5 /* country.plist in Resources */,
 				8B5DC6421C79B8A700D29292 /* UMSCommentInputController.xib in Resources */,
 				8B5DC6481C79B8A700D29292 /* UMSShareListController.xib in Resources */,
 				9AFBE19E1D2F55DC004C0CC3 /* bobcat.ttf in Resources */,
 				9AEF89BD1CA1274600C5EB90 /* MJPhotoBrowser.bundle in Resources */,
 				8B5DC6451C79B8A700D29292 /* UMShareEditViewControlleriPad.xib in Resources */,
 				9A23A30C1C7E8E7500FB5EB6 /* background-gradient.png in Resources */,
+				8BFEBF6A1E1BC31D008A60D5 /* category.plist in Resources */,
 				8B5DC6411C79B8A700D29292 /* UMSCommentDetailController.xib in Resources */,
 				8B5DC6441C79B8A700D29292 /* UMShareEditViewController.xib in Resources */,
 				8B5DC6521C79B8A700D29292 /* zbar-back.png in Resources */,
