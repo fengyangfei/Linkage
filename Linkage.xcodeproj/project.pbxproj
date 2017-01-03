@@ -110,7 +110,6 @@
 		8B5DC6691C79BF6000D29292 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5DC6681C79BF6000D29292 /* CoreData.framework */; };
 		8B5DC66B1C79BFB700D29292 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5DC66A1C79BFB700D29292 /* QuickLook.framework */; };
 		8B5DC66D1C79BFCE00D29292 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5DC66C1C79BFCE00D29292 /* CoreLocation.framework */; };
-		8B5DC6701C79CB2C00D29292 /* LinkageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC66E1C79CB2C00D29292 /* LinkageModel.xcdatamodeld */; };
 		8B5DC6811C79D0DB00D29292 /* YGRestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC6801C79D0DB00D29292 /* YGRestClient.m */; };
 		8B6E17BA1D1FC80E00DBA897 /* ImageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6E17B91D1FC80E00DBA897 /* ImageInfoCell.m */; };
 		8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E31CA0436C00DBEB9F /* AddressViewController.m */; };
@@ -2647,7 +2646,6 @@
 				9A95FF051C83E74E00C5F492 /* MenuCell.m in Sources */,
 				8BA3E3C41CD450450047AC6B /* ModelUtil.m in Sources */,
 				9A11F0591CCF48F9002E8F6F /* LinkUtil.m in Sources */,
-				8B5DC6701C79CB2C00D29292 /* LinkageModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
