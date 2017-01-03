@@ -10,6 +10,8 @@
 #import "ZJScrollPageView.h"
 #import "VCHotChildViewController.h"
 
+#import "VCCategoryUtil.h"
+
 @interface VCHotViewController ()<ZJScrollPageViewDelegate>
 @property(strong, nonatomic)NSArray<NSString *> *titles;
 @end
@@ -33,6 +35,10 @@
     // 颜色渐变
     style.gradualChangeTitleColor = YES;
     // 设置附加按钮的背景图片
+    
+    [VCCategoryUtil queryModelsFromServer:^(NSArray *models) {
+        NSLog(@"models - %@", models);
+    }];
     self.titles = @[@"新闻头条",
                     @"国际要闻",
                     @"体育",

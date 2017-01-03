@@ -157,8 +157,6 @@
 		8BEC33C61CA6160D007B924B /* AvatarFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C51CA6160D007B924B /* AvatarFormCell.m */; };
 		8BEC33CC1CA6A43E007B924B /* UIImageView+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33CB1CA6A43E007B924B /* UIImageView+Cache.m */; };
 		8BEEA7851CD3A7BB0088D70A /* AddressUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEEA7841CD3A7BB0088D70A /* AddressUtil.m */; };
-		8BFEBF6A1E1BC31D008A60D5 /* category.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBF681E1BC31D008A60D5 /* category.plist */; };
-		8BFEBF6B1E1BC31D008A60D5 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBF691E1BC31D008A60D5 /* country.plist */; };
 		8BFEBF7E1E1BD2D6008A60D5 /* UIView+ZJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBF6E1E1BD2D6008A60D5 /* UIView+ZJFrame.m */; };
 		8BFEBF7F1E1BD2D6008A60D5 /* UIViewController+ZJScrollPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBF701E1BD2D6008A60D5 /* UIViewController+ZJScrollPageController.m */; };
 		8BFEBF801E1BD2D6008A60D5 /* ZJCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBF721E1BD2D6008A60D5 /* ZJCollectionView.m */; };
@@ -168,6 +166,11 @@
 		8BFEBF841E1BD2D6008A60D5 /* ZJSegmentStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBF7B1E1BD2D6008A60D5 /* ZJSegmentStyle.m */; };
 		8BFEBF851E1BD2D6008A60D5 /* ZJTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBF7D1E1BD2D6008A60D5 /* ZJTitleView.m */; };
 		8BFEBF881E1BD61C008A60D5 /* VCHotChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBF871E1BD61C008A60D5 /* VCHotChildViewController.m */; };
+		8BFEBF8C1E1BDAD2008A60D5 /* category.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBF8A1E1BDAD2008A60D5 /* category.plist */; };
+		8BFEBF8D1E1BDAD2008A60D5 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBF8B1E1BDAD2008A60D5 /* country.plist */; };
+		8BFEBF901E1BDB06008A60D5 /* VCCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBF8F1E1BDB06008A60D5 /* VCCategory.m */; };
+		8BFEBF931E1BDCB6008A60D5 /* VCCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBF921E1BDCB6008A60D5 /* VCCategoryModel.m */; };
+		8BFEBF971E1BDD3F008A60D5 /* VCCategoryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBF961E1BDD3F008A60D5 /* VCCategoryUtil.m */; };
 		9A04D2C81D0CF67C004C4FE1 /* AddStaffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2C71D0CF67C004C4FE1 /* AddStaffViewController.m */; };
 		9A04D2CC1D0CFBFE004C4FE1 /* StaffTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2CB1D0CFBFE004C4FE1 /* StaffTableViewCell.m */; };
 		9A04D2CF1D0D5C90004C4FE1 /* CompanyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04D2CE1D0D5C90004C4FE1 /* CompanyInfoViewController.m */; };
@@ -597,8 +600,6 @@
 		8BEC33CB1CA6A43E007B924B /* UIImageView+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cache.m"; sourceTree = "<group>"; };
 		8BEEA7831CD3A7BB0088D70A /* AddressUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressUtil.h; sourceTree = "<group>"; };
 		8BEEA7841CD3A7BB0088D70A /* AddressUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressUtil.m; sourceTree = "<group>"; };
-		8BFEBF681E1BC31D008A60D5 /* category.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = category.plist; sourceTree = "<group>"; };
-		8BFEBF691E1BC31D008A60D5 /* country.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = country.plist; sourceTree = "<group>"; };
 		8BFEBF6D1E1BD2D6008A60D5 /* UIView+ZJFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZJFrame.h"; sourceTree = "<group>"; };
 		8BFEBF6E1E1BD2D6008A60D5 /* UIView+ZJFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZJFrame.m"; sourceTree = "<group>"; };
 		8BFEBF6F1E1BD2D6008A60D5 /* UIViewController+ZJScrollPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZJScrollPageController.h"; sourceTree = "<group>"; };
@@ -618,6 +619,14 @@
 		8BFEBF7D1E1BD2D6008A60D5 /* ZJTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTitleView.m; sourceTree = "<group>"; };
 		8BFEBF861E1BD61C008A60D5 /* VCHotChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHotChildViewController.h; sourceTree = "<group>"; };
 		8BFEBF871E1BD61C008A60D5 /* VCHotChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHotChildViewController.m; sourceTree = "<group>"; };
+		8BFEBF8A1E1BDAD2008A60D5 /* category.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = category.plist; sourceTree = "<group>"; };
+		8BFEBF8B1E1BDAD2008A60D5 /* country.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = country.plist; sourceTree = "<group>"; };
+		8BFEBF8E1E1BDB06008A60D5 /* VCCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCategory.h; sourceTree = "<group>"; };
+		8BFEBF8F1E1BDB06008A60D5 /* VCCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCategory.m; sourceTree = "<group>"; };
+		8BFEBF911E1BDCB6008A60D5 /* VCCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCategoryModel.h; sourceTree = "<group>"; };
+		8BFEBF921E1BDCB6008A60D5 /* VCCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCategoryModel.m; sourceTree = "<group>"; };
+		8BFEBF951E1BDD3F008A60D5 /* VCCategoryUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCategoryUtil.h; sourceTree = "<group>"; };
+		8BFEBF961E1BDD3F008A60D5 /* VCCategoryUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCategoryUtil.m; sourceTree = "<group>"; };
 		9A04D2C61D0CF67C004C4FE1 /* AddStaffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddStaffViewController.h; sourceTree = "<group>"; };
 		9A04D2C71D0CF67C004C4FE1 /* AddStaffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddStaffViewController.m; sourceTree = "<group>"; };
 		9A04D2CA1D0CFBFE004C4FE1 /* StaffTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffTableViewCell.h; sourceTree = "<group>"; };
@@ -1791,6 +1800,28 @@
 			path = ZJScrollPageView;
 			sourceTree = "<group>";
 		};
+		8BFEBF891E1BDAD2008A60D5 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8BFEBF8A1E1BDAD2008A60D5 /* category.plist */,
+				8BFEBF8B1E1BDAD2008A60D5 /* country.plist */,
+				8BFEBF8E1E1BDB06008A60D5 /* VCCategory.h */,
+				8BFEBF8F1E1BDB06008A60D5 /* VCCategory.m */,
+				8BFEBF911E1BDCB6008A60D5 /* VCCategoryModel.h */,
+				8BFEBF921E1BDCB6008A60D5 /* VCCategoryModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8BFEBF941E1BDD17008A60D5 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				8BFEBF951E1BDD3F008A60D5 /* VCCategoryUtil.h */,
+				8BFEBF961E1BDD3F008A60D5 /* VCCategoryUtil.m */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		9A04D2C91D0CFBEF004C4FE1 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -2114,8 +2145,6 @@
 		9A403E031E1B5D5B00829EC4 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				8BFEBF681E1BC31D008A60D5 /* category.plist */,
-				8BFEBF691E1BC31D008A60D5 /* country.plist */,
 				9A403E161E1B729800829EC4 /* VCRankModel.h */,
 				9A403E171E1B729800829EC4 /* VCRankModel.m */,
 				9A403E061E1B5DB200829EC4 /* VCRank.h */,
@@ -2145,6 +2174,8 @@
 		9A403E1F1E1B782600829EC4 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				8BFEBF941E1BDD17008A60D5 /* util */,
+				8BFEBF891E1BDAD2008A60D5 /* model */,
 				9A403E201E1B785300829EC4 /* VCTutorialController.h */,
 				9A403E211E1B785300829EC4 /* VCTutorialController.m */,
 			);
@@ -2440,14 +2471,14 @@
 				8BDBB7CA1C98509D00D60207 /* Company.bundle in Resources */,
 				9A23A30F1C7E8E7500FB5EB6 /* button-background@2x.png in Resources */,
 				9A23A3171C7E8E7500FB5EB6 /* tutorial_background_04@2x.jpg in Resources */,
-				8BFEBF6B1E1BC31D008A60D5 /* country.plist in Resources */,
+				8BFEBF8D1E1BDAD2008A60D5 /* country.plist in Resources */,
 				8B5DC6421C79B8A700D29292 /* UMSCommentInputController.xib in Resources */,
 				8B5DC6481C79B8A700D29292 /* UMSShareListController.xib in Resources */,
 				9AFBE19E1D2F55DC004C0CC3 /* bobcat.ttf in Resources */,
 				9AEF89BD1CA1274600C5EB90 /* MJPhotoBrowser.bundle in Resources */,
 				8B5DC6451C79B8A700D29292 /* UMShareEditViewControlleriPad.xib in Resources */,
 				9A23A30C1C7E8E7500FB5EB6 /* background-gradient.png in Resources */,
-				8BFEBF6A1E1BC31D008A60D5 /* category.plist in Resources */,
+				8BFEBF8C1E1BDAD2008A60D5 /* category.plist in Resources */,
 				8B5DC6411C79B8A700D29292 /* UMSCommentDetailController.xib in Resources */,
 				8B5DC6441C79B8A700D29292 /* UMShareEditViewController.xib in Resources */,
 				8B5DC6521C79B8A700D29292 /* zbar-back.png in Resources */,
@@ -2535,6 +2566,7 @@
 				8BA3E3E31CD489A50047AC6B /* FavoriteModel.m in Sources */,
 				8B2D18D11D3101BC00A9183E /* WXApiResponseHandler.m in Sources */,
 				9ACEBCAA1C9BF25F0000ACBF /* TimerManager.m in Sources */,
+				8BFEBF971E1BDD3F008A60D5 /* VCCategoryUtil.m in Sources */,
 				9A04D2CC1D0CFBFE004C4FE1 /* StaffTableViewCell.m in Sources */,
 				9A403E0B1E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld in Sources */,
 				9A04D2CF1D0D5C90004C4FE1 /* CompanyInfoViewController.m in Sources */,
@@ -2641,6 +2673,7 @@
 				8B5DC6361C79B8A700D29292 /* TRTheme.m in Sources */,
 				9A04D2D31D0E48A7004C4FE1 /* CompanyUtil.m in Sources */,
 				8B44450F1C7C9EFE00160DC2 /* UIView+SDExtension.m in Sources */,
+				8BFEBF931E1BDCB6008A60D5 /* VCCategoryModel.m in Sources */,
 				8B44450C1C7C9EFE00160DC2 /* TAPageControl.m in Sources */,
 				8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */,
 				8B5DC63C1C79B8A700D29292 /* UIImage+TRTheme.m in Sources */,
@@ -2685,6 +2718,7 @@
 				8B8284891CA57EA9001B36C1 /* Company.m in Sources */,
 				8B986F6C1CC50D7A002DDA68 /* AddCarViewController.m in Sources */,
 				9A403E021E1B5CCB00829EC4 /* VCFavorViewController.m in Sources */,
+				8BFEBF901E1BDB06008A60D5 /* VCCategory.m in Sources */,
 				8B4221201CA42C6900F58D77 /* InvitationViewController.m in Sources */,
 				9A403DF11E1B3A4B00829EC4 /* VcodeDelegate.m in Sources */,
 				9A95FF411C89824F00C5F492 /* UIViewController+TRImagePicker.m in Sources */,
