@@ -8,6 +8,7 @@
 
 #import "VCRankViewController.h"
 #import "VCRankUtil.h"
+#import "VCRankTableCell.h"
 
 @interface VCRankViewController ()
 
@@ -42,6 +43,11 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
+    for (id model in models) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:VCRankDescriporType];
+        row.value = model;
+        [section addFormRow:row];
+    }
 
     self.form = form;
 }

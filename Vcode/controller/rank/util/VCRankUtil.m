@@ -16,6 +16,26 @@
 +(Class)modelClass{ return [VCRank class]; }
 +(Class)managedObjectClass{ return [VCRankModel class];}
 
++(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion
+{
+    NSError *error;
+    VCRank *rank = (VCRank *)model;
+    if (rank.gid) {
+        VCRankModel *existModel = [self.managedObjectClass MR_findFirstByAttribute:@"gid" withValue:rank.gid inContext:[NSManagedObjectContext MR_defaultContext]];
+        if (existModel) {
+            [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+        }
+        VCRankModel *addModel = [MTLManagedObjectAdapter managedObjectFromModel:rank insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
+        if (addModel && !error) {
+            if (completion) {
+                completion();
+            }
+        }else{
+            NSLog(@"同步到数据库失败 - %@",error);
+        }
+    }
+}
+
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
     NSDictionary *parameter = @{@"deviceCode":@"123123123"};

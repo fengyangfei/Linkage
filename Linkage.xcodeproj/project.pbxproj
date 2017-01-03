@@ -225,6 +225,7 @@
 		9A403E1B1E1B747E00829EC4 /* VCRankUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E1A1E1B747E00829EC4 /* VCRankUtil.m */; };
 		9A403E1E1E1B76EB00829EC4 /* VCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E1D1E1B76EB00829EC4 /* VCTabBarController.m */; };
 		9A403E221E1B785300829EC4 /* VCTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E211E1B785300829EC4 /* VCTutorialController.m */; };
+		9A403E251E1B900E00829EC4 /* VCRankTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E241E1B900E00829EC4 /* VCRankTableCell.m */; };
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
@@ -708,6 +709,8 @@
 		9A403E1D1E1B76EB00829EC4 /* VCTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTabBarController.m; sourceTree = "<group>"; };
 		9A403E201E1B785300829EC4 /* VCTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTutorialController.h; sourceTree = "<group>"; };
 		9A403E211E1B785300829EC4 /* VCTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTutorialController.m; sourceTree = "<group>"; };
+		9A403E231E1B900E00829EC4 /* VCRankTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRankTableCell.h; sourceTree = "<group>"; };
+		9A403E241E1B900E00829EC4 /* VCRankTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRankTableCell.m; sourceTree = "<group>"; };
 		9A49E6B61D07ACA600F51C2F /* HJFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFormCell.h; sourceTree = "<group>"; };
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
@@ -2072,6 +2075,8 @@
 		9A403E051E1B5D5B00829EC4 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				9A403E231E1B900E00829EC4 /* VCRankTableCell.h */,
+				9A403E241E1B900E00829EC4 /* VCRankTableCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2516,6 +2521,7 @@
 				8B5DC6251C79B8A700D29292 /* IFTTTHideAnimation.m in Sources */,
 				8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */,
 				8B5DC6351C79B8A700D29292 /* JRToast.m in Sources */,
+				9A403E251E1B900E00829EC4 /* VCRankTableCell.m in Sources */,
 				9A11F05F1CD04753002E8F6F /* AddDriverViewController.m in Sources */,
 				8B5DC6391C79B8A700D29292 /* TRThemeManager.m in Sources */,
 				9AEF89BE1CA1274600C5EB90 /* MJPhotoBrowser.m in Sources */,
