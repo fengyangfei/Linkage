@@ -1,4 +1,5 @@
 platform :ios, "7.0"
+target 'Linkage' do
 pod "AFNetworking", "2.5.4"
 pod 'Masonry'
 pod "MagicalRecord","~> 2.3.0"
@@ -17,3 +18,4 @@ pod 'YLGIFImage'
 pod 'Mantle'
 pod 'ReactiveCocoa'
 pod 'FlatUIKit'
+end
