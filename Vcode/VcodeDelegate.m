@@ -29,7 +29,7 @@
 #import "MessageUtil.h"
 #import "MessageDetailViewController.h"
 
-static NSString *const kStoreName = @"linkage.sqlite";
+static NSString *const kStoreName = @"vcode.sqlite";
 
 @interface VcodeDelegate ()
 

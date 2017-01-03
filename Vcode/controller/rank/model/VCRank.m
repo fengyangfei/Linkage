@@ -7,6 +7,7 @@
 //
 
 #import "VCRank.h"
+#import "VCRankModel.h"
 
 @implementation VCRank
 
@@ -25,7 +26,7 @@
 #pragma mark - MTLManagedObjectSerializing
 + (NSString *)managedObjectEntityName
 {
-    return NSStringFromClass([self class]);
+    return NSStringFromClass([VCRankModel class]);
 }
 
 + (NSDictionary *)managedObjectKeysByPropertyKey

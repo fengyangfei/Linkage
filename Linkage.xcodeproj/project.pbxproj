@@ -223,6 +223,7 @@
 		9A403E081E1B5DB200829EC4 /* VCRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E071E1B5DB200829EC4 /* VCRank.m */; };
 		9A403E0B1E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E091E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld */; };
 		9A403E181E1B729800829EC4 /* VCRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E171E1B729800829EC4 /* VCRankModel.m */; };
+		9A403E1B1E1B747E00829EC4 /* VCRankUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E1A1E1B747E00829EC4 /* VCRankUtil.m */; };
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
@@ -700,6 +701,8 @@
 		9A403E0C1E1B6ED600829EC4 /* VcodeModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VcodeModel2.xcdatamodel; sourceTree = "<group>"; };
 		9A403E161E1B729800829EC4 /* VCRankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRankModel.h; sourceTree = "<group>"; };
 		9A403E171E1B729800829EC4 /* VCRankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRankModel.m; sourceTree = "<group>"; };
+		9A403E191E1B747E00829EC4 /* VCRankUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRankUtil.h; sourceTree = "<group>"; };
+		9A403E1A1E1B747E00829EC4 /* VCRankUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRankUtil.m; sourceTree = "<group>"; };
 		9A49E6B61D07ACA600F51C2F /* HJFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFormCell.h; sourceTree = "<group>"; };
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
@@ -2052,6 +2055,8 @@
 		9A403E041E1B5D5B00829EC4 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				9A403E191E1B747E00829EC4 /* VCRankUtil.h */,
+				9A403E1A1E1B747E00829EC4 /* VCRankUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -2457,6 +2462,7 @@
 				8B5DC61D1C79B8A700D29292 /* IFTTTAnimator.m in Sources */,
 				8B5DC6291C79B8A700D29292 /* IFTTTLayerStrokeStartAnimation.m in Sources */,
 				8BE25B101CC7D0540073BD8D /* Base64.m in Sources */,
+				9A403E1B1E1B747E00829EC4 /* VCRankUtil.m in Sources */,
 				8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */,
 				9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */,
 				8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */,
