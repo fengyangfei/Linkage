@@ -216,6 +216,12 @@
 		9A2F5C521CE4015000E7E2DD /* SearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C511CE4015000E7E2DD /* SearchViewModel.m */; };
 		9A2F5C551CE4717800E7E2DD /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F5C541CE4717800E7E2DD /* OrderCell.m */; };
 		9A403DF11E1B3A4B00829EC4 /* VcodeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403B031E1B3A4800829EC4 /* VcodeDelegate.m */; };
+		9A403DF91E1B5C7300829EC4 /* VCMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403DF81E1B5C7300829EC4 /* VCMineViewController.m */; };
+		9A403DFC1E1B5C8800829EC4 /* VCRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403DFB1E1B5C8800829EC4 /* VCRankViewController.m */; };
+		9A403DFF1E1B5CA900829EC4 /* VCHotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403DFE1E1B5CA900829EC4 /* VCHotViewController.m */; };
+		9A403E021E1B5CCB00829EC4 /* VCFavorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E011E1B5CCB00829EC4 /* VCFavorViewController.m */; };
+		9A403E081E1B5DB200829EC4 /* VCRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E071E1B5DB200829EC4 /* VCRank.m */; };
+		9A403E0B1E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E091E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld */; };
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
@@ -679,6 +685,18 @@
 		9A4037F11E1B3A4500829EC4 /* VcodeConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VcodeConstants.h; sourceTree = "<group>"; };
 		9A403B021E1B3A4800829EC4 /* VcodeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VcodeDelegate.h; sourceTree = "<group>"; };
 		9A403B031E1B3A4800829EC4 /* VcodeDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VcodeDelegate.m; sourceTree = "<group>"; };
+		9A403DF71E1B5C7300829EC4 /* VCMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMineViewController.h; sourceTree = "<group>"; };
+		9A403DF81E1B5C7300829EC4 /* VCMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMineViewController.m; sourceTree = "<group>"; };
+		9A403DFA1E1B5C8800829EC4 /* VCRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRankViewController.h; sourceTree = "<group>"; };
+		9A403DFB1E1B5C8800829EC4 /* VCRankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRankViewController.m; sourceTree = "<group>"; };
+		9A403DFD1E1B5CA900829EC4 /* VCHotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHotViewController.h; sourceTree = "<group>"; };
+		9A403DFE1E1B5CA900829EC4 /* VCHotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHotViewController.m; sourceTree = "<group>"; };
+		9A403E001E1B5CCB00829EC4 /* VCFavorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFavorViewController.h; sourceTree = "<group>"; };
+		9A403E011E1B5CCB00829EC4 /* VCFavorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFavorViewController.m; sourceTree = "<group>"; };
+		9A403E061E1B5DB200829EC4 /* VCRank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRank.h; sourceTree = "<group>"; };
+		9A403E071E1B5DB200829EC4 /* VCRank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRank.m; sourceTree = "<group>"; };
+		9A403E0A1E1B6D8F00829EC4 /* VcodeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VcodeModel.xcdatamodel; sourceTree = "<group>"; };
+		9A403E0C1E1B6ED600829EC4 /* VcodeModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VcodeModel2.xcdatamodel; sourceTree = "<group>"; };
 		9A49E6B61D07ACA600F51C2F /* HJFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFormCell.h; sourceTree = "<group>"; };
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
@@ -1950,9 +1968,11 @@
 		9A4037EF1E1B3A4500829EC4 /* Vcode */ = {
 			isa = PBXGroup;
 			children = (
+				9A403DF21E1B5C1700829EC4 /* controller */,
 				9A4037F01E1B3A4500829EC4 /* common */,
 				9A403B021E1B3A4800829EC4 /* VcodeDelegate.h */,
 				9A403B031E1B3A4800829EC4 /* VcodeDelegate.m */,
+				9A403E091E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld */,
 			);
 			path = Vcode;
 			sourceTree = "<group>";
@@ -1963,6 +1983,79 @@
 				9A4037F11E1B3A4500829EC4 /* VcodeConstants.h */,
 			);
 			path = common;
+			sourceTree = "<group>";
+		};
+		9A403DF21E1B5C1700829EC4 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				9A403DF31E1B5C1700829EC4 /* favor */,
+				9A403DF41E1B5C1700829EC4 /* hot */,
+				9A403DF51E1B5C1700829EC4 /* mine */,
+				9A403DF61E1B5C1700829EC4 /* rank */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		9A403DF31E1B5C1700829EC4 /* favor */ = {
+			isa = PBXGroup;
+			children = (
+				9A403E001E1B5CCB00829EC4 /* VCFavorViewController.h */,
+				9A403E011E1B5CCB00829EC4 /* VCFavorViewController.m */,
+			);
+			path = favor;
+			sourceTree = "<group>";
+		};
+		9A403DF41E1B5C1700829EC4 /* hot */ = {
+			isa = PBXGroup;
+			children = (
+				9A403DFD1E1B5CA900829EC4 /* VCHotViewController.h */,
+				9A403DFE1E1B5CA900829EC4 /* VCHotViewController.m */,
+			);
+			path = hot;
+			sourceTree = "<group>";
+		};
+		9A403DF51E1B5C1700829EC4 /* mine */ = {
+			isa = PBXGroup;
+			children = (
+				9A403DF71E1B5C7300829EC4 /* VCMineViewController.h */,
+				9A403DF81E1B5C7300829EC4 /* VCMineViewController.m */,
+			);
+			path = mine;
+			sourceTree = "<group>";
+		};
+		9A403DF61E1B5C1700829EC4 /* rank */ = {
+			isa = PBXGroup;
+			children = (
+				9A403E031E1B5D5B00829EC4 /* model */,
+				9A403E041E1B5D5B00829EC4 /* util */,
+				9A403E051E1B5D5B00829EC4 /* view */,
+				9A403DFA1E1B5C8800829EC4 /* VCRankViewController.h */,
+				9A403DFB1E1B5C8800829EC4 /* VCRankViewController.m */,
+			);
+			path = rank;
+			sourceTree = "<group>";
+		};
+		9A403E031E1B5D5B00829EC4 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9A403E061E1B5DB200829EC4 /* VCRank.h */,
+				9A403E071E1B5DB200829EC4 /* VCRank.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		9A403E041E1B5D5B00829EC4 /* util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		9A403E051E1B5D5B00829EC4 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		9A7D0E901CD885C400EE005F /* util */ = {
@@ -2348,6 +2441,7 @@
 				8B2D18D11D3101BC00A9183E /* WXApiResponseHandler.m in Sources */,
 				9ACEBCAA1C9BF25F0000ACBF /* TimerManager.m in Sources */,
 				9A04D2CC1D0CFBFE004C4FE1 /* StaffTableViewCell.m in Sources */,
+				9A403E0B1E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld in Sources */,
 				9A04D2CF1D0D5C90004C4FE1 /* CompanyInfoViewController.m in Sources */,
 				9A126DE71CD1DE9000648184 /* CarViewController.m in Sources */,
 				8B5DC6201C79B8A700D29292 /* IFTTTConstraintMultiplierAnimation.m in Sources */,
@@ -2372,6 +2466,7 @@
 				9A23A3201C7E8EA900FB5EB6 /* ICETutorialPage.m in Sources */,
 				9AEF89C11CA1274600C5EB90 /* MJPhotoToolbar.m in Sources */,
 				8B8B7BE61CCE4BA100080609 /* MessageTableCell.m in Sources */,
+				9A403DF91E1B5C7300829EC4 /* VCMineViewController.m in Sources */,
 				9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */,
 				8BA3E3E61CD489FA0047AC6B /* FavoriteUtil.m in Sources */,
 				9A95FF341C89731100C5F492 /* TRPopManager.m in Sources */,
@@ -2387,6 +2482,7 @@
 				9A95FF151C891CFB00C5F492 /* BillViewController.m in Sources */,
 				8BEC33CC1CA6A43E007B924B /* UIImageView+Cache.m in Sources */,
 				8B5DC62C1C79B8A700D29292 /* IFTTTRotationAnimation.m in Sources */,
+				9A403DFC1E1B5C8800829EC4 /* VCRankViewController.m in Sources */,
 				8B5DC6251C79B8A700D29292 /* IFTTTHideAnimation.m in Sources */,
 				8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */,
 				8B5DC6351C79B8A700D29292 /* JRToast.m in Sources */,
@@ -2407,6 +2503,7 @@
 				9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */,
 				8B5DC6281C79B8A700D29292 /* IFTTTLayerStrokeEndAnimation.m in Sources */,
 				8B2D18D01D3101BC00A9183E /* WXApiRequestHandler.m in Sources */,
+				9A403E081E1B5DB200829EC4 /* VCRank.m in Sources */,
 				8B5DC6371C79B8A700D29292 /* TRThemeBaseViewController.m in Sources */,
 				9AF476D11D1B75E300A905A0 /* XLFormValidator+Regex.m in Sources */,
 				8BA3E3DD1CD487490047AC6B /* Favorite.m in Sources */,
@@ -2442,6 +2539,7 @@
 				8B5DC63C1C79B8A700D29292 /* UIImage+TRTheme.m in Sources */,
 				8B5DC6221C79B8A700D29292 /* IFTTTEasingFunction.m in Sources */,
 				9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */,
+				9A403DFF1E1B5CA900829EC4 /* VCHotViewController.m in Sources */,
 				9AEF89C61CA2907D00C5EB90 /* Address.m in Sources */,
 				9A2F5C341CE16B9D00E7E2DD /* TaskCell.m in Sources */,
 				9A95FF091C858B0E00C5F492 /* SettingViewController.m in Sources */,
@@ -2478,6 +2576,7 @@
 				8B00603C1CABFABC001B0FC9 /* MTLManagedObjectAdapter.m in Sources */,
 				8B8284891CA57EA9001B36C1 /* Company.m in Sources */,
 				8B986F6C1CC50D7A002DDA68 /* AddCarViewController.m in Sources */,
+				9A403E021E1B5CCB00829EC4 /* VCFavorViewController.m in Sources */,
 				8B4221201CA42C6900F58D77 /* InvitationViewController.m in Sources */,
 				9A403DF11E1B3A4B00829EC4 /* VcodeDelegate.m in Sources */,
 				9A95FF411C89824F00C5F492 /* UIViewController+TRImagePicker.m in Sources */,
@@ -2728,6 +2827,17 @@
 			);
 			currentVersion = 8B732BE11D504D0400CE8D41 /* LinkageModel7.xcdatamodel */;
 			path = LinkageModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		9A403E091E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9A403E0C1E1B6ED600829EC4 /* VcodeModel2.xcdatamodel */,
+				9A403E0A1E1B6D8F00829EC4 /* VcodeModel.xcdatamodel */,
+			);
+			currentVersion = 9A403E0C1E1B6ED600829EC4 /* VcodeModel2.xcdatamodel */;
+			path = VcodeModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

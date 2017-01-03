@@ -9,7 +9,7 @@
 #ifndef VcodeConstants_h
 #define VcodeConstants_h
 
-#define VBaseUrl @"http://10.24.49.7:8007"
+#define VBaseUrl @"http://120.24.49.7:8007"
 //点赞
 #define AddLikeUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=like&op=addLike",VBaseUrl]
 //取消点赞
