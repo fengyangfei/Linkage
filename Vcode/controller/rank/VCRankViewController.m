@@ -7,31 +7,66 @@
 //
 
 #import "VCRankViewController.h"
+#import "VCRankUtil.h"
 
 @interface VCRankViewController ()
 
 @end
 
 @implementation VCRankViewController
+@synthesize tableView = _tableView;
 
-- (void)viewDidLoad {
+-(void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 0.1)];
+    self.tableView.tableFooterView = [[UIView alloc]init];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(Class)modelUtilClass
+{
+    return [VCRankUtil class];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)setupNavigationItem
+{
 }
-*/
 
+- (void)initializeForm:(NSArray *)models
+{
+    XLFormDescriptor * form;
+    XLFormSectionDescriptor * section;
+    XLFormRowDescriptor * row;
+    
+    form = [XLFormDescriptor formDescriptorWithTitle:@""];
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+
+    self.form = form;
+}
+
+-(UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    }
+    return _tableView;
+}
+
+//重写父类方法
+#pragma mark - UITableViewDataSource
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete){
+        XLFormRowDescriptor * row = [self.form formRowAtIndex:indexPath];
+        [row.sectionDescriptor removeFormRowAtIndex:indexPath.row];
+    }
+}
 @end

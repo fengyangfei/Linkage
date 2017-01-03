@@ -509,7 +509,7 @@ NSString* __GetMethodName(HTTPRequestMethod method) {
         }
         
         //[SVProgressHUD dismiss];
-        if (statusCode == 0) {
+        if (statusCode == 1) {
             iLog(@"URL：%@\r\n服务成功返回结果：%@", operation.request.URL, responseObject);
             if (success) {success(result);}
         } else if (statusCode == 10){//未登录或登录超时
@@ -754,7 +754,7 @@ NSString* __GetMethodName(HTTPRequestMethod method) {
         responseSerializer = [AFJSONResponseSerializer serializer];
         responseSerializer.removesKeysWithNullValues = YES;//剔除json中的空属性
         
-        responseSerializer.acceptableContentTypes = [responseSerializer.acceptableContentTypes setByAddingObjectsFromArray:@[@"text/plain", @"application/x-www-form-urlencoded"]];
+        responseSerializer.acceptableContentTypes = [responseSerializer.acceptableContentTypes setByAddingObjectsFromArray:@[@"text/plain",@"text/html", @"application/x-www-form-urlencoded"]];
     });
     return responseSerializer;
 }
