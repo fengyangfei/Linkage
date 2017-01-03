@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16B2555" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="VCCategory" representedClassName="VCCategory" syncable="YES">
+    <entity name="VCCategoryModel" representedClassName="VCCategoryModel" syncable="YES">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sort" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -25,6 +25,6 @@
     </entity>
     <elements>
         <element name="VCRankModel" positionX="-63" positionY="-18" width="128" height="270"/>
-        <element name="VCCategory" positionX="-63" positionY="99" width="128" height="105"/>
+        <element name="VCCategoryModel" positionX="-63" positionY="99" width="128" height="105"/>
     </elements>
 </model>
