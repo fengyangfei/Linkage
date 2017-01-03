@@ -8,10 +8,9 @@
 
 #import "VCTabBarController.h"
 #import "UIColor+BFPaperColors.h"
-#import "MainViewController.h"
-#import "BillViewController.h"
-#import "MineViewController.h"
-#import "MessageViewController.h"
+#import "VCHotViewController.h"
+#import "VCFavorViewController.h"
+#import "VCMineViewController.h"
 #import "VCRankViewController.h"
 
 @interface VCTabBarController ()
@@ -37,9 +36,9 @@
 
 - (void)setupUI
 {
-    MainViewController *mainViewController = ({
+    UIViewController *mainViewController = ({
         NSString *title = @"推荐";
-        MainViewController *viewController = [[MainViewController alloc] init];
+        VCHotViewController *viewController = [[VCHotViewController alloc] init];
         viewController.view.backgroundColor = [UIColor paperColorCyan400];
         viewController.title = title;
         viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"icon_tab_shouye_normal"] selectedImage:[UIImage imageNamed:@"icon_tab_shouye_light"]];
@@ -48,7 +47,7 @@
     
     UIViewController *billController = ({
         NSString *title = @"收藏";
-        BillViewController *viewController = [[BillViewController alloc]init];
+        VCFavorViewController *viewController = [[VCFavorViewController alloc]init];
         viewController.title = title;
         viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"tab_icon_selection_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_selection_light"]];
         viewController;
@@ -65,7 +64,7 @@
     
     UIViewController *mineController = ({
         NSString *title = @"我的";
-        MineViewController *viewController = [[MineViewController alloc]init];
+        VCMineViewController *viewController = [[VCMineViewController alloc]init];
         viewController.title = title;
         viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"icon_tab_wode_normal"] selectedImage:[UIImage imageNamed:@"icon_tab_wode_light"]];
         viewController;
