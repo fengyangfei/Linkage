@@ -9,60 +9,60 @@
 #ifndef VcodeConstants_h
 #define VcodeConstants_h
 
-#define VBaseUrl @"http://120.25.82.122:8000"
+#define VBaseUrl @"http://10.24.49.7:8007"
 //点赞
-#define AddLikeUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=like&op=addLike",VBaseUrl]
+#define AddLikeUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=like&op=addLike",VBaseUrl]
 //取消点赞
-#define DeleteLikeUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=like&op=deleteLike",VBaseUrl]
+#define DeleteLikeUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=like&op=deleteLike",VBaseUrl]
 //首页接口
-#define HomePageUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=users&op=getHomePage",VBaseUrl]
+#define HomePageUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=getHomePage",VBaseUrl]
 //获取用户定制链接列表
-#define UserPageUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=users&op=getUserPage",VBaseUrl]
+#define UserPageUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=getUserPage",VBaseUrl]
 //删除定制链接
-#define DeleteUserPageUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=users&op=deleteUserPage",VBaseUrl]
+#define DeleteUserPageUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=deleteUserPage",VBaseUrl]
 //定制链接排序
-#define SortUserPageUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=users&op=sortUserPage",VBaseUrl]
+#define SortUserPageUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=sortUserPage",VBaseUrl]
 //添加访问记录
-#define AddVisitRecordUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=users&op=addVisitRecord",VBaseUrl]
+#define AddVisitRecordUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=addVisitRecord",VBaseUrl]
 
 //收藏列表
-#define FavorListUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=favor&op=favorList",VBaseUrl]
+#define FavorListUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=favor&op=favorList",VBaseUrl]
 //收藏
-#define AddFavorUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=favor&op=addFavor",VBaseUrl]
+#define AddFavorUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=favor&op=addFavor",VBaseUrl]
 //取消收藏
-#define DeleteFavorUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=favor&op=deleteFavor",VBaseUrl]
+#define DeleteFavorUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=favor&op=deleteFavor",VBaseUrl]
 //收藏排序
-#define SortFavorUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=favor&op=sortFavor",VBaseUrl]
+#define SortFavorUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=favor&op=sortFavor",VBaseUrl]
 
 //设置用户标签
-#define SetUserLabelUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=users&op=setUserLabel",VBaseUrl]
+#define SetUserLabelUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=setUserLabel",VBaseUrl]
 //获取用户标签
-#define GetUserLabelUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=users&op=getUserLabel",VBaseUrl]
+#define GetUserLabelUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=getUserLabel",VBaseUrl]
 //更新用户头像
-#define UpdateUserPicUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=users&op=updateUserPic",VBaseUrl]
+#define UpdateUserPicUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=updateUserPic",VBaseUrl]
 //更新用户信息
-#define UpdateUserInfoUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=users&op=updateUserInfo",VBaseUrl]
+#define UpdateUserInfoUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=updateUserInfo",VBaseUrl]
 //获取用户信息
-#define GetUserInfoUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=users&op=getUserInfo",VBaseUrl]
+#define GetUserInfoUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=getUserInfo",VBaseUrl]
 //反馈
-#define FeedbackUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=users&op=addFeedback",VBaseUrl]
+#define FeedbackUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=addFeedback",VBaseUrl]
 
 //热门推荐
-#define HotUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=recommend&op=hot",VBaseUrl]
+#define HotUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=recommend&op=hot",VBaseUrl]
 //智能推荐
-#define RecommendUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=recommend&op=recommend",VBaseUrl]
+#define RecommendUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=recommend&op=recommend",VBaseUrl]
 //本地推荐
-#define LocalUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=recommend&op=local",VBaseUrl]
+#define LocalUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=recommend&op=local",VBaseUrl]
 
 //全球排行
-#define GlobalRankUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=rank&op=globalRank",VBaseUrl]
+#define GlobalRankUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=rank&op=globalRank",VBaseUrl]
 //地区排行
-#define CountryRankUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=rank&op=countryRank",VBaseUrl]
+#define CountryRankUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=rank&op=countryRank",VBaseUrl]
 //类型排行
-#define CategoryRankUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=rank&op=categoryRank",VBaseUrl]
+#define CategoryRankUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=rank&op=categoryRank",VBaseUrl]
 //获取所有分类接口
-#define GetCategoryUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=sys&op=getCategory",VBaseUrl]
+#define GetCategoryUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=sys&op=getCategory",VBaseUrl]
 //获取所有国家的接口
-#define DeleteShopcartUrl [NSString stringWithFormat:@"/index.php?mod=site&name=api&do=shopcart&op=deleteShopcart",VBaseUrl]
+#define DeleteShopcartUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=shopcart&op=deleteShopcart",VBaseUrl]
 
 #endif
