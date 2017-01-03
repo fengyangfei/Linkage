@@ -7,7 +7,7 @@
 //
 
 #import "VCTutorialController.h"
-#import "LoginViewController.h"
+#import "VCTabBarController.h"
 @interface VCTutorialController ()<ICETutorialControllerDelegate>
 @property (nonatomic, strong, readonly) UIButton *centerButton;
 
@@ -20,21 +20,17 @@
     // Init the pages texts, and pictures.
     ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithTitle:@""
                                                             subTitle:@""
-                                                         pictureName:@"tutorial_background_00@2x.jpg"
+                                                         pictureName:@"intro1"
                                                             duration:3.0];
     ICETutorialPage *layer2 = [[ICETutorialPage alloc] initWithTitle:@""
                                                             subTitle:@""
-                                                         pictureName:@"tutorial_background_01@2x.jpg"
+                                                         pictureName:@"intro2"
                                                             duration:3.0];
     ICETutorialPage *layer3 = [[ICETutorialPage alloc] initWithTitle:@""
                                                             subTitle:@""
-                                                         pictureName:@"tutorial_background_02@2x.jpg"
+                                                         pictureName:@"intro3"
                                                             duration:3.0];
-    ICETutorialPage *layer4 = [[ICETutorialPage alloc] initWithTitle:@""
-                                                            subTitle:@""
-                                                         pictureName:@"tutorial_background_03@2x.jpg"
-                                                            duration:3.0];
-    NSArray *tutorialLayers = @[layer1,layer2,layer3,layer4];
+    NSArray *tutorialLayers = @[layer1,layer2,layer3];
     
     // Set the common style for the title.
     ICETutorialLabelStyle *titleStyle = [[ICETutorialLabelStyle alloc] init];
@@ -71,6 +67,7 @@
 
 -(void)setupUI
 {
+    /*
     [self.centerButton setBackgroundColor:[UIColor darkGrayColor]];
     [self.centerButton setTitle:@"跳过" forState:UIControlStateNormal];
     [self.centerButton addTarget:self
@@ -83,6 +80,7 @@
     
     
     [self.scrollView addSubview:self.centerButton];
+     */
     
 }
 
@@ -92,6 +90,7 @@
 }
 
 - (void)tutorialControllerDidReachLastPage:(ICETutorialController *)tutorialController {
+    [self skipAction:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,8 +99,8 @@
 
 -(void)skipAction:(id)sender
 {
-    LoginViewController *loginVC = [[LoginViewController alloc]init];
-    [self presentViewController:loginVC animated:YES completion:^{
+    VCTabBarController *controller = [[VCTabBarController alloc]init];
+    [self presentViewController:controller animated:YES completion:^{
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:UserDefault_hasShowIntroduce];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }];

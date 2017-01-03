@@ -87,11 +87,13 @@
     [self.overlayTitle setTextAlignment:NSTextAlignmentCenter];
 
     // PageControl configuration.
+    /*
     [self.pageControl setNumberOfPages:[self numberOfPages]];
     [self.pageControl setCurrentPage:0];
     [self.pageControl addTarget:self
                          action:@selector(didClickOnPageControl:)
                forControlEvents:UIControlEventValueChanged];
+     */
     
     // UIButtons.
     /*
@@ -112,7 +114,7 @@
     [self.view addSubview:self.gradientView];
     [self.view addSubview:self.scrollView];
     [self.view addSubview:self.overlayTitle];
-    [self.view addSubview:self.pageControl];
+    //[self.view addSubview:self.pageControl];
     //[self.view addSubview:self.leftButton];
     //[self.view addSubview:self.rightButton];
     
@@ -142,9 +144,11 @@
      */
     
     // PageControl.
+    /*
     [self.pageControl setTranslatesAutoresizingMaskIntoConstraints:NO];
     [constraints addObject:@"V:[_pageControl(==32)]-60-|"];
     [constraints addObject:@"H:|-[_pageControl(>=40)]-|"];
+     */
     
     // GradientView.
     [self.gradientView setTranslatesAutoresizingMaskIntoConstraints:NO];
