@@ -16,16 +16,18 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
 
 @interface VCRankTableCell()
 @property (nonatomic, readonly) UIImageView *iconView;
-@property (nonatomic, readonly) UILabel *titleLable;
-@property (nonatomic, readonly) UILabel *detailLable;
-@property (nonatomic, readonly) UILabel *timeLable;
+@property (nonatomic, readonly) UILabel *titleLabel;
+@property (nonatomic, readonly) UILabel *detailLabel;
+@property (nonatomic, readonly) UILabel *subDetailLabel;
+@property (nonatomic, readonly) UILabel *countLabel;
 @end
 
 @implementation VCRankTableCell
 @synthesize iconView = _iconView;
-@synthesize titleLable = _titleLable;
-@synthesize detailLable = _detailLable;
-@synthesize timeLable = _timeLable;
+@synthesize titleLabel = _titleLabel;
+@synthesize detailLabel = _detailLabel;
+@synthesize subDetailLabel = _subDetailLabel;
+@synthesize countLabel = _countLabel;
 
 +(void)load
 {
@@ -37,6 +39,7 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
 {
     [super configure];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     [self setupUI];
 }
 
@@ -44,15 +47,16 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
 {
     [super update];
     VCRank *rank = self.rowDescriptor.value;
-    [self.iconView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"message_pic"]];
-    self.titleLable.text = rank.url;
-    self.detailLable.text = rank.introduction;
-    self.timeLable.text = [rank.createdDate stringFromDate];
+    [self.iconView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"地区"]];
+    self.titleLabel.text = rank.name;
+    self.detailLabel.text = rank.introduction;
+    self.subDetailLabel.text = rank.url;
+    self.countLabel.text = @"0访问";
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
-    return 65;
+    return 90;
 }
 
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
@@ -82,28 +86,35 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
 {
     [self.contentView addSubview:self.iconView];
     [self.iconView makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.contentView.centerY);
+        make.top.equalTo(self.contentView.top).offset(12);
         make.left.equalTo(self.contentView.left).offset(12);
-        make.width.equalTo(45);
-        make.height.equalTo(45);
+        make.width.equalTo(18);
+        make.height.equalTo(18);
     }];
     
-    [self.contentView addSubview:self.titleLable];
-    [self.titleLable makeConstraints:^(MASConstraintMaker *make) {
+    [self.contentView addSubview:self.titleLabel];
+    [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView.top).offset(10);
         make.left.equalTo(self.iconView.right).offset(12);
-        make.top.equalTo(self.iconView.top);
     }];
     
-    [self.contentView addSubview:self.detailLable];
-    [self.detailLable makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.iconView.right).offset(12);
-        make.bottom.equalTo(self.iconView.bottom);
-    }];
-    
-    [self.contentView addSubview:self.timeLable];
-    [self.timeLable makeConstraints:^(MASConstraintMaker *make) {
+    [self.contentView addSubview:self.detailLabel];
+    [self.detailLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.iconView.bottom).offset(5);
+        make.left.equalTo(self.contentView.left).offset(12);
         make.right.equalTo(self.contentView.right).offset(-12);
-        make.bottom.equalTo(self.iconView.bottom);
+    }];
+    
+    [self.contentView addSubview:self.subDetailLabel];
+    [self.subDetailLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView.left).offset(12);
+        make.bottom.equalTo(self.contentView.bottom).offset(-5);;
+    }];
+    
+    [self.contentView addSubview:self.countLabel];
+    [self.countLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView.right).offset(-12);
+        make.bottom.equalTo(self.contentView.bottom).offset(-5);
     }];
 }
 
@@ -115,37 +126,48 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
     return _iconView;
 }
 
--(UILabel *)titleLable
+-(UILabel *)titleLabel
 {
-    if (!_titleLable) {
-        _titleLable = [UILabel new];
-        _titleLable.font = [UIFont boldSystemFontOfSize:16];
-        _titleLable.textColor = IndexTitleFontColor;
+    if (!_titleLabel) {
+        _titleLabel = [UILabel new];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:20];
+        _titleLabel.textColor = [UIColor blackColor];
     }
-    return _titleLable;
+    return _titleLabel;
 }
 
--(UILabel *)detailLable
+-(UILabel *)detailLabel
 {
-    if (!_detailLable) {
-        _detailLable = [UILabel new];
-        _detailLable.font = [UIFont systemFontOfSize:14];
-        _detailLable.textColor = [UIColor lightGrayColor];
-        _detailLable.numberOfLines = 0;
-        _detailLable.textColor = IndexTitleFontColor;
+    if (!_detailLabel) {
+        _detailLabel = [UILabel new];
+        _detailLabel.font = [UIFont systemFontOfSize:14];
+        _detailLabel.textColor = [UIColor lightGrayColor];
+        _detailLabel.numberOfLines = 2;
+        _detailLabel.textColor = [UIColor lightGrayColor];
     }
-    return _detailLable;
+    return _detailLabel;
 }
 
--(UILabel *)timeLable
+-(UILabel *)subDetailLabel
 {
-    if (!_timeLable) {
-        _timeLable = [UILabel new];
-        _timeLable.font = [UIFont systemFontOfSize:14];
-        _timeLable.textAlignment = NSTextAlignmentRight;
-        _timeLable.textColor = IndexTitleFontColor;
+    if (!_subDetailLabel) {
+        _subDetailLabel = [UILabel new];
+        _subDetailLabel.font = [UIFont systemFontOfSize:12];
+        _subDetailLabel.numberOfLines = 0;
+        _subDetailLabel.textColor = [UIColor lightGrayColor];
     }
-    return _timeLable;
+    return _subDetailLabel;
+}
+
+-(UILabel *)countLabel
+{
+    if (!_countLabel) {
+        _countLabel = [UILabel new];
+        _countLabel.font = [UIFont systemFontOfSize:12];
+        _countLabel.textAlignment = NSTextAlignmentRight;
+        _countLabel.textColor = [UIColor lightGrayColor];
+    }
+    return _countLabel;
 }
 
 @end

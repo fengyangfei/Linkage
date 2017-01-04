@@ -245,6 +245,7 @@
 		9A74CD5A1E1C7D3E0036C02D /* VcodeLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A74CD591E1C7D3E0036C02D /* VcodeLaunch.storyboard */; };
 		9A74CD5D1E1C81B10036C02D /* VCCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5C1E1C81B10036C02D /* VCCountry.m */; };
 		9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */; };
+		9A74CD631E1C8AF40036C02D /* VCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD621E1C8AF30036C02D /* VCHomeViewController.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -764,6 +765,8 @@
 		9A74CD5C1E1C81B10036C02D /* VCCountry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCountry.m; sourceTree = "<group>"; };
 		9A74CD5E1E1C820C0036C02D /* VCCountryUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCountryUtil.h; sourceTree = "<group>"; };
 		9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCountryUtil.m; sourceTree = "<group>"; };
+		9A74CD611E1C8AF30036C02D /* VCHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHomeViewController.h; sourceTree = "<group>"; };
+		9A74CD621E1C8AF30036C02D /* VCHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHomeViewController.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -2130,6 +2133,8 @@
 				9A403DFE1E1B5CA900829EC4 /* VCHotViewController.m */,
 				8BFEBF861E1BD61C008A60D5 /* VCHotChildViewController.h */,
 				8BFEBF871E1BD61C008A60D5 /* VCHotChildViewController.m */,
+				9A74CD611E1C8AF30036C02D /* VCHomeViewController.h */,
+				9A74CD621E1C8AF30036C02D /* VCHomeViewController.m */,
 			);
 			path = hot;
 			sourceTree = "<group>";
@@ -2673,6 +2678,7 @@
 				8B00603A1CABFABC001B0FC9 /* EXTRuntimeExtensions.m in Sources */,
 				9A2F5C3A1CE1702400E7E2DD /* SOImage.m in Sources */,
 				8BFEBF801E1BD2D6008A60D5 /* ZJCollectionView.m in Sources */,
+				9A74CD631E1C8AF40036C02D /* VCHomeViewController.m in Sources */,
 				8B5DC61F1C79B8A700D29292 /* IFTTTConstraintConstantAnimation.m in Sources */,
 				8B5DC6311C79B8A700D29292 /* IFTTTTransform3DAnimation.m in Sources */,
 				9A05C37B1CC8C413009BC8C9 /* XLFormButtonCell+Push.m in Sources */,
