@@ -32,6 +32,7 @@
 {
 }
 
+
 - (void)zj_viewDidLoadForIndex:(NSInteger)index {
     NSLog(@"%ld",(long)index);
 }
@@ -78,4 +79,5 @@
         [row.sectionDescriptor removeFormRowAtIndex:indexPath.row];
     }
 }
+
 @end

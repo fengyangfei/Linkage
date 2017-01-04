@@ -42,6 +42,8 @@
     UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:category.title]];
     [cell.contentView addSubview:imageView];
     [imageView makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(60);
+        make.height.equalTo(60);
         make.centerX.equalTo(cell.centerX);
         make.top.equalTo(cell.top);
     }];
@@ -50,7 +52,7 @@
     titleLabel.text = category.title;
     [titleLabel makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(cell.centerX);
-        make.bottom.equalTo(cell.bottom);
+        make.top.equalTo(imageView.bottom).offset(5);
     }];
 }
 
@@ -80,7 +82,7 @@
 #pragma mark - getter setter
 - (UICollectionView *)collectionView {
     if (_collectionView == nil) {
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, self.view.bounds.size.height - 60) collectionViewLayout:self.collectionViewLayout];
+        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, self.view.bounds.size.height - 150) collectionViewLayout:self.collectionViewLayout];
         [collectionView setBackgroundColor:[UIColor whiteColor]];
         collectionView.scrollsToTop = NO;
         collectionView.showsHorizontalScrollIndicator = NO;
