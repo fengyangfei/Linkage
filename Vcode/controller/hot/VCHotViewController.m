@@ -34,8 +34,9 @@
     style.scaleTitle = YES;
     // 颜色渐变
     style.gradualChangeTitleColor = YES;
+    style.normalTitleColor = [UIColor lightGrayColor];
+    style.selectedTitleColor = [UIColor grayColor];
     // 设置附加按钮的背景图片
-    
     self.titles = [VCCategoryUtil queryAllCategoryTitles];
     // 初始化
     ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
@@ -52,7 +53,6 @@
 - (UIViewController<ZJScrollPageViewChildVcDelegate> *)childViewController:(UIViewController<ZJScrollPageViewChildVcDelegate> *)reuseViewController forIndex:(NSInteger)index {
     UIViewController<ZJScrollPageViewChildVcDelegate> *childVc = reuseViewController;
     //    NSLog(@"%ld---------", index);
-    
     if (!childVc) {
         childVc = [[VCHotChildViewController alloc] init];
         childVc.title = self.titles[index];
