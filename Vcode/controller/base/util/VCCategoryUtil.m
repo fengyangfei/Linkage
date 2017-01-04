@@ -94,4 +94,22 @@
     return [titles copy];
 }
 
++(NSArray *)queryAllCategories
+{
+    __block NSMutableArray *list = [[NSMutableArray alloc]init];
+    void(^addToList)(NSArray *models) = ^(NSArray *models) {
+        [list addObjectsFromArray:models];
+    };
+    [self queryModelsFromDataBase:^(NSArray *models) {
+        if (models.count == 0) {
+            [self syncCategory:^(NSArray *models) {
+                addToList(models);
+            }];
+        }else{
+            addToList(models);
+        }
+    }];
+    return [list copy];
+}
+
 @end

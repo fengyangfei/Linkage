@@ -12,5 +12,5 @@
 
 +(void)syncCategory:(void(^)(NSArray *models))completion;
 +(NSArray *)queryAllCategoryTitles;
-
++(NSArray *)queryAllCategories;
 @end

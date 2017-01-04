@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZJScrollPageViewDelegate.h"
 
-@interface VCCategoryViewController : UIViewController
+@interface VCCategoryViewController : UIViewController<ZJScrollPageViewChildVcDelegate>
 
 @end

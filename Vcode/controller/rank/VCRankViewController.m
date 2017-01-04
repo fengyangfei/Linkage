@@ -8,7 +8,7 @@
 
 #import "VCRankViewController.h"
 #import "ZJScrollPageView.h"
-#import "VCHotChildViewController.h"
+#import "VCCategoryViewController.h"
 #import "VCGlobalRankViewController.h"
 #import "VCCountryViewController.h"
 
@@ -49,7 +49,7 @@
         if(index == 0){
             childVc = [[VCGlobalRankViewController alloc]init];
         }else if(index == 1){
-            childVc = [[VCHotChildViewController alloc] init];
+            childVc = [[VCCategoryViewController alloc] init];
         }
         else if(index == 2){
             childVc = [[VCCountryViewController alloc] init];

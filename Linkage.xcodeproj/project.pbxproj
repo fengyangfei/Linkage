@@ -249,6 +249,7 @@
 		9A74CD661E1C96A50036C02D /* VCGlobalRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD651E1C96A50036C02D /* VCGlobalRankViewController.m */; };
 		9A74CD691E1C9C460036C02D /* VCCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD681E1C9C460036C02D /* VCCategoryViewController.m */; };
 		9A74CD6C1E1C9C6F0036C02D /* VCCountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD6B1E1C9C6F0036C02D /* VCCountryViewController.m */; };
+		9A74CD6F1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD6E1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -776,6 +777,8 @@
 		9A74CD681E1C9C460036C02D /* VCCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCategoryViewController.m; sourceTree = "<group>"; };
 		9A74CD6A1E1C9C6F0036C02D /* VCCountryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCountryViewController.h; sourceTree = "<group>"; };
 		9A74CD6B1E1C9C6F0036C02D /* VCCountryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCountryViewController.m; sourceTree = "<group>"; };
+		9A74CD6D1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCategoryCollectionViewCell.h; sourceTree = "<group>"; };
+		9A74CD6E1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -2200,6 +2203,8 @@
 			children = (
 				9A403E231E1B900E00829EC4 /* VCRankTableCell.h */,
 				9A403E241E1B900E00829EC4 /* VCRankTableCell.m */,
+				9A74CD6D1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.h */,
+				9A74CD6E1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2704,6 +2709,7 @@
 				8B44450D1C7C9EFE00160DC2 /* SDCollectionViewCell.m in Sources */,
 				9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */,
 				8BA130541C9D2B2D007607F9 /* CargoFormRowDescriptor.m in Sources */,
+				9A74CD6F1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.m in Sources */,
 				9A403E221E1B785300829EC4 /* VCTutorialController.m in Sources */,
 				9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */,
 				9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */,
