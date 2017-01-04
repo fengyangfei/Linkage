@@ -9,7 +9,7 @@
 #import "VCHotViewController.h"
 #import "ZJScrollPageView.h"
 #import "VCHotChildViewController.h"
-
+#import "VCHomeViewController.h"
 #import "VCCategoryUtil.h"
 
 @interface VCHotViewController ()<ZJScrollPageViewDelegate>
@@ -52,10 +52,13 @@
 
 - (UIViewController<ZJScrollPageViewChildVcDelegate> *)childViewController:(UIViewController<ZJScrollPageViewChildVcDelegate> *)reuseViewController forIndex:(NSInteger)index {
     UIViewController<ZJScrollPageViewChildVcDelegate> *childVc = reuseViewController;
-    //    NSLog(@"%ld---------", index);
     if (!childVc) {
-        childVc = [[VCHotChildViewController alloc] init];
-        childVc.title = self.titles[index];
+        if (index == 0) {
+            childVc = [[VCHomeViewController alloc]init];
+        }else{
+            childVc = [[VCHotChildViewController alloc] init];
+            childVc.title = self.titles[index];
+        }
     }
     
     return childVc;

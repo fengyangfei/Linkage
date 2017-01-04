@@ -52,6 +52,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(VCCategoryCollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    cell.backgroundColor = [UIColor grayColor];
     cell.category = [self.categories objectAtIndex:indexPath.item];
     cell.titleLabel.text = cell.category.title;
 }
