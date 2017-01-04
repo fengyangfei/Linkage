@@ -250,6 +250,7 @@
 		9A74CD691E1C9C460036C02D /* VCCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD681E1C9C460036C02D /* VCCategoryViewController.m */; };
 		9A74CD6C1E1C9C6F0036C02D /* VCCountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD6B1E1C9C6F0036C02D /* VCCountryViewController.m */; };
 		9A74CD6F1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD6E1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.m */; };
+		9A74CD741E1CF0B10036C02D /* VCIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD731E1CF0B10036C02D /* VCIndex.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -779,6 +780,8 @@
 		9A74CD6B1E1C9C6F0036C02D /* VCCountryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCountryViewController.m; sourceTree = "<group>"; };
 		9A74CD6D1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCategoryCollectionViewCell.h; sourceTree = "<group>"; };
 		9A74CD6E1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCategoryCollectionViewCell.m; sourceTree = "<group>"; };
+		9A74CD721E1CF0B10036C02D /* VCIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCIndex.h; sourceTree = "<group>"; };
+		9A74CD731E1CF0B10036C02D /* VCIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCIndex.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -2141,6 +2144,8 @@
 		9A403DF41E1B5C1700829EC4 /* hot */ = {
 			isa = PBXGroup;
 			children = (
+				9A74CD701E1CF05A0036C02D /* model */,
+				9A74CD711E1CF05A0036C02D /* view */,
 				9A403DFD1E1B5CA900829EC4 /* VCHotViewController.h */,
 				9A403DFE1E1B5CA900829EC4 /* VCHotViewController.m */,
 				8BFEBF861E1BD61C008A60D5 /* VCHotChildViewController.h */,
@@ -2218,6 +2223,22 @@
 				9A403E211E1B785300829EC4 /* VCTutorialController.m */,
 			);
 			path = base;
+			sourceTree = "<group>";
+		};
+		9A74CD701E1CF05A0036C02D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9A74CD721E1CF0B10036C02D /* VCIndex.h */,
+				9A74CD731E1CF0B10036C02D /* VCIndex.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		9A74CD711E1CF05A0036C02D /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		9A7D0E901CD885C400EE005F /* util */ = {
@@ -2778,6 +2799,7 @@
 				8B3DB5C71D854E6F00AABCE9 /* UITabBar+Badge.m in Sources */,
 				8BD1A4701D44C64B00469324 /* Comment.m in Sources */,
 				8B2D18D41D3101BC00A9183E /* WXMediaMessage+messageConstruct.m in Sources */,
+				9A74CD741E1CF0B10036C02D /* VCIndex.m in Sources */,
 				8BFEBF7F1E1BD2D6008A60D5 /* UIViewController+ZJScrollPageController.m in Sources */,
 				8BCA5FBB1CA97FB8002601F6 /* MessageViewController.m in Sources */,
 				9AFA76301D6301AD00A690C9 /* MessageDetailViewController.m in Sources */,

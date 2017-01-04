@@ -13,7 +13,7 @@
 - (instancetype)init {
     if(self = [super init]) {
         _showCover = NO;
-        _showLine = NO;
+        _showLine = YES;
         _scaleTitle = NO;
         _scrollTitle = YES;
         _segmentViewBounces = YES;
@@ -34,8 +34,8 @@
         _titleMargin = 15.0;
         _titleFont = [UIFont systemFontOfSize:14.0];
         _titleBigScale = 1.3;
-        _normalTitleColor = [UIColor colorWithRed:51.0/255.0 green:53.0/255.0 blue:75/255.0 alpha:1.0];
-        _selectedTitleColor = [UIColor colorWithRed:255.0/255.0 green:0.0/255.0 blue:121/255.0 alpha:1.0];
+        _normalTitleColor = [UIColor colorWithRed:157.0/255.0 green:157.0/255.0 blue:157.0/255.0 alpha:1.0];
+        _selectedTitleColor = [UIColor colorWithRed:39.0/255.0 green:39.0/255.0 blue:39.0/255.0 alpha:1.0];
         
         _segmentHeight = 44.0;
 

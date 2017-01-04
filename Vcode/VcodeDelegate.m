@@ -171,14 +171,14 @@ static NSString *const kStoreName = @"vcode.sqlite";
 {
     //设置导航标题属性
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
-    [UINavigationBar appearance].barTintColor = HeaderColor;
+    [UINavigationBar appearance].barTintColor = VHeaderColor;
     [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:18],NSFontAttributeName, nil];
     [UINavigationBar appearance].translucent = NO;
-    UIImage *image = [UIImage imageWithColor:HeaderColor];
+    UIImage *image = [UIImage imageWithColor:VHeaderColor];
     [[UINavigationBar appearance] setBackgroundImage:image forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
     //设置tabBar属性
-    [[UITabBar appearance] setSelectedImageTintColor:HeaderColor];
+    [[UITabBar appearance] setSelectedImageTintColor:VHeaderColor];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

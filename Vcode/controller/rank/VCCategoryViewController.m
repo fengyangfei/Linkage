@@ -82,7 +82,7 @@
 #pragma mark - getter setter
 - (UICollectionView *)collectionView {
     if (_collectionView == nil) {
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, self.view.bounds.size.height - 150) collectionViewLayout:self.collectionViewLayout];
+        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 10, IPHONE_WIDTH, self.view.bounds.size.height - 150) collectionViewLayout:self.collectionViewLayout];
         [collectionView setBackgroundColor:[UIColor whiteColor]];
         collectionView.scrollsToTop = NO;
         collectionView.showsHorizontalScrollIndicator = NO;
@@ -104,6 +104,7 @@
         layout.minimumLineSpacing = 10.0;
         layout.minimumInteritemSpacing = 10.0;
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        //layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
         _collectionViewLayout = layout;
     }
     

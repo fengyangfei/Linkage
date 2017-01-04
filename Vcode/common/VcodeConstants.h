@@ -9,6 +9,9 @@
 #ifndef VcodeConstants_h
 #define VcodeConstants_h
 
+//UI
+#define VHeaderColor HEXCOLOR(0x018468)
+
 #define VBaseUrl @"http://120.24.49.7:8007"
 //点赞
 #define AddLikeUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=like&op=addLike",VBaseUrl]

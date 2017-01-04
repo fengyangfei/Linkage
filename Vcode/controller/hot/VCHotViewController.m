@@ -60,26 +60,30 @@
             childVc.title = self.titles[index];
         }
     }
-    
     return childVc;
 }
 
 
 - (void)scrollPageController:(UIViewController *)scrollPageController childViewControllWillAppear:(UIViewController *)childViewController forIndex:(NSInteger)index {
-    NSLog(@"%ld ---将要出现",index);
+    //NSLog(@"%ld ---将要出现",index);
 }
 
 - (void)scrollPageController:(UIViewController *)scrollPageController childViewControllDidAppear:(UIViewController *)childViewController forIndex:(NSInteger)index {
-    NSLog(@"%ld ---已经出现",index);
+    //NSLog(@"%ld ---已经出现",index);
 }
 
 - (void)scrollPageController:(UIViewController *)scrollPageController childViewControllWillDisappear:(UIViewController *)childViewController forIndex:(NSInteger)index {
-    NSLog(@"%ld ---将要消失",index);
+    //NSLog(@"%ld ---将要消失",index);
 }
 
 
 - (void)scrollPageController:(UIViewController *)scrollPageController childViewControllDidDisappear:(UIViewController *)childViewController forIndex:(NSInteger)index {
-    NSLog(@"%ld ---已经消失",index);
+    //NSLog(@"%ld ---已经消失",index);
+}
+
+-(BOOL)shouldAutomaticallyForwardAppearanceMethods
+{
+    return NO;
 }
 
 @end
