@@ -146,6 +146,7 @@
 		8BB8FD571E1D17F800243B33 /* VCHomeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD561E1D17F800243B33 /* VCHomeUtil.m */; };
 		8BB8FD5B1E1D232500243B33 /* VCTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD5A1E1D232500243B33 /* VCTagView.m */; };
 		8BB8FD5F1E1D3F5C00243B33 /* VLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB8FD5E1E1D3F5C00243B33 /* VLaunch.storyboard */; };
+		8BB8FD631E1D4A8C00243B33 /* VCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD621E1D4A8C00243B33 /* VCSettingViewController.m */; };
 		8BBE05EA1C9E982B0018EB2A /* BillTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */; };
 		8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */; };
 		8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC624F91CA18EBC00C70325 /* AddressCell.m */; };
@@ -588,6 +589,8 @@
 		8BB8FD591E1D232500243B33 /* VCTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTagView.h; sourceTree = "<group>"; };
 		8BB8FD5A1E1D232500243B33 /* VCTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTagView.m; sourceTree = "<group>"; };
 		8BB8FD5E1E1D3F5C00243B33 /* VLaunch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VLaunch.storyboard; sourceTree = "<group>"; };
+		8BB8FD611E1D4A8C00243B33 /* VCSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSettingViewController.h; sourceTree = "<group>"; };
+		8BB8FD621E1D4A8C00243B33 /* VCSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSettingViewController.m; sourceTree = "<group>"; };
 		8BBE05E81C9E982B0018EB2A /* BillTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTypeViewController.h; sourceTree = "<group>"; };
 		8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTypeViewController.m; sourceTree = "<group>"; };
 		8BBE05EC1C9EA5670018EB2A /* CompanySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanySettingViewController.h; sourceTree = "<group>"; };
@@ -1734,6 +1737,15 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		8BB8FD601E1D4A7700243B33 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				8BB8FD611E1D4A8C00243B33 /* VCSettingViewController.h */,
+				8BB8FD621E1D4A8C00243B33 /* VCSettingViewController.m */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
 		8BBE05EB1C9EA5150018EB2A /* company */ = {
 			isa = PBXGroup;
 			children = (
@@ -2189,6 +2201,7 @@
 		9A403DF51E1B5C1700829EC4 /* mine */ = {
 			isa = PBXGroup;
 			children = (
+				8BB8FD601E1D4A7700243B33 /* setting */,
 				9A403DF71E1B5C7300829EC4 /* VCMineViewController.h */,
 				9A403DF81E1B5C7300829EC4 /* VCMineViewController.m */,
 			);
@@ -2699,6 +2712,7 @@
 				8B38230C1CDB5CC20046A6F1 /* UINavigationController+Custom.m in Sources */,
 				8B44450E1C7C9EFE00160DC2 /* SDCycleScrollView.m in Sources */,
 				9A95FF111C89135400C5F492 /* AdviceViewController.m in Sources */,
+				8BB8FD631E1D4A8C00243B33 /* VCSettingViewController.m in Sources */,
 				9A95FF151C891CFB00C5F492 /* BillViewController.m in Sources */,
 				8BEC33CC1CA6A43E007B924B /* UIImageView+Cache.m in Sources */,
 				8B5DC62C1C79B8A700D29292 /* IFTTTRotationAnimation.m in Sources */,
