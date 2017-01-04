@@ -38,9 +38,20 @@
 #pragma mark - helper
 -(void)setupCell:(VCCategoryCollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor grayColor];
     VCCategory *category = [self.categories objectAtIndex:indexPath.item];
-    cell.titleLabel.text = category.title;
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:category.title]];
+    [cell.contentView addSubview:imageView];
+    [imageView makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(cell.centerX);
+        make.top.equalTo(cell.top);
+    }];
+    UILabel *titleLabel = [[UILabel alloc]init];
+    [cell.contentView addSubview:titleLabel];
+    titleLabel.text = category.title;
+    [titleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(cell.centerX);
+        make.bottom.equalTo(cell.bottom);
+    }];
 }
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
