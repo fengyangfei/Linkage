@@ -63,6 +63,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     VCCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CategoryCellID forIndexPath:indexPath];
+    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     return cell;
 }
 
@@ -71,18 +72,22 @@
     [self setupCell:cell forItemAtIndexPath:indexPath];
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"ss");
+}
+
 #pragma mark - getter setter
 - (UICollectionView *)collectionView {
     if (_collectionView == nil) {
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.collectionViewLayout];
+        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, self.view.bounds.size.height - 60) collectionViewLayout:self.collectionViewLayout];
         [collectionView setBackgroundColor:[UIColor whiteColor]];
-        collectionView.pagingEnabled = NO;
-        //collectionView.scrollsToTop = NO;
+        collectionView.scrollsToTop = NO;
         collectionView.showsHorizontalScrollIndicator = NO;
         collectionView.showsVerticalScrollIndicator = YES;
         collectionView.delegate = self;
         collectionView.dataSource = self;
-        collectionView.bounces = NO;
+//        collectionView.bounces = NO;
         [collectionView registerClass:[VCCategoryCollectionViewCell class] forCellWithReuseIdentifier:CategoryCellID];
         collectionView.scrollEnabled = YES;
         _collectionView = collectionView;
