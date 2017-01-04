@@ -145,6 +145,7 @@
 		8BB8FD531E1D127300243B33 /* VcodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD521E1D127300243B33 /* VcodeUtil.m */; };
 		8BB8FD571E1D17F800243B33 /* VCHomeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD561E1D17F800243B33 /* VCHomeUtil.m */; };
 		8BB8FD5B1E1D232500243B33 /* VCTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD5A1E1D232500243B33 /* VCTagView.m */; };
+		8BB8FD5F1E1D3F5C00243B33 /* VLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB8FD5E1E1D3F5C00243B33 /* VLaunch.storyboard */; };
 		8BBE05EA1C9E982B0018EB2A /* BillTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */; };
 		8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */; };
 		8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC624F91CA18EBC00C70325 /* AddressCell.m */; };
@@ -245,7 +246,6 @@
 		9A403E251E1B900E00829EC4 /* VCRankTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E241E1B900E00829EC4 /* VCRankTableCell.m */; };
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
-		9A74CD5A1E1C7D3E0036C02D /* VcodeLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A74CD591E1C7D3E0036C02D /* VcodeLaunch.storyboard */; };
 		9A74CD5D1E1C81B10036C02D /* VCCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5C1E1C81B10036C02D /* VCCountry.m */; };
 		9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */; };
 		9A74CD631E1C8AF40036C02D /* VCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD621E1C8AF30036C02D /* VCHomeViewController.m */; };
@@ -587,6 +587,7 @@
 		8BB8FD561E1D17F800243B33 /* VCHomeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHomeUtil.m; sourceTree = "<group>"; };
 		8BB8FD591E1D232500243B33 /* VCTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTagView.h; sourceTree = "<group>"; };
 		8BB8FD5A1E1D232500243B33 /* VCTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTagView.m; sourceTree = "<group>"; };
+		8BB8FD5E1E1D3F5C00243B33 /* VLaunch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VLaunch.storyboard; sourceTree = "<group>"; };
 		8BBE05E81C9E982B0018EB2A /* BillTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTypeViewController.h; sourceTree = "<group>"; };
 		8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTypeViewController.m; sourceTree = "<group>"; };
 		8BBE05EC1C9EA5670018EB2A /* CompanySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanySettingViewController.h; sourceTree = "<group>"; };
@@ -774,7 +775,6 @@
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
 		9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollCell.m; sourceTree = "<group>"; };
-		9A74CD591E1C7D3E0036C02D /* VcodeLaunch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VcodeLaunch.storyboard; sourceTree = "<group>"; };
 		9A74CD5B1E1C81B10036C02D /* VCCountry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCountry.h; sourceTree = "<group>"; };
 		9A74CD5C1E1C81B10036C02D /* VCCountry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCountry.m; sourceTree = "<group>"; };
 		9A74CD5E1E1C820C0036C02D /* VCCountryUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCountryUtil.h; sourceTree = "<group>"; };
@@ -2132,7 +2132,7 @@
 				9A403B021E1B3A4800829EC4 /* VcodeDelegate.h */,
 				9A403B031E1B3A4800829EC4 /* VcodeDelegate.m */,
 				9A403E091E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld */,
-				9A74CD591E1C7D3E0036C02D /* VcodeLaunch.storyboard */,
+				8BB8FD5E1E1D3F5C00243B33 /* VLaunch.storyboard */,
 			);
 			path = Vcode;
 			sourceTree = "<group>";
@@ -2542,7 +2542,6 @@
 				8B5DC64C1C79B8A700D29292 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				9A23A30E1C7E8E7500FB5EB6 /* button-background.png in Resources */,
 				8B5DC5751C7992E900D29292 /* LaunchScreen.storyboard in Resources */,
-				9A74CD5A1E1C7D3E0036C02D /* VcodeLaunch.storyboard in Resources */,
 				8B5DC6531C79B8A700D29292 /* zbar-samples.png in Resources */,
 				8B7BD7C51CDE4C69004B4752 /* SubCompany.bundle in Resources */,
 				8B5DC5721C7992E900D29292 /* Assets.xcassets in Resources */,
@@ -2567,6 +2566,7 @@
 				8B5DC6521C79B8A700D29292 /* zbar-back.png in Resources */,
 				8B5DC63F1C79B8A700D29292 /* UMSocialLocalizable.strings in Resources */,
 				8B5DC6471C79B8A700D29292 /* UMSnsAccountViewController.xib in Resources */,
+				8BB8FD5F1E1D3F5C00243B33 /* VLaunch.storyboard in Resources */,
 				8B5DC6491C79B8A700D29292 /* UMSocialSDKResourcesNew.bundle in Resources */,
 				9ABD8F8B1D4213FE00D03A84 /* Contact.bundle in Resources */,
 				8B5DC6461C79B8A700D29292 /* UMSLoginViewController.xib in Resources */,
