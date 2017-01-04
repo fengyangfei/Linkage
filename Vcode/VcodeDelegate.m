@@ -42,14 +42,14 @@ static NSString *const kStoreName = @"vcode.sqlite";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:kPgyerAppKey];
-    [[PgyUpdateManager sharedPgyManager] checkUpdate];
+//    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:kPgyerAppKey];
+//    [[PgyUpdateManager sharedPgyManager] checkUpdate];
     
     [self setupDataBase];
-    [self registerJPushWithOptions:launchOptions];
+//    [self registerJPushWithOptions:launchOptions];
     
     [self umengTrack];
-    [self setupSocialConfig];
+//    [self setupSocialConfig];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -67,7 +67,7 @@ static NSString *const kStoreName = @"vcode.sqlite";
     [[IQKeyboardManager sharedManager] disableDistanceHandlingInViewControllerClass:[XLFormViewController class]];
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupGlobalAppearance) name:kTRThemeChangeNofication object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupGlobalAppearance) name:kTRThemeChangeNofication object:nil];
     
     return YES;
 }

@@ -8,7 +8,6 @@
 
 #import "VCCategoryCollectionViewCell.h"
 @interface VCCategoryCollectionViewCell()
-@property (nonatomic,strong) UILabel *titleLabel;
 @end
 
 @implementation VCCategoryCollectionViewCell
@@ -16,6 +15,7 @@
 -(void)prepareForReuse
 {
     [super prepareForReuse];
+    self.backgroundColor = [UIColor redColor];
     [self setupUI];
 }
 

@@ -47,8 +47,13 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     VCCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CategoryCellID forIndexPath:indexPath];
-    cell.category = [self.categories objectAtIndex:indexPath.item];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(VCCategoryCollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.category = [self.categories objectAtIndex:indexPath.item];
+    cell.titleLabel.text = cell.category.title;
 }
 
 #pragma mark - getter setter
@@ -56,9 +61,10 @@
     if (_collectionView == nil) {
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.collectionViewLayout];
         [collectionView setBackgroundColor:[UIColor whiteColor]];
-        collectionView.pagingEnabled = YES;
+        collectionView.pagingEnabled = NO;
         collectionView.scrollsToTop = NO;
         collectionView.showsHorizontalScrollIndicator = NO;
+        collectionView.showsVerticalScrollIndicator = NO;
         collectionView.delegate = self;
         collectionView.dataSource = self;
         collectionView.bounces = YES;
@@ -72,9 +78,9 @@
 - (UICollectionViewFlowLayout *)collectionViewLayout {
     if (_collectionViewLayout == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.itemSize = CGSizeMake(IPHONE_WIDTH / 3, IPHONE_WIDTH / 3);
-        layout.minimumLineSpacing = 0.0;
-        layout.minimumInteritemSpacing = 0.0;
+        layout.itemSize = CGSizeMake(IPHONE_WIDTH / 3 - 10, IPHONE_WIDTH / 3 - 10);
+        layout.minimumLineSpacing = 10.0;
+        layout.minimumInteritemSpacing = 10.0;
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         _collectionViewLayout = layout;
     }

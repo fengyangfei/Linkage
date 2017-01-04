@@ -11,4 +11,5 @@
 
 @interface VCCategoryCollectionViewCell : UICollectionViewCell
 @property (nonatomic,strong) VCCategory *category;
+@property (nonatomic,strong) UILabel *titleLabel;
 @end
