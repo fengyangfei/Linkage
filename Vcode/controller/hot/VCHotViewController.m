@@ -34,8 +34,8 @@
     style.scaleTitle = YES;
     // 颜色渐变
     style.gradualChangeTitleColor = YES;
-    style.normalTitleColor = [UIColor lightGrayColor];
-    style.selectedTitleColor = [UIColor grayColor];
+//    style.normalTitleColor = [UIColor lightGrayColor];
+//    style.selectedTitleColor = [UIColor grayColor];
     // 设置附加按钮的背景图片
     self.titles = [VCCategoryUtil queryAllCategoryTitles];
     // 初始化

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FormOptionsViewController : UIViewController<XLFormRowDescriptorViewController>
-
+@property (nonatomic, strong) NSArray *options;
 @end
 
 

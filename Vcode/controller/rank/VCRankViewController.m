@@ -10,6 +10,7 @@
 #import "ZJScrollPageView.h"
 #import "VCHotChildViewController.h"
 #import "VCGlobalRankViewController.h"
+#import "VCCountryViewController.h"
 
 @interface VCRankViewController ()<ZJScrollPageViewDelegate>
 @property(strong, nonatomic)NSArray<NSString *> *titles;
@@ -29,8 +30,9 @@
     ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
     style.scaleTitle = YES;
     style.gradualChangeTitleColor = YES;
-    style.normalTitleColor = [UIColor lightGrayColor];
-    style.selectedTitleColor = [UIColor grayColor];
+    style.autoAdjustTitlesWidth = YES;
+    //style.normalTitleColor = [UIColor lightGrayColor];
+    //style.selectedTitleColor = [UIColor grayColor];
     self.titles = @[@"全球", @"分类", @"国家"];
     ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
     [self.view addSubview:scrollPageView];
@@ -46,8 +48,11 @@
     if (!childVc) {
         if(index == 0){
             childVc = [[VCGlobalRankViewController alloc]init];
-        }else{
+        }else if(index == 1){
             childVc = [[VCHotChildViewController alloc] init];
+        }
+        else if(index == 2){
+            childVc = [[VCCountryViewController alloc] init];
         }
         childVc.title = self.titles[index];
     }

@@ -247,6 +247,8 @@
 		9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */; };
 		9A74CD631E1C8AF40036C02D /* VCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD621E1C8AF30036C02D /* VCHomeViewController.m */; };
 		9A74CD661E1C96A50036C02D /* VCGlobalRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD651E1C96A50036C02D /* VCGlobalRankViewController.m */; };
+		9A74CD691E1C9C460036C02D /* VCCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD681E1C9C460036C02D /* VCCategoryViewController.m */; };
+		9A74CD6C1E1C9C6F0036C02D /* VCCountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD6B1E1C9C6F0036C02D /* VCCountryViewController.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -770,6 +772,10 @@
 		9A74CD621E1C8AF30036C02D /* VCHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHomeViewController.m; sourceTree = "<group>"; };
 		9A74CD641E1C96A50036C02D /* VCGlobalRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCGlobalRankViewController.h; sourceTree = "<group>"; };
 		9A74CD651E1C96A50036C02D /* VCGlobalRankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCGlobalRankViewController.m; sourceTree = "<group>"; };
+		9A74CD671E1C9C460036C02D /* VCCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCategoryViewController.h; sourceTree = "<group>"; };
+		9A74CD681E1C9C460036C02D /* VCCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCategoryViewController.m; sourceTree = "<group>"; };
+		9A74CD6A1E1C9C6F0036C02D /* VCCountryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCountryViewController.h; sourceTree = "<group>"; };
+		9A74CD6B1E1C9C6F0036C02D /* VCCountryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCountryViewController.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -2161,6 +2167,10 @@
 				9A403DFB1E1B5C8800829EC4 /* VCRankViewController.m */,
 				9A74CD641E1C96A50036C02D /* VCGlobalRankViewController.h */,
 				9A74CD651E1C96A50036C02D /* VCGlobalRankViewController.m */,
+				9A74CD671E1C9C460036C02D /* VCCategoryViewController.h */,
+				9A74CD681E1C9C460036C02D /* VCCategoryViewController.m */,
+				9A74CD6A1E1C9C6F0036C02D /* VCCountryViewController.h */,
+				9A74CD6B1E1C9C6F0036C02D /* VCCountryViewController.m */,
 			);
 			path = rank;
 			sourceTree = "<group>";
@@ -2685,6 +2695,7 @@
 				9A2F5C3A1CE1702400E7E2DD /* SOImage.m in Sources */,
 				8BFEBF801E1BD2D6008A60D5 /* ZJCollectionView.m in Sources */,
 				9A74CD631E1C8AF40036C02D /* VCHomeViewController.m in Sources */,
+				9A74CD691E1C9C460036C02D /* VCCategoryViewController.m in Sources */,
 				8B5DC61F1C79B8A700D29292 /* IFTTTConstraintConstantAnimation.m in Sources */,
 				8B5DC6311C79B8A700D29292 /* IFTTTTransform3DAnimation.m in Sources */,
 				9A05C37B1CC8C413009BC8C9 /* XLFormButtonCell+Push.m in Sources */,
@@ -2737,6 +2748,7 @@
 				8BCA5FB31CA95EE3002601F6 /* BillDetailViewController.m in Sources */,
 				9A21A3191D828D1F00FBCA38 /* NSString+JSON.m in Sources */,
 				8B5DC62D1C79B8A700D29292 /* IFTTTScaleAnimation.m in Sources */,
+				9A74CD6C1E1C9C6F0036C02D /* VCCountryViewController.m in Sources */,
 				8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */,
 				9A23A2CD1C7C316C00FB5EB6 /* LATabBarController.m in Sources */,
 				9AEF89BC1CA1274600C5EB90 /* MJPhoto.m in Sources */,

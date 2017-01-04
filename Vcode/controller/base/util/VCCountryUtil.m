@@ -20,4 +20,13 @@
     NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:list error:&error];
     completion(array);
 }
+
++(NSArray *)queryAllCountrys
+{
+    __block NSMutableArray *array = [[NSMutableArray alloc]init];
+    [self queryModelsFromServer:^(NSArray *models) {
+        [array addObjectsFromArray:models];
+    }];
+    return [array copy];
+}
 @end

@@ -14,4 +14,15 @@
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     return keyDic;
 }
+
+#pragma mark -- XLFormOptionObject
+-(NSString *)formDisplayText
+{
+    return self.title;
+}
+
+-(id)formValue
+{
+    return self.code;
+}
 @end

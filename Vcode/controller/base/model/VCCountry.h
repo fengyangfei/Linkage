@@ -7,8 +7,9 @@
 //
 
 #import <Mantle/Mantle.h>
+#import <XLForm/XLFormDescriptor.h>
 
-@interface VCCountry : MTLModel<MTLJSONSerializing>
+@interface VCCountry : MTLModel<MTLJSONSerializing,XLFormOptionObject>
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,copy) NSString *code;
 @end

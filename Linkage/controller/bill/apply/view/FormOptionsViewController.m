@@ -13,7 +13,6 @@
 
 @interface FormOptionsViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSArray *options;
 @end
 
 @implementation FormOptionsViewController
