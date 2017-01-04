@@ -200,7 +200,7 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
 -(UIImageView *)iconView
 {
     UIImageView *imageView = super.iconView;
-    imageView.image = [UIImage imageNamed:@"user_header"];
+    imageView.image = [UIImage imageNamed:@"v_user"];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.layer.masksToBounds = YES;
     imageView.layer.cornerRadius = 6;

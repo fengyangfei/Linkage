@@ -7,6 +7,7 @@
 //
 
 #import "VCMineViewController.h"
+#import "MenuCell.h"
 #import "MenuItem.h"
 
 @interface VCMineViewController ()
@@ -31,29 +32,36 @@
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
     
-    form = [XLFormDescriptor formDescriptorWithTitle:@"我的信息"];
+    form = [XLFormDescriptor formDescriptorWithTitle:@"我的"];
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:@""];
-    row.value = [MenuItem createItemWithTitle:@"头像"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMineHeader];
+    row.value = [MenuItem createItemWithTitle:@"头像" andIconName:@"v_user" andClass:nil];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:@""];
-    row.value = [MenuItem createItemWithTitle:@"昵称"];
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
+    row.value = [MenuItem createItemWithTitle:@"设置" andIconName:@"setting" andClass:nil];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:@""];
-    row.value = [MenuItem createItemWithTitle:@"手机号码"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
+    row.value = [MenuItem createItemWithTitle:@"喜好设置" andIconName:@"mark" andClass:nil];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:@""];
-    row.value = [MenuItem createItemWithTitle:@"性别"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
+    row.value = [MenuItem createItemWithTitle:@"建议反馈" andIconName:@"advance" andClass:nil];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:@""];
-    row.value = [MenuItem createItemWithTitle:@"所属国家"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
+    row.value = [MenuItem createItemWithTitle:@"帮助说明" andIconName:@"explain" andClass:nil];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
+    row.value = [MenuItem createItemWithTitle:@"关于Vcode" andIconName:@"choice" andClass:nil];
     [section addFormRow:row];
     
     self.form = form;
