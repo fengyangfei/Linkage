@@ -10,6 +10,7 @@
 #import "VCRank.h"
 #import "VCRankModel.h"
 #import "YGRestClient.h"
+#import "VcodeUtil.h"
 
 @implementation VCRankUtil
 
@@ -44,7 +45,7 @@
 //全球排行
 +(void)queryGlobalRank:(void(^)(NSArray *models))completion
 {
-    NSDictionary *parameter = @{@"deviceCode":@"123123123"};
+    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID]};
     [[YGRestClient sharedInstance] postForObjectWithUrl:GlobalRankUrl form:parameter success:^(id responseObject) {
         if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
             NSError *error;
@@ -66,7 +67,7 @@
 //地区查询
 +(void)queryLocalRank:(void(^)(NSArray *models))completion
 {
-    NSDictionary *parameter = @{@"deviceCode":@"123123123",@"countryCode":@"CN"};
+    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"countryCode":@"CN"};
     [[YGRestClient sharedInstance] postForObjectWithUrl:CountryRankUrl form:parameter success:^(id responseObject) {
         if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
             NSError *error;

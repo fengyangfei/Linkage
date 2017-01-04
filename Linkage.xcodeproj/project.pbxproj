@@ -142,6 +142,8 @@
 		8BB4FB141C7A0884003389F1 /* iConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB101C7A0884003389F1 /* iConsole.m */; };
 		8BB4FB151C7A0884003389F1 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB111C7A0884003389F1 /* LICENSE.md */; };
 		8BB4FB161C7A0884003389F1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB121C7A0884003389F1 /* README.md */; };
+		8BB8FD531E1D127300243B33 /* VcodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD521E1D127300243B33 /* VcodeUtil.m */; };
+		8BB8FD571E1D17F800243B33 /* VCHomeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD561E1D17F800243B33 /* VCHomeUtil.m */; };
 		8BBE05EA1C9E982B0018EB2A /* BillTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */; };
 		8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */; };
 		8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC624F91CA18EBC00C70325 /* AddressCell.m */; };
@@ -578,6 +580,10 @@
 		8BB4FB101C7A0884003389F1 /* iConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iConsole.m; sourceTree = "<group>"; };
 		8BB4FB111C7A0884003389F1 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		8BB4FB121C7A0884003389F1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8BB8FD511E1D127300243B33 /* VcodeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VcodeUtil.h; sourceTree = "<group>"; };
+		8BB8FD521E1D127300243B33 /* VcodeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VcodeUtil.m; sourceTree = "<group>"; };
+		8BB8FD551E1D17F800243B33 /* VCHomeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHomeUtil.h; sourceTree = "<group>"; };
+		8BB8FD561E1D17F800243B33 /* VCHomeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHomeUtil.m; sourceTree = "<group>"; };
 		8BBE05E81C9E982B0018EB2A /* BillTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTypeViewController.h; sourceTree = "<group>"; };
 		8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTypeViewController.m; sourceTree = "<group>"; };
 		8BBE05EC1C9EA5670018EB2A /* CompanySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanySettingViewController.h; sourceTree = "<group>"; };
@@ -1707,6 +1713,15 @@
 			path = iConsole;
 			sourceTree = "<group>";
 		};
+		8BB8FD541E1D14F500243B33 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				8BB8FD551E1D17F800243B33 /* VCHomeUtil.h */,
+				8BB8FD561E1D17F800243B33 /* VCHomeUtil.m */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		8BBE05EB1C9EA5150018EB2A /* company */ = {
 			isa = PBXGroup;
 			children = (
@@ -2114,6 +2129,8 @@
 			isa = PBXGroup;
 			children = (
 				9A4037F11E1B3A4500829EC4 /* VcodeConstants.h */,
+				8BB8FD511E1D127300243B33 /* VcodeUtil.h */,
+				8BB8FD521E1D127300243B33 /* VcodeUtil.m */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -2144,8 +2161,8 @@
 		9A403DF41E1B5C1700829EC4 /* hot */ = {
 			isa = PBXGroup;
 			children = (
+				8BB8FD541E1D14F500243B33 /* util */,
 				9A74CD701E1CF05A0036C02D /* model */,
-				9A74CD711E1CF05A0036C02D /* view */,
 				9A403DFD1E1B5CA900829EC4 /* VCHotViewController.h */,
 				9A403DFE1E1B5CA900829EC4 /* VCHotViewController.m */,
 				8BFEBF861E1BD61C008A60D5 /* VCHotChildViewController.h */,
@@ -2232,13 +2249,6 @@
 				9A74CD731E1CF0B10036C02D /* VCIndex.m */,
 			);
 			path = model;
-			sourceTree = "<group>";
-		};
-		9A74CD711E1CF05A0036C02D /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		9A7D0E901CD885C400EE005F /* util */ = {
@@ -2619,6 +2629,7 @@
 				8B5DC6261C79B8A700D29292 /* IFTTTInterpolatable.m in Sources */,
 				9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */,
 				8B5DC6271C79B8A700D29292 /* IFTTTLayerFillColorAnimation.m in Sources */,
+				8BB8FD531E1D127300243B33 /* VcodeUtil.m in Sources */,
 				9AEF89D71CA8B02900C5EB90 /* XLFormDataSource.m in Sources */,
 				8BB4FB141C7A0884003389F1 /* iConsole.m in Sources */,
 				9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */,
@@ -2648,6 +2659,7 @@
 				9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */,
 				8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */,
 				9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */,
+				8BB8FD571E1D17F800243B33 /* VCHomeUtil.m in Sources */,
 				8B941BB11CD107060059BE13 /* CarModel.m in Sources */,
 				8BA3E3D11CD465AD0047AC6B /* StaffModel.m in Sources */,
 				9A2F5C391CE1702400E7E2DD /* Cargo.m in Sources */,

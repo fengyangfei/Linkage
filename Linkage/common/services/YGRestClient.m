@@ -161,10 +161,11 @@ static NSString *kCookieKey = @"Cookie";
 
 //检查当前网络连接是否正常
 -(BOOL)connectedToNetWork {
-    if ([AFNetworkReachabilityManager sharedManager].isReachable) {
-        return YES;
-    }
-    return [AFNetworkReachabilityManager sharedManager].isReachable;
+    return YES;
+//    if ([AFNetworkReachabilityManager sharedManager].isReachable) {
+//        return YES;
+//    }
+//    return [AFNetworkReachabilityManager sharedManager].isReachable;
 }
 
 - (void)dealloc {

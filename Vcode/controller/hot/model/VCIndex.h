@@ -9,8 +9,8 @@
 #import <Mantle/Mantle.h>
 
 @interface VCIndex : MTLModel<MTLJSONSerializing>
-@property (nonatomic, strong) NSArray *ads;//
-@property (nonatomic, strong) NSArray *pages;//任务
+@property (nonatomic, strong) NSArray *ads;
+@property (nonatomic, strong) NSArray *pages;
 @end
 
 @interface VCAd : MTLModel<MTLJSONSerializing>
