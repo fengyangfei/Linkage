@@ -36,7 +36,12 @@
 }
 
 #pragma mark - helper
-
+-(void)setupCell:(VCCategoryCollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor grayColor];
+    VCCategory *category = [self.categories objectAtIndex:indexPath.item];
+    cell.titleLabel.text = category.title;
+}
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -52,9 +57,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(VCCategoryCollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor grayColor];
-    cell.category = [self.categories objectAtIndex:indexPath.item];
-    cell.titleLabel.text = cell.category.title;
+    [self setupCell:cell forItemAtIndexPath:indexPath];
 }
 
 #pragma mark - getter setter
@@ -63,12 +66,12 @@
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.collectionViewLayout];
         [collectionView setBackgroundColor:[UIColor whiteColor]];
         collectionView.pagingEnabled = NO;
-        collectionView.scrollsToTop = NO;
+        //collectionView.scrollsToTop = NO;
         collectionView.showsHorizontalScrollIndicator = NO;
-        collectionView.showsVerticalScrollIndicator = NO;
+        collectionView.showsVerticalScrollIndicator = YES;
         collectionView.delegate = self;
         collectionView.dataSource = self;
-        collectionView.bounces = YES;
+        collectionView.bounces = NO;
         [collectionView registerClass:[VCCategoryCollectionViewCell class] forCellWithReuseIdentifier:CategoryCellID];
         collectionView.scrollEnabled = YES;
         _collectionView = collectionView;

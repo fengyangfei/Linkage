@@ -12,6 +12,15 @@
 
 @implementation VCCategoryCollectionViewCell
 @synthesize titleLabel = _titleLabel;
+
+-(instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self setupUI];
+    }
+    return self;
+}
 -(void)prepareForReuse
 {
     [super prepareForReuse];
