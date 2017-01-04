@@ -6,25 +6,25 @@
             <key>title</key>
             <string>阿拉伯联合酋长国</string>
             <key>code</key>
-            <string>Arts</string>
+            <string>AE</string>
         </dict>
         <dict>
             <key>title</key>
-            <string>商业</string>
+            <string>阿尔巴尼亚</string>
             <key>code</key>
-            <string>Business</string>
+            <string>AL</string>
         </dict>
         <dict>
             <key>title</key>
-            <string>计算机</string>
+            <string>亚美尼亚</string>
             <key>code</key>
-            <string>Computers</string>
+            <string>AM</string>
         </dict>
         <dict>
             <key>title</key>
-            <string>游戏</string>
+            <string>阿根廷</string>
             <key>code</key>
-            <string>Games</string>
+            <string>AR</string>
         </dict>
         <dict>
             <key>title</key>
@@ -34,63 +34,153 @@
         </dict>
         <dict>
             <key>title</key>
-            <string>家庭</string>
+            <string>奥地利</string>
             <key>code</key>
-            <string>Home</string>
+            <string>AT</string>
         </dict>
         <dict>
             <key>title</key>
-            <string>青少年</string>
+            <string>澳大利亚</string>
             <key>code</key>
-            <string>Kids_and_Teens</string>
+            <string>AU</string>
         </dict>
         <dict>
             <key>title</key>
-            <string>新闻</string>
+            <string>阿塞拜疆</string>
             <key>code</key>
-            <string>News</string>
+            <string>AZ</string>
         </dict>
         <dict>
             <key>title</key>
-            <string>娱乐</string>
+            <string>巴哈马</string>
             <key>code</key>
-            <string>Recreation</string>
+            <string>BA</string>
         </dict>
         <dict>
             <key>title</key>
-            <string>参考</string>
+            <string>巴巴多斯</string>
             <key>code</key>
-            <string>Reference</string>
+            <string>BB</string>
         </dict>
         <dict>
             <key>title</key>
-            <string>地区性</string>
+            <string>孟加拉国</string>
             <key>code</key>
-            <string>Regional</string>
+            <string>BD</string>
         </dict>
         <dict>
             <key>title</key>
-            <string>科学</string>
+            <string>比利时</string>
             <key>code</key>
-            <string>Science</string>
+            <string>BE</string>
         </dict>
         <dict>
             <key>title</key>
-            <string>购物</string>
+            <string>保加利亚</string>
             <key>code</key>
-            <string>Shopping</string>
+            <string>BG</string>
         </dict>
         <dict>
             <key>title</key>
-            <string>社会</string>
+            <string>中国</string>
             <key>code</key>
-            <string>Society</string>
+            <string>CN</string>
         </dict>
         <dict>
             <key>title</key>
-            <string>体育</string>
+            <string>沙特阿拉伯</string>
             <key>code</key>
-            <string>Sports</string>
+            <string>SA</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>新加坡</string>
+            <key>code</key>
+            <string>SG</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>斯洛伐克</string>
+            <key>code</key>
+            <string>SK</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>萨尔瓦多</string>
+            <key>code</key>
+            <string>SV</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>泰国</string>
+            <key>code</key>
+            <string>TH</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>突尼斯</string>
+            <key>code</key>
+            <string>TN</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>土耳其</string>
+            <key>code</key>
+            <string>TR</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>特立尼达和多巴哥</string>
+            <key>code</key>
+            <string>TT</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>中国台湾</string>
+            <key>code</key>
+            <string>TW</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>乌克兰</string>
+            <key>code</key>
+            <string>UA</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>美国</string>
+            <key>code</key>
+            <string>US</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>乌拉圭</string>
+            <key>code</key>
+            <string>UY</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>乌兹别克斯坦</string>
+            <key>code</key>
+            <string>UZ</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>越南</string>
+            <key>code</key>
+            <string>VN</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>也门</string>
+            <key>code</key>
+            <string>YE</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>南非</string>
+            <key>code</key>
+            <string>ZA</string>
         </dict>
     </array>
 </plist>

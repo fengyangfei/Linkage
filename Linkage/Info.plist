@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>允许些权限才能访问保存图片</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>允许些权限才能访问相机功能</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
@@ -96,6 +92,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>允许些权限才能访问保存图片</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>允许些权限才能访问相机功能</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>bobcat.ttf</string>
@@ -105,7 +105,7 @@
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>VcodeLaunch</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

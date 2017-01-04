@@ -242,6 +242,7 @@
 		9A403E251E1B900E00829EC4 /* VCRankTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E241E1B900E00829EC4 /* VCRankTableCell.m */; };
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
+		9A74CD5A1E1C7D3E0036C02D /* VcodeLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A74CD591E1C7D3E0036C02D /* VcodeLaunch.storyboard */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -756,6 +757,7 @@
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
 		9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollCell.m; sourceTree = "<group>"; };
+		9A74CD591E1C7D3E0036C02D /* VcodeLaunch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VcodeLaunch.storyboard; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -2075,6 +2077,7 @@
 				9A403B021E1B3A4800829EC4 /* VcodeDelegate.h */,
 				9A403B031E1B3A4800829EC4 /* VcodeDelegate.m */,
 				9A403E091E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld */,
+				9A74CD591E1C7D3E0036C02D /* VcodeLaunch.storyboard */,
 			);
 			path = Vcode;
 			sourceTree = "<group>";
@@ -2460,6 +2463,7 @@
 				8B5DC64C1C79B8A700D29292 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				9A23A30E1C7E8E7500FB5EB6 /* button-background.png in Resources */,
 				8B5DC5751C7992E900D29292 /* LaunchScreen.storyboard in Resources */,
+				9A74CD5A1E1C7D3E0036C02D /* VcodeLaunch.storyboard in Resources */,
 				8B5DC6531C79B8A700D29292 /* zbar-samples.png in Resources */,
 				8B7BD7C51CDE4C69004B4752 /* SubCompany.bundle in Resources */,
 				8B5DC5721C7992E900D29292 /* Assets.xcassets in Resources */,
