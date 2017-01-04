@@ -246,6 +246,7 @@
 		9A74CD5D1E1C81B10036C02D /* VCCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5C1E1C81B10036C02D /* VCCountry.m */; };
 		9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */; };
 		9A74CD631E1C8AF40036C02D /* VCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD621E1C8AF30036C02D /* VCHomeViewController.m */; };
+		9A74CD661E1C96A50036C02D /* VCGlobalRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD651E1C96A50036C02D /* VCGlobalRankViewController.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -767,6 +768,8 @@
 		9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCountryUtil.m; sourceTree = "<group>"; };
 		9A74CD611E1C8AF30036C02D /* VCHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHomeViewController.h; sourceTree = "<group>"; };
 		9A74CD621E1C8AF30036C02D /* VCHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHomeViewController.m; sourceTree = "<group>"; };
+		9A74CD641E1C96A50036C02D /* VCGlobalRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCGlobalRankViewController.h; sourceTree = "<group>"; };
+		9A74CD651E1C96A50036C02D /* VCGlobalRankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCGlobalRankViewController.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -2156,6 +2159,8 @@
 				9A403E051E1B5D5B00829EC4 /* view */,
 				9A403DFA1E1B5C8800829EC4 /* VCRankViewController.h */,
 				9A403DFB1E1B5C8800829EC4 /* VCRankViewController.m */,
+				9A74CD641E1C96A50036C02D /* VCGlobalRankViewController.h */,
+				9A74CD651E1C96A50036C02D /* VCGlobalRankViewController.m */,
 			);
 			path = rank;
 			sourceTree = "<group>";
@@ -2657,6 +2662,7 @@
 				9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */,
 				8B5DC6331C79B8A700D29292 /* IFTTTViewAnimation.m in Sources */,
 				9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */,
+				9A74CD661E1C96A50036C02D /* VCGlobalRankViewController.m in Sources */,
 				8B5DC6281C79B8A700D29292 /* IFTTTLayerStrokeEndAnimation.m in Sources */,
 				8B2D18D01D3101BC00A9183E /* WXApiRequestHandler.m in Sources */,
 				9A403E081E1B5DB200829EC4 /* VCRank.m in Sources */,

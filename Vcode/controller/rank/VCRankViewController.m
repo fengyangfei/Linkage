@@ -7,72 +7,52 @@
 //
 
 #import "VCRankViewController.h"
-#import "VCRankUtil.h"
-#import "VCRankTableCell.h"
+#import "ZJScrollPageView.h"
+#import "VCHotChildViewController.h"
+#import "VCGlobalRankViewController.h"
 
-@interface VCRankViewController ()
-
+@interface VCRankViewController ()<ZJScrollPageViewDelegate>
+@property(strong, nonatomic)NSArray<NSString *> *titles;
 @end
 
 @implementation VCRankViewController
-@synthesize tableView = _tableView;
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 0.1)];
-    self.tableView.tableFooterView = [[UIView alloc]init];
+    [self setupTopScrollView];
 }
 
--(Class)modelUtilClass
+-(void)setupTopScrollView
 {
-    return [VCRankUtil class];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
+    style.scaleTitle = YES;
+    style.gradualChangeTitleColor = YES;
+    style.normalTitleColor = [UIColor lightGrayColor];
+    style.selectedTitleColor = [UIColor grayColor];
+    self.titles = @[@"全球", @"分类", @"国家"];
+    ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
+    [self.view addSubview:scrollPageView];
 }
 
--(void)setupNavigationItem
-{
+#pragma ZJScrollPageViewDelegate 代理方法
+- (NSInteger)numberOfChildViewControllers {
+    return self.titles.count;
 }
 
-- (void)initializeForm:(NSArray *)models
-{
-    XLFormDescriptor * form;
-    XLFormSectionDescriptor * section;
-    XLFormRowDescriptor * row;
-    
-    form = [XLFormDescriptor formDescriptorWithTitle:@""];
-    section = [XLFormSectionDescriptor formSection];
-    [form addFormSection:section];
-    
-    for (id model in models) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:VCRankDescriporType];
-        row.value = model;
-        [section addFormRow:row];
+- (UIViewController<ZJScrollPageViewChildVcDelegate> *)childViewController:(UIViewController<ZJScrollPageViewChildVcDelegate> *)reuseViewController forIndex:(NSInteger)index {
+    UIViewController<ZJScrollPageViewChildVcDelegate> *childVc = reuseViewController;
+    if (!childVc) {
+        if(index == 0){
+            childVc = [[VCGlobalRankViewController alloc]init];
+        }else{
+            childVc = [[VCHotChildViewController alloc] init];
+        }
+        childVc.title = self.titles[index];
     }
-
-    self.form = form;
+    return childVc;
 }
 
--(UITableView *)tableView
-{
-    if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    }
-    return _tableView;
-}
 
-//重写父类方法
-#pragma mark - UITableViewDataSource
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return NO;
-}
-
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete){
-        XLFormRowDescriptor * row = [self.form formRowAtIndex:indexPath];
-        [row.sectionDescriptor removeFormRowAtIndex:indexPath.row];
-    }
-}
 @end

@@ -6,8 +6,8 @@
 //  Copyright © 2017年 LA. All rights reserved.
 //
 
-#import "ModelBaseViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface VCRankViewController : ModelBaseViewController
+@interface VCRankViewController : UIViewController
 
 @end
