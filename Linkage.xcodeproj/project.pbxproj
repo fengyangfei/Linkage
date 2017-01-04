@@ -144,6 +144,7 @@
 		8BB4FB161C7A0884003389F1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB121C7A0884003389F1 /* README.md */; };
 		8BB8FD531E1D127300243B33 /* VcodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD521E1D127300243B33 /* VcodeUtil.m */; };
 		8BB8FD571E1D17F800243B33 /* VCHomeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD561E1D17F800243B33 /* VCHomeUtil.m */; };
+		8BB8FD5B1E1D232500243B33 /* VCTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD5A1E1D232500243B33 /* VCTagView.m */; };
 		8BBE05EA1C9E982B0018EB2A /* BillTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */; };
 		8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */; };
 		8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC624F91CA18EBC00C70325 /* AddressCell.m */; };
@@ -584,6 +585,8 @@
 		8BB8FD521E1D127300243B33 /* VcodeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VcodeUtil.m; sourceTree = "<group>"; };
 		8BB8FD551E1D17F800243B33 /* VCHomeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHomeUtil.h; sourceTree = "<group>"; };
 		8BB8FD561E1D17F800243B33 /* VCHomeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHomeUtil.m; sourceTree = "<group>"; };
+		8BB8FD591E1D232500243B33 /* VCTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTagView.h; sourceTree = "<group>"; };
+		8BB8FD5A1E1D232500243B33 /* VCTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTagView.m; sourceTree = "<group>"; };
 		8BBE05E81C9E982B0018EB2A /* BillTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTypeViewController.h; sourceTree = "<group>"; };
 		8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTypeViewController.m; sourceTree = "<group>"; };
 		8BBE05EC1C9EA5670018EB2A /* CompanySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanySettingViewController.h; sourceTree = "<group>"; };
@@ -1722,6 +1725,15 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		8BB8FD581E1D22D900243B33 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8BB8FD591E1D232500243B33 /* VCTagView.h */,
+				8BB8FD5A1E1D232500243B33 /* VCTagView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		8BBE05EB1C9EA5150018EB2A /* company */ = {
 			isa = PBXGroup;
 			children = (
@@ -2161,6 +2173,7 @@
 		9A403DF41E1B5C1700829EC4 /* hot */ = {
 			isa = PBXGroup;
 			children = (
+				8BB8FD581E1D22D900243B33 /* view */,
 				8BB8FD541E1D14F500243B33 /* util */,
 				9A74CD701E1CF05A0036C02D /* model */,
 				9A403DFD1E1B5CA900829EC4 /* VCHotViewController.h */,
@@ -2763,6 +2776,7 @@
 				9A95FF091C858B0E00C5F492 /* SettingViewController.m in Sources */,
 				8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */,
 				9AEF89C21CA1274600C5EB90 /* MJPhotoView.m in Sources */,
+				8BB8FD5B1E1D232500243B33 /* VCTagView.m in Sources */,
 				8B5DC56A1C7992E900D29292 /* AppDelegate.m in Sources */,
 				9AA959441D88CFD200BB403B /* MTLValueTransformer+Util.m in Sources */,
 				8B2D18CF1D3101BC00A9183E /* WXApiManager.m in Sources */,

@@ -10,14 +10,17 @@
 #import "SDCycleScrollView.h"
 #import "VCHomeUtil.h"
 #import "VCIndex.h"
+#import "VCTagView.h"
 
-@interface VCHomeViewController ()<SDCycleScrollViewDelegate>
+@interface VCHomeViewController ()<SDCycleScrollViewDelegate,VCTagViewDelegate>
 @property (nonatomic, readonly) SDCycleScrollView *scrollView;
+@property (nonatomic, readonly) VCTagView *tagView;
 @property (nonatomic, strong) VCIndex *homeIndex;
 @end
 
 @implementation VCHomeViewController
 @synthesize scrollView = _scrollView;
+@synthesize tagView = _tagView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,6 +31,7 @@
 -(void)setupUI
 {
     [self.view addSubview:self.scrollView];
+    [self.view addSubview:self.tagView];
 }
 
 -(void)setupData
@@ -64,10 +68,26 @@
     return _scrollView;
 }
 
+-(VCTagView *)tagView
+{
+    if(!_tagView){
+        CGRect rect = CGRectMake(0, IPHONE_WIDTH * 0.6, IPHONE_WIDTH, self.view.bounds.size.height - IPHONE_WIDTH * 0.6);
+        _tagView = [[VCTagView alloc]initWithFrame:rect];
+        _tagView.delegate = self;
+    }
+    return _tagView;
+}
+
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
     NSLog(@"---点击了第%ld张图片", (long)index);
+}
+
+#pragma mark - TagViewDelegate
+- (NSArray *)tagViewDataSource
+{
+    return [self.homeIndex pages];
 }
 
 @end
