@@ -9,5 +9,7 @@
 #import "ModelUtil.h"
 
 @interface VCRankUtil : ModelUtil
-
++(void)queryGlobalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion;
++(void)queryLocalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion;
++(void)queryCategoryRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion;
 @end

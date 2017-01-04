@@ -39,13 +39,14 @@
 
 +(void)queryModelsFromServer:(void(^)(NSArray *models))completion
 {
-    [self queryGlobalRank:completion];
+    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID]};
+
+    [self queryGlobalRank:parameter completion:completion];
 }
 
 //全球排行
-+(void)queryGlobalRank:(void(^)(NSArray *models))completion
++(void)queryGlobalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
 {
-    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID]};
     [[YGRestClient sharedInstance] postForObjectWithUrl:GlobalRankUrl form:parameter success:^(id responseObject) {
         if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
             NSError *error;
@@ -65,10 +66,32 @@
 }
 
 //地区查询
-+(void)queryLocalRank:(void(^)(NSArray *models))completion
++(void)queryLocalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
 {
-    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"countryCode":@"CN"};
+    //NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"countryCode":@"CN"};
     [[YGRestClient sharedInstance] postForObjectWithUrl:CountryRankUrl form:parameter success:^(id responseObject) {
+        if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
+            NSError *error;
+            NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:responseObject error:&error];
+            if (error) {
+                NSLog(@"%@",error);
+            }
+            if (completion) {
+                completion(array);
+            }
+        }else{
+            completion(nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+//分类查询
++(void)queryCategoryRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
+{
+    //NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":@"CN"};
+    [[YGRestClient sharedInstance] postForObjectWithUrl:CategoryRankUrl form:parameter success:^(id responseObject) {
         if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
             NSError *error;
             NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:responseObject error:&error];

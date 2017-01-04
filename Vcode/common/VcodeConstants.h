@@ -63,9 +63,9 @@
 #define CountryRankUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=rank&op=countryRank",VBaseUrl]
 //类型排行
 #define CategoryRankUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=rank&op=categoryRank",VBaseUrl]
-//获取所有分类接口
+//获取所有分类接口(已废除)
 #define GetCategoryUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=sys&op=getCategory",VBaseUrl]
-//获取所有国家的接口
+//获取所有国家的接口(已废除)
 #define DeleteShopcartUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=shopcart&op=deleteShopcart",VBaseUrl]
 
 #endif

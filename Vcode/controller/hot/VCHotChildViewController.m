@@ -7,75 +7,86 @@
 //
 
 #import "VCHotChildViewController.h"
+#import "VCRankUtil.h"
+#import "VcodeUtil.h"
+#import "VCRankTableCell.h"
 
-
-@interface VCHotChildViewController ()<UITableViewDelegate, UITableViewDataSource>
-@property(strong, nonatomic)UITableView *tableView;
+@interface VCHotChildViewController ()
 @property(assign, nonatomic)NSInteger index;
 
 @end
 
-static NSString * const cellId = @"cellID";
-
 @implementation VCHotChildViewController
+@synthesize tableView = _tableView;
 
-- (void)viewDidLoad {
+-(void)viewDidLoad
+{
     [super viewDidLoad];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 0.1)];
+    self.tableView.tableFooterView = [[UIView alloc]init];
+}
+
+-(Class)modelUtilClass
+{
+    return [VCRankUtil class];
+}
+
+-(void)setupNavigationItem
+{
+}
+
+- (void)initializeForm:(NSArray *)models
+{
+    XLFormDescriptor * form;
+    XLFormSectionDescriptor * section;
+    XLFormRowDescriptor * row;
     
+    form = [XLFormDescriptor formDescriptorWithTitle:@""];
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    for (id model in models) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:VCRankDescriporType];
+        row.value = model;
+        [section addFormRow:row];
+    }
+    
+    self.form = form;
+}
+
+-(UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    }
+    return _tableView;
+}
+
+#pragma mark - ZJScrollPageViewChildVcDelegate
+- (void)zj_viewDidAppearForIndex:(NSInteger)index {
+    //index 从1 开始
+    self.index = index;
+    
+    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":@"Arts"};
+    [VCRankUtil queryCategoryRank:parameter completion:^(NSArray *models) {
+        
+    }];
 }
 
 - (void)zj_viewDidLoadForIndex:(NSInteger)index {
-    
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellId];
-    self.data = [NSArray array];
-    [self.view addSubview:self.tableView];
+    NSLog(@"%ld",(long)index);
 }
 
-- (void)zj_viewDidAppearForIndex:(NSInteger)index {
-    self.index = index;
-    NSLog(@"已经出现   标题: --- %@  index: -- %ld", self.title, index);
-    
-    if (index%2==0) {
-        self.view.backgroundColor = [UIColor blueColor];
-    } else {
-        self.view.backgroundColor = [UIColor greenColor];
-        
-    }
-    // 加载数据
-    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    self.data = @[@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa",@"sfa"];
-    [self.tableView reloadData];
-    //    });
+//重写父类方法
+#pragma mark - UITableViewDataSource
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
 }
 
-#pragma mark- ZJScrollPageViewChildVcDelegate
-
-#pragma mark- UITableViewDelegate, UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.data.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"测试---- %@-----%ld", self.data[indexPath.row],self.index];
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"点击了%ld行----", indexPath.row);
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
 }
 
 @end

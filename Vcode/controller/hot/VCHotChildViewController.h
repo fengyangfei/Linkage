@@ -6,9 +6,9 @@
 //  Copyright © 2017年 LA. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ModelBaseViewController.h"
 #import "ZJScrollPageViewDelegate.h"
 
-@interface VCHotChildViewController : UIViewController<ZJScrollPageViewChildVcDelegate>
+@interface VCHotChildViewController : ModelBaseViewController<ZJScrollPageViewChildVcDelegate>
 @property (strong, nonatomic) NSArray *data;
 @end
