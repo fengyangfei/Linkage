@@ -243,6 +243,8 @@
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A74CD5A1E1C7D3E0036C02D /* VcodeLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A74CD591E1C7D3E0036C02D /* VcodeLaunch.storyboard */; };
+		9A74CD5D1E1C81B10036C02D /* VCCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5C1E1C81B10036C02D /* VCCountry.m */; };
+		9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -758,6 +760,10 @@
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
 		9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollCell.m; sourceTree = "<group>"; };
 		9A74CD591E1C7D3E0036C02D /* VcodeLaunch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VcodeLaunch.storyboard; sourceTree = "<group>"; };
+		9A74CD5B1E1C81B10036C02D /* VCCountry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCountry.h; sourceTree = "<group>"; };
+		9A74CD5C1E1C81B10036C02D /* VCCountry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCountry.m; sourceTree = "<group>"; };
+		9A74CD5E1E1C820C0036C02D /* VCCountryUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCountryUtil.h; sourceTree = "<group>"; };
+		9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCountryUtil.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -1811,6 +1817,8 @@
 				8BFEBF8F1E1BDB06008A60D5 /* VCCategory.m */,
 				8BFEBF911E1BDCB6008A60D5 /* VCCategoryModel.h */,
 				8BFEBF921E1BDCB6008A60D5 /* VCCategoryModel.m */,
+				9A74CD5B1E1C81B10036C02D /* VCCountry.h */,
+				9A74CD5C1E1C81B10036C02D /* VCCountry.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1820,6 +1828,8 @@
 			children = (
 				8BFEBF951E1BDD3F008A60D5 /* VCCategoryUtil.h */,
 				8BFEBF961E1BDD3F008A60D5 /* VCCategoryUtil.m */,
+				9A74CD5E1E1C820C0036C02D /* VCCountryUtil.h */,
+				9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -2561,6 +2571,7 @@
 				9A2F5C451CE1724A00E7E2DD /* BillDataSource.m in Sources */,
 				9ABD8F8F1D45F3B500D03A84 /* NSDate+Format.m in Sources */,
 				8B5DC6261C79B8A700D29292 /* IFTTTInterpolatable.m in Sources */,
+				9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */,
 				8B5DC6271C79B8A700D29292 /* IFTTTLayerFillColorAnimation.m in Sources */,
 				9AEF89D71CA8B02900C5EB90 /* XLFormDataSource.m in Sources */,
 				8BB4FB141C7A0884003389F1 /* iConsole.m in Sources */,
@@ -2577,6 +2588,7 @@
 				9A126DE71CD1DE9000648184 /* CarViewController.m in Sources */,
 				8B5DC6201C79B8A700D29292 /* IFTTTConstraintMultiplierAnimation.m in Sources */,
 				9A11F0711CD08894002E8F6F /* Task.m in Sources */,
+				9A74CD5D1E1C81B10036C02D /* VCCountry.m in Sources */,
 				8B10AD2D1C88744E00F5B0D6 /* PersonalSettingController.m in Sources */,
 				8B5DC62B1C79B8A700D29292 /* IFTTTPathPositionAnimation.m in Sources */,
 				9A23A31F1C7E8EA900FB5EB6 /* ICETutorialController.m in Sources */,
