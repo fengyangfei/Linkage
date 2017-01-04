@@ -40,9 +40,10 @@
     [VCHomeUtil queryModelFromServer:^(VCIndex *model) {
         @strongify(self)
         self.homeIndex = model;
+        [self.tagView reloadData];
         //图片
         NSMutableArray *imagesURLStrings = [NSMutableArray array];
-        for (VCAd *advert in self.homeIndex.ads) {
+        for (VCAd *advert in model.ads) {
             [imagesURLStrings addObject:advert.thumb?:@""];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -71,7 +72,7 @@
 -(VCTagView *)tagView
 {
     if(!_tagView){
-        CGRect rect = CGRectMake(0, IPHONE_WIDTH * 0.6, IPHONE_WIDTH, self.view.bounds.size.height - IPHONE_WIDTH * 0.6);
+        CGRect rect = CGRectMake(0, IPHONE_WIDTH * 0.6, IPHONE_WIDTH, self.view.bounds.size.height - IPHONE_WIDTH * 0.6 - 50);
         _tagView = [[VCTagView alloc]initWithFrame:rect];
         _tagView.delegate = self;
     }

@@ -7,6 +7,7 @@
 //
 
 #import "VCTagView.h"
+#import "VCIndex.h"
 #import "NSString+Hint.h"
 #define TagCellID @"TagCellID"
 @interface VCTagView()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -35,11 +36,19 @@
     [self addSubview:self.collectionView];
 }
 
+#pragma mark - 对外发布方法
+-(void)reloadData
+{
+    [self.collectionView reloadData];
+}
+
 #pragma mark - helper
 -(void)setupCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor redColor];
-    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"1"]];
+    VCPage *page =[[self.delegate tagViewDataSource] objectAtIndex:indexPath.item];
+    //图片
+    NSString *imageIndex = [NSString stringWithFormat:@"%ld",(long) (indexPath.item % 3 + 1)];
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:imageIndex]];
     [cell.contentView addSubview:imageView];
     [imageView makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(60);
@@ -47,10 +56,22 @@
         make.centerX.equalTo(cell.centerX);
         make.top.equalTo(cell.top);
     }];
+    //首字母
+    UILabel *firstLetterLabel = [[UILabel alloc]init];
+    [cell.contentView addSubview:firstLetterLabel];
+    firstLetterLabel.text = [[page.name substringWithRange:NSMakeRange(0, 1)] uppercaseString];
+    [firstLetterLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(imageView.centerX);
+        make.centerY.equalTo(imageView.centerY);
+    }];
+    //url连接
     UILabel *titleLabel = [[UILabel alloc]init];
+    titleLabel.font = [UIFont systemFontOfSize:12];
     [cell.contentView addSubview:titleLabel];
+    titleLabel.text = page.name;
     [titleLabel makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(cell.centerX);
+        make.width.equalTo(50);
         make.top.equalTo(imageView.bottom).offset(5);
     }];
 }
@@ -58,8 +79,7 @@
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 30;
-    //return [[self.delegate tagViewDataSource] count];
+    return [[self.delegate tagViewDataSource] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -100,8 +120,8 @@
     if (_collectionViewLayout == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.itemSize = CGSizeMake(IPHONE_WIDTH / 4 - 10, IPHONE_WIDTH / 4 - 10);
-        layout.minimumLineSpacing = 10.0;
-        layout.minimumInteritemSpacing = 10.0;
+        layout.minimumLineSpacing = 0.0;
+        layout.minimumInteritemSpacing = 0.0;
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         _collectionViewLayout = layout;
     }

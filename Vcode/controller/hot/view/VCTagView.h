@@ -14,5 +14,6 @@
 
 @interface VCTagView : UIView
 @property(weak, nonatomic) id<VCTagViewDelegate> delegate;
+-(void)reloadData;
 @end
 

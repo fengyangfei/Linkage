@@ -26,16 +26,14 @@
 
 -(void)setupTopScrollView
 {
-    self.title = @"效果示例";
     //必要的设置, 如果没有设置可能导致内容显示不正常
     self.automaticallyAdjustsScrollViewInsets = NO;
     ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
     // 缩放标题
     style.scaleTitle = YES;
+    style.showLine = NO;
     // 颜色渐变
     style.gradualChangeTitleColor = YES;
-//    style.normalTitleColor = [UIColor lightGrayColor];
-//    style.selectedTitleColor = [UIColor grayColor];
     // 设置附加按钮的背景图片
     self.titles = [VCCategoryUtil queryAllCategoryTitles];
     // 初始化
