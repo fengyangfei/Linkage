@@ -171,8 +171,8 @@ static NSString *const kVcodeStoreName = @"vcode.sqlite";
 {
     //设置导航标题属性
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
-    [UINavigationBar appearance].barTintColor = VHeaderColor;
-    [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:18],NSFontAttributeName, nil];
+    [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
+    [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:18],NSFontAttributeName, nil];
     [UINavigationBar appearance].translucent = NO;
     [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];

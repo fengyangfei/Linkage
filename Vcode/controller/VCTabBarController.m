@@ -55,7 +55,6 @@
     UIViewController *messageController = ({
         NSString *title = @"排行";
         VCRankViewController *viewController = [[VCRankViewController alloc]init];
-        viewController.title = title;
         UITabBarItem *item = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"ranking"] selectedImage:[UIImage imageNamed:@"ranking_on"]];
         viewController.tabBarItem = item;
         viewController;

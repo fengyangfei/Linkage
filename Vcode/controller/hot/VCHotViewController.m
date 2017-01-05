@@ -21,21 +21,9 @@
 @implementation VCHotViewController
 @synthesize searchView = _searchView;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setupUI];
-}
-
 -(void)setupUI
 {
-    UIButton *brandBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 44)];
-    [brandBtn setImage:[UIImage imageNamed:@"google"] forState:UIControlStateNormal];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:brandBtn];
-    self.navigationItem.leftBarButtonItem = leftItem;
-    
-    UISearchBar *searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH - 80, 44)];
-    UIBarButtonItem *centerItem = [[UIBarButtonItem alloc]initWithCustomView:searchBar];
-    self.navigationItem.rightBarButtonItem = centerItem;
+    [super setupUI];
     //顶部栏
     [self setupTopScrollView];
 }

@@ -245,6 +245,7 @@
 		9A403E1E1E1B76EB00829EC4 /* VCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E1D1E1B76EB00829EC4 /* VCTabBarController.m */; };
 		9A403E221E1B785300829EC4 /* VCTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E211E1B785300829EC4 /* VCTutorialController.m */; };
 		9A403E251E1B900E00829EC4 /* VCRankTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E241E1B900E00829EC4 /* VCRankTableCell.m */; };
+		9A474FD61E1E2E7600618A8E /* VCBaseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FD51E1E2E7600618A8E /* VCBaseNavViewController.m */; };
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A74CD5D1E1C81B10036C02D /* VCCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5C1E1C81B10036C02D /* VCCountry.m */; };
@@ -783,6 +784,8 @@
 		9A403E211E1B785300829EC4 /* VCTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTutorialController.m; sourceTree = "<group>"; };
 		9A403E231E1B900E00829EC4 /* VCRankTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRankTableCell.h; sourceTree = "<group>"; };
 		9A403E241E1B900E00829EC4 /* VCRankTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRankTableCell.m; sourceTree = "<group>"; };
+		9A474FD41E1E2E7600618A8E /* VCBaseNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCBaseNavViewController.h; sourceTree = "<group>"; };
+		9A474FD51E1E2E7600618A8E /* VCBaseNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCBaseNavViewController.m; sourceTree = "<group>"; };
 		9A49E6B61D07ACA600F51C2F /* HJFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFormCell.h; sourceTree = "<group>"; };
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
@@ -2293,6 +2296,7 @@
 		9A403E1F1E1B782600829EC4 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				9A474FD31E1E2E4D00618A8E /* controller */,
 				9A74CD931E1DE6850036C02D /* view */,
 				8BFEBF941E1BDD17008A60D5 /* util */,
 				8BFEBF891E1BDAD2008A60D5 /* model */,
@@ -2300,6 +2304,15 @@
 				9A403E211E1B785300829EC4 /* VCTutorialController.m */,
 			);
 			path = base;
+			sourceTree = "<group>";
+		};
+		9A474FD31E1E2E4D00618A8E /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				9A474FD41E1E2E7600618A8E /* VCBaseNavViewController.h */,
+				9A474FD51E1E2E7600618A8E /* VCBaseNavViewController.m */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 		9A74CD701E1CF05A0036C02D /* model */ = {
@@ -2890,6 +2903,7 @@
 				8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */,
 				8B5DC63C1C79B8A700D29292 /* UIImage+TRTheme.m in Sources */,
 				8B5DC6221C79B8A700D29292 /* IFTTTEasingFunction.m in Sources */,
+				9A474FD61E1E2E7600618A8E /* VCBaseNavViewController.m in Sources */,
 				9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */,
 				9A403DFF1E1B5CA900829EC4 /* VCHotViewController.m in Sources */,
 				9AEF89C61CA2907D00C5EB90 /* Address.m in Sources */,

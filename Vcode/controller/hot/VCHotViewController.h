@@ -6,8 +6,8 @@
 //  Copyright © 2017年 LA. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "VCBaseNavViewController.h"
 
-@interface VCHotViewController : UIViewController
+@interface VCHotViewController : VCBaseNavViewController
 
 @end

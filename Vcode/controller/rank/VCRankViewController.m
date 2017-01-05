@@ -18,9 +18,9 @@
 
 @implementation VCRankViewController
 
--(void)viewDidLoad
+-(void)setupUI
 {
-    [super viewDidLoad];
+    [super setupUI];
     [self setupTopScrollView];
 }
 
