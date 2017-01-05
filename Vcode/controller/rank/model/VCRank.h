@@ -18,6 +18,7 @@
 @property (nonatomic,copy  ) NSString *country;
 @property (nonatomic,copy  ) NSString *countryCode;
 @property (nonatomic,copy  ) NSString *categoryCode;
+@property (nonatomic,copy  ) NSString *category;
 @property (nonatomic,copy  ) NSString *subCategory;
 @property (nonatomic,copy  ) NSString *subCategoryCode;
 @property (nonatomic,copy  ) NSString *rank;

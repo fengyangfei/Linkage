@@ -15,7 +15,6 @@
 
 @interface VCHotChildViewController ()
 @property(assign, nonatomic)NSInteger index;
-
 @end
 
 @implementation VCHotChildViewController
@@ -25,16 +24,44 @@
 {
     [super viewDidLoad];
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 0.1)];
-    self.tableView.tableFooterView = [[UIView alloc]init];
-}
-
--(Class)modelUtilClass
-{
-    return [VCRankUtil class];
+    self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 -(void)setupNavigationItem
 {
+}
+
+#pragma mark - 重写父类 setupData与queryDataFromServer
+- (void)setupData:(void(^)(NSArray *models))completion
+{
+    
+}
+
+- (void)queryDataFromServer:(void(^)(void))block
+{
+    [self refreshTable:self.index];
+}
+
+#pragma mark - ZJScrollPageViewChildVcDelegate
+- (void)zj_viewDidAppearForIndex:(NSInteger)index {
+    self.index = index;
+}
+
+- (void)zj_viewDidLoadForIndex:(NSInteger)index {
+    //index 从1 开始
+    self.index = index;
+    [self refreshTable:index];
+}
+
+//刷新列表
+-(void)refreshTable:(NSInteger)index{
+    VCCategory *category = [VCCategoryUtil getModelByIndex:index];
+    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":category.code};
+    @weakify(self);
+    [VCRankUtil queryCategoryRank:parameter completion:^(NSArray *models) {
+        @strongify(self);
+        [self initializeForm:models];
+    }];
 }
 
 - (void)initializeForm:(NSArray *)models
@@ -53,32 +80,7 @@
         [section addFormRow:row];
     }
     
-    self.form = form;
-}
-
--(UITableView *)tableView
-{
-    if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    }
-    return _tableView;
-}
-
-#pragma mark - ZJScrollPageViewChildVcDelegate
-- (void)zj_viewDidAppearForIndex:(NSInteger)index {
-    //index 从1 开始
-    self.index = index;
-    
-    VCCategory *category = [VCCategoryUtil getModelByIndex:index];
-    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":category.code};
-    [VCRankUtil queryCategoryRank:parameter completion:^(NSArray *models) {
-        
-    }];
-}
-
-- (void)zj_viewDidLoadForIndex:(NSInteger)index {
-    NSLog(@"%ld",(long)index);
+    [self setForm:form];
 }
 
 //重写父类方法
@@ -90,6 +92,16 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+}
+
+
+-(UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    }
+    return _tableView;
 }
 
 @end

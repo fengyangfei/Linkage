@@ -15,6 +15,7 @@
 @property (nullable, nonatomic, retain) NSString *introduction;
 @property (nullable, nonatomic, retain) NSString *country;
 @property (nullable, nonatomic, retain) NSString *countryCode;
+@property (nullable, nonatomic, retain) NSString *category;
 @property (nullable, nonatomic, retain) NSString *categoryCode;
 @property (nullable, nonatomic, retain) NSString *subCategory;
 @property (nullable, nonatomic, retain) NSString *subCategoryCode;

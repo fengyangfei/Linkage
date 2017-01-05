@@ -15,6 +15,7 @@
 @dynamic introduction;
 @dynamic country;
 @dynamic countryCode;
+@dynamic category;
 @dynamic categoryCode;
 @dynamic subCategory;
 @dynamic subCategoryCode;

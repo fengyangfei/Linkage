@@ -47,7 +47,8 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
 {
     [super update];
     VCRank *rank = self.rowDescriptor.value;
-    [self.iconView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"地区"]];
+//    [self.iconView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"地区"]];
+    [self.iconView setImage:[UIImage imageNamed:rank.category]];
     self.titleLabel.text = rank.name;
     self.detailLabel.text = rank.introduction;
     self.subDetailLabel.text = rank.url;
