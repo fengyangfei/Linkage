@@ -260,6 +260,9 @@
 		9A74CD821E1DD4EC0036C02D /* VCAdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD811E1DD4EC0036C02D /* VCAdviceViewController.m */; };
 		9A74CD851E1DD5080036C02D /* VCFavorTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD841E1DD5080036C02D /* VCFavorTagViewController.m */; };
 		9A74CD881E1DD5180036C02D /* VCHelperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD871E1DD5180036C02D /* VCHelperViewController.m */; };
+		9A74CD901E1DDD1B0036C02D /* WYButtonChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD8B1E1DDD1B0036C02D /* WYButtonChooseView.m */; };
+		9A74CD911E1DDD1B0036C02D /* WYButtonChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD8D1E1DDD1B0036C02D /* WYButtonChooseViewController.m */; };
+		9A74CD921E1DDD1B0036C02D /* WYLabelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD8F1E1DDD1B0036C02D /* WYLabelButton.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -809,6 +812,12 @@
 		9A74CD841E1DD5080036C02D /* VCFavorTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFavorTagViewController.m; sourceTree = "<group>"; };
 		9A74CD861E1DD5180036C02D /* VCHelperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHelperViewController.h; sourceTree = "<group>"; };
 		9A74CD871E1DD5180036C02D /* VCHelperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHelperViewController.m; sourceTree = "<group>"; };
+		9A74CD8A1E1DDD1B0036C02D /* WYButtonChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYButtonChooseView.h; sourceTree = "<group>"; };
+		9A74CD8B1E1DDD1B0036C02D /* WYButtonChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYButtonChooseView.m; sourceTree = "<group>"; };
+		9A74CD8C1E1DDD1B0036C02D /* WYButtonChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYButtonChooseViewController.h; sourceTree = "<group>"; };
+		9A74CD8D1E1DDD1B0036C02D /* WYButtonChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYButtonChooseViewController.m; sourceTree = "<group>"; };
+		9A74CD8E1E1DDD1B0036C02D /* WYLabelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYLabelButton.h; sourceTree = "<group>"; };
+		9A74CD8F1E1DDD1B0036C02D /* WYLabelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYLabelButton.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -2200,6 +2209,7 @@
 		9A403DF41E1B5C1700829EC4 /* hot */ = {
 			isa = PBXGroup;
 			children = (
+				9A74CD891E1DDD1B0036C02D /* widget */,
 				8BB8FD581E1D22D900243B33 /* view */,
 				8BB8FD541E1D14F500243B33 /* util */,
 				9A74CD701E1CF05A0036C02D /* model */,
@@ -2340,6 +2350,19 @@
 				9A74CD871E1DD5180036C02D /* VCHelperViewController.m */,
 			);
 			path = helper;
+			sourceTree = "<group>";
+		};
+		9A74CD891E1DDD1B0036C02D /* widget */ = {
+			isa = PBXGroup;
+			children = (
+				9A74CD8A1E1DDD1B0036C02D /* WYButtonChooseView.h */,
+				9A74CD8B1E1DDD1B0036C02D /* WYButtonChooseView.m */,
+				9A74CD8C1E1DDD1B0036C02D /* WYButtonChooseViewController.h */,
+				9A74CD8D1E1DDD1B0036C02D /* WYButtonChooseViewController.m */,
+				9A74CD8E1E1DDD1B0036C02D /* WYLabelButton.h */,
+				9A74CD8F1E1DDD1B0036C02D /* WYLabelButton.m */,
+			);
+			path = widget;
 			sourceTree = "<group>";
 		};
 		9A7D0E901CD885C400EE005F /* util */ = {
@@ -2800,6 +2823,7 @@
 				8BB039DE1C94591900A3BCF9 /* LoginUser.m in Sources */,
 				8BA1305D1C9DA398007607F9 /* SpecialFormSectionDescriptor.m in Sources */,
 				8BB4FB131C7A0884003389F1 /* GTMStackTrace.m in Sources */,
+				9A74CD901E1DDD1B0036C02D /* WYButtonChooseView.m in Sources */,
 				8B0060411CAC08E3001B0FC9 /* Order.m in Sources */,
 				9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */,
 				8B5DC6331C79B8A700D29292 /* IFTTTViewAnimation.m in Sources */,
@@ -2876,6 +2900,7 @@
 				9A11F06A1CD05A9B002E8F6F /* DriverModel.m in Sources */,
 				9AEF89BF1CA1274600C5EB90 /* MJPhotoLoadingView.m in Sources */,
 				9A11F0781CD1BBBA002E8F6F /* ModelBaseViewController.m in Sources */,
+				9A74CD921E1DDD1B0036C02D /* WYLabelButton.m in Sources */,
 				8B2D18D21D3101BC00A9183E /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */,
 				8BA3E3CB1CD463E90047AC6B /* Staff.m in Sources */,
 				8B5DC61C1C79B8A700D29292 /* IFTTTAnimation.m in Sources */,
@@ -2906,6 +2931,7 @@
 				9A74CD821E1DD4EC0036C02D /* VCAdviceViewController.m in Sources */,
 				8B53F4E61CE37C820020E218 /* SearchViewController.m in Sources */,
 				8B3DB5C71D854E6F00AABCE9 /* UITabBar+Badge.m in Sources */,
+				9A74CD911E1DDD1B0036C02D /* WYButtonChooseViewController.m in Sources */,
 				8BD1A4701D44C64B00469324 /* Comment.m in Sources */,
 				8B2D18D41D3101BC00A9183E /* WXMediaMessage+messageConstruct.m in Sources */,
 				9A74CD741E1CF0B10036C02D /* VCIndex.m in Sources */,
