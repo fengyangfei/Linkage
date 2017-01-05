@@ -12,14 +12,14 @@
 #import "VCHomeViewController.h"
 #import "VCCategoryUtil.h"
 #import "VCSearchView.h"
+#import "WYButtonChooseViewController.h"
 
+#define kButtonW 40
 @interface VCHotViewController ()<ZJScrollPageViewDelegate>
 @property(strong, nonatomic)NSArray<NSString *> *titles;
-@property (nonatomic, readonly) VCSearchView *searchView;
 @end
 
 @implementation VCHotViewController
-@synthesize searchView = _searchView;
 
 -(void)setupUI
 {
@@ -40,6 +40,18 @@
     self.titles = [VCCategoryUtil queryAllCategoryTitles];
     ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
     [self.view addSubview:scrollPageView];
+    
+    //右边的阴影
+    UIImageView *rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navbar_right_more"]];
+    rightView.frame = (CGRect){CGPointMake(IPHONE_WIDTH - rightView.bounds.size.width - kButtonW, 0), rightView.frame.size};
+    [self.view addSubview:rightView];
+    
+    //加号按钮
+    UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(IPHONE_WIDTH - kButtonW, 0, kButtonW, 44)];
+    addBtn.backgroundColor = [UIColor whiteColor];
+    [addBtn setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
+    [addBtn addTarget:self action:@selector(editCategory:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addBtn];
 }
 
 
@@ -62,35 +74,17 @@
 }
 
 
-- (void)scrollPageController:(UIViewController *)scrollPageController childViewControllWillAppear:(UIViewController *)childViewController forIndex:(NSInteger)index {
-    //NSLog(@"%ld ---将要出现",index);
-}
-
-- (void)scrollPageController:(UIViewController *)scrollPageController childViewControllDidAppear:(UIViewController *)childViewController forIndex:(NSInteger)index {
-    //NSLog(@"%ld ---已经出现",index);
-}
-
-- (void)scrollPageController:(UIViewController *)scrollPageController childViewControllWillDisappear:(UIViewController *)childViewController forIndex:(NSInteger)index {
-    //NSLog(@"%ld ---将要消失",index);
-}
-
-
-- (void)scrollPageController:(UIViewController *)scrollPageController childViewControllDidDisappear:(UIViewController *)childViewController forIndex:(NSInteger)index {
-    //NSLog(@"%ld ---已经消失",index);
-}
-
 -(BOOL)shouldAutomaticallyForwardAppearanceMethods
 {
     return NO;
 }
 
-#pragma mark - getter setter
--(VCSearchView *)searchView
+#pragma mark - 事件
+-(void)editCategory:(id)sender
 {
-    if (!_searchView) {
-        _searchView = [[VCSearchView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 49)];
-    }
-    return _searchView;
+    WYButtonChooseViewController *controller = [[WYButtonChooseViewController alloc]init];
+    controller.selectedArray = [[VCCategoryUtil queryAllCategories] mutableCopy];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

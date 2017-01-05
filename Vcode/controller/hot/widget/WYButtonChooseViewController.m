@@ -34,6 +34,7 @@
 {
     self = [super init];
     if (self) {
+        self.title = @"标签设置";
         [self initSubviews];
     }
     return self;
@@ -108,18 +109,20 @@
     _header.backgroundColor = kTopicHeaderBgColor;
     [self.view addSubview:_header];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(kMarginW, 0, 80, kHeaderHeight)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, 80, kHeaderHeight)];
     label.font = [UIFont systemFontOfSize:14];
     label.text = @"切换栏目";
     [_header addSubview:label];
     
+    /*
     UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - kMarginW - kHeaderHeight, 0, 30, kHeaderHeight)];
     [button1 setImage:[UIImage imageNamed:@"channel_nav_arrow"] forState:UIControlStateNormal];
     [button1 addTarget:self action:@selector(spreadAction:) forControlEvents:UIControlEventTouchUpInside];
     [_header addSubview:button1];
+     */
     
-    UIButton *button2 = [[UIButton alloc] initWithFrame:CGRectMake(button1.frame.origin.x - kMarginW - 65, 0, 60, kHeaderHeight)];
-    [button2 setTitle:@"排序删除" forState:UIControlStateNormal];
+    UIButton *button2 = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - kMarginW - 65, 0, 60, kHeaderHeight)];
+    [button2 setTitle:@"排序" forState:UIControlStateNormal];
     button2.titleLabel.font = [UIFont systemFontOfSize:12];
     [button2 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [button2 setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
@@ -134,9 +137,10 @@
     [self.view addSubview:_topChooseView];
     
     
-    _label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_topChooseView.frame), [UIScreen mainScreen].bounds.size.width, 30)];
-    _label.backgroundColor = [UIColor lightGrayColor];
-    _label.text = @" 点击添加更多栏目";
+    _label = [[UILabel alloc] initWithFrame:CGRectMake(12, CGRectGetMaxY(_topChooseView.frame), [UIScreen mainScreen].bounds.size.width, 30)];
+    _label.font = [UIFont systemFontOfSize:14];
+    _label.backgroundColor = kTopicHeaderBgColor;
+    _label.text = @"点击添加更多类型导航";
     [self.view addSubview:_label];
 
     _bottomChooseView = [[WYButtonChooseView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_label.frame), [UIScreen mainScreen].bounds.size.width, 200)];
@@ -183,8 +187,8 @@
 {
     
     UILabel *label = _header.subviews[0];
-    UIButton *button2 = _header.subviews[2];
-    if ([button2.titleLabel.text isEqualToString:@"排序删除"]) {
+    UIButton *button2 = _header.subviews[1];
+    if ([button2.titleLabel.text isEqualToString:@"排序"]) {
         label.text = @"拖动排序";
         [button2 setTitle:@"完成" forState:UIControlStateNormal];
         _topChooseView.edit = YES;
@@ -194,7 +198,7 @@
             return;
         }
         label.text = @"切换栏目";
-        [button2 setTitle:@"排序删除" forState:UIControlStateNormal];
+        [button2 setTitle:@"排序" forState:UIControlStateNormal];
         _topChooseView.edit = NO;
         _bottomChooseView.hidden = NO;
     }
