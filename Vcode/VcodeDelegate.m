@@ -29,7 +29,7 @@
 #import "MessageUtil.h"
 #import "MessageDetailViewController.h"
 
-static NSString *const kStoreName = @"vcode.sqlite";
+static NSString *const kVcodeStoreName = @"vcode.sqlite";
 
 @interface VcodeDelegate ()
 
@@ -45,10 +45,10 @@ static NSString *const kStoreName = @"vcode.sqlite";
 //    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:kPgyerAppKey];
 //    [[PgyUpdateManager sharedPgyManager] checkUpdate];
     
-//    [self setupDataBase];
+    [self setupDataBase];
 //    [self registerJPushWithOptions:launchOptions];
     
-//    [self umengTrack];
+    [self umengTrack];
 //    [self setupSocialConfig];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -56,9 +56,9 @@ static NSString *const kStoreName = @"vcode.sqlite";
     
     UIViewController *rooViewController;
     //if (kNeedShowIntroduce) {
-        rooViewController = [VCTutorialController shareViewController];
+    //    rooViewController = [VCTutorialController shareViewController];
     //}else{
-    //    rooViewController = [[VCTabBarController alloc]init];
+        rooViewController = [[VCTabBarController alloc]init];
     //}
     self.window.rootViewController = rooViewController;
     
@@ -79,7 +79,7 @@ static NSString *const kStoreName = @"vcode.sqlite";
 {
     NSLog(@"数据库路径-%@", [self applicationDocumentsDirectory]);
     [MagicalRecord setLoggingLevel:MagicalRecordLoggingLevelVerbose];
-    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kStoreName];
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kVcodeStoreName];
 }
 
 /*
