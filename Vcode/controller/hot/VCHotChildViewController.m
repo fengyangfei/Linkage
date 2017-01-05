@@ -12,6 +12,7 @@
 #import "VCRankTableCell.h"
 #import "VCCategoryUtil.h"
 #import "VCCategory.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface VCHotChildViewController ()
 @property(assign, nonatomic)NSInteger index;
@@ -50,6 +51,7 @@
 - (void)zj_viewDidLoadForIndex:(NSInteger)index {
     //index 从1 开始
     self.index = index;
+    [self.tableView.mj_header beginRefreshing];
     [self refreshTable:index];
 }
 
@@ -61,6 +63,7 @@
     [VCRankUtil queryCategoryRank:parameter completion:^(NSArray *models) {
         @strongify(self);
         [self initializeForm:models];
+        [self.tableView.mj_header endRefreshing];
     }];
 }
 

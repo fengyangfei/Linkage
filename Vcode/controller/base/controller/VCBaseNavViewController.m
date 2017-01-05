@@ -34,15 +34,15 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.searchBar becomeFirstResponder];
+    //[self.searchBar becomeFirstResponder];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    if ([self.searchBar isFirstResponder]) {
-        [self.searchBar resignFirstResponder];
-    }
+//    if ([self.searchBar isFirstResponder]) {
+//        [self.searchBar resignFirstResponder];
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
