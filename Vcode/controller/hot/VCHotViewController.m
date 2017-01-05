@@ -11,6 +11,7 @@
 #import "VCHotChildViewController.h"
 #import "VCHomeViewController.h"
 #import "VCCategoryUtil.h"
+#import "VCSearchView.h"
 
 @interface VCHotViewController ()<ZJScrollPageViewDelegate>
 @property(strong, nonatomic)NSArray<NSString *> *titles;
@@ -20,6 +21,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupUI];
+}
+
+-(void)setupUI
+{
+    self.navigationItem.titleView = [[VCSearchView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 49)];
     //顶部栏
     [self setupTopScrollView];
 }
@@ -29,16 +36,12 @@
     //必要的设置, 如果没有设置可能导致内容显示不正常
     self.automaticallyAdjustsScrollViewInsets = NO;
     ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
-    // 缩放标题
     style.scaleTitle = YES;
     style.showLine = NO;
-    // 颜色渐变
     style.gradualChangeTitleColor = YES;
     // 设置附加按钮的背景图片
     self.titles = [VCCategoryUtil queryAllCategoryTitles];
-    // 初始化
     ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
-    // 这里可以设置头部视图的属性(背景色, 圆角, 背景图片...)
     [self.view addSubview:scrollPageView];
 }
 

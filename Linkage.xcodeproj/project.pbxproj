@@ -263,6 +263,7 @@
 		9A74CD901E1DDD1B0036C02D /* WYButtonChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD8B1E1DDD1B0036C02D /* WYButtonChooseView.m */; };
 		9A74CD911E1DDD1B0036C02D /* WYButtonChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD8D1E1DDD1B0036C02D /* WYButtonChooseViewController.m */; };
 		9A74CD921E1DDD1B0036C02D /* WYLabelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD8F1E1DDD1B0036C02D /* WYLabelButton.m */; };
+		9A74CD961E1DE69F0036C02D /* VCSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD951E1DE69F0036C02D /* VCSearchView.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -818,6 +819,8 @@
 		9A74CD8D1E1DDD1B0036C02D /* WYButtonChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYButtonChooseViewController.m; sourceTree = "<group>"; };
 		9A74CD8E1E1DDD1B0036C02D /* WYLabelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYLabelButton.h; sourceTree = "<group>"; };
 		9A74CD8F1E1DDD1B0036C02D /* WYLabelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYLabelButton.m; sourceTree = "<group>"; };
+		9A74CD941E1DE69F0036C02D /* VCSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSearchView.h; sourceTree = "<group>"; };
+		9A74CD951E1DE69F0036C02D /* VCSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSearchView.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -2290,6 +2293,7 @@
 		9A403E1F1E1B782600829EC4 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				9A74CD931E1DE6850036C02D /* view */,
 				8BFEBF941E1BDD17008A60D5 /* util */,
 				8BFEBF891E1BDAD2008A60D5 /* model */,
 				9A403E201E1B785300829EC4 /* VCTutorialController.h */,
@@ -2363,6 +2367,15 @@
 				9A74CD8F1E1DDD1B0036C02D /* WYLabelButton.m */,
 			);
 			path = widget;
+			sourceTree = "<group>";
+		};
+		9A74CD931E1DE6850036C02D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				9A74CD941E1DE69F0036C02D /* VCSearchView.h */,
+				9A74CD951E1DE69F0036C02D /* VCSearchView.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		9A7D0E901CD885C400EE005F /* util */ = {
@@ -2810,6 +2823,7 @@
 				9A403E1E1E1B76EB00829EC4 /* VCTabBarController.m in Sources */,
 				8B5DC6251C79B8A700D29292 /* IFTTTHideAnimation.m in Sources */,
 				8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */,
+				9A74CD961E1DE69F0036C02D /* VCSearchView.m in Sources */,
 				8B5DC6351C79B8A700D29292 /* JRToast.m in Sources */,
 				9A403E251E1B900E00829EC4 /* VCRankTableCell.m in Sources */,
 				9A11F05F1CD04753002E8F6F /* AddDriverViewController.m in Sources */,
