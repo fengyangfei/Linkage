@@ -26,7 +26,8 @@
 
 -(void)setupUI
 {
-    self.navigationItem.titleView = [[VCSearchView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 49)];
+    UIView *searchView = [[VCSearchView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 49)];
+    [self.navigationController.navigationBar addSubview:searchView];
     //顶部栏
     [self setupTopScrollView];
 }

@@ -40,7 +40,6 @@
         NSString *title = @"推荐";
         VCHotViewController *viewController = [[VCHotViewController alloc] init];
         viewController.view.backgroundColor = [UIColor paperColorCyan400];
-        viewController.title = title;
         viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"hot"] selectedImage:[UIImage imageNamed:@"hot_on"]];
         viewController;
     });

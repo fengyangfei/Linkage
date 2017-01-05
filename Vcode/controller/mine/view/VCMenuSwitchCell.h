@@ -9,6 +9,6 @@
 #import "MenuCell.h"
 
 extern NSString *const FormRowDescriptorTypeMenuSwitch;
-@interface VCMenuSwitchCell : MenuBaseTableViewCell
+@interface VCMenuSwitchCell : MenuCell
 
 @end
