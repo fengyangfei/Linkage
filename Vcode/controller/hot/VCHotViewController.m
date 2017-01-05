@@ -16,30 +16,36 @@
 
 #define kButtonW 40
 @interface VCHotViewController ()<ZJScrollPageViewDelegate>
-@property(strong, nonatomic)NSArray<NSString *> *titles;
+@property(readonly, nonatomic) ZJScrollPageView *scrollPageView;
+@property(strong, nonatomic) NSArray<NSString *> *titles;
 @end
 
 @implementation VCHotViewController
+@synthesize scrollPageView = _scrollPageView;
 
 -(void)setupUI
 {
     [super setupUI];
     //顶部栏
     [self setupTopScrollView];
+    [self setupData];
+}
+
+-(void)setupData
+{
+    @weakify(self);
+    [VCCategoryUtil queryAllCategoryTitles:^(NSArray *titles) {
+        @strongify(self);
+        self.titles = titles;
+        [self.scrollPageView reloadWithNewTitles:titles];
+    }];
 }
 
 -(void)setupTopScrollView
 {
     //必要的设置, 如果没有设置可能导致内容显示不正常
     self.automaticallyAdjustsScrollViewInsets = NO;
-    ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
-    style.scaleTitle = YES;
-    style.showLine = NO;
-    style.gradualChangeTitleColor = YES;
-    // 设置附加按钮的背景图片
-    self.titles = [VCCategoryUtil queryAllCategoryTitles];
-    ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
-    [self.view addSubview:scrollPageView];
+    [self.view addSubview:self.scrollPageView];
     
     //右边的阴影
     UIImageView *rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navbar_right_more"]];
@@ -87,4 +93,16 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+-(ZJScrollPageView *)scrollPageView
+{
+    if (!_scrollPageView) {
+        ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
+        style.scaleTitle = YES;
+        style.showLine = NO;
+        style.gradualChangeTitleColor = YES;
+        // 设置附加按钮的背景图片
+        _scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
+    }
+    return _scrollPageView;
+}
 @end

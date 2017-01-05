@@ -74,13 +74,14 @@
     }];
 }
 
-+(NSArray *)queryAllCategoryTitles
++(void)queryAllCategoryTitles:(void(^)(NSArray *titles))completion
 {
-    __block NSMutableArray *titles = [[NSMutableArray alloc]init];
     void(^addToList)(NSArray *models) = ^(NSArray *models) {
+        NSMutableArray *titles = [[NSMutableArray alloc]init];
         for (VCCategory *model in models) {
             [titles addObject:model.title];
         }
+        completion(titles);
     };
     [self queryModelsFromDataBase:^(NSArray *models) {
         if (models.count == 0) {
@@ -91,7 +92,6 @@
             addToList(models);
         }
     }];
-    return [titles copy];
 }
 
 +(NSArray *)queryAllCategories

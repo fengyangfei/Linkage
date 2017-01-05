@@ -11,7 +11,7 @@
 @interface VCCategoryUtil : ModelUtil
 
 +(void)syncCategory:(void(^)(NSArray *models))completion;
-+(NSArray *)queryAllCategoryTitles;
++(void)queryAllCategoryTitles:(void(^)(NSArray *titles))completion;
 +(NSArray *)queryAllCategories;
 +(id)getModelByIndex:(NSInteger)index;
 @end
