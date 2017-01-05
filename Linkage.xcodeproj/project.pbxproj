@@ -3111,7 +3111,7 @@
 					"$(PROJECT_DIR)/Linkage/common/thirdClass/ZBarSDK",
 					"$(PROJECT_DIR)/Linkage/common/thirdClass/JPush",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ygsoft.Linkage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ygsoft.Vcode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "44e4eb5b-0e61-460b-80a8-c44eb44afa9c";
 				PROVISIONING_PROFILE_SPECIFIER = anyApp_development_profile;
@@ -3144,7 +3144,7 @@
 					"$(PROJECT_DIR)/Linkage/common/thirdClass/ZBarSDK",
 					"$(PROJECT_DIR)/Linkage/common/thirdClass/JPush",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ygsoft.Linkage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ygsoft.Vcode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "724ed1bb-8ab6-4882-ab1a-eb6a1ce9688e";
 			};
