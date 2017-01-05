@@ -15,7 +15,7 @@
     static NSString *uuid;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSString *uuid = [[NSUserDefaults standardUserDefaults] stringForKey:kUUIDKey];
+        uuid = [[NSUserDefaults standardUserDefaults] stringForKey:kUUIDKey];
         if (!uuid) {
             uuid = [NSUUID UUID].UUIDString;
             [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:kUUIDKey];
