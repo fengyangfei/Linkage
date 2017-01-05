@@ -36,7 +36,7 @@
     
     [self.view addSubview:self.textView];
     [self.textView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.top);
+        make.top.equalTo(self.view.top).offset(18);
         make.left.equalTo(self.view.left);
         make.right.equalTo(self.view.right);
         make.height.equalTo(@(200));
@@ -113,8 +113,6 @@
         _textView.font = [UIFont systemFontOfSize:14];
         _textView.textColor = [UIColor blackColor];
         _textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        _textView.layer.borderWidth = 0.5;
-        _textView.layer.cornerRadius = 5;
     }
     return _textView;
 }

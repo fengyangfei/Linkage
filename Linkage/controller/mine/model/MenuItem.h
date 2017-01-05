@@ -22,6 +22,8 @@ typedef NS_ENUM(NSUInteger, MenuItemType) {
 @property (nonatomic, strong) Class viewControllerClass;
 @property (nonatomic, assign) MenuItemType type;
 @property (nonatomic, copy) NSString *entityName;
+@property (nonatomic) id value;
+
 
 - (instancetype)initWithTitle:(NSString *)title andIconName:(NSString *)iconName andClass:(Class)viewControllerClass;
 +(MenuItem *)createItemWithTitle:(NSString *)title;

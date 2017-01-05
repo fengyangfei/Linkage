@@ -10,6 +10,8 @@
 #import "VCMenuSwitchCell.h"
 #import "MenuItem.h"
 #import "MenuCell.h"
+#import "VCMenuInfoCell.h"
+#import <SDWebImage/SDImageCache.h>
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
 row.cellStyle = UITableViewCellStyleValue1;
@@ -35,30 +37,38 @@ row.cellStyle = UITableViewCellStyleValue1;
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
+    MenuItem *menuItem;
     
     form = [XLFormDescriptor formDescriptorWithTitle:@"设置"];
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"语言设置" andIconName:@"lan_setting" andClass:nil];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuInfo];
+    menuItem = [MenuItem createItemWithTitle:@"语言设置" andIconName:@"lan_setting" andClass:nil];
+    menuItem.value = @"简体中文";
+    row.value = menuItem;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"常用搜索引擎" andIconName:@"hot" andClass:nil];
+    row.value = [MenuItem createItemWithTitle:@"常用搜索引擎" andIconName:@"hota" andClass:nil];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuSwitch];
     row.value = [MenuItem createItemWithTitle:@"VPN" andIconName:@"vpn" andClass:nil];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"清除缓存" andIconName:@"rubbish" andClass:nil];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuInfo];
+    menuItem = [MenuItem createItemWithTitle:@"清除缓存" andIconName:@"rubbish" andClass:nil];
+    NSUInteger totalSize = [[SDImageCache sharedImageCache] getSize];
+    menuItem.value = [NSString stringWithFormat:@"%.2fM",(unsigned long)totalSize/(1024.0*1024.0)];
+    row.value = menuItem;
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"检查更新" andIconName:@"refresh" andClass:nil];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuInfo];
+    menuItem = [MenuItem createItemWithTitle:@"检查更新" andIconName:@"refresh" andClass:nil];
+    menuItem.value = [NSString stringWithFormat:@"V%@", MAIN_VERSION];
+    row.value = menuItem;
     [section addFormRow:row];
     
     self.form = form;

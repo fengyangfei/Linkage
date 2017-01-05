@@ -13,6 +13,7 @@
 		8B0060411CAC08E3001B0FC9 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0060401CAC08E3001B0FC9 /* Order.m */; };
 		8B0254E11CA2C4E4005F5CA7 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0254DF1CA2C4E4005F5CA7 /* AddressModel.m */; };
 		8B10AD2D1C88744E00F5B0D6 /* PersonalSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */; };
+		8B1AACF51E1E84B8007BC604 /* VCMenuInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AACF41E1E84B8007BC604 /* VCMenuInfoCell.m */; };
 		8B2D18CF1D3101BC00A9183E /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2D18C31D3101BC00A9183E /* WXApiManager.m */; };
 		8B2D18D01D3101BC00A9183E /* WXApiRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2D18C51D3101BC00A9183E /* WXApiRequestHandler.m */; };
 		8B2D18D11D3101BC00A9183E /* WXApiResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2D18C71D3101BC00A9183E /* WXApiResponseHandler.m */; };
@@ -328,6 +329,8 @@
 		8B0254DF1CA2C4E4005F5CA7 /* AddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
 		8B10AD2B1C88744E00F5B0D6 /* PersonalSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalSettingController.h; sourceTree = "<group>"; };
 		8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalSettingController.m; sourceTree = "<group>"; };
+		8B1AACF31E1E84B8007BC604 /* VCMenuInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMenuInfoCell.h; sourceTree = "<group>"; };
+		8B1AACF41E1E84B8007BC604 /* VCMenuInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMenuInfoCell.m; sourceTree = "<group>"; };
 		8B2D18C21D3101BC00A9183E /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
 		8B2D18C31D3101BC00A9183E /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
 		8B2D18C41D3101BC00A9183E /* WXApiRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiRequestHandler.h; sourceTree = "<group>"; };
@@ -2329,6 +2332,8 @@
 			children = (
 				9A74CD761E1DCFBB0036C02D /* VCMenuSwitchCell.h */,
 				9A74CD771E1DCFBB0036C02D /* VCMenuSwitchCell.m */,
+				8B1AACF31E1E84B8007BC604 /* VCMenuInfoCell.h */,
+				8B1AACF41E1E84B8007BC604 /* VCMenuInfoCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2911,6 +2916,7 @@
 				9A95FF091C858B0E00C5F492 /* SettingViewController.m in Sources */,
 				8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */,
 				9AEF89C21CA1274600C5EB90 /* MJPhotoView.m in Sources */,
+				8B1AACF51E1E84B8007BC604 /* VCMenuInfoCell.m in Sources */,
 				8BB8FD5B1E1D232500243B33 /* VCTagView.m in Sources */,
 				8B5DC56A1C7992E900D29292 /* AppDelegate.m in Sources */,
 				9AA959441D88CFD200BB403B /* MTLValueTransformer+Util.m in Sources */,
