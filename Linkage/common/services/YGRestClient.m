@@ -119,8 +119,8 @@ static NSString *kCookieKey = @"Cookie";
 + (void)load {
     //设置加载提示
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-    [SVProgressHUD setBackgroundColor:UIColorFromRGBAndAlpha(0x000000, 0.8)];
-    [SVProgressHUD setForegroundColor:UIColorFromRGB(0xFFFFFF)];
+    //[SVProgressHUD setBackgroundColor:UIColorFromRGBAndAlpha(0x000000, 0.8)];
+    //[SVProgressHUD setForegroundColor:UIColorFromRGB(0xFFFFFF)];
     
     /**
      AFNetworkReachabilityStatusUnknown          = -1,  // 未知
@@ -154,7 +154,7 @@ static NSString *kCookieKey = @"Cookie";
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.showProgressHUD = YES;
+        self.showProgressHUD = NO;
     }
     return self;
 }

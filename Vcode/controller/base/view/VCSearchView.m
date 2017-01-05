@@ -36,8 +36,8 @@
 -(UIButton *)brandBtn
 {
     if (!_brandBtn) {
+        _brandBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 44)];
         [_brandBtn setImage:[UIImage imageNamed:@"google"] forState:UIControlStateNormal];
-        _brandBtn.frame = CGRectMake(0, 0, 160, 49);
     }
     return _brandBtn;
 }
@@ -46,7 +46,7 @@
 -(UISearchBar *)searchBar
 {
     if (!_searchBar) {
-        _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(160, 0, IPHONE_WIDTH - 160, 49)];
+        _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(80, 0, IPHONE_WIDTH - 80, 44)];
         _searchBar.barStyle = UIBarStyleDefault;
         _searchBar.translucent = YES;
         _searchBar.delegate = self;

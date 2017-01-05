@@ -28,7 +28,14 @@
 
 -(void)setupUI
 {
-    self.navigationItem.titleView = self.searchView;
+    UIButton *brandBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 44)];
+    [brandBtn setImage:[UIImage imageNamed:@"google"] forState:UIControlStateNormal];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:brandBtn];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    
+    UISearchBar *searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH - 80, 44)];
+    UIBarButtonItem *centerItem = [[UIBarButtonItem alloc]initWithCustomView:searchBar];
+    self.navigationItem.rightBarButtonItem = centerItem;
     //顶部栏
     [self setupTopScrollView];
 }
