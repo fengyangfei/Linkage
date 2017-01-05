@@ -9,6 +9,7 @@
 #import "VCMineViewController.h"
 #import "MenuCell.h"
 #import "MenuItem.h"
+#import "VCSettingViewController.h"
 
 @interface VCMineViewController ()
 
@@ -38,30 +39,31 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMineHeader];
-    row.value = [MenuItem createItemWithTitle:@"头像" andIconName:@"v_user" andClass:nil];
+    row.value = [MenuItem createItemWithTitle:@"头像" andIconName:@"v_user"];
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"设置" andIconName:@"setting" andClass:nil];
+    row.value = [MenuItem createItemWithTitle:@"设置" andIconName:@"setting"];
+    row.action.viewControllerClass = [VCSettingViewController class];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"喜好设置" andIconName:@"mark" andClass:nil];
+    row.value = [MenuItem createItemWithTitle:@"喜好设置" andIconName:@"mark"];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"建议反馈" andIconName:@"advance" andClass:nil];
+    row.value = [MenuItem createItemWithTitle:@"建议反馈" andIconName:@"advance"];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"帮助说明" andIconName:@"explain" andClass:nil];
+    row.value = [MenuItem createItemWithTitle:@"帮助说明" andIconName:@"explain"];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"关于Vcode" andIconName:@"choice" andClass:nil];
+    row.value = [MenuItem createItemWithTitle:@"关于Vcode" andIconName:@"choice"];
     [section addFormRow:row];
     
     self.form = form;

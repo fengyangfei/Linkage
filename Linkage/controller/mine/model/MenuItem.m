@@ -34,6 +34,11 @@
     return [[self alloc]initWithTitle:title andIconName:nil andClass:nil];
 }
 
++(MenuItem *)createItemWithTitle:(NSString *)title andIconName:(NSString *)iconName
+{
+    return [[self alloc]initWithTitle:title andIconName:iconName andClass:nil];
+}
+
 +(MenuItem *)createItemWithTitle:(NSString *)title andIconName:(NSString *)iconName andClass:(Class)viewControllerClass
 {
     return [[self alloc]initWithTitle:title andIconName:iconName andClass:viewControllerClass];

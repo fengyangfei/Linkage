@@ -7,6 +7,8 @@
 //
 
 #import "VCSettingViewController.h"
+#import "VCMenuSwitchCell.h"
+#import "MenuItem.h"
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
 row.cellStyle = UITableViewCellStyleValue1;
@@ -29,7 +31,6 @@ row.cellStyle = UITableViewCellStyleValue1;
 
 - (void)initializeForm
 {
-    WeakSelf
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
@@ -38,7 +39,10 @@ row.cellStyle = UITableViewCellStyleValue1;
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
-
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuSwitch];
+    row.value = [MenuItem createItemWithTitle:@"VPN" andIconName:@"vpn" andClass:nil];
+    [section addFormRow:row];
     
     self.form = form;
 }

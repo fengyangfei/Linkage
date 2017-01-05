@@ -255,6 +255,11 @@
 		9A74CD6C1E1C9C6F0036C02D /* VCCountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD6B1E1C9C6F0036C02D /* VCCountryViewController.m */; };
 		9A74CD6F1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD6E1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.m */; };
 		9A74CD741E1CF0B10036C02D /* VCIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD731E1CF0B10036C02D /* VCIndex.m */; };
+		9A74CD781E1DCFBB0036C02D /* VCMenuSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD771E1DCFBB0036C02D /* VCMenuSwitchCell.m */; };
+		9A74CD7F1E1DD4DB0036C02D /* VCAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD7E1E1DD4DB0036C02D /* VCAboutViewController.m */; };
+		9A74CD821E1DD4EC0036C02D /* VCAdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD811E1DD4EC0036C02D /* VCAdviceViewController.m */; };
+		9A74CD851E1DD5080036C02D /* VCFavorTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD841E1DD5080036C02D /* VCFavorTagViewController.m */; };
+		9A74CD881E1DD5180036C02D /* VCHelperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD871E1DD5180036C02D /* VCHelperViewController.m */; };
 		9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E921CD885DA00EE005F /* MessageUtil.m */; };
 		9A7D0E991CD8868000EE005F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D0E971CD8868000EE005F /* MessageModel.m */; };
 		9A95FEFE1C83DFCF00C5F492 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95FEFD1C83DFCF00C5F492 /* MineViewController.m */; };
@@ -794,6 +799,16 @@
 		9A74CD6E1E1CC4FF0036C02D /* VCCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		9A74CD721E1CF0B10036C02D /* VCIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCIndex.h; sourceTree = "<group>"; };
 		9A74CD731E1CF0B10036C02D /* VCIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCIndex.m; sourceTree = "<group>"; };
+		9A74CD761E1DCFBB0036C02D /* VCMenuSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMenuSwitchCell.h; sourceTree = "<group>"; };
+		9A74CD771E1DCFBB0036C02D /* VCMenuSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMenuSwitchCell.m; sourceTree = "<group>"; };
+		9A74CD7D1E1DD4DB0036C02D /* VCAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCAboutViewController.h; sourceTree = "<group>"; };
+		9A74CD7E1E1DD4DB0036C02D /* VCAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCAboutViewController.m; sourceTree = "<group>"; };
+		9A74CD801E1DD4EC0036C02D /* VCAdviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCAdviceViewController.h; sourceTree = "<group>"; };
+		9A74CD811E1DD4EC0036C02D /* VCAdviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCAdviceViewController.m; sourceTree = "<group>"; };
+		9A74CD831E1DD5080036C02D /* VCFavorTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFavorTagViewController.h; sourceTree = "<group>"; };
+		9A74CD841E1DD5080036C02D /* VCFavorTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFavorTagViewController.m; sourceTree = "<group>"; };
+		9A74CD861E1DD5180036C02D /* VCHelperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHelperViewController.h; sourceTree = "<group>"; };
+		9A74CD871E1DD5180036C02D /* VCHelperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHelperViewController.m; sourceTree = "<group>"; };
 		9A7D0E911CD885DA00EE005F /* MessageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtil.h; sourceTree = "<group>"; };
 		9A7D0E921CD885DA00EE005F /* MessageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtil.m; sourceTree = "<group>"; };
 		9A7D0E961CD8868000EE005F /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -2201,6 +2216,11 @@
 		9A403DF51E1B5C1700829EC4 /* mine */ = {
 			isa = PBXGroup;
 			children = (
+				9A74CD791E1DD4CB0036C02D /* about */,
+				9A74CD7A1E1DD4CB0036C02D /* advice */,
+				9A74CD7B1E1DD4CB0036C02D /* favor */,
+				9A74CD7C1E1DD4CB0036C02D /* helper */,
+				9A74CD751E1DCF8F0036C02D /* view */,
 				8BB8FD601E1D4A7700243B33 /* setting */,
 				9A403DF71E1B5C7300829EC4 /* VCMineViewController.h */,
 				9A403DF81E1B5C7300829EC4 /* VCMineViewController.m */,
@@ -2275,6 +2295,51 @@
 				9A74CD731E1CF0B10036C02D /* VCIndex.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		9A74CD751E1DCF8F0036C02D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				9A74CD761E1DCFBB0036C02D /* VCMenuSwitchCell.h */,
+				9A74CD771E1DCFBB0036C02D /* VCMenuSwitchCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		9A74CD791E1DD4CB0036C02D /* about */ = {
+			isa = PBXGroup;
+			children = (
+				9A74CD7D1E1DD4DB0036C02D /* VCAboutViewController.h */,
+				9A74CD7E1E1DD4DB0036C02D /* VCAboutViewController.m */,
+			);
+			path = about;
+			sourceTree = "<group>";
+		};
+		9A74CD7A1E1DD4CB0036C02D /* advice */ = {
+			isa = PBXGroup;
+			children = (
+				9A74CD801E1DD4EC0036C02D /* VCAdviceViewController.h */,
+				9A74CD811E1DD4EC0036C02D /* VCAdviceViewController.m */,
+			);
+			path = advice;
+			sourceTree = "<group>";
+		};
+		9A74CD7B1E1DD4CB0036C02D /* favor */ = {
+			isa = PBXGroup;
+			children = (
+				9A74CD831E1DD5080036C02D /* VCFavorTagViewController.h */,
+				9A74CD841E1DD5080036C02D /* VCFavorTagViewController.m */,
+			);
+			path = favor;
+			sourceTree = "<group>";
+		};
+		9A74CD7C1E1DD4CB0036C02D /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				9A74CD861E1DD5180036C02D /* VCHelperViewController.h */,
+				9A74CD871E1DD5180036C02D /* VCHelperViewController.m */,
+			);
+			path = helper;
 			sourceTree = "<group>";
 		};
 		9A7D0E901CD885C400EE005F /* util */ = {
@@ -2649,6 +2714,7 @@
 				8B3C31921C956EEB00FC6323 /* FormTextFieldAndButtonCell.m in Sources */,
 				9A95FF021C83E3C600C5F492 /* MenuItem.m in Sources */,
 				9A23A2B51C7AB3A300FB5EB6 /* MainBaseViewController.m in Sources */,
+				9A74CD7F1E1DD4DB0036C02D /* VCAboutViewController.m in Sources */,
 				8B5DC63D1C79B8A700D29292 /* UIViewController+TRTheme.m in Sources */,
 				9A2F5C451CE1724A00E7E2DD /* BillDataSource.m in Sources */,
 				9ABD8F8F1D45F3B500D03A84 /* NSDate+Format.m in Sources */,
@@ -2711,6 +2777,7 @@
 				8BFEBF851E1BD2D6008A60D5 /* ZJTitleView.m in Sources */,
 				8B38230C1CDB5CC20046A6F1 /* UINavigationController+Custom.m in Sources */,
 				8B44450E1C7C9EFE00160DC2 /* SDCycleScrollView.m in Sources */,
+				9A74CD781E1DCFBB0036C02D /* VCMenuSwitchCell.m in Sources */,
 				9A95FF111C89135400C5F492 /* AdviceViewController.m in Sources */,
 				8BB8FD631E1D4A8C00243B33 /* VCSettingViewController.m in Sources */,
 				9A95FF151C891CFB00C5F492 /* BillViewController.m in Sources */,
@@ -2752,6 +2819,7 @@
 				8B5DC62F1C79B8A700D29292 /* IFTTTShapeLayerAnimation.m in Sources */,
 				8B44450B1C7C9EFE00160DC2 /* TADotView.m in Sources */,
 				8B5DC6191C79B8A700D29292 /* IFTTTAlphaAnimation.m in Sources */,
+				9A74CD881E1DD5180036C02D /* VCHelperViewController.m in Sources */,
 				8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */,
 				8BBE05EA1C9E982B0018EB2A /* BillTypeViewController.m in Sources */,
 				8B5DC62E1C79B8A700D29292 /* IFTTTScrollViewPageConstraintAnimation.m in Sources */,
@@ -2835,6 +2903,7 @@
 				8BB17AB71C9AF60D002708C4 /* BillApplyViewController.m in Sources */,
 				8B5DC61E1C79B8A700D29292 /* IFTTTBackgroundColorAnimation.m in Sources */,
 				8B958B3C1CD65301003BD74B /* Message.m in Sources */,
+				9A74CD821E1DD4EC0036C02D /* VCAdviceViewController.m in Sources */,
 				8B53F4E61CE37C820020E218 /* SearchViewController.m in Sources */,
 				8B3DB5C71D854E6F00AABCE9 /* UITabBar+Badge.m in Sources */,
 				8BD1A4701D44C64B00469324 /* Comment.m in Sources */,
@@ -2842,6 +2911,7 @@
 				9A74CD741E1CF0B10036C02D /* VCIndex.m in Sources */,
 				8BFEBF7F1E1BD2D6008A60D5 /* UIViewController+ZJScrollPageController.m in Sources */,
 				8BCA5FBB1CA97FB8002601F6 /* MessageViewController.m in Sources */,
+				9A74CD851E1DD5080036C02D /* VCFavorTagViewController.m in Sources */,
 				9AFA76301D6301AD00A690C9 /* MessageDetailViewController.m in Sources */,
 				8BEEA7851CD3A7BB0088D70A /* AddressUtil.m in Sources */,
 				9AFA762D1D62E55C00A690C9 /* SearchCompanyViewController.m in Sources */,
