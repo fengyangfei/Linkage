@@ -36,7 +36,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
     
-    form = [XLFormDescriptor formDescriptorWithTitle:@"我的"];
+    form = [XLFormDescriptor formDescriptorWithTitle:@"设置"];
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];

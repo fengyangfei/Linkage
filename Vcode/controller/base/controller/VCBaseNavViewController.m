@@ -70,8 +70,20 @@
 -(UIButton *)brandBtn
 {
     if (!_brandBtn) {
-        _brandBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 44)];
-        [_brandBtn setImage:[UIImage imageNamed:@"google"] forState:UIControlStateNormal];
+        _brandBtn = [[UIButton alloc]initWithFrame:CGRectMake(-10, 0, 40, 44)];
+        
+        //小箭头
+        UIImageView *downView  = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"down"]];
+        [downView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_brandBtn addSubview:downView];
+        [_brandBtn addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[image(8)]|" options:0 metrics:0 views:@{@"image": downView}]];
+        [_brandBtn addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[image(8)]" options:0 metrics:0 views:@{@"image": downView}]];
+        [_brandBtn addConstraint:[NSLayoutConstraint constraintWithItem:downView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_brandBtn attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        _brandBtn.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 8);
+
+        //设置搜索引擎图标
+        UIImage *image = [UIImage imageNamed:@"google"];
+        [_brandBtn setImage:image forState:UIControlStateNormal];
         [_brandBtn addTarget:self action:@selector(changeBrand:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _brandBtn;
@@ -80,7 +92,7 @@
 -(UISearchBar *)searchBar
 {
     if (!_searchBar) {
-        _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH - 80, 44)];
+        _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(20, 0, IPHONE_WIDTH - 80, 44)];
         _searchBar.barStyle = UIBarStyleBlack;
         _searchBar.tintColor = [UIColor blackColor];
         _searchBar.delegate = self;

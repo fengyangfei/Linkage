@@ -167,7 +167,7 @@ static NSString *const kVcodeStoreName = @"vcode.sqlite";
 - (void)setupGlobalAppearance
 {
     //设置导航标题属性
-    [UINavigationBar appearance].tintColor = [UIColor whiteColor];
+    [UINavigationBar appearance].tintColor = [UIColor blackColor];
     [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
     [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:18],NSFontAttributeName, nil];
     [UINavigationBar appearance].translucent = NO;
