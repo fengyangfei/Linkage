@@ -112,4 +112,12 @@
     return [list copy];
 }
 
++(id)getModelByIndex:(NSInteger)index
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"sort", @(index)];
+    VCCategoryModel *manageObj = [VCCategoryModel MR_findFirstWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+    id<MTLJSONSerializing> result = [self modelFromManagedObject:manageObj];
+    return result;
+}
+
 @end

@@ -116,20 +116,19 @@ static NSString *kCookieKey = @"Cookie";
 
 @implementation YGRestClient
 
+/*
 + (void)load {
     //设置加载提示
-    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    //[[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     //[SVProgressHUD setBackgroundColor:UIColorFromRGBAndAlpha(0x000000, 0.8)];
     //[SVProgressHUD setForegroundColor:UIColorFromRGB(0xFFFFFF)];
     
-    /**
-     AFNetworkReachabilityStatusUnknown          = -1,  // 未知
-     AFNetworkReachabilityStatusNotReachable     = 0,   // 未连接
-     AFNetworkReachabilityStatusReachableViaWWAN = 1,   // 移动网络 花钱
-     AFNetworkReachabilityStatusReachableViaWiFi = 2,   // 局域网络,不花钱
-     */
+//     AFNetworkReachabilityStatusUnknown          = -1,   未知
+//     AFNetworkReachabilityStatusNotReachable     = 0,    未连接
+//     AFNetworkReachabilityStatusReachableViaWWAN = 1,    移动网络 花钱
+//     AFNetworkReachabilityStatusReachableViaWiFi = 2,    局域网络,不花钱
     // 如果要检测网络状态的变化,必须用检测管理器的单例的startMonitoring
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    //[[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     // 检测网络连接的单例,网络变化时的回调方法
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
@@ -151,6 +150,7 @@ static NSString *kCookieKey = @"Cookie";
         }
     }];
 }
+*/
 
 - (instancetype)init {
     if (self = [super init]) {

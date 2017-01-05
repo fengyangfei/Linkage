@@ -174,8 +174,7 @@ static NSString *const kVcodeStoreName = @"vcode.sqlite";
     [UINavigationBar appearance].barTintColor = VHeaderColor;
     [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:18],NSFontAttributeName, nil];
     [UINavigationBar appearance].translucent = NO;
-    UIImage *image = [UIImage imageWithColor:VHeaderColor];
-    [[UINavigationBar appearance] setBackgroundImage:image forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
     //设置tabBar属性
     [[UITabBar appearance] setSelectedImageTintColor:VHeaderColor];

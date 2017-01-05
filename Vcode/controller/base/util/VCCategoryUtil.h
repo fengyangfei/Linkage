@@ -13,4 +13,5 @@
 +(void)syncCategory:(void(^)(NSArray *models))completion;
 +(NSArray *)queryAllCategoryTitles;
 +(NSArray *)queryAllCategories;
++(id)getModelByIndex:(NSInteger)index;
 @end

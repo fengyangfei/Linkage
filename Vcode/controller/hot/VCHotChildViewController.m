@@ -10,6 +10,8 @@
 #import "VCRankUtil.h"
 #import "VcodeUtil.h"
 #import "VCRankTableCell.h"
+#import "VCCategoryUtil.h"
+#import "VCCategory.h"
 
 @interface VCHotChildViewController ()
 @property(assign, nonatomic)NSInteger index;
@@ -68,7 +70,8 @@
     //index 从1 开始
     self.index = index;
     
-    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":@"Arts"};
+    VCCategory *category = [VCCategoryUtil getModelByIndex:index];
+    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":category.code};
     [VCRankUtil queryCategoryRank:parameter completion:^(NSArray *models) {
         
     }];
