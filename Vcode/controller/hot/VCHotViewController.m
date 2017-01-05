@@ -15,9 +15,11 @@
 
 @interface VCHotViewController ()<ZJScrollPageViewDelegate>
 @property(strong, nonatomic)NSArray<NSString *> *titles;
+@property (nonatomic, readonly) VCSearchView *searchView;
 @end
 
 @implementation VCHotViewController
+@synthesize searchView = _searchView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,8 +28,7 @@
 
 -(void)setupUI
 {
-    UIView *searchView = [[VCSearchView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 49)];
-    [self.navigationController.navigationBar addSubview:searchView];
+    self.navigationItem.titleView = self.searchView;
     //顶部栏
     [self setupTopScrollView];
 }
@@ -86,6 +87,15 @@
 -(BOOL)shouldAutomaticallyForwardAppearanceMethods
 {
     return NO;
+}
+
+#pragma mark - getter setter
+-(VCSearchView *)searchView
+{
+    if (!_searchView) {
+        _searchView = [[VCSearchView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 49)];
+    }
+    return _searchView;
 }
 
 @end
