@@ -214,6 +214,70 @@
         </dict>
         <dict>
             <key>title</key>
+            <string>匈牙利</string>
+            <key>code</key>
+            <string>HU</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>印度尼西亚</string>
+            <key>code</key>
+            <string>ID</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>爱尔兰</string>
+            <key>code</key>
+            <string>IE</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>以色列</string>
+            <key>code</key>
+            <string>IL</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>印度</string>
+            <key>code</key>
+            <string>IN</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>伊拉克</string>
+            <key>code</key>
+            <string>IQ</string>
+        </dict>        <dict>
+            <key>title</key>
+            <string>伊朗</string>
+            <key>code</key>
+            <string>IR</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>冰岛</string>
+            <key>code</key>
+            <string>IS</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>意大利</string>
+            <key>code</key>
+            <string>IT</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>牙买加</string>
+            <key>code</key>
+            <string>JM</string>
+        </dict>        <dict>
+            <key>title</key>
+            <string>约旦</string>
+            <key>code</key>
+            <string>JO</string>
+        </dict>
+        <dict>
+            <key>title</key>
             <string>日本</string>
             <key>code</key>
             <string>JP</string>

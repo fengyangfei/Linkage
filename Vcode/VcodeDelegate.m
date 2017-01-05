@@ -45,21 +45,21 @@ static NSString *const kStoreName = @"vcode.sqlite";
 //    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:kPgyerAppKey];
 //    [[PgyUpdateManager sharedPgyManager] checkUpdate];
     
-    [self setupDataBase];
+//    [self setupDataBase];
 //    [self registerJPushWithOptions:launchOptions];
     
-    [self umengTrack];
+//    [self umengTrack];
 //    [self setupSocialConfig];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
     UIViewController *rooViewController;
-    if (kNeedShowIntroduce) {
+    //if (kNeedShowIntroduce) {
         rooViewController = [VCTutorialController shareViewController];
-    }else{
-        rooViewController = [[VCTabBarController alloc]init];
-    }
+    //}else{
+    //    rooViewController = [[VCTabBarController alloc]init];
+    //}
     self.window.rootViewController = rooViewController;
     
     [self.window makeKeyAndVisible];
@@ -184,121 +184,6 @@ static NSString *const kStoreName = @"vcode.sqlite";
 - (void)applicationWillTerminate:(UIApplication *)application {
     [MagicalRecord cleanUp];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UMOnlineConfigDidFinishedNotification object:nil];
-}
-
-//JPush service
-- (void)applicationWillResignActive:(UIApplication *)application {
-    //    [APService stopLogPageView:@"aa"];
-    // Sent when the application is about to move from active to inactive state.
-    // This can occur for certain types of temporary interruptions (such as an
-    // incoming phone call or SMS message) or when the user quits the application
-    // and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down
-    // OpenGL ES frame rates. Games should use this method to pause the game.
-    NSLog(@"WillResignActive");
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate
-    // timers, and store enough application state information to restore your
-    // application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called
-    // instead of applicationWillTerminate: when the user quits.
-    
-    //[[UIApplication sharedApplication] setApplicationIconBadgeNumber:1];
-    
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    [application cancelAllLocalNotifications];
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    NSArray *messages = [LoginUser notificationMessages];
-    if (self.message && self.message.messageId && ![messages containsObject:self.message.messageId]) {
-        [self presentViewController:self.message];
-    }
-}
-
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSLog(@"%@", [NSString stringWithFormat:@"Device Token: %@", deviceToken]);
-    [JPUSHService registerDeviceToken:deviceToken];
-}
-
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
-}
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
-}
-
-// Called when your app has been activated by the user selecting an action from
-// a local notification.
-// A nil action identifier indicates the default action.
-// You should call the completion handler as soon as you've finished handling
-// the action.
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
-}
-
-// Called when your app has been activated by the user selecting an action from
-// a remote notification.
-// A nil action identifier indicates the default action.
-// You should call the completion handler as soon as you've finished handling
-// the action.
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {
-}
-#endif
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [JPUSHService handleRemoteNotification:userInfo];//这句注释掉，依然可收到消息
-    NSLog(@"收到通知:%@", [self logDic:userInfo]);
-    
-    NSString *title = [userInfo valueForKey:@"title"];//标题:Extras字段内容
-    NSString *messageId = [userInfo valueForKey:@"id"];//id:Extras字段内容
-    NSDictionary *aps = [userInfo valueForKey:@"aps"];
-    id content = [aps valueForKey:@"alert"]; //推送显示的内容
-    
-    // 取得Extras字段内容
-    Message *message = [[Message alloc]init];
-    message.messageId = messageId;
-    if([content isKindOfClass:[NSDictionary class]]){
-        message.title = content[@"title"];
-        message.introduction = content[@"body"];
-    }else if([content isKindOfClass:[NSString class]]){
-        message.introduction = content;
-        message.title = title;
-    }
-    self.message = message;
-    [self notificationMessage:message];
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    [JPUSHService handleRemoteNotification:userInfo];//这句注释掉，依然可收到消息
-    NSLog(@"收到通知:%@", [self logDic:userInfo]);
-    completionHandler(UIBackgroundFetchResultNewData);
-    
-    NSString *title = [userInfo valueForKey:@"title"];//标题:Extras字段内容
-    NSString *messageId = [userInfo valueForKey:@"id"];//id:Extras字段内容
-    NSDictionary *aps = [userInfo valueForKey:@"aps"];
-    id content = [aps valueForKey:@"alert"]; //推送显示的内容
-    // 取得Extras字段内容
-    Message *message = [[Message alloc]init];
-    message.messageId = messageId;
-    if([content isKindOfClass:[NSDictionary class]]){
-        message.title = content[@"title"];
-        message.introduction = content[@"body"];
-    }else if([content isKindOfClass:[NSString class]]){
-        message.introduction = content;
-        message.title = title;
-    }
-    self.message = message;
-    [self notificationMessage:message];
-}
-
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    [JPUSHService showLocalNotificationAtFront:notification identifierKey:nil];
 }
 
 #pragma mark - 帮助类
