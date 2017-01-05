@@ -7,7 +7,7 @@
 //
 
 #import "VcodeUtil.h"
-
+#define kUUIDKey @"kUUIDKey"
 @implementation VcodeUtil
 
 +(NSString *)UUID
@@ -15,7 +15,12 @@
     static NSString *uuid;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        uuid = [NSUUID UUID].UUIDString;
+        NSString *uuid = [[NSUserDefaults standardUserDefaults] stringForKey:kUUIDKey];
+        if (!uuid) {
+            uuid = [NSUUID UUID].UUIDString;
+            [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:kUUIDKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
     });
     return uuid;
 }
