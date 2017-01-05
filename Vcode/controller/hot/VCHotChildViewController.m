@@ -52,7 +52,6 @@
     //index 从1 开始
     self.index = index;
     [self.tableView.mj_header beginRefreshing];
-    [self refreshTable:index];
 }
 
 //刷新列表

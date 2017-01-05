@@ -25,9 +25,6 @@
 #import "UMSocialQQHandler.h"
 #import "UMSocialYixinHandler.h"
 
-#import "Message.h"
-#import "MessageUtil.h"
-#import "MessageDetailViewController.h"
 
 static NSString *const kVcodeStoreName = @"vcode.sqlite";
 
@@ -55,11 +52,11 @@ static NSString *const kVcodeStoreName = @"vcode.sqlite";
     self.window.backgroundColor = [UIColor whiteColor];
     
     UIViewController *rooViewController;
-    //if (kNeedShowIntroduce) {
-    //    rooViewController = [VCTutorialController shareViewController];
-    //}else{
+    if (kNeedShowIntroduce) {
+        rooViewController = [VCTutorialController shareViewController];
+    }else{
         rooViewController = [[VCTabBarController alloc]init];
-    //}
+    }
     self.window.rootViewController = rooViewController;
     
     [self.window makeKeyAndVisible];
@@ -186,90 +183,6 @@ static NSString *const kVcodeStoreName = @"vcode.sqlite";
 }
 
 #pragma mark - 帮助类
-
-// log NSSet with UTF8
-// if not ,log will be \Uxxx
-- (NSString *)logDic:(NSDictionary *)dic {
-    if (![dic count]) {
-        return nil;
-    }
-    NSString *tempStr1 =
-    [[dic description] stringByReplacingOccurrencesOfString:@"\\u"
-                                                 withString:@"\\U"];
-    NSString *tempStr2 =
-    [tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
-    NSString *tempStr3 =
-    [[@"\"" stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
-    NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *str =
-    [NSPropertyListSerialization propertyListFromData:tempData
-                                     mutabilityOption:NSPropertyListImmutable
-                                               format:NULL
-                                     errorDescription:NULL];
-    return str;
-}
-
-//获取自定义消息推送内容
-- (void)networkDidReceiveMessage:(NSNotification *)notification {
-    @try {
-        NSDictionary * userInfo = [notification userInfo];
-        NSString *content = [userInfo valueForKey:@"content"];
-        NSData *tempData = [content dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:tempData options:NSJSONReadingMutableContainers error:nil];
-        Message *message = (Message *)[MessageUtil modelFromJson:dic];
-        message.introduction = dic[@"content"];
-        [self notificationMessage:message];
-    }
-    @catch (NSException *exception) {
-        
-    }
-}
-
-//发送通知,在线与离线都可以收到消息
--(void)notificationMessage:(Message *)message
-{
-    UILocalNotification *localNotification = [[UILocalNotification alloc]init];
-    localNotification.alertBody = message.introduction;
-    localNotification.alertTitle = message.title;
-    localNotification.alertAction = @"打开";
-    WeakSelf
-    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:message.title message:message.introduction preferredStyle:UIAlertControllerStyleAlert];
-        [controller addAction:[UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:nil]];
-        if (message && message.messageId) {
-            [controller addAction:[UIAlertAction actionWithTitle:@"打开" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                [weakSelf presentViewController:message];
-            }]];
-        }
-        [self.window.rootViewController presentViewController:controller animated:YES completion:nil];
-    }else{
-        [JPUSHService showLocalNotificationAtFront:localNotification identifierKey:nil];
-    }
-}
-    
--(void)presentViewController:(Message *)message
-{
-    if(message) {
-        if (message.messageId) {
-            NSArray *keys = [LoginUser notificationMessages];
-            NSMutableArray *mutableKeys;
-            if (!keys) {
-                mutableKeys = [NSMutableArray array];
-            }else{
-                mutableKeys = [keys mutableCopy];
-            }
-            [mutableKeys addObject:message.messageId];
-            [LoginUser setnotificationMessages:[mutableKeys copy]];
-        }
-        MessageDetailViewController *controller = [[MessageDetailViewController alloc]init];
-        XLFormRowDescriptor *des = [[XLFormRowDescriptor alloc]initWithTag:nil rowType:@"" title:nil];
-        des.value = message;
-        controller.rowDescriptor = des;
-        _navController = [[UINavigationController alloc]initWithRootViewController:controller];
-        controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
-        [self.window.rootViewController presentViewController:_navController animated:YES completion:nil];
-    }
-}
 
 -(void)backAction:(id)sender
 {

@@ -67,21 +67,6 @@
 
 -(void)setupUI
 {
-    /*
-    [self.centerButton setBackgroundColor:[UIColor darkGrayColor]];
-    [self.centerButton setTitle:@"跳过" forState:UIControlStateNormal];
-    [self.centerButton addTarget:self
-                          action:@selector(skipAction:)
-                forControlEvents:UIControlEventTouchUpInside];
-    self.centerButton.frame = CGRectMake(((self.pages.count - 1) * self.view.frame.size.width),
-                                         self.view.frame.size.height - 65,
-                                         self.view.frame.size.width,
-                                         TUTORIAL_LABEL_HEIGHT);
-    
-    
-    [self.scrollView addSubview:self.centerButton];
-     */
-    
 }
 
 #pragma mark - ICETutorialController delegate
