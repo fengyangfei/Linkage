@@ -10,6 +10,10 @@
 #import "MenuCell.h"
 #import "MenuItem.h"
 #import "VCSettingViewController.h"
+#import "VCFavorTagViewController.h"
+#import "VCAdviceViewController.h"
+#import "VCHelperViewController.h"
+#import "VCAboutViewController.h"
 
 @interface VCMineViewController ()
 
@@ -52,18 +56,22 @@
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
     row.value = [MenuItem createItemWithTitle:@"喜好设置" andIconName:@"mark"];
+    row.action.viewControllerClass = [VCFavorTagViewController class];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
     row.value = [MenuItem createItemWithTitle:@"建议反馈" andIconName:@"advance"];
+    row.action.viewControllerClass = [VCAdviceViewController class];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
     row.value = [MenuItem createItemWithTitle:@"帮助说明" andIconName:@"explain"];
+    row.action.viewControllerClass = [VCHelperViewController class];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
     row.value = [MenuItem createItemWithTitle:@"关于Vcode" andIconName:@"choice"];
+    row.action.viewControllerClass = [VCAboutViewController class];
     [section addFormRow:row];
     
     self.form = form;

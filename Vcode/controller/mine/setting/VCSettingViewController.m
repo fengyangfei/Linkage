@@ -9,6 +9,7 @@
 #import "VCSettingViewController.h"
 #import "VCMenuSwitchCell.h"
 #import "MenuItem.h"
+#import "MenuCell.h"
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
 row.cellStyle = UITableViewCellStyleValue1;
@@ -40,8 +41,24 @@ row.cellStyle = UITableViewCellStyleValue1;
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
+    row.value = [MenuItem createItemWithTitle:@"语言设置" andIconName:@"lan_setting" andClass:nil];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
+    row.value = [MenuItem createItemWithTitle:@"常用搜索引擎" andIconName:@"hot" andClass:nil];
+    [section addFormRow:row];
+    
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuSwitch];
     row.value = [MenuItem createItemWithTitle:@"VPN" andIconName:@"vpn" andClass:nil];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
+    row.value = [MenuItem createItemWithTitle:@"清除缓存" andIconName:@"rubbish" andClass:nil];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
+    row.value = [MenuItem createItemWithTitle:@"检查更新" andIconName:@"refresh" andClass:nil];
     [section addFormRow:row];
     
     self.form = form;
