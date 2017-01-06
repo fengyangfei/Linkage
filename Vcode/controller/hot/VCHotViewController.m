@@ -49,7 +49,7 @@
     
     //右边的阴影
     UIImageView *rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navbar_right_more"]];
-    rightView.frame = (CGRect){CGPointMake(IPHONE_WIDTH - rightView.bounds.size.width - kButtonW, 0), rightView.frame.size};
+    rightView.frame = CGRectMake(IPHONE_WIDTH - rightView.bounds.size.width - kButtonW, 0, rightView.frame.size.width, 44);
     [self.view addSubview:rightView];
     
     //加号按钮
