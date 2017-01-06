@@ -291,6 +291,7 @@
 		9ABD8F8B1D4213FE00D03A84 /* Contact.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9ABD8F891D4213FE00D03A84 /* Contact.bundle */; };
 		9ABD8F8C1D4213FE00D03A84 /* SubContact.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9ABD8F8A1D4213FE00D03A84 /* SubContact.bundle */; };
 		9ABD8F8F1D45F3B500D03A84 /* NSDate+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABD8F8E1D45F3B500D03A84 /* NSDate+Format.m */; };
+		9AC711711E1F8F4D00A0762F /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC711701E1F8F4D00A0762F /* PaddingLabel.m */; };
 		9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */; };
 		9ACEBC751C9950E90000ACBF /* CargoTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBC741C9950E90000ACBF /* CargoTypeViewController.m */; };
 		9ACEBCAA1C9BF25F0000ACBF /* TimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEBCA91C9BF25F0000ACBF /* TimerManager.m */; };
@@ -881,6 +882,8 @@
 		9ABD8F8A1D4213FE00D03A84 /* SubContact.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SubContact.bundle; sourceTree = "<group>"; };
 		9ABD8F8D1D45F3B500D03A84 /* NSDate+Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Format.h"; sourceTree = "<group>"; };
 		9ABD8F8E1D45F3B500D03A84 /* NSDate+Format.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Format.m"; sourceTree = "<group>"; };
+		9AC7116F1E1F8F4D00A0762F /* PaddingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaddingLabel.h; sourceTree = "<group>"; };
+		9AC711701E1F8F4D00A0762F /* PaddingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaddingLabel.m; sourceTree = "<group>"; };
 		9ACEBC6E1C99492A0000ACBF /* CargoFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoFormCell.h; sourceTree = "<group>"; };
 		9ACEBC6F1C99492A0000ACBF /* CargoFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoFormCell.m; sourceTree = "<group>"; };
 		9ACEBC731C9950E90000ACBF /* CargoTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoTypeViewController.h; sourceTree = "<group>"; };
@@ -2424,6 +2427,8 @@
 				9A74CD8D1E1DDD1B0036C02D /* WYButtonChooseViewController.m */,
 				9A74CD8E1E1DDD1B0036C02D /* WYLabelButton.h */,
 				9A74CD8F1E1DDD1B0036C02D /* WYLabelButton.m */,
+				9AC7116F1E1F8F4D00A0762F /* PaddingLabel.h */,
+				9AC711701E1F8F4D00A0762F /* PaddingLabel.m */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -2922,6 +2927,7 @@
 				9A74CD881E1DD5180036C02D /* VCHelperViewController.m in Sources */,
 				8B8F26771C89DD89001B187E /* ForgotPasswordController.m in Sources */,
 				8BBE05EA1C9E982B0018EB2A /* BillTypeViewController.m in Sources */,
+				9AC711711E1F8F4D00A0762F /* PaddingLabel.m in Sources */,
 				8B5DC62E1C79B8A700D29292 /* IFTTTScrollViewPageConstraintAnimation.m in Sources */,
 				8BFEBF881E1BD61C008A60D5 /* VCHotChildViewController.m in Sources */,
 				8B00603A1CABFABC001B0FC9 /* EXTRuntimeExtensions.m in Sources */,

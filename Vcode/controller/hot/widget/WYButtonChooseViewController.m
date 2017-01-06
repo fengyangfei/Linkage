@@ -9,6 +9,7 @@
 #import "WYButtonChooseViewController.h"
 #import "WYButtonChooseView.h"
 #import "VCCategory.h"
+#import "PaddingLabel.h"
 #define kHeaderHeight       36
 #define kDefaultY           20
 
@@ -102,7 +103,7 @@
 {
 //    self.view.clipsToBounds = YES;
     [self prefersStatusBarHidden];
-    self.view.backgroundColor = [UIColor colorWithWhite:1 alpha:0.95];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     _header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, kHeaderHeight)];
     _header.backgroundColor = kTopicHeaderBgColor;
@@ -136,8 +137,7 @@
     [self.view addSubview:_topChooseView];
     
     
-    _label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_topChooseView.frame), [UIScreen mainScreen].bounds.size.width, 30)];
-    _label.layoutMargins = UIEdgeInsetsMake(0, 12, 0, 0);
+    _label = [[PaddingLabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_topChooseView.frame), [UIScreen mainScreen].bounds.size.width, 30)];
     _label.font = [UIFont systemFontOfSize:14];
     _label.backgroundColor = kTopicHeaderBgColor;
     _label.text = @"点击添加更多类型导航";
