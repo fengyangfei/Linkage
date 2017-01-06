@@ -248,6 +248,7 @@
 		9A403E251E1B900E00829EC4 /* VCRankTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A403E241E1B900E00829EC4 /* VCRankTableCell.m */; };
 		9A474FD61E1E2E7600618A8E /* VCBaseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FD51E1E2E7600618A8E /* VCBaseNavViewController.m */; };
 		9A474FD91E1F27C700618A8E /* UINavigationItem+Spacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FD81E1F27C700618A8E /* UINavigationItem+Spacing.m */; };
+		9A474FDD1E1F371100618A8E /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FDC1E1F371100618A8E /* FTPopOverMenu.m */; };
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A74CD5D1E1C81B10036C02D /* VCCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5C1E1C81B10036C02D /* VCCountry.m */; };
@@ -792,6 +793,8 @@
 		9A474FD51E1E2E7600618A8E /* VCBaseNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCBaseNavViewController.m; sourceTree = "<group>"; };
 		9A474FD71E1F27C700618A8E /* UINavigationItem+Spacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Spacing.h"; sourceTree = "<group>"; };
 		9A474FD81E1F27C700618A8E /* UINavigationItem+Spacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Spacing.m"; sourceTree = "<group>"; };
+		9A474FDB1E1F371100618A8E /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
+		9A474FDC1E1F371100618A8E /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
 		9A49E6B61D07ACA600F51C2F /* HJFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFormCell.h; sourceTree = "<group>"; };
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
@@ -1237,6 +1240,7 @@
 		8B5DC57F1C79B8A700D29292 /* thirdClass */ = {
 			isa = PBXGroup;
 			children = (
+				9A474FDA1E1F371100618A8E /* FTPopOverMenu */,
 				8BFEBF6C1E1BD2D6008A60D5 /* ZJScrollPageView */,
 				9AF5D5241D7D0F2A007A38E7 /* JPush */,
 				8B53F4D71CE3647B0020E218 /* PgySDK */,
@@ -2323,6 +2327,15 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
+		9A474FDA1E1F371100618A8E /* FTPopOverMenu */ = {
+			isa = PBXGroup;
+			children = (
+				9A474FDB1E1F371100618A8E /* FTPopOverMenu.h */,
+				9A474FDC1E1F371100618A8E /* FTPopOverMenu.m */,
+			);
+			path = FTPopOverMenu;
+			sourceTree = "<group>";
+		};
 		9A74CD701E1CF05A0036C02D /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2920,6 +2933,7 @@
 				9A474FD91E1F27C700618A8E /* UINavigationItem+Spacing.m in Sources */,
 				9A2F5C341CE16B9D00E7E2DD /* TaskCell.m in Sources */,
 				9A95FF091C858B0E00C5F492 /* SettingViewController.m in Sources */,
+				9A474FDD1E1F371100618A8E /* FTPopOverMenu.m in Sources */,
 				8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */,
 				9AEF89C21CA1274600C5EB90 /* MJPhotoView.m in Sources */,
 				8B1AACF51E1E84B8007BC604 /* VCMenuInfoCell.m in Sources */,

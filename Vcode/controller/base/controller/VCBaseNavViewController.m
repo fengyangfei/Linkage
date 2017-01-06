@@ -7,11 +7,13 @@
 //
 
 #import "VCBaseNavViewController.h"
+#import "FTPopOverMenu.h"
 
 @interface VCBaseNavViewController ()<UISearchBarDelegate>
 @property (nonatomic, readonly) UIButton *brandBtn;
 @property (nonatomic, readonly) UISearchBar *searchBar;
 @property (nonatomic, readonly) UIButton *searchBtn;
+@property (nonatomic, copy) NSString *engineStr;
 @end
 
 @implementation VCBaseNavViewController
@@ -22,6 +24,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+    [self setupData];
+    [self bindViewModel];
+}
+
+-(void)setupData
+{
+    self.engineStr = @"google";
+}
+
+-(void)bindViewModel
+{
+    RACSignal *single = RACObserve(self, engineStr);
+    @weakify(self);
+    [single subscribeNext:^(id x) {
+        @strongify(self);
+        UIImage *image = [UIImage imageNamed:x];
+        [self.brandBtn setImage:image forState:UIControlStateNormal];
+    }];
 }
 
 -(void)setupUI
@@ -64,7 +84,25 @@
 
 -(void)changeBrand:(id)sender
 {
-
+    FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
+    configuration.textColor = [UIColor blackColor];
+    configuration.textFont = [UIFont boldSystemFontOfSize:14];
+    configuration.tintColor = [UIColor whiteColor];
+    configuration.borderColor = [UIColor clearColor];
+    configuration.borderWidth = 0.5;
+    
+    NSArray *array = @[@"baidu",@"google", @"bing"];
+    @weakify(self);
+    [FTPopOverMenu showForSender:sender
+                   withMenuArray:array
+                      imageArray:array
+                       doneBlock:^(NSInteger selectedIndex) {
+                           @strongify(self);
+                           self.engineStr = [array objectAtIndex:selectedIndex];
+    }
+                    dismissBlock:^{
+        
+    }];
 }
 
 -(void)searchAction:(id)sender
@@ -87,8 +125,6 @@
         _brandBtn.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
 
         //设置搜索引擎图标
-        UIImage *image = [UIImage imageNamed:@"google"];
-        [_brandBtn setImage:image forState:UIControlStateNormal];
         [_brandBtn addTarget:self action:@selector(changeBrand:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _brandBtn;
