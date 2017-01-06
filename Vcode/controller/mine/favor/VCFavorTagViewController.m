@@ -7,8 +7,12 @@
 //
 
 #import "VCFavorTagViewController.h"
+#import "SKTagView.h"
+#import "VCCategoryUtil.h"
 
 @interface VCFavorTagViewController ()
+@property (strong, nonatomic) SKTagView *tagView;
+@property (strong, nonatomic) NSArray *colors;
 
 @end
 
@@ -16,22 +20,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.colors = @[HEXCOLOR(0x7ecef4), HEXCOLOR(0x84ccc9), HEXCOLOR(0x88abda), HEXCOLOR(0x7dc1dd), HEXCOLOR(0xb6b8de)];
+    [self setupTagView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Private
+- (void)setupTagView {
+    self.tagView = ({
+        SKTagView *view = [SKTagView new];
+        view.backgroundColor = [UIColor whiteColor];
+        view.padding = UIEdgeInsetsMake(12, 12, 12, 12);
+        view.interitemSpacing = 15;
+        view.lineSpacing = 10;
+        __weak SKTagView *weakView = view;
+        view.didTapTagAtIndex = ^(NSUInteger index){
+            [weakView removeTagAtIndex:index];
+        };
+        view;
+    });
+    [self.view addSubview:self.tagView];
+    [self.tagView mas_makeConstraints: ^(MASConstraintMaker *make) {
+        UIView *superView = self.view;
+        make.centerY.equalTo(superView.mas_centerY).with.offset(0);
+        make.leading.equalTo(superView.mas_leading).with.offset(0);
+        make.trailing.equalTo(superView.mas_trailing);
+    }];
+    
+    @weakify(self);
+    [VCCategoryUtil queryAllCategoryTitles:^(NSArray *titles) {
+        [titles enumerateObjectsUsingBlock: ^(NSString *text, NSUInteger idx, BOOL *stop) {
+            @strongify(self);
+            SKTag *tag = [SKTag tagWithText: text];
+            tag.textColor = [UIColor whiteColor];
+            tag.fontSize = 15;
+            //tag.font = [UIFont fontWithName:@"Courier" size:15];
+            //tag.enable = NO;
+            tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
+            tag.bgColor = self.colors[idx % self.colors.count];
+            tag.cornerRadius = 5;
+            [self.tagView addTag:tag];
+        }];
+    }];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

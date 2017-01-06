@@ -249,6 +249,9 @@
 		9A474FD61E1E2E7600618A8E /* VCBaseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FD51E1E2E7600618A8E /* VCBaseNavViewController.m */; };
 		9A474FD91E1F27C700618A8E /* UINavigationItem+Spacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FD81E1F27C700618A8E /* UINavigationItem+Spacing.m */; };
 		9A474FDD1E1F371100618A8E /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FDC1E1F371100618A8E /* FTPopOverMenu.m */; };
+		9A474FE51E1F435C00618A8E /* SKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FE01E1F435C00618A8E /* SKTag.m */; };
+		9A474FE61E1F435C00618A8E /* SKTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FE21E1F435C00618A8E /* SKTagButton.m */; };
+		9A474FE71E1F435C00618A8E /* SKTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FE41E1F435C00618A8E /* SKTagView.m */; };
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A74CD5D1E1C81B10036C02D /* VCCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5C1E1C81B10036C02D /* VCCountry.m */; };
@@ -795,6 +798,12 @@
 		9A474FD81E1F27C700618A8E /* UINavigationItem+Spacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Spacing.m"; sourceTree = "<group>"; };
 		9A474FDB1E1F371100618A8E /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
 		9A474FDC1E1F371100618A8E /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
+		9A474FDF1E1F435C00618A8E /* SKTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTag.h; sourceTree = "<group>"; };
+		9A474FE01E1F435C00618A8E /* SKTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTag.m; sourceTree = "<group>"; };
+		9A474FE11E1F435C00618A8E /* SKTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTagButton.h; sourceTree = "<group>"; };
+		9A474FE21E1F435C00618A8E /* SKTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTagButton.m; sourceTree = "<group>"; };
+		9A474FE31E1F435C00618A8E /* SKTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTagView.h; sourceTree = "<group>"; };
+		9A474FE41E1F435C00618A8E /* SKTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTagView.m; sourceTree = "<group>"; };
 		9A49E6B61D07ACA600F51C2F /* HJFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFormCell.h; sourceTree = "<group>"; };
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
@@ -1240,6 +1249,7 @@
 		8B5DC57F1C79B8A700D29292 /* thirdClass */ = {
 			isa = PBXGroup;
 			children = (
+				9A474FDE1E1F435C00618A8E /* SKTagView */,
 				9A474FDA1E1F371100618A8E /* FTPopOverMenu */,
 				8BFEBF6C1E1BD2D6008A60D5 /* ZJScrollPageView */,
 				9AF5D5241D7D0F2A007A38E7 /* JPush */,
@@ -2336,6 +2346,19 @@
 			path = FTPopOverMenu;
 			sourceTree = "<group>";
 		};
+		9A474FDE1E1F435C00618A8E /* SKTagView */ = {
+			isa = PBXGroup;
+			children = (
+				9A474FDF1E1F435C00618A8E /* SKTag.h */,
+				9A474FE01E1F435C00618A8E /* SKTag.m */,
+				9A474FE11E1F435C00618A8E /* SKTagButton.h */,
+				9A474FE21E1F435C00618A8E /* SKTagButton.m */,
+				9A474FE31E1F435C00618A8E /* SKTagView.h */,
+				9A474FE41E1F435C00618A8E /* SKTagView.m */,
+			);
+			path = SKTagView;
+			sourceTree = "<group>";
+		};
 		9A74CD701E1CF05A0036C02D /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2792,6 +2815,7 @@
 				9A2F5C451CE1724A00E7E2DD /* BillDataSource.m in Sources */,
 				9ABD8F8F1D45F3B500D03A84 /* NSDate+Format.m in Sources */,
 				8B5DC6261C79B8A700D29292 /* IFTTTInterpolatable.m in Sources */,
+				9A474FE61E1F435C00618A8E /* SKTagButton.m in Sources */,
 				9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */,
 				8B5DC6271C79B8A700D29292 /* IFTTTLayerFillColorAnimation.m in Sources */,
 				8BB8FD531E1D127300243B33 /* VcodeUtil.m in Sources */,
@@ -2886,6 +2910,7 @@
 				8B5DC6371C79B8A700D29292 /* TRThemeBaseViewController.m in Sources */,
 				9AF476D11D1B75E300A905A0 /* XLFormValidator+Regex.m in Sources */,
 				8BA3E3DD1CD487490047AC6B /* Favorite.m in Sources */,
+				9A474FE71E1F435C00618A8E /* SKTagView.m in Sources */,
 				9A2F5C4A1CE18DE300E7E2DD /* OrderUtil.m in Sources */,
 				8B4445091C7C9EFE00160DC2 /* TAAbstractDotView.m in Sources */,
 				8B00603B1CABFABC001B0FC9 /* EXTScope.m in Sources */,
@@ -2970,6 +2995,7 @@
 				9A2F5C4E1CE1C2E500E7E2DD /* CommentViewController.m in Sources */,
 				8B5DC61A1C79B8A700D29292 /* IFTTTAnimatedPagingScrollViewController.m in Sources */,
 				8B00603C1CABFABC001B0FC9 /* MTLManagedObjectAdapter.m in Sources */,
+				9A474FE51E1F435C00618A8E /* SKTag.m in Sources */,
 				8B8284891CA57EA9001B36C1 /* Company.m in Sources */,
 				8B986F6C1CC50D7A002DDA68 /* AddCarViewController.m in Sources */,
 				9A403E021E1B5CCB00829EC4 /* VCFavorViewController.m in Sources */,
