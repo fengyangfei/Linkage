@@ -72,7 +72,7 @@
     [self.backLayerView setFrame:self.view.bounds];
     
     // Decoration.
-    [self.gradientView setImage:[UIImage imageNamed:@"background-gradient.png"]];
+    //[self.gradientView setImage:[UIImage imageNamed:@"background-gradient.png"]];
     
     // ScrollView configuration.
     [self.scrollView setFrame:self.view.bounds];
@@ -111,7 +111,7 @@
 
     [self.view addSubview:self.frontLayerView];
     [self.view addSubview:self.backLayerView];
-    [self.view addSubview:self.gradientView];
+    //[self.view addSubview:self.gradientView];
     [self.view addSubview:self.scrollView];
     [self.view addSubview:self.overlayTitle];
     //[self.view addSubview:self.pageControl];
@@ -151,9 +151,11 @@
      */
     
     // GradientView.
+    /*
     [self.gradientView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [constraints addObject:@"V:[_gradientView(==200)]-0-|"];
     [constraints addObject:@"H:|-0-[_gradientView]-0-|"];
+     */
     
     // Set constraints.
     for (NSString *string in constraints) {

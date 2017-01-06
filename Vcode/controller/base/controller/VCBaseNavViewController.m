@@ -91,7 +91,7 @@
     configuration.borderColor = [UIColor clearColor];
     configuration.borderWidth = 0.5;
     
-    NSArray *array = @[@"baidu",@"google", @"bing"];
+    NSArray *array = @[@"baidu",@"google", @"bing", @"yahoo"];
     @weakify(self);
     [FTPopOverMenu showForSender:sender
                    withMenuArray:array
