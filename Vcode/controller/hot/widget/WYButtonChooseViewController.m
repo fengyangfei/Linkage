@@ -202,7 +202,7 @@
     _selectedArray = mutArray;
 }
 
-- (void)synToDataBase
+- (void)synToDataBase:(void(^)(void))complete
 {
     for (int i  = 0; i < _topChooseView.buttonArray.count; i++){
         UIButton *button = [_topChooseView.buttonArray objectAtIndex:i];
@@ -214,6 +214,7 @@
         [VCCategoryUtil updateCategory:button.titleLabel.text sort:i + offset visible:NO];
     }
     [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+        complete();
     }];
 }
 
@@ -255,7 +256,13 @@
         _bottomChooseView.hidden = NO;
         
         //保存数据
-        [self synToDataBase];
+        @weakify(self);
+        [self synToDataBase:^{
+            @strongify(self);
+            if (self.topicDelegate && [self.topicDelegate respondsToSelector:@selector(categoryStatusUpdate)]) {
+                [self.topicDelegate categoryStatusUpdate];
+            }
+        }];
     }
 }
 
@@ -299,6 +306,10 @@
             [_topChooseView addButtonWith:button.titleLabel.text position:[_topChooseView convertPoint:button.frame.origin fromView:_bottomChooseView]];
             [_bottomChooseView removeButton:button];
             [VCCategoryUtil updateCategory:button.titleLabel.text sort:_topChooseView.buttonArray.count visible:YES];
+            //通知父控制器更新
+            if (self.topicDelegate && [self.topicDelegate respondsToSelector:@selector(categoryStatusUpdate)]) {
+                [self.topicDelegate categoryStatusUpdate];
+            }
         }else {
             return;
         }

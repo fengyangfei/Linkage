@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 @protocol WYButtonChooseDelegate <NSObject>
+@optional
 - (void)buttonChooseViewDidSelected:(NSString *)tname;
 - (void)buttonChooseViewTopicArrayDidChange:(NSArray *)topicArray;
+- (void)categoryStatusUpdate;
 @end
 @interface WYButtonChooseViewController : UIViewController
 @property (weak, nonatomic) id<WYButtonChooseDelegate> topicDelegate;

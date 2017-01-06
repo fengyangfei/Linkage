@@ -16,7 +16,7 @@
 #import "VCCategory.h"
 
 #define kButtonW 40
-@interface VCHotViewController ()<ZJScrollPageViewDelegate>
+@interface VCHotViewController ()<ZJScrollPageViewDelegate,WYButtonChooseDelegate>
 @property(readonly, nonatomic) ZJScrollPageView *scrollPageView;
 @property(strong, nonatomic) NSArray<NSString *> *titles;
 @end
@@ -27,18 +27,13 @@
 -(void)setupUI
 {
     [super setupUI];
+    [self setupTopScrollView];
     //顶部栏
     @weakify(self);
     [VCCategoryUtil syncCategory:^(NSArray *models) {
         @strongify(self);
-        [self setupTopScrollView];
+        [self setupData];
     }];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self setupData];
 }
 
 -(void)setupData
@@ -74,8 +69,12 @@
     [self.view addSubview:addBtn];
 }
 
+#pragma mark - WYButtonChooseDelegate 更新分类列表
+- (void)categoryStatusUpdate{
+    [self setupData];
+}
 
-#pragma ZJScrollPageViewDelegate 代理方法
+#pragma mark - ZJScrollPageViewDelegate 代理方法
 - (NSInteger)numberOfChildViewControllers {
     return self.titles.count;
 }
@@ -103,6 +102,7 @@
 -(void)editCategory:(id)sender
 {
     WYButtonChooseViewController *controller = [[WYButtonChooseViewController alloc]init];
+    controller.topicDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
