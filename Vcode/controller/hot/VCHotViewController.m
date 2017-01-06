@@ -16,9 +16,10 @@
 #import "VCCategory.h"
 
 #define kButtonW 40
+#define kFixCategory @[@"首页", @"推荐", @"热门", @"本地"]
 @interface VCHotViewController ()<ZJScrollPageViewDelegate,WYButtonChooseDelegate>
 @property(readonly, nonatomic) ZJScrollPageView *scrollPageView;
-@property(strong, nonatomic) NSArray<NSString *> *titles;
+@property(strong, nonatomic) NSMutableArray<NSString *> *titles;
 @end
 
 @implementation VCHotViewController
@@ -45,8 +46,9 @@
         for (VCCategory *model in models) {
             [titles addObject:model.title];
         }
-        self.titles = titles;
-        [self.scrollPageView reloadWithNewTitles:titles];
+        self.titles = nil;
+        [self.titles addObjectsFromArray:titles];
+        [self.scrollPageView reloadWithNewTitles:self.titles];
     }];
 }
 
@@ -84,8 +86,14 @@
     if (!childVc) {
         if (index == 0) {
             childVc = [[VCHomeViewController alloc]init];
+        }else if (index == 1){
+            childVc = [[VCHotChildViewController alloc] initWithRankType:RankTypeRecommend];
+        }else if (index == 2){
+            childVc = [[VCHotChildViewController alloc] initWithRankType:RankTypeHot];
+        }else if (index == 3){
+            childVc = [[VCHotChildViewController alloc] initWithRankType:RankTypeLocal];
         }else{
-            childVc = [[VCHotChildViewController alloc] init];
+            childVc = [[VCHotChildViewController alloc] initWithRankType:RankTypeCategory];
             childVc.title = self.titles[index];
         }
     }
@@ -104,6 +112,14 @@
     WYButtonChooseViewController *controller = [[WYButtonChooseViewController alloc]init];
     controller.topicDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(NSMutableArray<NSString *> *)titles
+{
+    if (!_titles) {
+        _titles = [[NSMutableArray alloc] initWithArray:kFixCategory];
+    }
+    return _titles;
 }
 
 -(ZJScrollPageView *)scrollPageView

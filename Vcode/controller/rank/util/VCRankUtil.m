@@ -44,6 +44,48 @@
     [self queryGlobalRank:parameter completion:completion];
 }
 
+//热门排行
++(void)queryHotRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
+{
+    [[YGRestClient sharedInstance] postForObjectWithUrl:HotUrl form:parameter success:^(id responseObject) {
+        if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
+            NSError *error;
+            NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:responseObject error:&error];
+            if (error) {
+                NSLog(@"%@",error);
+            }
+            if (completion) {
+                completion(array);
+            }
+        }else{
+            completion(nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+//推荐排行
++(void)queryRecommendRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
+{
+    [[YGRestClient sharedInstance] postForObjectWithUrl:RecommendUrl form:parameter success:^(id responseObject) {
+        if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
+            NSError *error;
+            NSArray *array = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:responseObject error:&error];
+            if (error) {
+                NSLog(@"%@",error);
+            }
+            if (completion) {
+                completion(array);
+            }
+        }else{
+            completion(nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
 //全球排行
 +(void)queryGlobalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
 {

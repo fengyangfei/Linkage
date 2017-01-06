@@ -16,10 +16,20 @@
 
 @interface VCHotChildViewController ()
 @property(assign, nonatomic)NSInteger index;
+@property (nonatomic, assign) RankType rankType;
 @end
 
 @implementation VCHotChildViewController
 @synthesize tableView = _tableView;
+
+-(instancetype)initWithRankType:(RankType)rankType
+{
+    self = [super init];
+    if (self) {
+        self.rankType = rankType;
+    }
+    return self;
+}
 
 -(void)viewDidLoad
 {
@@ -57,15 +67,37 @@
 //刷新列表
 -(void)refreshTable:(NSInteger)index{
     @weakify(self);
-    [VCCategoryUtil getModelByTitle:self.title completion:^(VCCategory *model) {
-        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":model.code};
-        [VCRankUtil queryCategoryRank:parameter completion:^(NSArray *models) {
-            @strongify(self);
-            [self initializeForm:models];
-            [self.tableView.mj_header endRefreshing];
+    void(^callBack)(NSArray *models) = ^(NSArray *models) {
+        @strongify(self);
+        [self initializeForm:models];
+        [self.tableView.mj_header endRefreshing];
+    };
+    if (self.rankType == RankTypeCategory) {
+        [VCCategoryUtil getModelByTitle:self.title completion:^(VCCategory *model) {
+            NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":model.code};
+            [VCRankUtil queryCategoryRank:parameter completion:^(NSArray *models) {
+                callBack(models);
+            }];
         }];
-    }];
-
+    }
+    else if (self.rankType == RankTypeLocal){
+        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"countryCode":@"CN"};
+        [VCRankUtil queryLocalRank:parameter completion:^(NSArray *models) {
+            callBack(models);
+        }];
+    }
+    else if (self.rankType == RankTypeRecommend){
+        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID]};
+        [VCRankUtil queryRecommendRank:parameter completion:^(NSArray *models) {
+            callBack(models);
+        }];
+    }
+    else if (self.rankType == RankTypeHot){
+        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID]};
+        [VCRankUtil queryHotRank:parameter completion:^(NSArray *models) {
+            callBack(models);
+        }];
+    }
 }
 
 - (void)initializeForm:(NSArray *)models

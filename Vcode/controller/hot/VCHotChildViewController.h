@@ -8,7 +8,15 @@
 
 #import "ModelBaseViewController.h"
 #import "ZJScrollPageViewDelegate.h"
+typedef NS_ENUM(NSUInteger, RankType) {
+    RankTypeHot,
+    RankTypeGlobal,
+    RankTypeLocal,
+    RankTypeCategory,
+    RankTypeRecommend
+};
 
 @interface VCHotChildViewController : ModelBaseViewController<ZJScrollPageViewChildVcDelegate>
 @property (strong, nonatomic) NSArray *data;
+-(instancetype)initWithRankType:(RankType)rankType;
 @end
