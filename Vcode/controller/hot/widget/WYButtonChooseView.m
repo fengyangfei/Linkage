@@ -27,7 +27,7 @@
     return _buttonArray;
 }
 
-- (void)addButtonWith:(NSString *)title  position:(CGPoint)originPoint
+- (void)addButtonWith:(NSString *)title position:(CGPoint)originPoint needRefresh:(BOOL)need
 {
     CGSize buttonSize = CGSizeMake(kButtonW,kButtonH);
     
@@ -43,7 +43,14 @@
     [self addSubview:button];
     [self.buttonArray addObject:button];
     
-    [self refreshView];
+    if (need) {
+        [self refreshView];
+    }
+}
+
+- (void)addButtonWith:(NSString *)title position:(CGPoint)originPoint
+{
+    [self addButtonWith:title position:originPoint needRefresh:YES];
 }
 
 - (void)removeButton:(UIButton *)button

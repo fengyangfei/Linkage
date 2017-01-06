@@ -10,6 +10,7 @@
 #import "WYButtonChooseView.h"
 #import "VCCategory.h"
 #import "PaddingLabel.h"
+#import "VCCategoryUtil.h"
 #define kHeaderHeight       36
 #define kDefaultY           20
 
@@ -31,35 +32,35 @@
 @end
 
 @implementation WYButtonChooseViewController
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.title = @"标签设置";
-        [self initSubviews];
-    }
-    return self;
-}
+//- (instancetype)init
+//{
+//    self = [super init];
+//    if (self) {
+//        self.title = @"标签设置";
+//        [self initSubviews];
+//    }
+//    return self;
+//}
 
 - (void)setSelectedArray:(NSMutableArray *)selectedArray
 {
     _selectedArray = selectedArray;
-    if (_selectedArray != nil) {
-        for (VCCategory *category in _selectedArray) {
-            [_topChooseView addButtonWith:category.title position:CGPointZero];
-        }
-    }
+//    if (_selectedArray != nil) {
+//        for (VCCategory *category in _selectedArray) {
+//            [_topChooseView addButtonWith:category.title position:CGPointZero];
+//        }
+//    }
 //    [self refreshView];
 }
 
 - (void)setUnSelectedArray:(NSMutableArray *)unSelectedArray
 {
     _unSelectedArray = unSelectedArray;
-    if (_unSelectedArray != nil) {
-        for (VCCategory *category in _unSelectedArray) {
-            [_bottomChooseView addButtonWith:category.title position:CGPointZero];
-        }
-    }
+//    if (_unSelectedArray != nil) {
+//        for (VCCategory *category in _unSelectedArray) {
+//            [_bottomChooseView addButtonWith:category.title position:CGPointZero];
+//        }
+//    }
 //    [self refreshView];
 }
 
@@ -85,19 +86,37 @@
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self initSubviews];
-    [self refreshView];
+    [self loadData];
 }
 
-//- (void)loadData
-//{
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"JSHBookLabels" ofType:@"plist"];
-//    NSArray *array = [NSArray arrayWithContentsOfFile:path];
-//    for (NSString *title in array) {
-//        [_topChooseView addButtonWith:title position:CGPointZero];
-//        [_bottomChooseView addButtonWith:title position:CGPointZero];
-//    }
-//    [self refreshView];
-//}
+-(void)dealloc
+{
+    NSLog(@"chooseViewController Dealloc");
+}
+
+- (void)loadData
+{
+    @weakify(self);
+    [VCCategoryUtil queryModelsFromDataBase:^(NSArray *models) {
+        @strongify(self);
+        NSInteger count = models.count;
+        for (int i  = 0; i < count; i++) {
+            VCCategory *category = [models objectAtIndex:i];
+            CGFloat buttonX = 0;
+            CGFloat buttonY = 0;
+            if (i == 0) {
+                buttonX = kMarginW;
+                buttonY = kMarginH;
+            }else {
+                buttonX = (kButtonW + kMarginW) * (i % 4) + kMarginW;
+                buttonY = (kButtonH + kMarginH) * (i / 4) + kMarginH;
+            }
+            [self.topChooseView addButtonWith:category.title position:CGPointMake(buttonX, buttonY) needRefresh:NO];
+        }
+        self.topChooseView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, (kButtonH + kMarginH) * ceil(count / 4.0) + kMarginH);
+        [self refreshViewNotAnimation];
+    }];
+}
 
 - (void)initSubviews
 {
@@ -131,7 +150,7 @@
     [button2 addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventTouchUpInside];
     [_header addSubview:button2];
     
-    _topChooseView = [[WYButtonChooseView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_header.frame), [UIScreen mainScreen].bounds.size.width, 200)];
+    _topChooseView = [[WYButtonChooseView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_header.frame), [UIScreen mainScreen].bounds.size.width, 150)];
     _topChooseView.chooseDelegate = self;
     _topChooseView.dragable = YES;
     [self.view addSubview:_topChooseView];
@@ -181,6 +200,13 @@
         _label.frame = CGRectMake(0, CGRectGetMaxY(_topChooseView.frame), self.view.frame.size.width, 30);
         _bottomChooseView.frame = CGRectMake(0, CGRectGetMaxY(_label.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_label.frame));
     }];
+}
+
+- (void)refreshViewNotAnimation
+{
+    _topChooseView.frame = CGRectMake(0, CGRectGetMaxY(_header.frame), _topChooseView.contentSize.width, _topChooseView.contentSize.height);
+    _label.frame = CGRectMake(0, CGRectGetMaxY(_topChooseView.frame), self.view.frame.size.width, 30);
+    _bottomChooseView.frame = CGRectMake(0, CGRectGetMaxY(_label.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_label.frame));
 }
 #pragma mark - button Action
 - (void)switchAction:(UIButton *)sender

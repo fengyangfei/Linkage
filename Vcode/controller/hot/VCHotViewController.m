@@ -89,7 +89,6 @@
 -(void)editCategory:(id)sender
 {
     WYButtonChooseViewController *controller = [[WYButtonChooseViewController alloc]init];
-    controller.selectedArray = [[VCCategoryUtil queryAllCategories] mutableCopy];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

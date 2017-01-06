@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "WYLabelButton.h"
-#define kMarginH            10
+#define kMarginH            15
 #define kCountOfARow        4
-#define kMarginW            ([UIScreen mainScreen].bounds.size.width - 4 *kButtonW) / 5
+#define kMarginW            ([UIScreen mainScreen].bounds.size.width - 4 * kButtonW) / 5
 
 #define kDuration       0.5f
 @class WYButtonChooseView;
@@ -25,7 +25,7 @@
 @property (assign, nonatomic, getter = isEdit) BOOL edit;
 @property (assign, nonatomic, getter=isDragable) BOOL dragable;
 
-
+- (void)addButtonWith:(NSString *)title position:(CGPoint)originPoint needRefresh:(BOOL)need;
 - (void)addButtonWith:(NSString *)title position:(CGPoint)originPoint;
 - (void)removeButton:(UIButton *)button;
 
