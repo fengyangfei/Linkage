@@ -24,6 +24,11 @@
     [self setupTagView];
 }
 
+-(void)dealloc
+{
+    NSLog(@"VCFavorTagViewController -- dealloc");
+}
+
 #pragma mark - Private
 - (void)setupTagView {
     self.tagView = ({
@@ -39,14 +44,13 @@
         view;
     });
     [self.view addSubview:self.tagView];
+    @weakify(self);
     [self.tagView mas_makeConstraints: ^(MASConstraintMaker *make) {
+        @strongify(self);
         UIView *superView = self.view;
-        make.centerY.equalTo(superView.mas_centerY).with.offset(0);
-        make.leading.equalTo(superView.mas_leading).with.offset(0);
-        make.trailing.equalTo(superView.mas_trailing);
+        make.edges.equalTo(superView);
     }];
     
-    @weakify(self);
     [VCCategoryUtil queryAllCategoryTitles:^(NSArray *titles) {
         [titles enumerateObjectsUsingBlock: ^(NSString *text, NSUInteger idx, BOOL *stop) {
             @strongify(self);
