@@ -13,5 +13,6 @@
 +(void)syncCategory:(void(^)(NSArray *models))completion;
 +(void)queryAllCategoryTitles:(void(^)(NSArray *titles))completion;
 +(NSArray *)queryAllCategories;
-+(id)getModelByIndex:(NSInteger)index;
++(void)getModelByIndex:(NSInteger)index completion:(void(^)(id<MTLJSONSerializing> model))completion;
++(void)getModelByTitle:(NSString *)title completion:(void(^)(id<MTLJSONSerializing> model))completion;
 @end

@@ -56,14 +56,16 @@
 
 //刷新列表
 -(void)refreshTable:(NSInteger)index{
-    VCCategory *category = [VCCategoryUtil getModelByIndex:index];
-    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":category.code};
     @weakify(self);
-    [VCRankUtil queryCategoryRank:parameter completion:^(NSArray *models) {
-        @strongify(self);
-        [self initializeForm:models];
-        [self.tableView.mj_header endRefreshing];
+    [VCCategoryUtil getModelByTitle:self.title completion:^(VCCategory *model) {
+        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":model.code};
+        [VCRankUtil queryCategoryRank:parameter completion:^(NSArray *models) {
+            @strongify(self);
+            [self initializeForm:models];
+            [self.tableView.mj_header endRefreshing];
+        }];
     }];
+
 }
 
 - (void)initializeForm:(NSArray *)models

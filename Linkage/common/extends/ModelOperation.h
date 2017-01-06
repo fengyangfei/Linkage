@@ -57,4 +57,7 @@
 
 +(void)queryModelsFromDataBase:(NSPredicate *)predicate completion:(void(^)(NSArray *models))completion;
 
++(void)queryModelFromDataBase:(NSPredicate *)predicate completion:(void(^)(id<MTLJSONSerializing> model))completion;
+
+
 @end

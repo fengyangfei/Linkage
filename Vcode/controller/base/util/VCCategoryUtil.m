@@ -112,12 +112,23 @@
     return [list copy];
 }
 
-+(id)getModelByIndex:(NSInteger)index
++(void)getModelByIndex:(NSInteger)index completion:(void(^)(id<MTLJSONSerializing> model))completion
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"sort", @(index)];
+    [self queryModelFromDataBase:predicate completion:completion];
+}
+
++(void)getModelByTitle:(NSString *)title completion:(void(^)(id<MTLJSONSerializing> model))completion
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"title", title];
+    [self queryModelFromDataBase:predicate completion:completion];
+}
+
++(void)queryModelFromDataBase:(NSPredicate *)predicate completion:(void(^)(id<MTLJSONSerializing> model))completion
+{
     VCCategoryModel *manageObj = [VCCategoryModel MR_findFirstWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
     id<MTLJSONSerializing> result = [self modelFromManagedObject:manageObj];
-    return result;
+    completion(result);
 }
 
 @end
