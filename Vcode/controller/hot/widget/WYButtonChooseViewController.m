@@ -103,7 +103,6 @@
 //    self.view.clipsToBounds = YES;
     [self prefersStatusBarHidden];
     self.view.backgroundColor = [UIColor colorWithWhite:1 alpha:0.95];
-//    self.view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
     
     _header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, kHeaderHeight)];
     _header.backgroundColor = kTopicHeaderBgColor;
@@ -137,7 +136,8 @@
     [self.view addSubview:_topChooseView];
     
     
-    _label = [[UILabel alloc] initWithFrame:CGRectMake(12, CGRectGetMaxY(_topChooseView.frame), [UIScreen mainScreen].bounds.size.width, 30)];
+    _label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_topChooseView.frame), [UIScreen mainScreen].bounds.size.width, 30)];
+    _label.layoutMargins = UIEdgeInsetsMake(0, 12, 0, 0);
     _label.font = [UIFont systemFontOfSize:14];
     _label.backgroundColor = kTopicHeaderBgColor;
     _label.text = @"点击添加更多类型导航";
