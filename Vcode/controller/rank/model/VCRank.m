@@ -51,4 +51,17 @@
     }];
 }
 
++ (NSValueTransformer *)rankJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if ([value isKindOfClass:[NSNumber class]]) {
+            return [NSString stringWithFormat:@"%ld", (long)[value integerValue]];
+        }else if ([value isKindOfClass:[NSString class]]) {
+            return value;
+        }else{
+            return @"";
+        }
+    }];
+}
+
 @end

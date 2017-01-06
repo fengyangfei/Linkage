@@ -45,7 +45,7 @@
 }
 
 //热门排行
-+(void)queryHotRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
++(void)queryHotRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion failure:(void(^)(NSError *error))failure
 {
     [[YGRestClient sharedInstance] postForObjectWithUrl:HotUrl form:parameter success:^(id responseObject) {
         if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
@@ -60,9 +60,7 @@
         }else{
             completion(nil);
         }
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    } failure:failure];
 }
 
 //推荐排行

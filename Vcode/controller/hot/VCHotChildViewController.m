@@ -13,6 +13,7 @@
 #import "VCCategoryUtil.h"
 #import "VCCategory.h"
 #import <MJRefresh/MJRefresh.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface VCHotChildViewController ()
 @property(assign, nonatomic)NSInteger index;
@@ -67,36 +68,41 @@
 //刷新列表
 -(void)refreshTable:(NSInteger)index{
     @weakify(self);
-    void(^callBack)(NSArray *models) = ^(NSArray *models) {
+    void(^success)(NSArray *models) = ^(NSArray *models) {
         @strongify(self);
         [self initializeForm:models];
         [self.tableView.mj_header endRefreshing];
+    };
+    void(^failure)(NSError *error) = ^(NSError *error) {
+        @strongify(self);
+        [self.tableView.mj_header endRefreshing];
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     };
     if (self.rankType == RankTypeCategory) {
         [VCCategoryUtil getModelByTitle:self.title completion:^(VCCategory *model) {
             NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":model.code};
             [VCRankUtil queryCategoryRank:parameter completion:^(NSArray *models) {
-                callBack(models);
+                success(models);
             }];
         }];
     }
     else if (self.rankType == RankTypeLocal){
         NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"countryCode":@"CN"};
         [VCRankUtil queryLocalRank:parameter completion:^(NSArray *models) {
-            callBack(models);
+            success(models);
         }];
     }
     else if (self.rankType == RankTypeRecommend){
         NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID]};
         [VCRankUtil queryRecommendRank:parameter completion:^(NSArray *models) {
-            callBack(models);
+            success(models);
         }];
     }
     else if (self.rankType == RankTypeHot){
         NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID]};
         [VCRankUtil queryHotRank:parameter completion:^(NSArray *models) {
-            callBack(models);
-        }];
+            success(models);
+        } failure:failure];
     }
 }
 
