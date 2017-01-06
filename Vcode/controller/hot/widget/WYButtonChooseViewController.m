@@ -80,14 +80,14 @@
     [self refreshView];
 }
 
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    // Do any additional setup after loading the view.
-//    self.automaticallyAdjustsScrollViewInsets = NO;
-//    [self initSubviews];
-//    [self loadData];
-//}
-//
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self initSubviews];
+    [self refreshView];
+}
+
 //- (void)loadData
 //{
 //    NSString *path = [[NSBundle mainBundle] pathForResource:@"JSHBookLabels" ofType:@"plist"];
@@ -185,13 +185,13 @@
 #pragma mark - button Action
 - (void)switchAction:(UIButton *)sender
 {
-    
     UILabel *label = _header.subviews[0];
     UIButton *button2 = _header.subviews[1];
     if ([button2.titleLabel.text isEqualToString:@"排序"]) {
         label.text = @"拖动排序";
         [button2 setTitle:@"完成" forState:UIControlStateNormal];
         _topChooseView.edit = YES;
+        _label.hidden = YES;
         _bottomChooseView.hidden = YES;
     }else {
         if (sender == nil) {
@@ -200,6 +200,7 @@
         label.text = @"切换栏目";
         [button2 setTitle:@"排序" forState:UIControlStateNormal];
         _topChooseView.edit = NO;
+        _label.hidden = NO;
         _bottomChooseView.hidden = NO;
     }
 }
@@ -232,9 +233,12 @@
             [_topChooseView removeButton:button];
         } else {//非编辑状态
             //1. 收view
-            [self spreadAction:nil];
+            //lihaijian修改，点击按钮时不收回
+            //[self spreadAction:nil];
             //2. 通知topicDelegate所选
-            [self.topicDelegate buttonChooseViewDidSelected:button.titleLabel.text];
+            if (self.topicDelegate && [self.topicDelegate respondsToSelector:@selector(buttonChooseViewDidSelected:)]) {
+                [self.topicDelegate buttonChooseViewDidSelected:button.titleLabel.text];
+            }
         }
     }else {
         if (_topChooseView.buttonArray.count < kButtonChooseViewSelectedTopicMaxCount) {
