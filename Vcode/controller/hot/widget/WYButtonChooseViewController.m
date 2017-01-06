@@ -83,6 +83,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"标签设置";
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self initSubviews];
@@ -97,7 +98,7 @@
 - (void)loadData
 {
     @weakify(self);
-    [VCCategoryUtil queryModelsFromDataBase:^(NSArray *models) {
+    void(^updateUI)(NSArray *models,WYButtonChooseView *view) = ^(NSArray *models, WYButtonChooseView *view) {
         @strongify(self);
         NSInteger count = models.count;
         for (int i  = 0; i < count; i++) {
@@ -111,10 +112,18 @@
                 buttonX = (kButtonW + kMarginW) * (i % 4) + kMarginW;
                 buttonY = (kButtonH + kMarginH) * (i / 4) + kMarginH;
             }
-            [self.topChooseView addButtonWith:category.title position:CGPointMake(buttonX, buttonY) needRefresh:NO];
+            [view addButtonWith:category.title position:CGPointMake(buttonX, buttonY) needRefresh:NO];
         }
-        self.topChooseView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, (kButtonH + kMarginH) * ceil(count / 4.0) + kMarginH);
+        view.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, (kButtonH + kMarginH) * ceil(count / 4.0) + kMarginH);
         [self refreshViewNotAnimation];
+    };
+    [VCCategoryUtil getVisibleCategories:^(NSArray *models) {
+        @strongify(self);
+        updateUI(models, self.topChooseView);
+    }];
+    [VCCategoryUtil getHiddenCategories:^(NSArray *models) {
+        @strongify(self);
+        updateUI(models, self.bottomChooseView);
     }];
 }
 
@@ -195,10 +204,17 @@
 
 - (void)synToDataBase
 {
-    NSMutableArray *mutArray = [NSMutableArray array];
-    for (UIButton *button in _topChooseView.buttonArray) {
-        [mutArray addObject:button.titleLabel.text];
+    for (int i  = 0; i < _topChooseView.buttonArray.count; i++){
+        UIButton *button = [_topChooseView.buttonArray objectAtIndex:i];
+        [VCCategoryUtil updateCategory:button.titleLabel.text sort:i + 1 visible:YES];
     }
+    NSInteger offset = _topChooseView.buttonArray.count;
+    for (int i  = 0; i < _bottomChooseView.buttonArray.count; i++){
+        UIButton *button = [_bottomChooseView.buttonArray objectAtIndex:i];
+        [VCCategoryUtil updateCategory:button.titleLabel.text sort:i + offset visible:NO];
+    }
+    [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+    }];
 }
 
 //在这里调整各个子view的尺寸，buttonChooseView的尺寸有其contentsize传出
@@ -238,10 +254,8 @@
         _label.hidden = NO;
         _bottomChooseView.hidden = NO;
         
-        //点击完成时把类型返回
-        if (self.topicDelegate && [self.topicDelegate respondsToSelector:@selector(buttonChooseViewTopicArrayDidChange:)]) {
-            [self.topicDelegate buttonChooseViewTopicArrayDidChange:_selectedArray];
-        }
+        //保存数据
+        [self synToDataBase];
     }
 }
 
@@ -284,6 +298,7 @@
         if (_topChooseView.buttonArray.count < kButtonChooseViewSelectedTopicMaxCount) {
             [_topChooseView addButtonWith:button.titleLabel.text position:[_topChooseView convertPoint:button.frame.origin fromView:_bottomChooseView]];
             [_bottomChooseView removeButton:button];
+            [VCCategoryUtil updateCategory:button.titleLabel.text sort:_topChooseView.buttonArray.count visible:YES];
         }else {
             return;
         }

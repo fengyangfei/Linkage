@@ -17,4 +17,5 @@
 +(void)getModelByTitle:(NSString *)title completion:(void(^)(id<MTLJSONSerializing> model))completion;
 +(void)getVisibleCategories:(void(^)(NSArray *models))completion;
 +(void)getHiddenCategories:(void(^)(NSArray *models))completion;
++(void)updateCategory:(NSString *)title sort:(NSInteger)sort visible:(BOOL)visible;
 @end

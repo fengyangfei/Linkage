@@ -54,6 +54,7 @@
     }];
     UILabel *titleLabel = [[UILabel alloc]init];
     titleLabel.font = [UIFont systemFontOfSize:14];
+    titleLabel.textColor = IndexTitleFontColor;
     [cell.contentView addSubview:titleLabel];
     titleLabel.text = category.title;
     [titleLabel makeConstraints:^(MASConstraintMaker *make) {

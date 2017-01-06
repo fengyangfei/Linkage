@@ -13,6 +13,7 @@
 #import "VCCategoryUtil.h"
 #import "VCSearchView.h"
 #import "WYButtonChooseViewController.h"
+#import "VCCategory.h"
 
 #define kButtonW 40
 @interface VCHotViewController ()<ZJScrollPageViewDelegate>
@@ -27,15 +28,28 @@
 {
     [super setupUI];
     //顶部栏
-    [self setupTopScrollView];
+    @weakify(self);
+    [VCCategoryUtil syncCategory:^(NSArray *models) {
+        @strongify(self);
+        [self setupTopScrollView];
+    }];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self setupData];
 }
 
 -(void)setupData
 {
     @weakify(self);
-    [VCCategoryUtil queryAllCategoryTitles:^(NSArray *titles) {
+    [VCCategoryUtil getVisibleCategories:^(NSArray *models) {
         @strongify(self);
+        NSMutableArray *titles = [[NSMutableArray alloc]init];
+        for (VCCategory *model in models) {
+            [titles addObject:model.title];
+        }
         self.titles = titles;
         [self.scrollPageView reloadWithNewTitles:titles];
     }];

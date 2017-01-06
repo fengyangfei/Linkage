@@ -154,7 +154,16 @@
     if (completion) {
         completion([mutableArray copy]);
     }
+}
 
++(void)updateCategory:(NSString *)title sort:(NSInteger)sort visible:(BOOL)visible
+{
+    VCCategoryModel *existModel = [VCCategoryModel MR_findFirstByAttribute:@"title" withValue:title inContext:[NSManagedObjectContext MR_defaultContext]];
+    if(!existModel){
+        return;
+    }
+    existModel.sort = @(sort);
+    existModel.visible = visible;
 }
 
 @end

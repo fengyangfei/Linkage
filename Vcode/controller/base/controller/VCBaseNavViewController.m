@@ -24,13 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-    [self setupData];
     [self bindViewModel];
-}
-
--(void)setupData
-{
-    self.engineStr = @"google";
 }
 
 -(void)bindViewModel
@@ -39,8 +33,10 @@
     @weakify(self);
     [single subscribeNext:^(id x) {
         @strongify(self);
-        UIImage *image = [UIImage imageNamed:x];
-        [self.brandBtn setImage:image forState:UIControlStateNormal];
+        if (StringIsNotEmpty(x)) {
+            UIImage *image = [UIImage imageNamed:x];
+            [self.brandBtn setImage:image forState:UIControlStateNormal];
+        }
     }];
 }
 
@@ -125,6 +121,8 @@
         _brandBtn.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
 
         //设置搜索引擎图标
+        UIImage *image = [UIImage imageNamed:@"google"];
+        [self.brandBtn setImage:image forState:UIControlStateNormal];
         [_brandBtn addTarget:self action:@selector(changeBrand:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _brandBtn;
