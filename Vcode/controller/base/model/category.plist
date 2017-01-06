@@ -7,90 +7,150 @@
 		<string>艺术</string>
 		<key>code</key>
 		<string>Arts</string>
-	</dict>
-	<dict>
-		<key>title</key>
-		<string>商业</string>
-		<key>code</key>
-		<string>Business</string>
-	</dict>
-	<dict>
-		<key>title</key>
-		<string>计算机</string>
-		<key>code</key>
-		<string>Computers</string>
-	</dict>
-	<dict>
-		<key>title</key>
-		<string>游戏</string>
-		<key>code</key>
-		<string>Games</string>
+		<key>visible</key>
+		<true/>
+		<key>sort</key>
+		<integer>1</integer>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>健康</string>
 		<key>code</key>
 		<string>Health</string>
+		<key>visible</key>
+		<true/>
+		<key>sort</key>
+		<integer>2</integer>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>家庭</string>
 		<key>code</key>
 		<string>Home</string>
+		<key>visible</key>
+		<true/>
+		<key>sort</key>
+		<integer>3</integer>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>青少年</string>
 		<key>code</key>
 		<string>Kids_and_Teens</string>
+		<key>visible</key>
+		<true/>
+		<key>sort</key>
+		<integer>4</integer>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>新闻</string>
 		<key>code</key>
 		<string>News</string>
-	</dict>
-	<dict>
-		<key>title</key>
-		<string>娱乐</string>
-		<key>code</key>
-		<string>Recreation</string>
+		<key>visible</key>
+		<true/>
+		<key>sort</key>
+		<integer>5</integer>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>参考</string>
 		<key>code</key>
 		<string>Reference</string>
+		<key>visible</key>
+		<true/>
+		<key>sort</key>
+		<integer>6</integer>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>地区</string>
 		<key>code</key>
 		<string>Regional</string>
+		<key>visible</key>
+		<true/>
+		<key>sort</key>
+		<integer>7</integer>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>科学</string>
 		<key>code</key>
 		<string>Science</string>
+		<key>visible</key>
+		<true/>
+		<key>sort</key>
+		<integer>8</integer>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>购物</string>
 		<key>code</key>
 		<string>Shopping</string>
+		<key>visible</key>
+		<true/>
+		<key>sort</key>
+		<integer>9</integer>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>商业</string>
+		<key>code</key>
+		<string>Business</string>
+		<key>visible</key>
+		<false/>
+		<key>sort</key>
+		<integer>10</integer>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>计算机</string>
+		<key>code</key>
+		<string>Computers</string>
+		<key>visible</key>
+		<false/>
+		<key>sort</key>
+		<integer>11</integer>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>游戏</string>
+		<key>code</key>
+		<string>Games</string>
+		<key>visible</key>
+		<false/>
+		<key>sort</key>
+		<integer>12</integer>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>娱乐</string>
+		<key>code</key>
+		<string>Recreation</string>
+		<key>visible</key>
+		<false/>
+		<key>sort</key>
+		<integer>13</integer>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>社会</string>
 		<key>code</key>
 		<string>Society</string>
+		<key>visible</key>
+		<false/>
+		<key>sort</key>
+		<integer>14</integer>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>体育</string>
 		<key>code</key>
 		<string>Sports</string>
+		<key>visible</key>
+		<false/>
+		<key>sort</key>
+		<integer>15</integer>
 	</dict>
 </array>
 </plist>

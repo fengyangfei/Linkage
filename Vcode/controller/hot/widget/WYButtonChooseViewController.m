@@ -192,6 +192,15 @@
     }
     _selectedArray = mutArray;
 }
+
+- (void)synToDataBase
+{
+    NSMutableArray *mutArray = [NSMutableArray array];
+    for (UIButton *button in _topChooseView.buttonArray) {
+        [mutArray addObject:button.titleLabel.text];
+    }
+}
+
 //在这里调整各个子view的尺寸，buttonChooseView的尺寸有其contentsize传出
 - (void)refreshView
 {
@@ -228,6 +237,11 @@
         _topChooseView.edit = NO;
         _label.hidden = NO;
         _bottomChooseView.hidden = NO;
+        
+        //点击完成时把类型返回
+        if (self.topicDelegate && [self.topicDelegate respondsToSelector:@selector(buttonChooseViewTopicArrayDidChange:)]) {
+            [self.topicDelegate buttonChooseViewTopicArrayDidChange:_selectedArray];
+        }
     }
 }
 

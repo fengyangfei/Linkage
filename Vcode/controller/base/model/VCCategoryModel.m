@@ -13,4 +13,5 @@
 @dynamic code;
 @dynamic imageName;
 @dynamic sort;
+@dynamic visible;
 @end

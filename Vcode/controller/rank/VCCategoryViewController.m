@@ -22,8 +22,13 @@
 @synthesize collectionViewLayout = _collectionViewLayout;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.categories = [VCCategoryUtil queryAllCategories];
     [self setupUI];
+    @weakify(self);
+    [VCCategoryUtil queryAllCategories:^(NSArray *models) {
+        @strongify(self);
+        self.categories = models;
+        [self.collectionView reloadData];
+    }];
 }
 
 -(void)setupUI

@@ -94,11 +94,12 @@
     }];
 }
 
-+(NSArray *)queryAllCategories
++(void)queryAllCategories:(void(^)(NSArray *models))completion;
 {
-    __block NSMutableArray *list = [[NSMutableArray alloc]init];
     void(^addToList)(NSArray *models) = ^(NSArray *models) {
-        [list addObjectsFromArray:models];
+        if(completion){
+            completion(models);
+        }
     };
     [self queryModelsFromDataBase:^(NSArray *models) {
         if (models.count == 0) {
@@ -109,7 +110,18 @@
             addToList(models);
         }
     }];
-    return [list copy];
+}
+
++(void)getVisibleCategories:(void(^)(NSArray *models))completion
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"visible", @(YES)];
+    [self queryModelsFromDataBase:predicate completion:completion];
+}
+
++(void)getHiddenCategories:(void(^)(NSArray *models))completion
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"visible", @(NO)];
+    [self queryModelsFromDataBase:predicate completion:completion];
 }
 
 +(void)getModelByIndex:(NSInteger)index completion:(void(^)(id<MTLJSONSerializing> model))completion
@@ -129,6 +141,20 @@
     VCCategoryModel *manageObj = [VCCategoryModel MR_findFirstWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
     id<MTLJSONSerializing> result = [self modelFromManagedObject:manageObj];
     completion(result);
+}
+
++(void)queryModelsFromDataBase:(NSPredicate *)predicate completion:(void(^)(NSArray *models))completion
+{
+    NSArray *managerObjects = [VCCategoryModel MR_findAllSortedBy:@"sort" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithCapacity:managerObjects.count];
+    for (NSManagedObject *manageObj in managerObjects) {
+        id<MTLJSONSerializing> model = [self modelFromManagedObject:manageObj];
+        [mutableArray addObject:model];
+    }
+    if (completion) {
+        completion([mutableArray copy]);
+    }
+
 }
 
 @end

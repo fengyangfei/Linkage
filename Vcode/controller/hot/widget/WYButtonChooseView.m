@@ -34,7 +34,7 @@
     WYLabelButton *button = [[WYLabelButton alloc] initWithFrame:(CGRect){originPoint, buttonSize}];
     [button setTitle:title forState:UIControlStateNormal];
     [button addTarget:self action:@selector(selectWithButton:) forControlEvents:UIControlEventTouchUpInside];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button setTitleColor:IndexTitleFontColor forState:UIControlStateNormal];
     if (self.isDragable) {
         UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonLongPressed:)];
         [button addGestureRecognizer:longGesture];
@@ -86,14 +86,6 @@
             //根据最后一个button设置本self的frame和contentsize
             if (i == self.buttonArray.count - 1) {
                 CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, CGRectGetMaxY(button.frame) + kMarginH);
-//                if (size.height > [UIScreen mainScreen].bounds.size.height * 0.6) {
-//                    size.height = [UIScreen mainScreen].bounds.size.height * 0.4;
-//                }
-                
-                //尺寸调整放到外面
-//                self.frame = (CGRect){self.frame.origin, size};
-//                self.contentSize = self.frame.size;
-                
                 self.contentSize = size;
             }
         }

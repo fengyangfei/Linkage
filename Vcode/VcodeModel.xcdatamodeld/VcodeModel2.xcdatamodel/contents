@@ -5,6 +5,7 @@
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sort" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="visible" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="VCRankModel" representedClassName="VCRankModel" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,7 +26,7 @@
         <attribute name="visiteCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="VCCategoryModel" positionX="-63" positionY="99" width="128" height="105"/>
+        <element name="VCCategoryModel" positionX="-63" positionY="99" width="128" height="120"/>
         <element name="VCRankModel" positionX="-63" positionY="-18" width="128" height="285"/>
     </elements>
 </model>

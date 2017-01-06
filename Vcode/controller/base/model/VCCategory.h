@@ -15,4 +15,5 @@
 @property (nonatomic,copy) NSString *code;
 @property (nonatomic,copy) NSString *imageName;
 @property (nonatomic,strong) NSNumber *sort;
+@property (nonatomic) BOOL visible;
 @end
