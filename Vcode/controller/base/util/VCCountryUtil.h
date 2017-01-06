@@ -9,5 +9,5 @@
 #import "ModelUtil.h"
 
 @interface VCCountryUtil : ModelUtil
-+(NSArray *)queryAllCountrys;
++(NSDictionary *)generateDicFromArray:(NSArray *)array;
 @end

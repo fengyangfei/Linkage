@@ -45,7 +45,7 @@ static NSString *const kVcodeStoreName = @"vcode.sqlite";
     [self setupDataBase];
 //    [self registerJPushWithOptions:launchOptions];
     
-//    [self umengTrack];
+    [self umengTrack];
 //    [self setupSocialConfig];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

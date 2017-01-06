@@ -88,7 +88,7 @@
     configuration.textColor = [UIColor blackColor];
     configuration.textFont = [UIFont boldSystemFontOfSize:14];
     configuration.tintColor = [UIColor whiteColor];
-    configuration.borderColor = [UIColor clearColor];
+    configuration.borderColor = [UIColor lightGrayColor];
     configuration.borderWidth = 0.5;
     
     NSArray *array = @[@"baidu",@"google", @"bing", @"yahoo"];

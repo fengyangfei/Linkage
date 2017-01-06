@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FormOptionsViewController : UIViewController<XLFormRowDescriptorViewController>
+@interface FormOptionsViewController : UIViewController<XLFormRowDescriptorViewController,UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) NSArray *options;
+@property (nonatomic, strong) UITableView *tableView;
+-(void)reloadData;
 @end
 
 

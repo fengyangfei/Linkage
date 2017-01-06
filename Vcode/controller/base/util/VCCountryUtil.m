@@ -9,6 +9,8 @@
 #import "VCCountryUtil.h"
 #import "VCCountry.h"
 
+#define kCountryIndex @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J",@"k", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", @"#"]
+
 @implementation VCCountryUtil
 +(Class)modelClass{ return [VCCountry class]; }
 
@@ -21,12 +23,31 @@
     completion(array);
 }
 
-+(NSArray *)queryAllCountrys
+//生成分组对象
++(NSDictionary *)generateDicFromArray:(NSArray *)array
 {
-    __block NSMutableArray *array = [[NSMutableArray alloc]init];
-    [self queryModelsFromServer:^(NSArray *models) {
-        [array addObjectsFromArray:models];
-    }];
-    return [array copy];
+    NSMutableDictionary *countryDic = [NSMutableDictionary dictionary];
+    NSArray *availKeys = kCountryIndex;
+    for (NSString *key in availKeys) {
+        //先初始化所有的组
+        countryDic[key] = [NSMutableArray array];
+    }
+    NSMutableArray *countriesFromKey;
+    for (int i =0 ; i < [array count]; i++) {
+        VCCountry *country = [array objectAtIndex:i];
+        if (country.code && country.code.length > 1) {
+            NSString *k = [[country.code substringWithRange:NSMakeRange(0, 1)] uppercaseString];
+            if ([k characterAtIndex:0] < 'A' || [k characterAtIndex:0] > 'Z') {
+                countriesFromKey = countryDic[@"#"];
+            }else{
+                countriesFromKey = countryDic[k];
+            }
+        }else{
+            countriesFromKey = countryDic[@"#"];
+        }
+        //为每一组添加对象
+        [countriesFromKey addObject:country];
+    }
+    return countryDic;
 }
 @end

@@ -11,8 +11,7 @@
 #import "Company.h"
 #import <MJRefresh/MJRefresh.h>
 
-@interface FormOptionsViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (nonatomic, strong) UITableView *tableView;
+@interface FormOptionsViewController ()
 @end
 
 @implementation FormOptionsViewController
@@ -34,6 +33,11 @@
         make.top.equalTo(self.view.top);
         make.bottom.equalTo(self.view.bottom);
     }];
+}
+
+-(void)reloadData
+{
+    [self.tableView reloadData];
 }
 
 -(void)getDataFromLocal
