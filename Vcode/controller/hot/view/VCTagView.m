@@ -10,6 +10,8 @@
 #import "VCIndex.h"
 #import "NSString+Hint.h"
 #import "GMGridView.h"
+#import "VCPageUtil.h"
+#import "VCPageModel.h"
 #import <QuartzCore/QuartzCore.h>
 #define TagCellID @"TagCellID"
 @interface VCTagView()<GMGridViewDataSource, GMGridViewSortingDelegate, GMGridViewTransformationDelegate, GMGridViewActionDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
@@ -17,6 +19,7 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *collectionViewLayout;
 @property (nonatomic, strong) GMGridView *gmGridView;
+@property (nonatomic, strong) NSMutableArray *pages;
 
 - (void)addMoreItem;
 - (void)removeItem;
@@ -29,6 +32,7 @@
 @synthesize titleView= _titleView;
 @synthesize collectionView = _collectionView;
 @synthesize gmGridView = _gmGridView;
+@synthesize pages = _pages;
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -49,13 +53,18 @@
 #pragma mark - 对外发布方法
 -(void)reloadData
 {
-    [self.gmGridView reloadData];
+    @weakify(self);
+    [VCPageUtil queryModelsFromDataBase:^(NSArray *models) {
+        @strongify(self);
+        [self.pages addObjectsFromArray:models];
+        [self.gmGridView reloadData];
+    }];
 }
 
 #pragma mark - helper
 -(void)setupCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    VCPage *page =[[self.delegate tagViewDataSource] objectAtIndex:indexPath.item];
+    VCPage *page =[self.pages objectAtIndex:indexPath.item];
     //图片
     NSString *imageIndex = [NSString stringWithFormat:@"%ld",(long) (indexPath.item % 3 + 1)];
     UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:imageIndex]];
@@ -89,7 +98,7 @@
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [[self.delegate tagViewDataSource] count];
+    return [self.pages count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -115,7 +124,7 @@
 
 - (NSInteger)numberOfItemsInGMGridView:(GMGridView *)gridView
 {
-    return [[self.delegate tagViewDataSource] count];
+    return [self.pages count];
 }
 
 - (CGSize)GMGridView:(GMGridView *)gridView sizeForItemsInInterfaceOrientation:(UIInterfaceOrientation)orientation
@@ -142,7 +151,7 @@
     
     [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    VCPage *page = (VCPage *)[[self.delegate tagViewDataSource] objectAtIndex:index];
+    VCPage *page = (VCPage *)[self.pages objectAtIndex:index];
     //图片
     NSString *imageIndex = [NSString stringWithFormat:@"%ld",(long) (index % 3 + 1)];
     UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:imageIndex]];
@@ -246,7 +255,7 @@
 
 - (void)GMGridView:(GMGridView *)gridView moveItemAtIndex:(NSInteger)oldIndex toIndex:(NSInteger)newIndex
 {
-    //NSObject *object = [[self.delegate tagViewDataSource] objectAtIndex:oldIndex];
+    //NSObject *object = [self.pages objectAtIndex:oldIndex];
     //[_currentData removeObject:object];
     //[_currentData insertObject:object atIndex:newIndex];
 }
@@ -428,6 +437,14 @@
         [_titleView addSubview:editButton];
     }
     return _titleView;
+}
+
+-(NSMutableArray *)pages
+{
+    if (!_pages) {
+        _pages = [[NSMutableArray alloc]init];
+    }
+    return _pages;
 }
 
 #pragma mark - 事件
