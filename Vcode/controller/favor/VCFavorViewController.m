@@ -7,9 +7,11 @@
 //
 
 #import "VCFavorViewController.h"
+#import "VCFavor.h"
 #import "VCFavorCell.h"
 #import "VCFavorUtil.h"
 #import "VCFavorFormDataSource.h"
+#import "UIViewController+WebBrowser.h"
 
 @interface VCFavorViewController ()
 @property (nonatomic, readonly) UITableView           *tableView;
@@ -25,6 +27,11 @@
     [self.view addSubview:self.tableView];
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self.dataSource;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self setupData:nil];
 }
 
@@ -54,9 +61,30 @@
     for (id model in models) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:VCFavorDescriporType];
         row.value = model;
+        row.action.formSelector = @selector(gotoWebBrowser:);
         [section addFormRow:row];
     }
     return form;
+}
+
+#pragma mark - 事件
+-(void)gotoWebBrowser:(XLFormRowDescriptor *)row
+{
+    VCFavor *favor = row.value;
+    if (StringIsNotEmpty(favor.url)) {
+        [self presentWebBrowser:favor.url];
+    }
+}
+#pragma mark - helper
+-(void)performFormSelector:(SEL)selector withObject:(id)sender
+{
+    UIResponder * responder = [self targetForAction:selector withSender:sender];;
+    if (responder) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warc-performSelector-leaks"
+        [responder performSelector:selector withObject:sender];
+#pragma GCC diagnostic pop
+    }
 }
 
 #pragma mark - 属性
@@ -78,5 +106,7 @@
     }
     return _dataSource;
 }
+
+
 
 @end

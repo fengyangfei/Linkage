@@ -10,6 +10,7 @@
 #import "VCFavor.h"
 #import "LinkUtil.h"
 #import "NSDate+Format.h"
+#import "FormDescriptorCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 NSString *const VCFavorDescriporType = @"VCFavorDescriporType";
@@ -60,10 +61,14 @@ NSString *const VCFavorDescriporType = @"VCFavorDescriporType";
 
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
 {
+    [self formDescriptorCellDidSelectedWithViewController:(UIViewController<FormViewController> *)controller];
+}
+
+-(void)formDescriptorCellDidSelectedWithViewController:(UIViewController<FormViewController> *)controller
+{
     if (self.rowDescriptor.action.formBlock){
         self.rowDescriptor.action.formBlock(self.rowDescriptor);
-    }
-    else if (self.rowDescriptor.action.formSelector){
+    }else if (self.rowDescriptor.action.formSelector){
         [controller performFormSelector:self.rowDescriptor.action.formSelector withObject:self.rowDescriptor];
     }
     else{
@@ -86,22 +91,27 @@ NSString *const VCFavorDescriporType = @"VCFavorDescriporType";
 #pragma mark - UI
 -(void)setupUI
 {
+    @weakify(self);
     [self.contentView addSubview:self.iconView];
     [self.iconView makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
         make.top.equalTo(self.contentView.top).offset(12);
         make.left.equalTo(self.contentView.left).offset(12);
-        make.width.equalTo(18);
-        make.height.equalTo(18);
+        make.width.equalTo(16);
+        make.height.equalTo(16);
     }];
     
     [self.contentView addSubview:self.titleLabel];
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
         make.top.equalTo(self.contentView.top).offset(10);
         make.left.equalTo(self.iconView.right).offset(12);
+        make.right.equalTo(self.contentView.right).offset(12);
     }];
     
     [self.contentView addSubview:self.detailLabel];
     [self.detailLabel makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
         make.top.equalTo(self.iconView.bottom).offset(5);
         make.left.equalTo(self.contentView.left).offset(12);
         make.right.equalTo(self.contentView.right).offset(-12);
