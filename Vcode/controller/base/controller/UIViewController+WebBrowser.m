@@ -17,7 +17,10 @@
     [self presentViewController:webBrowserNavigationController animated:YES completion:nil];
     
     KINWebBrowserViewController *webBrowser = [webBrowserNavigationController rootWebBrowser];
+    webBrowser.actionButtonHidden = YES;
     webBrowser.barTintColor = [UIColor whiteColor];
+    webBrowser.showsURLInNavigationBar = YES;
+    webBrowser.showsPageTitleInNavigationBar = NO;
     [webBrowser loadURLString:url];
 }
 

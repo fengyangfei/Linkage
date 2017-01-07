@@ -40,7 +40,7 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 @interface KINWebBrowserViewController () <UIAlertViewDelegate>
 
 @property (nonatomic, assign) BOOL previousNavigationControllerToolbarHidden, previousNavigationControllerNavigationBarHidden;
-@property (nonatomic, strong) UIBarButtonItem *backButton, *forwardButton, *refreshButton, *stopButton, *fixedSeparator, *flexibleSeparator;
+@property (nonatomic, strong) UIBarButtonItem *backButton, *forwardButton, *refreshButton, *favorButton, *rocketButton, *stopButton, *fixedSeparator, *flexibleSeparator;
 @property (nonatomic, strong) NSTimer *fakeProgressTimer;
 @property (nonatomic, strong) UIPopoverController *actionPopoverController;
 @property (nonatomic, assign) BOOL uiWebViewIsLoading;
@@ -396,6 +396,11 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
         barButtonItems = [NSArray arrayWithArray:mutableBarButtonItems];
     }
     
+    //自定按钮（收藏与加速按钮）
+    NSMutableArray *mutableBarButtonItems = [NSMutableArray arrayWithArray:barButtonItems];
+    [mutableBarButtonItems addObjectsFromArray:@[self.favorButton, self.flexibleSeparator, self.rocketButton]];
+    barButtonItems = [NSArray arrayWithArray:mutableBarButtonItems];
+    
     [self setToolbarItems:barButtonItems animated:YES];
     
     self.tintColor = self.tintColor;
@@ -405,16 +410,26 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 }
 
 - (void)setupToolbarItems {
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    //NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
     self.refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
     self.stopButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopButtonPressed:)];
     
-    UIImage *backbuttonImage = [UIImage imageWithContentsOfFile: [bundle pathForResource:@"backbutton" ofType:@"png"]];
+    //UIImage *backbuttonImage = [UIImage imageWithContentsOfFile: [bundle pathForResource:@"backbutton" ofType:@"png"]];
+    UIImage *backbuttonImage = [UIImage imageNamed:@"left"];
     self.backButton = [[UIBarButtonItem alloc] initWithImage:backbuttonImage style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed:)];
     
-    UIImage *forwardbuttonImage = [UIImage imageWithContentsOfFile: [bundle pathForResource:@"forwardbutton" ofType:@"png"]];
+    //UIImage *forwardbuttonImage = [UIImage imageWithContentsOfFile: [bundle pathForResource:@"forwardbutton" ofType:@"png"]];
+    UIImage *forwardbuttonImage = [UIImage imageNamed:@"right"];
     self.forwardButton = [[UIBarButtonItem alloc] initWithImage:forwardbuttonImage style:UIBarButtonItemStylePlain target:self action:@selector(forwardButtonPressed:)];
+    
+    UIImage *likeOffIcon = [UIImage imageNamed:@"like_icon_off"];
+    self.favorButton = [[UIBarButtonItem alloc] initWithImage:likeOffIcon style:UIBarButtonItemStylePlain target:self action:@selector(likeButtonPressed:)];
+    
+    UIImage *rocketIcon = [UIImage imageNamed:@"rocket_on"];
+    UIImageView *rocketImageView = [[UIImageView alloc]initWithImage:rocketIcon];
+    self.rocketButton = [[UIBarButtonItem alloc] initWithCustomView:rocketImageView];
+    
     self.actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
     self.fixedSeparator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     self.fixedSeparator.width = 50.0f;
@@ -448,6 +463,14 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
         [self.uiWebView goForward];
     }
     [self updateToolbarState];
+}
+
+- (void)likeButtonPressed:(id)sender {
+    [self.favorButton setImage:[UIImage imageNamed:@"like_icon_on"]];
+}
+
+- (void)unLikeButtonPressed:(id)sender {
+    [self.favorButton setImage:[UIImage imageNamed:@"like_icon_off"]];
 }
 
 - (void)refreshButtonPressed:(id)sender {
