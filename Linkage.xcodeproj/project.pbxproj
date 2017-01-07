@@ -192,6 +192,7 @@
 		8BE6E5871E211DA800BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5811E211DA700BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.m */; };
 		8BE6E5881E211DA800BD9AA6 /* UIView+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5831E211DA700BD9AA6 /* UIView+GMGridViewAdditions.m */; };
 		8BE6E58E1E213E8200BD9AA6 /* VCPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E58D1E213E8200BD9AA6 /* VCPageModel.m */; };
+		8BE6E5911E21400200BD9AA6 /* VCPageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5901E21400200BD9AA6 /* VCPageUtil.m */; };
 		8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE996511C96EBFF008B4B13 /* AXRatingView.m */; };
 		8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C11CA61423007B924B /* XLFormViewController+ImagePicker.m */; };
 		8BEC33C61CA6160D007B924B /* AvatarFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C51CA6160D007B924B /* AvatarFormCell.m */; };
@@ -737,6 +738,8 @@
 		8BE6E5831E211DA700BD9AA6 /* UIView+GMGridViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GMGridViewAdditions.m"; sourceTree = "<group>"; };
 		8BE6E58C1E213E8200BD9AA6 /* VCPageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPageModel.h; sourceTree = "<group>"; };
 		8BE6E58D1E213E8200BD9AA6 /* VCPageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPageModel.m; sourceTree = "<group>"; };
+		8BE6E58F1E21400200BD9AA6 /* VCPageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPageUtil.h; sourceTree = "<group>"; };
+		8BE6E5901E21400200BD9AA6 /* VCPageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPageUtil.m; sourceTree = "<group>"; };
 		8BE996501C96EBFF008B4B13 /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
 		8BE996511C96EBFF008B4B13 /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
 		8BEC33C01CA61423007B924B /* XLFormViewController+ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XLFormViewController+ImagePicker.h"; sourceTree = "<group>"; };
@@ -1891,6 +1894,8 @@
 			children = (
 				8BB8FD551E1D17F800243B33 /* VCHomeUtil.h */,
 				8BB8FD561E1D17F800243B33 /* VCHomeUtil.m */,
+				8BE6E58F1E21400200BD9AA6 /* VCPageUtil.h */,
+				8BE6E5901E21400200BD9AA6 /* VCPageUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -3275,6 +3280,7 @@
 				9A474FE51E1F435C00618A8E /* SKTag.m in Sources */,
 				8B8284891CA57EA9001B36C1 /* Company.m in Sources */,
 				8B986F6C1CC50D7A002DDA68 /* AddCarViewController.m in Sources */,
+				8BE6E5911E21400200BD9AA6 /* VCPageUtil.m in Sources */,
 				9A403E021E1B5CCB00829EC4 /* VCFavorViewController.m in Sources */,
 				8BE6E5181E20CAE800BD9AA6 /* KINWebBrowserViewController.m in Sources */,
 				8BFEBF901E1BDB06008A60D5 /* VCCategory.m in Sources */,
