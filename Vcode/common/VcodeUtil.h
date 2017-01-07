@@ -10,5 +10,5 @@
 
 @interface VcodeUtil : NSObject
 +(NSString *)UUID;
-
++(NSString *)categoryImageName:(NSString *)category;
 @end
