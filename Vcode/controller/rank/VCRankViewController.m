@@ -31,6 +31,7 @@
     style.scaleTitle = YES;
     style.gradualChangeTitleColor = YES;
     style.autoAdjustTitlesWidth = YES;
+    style.contentViewBounces = NO;
     //style.normalTitleColor = [UIColor lightGrayColor];
     //style.selectedTitleColor = [UIColor grayColor];
     self.titles = @[@"全球", @"分类", @"国家"];

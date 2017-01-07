@@ -129,6 +129,8 @@
         style.scaleTitle = YES;
         style.showLine = NO;
         style.gradualChangeTitleColor = YES;
+        style.contentViewBounces = NO;
+        style.scrollContentView = NO;
         // 设置附加按钮的背景图片
         _scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
     }

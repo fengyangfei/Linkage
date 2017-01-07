@@ -49,7 +49,7 @@
 #pragma mark - 对外发布方法
 -(void)reloadData
 {
-    [self.collectionView reloadData];
+    [self.gmGridView reloadData];
 }
 
 #pragma mark - helper
@@ -120,13 +120,12 @@
 
 - (CGSize)GMGridView:(GMGridView *)gridView sizeForItemsInInterfaceOrientation:(UIInterfaceOrientation)orientation
 {
-    return CGSizeMake(IPHONE_WIDTH / 4 - 20, IPHONE_WIDTH / 4 - 20);
+    return CGSizeMake(IPHONE_WIDTH / 4, IPHONE_WIDTH / 4);
 }
 
 - (GMGridViewCell *)GMGridView:(GMGridView *)gridView cellForItemAtIndex:(NSInteger)index
 {
     //NSLog(@"Creating view indx %d", index);
-    
     CGSize size = [self GMGridView:gridView sizeForItemsInInterfaceOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
     
     GMGridViewCell *cell = [gridView dequeueReusableCell];
@@ -138,7 +137,6 @@
         cell.deleteButtonOffset = CGPointMake(-15, -15);
         
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-        view.backgroundColor = [UIColor redColor];
         view.layer.masksToBounds = NO;
         view.layer.cornerRadius = 8;
         
@@ -147,16 +145,35 @@
     
     [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
-    label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     VCPage *page = (VCPage *)[[self.delegate tagViewDataSource] objectAtIndex:index];
-    label.text = page.name;
-    label.textAlignment = NSTextAlignmentCenter;
-    label.backgroundColor = [UIColor clearColor];
-    label.textColor = [UIColor blackColor];
-    label.highlightedTextColor = [UIColor whiteColor];
-    label.font = [UIFont boldSystemFontOfSize:20];
-    [cell.contentView addSubview:label];
+    //图片
+    NSString *imageIndex = [NSString stringWithFormat:@"%ld",(long) (index % 3 + 1)];
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:imageIndex]];
+    [cell.contentView addSubview:imageView];
+    [imageView makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(60);
+        make.height.equalTo(60);
+        make.centerX.equalTo(cell.centerX);
+        make.top.equalTo(cell.top);
+    }];
+    //首字母
+    UILabel *firstLetterLabel = [[UILabel alloc]init];
+    [cell.contentView addSubview:firstLetterLabel];
+    firstLetterLabel.text = [[page.name substringWithRange:NSMakeRange(0, 1)] uppercaseString];
+    [firstLetterLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(imageView.centerX);
+        make.centerY.equalTo(imageView.centerY);
+    }];
+    //url连接
+    UILabel *titleLabel = [[UILabel alloc]init];
+    titleLabel.font = [UIFont systemFontOfSize:12];
+    [cell.contentView addSubview:titleLabel];
+    titleLabel.text = page.name;
+    [titleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(cell.centerX);
+        make.width.equalTo(50);
+        make.top.equalTo(imageView.bottom).offset(5);
+    }];
     
     return cell;
 }
@@ -208,7 +225,6 @@
                           delay:0
                         options:UIViewAnimationOptionAllowUserInteraction
                      animations:^{
-                         cell.contentView.backgroundColor = [UIColor orangeColor];
                          cell.contentView.layer.shadowOpacity = 0.7;
                      }
                      completion:nil
@@ -221,7 +237,6 @@
                           delay:0
                         options:UIViewAnimationOptionAllowUserInteraction
                      animations:^{
-                         cell.contentView.backgroundColor = [UIColor redColor];
                          cell.contentView.layer.shadowOpacity = 0;
                      }
                      completion:nil
@@ -252,7 +267,7 @@
 
 - (CGSize)GMGridView:(GMGridView *)gridView sizeInFullSizeForCell:(GMGridViewCell *)cell atIndex:(NSInteger)index inInterfaceOrientation:(UIInterfaceOrientation)orientation
 {
-    return CGSizeMake(IPHONE_WIDTH / 4 - 20, IPHONE_WIDTH / 4 - 20);
+    return CGSizeMake(IPHONE_WIDTH / 4, IPHONE_WIDTH / 4);
 }
 
 - (UIView *)GMGridView:(GMGridView *)gridView fullSizeViewForCell:(GMGridViewCell *)cell atIndex:(NSInteger)index
@@ -282,7 +297,6 @@
                           delay:0
                         options:UIViewAnimationOptionAllowUserInteraction
                      animations:^{
-                         cell.contentView.backgroundColor = [UIColor blueColor];
                          cell.contentView.layer.shadowOpacity = 0.7;
                      }
                      completion:nil];
@@ -294,7 +308,6 @@
                           delay:0
                         options:UIViewAnimationOptionAllowUserInteraction
                      animations:^{
-                         cell.contentView.backgroundColor = [UIColor redColor];
                          cell.contentView.layer.shadowOpacity = 0;
                      }
                      completion:nil];
@@ -359,9 +372,9 @@
         _gmGridView.backgroundColor = [UIColor whiteColor];
 
         _gmGridView.style = GMGridViewStyleSwap;
-        _gmGridView.itemSpacing = 10;
-        _gmGridView.minEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-        _gmGridView.centerGrid = YES;
+        _gmGridView.itemSpacing = 0;
+        _gmGridView.minEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+        //_gmGridView.centerGrid = YES;
         _gmGridView.actionDelegate = self;
         _gmGridView.sortingDelegate = self;
         _gmGridView.transformDelegate = self;
