@@ -6,8 +6,8 @@
 //  Copyright © 2017年 LA. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ModelBaseViewController.h"
 
-@interface VCFavorViewController : UIViewController
+@interface VCFavorViewController : ModelBaseViewController
 
 @end

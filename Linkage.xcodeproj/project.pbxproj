@@ -180,6 +180,11 @@
 		8BE6E5591E20D09800BD9AA6 /* safari~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE6E5471E20D09800BD9AA6 /* safari~iPad.png */; };
 		8BE6E55A1E20D09800BD9AA6 /* TUSafariActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E54B1E20D09800BD9AA6 /* TUSafariActivity.m */; };
 		8BE6E55C1E20D12C00BD9AA6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE6E55B1E20D12C00BD9AA6 /* WebKit.framework */; };
+		8BE6E55F1E20DE8F00BD9AA6 /* VCWebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E55E1E20DE8F00BD9AA6 /* VCWebBrowserViewController.m */; };
+		8BE6E5641E20DFF300BD9AA6 /* VCFavor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5631E20DFF300BD9AA6 /* VCFavor.m */; };
+		8BE6E5671E20E0C900BD9AA6 /* VCFavorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5661E20E0C900BD9AA6 /* VCFavorModel.m */; };
+		8BE6E56D1E20E17700BD9AA6 /* VCFavorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E56C1E20E17700BD9AA6 /* VCFavorUtil.m */; };
+		8BE6E5711E20E66600BD9AA6 /* VCFavorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5701E20E66600BD9AA6 /* VCFavorCell.m */; };
 		8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE996511C96EBFF008B4B13 /* AXRatingView.m */; };
 		8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C11CA61423007B924B /* XLFormViewController+ImagePicker.m */; };
 		8BEC33C61CA6160D007B924B /* AvatarFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C51CA6160D007B924B /* AvatarFormCell.m */; };
@@ -699,6 +704,16 @@
 		8BE6E54D1E20D09800BD9AA6 /* zh_Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_Hans; path = zh_Hans.lproj/TUSafariActivity.strings; sourceTree = "<group>"; };
 		8BE6E54E1E20D09800BD9AA6 /* zh_Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_Hant; path = zh_Hant.lproj/TUSafariActivity.strings; sourceTree = "<group>"; };
 		8BE6E55B1E20D12C00BD9AA6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		8BE6E55D1E20DE8F00BD9AA6 /* VCWebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCWebBrowserViewController.h; sourceTree = "<group>"; };
+		8BE6E55E1E20DE8F00BD9AA6 /* VCWebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCWebBrowserViewController.m; sourceTree = "<group>"; };
+		8BE6E5621E20DFF300BD9AA6 /* VCFavor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFavor.h; sourceTree = "<group>"; };
+		8BE6E5631E20DFF300BD9AA6 /* VCFavor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFavor.m; sourceTree = "<group>"; };
+		8BE6E5651E20E0C900BD9AA6 /* VCFavorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFavorModel.h; sourceTree = "<group>"; };
+		8BE6E5661E20E0C900BD9AA6 /* VCFavorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFavorModel.m; sourceTree = "<group>"; };
+		8BE6E56B1E20E17700BD9AA6 /* VCFavorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFavorUtil.h; sourceTree = "<group>"; };
+		8BE6E56C1E20E17700BD9AA6 /* VCFavorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFavorUtil.m; sourceTree = "<group>"; };
+		8BE6E56F1E20E66600BD9AA6 /* VCFavorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFavorCell.h; sourceTree = "<group>"; };
+		8BE6E5701E20E66600BD9AA6 /* VCFavorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFavorCell.m; sourceTree = "<group>"; };
 		8BE996501C96EBFF008B4B13 /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
 		8BE996511C96EBFF008B4B13 /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
 		8BEC33C01CA61423007B924B /* XLFormViewController+ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XLFormViewController+ImagePicker.h"; sourceTree = "<group>"; };
@@ -1986,6 +2001,35 @@
 			path = TUSafariActivity;
 			sourceTree = "<group>";
 		};
+		8BE6E5601E20DFC800BD9AA6 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8BE6E5621E20DFF300BD9AA6 /* VCFavor.h */,
+				8BE6E5631E20DFF300BD9AA6 /* VCFavor.m */,
+				8BE6E5651E20E0C900BD9AA6 /* VCFavorModel.h */,
+				8BE6E5661E20E0C900BD9AA6 /* VCFavorModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8BE6E5611E20DFC800BD9AA6 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				8BE6E56B1E20E17700BD9AA6 /* VCFavorUtil.h */,
+				8BE6E56C1E20E17700BD9AA6 /* VCFavorUtil.m */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		8BE6E56E1E20E59500BD9AA6 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8BE6E56F1E20E66600BD9AA6 /* VCFavorCell.h */,
+				8BE6E5701E20E66600BD9AA6 /* VCFavorCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		8BE9964F1C96EBFF008B4B13 /* AXRatingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2348,6 +2392,9 @@
 		9A403DF31E1B5C1700829EC4 /* favor */ = {
 			isa = PBXGroup;
 			children = (
+				8BE6E56E1E20E59500BD9AA6 /* view */,
+				8BE6E5601E20DFC800BD9AA6 /* model */,
+				8BE6E5611E20DFC800BD9AA6 /* util */,
 				9A403E001E1B5CCB00829EC4 /* VCFavorViewController.h */,
 				9A403E011E1B5CCB00829EC4 /* VCFavorViewController.m */,
 			);
@@ -2455,6 +2502,8 @@
 				9A474FD51E1E2E7600618A8E /* VCBaseNavViewController.m */,
 				8BE6E5191E20CCAB00BD9AA6 /* UIViewController+WebBrowser.h */,
 				8BE6E51A1E20CCAB00BD9AA6 /* UIViewController+WebBrowser.m */,
+				8BE6E55D1E20DE8F00BD9AA6 /* VCWebBrowserViewController.h */,
+				8BE6E55E1E20DE8F00BD9AA6 /* VCWebBrowserViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3063,6 +3112,7 @@
 				8BB4FB131C7A0884003389F1 /* GTMStackTrace.m in Sources */,
 				9A74CD901E1DDD1B0036C02D /* WYButtonChooseView.m in Sources */,
 				8B0060411CAC08E3001B0FC9 /* Order.m in Sources */,
+				8BE6E5711E20E66600BD9AA6 /* VCFavorCell.m in Sources */,
 				9A23A2A91C7A91D400FB5EB6 /* BFPaperButton.m in Sources */,
 				8B5DC6331C79B8A700D29292 /* IFTTTViewAnimation.m in Sources */,
 				9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */,
@@ -3130,8 +3180,10 @@
 				8BB8FD5B1E1D232500243B33 /* VCTagView.m in Sources */,
 				8B5DC56A1C7992E900D29292 /* AppDelegate.m in Sources */,
 				9AA959441D88CFD200BB403B /* MTLValueTransformer+Util.m in Sources */,
+				8BE6E5641E20DFF300BD9AA6 /* VCFavor.m in Sources */,
 				8B2D18CF1D3101BC00A9183E /* WXApiManager.m in Sources */,
 				8B5DC5671C7992E900D29292 /* main.m in Sources */,
+				8BE6E5671E20E0C900BD9AA6 /* VCFavorModel.m in Sources */,
 				9A95FF331C89731100C5F492 /* TRPopButton.m in Sources */,
 				8BFEBF831E1BD2D6008A60D5 /* ZJScrollSegmentView.m in Sources */,
 				9AEF89CB1CA4CD5400C5EB90 /* ImageToDataTransformer.m in Sources */,
@@ -3171,11 +3223,13 @@
 				9A95FF411C89824F00C5F492 /* UIViewController+TRImagePicker.m in Sources */,
 				8B5DC6301C79B8A700D29292 /* IFTTTTextColorAnimation.m in Sources */,
 				9AEF89C01CA1274600C5EB90 /* MJPhotoProgressView.m in Sources */,
+				8BE6E55F1E20DE8F00BD9AA6 /* VCWebBrowserViewController.m in Sources */,
 				9A23A3211C7E8EA900FB5EB6 /* ICETutorialStyle.m in Sources */,
 				8BB17AB71C9AF60D002708C4 /* BillApplyViewController.m in Sources */,
 				8B5DC61E1C79B8A700D29292 /* IFTTTBackgroundColorAnimation.m in Sources */,
 				8B958B3C1CD65301003BD74B /* Message.m in Sources */,
 				9A74CD821E1DD4EC0036C02D /* VCAdviceViewController.m in Sources */,
+				8BE6E56D1E20E17700BD9AA6 /* VCFavorUtil.m in Sources */,
 				8B53F4E61CE37C820020E218 /* SearchViewController.m in Sources */,
 				8B3DB5C71D854E6F00AABCE9 /* UITabBar+Badge.m in Sources */,
 				9A74CD911E1DDD1B0036C02D /* WYButtonChooseViewController.m in Sources */,
