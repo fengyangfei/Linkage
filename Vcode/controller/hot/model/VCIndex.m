@@ -7,7 +7,7 @@
 //
 
 #import "VCIndex.h"
-
+#import "VCPageModel.h"
 @implementation VCIndex
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
@@ -75,4 +75,17 @@
         }
     }];
 }
+
+#pragma mark - MTLManagedObjectSerializing
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass([VCPageModel class]);
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
+    return keyDic;
+}
+
 @end

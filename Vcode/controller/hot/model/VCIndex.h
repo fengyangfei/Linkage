@@ -7,7 +7,8 @@
 //
 
 #import <Mantle/Mantle.h>
-
+#import "MTLManagedObjectAdapter.h"
+#import "ModelOperation.h"
 @interface VCIndex : MTLModel<MTLJSONSerializing>
 @property (nonatomic, strong) NSArray *ads;
 @property (nonatomic, strong) NSArray *pages;
@@ -19,7 +20,7 @@
 @property (nonatomic, strong) NSNumber *sort;
 @end
 
-@interface VCPage : MTLModel<MTLJSONSerializing>
+@interface VCPage : MTLModel<MTLJSONSerializing,MTLManagedObjectSerializing>
 @property (nonatomic, copy) NSString *gid;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *url;

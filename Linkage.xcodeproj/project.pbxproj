@@ -191,6 +191,7 @@
 		8BE6E5861E211DA800BD9AA6 /* GMGridViewLayoutStrategies.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E57F1E211DA700BD9AA6 /* GMGridViewLayoutStrategies.m */; };
 		8BE6E5871E211DA800BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5811E211DA700BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.m */; };
 		8BE6E5881E211DA800BD9AA6 /* UIView+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5831E211DA700BD9AA6 /* UIView+GMGridViewAdditions.m */; };
+		8BE6E58E1E213E8200BD9AA6 /* VCPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E58D1E213E8200BD9AA6 /* VCPageModel.m */; };
 		8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE996511C96EBFF008B4B13 /* AXRatingView.m */; };
 		8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C11CA61423007B924B /* XLFormViewController+ImagePicker.m */; };
 		8BEC33C61CA6160D007B924B /* AvatarFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C51CA6160D007B924B /* AvatarFormCell.m */; };
@@ -734,6 +735,8 @@
 		8BE6E5811E211DA700BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+GMGridViewAdditions.m"; sourceTree = "<group>"; };
 		8BE6E5821E211DA700BD9AA6 /* UIView+GMGridViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GMGridViewAdditions.h"; sourceTree = "<group>"; };
 		8BE6E5831E211DA700BD9AA6 /* UIView+GMGridViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GMGridViewAdditions.m"; sourceTree = "<group>"; };
+		8BE6E58C1E213E8200BD9AA6 /* VCPageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPageModel.h; sourceTree = "<group>"; };
+		8BE6E58D1E213E8200BD9AA6 /* VCPageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPageModel.m; sourceTree = "<group>"; };
 		8BE996501C96EBFF008B4B13 /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
 		8BE996511C96EBFF008B4B13 /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
 		8BEC33C01CA61423007B924B /* XLFormViewController+ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XLFormViewController+ImagePicker.h"; sourceTree = "<group>"; };
@@ -2585,6 +2588,8 @@
 			children = (
 				9A74CD721E1CF0B10036C02D /* VCIndex.h */,
 				9A74CD731E1CF0B10036C02D /* VCIndex.m */,
+				8BE6E58C1E213E8200BD9AA6 /* VCPageModel.h */,
+				8BE6E58D1E213E8200BD9AA6 /* VCPageModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3310,6 +3315,7 @@
 				8B44450A1C7C9EFE00160DC2 /* TAAnimatedDotView.m in Sources */,
 				9A95FF0D1C858C8200C5F492 /* DateAndTimeValueTrasformer.m in Sources */,
 				8B5DC6811C79D0DB00D29292 /* YGRestClient.m in Sources */,
+				8BE6E58E1E213E8200BD9AA6 /* VCPageModel.m in Sources */,
 				8BE6E5881E211DA800BD9AA6 /* UIView+GMGridViewAdditions.m in Sources */,
 				8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */,
 				9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */,

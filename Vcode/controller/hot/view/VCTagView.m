@@ -134,12 +134,9 @@
     {
         cell = [[GMGridViewCell alloc] init];
         cell.deleteButtonIcon = [UIImage imageNamed:@"close_x.png"];
-        cell.deleteButtonOffset = CGPointMake(-15, -15);
+        cell.deleteButtonOffset = CGPointMake(14, -2);
         
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-        view.layer.masksToBounds = NO;
-        view.layer.cornerRadius = 8;
-        
         cell.contentView = view;
     }
     
@@ -199,8 +196,7 @@
 
 - (void)GMGridView:(GMGridView *)gridView processDeleteActionForItemAtIndex:(NSInteger)index
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to delete this item?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
-    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"删除标签" message:@"确认删除此标签吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
     [alert show];
     
     //_lastDeleteItemIndexAsked = index;
@@ -374,6 +370,7 @@
         _gmGridView.style = GMGridViewStyleSwap;
         _gmGridView.itemSpacing = 0;
         _gmGridView.minEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+        _gmGridView.enableEditOnLongPress = YES;
         //_gmGridView.centerGrid = YES;
         _gmGridView.actionDelegate = self;
         _gmGridView.sortingDelegate = self;
