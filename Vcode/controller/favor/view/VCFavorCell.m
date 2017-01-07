@@ -8,10 +8,11 @@
 
 #import "VCFavorCell.h"
 #import "VCFavor.h"
-#import "LinkUtil.h"
+#import "VCFavorUtil.h"
 #import "NSDate+Format.h"
 #import "FormDescriptorCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 NSString *const VCFavorDescriporType = @"VCFavorDescriporType";
 
@@ -35,10 +36,60 @@ NSString *const VCFavorDescriporType = @"VCFavorDescriporType";
     [XLFormViewController.cellClassesForRowDescriptorTypes setObject:[self class] forKey:VCFavorDescriporType];
 }
 
+#pragma mark - 右滑按钮
+-(void)configureSwipe
+{
+    @weakify(self);
+    MGSwipeButton *cancel = [MGSwipeButton buttonWithTitle:@"取消收藏" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        @strongify(self);
+        XLFormRowDescriptor * row = self.rowDescriptor;
+        [row.sectionDescriptor removeFormRow:row];
+        [VCFavorUtil deleteFromDataBase:row.value completion:^{
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:nil];
+        }];
+        return YES;
+    }];
+    MGSwipeButton *copy = [MGSwipeButton buttonWithTitle:@"复制网址" backgroundColor:[UIColor greenColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        @strongify(self);
+        VCFavor *favor = self.rowDescriptor.value;
+        UIPasteboard *pab = [UIPasteboard generalPasteboard];
+        [pab setString:favor.url];
+        if (!pab) {
+            [SVProgressHUD showErrorWithStatus:@"复制失败"];
+        }else{
+            [SVProgressHUD showSuccessWithStatus:@"已复制"];
+        }
+        return YES;
+    }];
+    self.rightButtons = @[cancel, copy];
+}
+
+#pragma mark - XLFormBaseCell 的生命周期
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self configure];
+        [self configureSwipe];
+    }
+    return self;
+}
+
+-(XLFormViewController *)formViewController
+{
+    id responder = self;
+    while (responder){
+        if ([responder isKindOfClass:[XLFormViewController class]]){
+            return responder;
+        }
+        responder = [responder nextResponder];
+    }
+    return nil;
+}
+
 #pragma mark - 生命周期
 -(void)configure
 {
-    [super configure];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     [self setupUI];
@@ -46,7 +97,6 @@ NSString *const VCFavorDescriporType = @"VCFavorDescriporType";
 
 -(void)update
 {
-    [super update];
     VCFavor *favor = self.rowDescriptor.value;
     //    [self.iconView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"地区"]];
     [self.iconView setImage:[UIImage imageNamed:@"website"]];

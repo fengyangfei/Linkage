@@ -7,7 +7,10 @@
 //
 
 #import <XLForm/XLForm.h>
-extern NSString *const VCFavorDescriporType;
-@interface VCFavorCell : XLFormBaseCell
+#import <MGSwipeTableCell/MGSwipeTableCell.h>
 
+extern NSString *const VCFavorDescriporType;
+@interface VCFavorCell : MGSwipeTableCell<XLFormDescriptorCell>
+@property (nonatomic, weak) XLFormRowDescriptor * rowDescriptor;
+-(XLFormViewController *)formViewController;
 @end

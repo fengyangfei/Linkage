@@ -48,4 +48,18 @@
     }
 }
 
++(void)deleteFromDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion
+{
+    VCFavor *favor = (VCFavor *)model;
+    if (favor.url) {
+        VCFavorModel *existModel = [VCFavorModel MR_findFirstByAttribute:@"url" withValue:favor.url inContext:[NSManagedObjectContext MR_defaultContext]];
+        if (existModel) {
+            [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+        }
+        if (completion) {
+            completion();
+        }
+    }
+}
+
 @end
