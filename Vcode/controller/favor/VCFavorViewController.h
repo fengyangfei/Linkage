@@ -6,8 +6,8 @@
 //  Copyright © 2017年 LA. All rights reserved.
 //
 
-#import "ModelBaseViewController.h"
+#import "VCBaseNavViewController.h"
 
-@interface VCFavorViewController : ModelBaseViewController
+@interface VCFavorViewController : VCBaseNavViewController
 
 @end

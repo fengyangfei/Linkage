@@ -185,6 +185,7 @@
 		8BE6E5671E20E0C900BD9AA6 /* VCFavorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5661E20E0C900BD9AA6 /* VCFavorModel.m */; };
 		8BE6E56D1E20E17700BD9AA6 /* VCFavorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E56C1E20E17700BD9AA6 /* VCFavorUtil.m */; };
 		8BE6E5711E20E66600BD9AA6 /* VCFavorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5701E20E66600BD9AA6 /* VCFavorCell.m */; };
+		8BE6E5751E20FA8B00BD9AA6 /* VCFavorFormDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5741E20FA8B00BD9AA6 /* VCFavorFormDataSource.m */; };
 		8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE996511C96EBFF008B4B13 /* AXRatingView.m */; };
 		8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C11CA61423007B924B /* XLFormViewController+ImagePicker.m */; };
 		8BEC33C61CA6160D007B924B /* AvatarFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C51CA6160D007B924B /* AvatarFormCell.m */; };
@@ -714,6 +715,8 @@
 		8BE6E56C1E20E17700BD9AA6 /* VCFavorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFavorUtil.m; sourceTree = "<group>"; };
 		8BE6E56F1E20E66600BD9AA6 /* VCFavorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFavorCell.h; sourceTree = "<group>"; };
 		8BE6E5701E20E66600BD9AA6 /* VCFavorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFavorCell.m; sourceTree = "<group>"; };
+		8BE6E5731E20FA8B00BD9AA6 /* VCFavorFormDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFavorFormDataSource.h; sourceTree = "<group>"; };
+		8BE6E5741E20FA8B00BD9AA6 /* VCFavorFormDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFavorFormDataSource.m; sourceTree = "<group>"; };
 		8BE996501C96EBFF008B4B13 /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
 		8BE996511C96EBFF008B4B13 /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
 		8BEC33C01CA61423007B924B /* XLFormViewController+ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XLFormViewController+ImagePicker.h"; sourceTree = "<group>"; };
@@ -2030,6 +2033,15 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		8BE6E5721E20FA6700BD9AA6 /* dataSource */ = {
+			isa = PBXGroup;
+			children = (
+				8BE6E5731E20FA8B00BD9AA6 /* VCFavorFormDataSource.h */,
+				8BE6E5741E20FA8B00BD9AA6 /* VCFavorFormDataSource.m */,
+			);
+			path = dataSource;
+			sourceTree = "<group>";
+		};
 		8BE9964F1C96EBFF008B4B13 /* AXRatingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2392,6 +2404,7 @@
 		9A403DF31E1B5C1700829EC4 /* favor */ = {
 			isa = PBXGroup;
 			children = (
+				8BE6E5721E20FA6700BD9AA6 /* dataSource */,
 				8BE6E56E1E20E59500BD9AA6 /* view */,
 				8BE6E5601E20DFC800BD9AA6 /* model */,
 				8BE6E5611E20DFC800BD9AA6 /* util */,
@@ -3059,6 +3072,7 @@
 				8BFEBF7E1E1BD2D6008A60D5 /* UIView+ZJFrame.m in Sources */,
 				9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */,
 				8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */,
+				8BE6E5751E20FA8B00BD9AA6 /* VCFavorFormDataSource.m in Sources */,
 				9A95FF3B1C897EE800C5F492 /* TRFloatingModel.m in Sources */,
 				8BB8FD571E1D17F800243B33 /* VCHomeUtil.m in Sources */,
 				8B941BB11CD107060059BE13 /* CarModel.m in Sources */,

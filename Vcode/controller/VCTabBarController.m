@@ -47,7 +47,6 @@
     UIViewController *billController = ({
         NSString *title = @"收藏";
         VCFavorViewController *viewController = [[VCFavorViewController alloc]init];
-        viewController.title = title;
         viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"love"] selectedImage:[UIImage imageNamed:@"love_on"]];
         viewController;
     });

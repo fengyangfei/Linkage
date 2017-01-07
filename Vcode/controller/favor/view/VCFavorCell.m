@@ -120,7 +120,7 @@ NSString *const VCFavorDescriporType = @"VCFavorDescriporType";
 {
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
-        _titleLabel.font = [UIFont boldSystemFontOfSize:20];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:18];
         _titleLabel.textColor = [UIColor blackColor];
     }
     return _titleLabel;
