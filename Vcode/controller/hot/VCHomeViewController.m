@@ -11,6 +11,8 @@
 #import "VCHomeUtil.h"
 #import "VCIndex.h"
 #import "VCTagView.h"
+#import "VCPageUtil.h"
+#import "VCPageModel.h"
 
 @interface VCHomeViewController ()<SDCycleScrollViewDelegate,VCTagViewDelegate>
 @property (nonatomic, readonly) SDCycleScrollView *scrollView;
@@ -36,11 +38,16 @@
 
 -(void)setupData
 {
-    @weakify(self)
+    @weakify(self);
     [VCHomeUtil queryModelFromServer:^(VCIndex *model) {
-        @strongify(self)
+        @strongify(self);
         self.homeIndex = model;
-        [self.tagView reloadData];
+
+        [self syncPagesToDataBase:[self.homeIndex pages] completion:^{
+            @strongify(self);
+            [self.tagView reloadData];
+        }];
+        
         //图片
         NSMutableArray *imagesURLStrings = [NSMutableArray array];
         for (VCAd *advert in model.ads) {
@@ -50,6 +57,18 @@
             self.scrollView.imageURLStringsGroup = [imagesURLStrings copy];
         });
     }];
+}
+
+//保存Page标签对象到数据库
+-(void)syncPagesToDataBase:(NSArray *)pages completion:(void(^)(void))completion
+{
+    for (VCPage *page in pages) {
+        [VCPageUtil syncToDataBase:page completion:^{
+        }];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+            completion();
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
