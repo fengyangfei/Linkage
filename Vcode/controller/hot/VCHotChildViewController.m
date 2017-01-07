@@ -12,6 +12,8 @@
 #import "VCRankTableCell.h"
 #import "VCCategoryUtil.h"
 #import "VCCategory.h"
+#import "VCRank.h"
+#import "UIViewController+WebBrowser.h"
 #import <MJRefresh/MJRefresh.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
@@ -119,10 +121,17 @@
     for (id model in models) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:VCRankDescriporType];
         row.value = model;
+        row.action.formSelector = @selector(gotoWebBrowser:);
         [section addFormRow:row];
     }
     
     [self setForm:form];
+}
+
+-(void)gotoWebBrowser:(XLFormRowDescriptor *)row
+{
+    VCRank *rank = row.value;
+    [self presentWebBrowser:rank.url];
 }
 
 //重写父类方法

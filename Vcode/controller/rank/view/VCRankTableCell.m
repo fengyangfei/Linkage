@@ -65,6 +65,9 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
     if (self.rowDescriptor.action.formBlock){
         self.rowDescriptor.action.formBlock(self.rowDescriptor);
     }
+    else if (self.rowDescriptor.action.formSelector){
+        [controller performFormSelector:self.rowDescriptor.action.formSelector withObject:self.rowDescriptor];
+    }
     else{
         UIViewController * controllerToPresent = [[self.rowDescriptor.action.viewControllerClass alloc] init];
         if (controllerToPresent){
