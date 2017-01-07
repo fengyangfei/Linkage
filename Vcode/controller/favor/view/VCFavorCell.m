@@ -48,16 +48,14 @@ NSString *const VCFavorDescriporType = @"VCFavorDescriporType";
     [super update];
     VCFavor *favor = self.rowDescriptor.value;
     //    [self.iconView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"地区"]];
-    [self.iconView setImage:[UIImage imageNamed:favor.title]];
+    [self.iconView setImage:[UIImage imageNamed:@"website"]];
     self.titleLabel.text = favor.title;
-    self.detailLabel.text = favor.title;
-    self.subDetailLabel.text = favor.title;
-    self.countLabel.text = @"0访问";
+    self.detailLabel.text = favor.url;
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
-    return 90;
+    return 60;
 }
 
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller
@@ -107,18 +105,6 @@ NSString *const VCFavorDescriporType = @"VCFavorDescriporType";
         make.top.equalTo(self.iconView.bottom).offset(5);
         make.left.equalTo(self.contentView.left).offset(12);
         make.right.equalTo(self.contentView.right).offset(-12);
-    }];
-    
-    [self.contentView addSubview:self.subDetailLabel];
-    [self.subDetailLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.left).offset(12);
-        make.bottom.equalTo(self.contentView.bottom).offset(-5);;
-    }];
-    
-    [self.contentView addSubview:self.countLabel];
-    [self.countLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView.right).offset(-12);
-        make.bottom.equalTo(self.contentView.bottom).offset(-5);
     }];
 }
 

@@ -8,12 +8,13 @@
 
 #import "UIViewController+WebBrowser.h"
 #import "KINWebBrowserViewController.h"
+#import "VCWebBrowserViewController.h"
 
 @implementation UIViewController (WebBrowser)
 
 -(void)presentWebBrowser:(NSString *)url
 {
-    UINavigationController *webBrowserNavigationController = [KINWebBrowserViewController navigationControllerWithWebBrowser];
+    UINavigationController *webBrowserNavigationController = [VCWebBrowserViewController navigationControllerWithWebBrowser];
     [self presentViewController:webBrowserNavigationController animated:YES completion:nil];
     
     KINWebBrowserViewController *webBrowser = [webBrowserNavigationController rootWebBrowser];

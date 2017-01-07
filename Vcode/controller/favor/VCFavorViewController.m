@@ -7,6 +7,8 @@
 //
 
 #import "VCFavorViewController.h"
+#import "VCFavorCell.h"
+#import "VCFavorUtil.h"
 
 @interface VCFavorViewController ()
 
@@ -16,22 +18,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(Class)modelUtilClass
+{
+    return [VCFavorUtil class];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)queryDataFromServer:(void(^)(void))block
+{
+    block();
 }
-*/
+
+- (void)initializeForm:(NSArray *)models
+{
+    XLFormDescriptor * form;
+    XLFormSectionDescriptor * section;
+    XLFormRowDescriptor * row;
+    
+    form = [XLFormDescriptor formDescriptorWithTitle:@""];
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    for (id model in models) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:VCFavorDescriporType];
+        row.value = model;
+        [section addFormRow:row];
+    }
+    
+    [self setForm:form];
+}
 
 @end

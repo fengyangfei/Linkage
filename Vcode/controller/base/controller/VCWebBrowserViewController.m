@@ -35,7 +35,7 @@
 }
 
 - (void)likeButtonPressed:(id)sender {
-    
+    [self saveFavor:nil];
 }
 
 - (void)saveFavor:(void(^)(void))completion
@@ -43,6 +43,7 @@
     NSString *title;
     if(self.wkWebView) {
         title = self.wkWebView.title;
+        self.urlStr = self.wkWebView.URL.absoluteString;
     }
     else if(self.uiWebView) {
         title = [self.uiWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
@@ -55,7 +56,9 @@
     
     [VCFavorUtil syncToDataBase:favor completion:^{
         [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
-            completion();
+            if (completion) {
+                completion();
+            }
         }];
     }];
 }
