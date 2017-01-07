@@ -186,6 +186,11 @@
 		8BE6E56D1E20E17700BD9AA6 /* VCFavorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E56C1E20E17700BD9AA6 /* VCFavorUtil.m */; };
 		8BE6E5711E20E66600BD9AA6 /* VCFavorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5701E20E66600BD9AA6 /* VCFavorCell.m */; };
 		8BE6E5751E20FA8B00BD9AA6 /* VCFavorFormDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5741E20FA8B00BD9AA6 /* VCFavorFormDataSource.m */; };
+		8BE6E5841E211DA700BD9AA6 /* GMGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E57A1E211DA700BD9AA6 /* GMGridView.m */; };
+		8BE6E5851E211DA800BD9AA6 /* GMGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E57D1E211DA700BD9AA6 /* GMGridViewCell.m */; };
+		8BE6E5861E211DA800BD9AA6 /* GMGridViewLayoutStrategies.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E57F1E211DA700BD9AA6 /* GMGridViewLayoutStrategies.m */; };
+		8BE6E5871E211DA800BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5811E211DA700BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.m */; };
+		8BE6E5881E211DA800BD9AA6 /* UIView+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6E5831E211DA700BD9AA6 /* UIView+GMGridViewAdditions.m */; };
 		8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE996511C96EBFF008B4B13 /* AXRatingView.m */; };
 		8BEC33C21CA61423007B924B /* XLFormViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C11CA61423007B924B /* XLFormViewController+ImagePicker.m */; };
 		8BEC33C61CA6160D007B924B /* AvatarFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC33C51CA6160D007B924B /* AvatarFormCell.m */; };
@@ -717,6 +722,18 @@
 		8BE6E5701E20E66600BD9AA6 /* VCFavorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFavorCell.m; sourceTree = "<group>"; };
 		8BE6E5731E20FA8B00BD9AA6 /* VCFavorFormDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFavorFormDataSource.h; sourceTree = "<group>"; };
 		8BE6E5741E20FA8B00BD9AA6 /* VCFavorFormDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFavorFormDataSource.m; sourceTree = "<group>"; };
+		8BE6E5781E211DA700BD9AA6 /* GMGridView-Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMGridView-Constants.h"; sourceTree = "<group>"; };
+		8BE6E5791E211DA700BD9AA6 /* GMGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMGridView.h; sourceTree = "<group>"; };
+		8BE6E57A1E211DA700BD9AA6 /* GMGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMGridView.m; sourceTree = "<group>"; };
+		8BE6E57B1E211DA700BD9AA6 /* GMGridViewCell+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMGridViewCell+Extended.h"; sourceTree = "<group>"; };
+		8BE6E57C1E211DA700BD9AA6 /* GMGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMGridViewCell.h; sourceTree = "<group>"; };
+		8BE6E57D1E211DA700BD9AA6 /* GMGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMGridViewCell.m; sourceTree = "<group>"; };
+		8BE6E57E1E211DA700BD9AA6 /* GMGridViewLayoutStrategies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMGridViewLayoutStrategies.h; sourceTree = "<group>"; };
+		8BE6E57F1E211DA700BD9AA6 /* GMGridViewLayoutStrategies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMGridViewLayoutStrategies.m; sourceTree = "<group>"; };
+		8BE6E5801E211DA700BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+GMGridViewAdditions.h"; sourceTree = "<group>"; };
+		8BE6E5811E211DA700BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+GMGridViewAdditions.m"; sourceTree = "<group>"; };
+		8BE6E5821E211DA700BD9AA6 /* UIView+GMGridViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GMGridViewAdditions.h"; sourceTree = "<group>"; };
+		8BE6E5831E211DA700BD9AA6 /* UIView+GMGridViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GMGridViewAdditions.m"; sourceTree = "<group>"; };
 		8BE996501C96EBFF008B4B13 /* AXRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXRatingView.h; sourceTree = "<group>"; };
 		8BE996511C96EBFF008B4B13 /* AXRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXRatingView.m; sourceTree = "<group>"; };
 		8BEC33C01CA61423007B924B /* XLFormViewController+ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XLFormViewController+ImagePicker.h"; sourceTree = "<group>"; };
@@ -1340,6 +1357,7 @@
 		8B5DC57F1C79B8A700D29292 /* thirdClass */ = {
 			isa = PBXGroup;
 			children = (
+				8BE6E5771E211DA700BD9AA6 /* GMGridView */,
 				8BE6E52C1E20D09800BD9AA6 /* TUSafariActivity */,
 				8BE6E51C1E20D07900BD9AA6 /* ARChromeActivity */,
 				8BE6E5151E20CAE800BD9AA6 /* KINWebBrowser */,
@@ -2040,6 +2058,25 @@
 				8BE6E5741E20FA8B00BD9AA6 /* VCFavorFormDataSource.m */,
 			);
 			path = dataSource;
+			sourceTree = "<group>";
+		};
+		8BE6E5771E211DA700BD9AA6 /* GMGridView */ = {
+			isa = PBXGroup;
+			children = (
+				8BE6E5781E211DA700BD9AA6 /* GMGridView-Constants.h */,
+				8BE6E5791E211DA700BD9AA6 /* GMGridView.h */,
+				8BE6E57A1E211DA700BD9AA6 /* GMGridView.m */,
+				8BE6E57B1E211DA700BD9AA6 /* GMGridViewCell+Extended.h */,
+				8BE6E57C1E211DA700BD9AA6 /* GMGridViewCell.h */,
+				8BE6E57D1E211DA700BD9AA6 /* GMGridViewCell.m */,
+				8BE6E57E1E211DA700BD9AA6 /* GMGridViewLayoutStrategies.h */,
+				8BE6E57F1E211DA700BD9AA6 /* GMGridViewLayoutStrategies.m */,
+				8BE6E5801E211DA700BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.h */,
+				8BE6E5811E211DA700BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.m */,
+				8BE6E5821E211DA700BD9AA6 /* UIView+GMGridViewAdditions.h */,
+				8BE6E5831E211DA700BD9AA6 /* UIView+GMGridViewAdditions.m */,
+			);
+			path = GMGridView;
 			sourceTree = "<group>";
 		};
 		8BE9964F1C96EBFF008B4B13 /* AXRatingView */ = {
@@ -3038,6 +3075,7 @@
 				9A2F5C451CE1724A00E7E2DD /* BillDataSource.m in Sources */,
 				8BE6E51B1E20CCAB00BD9AA6 /* UIViewController+WebBrowser.m in Sources */,
 				9ABD8F8F1D45F3B500D03A84 /* NSDate+Format.m in Sources */,
+				8BE6E5851E211DA800BD9AA6 /* GMGridViewCell.m in Sources */,
 				8B5DC6261C79B8A700D29292 /* IFTTTInterpolatable.m in Sources */,
 				9A474FE61E1F435C00618A8E /* SKTagButton.m in Sources */,
 				9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */,
@@ -3069,6 +3107,7 @@
 				8BE6E55A1E20D09800BD9AA6 /* TUSafariActivity.m in Sources */,
 				9A403E1B1E1B747E00829EC4 /* VCRankUtil.m in Sources */,
 				8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */,
+				8BE6E5871E211DA800BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */,
 				8BFEBF7E1E1BD2D6008A60D5 /* UIView+ZJFrame.m in Sources */,
 				9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */,
 				8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */,
@@ -3170,6 +3209,7 @@
 				9A05C3751CC8BBB0009BC8C9 /* FormOptionsViewController.m in Sources */,
 				9ACEBC711C99492A0000ACBF /* CargoFormCell.m in Sources */,
 				9A11F05C1CD041BA002E8F6F /* Driver.m in Sources */,
+				8BE6E5841E211DA700BD9AA6 /* GMGridView.m in Sources */,
 				8B5DC61B1C79B8A700D29292 /* IFTTTAnimatedScrollViewController.m in Sources */,
 				8B5DC6361C79B8A700D29292 /* TRTheme.m in Sources */,
 				8BE6E5251E20D07900BD9AA6 /* ARChromeActivity.m in Sources */,
@@ -3213,6 +3253,7 @@
 				9A11F0781CD1BBBA002E8F6F /* ModelBaseViewController.m in Sources */,
 				9A74CD921E1DDD1B0036C02D /* WYLabelButton.m in Sources */,
 				8B2D18D21D3101BC00A9183E /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */,
+				8BE6E5861E211DA800BD9AA6 /* GMGridViewLayoutStrategies.m in Sources */,
 				8BA3E3CB1CD463E90047AC6B /* Staff.m in Sources */,
 				8B5DC61C1C79B8A700D29292 /* IFTTTAnimation.m in Sources */,
 				8B3302911C8BC0D70088DAE2 /* MainTableViewCell.m in Sources */,
@@ -3269,6 +3310,7 @@
 				8B44450A1C7C9EFE00160DC2 /* TAAnimatedDotView.m in Sources */,
 				9A95FF0D1C858C8200C5F492 /* DateAndTimeValueTrasformer.m in Sources */,
 				8B5DC6811C79D0DB00D29292 /* YGRestClient.m in Sources */,
+				8BE6E5881E211DA800BD9AA6 /* UIView+GMGridViewAdditions.m in Sources */,
 				8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */,
 				9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */,
 				9A05C38D1CCA095D009BC8C9 /* OrderModel.m in Sources */,

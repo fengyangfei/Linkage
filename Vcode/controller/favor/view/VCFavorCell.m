@@ -164,7 +164,7 @@ NSString *const VCFavorDescriporType = @"VCFavorDescriporType";
         @strongify(self);
         make.top.equalTo(self.iconView.bottom).offset(5);
         make.left.equalTo(self.contentView.left).offset(12);
-        make.right.equalTo(self.contentView.right).offset(-12);
+        make.right.equalTo(self.contentView.right).offset(12);
     }];
 }
 
@@ -192,7 +192,7 @@ NSString *const VCFavorDescriporType = @"VCFavorDescriporType";
         _detailLabel = [UILabel new];
         _detailLabel.font = [UIFont systemFontOfSize:14];
         _detailLabel.textColor = [UIColor lightGrayColor];
-        _detailLabel.numberOfLines = 2;
+        _detailLabel.numberOfLines = 1;
         _detailLabel.textColor = [UIColor lightGrayColor];
     }
     return _detailLabel;
