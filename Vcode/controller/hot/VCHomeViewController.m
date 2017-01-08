@@ -63,12 +63,18 @@
 //保存Page标签对象到数据库
 -(void)syncPagesToDataBase:(NSArray *)pages completion:(void(^)(void))completion
 {
-    for (VCPage *page in pages) {
-        [VCPageUtil syncToDataBase:page completion:^{
-        }];
-    }
-    [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
-        completion();
+    [VCPageUtil queryModelsFromDataBase:^(NSArray *models) {
+        if (models.count <= 0) {
+            for (VCPage *page in pages) {
+                [VCPageUtil syncToDataBase:page completion:^{
+                }];
+            }
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+                completion();
+            }];
+        }else{
+            completion();
+        }
     }];
 }
 

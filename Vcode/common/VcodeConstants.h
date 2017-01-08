@@ -71,4 +71,12 @@
 //获取所有国家的接口(已废除)
 #define DeleteShopcartUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=shopcart&op=deleteShopcart",VBaseUrl]
 
+//微信key
+#define kVCodeWXAppId @"wxc67be6173b1fdd64"
+#define kVCodeWXAppSecret @"54c72b1b05e4cf38e27fc20e53d699bd"
+
+//QQ对应key
+#define kVCodeQQAppId @"1105861191"
+#define kVCodeQQAppkey @"8c2Ua362TLmtZtvi"
+
 #endif

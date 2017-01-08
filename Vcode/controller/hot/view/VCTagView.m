@@ -215,7 +215,9 @@
         @strongify(self);
         [self.pages removeObjectAtIndex:index];
         [VCPageUtil deleteFromDataBase:[self.pages objectAtIndex:index] completion:^{
-            
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+                
+            }];
         }];
         [self.gmGridView removeObjectAtIndex:index withAnimation:GMGridViewItemAnimationFade];
     }];
