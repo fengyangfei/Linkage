@@ -10,8 +10,8 @@
 
 @interface VCRankUtil : ModelUtil
 +(void)queryHotRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion failure:(void(^)(NSError *error))failure;
-+(void)queryRecommendRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion;
-+(void)queryGlobalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion;
-+(void)queryLocalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion;
-+(void)queryCategoryRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion;
++(void)queryRecommendRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion failure:(void(^)(NSError *error))failure;
++(void)queryGlobalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion failure:(void(^)(NSError *error))failure;
++(void)queryLocalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion failure:(void(^)(NSError *error))failure;
++(void)queryCategoryRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion failure:(void(^)(NSError *error))failure;
 @end

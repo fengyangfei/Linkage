@@ -41,7 +41,7 @@
 {
     NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID]};
 
-    [self queryGlobalRank:parameter completion:completion];
+    [self queryGlobalRank:parameter completion:completion failure:nil];
 }
 
 //热门排行
@@ -64,7 +64,7 @@
 }
 
 //推荐排行
-+(void)queryRecommendRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
++(void)queryRecommendRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion failure:(void(^)(NSError *error))failure
 {
     [[YGRestClient sharedInstance] postForObjectWithUrl:RecommendUrl form:parameter success:^(id responseObject) {
         if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
@@ -79,13 +79,11 @@
         }else{
             completion(nil);
         }
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    } failure:failure];
 }
 
 //全球排行
-+(void)queryGlobalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
++(void)queryGlobalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion failure:(void(^)(NSError *error))failure
 {
     [[YGRestClient sharedInstance] postForObjectWithUrl:GlobalRankUrl form:parameter success:^(id responseObject) {
         if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
@@ -100,13 +98,11 @@
         }else{
             completion(nil);
         }
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    } failure:failure];
 }
 
 //地区查询
-+(void)queryLocalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
++(void)queryLocalRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion failure:(void(^)(NSError *error))failure
 {
     //NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"countryCode":@"CN"};
     [[YGRestClient sharedInstance] postForObjectWithUrl:CountryRankUrl form:parameter success:^(id responseObject) {
@@ -122,13 +118,11 @@
         }else{
             completion(nil);
         }
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    } failure:failure];
 }
 
 //分类查询
-+(void)queryCategoryRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion
++(void)queryCategoryRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion failure:(void(^)(NSError *error))failure
 {
     //NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":@"CN"};
     [[YGRestClient sharedInstance] postForObjectWithUrl:CategoryRankUrl form:parameter success:^(id responseObject) {
@@ -144,9 +138,7 @@
         }else{
             completion(nil);
         }
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    } failure:failure];
 }
 
 //数据库查询

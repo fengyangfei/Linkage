@@ -213,12 +213,12 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"删除标签？" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         @strongify(self);
-        [self.pages removeObjectAtIndex:index];
         [VCPageUtil deleteFromDataBase:[self.pages objectAtIndex:index] completion:^{
             [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
                 
             }];
         }];
+        [self.pages removeObjectAtIndex:index];
         [self.gmGridView removeObjectAtIndex:index withAnimation:GMGridViewItemAnimationFade];
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {

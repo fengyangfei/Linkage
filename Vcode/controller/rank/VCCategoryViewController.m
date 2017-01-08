@@ -9,6 +9,7 @@
 #import "VCCategoryViewController.h"
 #import "VCCategoryUtil.h"
 #import "VCCategoryCollectionViewCell.h"
+#import "VCHotChildViewController.h"
 #define CategoryCellID @"CategoryCellID"
 
 @interface VCCategoryViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -83,7 +84,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"ss");
+    VCCategory *category = [self.categories objectAtIndex:indexPath.item];
+    VCHotChildViewController *controller = [[VCHotChildViewController alloc]initWithRankType:RankTypeCategory];
+    controller.title = category.title;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - getter setter

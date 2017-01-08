@@ -48,12 +48,12 @@
 #pragma mark - 重写父类 setupData与queryDataFromServer
 - (void)setupData:(void(^)(NSArray *models))completion
 {
-    
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)queryDataFromServer:(void(^)(void))block
 {
-    [self refreshTable:self.index];
+    [self refreshTable];
 }
 
 #pragma mark - ZJScrollPageViewChildVcDelegate
@@ -64,11 +64,10 @@
 - (void)zj_viewDidLoadForIndex:(NSInteger)index {
     //index 从1 开始
     self.index = index;
-    [self.tableView.mj_header beginRefreshing];
 }
 
 //刷新列表
--(void)refreshTable:(NSInteger)index{
+-(void)refreshTable{
     @weakify(self);
     void(^success)(NSArray *models) = ^(NSArray *models) {
         @strongify(self);
@@ -85,20 +84,20 @@
             NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":model.code};
             [VCRankUtil queryCategoryRank:parameter completion:^(NSArray *models) {
                 success(models);
-            }];
+            } failure:failure];
         }];
     }
     else if (self.rankType == RankTypeLocal){
-        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"countryCode":@"CN"};
+        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"countryCode":self.title?:@"CN"};
         [VCRankUtil queryLocalRank:parameter completion:^(NSArray *models) {
             success(models);
-        }];
+        } failure:failure];
     }
     else if (self.rankType == RankTypeRecommend){
         NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID]};
         [VCRankUtil queryRecommendRank:parameter completion:^(NSArray *models) {
             success(models);
-        }];
+        } failure:failure];
     }
     else if (self.rankType == RankTypeHot){
         NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID]};

@@ -7,7 +7,9 @@
 //
 #import "VCGlobalRankViewController.h"
 #import "VCRankUtil.h"
+#import "VCRank.h"
 #import "VCRankTableCell.h"
+#import "UIViewController+WebBrowser.h"
 
 @interface VCGlobalRankViewController ()
 
@@ -50,6 +52,7 @@
     for (id model in models) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:VCRankDescriporType];
         row.value = model;
+        row.action.formSelector = @selector(gotoWebBrowser:);
         [section addFormRow:row];
     }
     
@@ -63,6 +66,12 @@
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
     return _tableView;
+}
+
+-(void)gotoWebBrowser:(XLFormRowDescriptor *)row
+{
+    VCRank *rank = row.value;
+    [self presentWebBrowser:rank.url];
 }
 
 //重写父类方法

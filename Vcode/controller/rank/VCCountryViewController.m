@@ -8,6 +8,8 @@
 
 #import "VCCountryViewController.h"
 #import "VCCountryUtil.h"
+#import "VCHotChildViewController.h"
+#import "VCCountry.h"
 
 @interface VCCountryViewController ()
 @property (nonatomic, strong) NSDictionary *countryMap;
@@ -101,9 +103,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *sectionKey = [self.keyIndexs objectAtIndex:indexPath.section];
-    id<XLFormOptionObject> option = [[self.countryMap objectForKey:sectionKey] objectAtIndex:indexPath.row];
-    NSLog(@"countryCode - %@", [option formValue]);
-    [self.navigationController popViewControllerAnimated:YES];
+    VCCountry *country = [[self.countryMap objectForKey:sectionKey] objectAtIndex:indexPath.row];
+    VCHotChildViewController *controller = [[VCHotChildViewController alloc]initWithRankType:RankTypeLocal];
+    controller.title = country.code;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - getter setter
