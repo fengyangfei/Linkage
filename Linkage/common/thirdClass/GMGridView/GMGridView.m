@@ -248,7 +248,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     self.minimumPressDuration = 0.2;
     self.showFullSizeViewWithAlphaWhenTransforming = YES;
     self.minEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
-    self.clipsToBounds = NO;
+    self.clipsToBounds = YES;
     
     _sortFuturePosition = GMGV_INVALID_POSITION;
     _itemSize = CGSizeZero;

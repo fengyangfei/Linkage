@@ -13,6 +13,7 @@
 #import "VCTagView.h"
 #import "VCPageUtil.h"
 #import "VCPageModel.h"
+#import "UIViewController+WebBrowser.h"
 
 @interface VCHomeViewController ()<SDCycleScrollViewDelegate,VCTagViewDelegate>
 @property (nonatomic, readonly) SDCycleScrollView *scrollView;
@@ -65,10 +66,10 @@
     for (VCPage *page in pages) {
         [VCPageUtil syncToDataBase:page completion:^{
         }];
-        [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
-            completion();
-        }];
     }
+    [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+        completion();
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,6 +109,13 @@
 - (NSArray *)tagViewDataSource
 {
     return [self.homeIndex pages];
+}
+
+- (void)VCTagView:(VCTagView *)gridView didTapOnPage:(VCPage *)page
+{
+    if (page) {
+        [self presentWebBrowser:page.url];
+    }
 }
 
 @end

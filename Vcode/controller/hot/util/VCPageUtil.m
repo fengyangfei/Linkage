@@ -11,6 +11,9 @@
 #import "VCPageModel.h"
 
 @implementation VCPageUtil
++(Class)modelClass{return [VCPage class];}
++(Class)managedObjectClass{ return  [VCPageModel class]; }
+
 +(void)syncToDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion
 {
     NSError *error;
@@ -18,7 +21,7 @@
     if (page.gid) {
         VCPageModel *existModel = [VCPageModel MR_findFirstByAttribute:@"gid" withValue:page.gid inContext:[NSManagedObjectContext MR_defaultContext]];
         if (existModel) {
-            [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+            return;
         }
         VCPageModel *addModel = [MTLManagedObjectAdapter managedObjectFromModel:page insertingIntoContext:[NSManagedObjectContext MR_defaultContext] error:&error];
         if (addModel && !error) {

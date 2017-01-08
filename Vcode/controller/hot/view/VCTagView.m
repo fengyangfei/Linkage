@@ -15,6 +15,9 @@
 #import <QuartzCore/QuartzCore.h>
 #define TagCellID @"TagCellID"
 @interface VCTagView()<GMGridViewDataSource, GMGridViewSortingDelegate, GMGridViewTransformationDelegate, GMGridViewActionDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+{
+    NSInteger _lastDeleteItemIndexAsked;
+}
 @property (nonatomic, strong) UIView *titleView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *collectionViewLayout;
@@ -196,6 +199,7 @@
 - (void)GMGridView:(GMGridView *)gridView didTapOnItemAtIndex:(NSInteger)position
 {
     NSLog(@"Did tap at index %ld", (long)position);
+    [self.delegate VCTagView:self didTapOnPage:[self.pages objectAtIndex:position]];
 }
 
 - (void)GMGridViewDidTapOnEmptySpace:(GMGridView *)gridView
@@ -205,21 +209,38 @@
 
 - (void)GMGridView:(GMGridView *)gridView processDeleteActionForItemAtIndex:(NSInteger)index
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"删除标签" message:@"确认删除此标签吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
-    [alert show];
+    @weakify(self);
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"删除标签？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        @strongify(self);
+        [self.pages removeObjectAtIndex:index];
+        [VCPageUtil deleteFromDataBase:[self.pages objectAtIndex:index] completion:^{
+            
+        }];
+        [self.gmGridView removeObjectAtIndex:index withAnimation:GMGridViewItemAnimationFade];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    }];
+    [alertController addAction:action];
+    [alertController addAction:cancel];
     
-    //_lastDeleteItemIndexAsked = index;
+    [[self currentViewController] presentViewController:alertController animated:YES completion:^{
+        
+    }];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//当前的viewController
+-(UIViewController *)currentViewController
 {
-    if (buttonIndex == 1)
-    {
-        //[_currentData removeObjectAtIndex:_lastDeleteItemIndexAsked];
-        //[_gmGridView removeObjectAtIndex:_lastDeleteItemIndexAsked withAnimation:GMGridViewItemAnimationFade];
+    id responder = self;
+    while (responder){
+        if ([responder isKindOfClass:[UIViewController class]]){
+            return responder;
+        }
+        responder = [responder nextResponder];
     }
+    return nil;
 }
-
 //////////////////////////////////////////////////////////////
 #pragma mark GMGridViewSortingDelegate
 //////////////////////////////////////////////////////////////
@@ -373,14 +394,13 @@
 {
     if (!_gmGridView) {
         _gmGridView = [[GMGridView alloc] initWithFrame:CGRectMake(0, 30, IPHONE_WIDTH, self.bounds.size.height - 30)];
-        _gmGridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _gmGridView.backgroundColor = [UIColor whiteColor];
-
-        _gmGridView.style = GMGridViewStyleSwap;
+        _gmGridView.mainSuperView = self;
+        _gmGridView.style = GMGridViewStylePush;
         _gmGridView.itemSpacing = 0;
         _gmGridView.minEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
         _gmGridView.enableEditOnLongPress = YES;
         //_gmGridView.centerGrid = YES;
+        _gmGridView.backgroundColor = [UIColor whiteColor];
         _gmGridView.actionDelegate = self;
         _gmGridView.sortingDelegate = self;
         _gmGridView.transformDelegate = self;
@@ -433,7 +453,7 @@
         UIButton *editButton = [[UIButton alloc]initWithFrame:CGRectMake(IPHONE_WIDTH - 80, 0, 100, 30)];
         [editButton addTarget:self action:@selector(editAction:) forControlEvents:UIControlEventTouchUpInside];
         NSString *editStr = @"编辑排序";
-        [editButton setAttributedTitle:[editStr attributedStringWithFont:[UIFont systemFontOfSize:12] color:[UIColor greenColor]] forState:UIControlStateNormal];
+        [editButton setAttributedTitle:[editStr attributedStringWithFont:[UIFont systemFontOfSize:12] color:VHeaderColor] forState:UIControlStateNormal];
         [_titleView addSubview:editButton];
     }
     return _titleView;
@@ -450,7 +470,9 @@
 #pragma mark - 事件
 -(void)editAction:(id)sender
 {
-
+    if (self.gmGridView.isEditing) {
+        self.gmGridView.editing = NO;
+    }
 }
 
 @end
