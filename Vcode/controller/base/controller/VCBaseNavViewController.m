@@ -140,8 +140,8 @@
     if (!_searchBar) {
         _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH - 145, 44)];
         _searchBar.barStyle = UIBarStyleBlack;
-        _searchBar.tintColor = [UIColor redColor];
-        _searchBar.barTintColor = [UIColor redColor];
+        _searchBar.translucent = YES;
+        _searchBar.tintColor = [UIColor blackColor];
         _searchBar.barTintColor = HEXCOLOR(0xe0e0e0);
         _searchBar.delegate = self;
         _searchBar.placeholder = @"输入搜索文字";
