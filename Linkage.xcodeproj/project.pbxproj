@@ -3471,7 +3471,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F980B2FC59EAEF05D35EAB26 /* Pods-Linkage.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = VcodeIcon;
 				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.ygsoft.Linkage";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WKSMSBBC3K;
@@ -3506,7 +3506,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FB57D17E2CBCD21382036852 /* Pods-Linkage.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = VcodeIcon;
 				CODE_SIGN_IDENTITY = "Apple Push Services: com.ygsoft.Linkage";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = WKSMSBBC3K;
