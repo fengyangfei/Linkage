@@ -229,6 +229,13 @@
     }];
 }
 
+- (void)GMGridView:(GMGridView *)gridView changedEdit:(BOOL)edit
+{
+    if ([self.delegate respondsToSelector:@selector(VCTagView:changedEdit:)]) {
+        [self.delegate VCTagView:self changedEdit:edit];
+    }
+}
+
 //当前的viewController
 -(UIViewController *)currentViewController
 {

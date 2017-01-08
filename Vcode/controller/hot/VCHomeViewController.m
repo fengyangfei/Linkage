@@ -118,4 +118,9 @@
     }
 }
 
+- (void)VCTagView:(VCTagView *)gridView changedEdit:(BOOL)edit
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:VGMViewEditNotificationKey object:@(edit)];
+}
+
 @end

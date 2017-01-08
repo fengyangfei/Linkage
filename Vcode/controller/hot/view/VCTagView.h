@@ -10,9 +10,11 @@
 @class VCPage;
 @class VCTagView;
 @protocol VCTagViewDelegate <NSObject>
+@optional
+- (void)VCTagView:(VCTagView *)gridView didTapOnPage:(VCPage *)page;
+- (void)VCTagView:(VCTagView *)gridView changedEdit:(BOOL)edit;
 @required
 - (NSArray *)tagViewDataSource;
-- (void)VCTagView:(VCTagView *)gridView didTapOnPage:(VCPage *)page;
 @end
 
 @interface VCTagView : UIView

@@ -9,6 +9,9 @@
 #ifndef VcodeConstants_h
 #define VcodeConstants_h
 
+//通知
+#define VGMViewEditNotificationKey @"kGMViewEditNotificationKey"
+
 //UI
 #define VHeaderColor HEXCOLOR(0x018468)
 

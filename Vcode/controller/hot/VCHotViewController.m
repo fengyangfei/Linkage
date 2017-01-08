@@ -19,11 +19,13 @@
 #define kFixCategory @[@"首页", @"推荐", @"热门", @"本地"]
 @interface VCHotViewController ()<ZJScrollPageViewDelegate,WYButtonChooseDelegate>
 @property(readonly, nonatomic) ZJScrollPageView *scrollPageView;
+@property(strong, nonatomic) ZJSegmentStyle *style;
 @property(strong, nonatomic) NSMutableArray<NSString *> *titles;
 @end
 
 @implementation VCHotViewController
 @synthesize scrollPageView = _scrollPageView;
+@synthesize style = _style;
 
 -(void)setupUI
 {
@@ -34,6 +36,11 @@
     [VCCategoryUtil syncCategory:^(NSArray *models) {
         @strongify(self);
         [self setupData];
+    }];
+    RACSignal *singal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:VGMViewEditNotificationKey object:nil];
+    [singal subscribeNext:^(NSNotification *note) {
+        @strongify(self);
+        self.style.scrollContentView = ![note.object boolValue];
     }];
 }
 
@@ -125,15 +132,23 @@
 -(ZJScrollPageView *)scrollPageView
 {
     if (!_scrollPageView) {
-        ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
-        style.scaleTitle = YES;
-        style.showLine = NO;
-        style.gradualChangeTitleColor = YES;
-        style.contentViewBounces = NO;
-        style.scrollContentView = NO;
         // 设置附加按钮的背景图片
-        _scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
+        _scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0) segmentStyle:self.style titles:self.titles parentViewController:self delegate:self];
     }
     return _scrollPageView;
+}
+
+-(ZJSegmentStyle *)style
+{
+    if (!_style) {
+        _style = [[ZJSegmentStyle alloc] init];
+        _style.scaleTitle = YES;
+        _style.showLine = NO;
+        _style.gradualChangeTitleColor = YES;
+        _style.contentViewBounces = NO;
+        //是否可以滑动
+        _style.scrollContentView = YES;
+    }
+    return _style;
 }
 @end

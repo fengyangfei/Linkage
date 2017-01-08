@@ -550,7 +550,8 @@ static NSString *const kContentOffsetOffKey = @"contentOffset";
         collectionView.bounces = YES;
         [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellID];
         collectionView.bounces = self.segmentView.segmentStyle.isContentViewBounces;
-        collectionView.scrollEnabled = self.segmentView.segmentStyle.isScrollContentView;
+        RAC(collectionView, scrollEnabled) = RACObserve(self.segmentView.segmentStyle, isScrollContentView);
+        //collectionView.scrollEnabled = self.segmentView.segmentStyle.isScrollContentView;
         [self addSubview:collectionView];
         _collectionView = collectionView;
     }
