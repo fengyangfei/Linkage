@@ -13,7 +13,7 @@
 #define VGMViewEditNotificationKey @"kGMViewEditNotificationKey"
 
 //UI
-#define VHeaderColor HEXCOLOR(0x018468)
+#define VHeaderColor HEXCOLOR(0x1aad19)
 
 #define VBaseUrl @"http://120.24.49.7:8007"
 //点赞

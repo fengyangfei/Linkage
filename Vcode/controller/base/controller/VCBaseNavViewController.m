@@ -8,6 +8,7 @@
 
 #import "VCBaseNavViewController.h"
 #import "FTPopOverMenu.h"
+#import "UIViewController+WebBrowser.h"
 
 @interface VCBaseNavViewController ()<UISearchBarDelegate>
 @property (nonatomic, readonly) UIButton *brandBtn;
@@ -73,6 +74,12 @@
     }
 }
 
+#pragma mark - 事件
+-(void)gotoWebBrowser
+{
+    [self presentWebBrowser:@"http://www.baidu.com"];
+}
+
 //键盘的搜索按钮点击
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
@@ -134,6 +141,7 @@
         _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH - 145, 44)];
         _searchBar.barStyle = UIBarStyleBlack;
         _searchBar.tintColor = [UIColor redColor];
+        _searchBar.barTintColor = [UIColor redColor];
         _searchBar.barTintColor = HEXCOLOR(0xe0e0e0);
         _searchBar.delegate = self;
         _searchBar.placeholder = @"输入搜索文字";

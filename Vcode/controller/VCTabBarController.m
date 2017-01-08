@@ -63,7 +63,7 @@
         NSString *title = @"我的";
         VCMineViewController *viewController = [[VCMineViewController alloc]init];
         viewController.title = title;
-        viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"user_on"] selectedImage:[UIImage imageNamed:@"user"]];
+        viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"user"] selectedImage:[UIImage imageNamed:@"user_on"]];
         viewController;
     });
     
