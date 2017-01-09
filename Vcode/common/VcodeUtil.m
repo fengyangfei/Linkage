@@ -39,4 +39,55 @@
     return @"科学";
 }
 
++(NSString *)searchImage:(SearchEngine)searchEngine
+{
+    switch (searchEngine) {
+        case SearchEngineGoogle:
+            return @"google";
+        case SearchEngineBing:
+            return @"bing";
+        case SearchEngineBaidu:
+            return @"baidu";
+        case SearchEngineYahoo:
+            return @"yahoo";
+        default:
+            return @"google";
+            break;
+    }
+}
+
++(NSString *)searchName:(SearchEngine)searchEngine
+{
+    switch (searchEngine) {
+        case SearchEngineGoogle:
+            return @"谷歌";
+        case SearchEngineBing:
+            return @"必应";
+        case SearchEngineBaidu:
+            return @"百度";
+        case SearchEngineYahoo:
+            return @"雅虎";
+        default:
+            return @"谷歌";
+            break;
+    }
+}
+
++(NSString *)searchUrl:(SearchEngine)searchEngine
+{
+    switch (searchEngine) {
+        case SearchEngineGoogle:
+            return @"https://www.google.com/search?q=";
+        case SearchEngineBing:
+            return @"http://www.bing.com/search?q=";
+        case SearchEngineBaidu:
+            return @"https://www.baidu.com/s?wd=";
+        case SearchEngineYahoo:
+            return @"https://search.yahoo.com/search?p=";
+        default:
+            return @"https://www.google.com/search?q=";
+            break;
+    }
+}
+
 @end

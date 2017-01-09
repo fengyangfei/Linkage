@@ -9,12 +9,14 @@
 #import "VCBaseNavViewController.h"
 #import "FTPopOverMenu.h"
 #import "UIViewController+WebBrowser.h"
+#import "VcodeUtil.h"
 
 @interface VCBaseNavViewController ()<UISearchBarDelegate>
 @property (nonatomic, readonly) UIButton *brandBtn;
 @property (nonatomic, readonly) UISearchBar *searchBar;
 @property (nonatomic, readonly) UIButton *searchBtn;
-@property (nonatomic, copy) NSString *engineStr;
+@property (nonatomic, copy    ) NSString *searchKey;
+@property (nonatomic, strong  ) NSNumber *engine;
 @end
 
 @implementation VCBaseNavViewController
@@ -30,14 +32,12 @@
 
 -(void)bindViewModel
 {
-    RACSignal *single = RACObserve(self, engineStr);
+    RACSignal *single = RACObserve(self, engine);
     @weakify(self);
     [single subscribeNext:^(id x) {
         @strongify(self);
-        if (StringIsNotEmpty(x)) {
-            UIImage *image = [UIImage imageNamed:x];
-            [self.brandBtn setImage:image forState:UIControlStateNormal];
-        }
+        UIImage *image = [UIImage imageNamed:[VcodeUtil searchImage:[x integerValue]]];
+        [self.brandBtn setImage:image forState:UIControlStateNormal];
     }];
 }
 
@@ -70,16 +70,10 @@
 #pragma mark - UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    if (StringIsEmpty(searchText)) {
-    }
+    self.searchKey = searchText;
 }
 
 #pragma mark - 事件
--(void)gotoWebBrowser
-{
-    [self presentWebBrowser:@"http://www.baidu.com"];
-}
-
 //键盘的搜索按钮点击
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
@@ -94,14 +88,22 @@
     configuration.borderColor = [UIColor lightGrayColor];
     configuration.borderWidth = 0.5;
     
-    NSArray *array = @[@"baidu",@"google", @"bing", @"yahoo"];
+    NSArray *array = @[@(SearchEngineBaidu),@(SearchEngineGoogle), @(SearchEngineBing),@(SearchEngineYahoo)];
+    
+    NSMutableArray *menuArray,*imageArray;
+    menuArray = [[NSMutableArray alloc]init];
+    imageArray = [[NSMutableArray alloc]init];
+    for (id key in array) {
+        [menuArray addObject:[VcodeUtil searchName:[key integerValue]]];
+        [imageArray addObject:[VcodeUtil searchImage:[key integerValue]]];
+    }
     @weakify(self);
     [FTPopOverMenu showForSender:sender
-                   withMenuArray:array
-                      imageArray:array
+                   withMenuArray:menuArray
+                      imageArray:imageArray
                        doneBlock:^(NSInteger selectedIndex) {
                            @strongify(self);
-                           self.engineStr = [array objectAtIndex:selectedIndex];
+                           self.engine = [array objectAtIndex:selectedIndex];
     }
                     dismissBlock:^{
         
@@ -110,7 +112,8 @@
 
 -(void)searchAction:(id)sender
 {
-
+    NSString *url = [NSString stringWithFormat:@"%@%@",[VcodeUtil searchUrl:[self.engine integerValue]],self.searchKey];
+    [self presentWebBrowser:url];
 }
 
 #pragma mark - 属性

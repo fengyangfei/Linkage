@@ -7,8 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
+typedef NS_ENUM(NSUInteger, SearchEngine) {
+    SearchEngineGoogle,
+    SearchEngineBaidu,
+    SearchEngineBing,
+    SearchEngineYahoo
+};
 @interface VcodeUtil : NSObject
 +(NSString *)UUID;
 +(NSString *)categoryImageName:(NSString *)category;
++(NSString *)searchImage:(SearchEngine)searchEngine;
++(NSString *)searchName:(SearchEngine)searchEngine;
++(NSString *)searchUrl:(SearchEngine)searchEngine;
 @end
