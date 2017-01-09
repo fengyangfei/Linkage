@@ -9,5 +9,4 @@
 #import "KINWebBrowserViewController.h"
 
 @interface VCWebBrowserViewController : KINWebBrowserViewController<KINWebBrowserDelegate>
-
 @end

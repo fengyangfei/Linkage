@@ -9,5 +9,5 @@
 #import "ModelUtil.h"
 
 @interface VCFavorUtil : ModelUtil
-
++(void)getModelByUrl:(NSString *)url completion:(void(^)(id<MTLJSONSerializing> model))completion;
 @end

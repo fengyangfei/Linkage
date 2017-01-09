@@ -48,6 +48,19 @@
     }
 }
 
++(void)getModelByUrl:(NSString *)url completion:(void(^)(id<MTLJSONSerializing> model))completion
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"url", url];
+    [self queryModelFromDataBase:predicate completion:completion];
+}
+
++(void)queryModelFromDataBase:(NSPredicate *)predicate completion:(void(^)(id<MTLJSONSerializing> model))completion
+{
+    VCFavorModel *manageObj = [VCFavorModel MR_findFirstWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+    id<MTLJSONSerializing> result = [self modelFromManagedObject:manageObj];
+    completion(result);
+}
+
 +(void)deleteFromDataBase:(id<MTLJSONSerializing>)model completion:(void(^)())completion
 {
     VCFavor *favor = (VCFavor *)model;
