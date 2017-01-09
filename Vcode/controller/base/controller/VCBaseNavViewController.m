@@ -10,6 +10,13 @@
 #import "FTPopOverMenu.h"
 #import "UIViewController+WebBrowser.h"
 #import "VcodeUtil.h"
+#import <AFNetworking/AFNetworking.h>
+
+static NSString * const kVCCharactersToBeEscapedInQueryString = @":/?&=;+!@#$()',*";
+
+static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSString *string, NSStringEncoding encoding) {
+    return (__bridge_transfer  NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)string, NULL, (__bridge CFStringRef)kVCCharactersToBeEscapedInQueryString, CFStringConvertNSStringEncodingToEncoding(encoding));
+}
 
 @interface VCBaseNavViewController ()<UISearchBarDelegate>
 @property (nonatomic, readonly) UIButton *brandBtn;
@@ -19,6 +26,7 @@
 @property (nonatomic, strong  ) NSNumber *engine;
 @end
 
+#define kSearchEngineUserDefaultKey @"kSearchEngineUserDefaultKey"
 @implementation VCBaseNavViewController
 @synthesize brandBtn = _brandBtn;
 @synthesize searchBar = _searchBar;
@@ -35,6 +43,11 @@
     RACSignal *single = RACObserve(self, engine);
     @weakify(self);
     [single subscribeNext:^(id x) {
+        [[NSUserDefaults standardUserDefaults] setInteger:[x integerValue] forKey:kSearchEngineUserDefaultKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
+    RACChannelTerminal *channel = [[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:kSearchEngineUserDefaultKey];
+    [channel subscribeNext:^(id x) {
         @strongify(self);
         UIImage *image = [UIImage imageNamed:[VcodeUtil searchImage:[x integerValue]]];
         [self.brandBtn setImage:image forState:UIControlStateNormal];
@@ -112,7 +125,9 @@
 
 -(void)searchAction:(id)sender
 {
-    NSString *url = [NSString stringWithFormat:@"%@%@",[VcodeUtil searchUrl:[self.engine integerValue]],self.searchKey];
+    NSInteger key = [[NSUserDefaults standardUserDefaults] integerForKey:kSearchEngineUserDefaultKey];
+    NSString *value = VCPercentEscapedQueryStringValueFromStringWithEncoding(self.searchKey, NSUTF8StringEncoding);
+    NSString *url = [NSString stringWithFormat:@"%@%@",[VcodeUtil searchUrl:key], value];
     [self presentWebBrowser:url];
 }
 
@@ -131,8 +146,8 @@
         _brandBtn.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
 
         //设置搜索引擎图标
-        UIImage *image = [UIImage imageNamed:@"google"];
-        [self.brandBtn setImage:image forState:UIControlStateNormal];
+//        UIImage *image = [UIImage imageNamed:@"google"];
+//        [self.brandBtn setImage:image forState:UIControlStateNormal];
         [_brandBtn addTarget:self action:@selector(changeBrand:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _brandBtn;
