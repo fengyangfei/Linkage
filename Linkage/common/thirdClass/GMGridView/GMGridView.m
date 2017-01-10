@@ -252,7 +252,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     
     _sortFuturePosition = GMGV_INVALID_POSITION;
     _itemSize = CGSizeZero;
-    _centerGrid = YES;
+    _centerGrid = NO;
     
     _lastScale = 1.0;
     _lastRotation = 0.0;

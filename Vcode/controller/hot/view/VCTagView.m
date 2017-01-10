@@ -406,6 +406,7 @@
         _gmGridView.mainSuperView = self;
         _gmGridView.style = GMGridViewStylePush;
         _gmGridView.itemSpacing = 0;
+        _gmGridView.centerGrid = NO;
         _gmGridView.minEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
         _gmGridView.enableEditOnLongPress = YES;
         //_gmGridView.centerGrid = YES;

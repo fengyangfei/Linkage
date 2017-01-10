@@ -42,13 +42,18 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
 {
     RACSignal *single = RACObserve(self, engine);
     @weakify(self);
+    [single subscribeNext:^(id x) {
+        [[NSUserDefaults standardUserDefaults] setInteger:[x integerValue] forKey:kSearchEngineUserDefaultKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
+
     RACChannelTerminal *channel = [[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:kSearchEngineUserDefaultKey];
     [channel subscribeNext:^(id x) {
         @strongify(self);
-        UIImage *image = [UIImage imageNamed:[VcodeUtil searchImage:[x integerValue]]];
+        NSString *imgedName = [VcodeUtil searchImage:[x integerValue]];
+        UIImage *image = [UIImage imageNamed:imgedName];
         [self.brandBtn setImage:image forState:UIControlStateNormal];
     }];
-    [single subscribe:channel];
 }
 
 -(void)setupUI

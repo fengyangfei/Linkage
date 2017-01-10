@@ -47,9 +47,11 @@
             if ([x boolValue]) {
                 UIImage *likeOffIcon = [UIImage imageNamed:@"like_icon_on"];
                 [self.favorInnerButton setImage:likeOffIcon forState:UIControlStateNormal];
+                [self.favorButton setImage:likeOffIcon];
             }else{
                 UIImage *likeOffIcon = [UIImage imageNamed:@"like_icon_off"];
                 [self.favorInnerButton setImage:likeOffIcon forState:UIControlStateNormal];
+                [self.favorButton setImage:likeOffIcon];
             }
         }];
     }
