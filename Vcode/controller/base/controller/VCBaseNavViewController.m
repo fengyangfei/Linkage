@@ -42,16 +42,13 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
 {
     RACSignal *single = RACObserve(self, engine);
     @weakify(self);
-    [single subscribeNext:^(id x) {
-        [[NSUserDefaults standardUserDefaults] setInteger:[x integerValue] forKey:kSearchEngineUserDefaultKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }];
     RACChannelTerminal *channel = [[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:kSearchEngineUserDefaultKey];
     [channel subscribeNext:^(id x) {
         @strongify(self);
         UIImage *image = [UIImage imageNamed:[VcodeUtil searchImage:[x integerValue]]];
         [self.brandBtn setImage:image forState:UIControlStateNormal];
     }];
+    [single subscribe:channel];
 }
 
 -(void)setupUI
@@ -125,9 +122,9 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
 
 -(void)searchAction:(id)sender
 {
-    NSInteger key = [[NSUserDefaults standardUserDefaults] integerForKey:kSearchEngineUserDefaultKey];
+    NSNumber *key = [[NSUserDefaults standardUserDefaults] objectForKey:kSearchEngineUserDefaultKey];
     NSString *value = VCPercentEscapedQueryStringValueFromStringWithEncoding(self.searchKey, NSUTF8StringEncoding);
-    NSString *url = [NSString stringWithFormat:@"%@%@",[VcodeUtil searchUrl:key], value];
+    NSString *url = [NSString stringWithFormat:@"%@%@",[VcodeUtil searchUrl:[key integerValue]], value];
     [self presentWebBrowser:url];
 }
 
