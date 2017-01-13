@@ -403,7 +403,8 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _menuStringArray.count;
+    NSUInteger count = _menuStringArray? _menuStringArray.count: _menuImageArray?_menuImageArray.count:0;
+    return count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -416,11 +417,11 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
                                                           reuseIdentifier:FTPopOverMenuTableViewCellIndentifier
                                                                  menuName:[NSString stringWithFormat:@"%@", _menuStringArray[indexPath.row]]
                                                                 menuImage:menuImage];
-    if (indexPath.row == _menuStringArray.count-1) {
-        menuCell.separatorInset = UIEdgeInsetsMake(0, self.bounds.size.width, 0, 0);
-    }else{
+//    if (indexPath.row == _menuStringArray.count-1) {
+//        menuCell.separatorInset = UIEdgeInsetsMake(0, self.bounds.size.width, 0, 0);
+//    }else{
         menuCell.separatorInset = UIEdgeInsetsMake(0, [FTPopOverMenuConfiguration defaultConfiguration].menuTextMargin, 0, [FTPopOverMenuConfiguration defaultConfiguration].menuTextMargin);
-    }
+//    }
     return menuCell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -513,6 +514,14 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     [[self sharedInstance] showForSender:sender senderFrame:CGRectNull withMenu:menuArray imageNameArray:imageArray doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
++ (void) showForSender:(UIView *)sender
+            imageArray:(NSArray *)imageArray
+             doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+          dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock
+{
+    [[self sharedInstance] showForSender:sender senderFrame:CGRectNull withMenu:nil imageNameArray:imageArray doneBlock:doneBlock dismissBlock:dismissBlock];
+}
+
 
 + (void) showFromEvent:(UIEvent *)event
               withMenu:(NSArray<NSString*> *)menuArray
@@ -546,6 +555,14 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock
 {
     [[self sharedInstance] showForSender:[event.allTouches.anyObject view] senderFrame:CGRectNull withMenu:menuArray imageNameArray:imageArray doneBlock:doneBlock dismissBlock:dismissBlock];
+}
+
++ (void) showFromEvent:(UIEvent *)event
+            imageArray:(NSArray *)imageArray
+             doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+          dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock
+{
+    [[self sharedInstance] showForSender:[event.allTouches.anyObject view] senderFrame:CGRectNull withMenu:nil imageNameArray:imageArray doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
 + (void) showFromSenderFrame:(CGRect )senderFrame
@@ -670,7 +687,10 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         senderRect.origin.y = KSCREEN_HEIGHT;
     }
     
-    CGFloat menuHeight = [FTPopOverMenuConfiguration defaultConfiguration].menuRowHeight * self.menuArray.count + FTDefaultMenuArrowHeight;
+    //行数
+    NSUInteger rowCount = self.menuArray?self.menuArray.count:self.menuImageArray?self.menuImageArray.count:0;
+    
+    CGFloat menuHeight = [FTPopOverMenuConfiguration defaultConfiguration].menuRowHeight * rowCount + FTDefaultMenuArrowHeight;
     CGPoint menuArrowPoint = CGPointMake(senderRect.origin.x + (senderRect.size.width)/2, 0);
     CGFloat menuX = 0;
     CGRect menuRect = CGRectZero;

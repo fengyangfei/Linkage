@@ -50,6 +50,8 @@
             return @"baidu";
         case SearchEngineYahoo:
             return @"yahoo";
+        case SearchEngineHttp:
+            return @"http";
         default:
             return @"google";
             break;
@@ -67,6 +69,8 @@
             return @"百度";
         case SearchEngineYahoo:
             return @"雅虎";
+        case SearchEngineHttp:
+            return @"HTTP";
         default:
             return @"谷歌";
             break;
@@ -84,6 +88,8 @@
             return @"https://www.baidu.com/s?wd=";
         case SearchEngineYahoo:
             return @"https://search.yahoo.com/search?p=";
+        case SearchEngineHttp:
+            return @"https://www.baidu.com/s?wd=";
         default:
             return @"https://www.google.com/search?q=";
             break;

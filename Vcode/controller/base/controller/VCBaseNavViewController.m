@@ -43,7 +43,7 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
     RACSignal *single = RACObserve(self, engine);
     @weakify(self);
     [single subscribeNext:^(id x) {
-        [[NSUserDefaults standardUserDefaults] setInteger:[x integerValue] forKey:kSearchEngineUserDefaultKey];
+        [[NSUserDefaults standardUserDefaults] setObject:x forKey:kSearchEngineUserDefaultKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }];
 
@@ -103,18 +103,17 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
     configuration.borderColor = [UIColor lightGrayColor];
     configuration.borderWidth = 0.5;
     
-    NSArray *array = @[@(SearchEngineBaidu),@(SearchEngineGoogle), @(SearchEngineBing),@(SearchEngineYahoo)];
+    NSArray *array = @[@(SearchEngineBaidu),@(SearchEngineGoogle), @(SearchEngineBing),@(SearchEngineYahoo),@(SearchEngineHttp)];
     
     NSMutableArray *menuArray,*imageArray;
     menuArray = [[NSMutableArray alloc]init];
     imageArray = [[NSMutableArray alloc]init];
     for (id key in array) {
-        [menuArray addObject:[VcodeUtil searchName:[key integerValue]]];
+        [menuArray addObject:@""];
         [imageArray addObject:[VcodeUtil searchImage:[key integerValue]]];
     }
     @weakify(self);
     [FTPopOverMenu showForSender:sender
-                   withMenuArray:menuArray
                       imageArray:imageArray
                        doneBlock:^(NSInteger selectedIndex) {
                            @strongify(self);

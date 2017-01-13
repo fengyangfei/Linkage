@@ -140,6 +140,11 @@ typedef void (^FTPopOverMenuDismissBlock)();
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
 
++ (void) showForSender:(UIView *)sender
+            imageArray:(NSArray *)imageArray
+             doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+          dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
+
 /**
  *  show method for barbuttonitems with event without images
  *
@@ -196,6 +201,12 @@ typedef void (^FTPopOverMenuDismissBlock)();
             imageArray:(NSArray *)imageArray
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
+
++ (void) showFromEvent:(UIEvent *)event
+            imageArray:(NSArray *)imageArray
+             doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+          dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
+
 
 /**
  *  show method with SenderFrame without images

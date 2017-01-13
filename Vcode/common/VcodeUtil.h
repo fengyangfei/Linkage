@@ -11,7 +11,8 @@ typedef NS_ENUM(NSUInteger, SearchEngine) {
     SearchEngineGoogle,
     SearchEngineBaidu,
     SearchEngineBing,
-    SearchEngineYahoo
+    SearchEngineYahoo,
+    SearchEngineHttp
 };
 @interface VcodeUtil : NSObject
 +(NSString *)UUID;
