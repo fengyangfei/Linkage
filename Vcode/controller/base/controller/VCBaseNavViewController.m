@@ -68,6 +68,15 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
     self.navigationItem.rightBarButtonItems = @[fixedSpace, searchItem,centerItem];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSNumber *defalutValue = [[NSUserDefaults standardUserDefaults] objectForKey:kSearchEngineUserDefaultKey];
+    if (defalutValue) {
+        self.engine = defalutValue;
+    }
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -83,6 +92,12 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
 }
 
 #pragma mark - UISearchBarDelegate
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    searchBar.placeholder = @"搜索您感兴趣的内容";
+    return NO;
+}
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     self.searchKey = searchText;
@@ -105,11 +120,9 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
     
     NSArray *array = @[@(SearchEngineBaidu),@(SearchEngineGoogle), @(SearchEngineBing),@(SearchEngineYahoo),@(SearchEngineHttp)];
     
-    NSMutableArray *menuArray,*imageArray;
-    menuArray = [[NSMutableArray alloc]init];
+    NSMutableArray *imageArray;
     imageArray = [[NSMutableArray alloc]init];
     for (id key in array) {
-        [menuArray addObject:@""];
         [imageArray addObject:[VcodeUtil searchImage:[key integerValue]]];
     }
     @weakify(self);
@@ -163,7 +176,7 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
         _searchBar.tintColor = [UIColor blackColor];
         _searchBar.barTintColor = HEXCOLOR(0xe0e0e0);
         _searchBar.delegate = self;
-        _searchBar.placeholder = @"输入搜索文字";
+        _searchBar.placeholder = @"IPv6.Vcode";
     }
     return _searchBar;
 }
