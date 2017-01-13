@@ -51,7 +51,7 @@
         case SearchEngineYahoo:
             return @"yahoo";
         case SearchEngineHttp:
-            return @"http";
+            return @"ihttp";
         default:
             return @"google";
             break;

@@ -22,7 +22,7 @@
 #define FTDefaultTintColor          [UIColor colorWithRed:80/255.f green:80/255.f blue:80/255.f alpha:1.f]
 #define FTDefaultTextColor          [UIColor whiteColor]
 #define FTDefaultMenuFont           [UIFont systemFontOfSize:14]
-#define FTDefaultMenuWidth          120.0
+#define FTDefaultMenuWidth          80.0
 #define FTDefaultMenuIconSize       48.0
 #define FTDefaultMenuRowHeight      40.0
 #define FTDefaultMenuBorderWidth    0.8
@@ -106,7 +106,8 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
         
         CGFloat margin = (configuration.menuRowHeight - FTDefaultMenuIconSize)/2;
-        CGRect iconImageRect = CGRectMake(configuration.menuIconMargin, margin, FTDefaultMenuIconSize, FTDefaultMenuIconSize);
+        //CGRect iconImageRect = CGRectMake(configuration.menuIconMargin, margin, FTDefaultMenuIconSize, FTDefaultMenuIconSize);
+        CGRect iconImageRect = CGRectMake(configuration.menuIconMargin, margin, 60, FTDefaultMenuIconSize);
         CGFloat menuNameX = iconImageRect.origin.x + iconImageRect.size.width + configuration.menuTextMargin;
         CGRect menuNameRect = CGRectMake(menuNameX, 0, configuration.menuWidth - menuNameX - configuration.menuTextMargin, configuration.menuRowHeight);
         
@@ -130,7 +131,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         self.menuNameLabel.textColor = configuration.textColor;
         self.menuNameLabel.textAlignment = configuration.textAlignment;
         self.menuNameLabel.text = menuName;
-        [self.contentView addSubview:self.menuNameLabel];
+        //[self.contentView addSubview:self.menuNameLabel];
     }
     return self;
 }
