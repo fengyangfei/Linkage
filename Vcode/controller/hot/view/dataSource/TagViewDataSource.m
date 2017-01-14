@@ -53,29 +53,6 @@
     }];
 }
 
-#pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return [self.pages count];
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TagCellID forIndexPath:indexPath];
-    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    return cell;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self setupCell:cell forItemAtIndexPath:indexPath];
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"ss");
-}
-
 //////////////////////////////////////////////////////////////
 #pragma mark GMGridViewDataSource
 //////////////////////////////////////////////////////////////
@@ -217,13 +194,28 @@
 
 - (void)GMGridView:(GMGridView *)gridView moveItemAtIndex:(NSInteger)oldIndex toIndex:(NSInteger)newIndex
 {
-    //NSObject *object = [self.pages objectAtIndex:oldIndex];
-    //[_currentData removeObject:object];
-    //[_currentData insertObject:object atIndex:newIndex];
+    NSLog(@"moveItem -- %ld -- %ld", oldIndex, newIndex);
+    @weakify(self);
+    NSObject *object = [self.pages objectAtIndex:oldIndex];
+    [self.pages removeObject:object];
+    [self.pages insertObject:object atIndex:newIndex];
+    [VCPageUtil truncateAll];
+    for (int i = 0 ; i< self.pages.count; i++) {
+        VCPage *page = [self.pages objectAtIndex:i];
+        page.sortNumber = @(i);
+        [VCPageUtil syncToDataBase:page completion:nil];
+    }
+    [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+        @strongify(self);
+        if ([self.delegate respondsToSelector:@selector(VCTagViewRefresh:)]) {
+            [self.delegate VCTagViewRefresh:gridView];
+        }
+    }];
 }
 
 - (void)GMGridView:(GMGridView *)gridView exchangeItemAtIndex:(NSInteger)index1 withItemAtIndex:(NSInteger)index2
 {
+    NSLog(@"change -- %ld -- %ld", index1, index2);
     //[_currentData exchangeObjectAtIndex:index1 withObjectAtIndex:index2];
 }
 

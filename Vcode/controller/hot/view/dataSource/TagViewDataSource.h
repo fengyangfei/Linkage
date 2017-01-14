@@ -14,6 +14,7 @@
 - (void)VCTagView:(GMGridView *)gridView didTapOnPage:(VCPage *)page;
 - (void)VCTagView:(GMGridView *)gridView changedEdit:(BOOL)edit;
 - (void)VCTagView:(GMGridView *)gridView processDeleteActionForItemAtIndex:(NSInteger)index;
+- (void)VCTagViewRefresh:(GMGridView *)gridView;
 @end
 @interface TagViewDataSource : NSObject<GMGridViewDataSource, GMGridViewSortingDelegate, GMGridViewTransformationDelegate, GMGridViewActionDelegate>
 @property (nonatomic, weak) NSMutableArray *pages;
