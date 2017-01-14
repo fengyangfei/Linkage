@@ -9,5 +9,6 @@
 #import "ModelUtil.h"
 
 @interface VCPageUtil : ModelUtil
++(void)getModelByUrl:(NSString *)url completion:(void(^)(id<MTLJSONSerializing> model))completion;
 
 @end

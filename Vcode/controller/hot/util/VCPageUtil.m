@@ -34,6 +34,19 @@
     }
 }
 
++(void)getModelByUrl:(NSString *)url completion:(void(^)(id<MTLJSONSerializing> model))completion
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"url", url];
+    [self queryModelFromDataBase:predicate completion:completion];
+}
+
++(void)queryModelFromDataBase:(NSPredicate *)predicate completion:(void(^)(id<MTLJSONSerializing> model))completion
+{
+    VCPageModel *manageObj = [VCPageModel MR_findFirstWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+    id<MTLJSONSerializing> result = [self modelFromManagedObject:manageObj];
+    completion(result);
+}
+
 //数据库查询
 +(void)queryModelsFromDataBase:(void(^)(NSArray *models))completion
 {

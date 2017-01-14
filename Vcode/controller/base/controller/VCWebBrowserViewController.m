@@ -10,6 +10,8 @@
 #import "VCFavor.h"
 #import "VCFavorModel.h"
 #import "VCFavorUtil.h"
+#import "VCPageUtil.h"
+#import "VCIndex.h"
 
 @interface VCWebBrowserViewController ()
 @property (nonatomic, copy) NSString *urlStr;
@@ -86,11 +88,52 @@
     [super didReceiveMemoryWarning];
 }
 #pragma mark - 事件处理
+//添加到标签
 -(void)starButtonPressed:(id)sender
 {
-    
+    [self saveStar:^{
+    }];
 }
 
+- (void)saveStar:(void(^)(void))completion
+{
+    NSString *title;
+    if(self.wkWebView) {
+        title = self.wkWebView.title;
+        self.urlStr = self.wkWebView.URL.absoluteString;
+    }
+    else if(self.uiWebView) {
+        title = [self.uiWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    }
+    
+    VCPage *page = [[VCPage alloc]init];
+    page.name = title;
+    page.url = self.urlStr;
+    page.sortNumber = @(0);
+    
+    [VCPageUtil syncToDataBase:page completion:^{
+        [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+            if (completion) {
+                completion();
+            }
+        }];
+    }];
+}
+
+- (void)deleteStar:(void(^)(void))completion
+{
+    [VCPageUtil getModelByUrl:self.urlStr completion:^(id<MTLJSONSerializing> model) {
+        [VCFavorUtil syncToDataBase:model completion:^{
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+                if (completion) {
+                    completion();
+                }
+            }];
+        }];
+    }];
+}
+
+//添加到收藏
 - (void)likeButtonPressed:(id)sender {
     @weakify(self);
     if(!self.favorStatus){
@@ -150,6 +193,7 @@
     self.urlStr = URL.absoluteString;
 }
 
+#pragma mark - getter setter
 -(UIBarButtonItem *)favorButton
 {
     if (!_favorButton) {
