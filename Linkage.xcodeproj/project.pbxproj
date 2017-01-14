@@ -290,6 +290,7 @@
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
 		9A5DD9471E29E7E400754655 /* VCThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DD9461E29E7E400754655 /* VCThemeManager.m */; };
 		9A5DD9491E29EC9300754655 /* VCThemeTypeCN.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5DD9481E29EC9300754655 /* VCThemeTypeCN.bundle */; };
+		9A5DD94B1E29FD1100754655 /* VCThemeTypeEN.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5DD94A1E29FD1100754655 /* VCThemeTypeEN.bundle */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A74CD5D1E1C81B10036C02D /* VCCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5C1E1C81B10036C02D /* VCCountry.m */; };
 		9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */; };
@@ -921,6 +922,7 @@
 		9A5DD9451E29E7E400754655 /* VCThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCThemeManager.h; sourceTree = "<group>"; };
 		9A5DD9461E29E7E400754655 /* VCThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCThemeManager.m; sourceTree = "<group>"; };
 		9A5DD9481E29EC9300754655 /* VCThemeTypeCN.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VCThemeTypeCN.bundle; sourceTree = "<group>"; };
+		9A5DD94A1E29FD1100754655 /* VCThemeTypeEN.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VCThemeTypeEN.bundle; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
 		9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollCell.m; sourceTree = "<group>"; };
 		9A74CD5B1E1C81B10036C02D /* VCCountry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCountry.h; sourceTree = "<group>"; };
@@ -2597,6 +2599,7 @@
 		9A5DD9441E29E79E00754655 /* theme */ = {
 			isa = PBXGroup;
 			children = (
+				9A5DD94A1E29FD1100754655 /* VCThemeTypeEN.bundle */,
 				9A5DD9481E29EC9300754655 /* VCThemeTypeCN.bundle */,
 				9A5DD9451E29E7E400754655 /* VCThemeManager.h */,
 				9A5DD9461E29E7E400754655 /* VCThemeManager.m */,
@@ -3026,6 +3029,7 @@
 				8BB8FD5F1E1D3F5C00243B33 /* VLaunch.storyboard in Resources */,
 				8B5DC6491C79B8A700D29292 /* UMSocialSDKResourcesNew.bundle in Resources */,
 				9ABD8F8B1D4213FE00D03A84 /* Contact.bundle in Resources */,
+				9A5DD94B1E29FD1100754655 /* VCThemeTypeEN.bundle in Resources */,
 				8B5DC6461C79B8A700D29292 /* UMSLoginViewController.xib in Resources */,
 				9ABD8F8C1D4213FE00D03A84 /* SubContact.bundle in Resources */,
 				8B4221181CA428BF00F58D77 /* Localizable.strings in Resources */,

@@ -204,6 +204,7 @@
 
 - (void)GMGridViewDidTapOnEmptySpace:(GMGridView *)gridView
 {
+    //gridView.editing = NO;
     NSLog(@"Tap on empty space");
 }
 
@@ -409,6 +410,7 @@
         _gmGridView.centerGrid = NO;
         _gmGridView.minEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
         _gmGridView.enableEditOnLongPress = YES;
+        _gmGridView.disableEditOnEmptySpaceTap = YES;
         //_gmGridView.centerGrid = YES;
         _gmGridView.backgroundColor = [UIColor whiteColor];
         _gmGridView.actionDelegate = self;
