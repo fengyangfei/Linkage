@@ -179,6 +179,8 @@ NSString *const FormRowDescriptorTypeMineHeader = @"mineHeaderRowCell";
             self.titleLabel.text = company.companyName;
             self.subTitleLabel.text = company.address;
         }
+    }else{
+        self.titleLabel.text = VCThemeString(@"completeInfoHint");
     }
 }
 

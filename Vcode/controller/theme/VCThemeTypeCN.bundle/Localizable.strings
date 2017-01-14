@@ -6,4 +6,5 @@
   Copyright © 2016年 ygsoft. All rights reserved.
 */
 "back" = "返回";
-"index" = "首页1";
+"index" = "首页";
+"completeInfoHint" = "请完善个人资料";

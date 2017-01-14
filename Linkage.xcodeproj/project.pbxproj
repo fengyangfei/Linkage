@@ -291,6 +291,7 @@
 		9A5DD9471E29E7E400754655 /* VCThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DD9461E29E7E400754655 /* VCThemeManager.m */; };
 		9A5DD9491E29EC9300754655 /* VCThemeTypeCN.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5DD9481E29EC9300754655 /* VCThemeTypeCN.bundle */; };
 		9A5DD94B1E29FD1100754655 /* VCThemeTypeEN.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5DD94A1E29FD1100754655 /* VCThemeTypeEN.bundle */; };
+		9A5DD94E1E2A019500754655 /* VCMenuPersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DD94D1E2A019500754655 /* VCMenuPersonalCell.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A74CD5D1E1C81B10036C02D /* VCCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5C1E1C81B10036C02D /* VCCountry.m */; };
 		9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */; };
@@ -923,6 +924,8 @@
 		9A5DD9461E29E7E400754655 /* VCThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCThemeManager.m; sourceTree = "<group>"; };
 		9A5DD9481E29EC9300754655 /* VCThemeTypeCN.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VCThemeTypeCN.bundle; sourceTree = "<group>"; };
 		9A5DD94A1E29FD1100754655 /* VCThemeTypeEN.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VCThemeTypeEN.bundle; sourceTree = "<group>"; };
+		9A5DD94C1E2A019500754655 /* VCMenuPersonalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMenuPersonalCell.h; sourceTree = "<group>"; };
+		9A5DD94D1E2A019500754655 /* VCMenuPersonalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMenuPersonalCell.m; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
 		9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollCell.m; sourceTree = "<group>"; };
 		9A74CD5B1E1C81B10036C02D /* VCCountry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCountry.h; sourceTree = "<group>"; };
@@ -2625,6 +2628,8 @@
 				9A74CD771E1DCFBB0036C02D /* VCMenuSwitchCell.m */,
 				8B1AACF31E1E84B8007BC604 /* VCMenuInfoCell.h */,
 				8B1AACF41E1E84B8007BC604 /* VCMenuInfoCell.m */,
+				9A5DD94C1E2A019500754655 /* VCMenuPersonalCell.h */,
+				9A5DD94D1E2A019500754655 /* VCMenuPersonalCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3259,6 +3264,7 @@
 				9A474FD91E1F27C700618A8E /* UINavigationItem+Spacing.m in Sources */,
 				9A2F5C341CE16B9D00E7E2DD /* TaskCell.m in Sources */,
 				9A95FF091C858B0E00C5F492 /* SettingViewController.m in Sources */,
+				9A5DD94E1E2A019500754655 /* VCMenuPersonalCell.m in Sources */,
 				9A474FDD1E1F371100618A8E /* FTPopOverMenu.m in Sources */,
 				8BE996521C96EBFF008B4B13 /* AXRatingView.m in Sources */,
 				9AEF89C21CA1274600C5EB90 /* MJPhotoView.m in Sources */,
