@@ -59,6 +59,7 @@
     @weakify(self);
     [VCPageUtil queryModelsFromDataBase:^(NSArray *models) {
         @strongify(self);
+        self.pages = nil;
         [self.pages addObjectsFromArray:models];
         [self.gmGridView reloadData];
     }];

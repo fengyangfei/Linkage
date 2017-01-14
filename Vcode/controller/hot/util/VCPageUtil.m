@@ -61,4 +61,14 @@
         }
     }
 }
+
++ (void)truncateAll
+{
+    @try {
+        [VCPageModel MR_truncateAllInContext:[NSManagedObjectContext MR_defaultContext]];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"error - %@", exception.reason);
+    }
+}
 @end

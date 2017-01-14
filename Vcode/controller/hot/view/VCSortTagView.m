@@ -54,6 +54,7 @@
     @weakify(self);
     [VCPageUtil queryModelsFromDataBase:^(NSArray *models) {
         @strongify(self);
+        self.pages = nil;
         [self.pages addObjectsFromArray:models];
         [self.gmGridView reloadData];
     }];
@@ -196,7 +197,6 @@
 
 - (void)GMGridViewDidTapOnEmptySpace:(GMGridView *)gridView
 {
-    //gridView.editing = NO;
     NSLog(@"Tap on empty space");
 }
 
@@ -272,11 +272,18 @@
 
 - (void)GMGridView:(GMGridView *)gridView moveItemAtIndex:(NSInteger)oldIndex toIndex:(NSInteger)newIndex
 {
-    VCPage *page = [self.pages objectAtIndex:oldIndex];
-    [VCPageUtil deleteFromDataBase:page completion:nil];
-    page.sortNumber = @(newIndex);
+    NSLog(@"moveItem -- %ld -- %ld", oldIndex, newIndex);
     @weakify(self);
-    [VCPageUtil syncToDataBase:page completion:^{
+    NSObject *object = [self.pages objectAtIndex:oldIndex];
+    [self.pages removeObject:object];
+    [self.pages insertObject:object atIndex:newIndex];
+    [VCPageUtil truncateAll];
+    for (int i = 0 ; i< self.pages.count; i++) {
+        VCPage *page = [self.pages objectAtIndex:i];
+        page.sortNumber = @(i);
+        [VCPageUtil syncToDataBase:page completion:nil];
+    }
+    [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
         @strongify(self);
         if ([self.delegate respondsToSelector:@selector(VCSortTagViewRefresh:)]) {
             [self.delegate VCSortTagViewRefresh:self];
@@ -286,6 +293,7 @@
 
 - (void)GMGridView:(GMGridView *)gridView exchangeItemAtIndex:(NSInteger)index1 withItemAtIndex:(NSInteger)index2
 {
+    NSLog(@"change -- %ld -- %ld", index1, index2);
     //[_currentData exchangeObjectAtIndex:index1 withObjectAtIndex:index2];
 }
 

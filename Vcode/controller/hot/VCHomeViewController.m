@@ -44,11 +44,6 @@
     [VCHomeUtil queryModelFromServer:^(VCIndex *model) {
         @strongify(self);
         self.homeIndex = model;
-
-        [self syncPagesToDataBase:[self.homeIndex pages] completion:^{
-            @strongify(self);
-            [self.tagView reloadData];
-        }];
         
         //图片
         NSMutableArray *imagesURLStrings = [NSMutableArray array];
@@ -59,6 +54,8 @@
             self.scrollView.imageURLStringsGroup = [imagesURLStrings copy];
         });
     }];
+    
+    [self.tagView reloadData];
 }
 
 //保存Page标签对象到数据库

@@ -95,7 +95,12 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     searchBar.placeholder = @"搜索您感兴趣的内容";
-    return NO;
+    return YES;
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    searchBar.placeholder = @"IPv6.Vcode";
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
