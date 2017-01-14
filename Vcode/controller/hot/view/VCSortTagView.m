@@ -272,9 +272,16 @@
 
 - (void)GMGridView:(GMGridView *)gridView moveItemAtIndex:(NSInteger)oldIndex toIndex:(NSInteger)newIndex
 {
-    //NSObject *object = [self.pages objectAtIndex:oldIndex];
-    //[_currentData removeObject:object];
-    //[_currentData insertObject:object atIndex:newIndex];
+    VCPage *page = [self.pages objectAtIndex:oldIndex];
+    [VCPageUtil deleteFromDataBase:page completion:nil];
+    page.sortNumber = @(newIndex);
+    @weakify(self);
+    [VCPageUtil syncToDataBase:page completion:^{
+        @strongify(self);
+        if ([self.delegate respondsToSelector:@selector(VCSortTagViewRefresh:)]) {
+            [self.delegate VCSortTagViewRefresh:self];
+        }
+    }];
 }
 
 - (void)GMGridView:(GMGridView *)gridView exchangeItemAtIndex:(NSInteger)index1 withItemAtIndex:(NSInteger)index2

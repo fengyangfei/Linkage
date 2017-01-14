@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCTagSortViewController : UIViewController
+@protocol VCTagSortViewControllerDelegate <NSObject>
+@optional
+-(void)refreshTag;
+@end
 
+@interface VCTagSortViewController : UIViewController
+@property(weak, nonatomic) id<VCTagSortViewControllerDelegate> delegate;
 @end
