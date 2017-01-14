@@ -14,8 +14,9 @@
 #import "VCPageUtil.h"
 #import "VCPageModel.h"
 #import "UIViewController+WebBrowser.h"
+#import "VCTagSortViewController.h"
 
-@interface VCHomeViewController ()<SDCycleScrollViewDelegate,VCTagViewDelegate>
+@interface VCHomeViewController ()<SDCycleScrollViewDelegate,VCTagViewDelegate,VCTagSortViewControllerDelegate>
 @property (nonatomic, readonly) SDCycleScrollView *scrollView;
 @property (nonatomic, readonly) VCTagView *tagView;
 @property (nonatomic, strong) VCIndex *homeIndex;
@@ -128,5 +129,19 @@
 {
     [[NSNotificationCenter defaultCenter]postNotificationName:VGMViewEditNotificationKey object:@(edit)];
 }
+
+- (void)VCTagView:(VCTagView *)gridView sortTagOnClick:(UIButton *)sender
+{
+    VCTagSortViewController *sortViewController = [[VCTagSortViewController alloc]init];
+    sortViewController.delegate = self;
+    [self.navigationController pushViewController:sortViewController animated:YES];
+}
+
+#pragma mark - SortTagViewDelegate
+-(void)refreshTag
+{
+    [self.tagView reloadData];
+}
+
 
 @end

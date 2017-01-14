@@ -1,26 +1,23 @@
 //
-//  VCTagView.m
+//  VCSortTagView.m
 //  Linkage
 //
-//  Created by lihaijian on 2017/1/4.
+//  Created by Mac mini on 2017/1/14.
 //  Copyright © 2017年 LA. All rights reserved.
 //
-
-#import "VCTagView.h"
+#import "VCSortTagView.h"
 #import "VCIndex.h"
 #import "NSString+Hint.h"
 #import "GMGridView.h"
 #import "VCPageUtil.h"
 #import "VCPageModel.h"
 #import <QuartzCore/QuartzCore.h>
-#define TagCellID @"TagCellID"
-@interface VCTagView()<GMGridViewDataSource, GMGridViewSortingDelegate, GMGridViewTransformationDelegate, GMGridViewActionDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+#define SortTagCellID @"SortTagCellID"
+@interface VCSortTagView()<GMGridViewDataSource, GMGridViewSortingDelegate, GMGridViewTransformationDelegate, GMGridViewActionDelegate>
 {
     NSInteger _lastDeleteItemIndexAsked;
 }
 @property (nonatomic, strong) UIView *titleView;
-@property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) UICollectionViewFlowLayout *collectionViewLayout;
 @property (nonatomic, strong) GMGridView *gmGridView;
 @property (nonatomic, strong) NSMutableArray *pages;
 
@@ -31,9 +28,8 @@
 
 @end
 
-@implementation VCTagView
+@implementation VCSortTagView
 @synthesize titleView= _titleView;
-@synthesize collectionView = _collectionView;
 @synthesize gmGridView = _gmGridView;
 @synthesize pages = _pages;
 
@@ -49,7 +45,6 @@
 -(void)setupUI
 {
     [self addSubview:self.titleView];
-    //[self addSubview:self.collectionView];
     [self addSubview:self.gmGridView];
 }
 
@@ -106,14 +101,13 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TagCellID forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:SortTagCellID forIndexPath:indexPath];
     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self setupCell:cell forItemAtIndexPath:indexPath];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -198,8 +192,6 @@
 
 - (void)GMGridView:(GMGridView *)gridView didTapOnItemAtIndex:(NSInteger)position
 {
-    NSLog(@"Did tap at index %ld", (long)position);
-    [self.delegate VCTagView:self didTapOnPage:[self.pages objectAtIndex:position]];
 }
 
 - (void)GMGridViewDidTapOnEmptySpace:(GMGridView *)gridView
@@ -227,16 +219,10 @@
     [alertController addAction:action];
     [alertController addAction:cancel];
     
-    [[self currentViewController] presentViewController:alertController animated:YES completion:^{
-        
-    }];
 }
 
 - (void)GMGridView:(GMGridView *)gridView changedEdit:(BOOL)edit
 {
-    if ([self.delegate respondsToSelector:@selector(VCTagView:changedEdit:)]) {
-        [self.delegate VCTagView:self changedEdit:edit];
-    }
 }
 
 //当前的viewController
@@ -286,9 +272,16 @@
 
 - (void)GMGridView:(GMGridView *)gridView moveItemAtIndex:(NSInteger)oldIndex toIndex:(NSInteger)newIndex
 {
-    //NSObject *object = [self.pages objectAtIndex:oldIndex];
-    //[_currentData removeObject:object];
-    //[_currentData insertObject:object atIndex:newIndex];
+    VCPage *page = [self.pages objectAtIndex:oldIndex];
+    [VCPageUtil deleteFromDataBase:page completion:nil];
+    page.sortNumber = @(newIndex);
+    @weakify(self);
+    [VCPageUtil syncToDataBase:page completion:^{
+        @strongify(self);
+        if ([self.delegate respondsToSelector:@selector(VCSortTagViewRefresh:)]) {
+            [self.delegate VCSortTagViewRefresh:self];
+        }
+    }];
 }
 
 - (void)GMGridView:(GMGridView *)gridView exchangeItemAtIndex:(NSInteger)index1 withItemAtIndex:(NSInteger)index2
@@ -361,42 +354,42 @@
 - (void)addMoreItem
 {
     // Example: adding object at the last position
-//    NSString *newItem = [NSString stringWithFormat:@"%d", (int)(arc4random() % 1000)];
-//    
-//    [_currentData addObject:newItem];
-//    [_gmGridView insertObjectAtIndex:[_currentData count] - 1 withAnimation:GMGridViewItemAnimationFade | GMGridViewItemAnimationScroll];
+    //    NSString *newItem = [NSString stringWithFormat:@"%d", (int)(arc4random() % 1000)];
+    //
+    //    [_currentData addObject:newItem];
+    //    [_gmGridView insertObjectAtIndex:[_currentData count] - 1 withAnimation:GMGridViewItemAnimationFade | GMGridViewItemAnimationScroll];
 }
 
 - (void)removeItem
 {
     // Example: removing last item
-//    if ([_currentData count] > 0)
-//    {
-//        NSInteger index = [_currentData count] - 1;
-//        
-//        [_gmGridView removeObjectAtIndex:index withAnimation:GMGridViewItemAnimationFade | GMGridViewItemAnimationScroll];
-//        [_currentData removeObjectAtIndex:index];
-//    }
+    //    if ([_currentData count] > 0)
+    //    {
+    //        NSInteger index = [_currentData count] - 1;
+    //
+    //        [_gmGridView removeObjectAtIndex:index withAnimation:GMGridViewItemAnimationFade | GMGridViewItemAnimationScroll];
+    //        [_currentData removeObjectAtIndex:index];
+    //    }
 }
 
 - (void)refreshItem
 {
     // Example: reloading last item
-//    if ([_currentData count] > 0)
-//    {
-//        int index = [_currentData count] - 1;
-//        
-//        NSString *newMessage = [NSString stringWithFormat:@"%d", (arc4random() % 1000)];
-//        
-//        [_currentData replaceObjectAtIndex:index withObject:newMessage];
-//        [_gmGridView reloadObjectAtIndex:index withAnimation:GMGridViewItemAnimationFade | GMGridViewItemAnimationScroll];
-//    }
+    //    if ([_currentData count] > 0)
+    //    {
+    //        int index = [_currentData count] - 1;
+    //
+    //        NSString *newMessage = [NSString stringWithFormat:@"%d", (arc4random() % 1000)];
+    //
+    //        [_currentData replaceObjectAtIndex:index withObject:newMessage];
+    //        [_gmGridView reloadObjectAtIndex:index withAnimation:GMGridViewItemAnimationFade | GMGridViewItemAnimationScroll];
+    //    }
 }
 
 - (void)dataSetChange:(UISegmentedControl *)control
 {
-//    _currentData = ([control selectedSegmentIndex] == 0) ? _data : _data2;
-//    [_gmGridView reloadData];
+    //    _currentData = ([control selectedSegmentIndex] == 0) ? _data : _data2;
+    //    [_gmGridView reloadData];
 }
 
 #pragma mark - getter setter
@@ -409,8 +402,6 @@
         _gmGridView.itemSpacing = 0;
         _gmGridView.centerGrid = NO;
         _gmGridView.minEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-        _gmGridView.enableEditOnLongPress = YES;
-        _gmGridView.disableEditOnEmptySpaceTap = YES;
         //_gmGridView.centerGrid = YES;
         _gmGridView.backgroundColor = [UIColor whiteColor];
         _gmGridView.actionDelegate = self;
@@ -419,34 +410,6 @@
         _gmGridView.dataSource = self;
     }
     return _gmGridView;
-}
-
-- (UICollectionView *)collectionView {
-    if (_collectionView == nil) {
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 30, IPHONE_WIDTH, self.bounds.size.height - 30) collectionViewLayout:self.collectionViewLayout];
-        [collectionView setBackgroundColor:[UIColor whiteColor]];
-        collectionView.scrollsToTop = NO;
-        collectionView.showsHorizontalScrollIndicator = NO;
-        collectionView.showsVerticalScrollIndicator = NO;
-        collectionView.delegate = self;
-        collectionView.dataSource = self;
-        [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:TagCellID];
-        collectionView.scrollEnabled = YES;
-        _collectionView = collectionView;
-    }
-    return _collectionView;
-}
-
-- (UICollectionViewFlowLayout *)collectionViewLayout {
-    if (_collectionViewLayout == nil) {
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.itemSize = CGSizeMake(IPHONE_WIDTH / 4 - 10, IPHONE_WIDTH / 4 - 10);
-        layout.minimumLineSpacing = 0.0;
-        layout.minimumInteritemSpacing = 0.0;
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        _collectionViewLayout = layout;
-    }
-    return _collectionViewLayout;
 }
 
 -(UIView *)titleView
@@ -458,15 +421,9 @@
         [_titleView addSubview:tagImage];
         
         UILabel *tagLabel = [[UILabel alloc]initWithFrame:CGRectMake(40, 0, IPHONE_WIDTH - 100, 30)];
-        NSString *hintStr = @"自定义标签 长按可删除";
+        NSString *hintStr = @"自定义标签 长按拖动排序";
         tagLabel.attributedText = [hintStr attributedStringWithFont:[UIFont systemFontOfSize:12] color:[UIColor grayColor]];
         [_titleView addSubview:tagLabel];
-        
-        UIButton *editButton = [[UIButton alloc]initWithFrame:CGRectMake(IPHONE_WIDTH - 80, 0, 100, 30)];
-        [editButton addTarget:self action:@selector(editAction:) forControlEvents:UIControlEventTouchUpInside];
-        NSString *editStr = @"编辑排序";
-        [editButton setAttributedTitle:[editStr attributedStringWithFont:[UIFont systemFontOfSize:12] color:VHeaderColor] forState:UIControlStateNormal];
-        [_titleView addSubview:editButton];
     }
     return _titleView;
 }
@@ -477,21 +434,6 @@
         _pages = [[NSMutableArray alloc]init];
     }
     return _pages;
-}
-
-#pragma mark - 事件
--(void)editAction:(id)sender
-{
-    if ([self.delegate respondsToSelector:@selector(VCTagView:sortTagOnClick:)]) {
-        [self.delegate VCTagView:self sortTagOnClick:sender];
-    }
-}
-
--(void)cancelEditing
-{
-    if (self.gmGridView.isEditing) {
-        self.gmGridView.editing = NO;
-    }
 }
 
 @end

@@ -22,4 +22,5 @@
     #import "LinkConstants.h"
     #import "VcodeConstants.h"
     #import "TRThemeManager.h"
+    #import "VCThemeManager.h"
 #endif

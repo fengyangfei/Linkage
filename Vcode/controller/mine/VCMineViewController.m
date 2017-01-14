@@ -14,6 +14,7 @@
 #import "VCAdviceViewController.h"
 #import "VCHelperViewController.h"
 #import "VCAboutViewController.h"
+#import "VCMenuPersonalCell.h"
 
 @interface VCMineViewController ()
 
@@ -42,7 +43,7 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMineHeader];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:VCFormRowDescriptorTypePesonalHeader];
     row.value = [MenuItem createItemWithTitle:@"头像" andIconName:@"v_user"];
     [section addFormRow:row];
     
