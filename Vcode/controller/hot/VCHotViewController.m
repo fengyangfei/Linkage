@@ -29,6 +29,7 @@
 
 -(void)setupUI
 {
+    
     [super setupUI];
     [self setupTopScrollView];
     //顶部栏

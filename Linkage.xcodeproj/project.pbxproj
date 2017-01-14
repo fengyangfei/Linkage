@@ -288,6 +288,8 @@
 		9A474FE61E1F435C00618A8E /* SKTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FE21E1F435C00618A8E /* SKTagButton.m */; };
 		9A474FE71E1F435C00618A8E /* SKTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FE41E1F435C00618A8E /* SKTagView.m */; };
 		9A49E6B81D07ACA600F51C2F /* HJFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49E6B71D07ACA600F51C2F /* HJFormCell.m */; };
+		9A5DD9471E29E7E400754655 /* VCThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DD9461E29E7E400754655 /* VCThemeManager.m */; };
+		9A5DD9491E29EC9300754655 /* VCThemeTypeCN.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5DD9481E29EC9300754655 /* VCThemeTypeCN.bundle */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A74CD5D1E1C81B10036C02D /* VCCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5C1E1C81B10036C02D /* VCCountry.m */; };
 		9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */; };
@@ -916,6 +918,9 @@
 		9A474FE41E1F435C00618A8E /* SKTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTagView.m; sourceTree = "<group>"; };
 		9A49E6B61D07ACA600F51C2F /* HJFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFormCell.h; sourceTree = "<group>"; };
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
+		9A5DD9451E29E7E400754655 /* VCThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCThemeManager.h; sourceTree = "<group>"; };
+		9A5DD9461E29E7E400754655 /* VCThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCThemeManager.m; sourceTree = "<group>"; };
+		9A5DD9481E29EC9300754655 /* VCThemeTypeCN.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VCThemeTypeCN.bundle; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
 		9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollCell.m; sourceTree = "<group>"; };
 		9A74CD5B1E1C81B10036C02D /* VCCountry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCountry.h; sourceTree = "<group>"; };
@@ -2435,6 +2440,7 @@
 		9A403DF21E1B5C1700829EC4 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				9A5DD9441E29E79E00754655 /* theme */,
 				9A403E1F1E1B782600829EC4 /* base */,
 				9A403DF31E1B5C1700829EC4 /* favor */,
 				9A403DF41E1B5C1700829EC4 /* hot */,
@@ -2586,6 +2592,16 @@
 				9A474FE41E1F435C00618A8E /* SKTagView.m */,
 			);
 			path = SKTagView;
+			sourceTree = "<group>";
+		};
+		9A5DD9441E29E79E00754655 /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				9A5DD9481E29EC9300754655 /* VCThemeTypeCN.bundle */,
+				9A5DD9451E29E7E400754655 /* VCThemeManager.h */,
+				9A5DD9461E29E7E400754655 /* VCThemeManager.m */,
+			);
+			path = theme;
 			sourceTree = "<group>";
 		};
 		9A74CD701E1CF05A0036C02D /* model */ = {
@@ -3005,6 +3021,7 @@
 				8BE6E5281E20D07900BD9AA6 /* ARChromeActivity@2x~ipad.png in Resources */,
 				8B5DC6521C79B8A700D29292 /* zbar-back.png in Resources */,
 				8B5DC63F1C79B8A700D29292 /* UMSocialLocalizable.strings in Resources */,
+				9A5DD9491E29EC9300754655 /* VCThemeTypeCN.bundle in Resources */,
 				8B5DC6471C79B8A700D29292 /* UMSnsAccountViewController.xib in Resources */,
 				8BB8FD5F1E1D3F5C00243B33 /* VLaunch.storyboard in Resources */,
 				8B5DC6491C79B8A700D29292 /* UMSocialSDKResourcesNew.bundle in Resources */,
@@ -3157,6 +3174,7 @@
 				8B5DC62C1C79B8A700D29292 /* IFTTTRotationAnimation.m in Sources */,
 				9A403DFC1E1B5C8800829EC4 /* VCRankViewController.m in Sources */,
 				9A403E1E1E1B76EB00829EC4 /* VCTabBarController.m in Sources */,
+				9A5DD9471E29E7E400754655 /* VCThemeManager.m in Sources */,
 				8B5DC6251C79B8A700D29292 /* IFTTTHideAnimation.m in Sources */,
 				8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */,
 				9A74CD961E1DE69F0036C02D /* VCSearchView.m in Sources */,
