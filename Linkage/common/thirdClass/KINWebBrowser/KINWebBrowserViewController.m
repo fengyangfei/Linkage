@@ -40,7 +40,7 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 @interface KINWebBrowserViewController () <UIAlertViewDelegate>
 
 @property (nonatomic, assign) BOOL previousNavigationControllerToolbarHidden, previousNavigationControllerNavigationBarHidden;
-@property (nonatomic, strong) UIBarButtonItem *backButton, *forwardButton, *refreshButton, *rocketButton, *stopButton, *fixedSeparator, *flexibleSeparator;
+@property (nonatomic, strong) UIBarButtonItem *backButton, *forwardButton, *refreshButton, *stopButton, *fixedSeparator, *flexibleSeparator;
 @property (nonatomic, strong) NSTimer *fakeProgressTimer;
 @property (nonatomic, strong) UIPopoverController *actionPopoverController;
 @property (nonatomic, assign) BOOL uiWebViewIsLoading;
@@ -347,7 +347,14 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 #pragma mark - Toolbar State
 
 - (void)updateToolbarState {
+    [self setToolbarItems:[self bottomBarItems] animated:YES];
     
+    self.tintColor = self.tintColor;
+    self.barTintColor = self.barTintColor;
+}
+
+-(NSArray *)bottomBarItems
+{
     BOOL canGoBack = self.wkWebView.canGoBack || self.uiWebView.canGoBack;
     BOOL canGoForward = self.wkWebView.canGoForward || self.uiWebView.canGoForward;
     
@@ -360,7 +367,8 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
     
     NSArray *barButtonItems;
     if(self.wkWebView.loading || self.uiWebViewIsLoading) {
-        barButtonItems = @[self.backButton, self.fixedSeparator, self.forwardButton, self.fixedSeparator, self.stopButton, self.flexibleSeparator];
+        //        barButtonItems = @[self.backButton, self.fixedSeparator, self.forwardButton, self.fixedSeparator, self.stopButton, self.flexibleSeparator];
+        barButtonItems = @[self.backButton, self.fixedSeparator, self.forwardButton, self.fixedSeparator];
         
         if(self.showsURLInNavigationBar) {
             NSString *URLString;
@@ -378,7 +386,8 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
         }
     }
     else {
-        barButtonItems = @[self.backButton, self.fixedSeparator, self.forwardButton, self.fixedSeparator, self.refreshButton, self.flexibleSeparator];
+        //        barButtonItems = @[self.backButton, self.fixedSeparator, self.forwardButton, self.fixedSeparator, self.refreshButton, self.flexibleSeparator];
+        barButtonItems = @[self.backButton, self.fixedSeparator, self.forwardButton, self.fixedSeparator];
         
         if(self.showsPageTitleInNavigationBar) {
             if(self.wkWebView) {
@@ -396,17 +405,7 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
         barButtonItems = [NSArray arrayWithArray:mutableBarButtonItems];
     }
     
-    //自定按钮（收藏与加速按钮）
-    NSMutableArray *mutableBarButtonItems = [NSMutableArray arrayWithArray:barButtonItems];
-    [mutableBarButtonItems addObjectsFromArray:@[self.favorButton, self.flexibleSeparator, self.rocketButton]];
-    barButtonItems = [NSArray arrayWithArray:mutableBarButtonItems];
-    
-    [self setToolbarItems:barButtonItems animated:YES];
-    
-    self.tintColor = self.tintColor;
-    self.barTintColor = self.barTintColor;
-    
-    
+    return barButtonItems;
 }
 
 - (void)setupToolbarItems {
@@ -422,10 +421,6 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
     //UIImage *forwardbuttonImage = [UIImage imageWithContentsOfFile: [bundle pathForResource:@"forwardbutton" ofType:@"png"]];
     UIImage *forwardbuttonImage = [UIImage imageNamed:@"right"];
     self.forwardButton = [[UIBarButtonItem alloc] initWithImage:forwardbuttonImage style:UIBarButtonItemStylePlain target:self action:@selector(forwardButtonPressed:)];
-    
-    UIImage *rocketIcon = [UIImage imageNamed:@"rocket_on"];
-    UIImageView *rocketImageView = [[UIImageView alloc]initWithImage:rocketIcon];
-    self.rocketButton = [[UIBarButtonItem alloc] initWithCustomView:rocketImageView];
     
     self.actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
     self.fixedSeparator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];

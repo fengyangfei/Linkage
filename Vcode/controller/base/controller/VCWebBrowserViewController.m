@@ -14,11 +14,16 @@
 @interface VCWebBrowserViewController ()
 @property (nonatomic, copy) NSString *urlStr;
 @property (nonatomic, readonly) UIButton *favorInnerButton;
+@property (nonatomic, readonly) UIBarButtonItem *starButton;
+@property (nonatomic, strong) UIBarButtonItem *rocketButton;
+@property (nonatomic, strong) UIBarButtonItem *favorButton;
 @property (nonatomic) BOOL favorStatus;
 @end
 
 @implementation VCWebBrowserViewController
 @synthesize favorButton = _favorButton;
+@synthesize starButton = _starButton;
+@synthesize rocketButton = _rocketButton;
 @synthesize favorInnerButton = _favorInnerButton;
 
 -(instancetype)init
@@ -57,6 +62,21 @@
     }
 }
 
+-(NSArray *)bottomBarItems
+{
+    NSArray *barButtonItems = [super bottomBarItems];
+    
+    UIBarButtonItem *fixedSeparator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSeparator.width = 50.0f;
+    UIBarButtonItem *flexibleSeparator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+
+    //自定按钮（收藏与加速按钮）
+    NSMutableArray *mutableBarButtonItems = [NSMutableArray arrayWithArray:barButtonItems];
+    [mutableBarButtonItems addObjectsFromArray:@[flexibleSeparator, self.favorButton, flexibleSeparator, self.starButton, flexibleSeparator, self.rocketButton]];
+    barButtonItems = [NSArray arrayWithArray:mutableBarButtonItems];
+    return barButtonItems;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupData];
@@ -66,7 +86,12 @@
     [super didReceiveMemoryWarning];
 }
 #pragma mark - 事件处理
-- (void)likeButtonPressed:(UIButton *)button {
+-(void)starButtonPressed:(id)sender
+{
+    
+}
+
+- (void)likeButtonPressed:(id)sender {
     @weakify(self);
     if(!self.favorStatus){
         [self saveFavor:^{
@@ -135,6 +160,25 @@
         _favorButton = [[UIBarButtonItem alloc] initWithImage:likeOffIcon style:UIBarButtonItemStylePlain target:self action:@selector(likeButtonPressed:)];
     }
     return _favorButton;
+}
+
+-(UIBarButtonItem *)starButton
+{
+    if (!_starButton) {
+        UIImage *starIcon = [UIImage imageNamed:@"collect_icon_off"];
+        _starButton = [[UIBarButtonItem alloc]initWithImage:starIcon style:UIBarButtonItemStylePlain target:self action:@selector(starButtonPressed:)];
+    }
+    return _starButton;
+}
+
+-(UIBarButtonItem *)rocketButton
+{
+    if (!_rocketButton) {
+        UIImage *rocketIcon = [UIImage imageNamed:@"rocket_on"];
+        UIImageView *rocketImageView = [[UIImageView alloc]initWithImage:rocketIcon];
+        _rocketButton = [[UIBarButtonItem alloc] initWithCustomView:rocketImageView];
+    }
+    return _rocketButton;
 }
 
 -(UIButton *)favorInnerButton
