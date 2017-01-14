@@ -13,6 +13,7 @@
 @optional
 - (void)VCTagView:(VCTagView *)gridView didTapOnPage:(VCPage *)page;
 - (void)VCTagView:(VCTagView *)gridView changedEdit:(BOOL)edit;
+- (void)VCTagView:(VCTagView *)gridView sortTagOnClick:(UIButton *)sender;
 @required
 - (NSArray *)tagViewDataSource;
 @end
@@ -20,5 +21,6 @@
 @interface VCTagView : UIView
 @property(weak, nonatomic) id<VCTagViewDelegate> delegate;
 -(void)reloadData;
+-(void)cancelEditing;
 @end
 

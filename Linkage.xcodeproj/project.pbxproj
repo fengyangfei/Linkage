@@ -292,6 +292,8 @@
 		9A5DD9491E29EC9300754655 /* VCThemeTypeCN.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5DD9481E29EC9300754655 /* VCThemeTypeCN.bundle */; };
 		9A5DD94B1E29FD1100754655 /* VCThemeTypeEN.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5DD94A1E29FD1100754655 /* VCThemeTypeEN.bundle */; };
 		9A5DD94E1E2A019500754655 /* VCMenuPersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DD94D1E2A019500754655 /* VCMenuPersonalCell.m */; };
+		9A5DD9511E2A04D600754655 /* VCSortTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DD9501E2A04D600754655 /* VCSortTagView.m */; };
+		9A5DD9541E2A086C00754655 /* VCTagSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DD9531E2A086C00754655 /* VCTagSortViewController.m */; };
 		9A74496F1D3DB4D600BC8DE9 /* CycleScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */; };
 		9A74CD5D1E1C81B10036C02D /* VCCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5C1E1C81B10036C02D /* VCCountry.m */; };
 		9A74CD601E1C820C0036C02D /* VCCountryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74CD5F1E1C820C0036C02D /* VCCountryUtil.m */; };
@@ -926,6 +928,10 @@
 		9A5DD94A1E29FD1100754655 /* VCThemeTypeEN.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VCThemeTypeEN.bundle; sourceTree = "<group>"; };
 		9A5DD94C1E2A019500754655 /* VCMenuPersonalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMenuPersonalCell.h; sourceTree = "<group>"; };
 		9A5DD94D1E2A019500754655 /* VCMenuPersonalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMenuPersonalCell.m; sourceTree = "<group>"; };
+		9A5DD94F1E2A04D600754655 /* VCSortTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSortTagView.h; sourceTree = "<group>"; };
+		9A5DD9501E2A04D600754655 /* VCSortTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSortTagView.m; sourceTree = "<group>"; };
+		9A5DD9521E2A086C00754655 /* VCTagSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTagSortViewController.h; sourceTree = "<group>"; };
+		9A5DD9531E2A086C00754655 /* VCTagSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTagSortViewController.m; sourceTree = "<group>"; };
 		9A74496D1D3DB4D600BC8DE9 /* CycleScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollCell.h; sourceTree = "<group>"; };
 		9A74496E1D3DB4D600BC8DE9 /* CycleScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollCell.m; sourceTree = "<group>"; };
 		9A74CD5B1E1C81B10036C02D /* VCCountry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCountry.h; sourceTree = "<group>"; };
@@ -1915,6 +1921,8 @@
 			children = (
 				8BB8FD591E1D232500243B33 /* VCTagView.h */,
 				8BB8FD5A1E1D232500243B33 /* VCTagView.m */,
+				9A5DD94F1E2A04D600754655 /* VCSortTagView.h */,
+				9A5DD9501E2A04D600754655 /* VCSortTagView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2483,6 +2491,8 @@
 				8BFEBF871E1BD61C008A60D5 /* VCHotChildViewController.m */,
 				9A74CD611E1C8AF30036C02D /* VCHomeViewController.h */,
 				9A74CD621E1C8AF30036C02D /* VCHomeViewController.m */,
+				9A5DD9521E2A086C00754655 /* VCTagSortViewController.h */,
+				9A5DD9531E2A086C00754655 /* VCTagSortViewController.m */,
 			);
 			path = hot;
 			sourceTree = "<group>";
@@ -3295,6 +3305,7 @@
 				8BA3E3CB1CD463E90047AC6B /* Staff.m in Sources */,
 				8B5DC61C1C79B8A700D29292 /* IFTTTAnimation.m in Sources */,
 				8B3302911C8BC0D70088DAE2 /* MainTableViewCell.m in Sources */,
+				9A5DD9541E2A086C00754655 /* VCTagSortViewController.m in Sources */,
 				8BCA5FB31CA95EE3002601F6 /* BillDetailViewController.m in Sources */,
 				9A21A3191D828D1F00FBCA38 /* NSString+JSON.m in Sources */,
 				8B5DC62D1C79B8A700D29292 /* IFTTTScaleAnimation.m in Sources */,
@@ -3320,6 +3331,7 @@
 				8BE6E55F1E20DE8F00BD9AA6 /* VCWebBrowserViewController.m in Sources */,
 				9A23A3211C7E8EA900FB5EB6 /* ICETutorialStyle.m in Sources */,
 				8BB17AB71C9AF60D002708C4 /* BillApplyViewController.m in Sources */,
+				9A5DD9511E2A04D600754655 /* VCSortTagView.m in Sources */,
 				8B5DC61E1C79B8A700D29292 /* IFTTTBackgroundColorAnimation.m in Sources */,
 				8B958B3C1CD65301003BD74B /* Message.m in Sources */,
 				9A74CD821E1DD4EC0036C02D /* VCAdviceViewController.m in Sources */,
