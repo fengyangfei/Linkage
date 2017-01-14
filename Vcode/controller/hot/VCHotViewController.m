@@ -75,6 +75,7 @@
     UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(IPHONE_WIDTH - kButtonW, 0, kButtonW, 44)];
     addBtn.backgroundColor = [UIColor whiteColor];
     [addBtn setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
+    [addBtn setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     [addBtn addTarget:self action:@selector(editCategory:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:addBtn];
 }

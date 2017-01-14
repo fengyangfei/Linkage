@@ -18,6 +18,29 @@ NSString *const VCFormRowDescriptorTypePesonalHeader = @"vcMineHeaderRowCell";
     [XLFormViewController.cellClassesForRowDescriptorTypes addEntriesFromDictionary:dic];
 }
 
+-(void)configure
+{
+    @weakify(self);
+    [super configure];
+    [self.contentView addSubview:self.iconView];
+    [self.iconView makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.left.equalTo(self.contentView.left).offset(12);
+        make.centerY.equalTo(self.contentView.centerY);
+        make.width.equalTo(@(64));
+        make.height.equalTo(@(64));
+    }];
+    
+    [self.contentView addSubview:self.titleLabel];
+    [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.left.equalTo(self.iconView.right).offset(14);
+        make.right.equalTo(self.contentView.right);
+        make.centerY.equalTo(self.contentView.centerY);
+    }];
+
+}
+
 -(void)update
 {
     self.titleLabel.text = VCThemeString(@"completeInfoHint");

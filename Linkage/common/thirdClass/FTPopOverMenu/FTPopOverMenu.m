@@ -24,7 +24,7 @@
 #define FTDefaultMenuFont           [UIFont systemFontOfSize:14]
 #define FTDefaultMenuWidth          80.0
 #define FTDefaultMenuIconSize       48.0
-#define FTDefaultMenuRowHeight      40.0
+#define FTDefaultMenuRowHeight      36.0
 #define FTDefaultMenuBorderWidth    0.8
 #define FTDefaultMenuArrowWidth     (sqrt(3)/3.f*(FTDefaultMenuArrowHeight))
 
