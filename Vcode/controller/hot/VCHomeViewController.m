@@ -56,6 +56,11 @@
     }];
     
     [self.tagView reloadData];
+    
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:kPageUpdateNotification object:nil] subscribeNext:^(id x) {
+        @strongify(self);
+        [self.tagView reloadData];
+    }];
 }
 
 //保存Page标签对象到数据库

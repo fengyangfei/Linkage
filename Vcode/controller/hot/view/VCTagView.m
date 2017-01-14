@@ -13,8 +13,8 @@
 #import "VCPageUtil.h"
 #import "VCPageModel.h"
 #import <QuartzCore/QuartzCore.h>
-#define TagCellID @"TagCellID"
-@interface VCTagView()<GMGridViewDataSource, GMGridViewSortingDelegate, GMGridViewTransformationDelegate, GMGridViewActionDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+#import "TagViewDataSource.h"
+@interface VCTagView()<VCTagDataSourceDelegate>
 {
     NSInteger _lastDeleteItemIndexAsked;
 }
@@ -23,6 +23,7 @@
 @property (nonatomic, strong) UICollectionViewFlowLayout *collectionViewLayout;
 @property (nonatomic, strong) GMGridView *gmGridView;
 @property (nonatomic, strong) NSMutableArray *pages;
+@property (nonatomic, strong) TagViewDataSource *tagDataSource;
 
 - (void)addMoreItem;
 - (void)removeItem;
@@ -36,6 +37,7 @@
 @synthesize collectionView = _collectionView;
 @synthesize gmGridView = _gmGridView;
 @synthesize pages = _pages;
+@synthesize tagDataSource = _tagDataSource;
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -49,7 +51,6 @@
 -(void)setupUI
 {
     [self addSubview:self.titleView];
-    //[self addSubview:self.collectionView];
     [self addSubview:self.gmGridView];
 }
 
@@ -59,157 +60,24 @@
     @weakify(self);
     [VCPageUtil queryModelsFromDataBase:^(NSArray *models) {
         @strongify(self);
-        self.pages = nil;
+        [self.pages removeAllObjects];
         [self.pages addObjectsFromArray:models];
         [self.gmGridView reloadData];
     }];
 }
 
-#pragma mark - helper
--(void)setupCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - VCTagDataSourceDelegate
+- (void)VCTagView:(GMGridView *)gridView didTapOnPage:(VCPage *)page
 {
-    VCPage *page =[self.pages objectAtIndex:indexPath.item];
-    //图片
-    NSString *imageIndex = [NSString stringWithFormat:@"%ld",(long) (indexPath.item % 3 + 1)];
-    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:imageIndex]];
-    [cell.contentView addSubview:imageView];
-    [imageView makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(60);
-        make.height.equalTo(60);
-        make.centerX.equalTo(cell.centerX);
-        make.top.equalTo(cell.top);
-    }];
-    //首字母
-    UILabel *firstLetterLabel = [[UILabel alloc]init];
-    [cell.contentView addSubview:firstLetterLabel];
-    firstLetterLabel.text = [[page.name substringWithRange:NSMakeRange(0, 1)] uppercaseString];
-    [firstLetterLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(imageView.centerX);
-        make.centerY.equalTo(imageView.centerY);
-    }];
-    //url连接
-    UILabel *titleLabel = [[UILabel alloc]init];
-    titleLabel.font = [UIFont systemFontOfSize:12];
-    [cell.contentView addSubview:titleLabel];
-    titleLabel.text = page.name;
-    [titleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(cell.centerX);
-        make.width.equalTo(50);
-        make.top.equalTo(imageView.bottom).offset(5);
-    }];
+    [self.delegate VCTagView:self didTapOnPage:page];
 }
 
-#pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (void)VCTagView:(GMGridView *)gridView changedEdit:(BOOL)edit
 {
-    return [self.pages count];
+    [self.delegate VCTagView:self changedEdit:edit];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TagCellID forIndexPath:indexPath];
-    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    return cell;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self setupCell:cell forItemAtIndexPath:indexPath];
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"ss");
-}
-
-//////////////////////////////////////////////////////////////
-#pragma mark GMGridViewDataSource
-//////////////////////////////////////////////////////////////
-
-- (NSInteger)numberOfItemsInGMGridView:(GMGridView *)gridView
-{
-    return [self.pages count];
-}
-
-- (CGSize)GMGridView:(GMGridView *)gridView sizeForItemsInInterfaceOrientation:(UIInterfaceOrientation)orientation
-{
-    return CGSizeMake(IPHONE_WIDTH / 4, IPHONE_WIDTH / 4);
-}
-
-- (GMGridViewCell *)GMGridView:(GMGridView *)gridView cellForItemAtIndex:(NSInteger)index
-{
-    //NSLog(@"Creating view indx %d", index);
-    CGSize size = [self GMGridView:gridView sizeForItemsInInterfaceOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
-    
-    GMGridViewCell *cell = [gridView dequeueReusableCell];
-    
-    if (!cell)
-    {
-        cell = [[GMGridViewCell alloc] init];
-        cell.deleteButtonIcon = [UIImage imageNamed:@"close_x.png"];
-        cell.deleteButtonOffset = CGPointMake(14, -2);
-        
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-        cell.contentView = view;
-    }
-    
-    [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    VCPage *page = (VCPage *)[self.pages objectAtIndex:index];
-    //图片
-    NSString *imageIndex = [NSString stringWithFormat:@"%ld",(long) (index % 3 + 1)];
-    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:imageIndex]];
-    [cell.contentView addSubview:imageView];
-    [imageView makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(60);
-        make.height.equalTo(60);
-        make.centerX.equalTo(cell.centerX);
-        make.top.equalTo(cell.top);
-    }];
-    //首字母
-    UILabel *firstLetterLabel = [[UILabel alloc]init];
-    [cell.contentView addSubview:firstLetterLabel];
-    firstLetterLabel.text = [[page.name substringWithRange:NSMakeRange(0, 1)] uppercaseString];
-    [firstLetterLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(imageView.centerX);
-        make.centerY.equalTo(imageView.centerY);
-    }];
-    //url连接
-    UILabel *titleLabel = [[UILabel alloc]init];
-    titleLabel.font = [UIFont systemFontOfSize:12];
-    [cell.contentView addSubview:titleLabel];
-    titleLabel.text = page.name;
-    [titleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(cell.centerX);
-        make.width.equalTo(50);
-        make.top.equalTo(imageView.bottom).offset(5);
-    }];
-    
-    return cell;
-}
-
-- (BOOL)GMGridView:(GMGridView *)gridView canDeleteItemAtIndex:(NSInteger)index
-{
-    return YES;
-}
-
-//////////////////////////////////////////////////////////////
-#pragma mark GMGridViewActionDelegate
-//////////////////////////////////////////////////////////////
-
-- (void)GMGridView:(GMGridView *)gridView didTapOnItemAtIndex:(NSInteger)position
-{
-    NSLog(@"Did tap at index %ld", (long)position);
-    [self.delegate VCTagView:self didTapOnPage:[self.pages objectAtIndex:position]];
-}
-
-- (void)GMGridViewDidTapOnEmptySpace:(GMGridView *)gridView
-{
-    //gridView.editing = NO;
-    NSLog(@"Tap on empty space");
-}
-
-- (void)GMGridView:(GMGridView *)gridView processDeleteActionForItemAtIndex:(NSInteger)index
+- (void)VCTagView:(GMGridView *)gridView processDeleteActionForItemAtIndex:(NSInteger)index
 {
     @weakify(self);
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"删除标签？" message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -221,7 +89,7 @@
             }];
         }];
         [self.pages removeObjectAtIndex:index];
-        [self.gmGridView removeObjectAtIndex:index withAnimation:GMGridViewItemAnimationFade];
+        [gridView removeObjectAtIndex:index withAnimation:GMGridViewItemAnimationFade];
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
     }];
@@ -231,13 +99,6 @@
     [[self currentViewController] presentViewController:alertController animated:YES completion:^{
         
     }];
-}
-
-- (void)GMGridView:(GMGridView *)gridView changedEdit:(BOOL)edit
-{
-    if ([self.delegate respondsToSelector:@selector(VCTagView:changedEdit:)]) {
-        [self.delegate VCTagView:self changedEdit:edit];
-    }
 }
 
 //当前的viewController
@@ -251,108 +112,6 @@
         responder = [responder nextResponder];
     }
     return nil;
-}
-//////////////////////////////////////////////////////////////
-#pragma mark GMGridViewSortingDelegate
-//////////////////////////////////////////////////////////////
-
-- (void)GMGridView:(GMGridView *)gridView didStartMovingCell:(GMGridViewCell *)cell
-{
-    [UIView animateWithDuration:0.3
-                          delay:0
-                        options:UIViewAnimationOptionAllowUserInteraction
-                     animations:^{
-                         cell.contentView.layer.shadowOpacity = 0.7;
-                     }
-                     completion:nil
-     ];
-}
-
-- (void)GMGridView:(GMGridView *)gridView didEndMovingCell:(GMGridViewCell *)cell
-{
-    [UIView animateWithDuration:0.3
-                          delay:0
-                        options:UIViewAnimationOptionAllowUserInteraction
-                     animations:^{
-                         cell.contentView.layer.shadowOpacity = 0;
-                     }
-                     completion:nil
-     ];
-}
-
-- (BOOL)GMGridView:(GMGridView *)gridView shouldAllowShakingBehaviorWhenMovingCell:(GMGridViewCell *)cell atIndex:(NSInteger)index
-{
-    return YES;
-}
-
-- (void)GMGridView:(GMGridView *)gridView moveItemAtIndex:(NSInteger)oldIndex toIndex:(NSInteger)newIndex
-{
-    //NSObject *object = [self.pages objectAtIndex:oldIndex];
-    //[_currentData removeObject:object];
-    //[_currentData insertObject:object atIndex:newIndex];
-}
-
-- (void)GMGridView:(GMGridView *)gridView exchangeItemAtIndex:(NSInteger)index1 withItemAtIndex:(NSInteger)index2
-{
-    //[_currentData exchangeObjectAtIndex:index1 withObjectAtIndex:index2];
-}
-
-
-//////////////////////////////////////////////////////////////
-#pragma mark DraggableGridViewTransformingDelegate
-//////////////////////////////////////////////////////////////
-
-- (CGSize)GMGridView:(GMGridView *)gridView sizeInFullSizeForCell:(GMGridViewCell *)cell atIndex:(NSInteger)index inInterfaceOrientation:(UIInterfaceOrientation)orientation
-{
-    return CGSizeMake(IPHONE_WIDTH / 4, IPHONE_WIDTH / 4);
-}
-
-- (UIView *)GMGridView:(GMGridView *)gridView fullSizeViewForCell:(GMGridViewCell *)cell atIndex:(NSInteger)index
-{
-    UIView *fullView = [[UIView alloc] init];
-    fullView.backgroundColor = [UIColor yellowColor];
-    fullView.layer.masksToBounds = NO;
-    fullView.layer.cornerRadius = 8;
-    
-    CGSize size = [self GMGridView:gridView sizeInFullSizeForCell:cell atIndex:index inInterfaceOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
-    fullView.bounds = CGRectMake(0, 0, size.width, size.height);
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:fullView.bounds];
-    label.text = [NSString stringWithFormat:@"Fullscreen View for cell at index %ld", (long)index];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.backgroundColor = [UIColor clearColor];
-    label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    label.font = [UIFont boldSystemFontOfSize:15];
-    [fullView addSubview:label];
-    
-    return fullView;
-}
-
-- (void)GMGridView:(GMGridView *)gridView didStartTransformingCell:(GMGridViewCell *)cell
-{
-    [UIView animateWithDuration:0.5
-                          delay:0
-                        options:UIViewAnimationOptionAllowUserInteraction
-                     animations:^{
-                         cell.contentView.layer.shadowOpacity = 0.7;
-                     }
-                     completion:nil];
-}
-
-- (void)GMGridView:(GMGridView *)gridView didEndTransformingCell:(GMGridViewCell *)cell
-{
-    [UIView animateWithDuration:0.5
-                          delay:0
-                        options:UIViewAnimationOptionAllowUserInteraction
-                     animations:^{
-                         cell.contentView.layer.shadowOpacity = 0;
-                     }
-                     completion:nil];
-}
-
-- (void)GMGridView:(GMGridView *)gridView didEnterFullSizeForCell:(UIView *)cell
-{
-    
 }
 
 //////////////////////////////////////////////////////////////
@@ -414,41 +173,24 @@
         _gmGridView.disableEditOnEmptySpaceTap = YES;
         //_gmGridView.centerGrid = YES;
         _gmGridView.backgroundColor = [UIColor whiteColor];
-        _gmGridView.actionDelegate = self;
-        _gmGridView.sortingDelegate = self;
-        _gmGridView.transformDelegate = self;
-        _gmGridView.dataSource = self;
+        _gmGridView.actionDelegate = self.tagDataSource;
+        _gmGridView.sortingDelegate = self.tagDataSource;
+        _gmGridView.transformDelegate = self.tagDataSource;
+        _gmGridView.dataSource = self.tagDataSource;
     }
     return _gmGridView;
 }
 
-- (UICollectionView *)collectionView {
-    if (_collectionView == nil) {
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 30, IPHONE_WIDTH, self.bounds.size.height - 30) collectionViewLayout:self.collectionViewLayout];
-        [collectionView setBackgroundColor:[UIColor whiteColor]];
-        collectionView.scrollsToTop = NO;
-        collectionView.showsHorizontalScrollIndicator = NO;
-        collectionView.showsVerticalScrollIndicator = NO;
-        collectionView.delegate = self;
-        collectionView.dataSource = self;
-        [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:TagCellID];
-        collectionView.scrollEnabled = YES;
-        _collectionView = collectionView;
+-(TagViewDataSource *)tagDataSource
+{
+    if (!_tagDataSource) {
+        _tagDataSource = [[TagViewDataSource alloc]init];
+        _tagDataSource.pages = self.pages;
+        _tagDataSource.delegate = self;
     }
-    return _collectionView;
+    return _tagDataSource;
 }
 
-- (UICollectionViewFlowLayout *)collectionViewLayout {
-    if (_collectionViewLayout == nil) {
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.itemSize = CGSizeMake(IPHONE_WIDTH / 4 - 10, IPHONE_WIDTH / 4 - 10);
-        layout.minimumLineSpacing = 0.0;
-        layout.minimumInteritemSpacing = 0.0;
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        _collectionViewLayout = layout;
-    }
-    return _collectionViewLayout;
-}
 
 -(UIView *)titleView
 {

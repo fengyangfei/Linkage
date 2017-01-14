@@ -112,6 +112,7 @@
 		8B5DC66B1C79BFB700D29292 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5DC66A1C79BFB700D29292 /* QuickLook.framework */; };
 		8B5DC66D1C79BFCE00D29292 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5DC66C1C79BFCE00D29292 /* CoreLocation.framework */; };
 		8B5DC6811C79D0DB00D29292 /* YGRestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC6801C79D0DB00D29292 /* YGRestClient.m */; };
+		8B6CCB881E2A89970005912A /* TagViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CCB871E2A89970005912A /* TagViewDataSource.m */; };
 		8B6E17BA1D1FC80E00DBA897 /* ImageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6E17B91D1FC80E00DBA897 /* ImageInfoCell.m */; };
 		8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E31CA0436C00DBEB9F /* AddressViewController.m */; };
 		8B7172E71CA0443300DBEB9F /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7172E61CA0443300DBEB9F /* AddAddressViewController.m */; };
@@ -581,6 +582,8 @@
 		8B5DC6781C79CF1500D29292 /* LinkageModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkageModel2.xcdatamodel; sourceTree = "<group>"; };
 		8B5DC67F1C79D0DB00D29292 /* YGRestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGRestClient.h; sourceTree = "<group>"; };
 		8B5DC6801C79D0DB00D29292 /* YGRestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGRestClient.m; sourceTree = "<group>"; };
+		8B6CCB861E2A89970005912A /* TagViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewDataSource.h; sourceTree = "<group>"; };
+		8B6CCB871E2A89970005912A /* TagViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewDataSource.m; sourceTree = "<group>"; };
 		8B6E17B81D1FC80E00DBA897 /* ImageInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInfoCell.h; sourceTree = "<group>"; };
 		8B6E17B91D1FC80E00DBA897 /* ImageInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageInfoCell.m; sourceTree = "<group>"; };
 		8B7172E21CA0436C00DBEB9F /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
@@ -1682,6 +1685,15 @@
 			path = services;
 			sourceTree = "<group>";
 		};
+		8B6CCB851E2A897B0005912A /* dataSource */ = {
+			isa = PBXGroup;
+			children = (
+				8B6CCB861E2A89970005912A /* TagViewDataSource.h */,
+				8B6CCB871E2A89970005912A /* TagViewDataSource.m */,
+			);
+			path = dataSource;
+			sourceTree = "<group>";
+		};
 		8B7172DD1CA01F2C00DBEB9F /* driverManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1919,6 +1931,7 @@
 		8BB8FD581E1D22D900243B33 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8B6CCB851E2A897B0005912A /* dataSource */,
 				8BB8FD591E1D232500243B33 /* VCTagView.h */,
 				8BB8FD5A1E1D232500243B33 /* VCTagView.m */,
 				9A5DD94F1E2A04D600754655 /* VCSortTagView.h */,
@@ -3170,6 +3183,7 @@
 				9A23A3201C7E8EA900FB5EB6 /* ICETutorialPage.m in Sources */,
 				9AEF89C11CA1274600C5EB90 /* MJPhotoToolbar.m in Sources */,
 				8B8B7BE61CCE4BA100080609 /* MessageTableCell.m in Sources */,
+				8B6CCB881E2A89970005912A /* TagViewDataSource.m in Sources */,
 				9A403DF91E1B5C7300829EC4 /* VCMineViewController.m in Sources */,
 				9A23A2AA1C7A91D400FB5EB6 /* UIColor+BFPaperColors.m in Sources */,
 				9A403E181E1B729800829EC4 /* VCRankModel.m in Sources */,

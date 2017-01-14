@@ -18,8 +18,8 @@
 {
     NSError *error;
     VCPage *page = (VCPage *)model;
-    if (page.gid) {
-        VCPageModel *existModel = [VCPageModel MR_findFirstByAttribute:@"gid" withValue:page.gid inContext:[NSManagedObjectContext MR_defaultContext]];
+    if (page.url) {
+        VCPageModel *existModel = [VCPageModel MR_findFirstByAttribute:@"url" withValue:page.url inContext:[NSManagedObjectContext MR_defaultContext]];
         if (existModel) {
             return;
         }

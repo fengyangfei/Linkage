@@ -92,6 +92,7 @@
 -(void)starButtonPressed:(id)sender
 {
     [self saveStar:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPageUpdateNotification object:nil];
     }];
 }
 

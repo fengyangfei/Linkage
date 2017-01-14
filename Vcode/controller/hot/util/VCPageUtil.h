@@ -7,7 +7,7 @@
 //
 
 #import "ModelUtil.h"
-
+#define kPageUpdateNotification @"kPageTagUpdateNotification"
 @interface VCPageUtil : ModelUtil
 +(void)getModelByUrl:(NSString *)url completion:(void(^)(id<MTLJSONSerializing> model))completion;
 
