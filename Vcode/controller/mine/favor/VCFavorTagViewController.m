@@ -12,7 +12,7 @@
 
 @interface VCFavorTagViewController ()
 @property (strong, nonatomic) SKTagView *tagView;
-@property (strong, nonatomic) NSArray *colors;
+@property (strong, nonatomic) NSArray *titles;
 
 @end
 
@@ -20,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.colors = @[HEXCOLOR(0x7ecef4), HEXCOLOR(0x84ccc9), HEXCOLOR(0x88abda), HEXCOLOR(0x7dc1dd), HEXCOLOR(0xb6b8de)];
     [self setupTagView];
 }
 
@@ -37,9 +36,21 @@
         view.padding = UIEdgeInsetsMake(12, 12, 12, 12);
         view.interitemSpacing = 15;
         view.lineSpacing = 10;
-        __weak SKTagView *weakView = view;
+        @weakify(view);
         view.didTapTagAtIndex = ^(NSUInteger index){
-            [weakView removeTagAtIndex:index];
+            @strongify(view);
+            [view removeTagAtIndex:index];
+            
+            NSString *title = [self.titles objectAtIndex:index];
+            SKTag *tag = [SKTag tagWithText: title];
+            tag.textColor = [UIColor redColor];
+            tag.fontSize = 15;
+            tag.borderWidth = 1;
+            tag.borderColor = [UIColor redColor];
+            tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
+            tag.bgColor = [UIColor whiteColor];
+            tag.cornerRadius = 5;
+            [view insertTag:tag atIndex:index];
         };
         view;
     });
@@ -54,13 +65,14 @@
     [VCCategoryUtil queryAllCategoryTitles:^(NSArray *titles) {
         [titles enumerateObjectsUsingBlock: ^(NSString *text, NSUInteger idx, BOOL *stop) {
             @strongify(self);
+            self.titles = titles;
             SKTag *tag = [SKTag tagWithText: text];
-            tag.textColor = [UIColor whiteColor];
+            tag.textColor = [UIColor blackColor];
             tag.fontSize = 15;
-            //tag.font = [UIFont fontWithName:@"Courier" size:15];
-            //tag.enable = NO;
+            tag.borderWidth = 1;
+            tag.borderColor = [UIColor blackColor];
             tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
-            tag.bgColor = self.colors[idx % self.colors.count];
+            tag.bgColor = [UIColor whiteColor];
             tag.cornerRadius = 5;
             [self.tagView addTag:tag];
         }];
