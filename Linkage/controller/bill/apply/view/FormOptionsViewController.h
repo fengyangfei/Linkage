@@ -11,6 +11,7 @@
 @interface FormOptionsViewController : UIViewController<XLFormRowDescriptorViewController,UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) NSArray *options;
 @property (nonatomic, strong) UITableView *tableView;
+-(void)setupUI;
 -(void)reloadData;
 @end
 

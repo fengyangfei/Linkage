@@ -38,6 +38,11 @@
     [super viewDidLoad];
 }
 
+-(void)setupUI
+{
+    [self.view addSubview:self.tableView];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -68,6 +73,16 @@
 }
 
 #pragma mark -UITableView delegate&&datasource
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return self.keyIndexs;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return [self.keyIndexs indexOfObject:title];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [self.keyIndexs count];
@@ -113,7 +128,8 @@
 -(UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        CGRect frame = CGRectMake(0, 0, IPHONE_WIDTH, self.view.bounds.size.height - 150);
+        _tableView = [[UITableView alloc]initWithFrame:frame style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];
