@@ -37,7 +37,7 @@
 - (void)setupUI
 {
     UIViewController *mainViewController = ({
-        NSString *title = @"推荐";
+        NSString *title = VCThemeString(@"recommended");
         VCHotViewController *viewController = [[VCHotViewController alloc] init];
         viewController.view.backgroundColor = [UIColor paperColorCyan400];
         viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"hot"] selectedImage:[UIImage imageNamed:@"hot_on"]];
@@ -45,14 +45,14 @@
     });
     
     UIViewController *billController = ({
-        NSString *title = @"收藏";
+        NSString *title = VCThemeString(@"favorites");
         VCFavorViewController *viewController = [[VCFavorViewController alloc]init];
         viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"love"] selectedImage:[UIImage imageNamed:@"love_on"]];
         viewController;
     });
     
     UIViewController *messageController = ({
-        NSString *title = @"排行";
+        NSString *title = VCThemeString(@"rankings");
         VCRankViewController *viewController = [[VCRankViewController alloc]init];
         UITabBarItem *item = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"ranking"] selectedImage:[UIImage imageNamed:@"ranking_on"]];
         viewController.tabBarItem = item;
@@ -60,7 +60,7 @@
     });
     
     UIViewController *mineController = ({
-        NSString *title = @"我的";
+        NSString *title = VCThemeString(@"personal");
         VCMineViewController *viewController = [[VCMineViewController alloc]init];
         viewController.title = title;
         viewController.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[UIImage imageNamed:@"user"] selectedImage:[UIImage imageNamed:@"user_on"]];

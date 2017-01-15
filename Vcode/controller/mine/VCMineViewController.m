@@ -38,7 +38,7 @@
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
     
-    form = [XLFormDescriptor formDescriptorWithTitle:@"我的"];
+    form = [XLFormDescriptor formDescriptorWithTitle:VCThemeString(@"personal")];
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
@@ -51,27 +51,27 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"设置" andIconName:@"setting"];
+    row.value = [MenuItem createItemWithTitle:VCThemeString(@"setting") andIconName:@"setting"];
     row.action.viewControllerClass = [VCSettingViewController class];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"喜好设置" andIconName:@"mark"];
+    row.value = [MenuItem createItemWithTitle:VCThemeString(@"perferenceTags") andIconName:@"mark"];
     row.action.viewControllerClass = [VCFavorTagViewController class];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"建议反馈" andIconName:@"advance"];
+    row.value = [MenuItem createItemWithTitle:VCThemeString(@"advices") andIconName:@"advance"];
     row.action.viewControllerClass = [VCAdviceViewController class];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"帮助说明" andIconName:@"explain"];
+    row.value = [MenuItem createItemWithTitle:VCThemeString(@"help") andIconName:@"explain"];
     row.action.viewControllerClass = [VCHelperViewController class];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"关于Vcode" andIconName:@"choice"];
+    row.value = [MenuItem createItemWithTitle:VCThemeString(@"aboutVcode") andIconName:@"choice"];
     row.action.viewControllerClass = [VCAboutViewController class];
     [section addFormRow:row];
     

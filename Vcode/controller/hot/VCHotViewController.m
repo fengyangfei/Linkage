@@ -126,7 +126,11 @@
 -(NSMutableArray<NSString *> *)titles
 {
     if (!_titles) {
-        _titles = [[NSMutableArray alloc] initWithArray:kFixCategory];
+        _titles = [[NSMutableArray alloc] init];
+        [_titles addObject:VCThemeString(@"home")];
+        [_titles addObject:VCThemeString(@"selected")];
+        [_titles addObject:VCThemeString(@"hot")];
+        [_titles addObject:VCThemeString(@"local")];
     }
     return _titles;
 }

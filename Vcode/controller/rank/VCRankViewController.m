@@ -34,7 +34,7 @@
     style.contentViewBounces = NO;
     //style.normalTitleColor = [UIColor lightGrayColor];
     //style.selectedTitleColor = [UIColor grayColor];
-    self.titles = @[@"全球", @"分类", @"国家"];
+    self.titles = @[VCThemeString(@"global"), VCThemeString(@"category"), VCThemeString(@"country")];
     ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
     [self.view addSubview:scrollPageView];
 }
