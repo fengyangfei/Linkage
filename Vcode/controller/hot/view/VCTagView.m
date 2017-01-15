@@ -202,8 +202,9 @@
         tagLabel.attributedText = [hintStr attributedStringWithFont:[UIFont systemFontOfSize:12] color:[UIColor grayColor]];
         [_titleView addSubview:tagLabel];
         
-        UIButton *editButton = [[UIButton alloc]initWithFrame:CGRectMake(IPHONE_WIDTH - 80, 0, 100, 30)];
+        UIButton *editButton = [[UIButton alloc]initWithFrame:CGRectMake(IPHONE_WIDTH - 200, 0, 188, 30)];
         [editButton addTarget:self action:@selector(editAction:) forControlEvents:UIControlEventTouchUpInside];
+        editButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         NSString *editStr = VCThemeString(@"sortingIcons");
         [editButton setAttributedTitle:[editStr attributedStringWithFont:[UIFont systemFontOfSize:12] color:VHeaderColor] forState:UIControlStateNormal];
         [_titleView addSubview:editButton];

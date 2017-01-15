@@ -52,6 +52,7 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
         NSString *imgedName = [VcodeUtil searchImage:[x integerValue]];
         UIImage *image = [UIImage imageNamed:imgedName];
         [self.brandBtn setImage:image forState:UIControlStateNormal];
+        self.brandBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
     }];
 }
 
@@ -153,7 +154,7 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
 -(UIButton *)brandBtn
 {
     if (!_brandBtn) {
-        _brandBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 60, 44)];
+        _brandBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 64, 44)];
         //小箭头
         UIImageView *downView  = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"down"]];
         [downView setTranslatesAutoresizingMaskIntoConstraints:NO];

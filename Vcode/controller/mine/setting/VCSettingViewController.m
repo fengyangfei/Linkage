@@ -128,6 +128,9 @@ row.cellStyle = UITableViewCellStyleValue1;
     NSMutableArray *items = [[NSMutableArray alloc]init];
     [items addObject:MMItemMake(@"简体中文", MMItemTypeNormal, block)];
     [items addObject:MMItemMake(@"English", MMItemTypeNormal, block)];
+    [items addObject:MMItemMake(@"取消", MMItemTypeNormal, ^(NSInteger index){
+        
+    })];
     MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:@"切换语言"
                                                          detail:@""
                                                           items:items];

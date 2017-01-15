@@ -18,9 +18,13 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:241/255 green:241/255 blue:241/255 alpha:1];
     [self.view addSubview:self.webView];
-    //NSString *enUrl = [NSString stringWithFormat:@"%@/about_en.html",VBaseUrl];
-    NSString *cnUrl = [NSString stringWithFormat:@"%@/about.html", VBaseUrl];
-    NSURL* url = [NSURL URLWithString:cnUrl];//创建URL
+    NSString *urlStr;
+    if([VCThemeManager shareInstance].themeType == VCThemeTypeCN){
+        urlStr = [NSString stringWithFormat:@"%@/about.html", VBaseUrl];
+    }else{
+        urlStr = [NSString stringWithFormat:@"%@/about_en.html",VBaseUrl];
+    }
+    NSURL* url = [NSURL URLWithString:urlStr];//创建URL
     NSURLRequest* request = [NSURLRequest requestWithURL:url];//创建NSURLRequest
     self.webView.scalesPageToFit = YES;
     [self.webView loadRequest:request];
