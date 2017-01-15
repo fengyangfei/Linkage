@@ -90,6 +90,8 @@ typedef NS_OPTIONS(NSInteger, SegmentViewComponent) {
 /** 标题中图片的位置 */
 @property (assign, nonatomic) TitleImagePosition imagePosition;
 
+@property (nonatomic)         UIEdgeInsets segmentContentInset;
+
 /**未使用*/
 //@property (assign, nonatomic) SegmentViewComponent segmentViewComponent;
 

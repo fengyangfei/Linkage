@@ -633,6 +633,7 @@ static CGFloat const contentSizeXOff = 20.0;
         scrollView.bounces = self.segmentStyle.isSegmentViewBounces;
         scrollView.pagingEnabled = NO;
         scrollView.delegate = self;
+        scrollView.contentInset = self.segmentStyle.segmentContentInset;
         _scrollView = scrollView;
     }
     return _scrollView;

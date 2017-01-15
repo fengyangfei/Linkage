@@ -150,6 +150,7 @@
         _style.contentViewBounces = NO;
         //是否可以滑动
         _style.scrollContentView = YES;
+        _style.segmentContentInset = UIEdgeInsetsMake(0, 0, 0, 40);
     }
     return _style;
 }
