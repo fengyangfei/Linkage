@@ -27,15 +27,15 @@
         _animatedContentViewWhenTitleClicked = YES;
         _extraBtnBackgroundImageName = nil;
         _scrollLineHeight = 2.0;
-        _scrollLineColor = [UIColor brownColor];
+        _scrollLineColor = [UIColor colorWithRed:26.0/255.0 green:173.0/255.0 blue:25.0/255.0 alpha:1.0];
         _coverBackgroundColor = [UIColor lightGrayColor];
         _coverCornerRadius = 14.0;
         _coverHeight = 28.0;
         _titleMargin = 15.0;
         _titleFont = [UIFont systemFontOfSize:14.0];
         _titleBigScale = 1.3;
-        _normalTitleColor = [UIColor colorWithRed:157.0/255.0 green:157.0/255.0 blue:157.0/255.0 alpha:1.0];
-        _selectedTitleColor = [UIColor colorWithRed:39.0/255.0 green:39.0/255.0 blue:39.0/255.0 alpha:1.0];
+        _normalTitleColor = [UIColor colorWithRed:103.0/255.0 green:103.0/255.0 blue:103.0/255.0 alpha:1.0];
+        _selectedTitleColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0];
         _segmentContentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         _segmentHeight = 44.0;
 

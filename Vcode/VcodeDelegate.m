@@ -175,6 +175,9 @@ static NSString *const kVcodeStoreName = @"vcode.sqlite";
     [UINavigationBar appearance].translucent = NO;
     [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+    //去掉导航栏返回按钮中的文字
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
+                                                         forBarMetrics:UIBarMetricsDefault];
     //设置tabBar属性
     [[UITabBar appearance] setSelectedImageTintColor:VHeaderColor];
 }
