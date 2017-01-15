@@ -613,7 +613,7 @@ static CGFloat const contentSizeXOff = 20.0;
         [btn addTarget:self action:@selector(extraBtnOnClick:) forControlEvents:UIControlEventTouchUpInside];
         NSString *imageName = self.segmentStyle.extraBtnBackgroundImageName ? self.segmentStyle.extraBtnBackgroundImageName : @"";
         [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-        btn.backgroundColor = [UIColor whiteColor];
+        //btn.backgroundColor = [UIColor whiteColor];
         // 设置边缘的阴影效果
         btn.layer.shadowColor = [UIColor whiteColor].CGColor;
         btn.layer.shadowOffset = CGSizeMake(-5, 0);
