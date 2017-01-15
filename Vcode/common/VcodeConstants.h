@@ -11,6 +11,7 @@
 
 //通知
 #define VGMViewEditNotificationKey @"kGMViewEditNotificationKey"
+#define kSearchEngineUserDefaultKey @"kSearchEngineUserDefaultKey"
 
 //UI
 #define VHeaderColor HEXCOLOR(0x1aad19)

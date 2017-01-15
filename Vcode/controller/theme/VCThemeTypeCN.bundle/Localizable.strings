@@ -5,6 +5,39 @@
   Created by Mac mini on 16/1/29.
   Copyright © 2016年 ygsoft. All rights reserved.
 */
-"back" = "返回";
+//bottom
+"recommended" = "推荐";
+"favorites" = "收藏";
+"rankings" = "排行";
+"personal" = "我的";
+//category
+"home" = "首页";
+"selected" = "推荐";
+"hot" = "热门";
+"local" = "本地";
+//recommened
 "index" = "首页";
+"longPressToDelete" = "自定义标签 长按可删除";
+"sortingIcons" = "编辑排序";
+//favorites
+"donotHaveACollection" = "请添加收藏信息";
+//ranking
+"global" = "全球";
+"category" = "分类";
+"country" = "国家";
+//mine
 "completeInfoHint" = "请完善个人资料";
+"setting" = "设置";
+"perferenceTags" = "喜好设置";
+"advices" = "建议反馈";
+"help" = "帮助说明";
+"aboutVcode" = "关于Vcode";
+//mine->setting
+"languageSetting" = "语言设置";
+"searchToolsSetting" = "常用搜索引擎";
+"clearCache" = "消除缓存";
+"checkUpdate" = "检查更新";
+//mine->advices
+"questionsAdvices" = "问题";
+"pleaseEnterQuestions" = "请输入您的反馈建议";
+"phoneNumber" = "电话号码";

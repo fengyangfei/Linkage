@@ -26,7 +26,6 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
 @property (nonatomic, strong  ) NSNumber *engine;
 @end
 
-#define kSearchEngineUserDefaultKey @"kSearchEngineUserDefaultKey"
 @implementation VCBaseNavViewController
 @synthesize brandBtn = _brandBtn;
 @synthesize searchBar = _searchBar;
@@ -123,7 +122,7 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
     configuration.borderColor = [UIColor lightGrayColor];
     configuration.borderWidth = 0.5;
     
-    NSArray *array = @[@(SearchEngineBaidu),@(SearchEngineGoogle), @(SearchEngineBing),@(SearchEngineYahoo),@(SearchEngineHttp)];
+    NSArray *array = @[@(SearchEngineGoogle),@(SearchEngineBaidu),@(SearchEngineBing),@(SearchEngineYahoo),@(SearchEngineHttp)];
     
     NSMutableArray *imageArray;
     imageArray = [[NSMutableArray alloc]init];

@@ -350,7 +350,7 @@
         self.detailFontSize = 14.0f;
         self.buttonFontSize = 17.0f;
         
-        self.backgroundColor    = [UIColor blackColor];
+        self.backgroundColor    = MMHexColor(0xFFFFFFFF);
         self.titleColor         = MMHexColor(0x333333FF);
         self.detailColor        = MMHexColor(0x333333FF);
         self.splitColor         = MMHexColor(0xCCCCCCFF);

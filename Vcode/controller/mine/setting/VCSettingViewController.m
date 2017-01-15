@@ -13,6 +13,9 @@
 #import "VCMenuInfoCell.h"
 #import "MMSheetView.h"
 #import "MMAlertView.h"
+#import "VcodeUtil.h"
+#import "VCBaseNavViewController.h"
+#import "VCThemeManager.h"
 #import <SDWebImage/SDImageCache.h>
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
@@ -48,12 +51,16 @@ row.cellStyle = UITableViewCellStyleValue1;
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuInfo];
     menuItem = [MenuItem createItemWithTitle:@"语言设置" andIconName:@"lan_setting" andClass:nil];
-    menuItem.value = @"简体中文";
+    menuItem.value = [VCThemeManager shareInstance].themeType == VCThemeTypeCN?@"简体中文": @"英文";
     row.value = menuItem;
+    row.action.formSelector = @selector(languageAction:);
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMine];
-    row.value = [MenuItem createItemWithTitle:@"常用搜索引擎" andIconName:@"hota" andClass:nil];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuInfo];
+    menuItem = [MenuItem createItemWithTitle:@"常用搜索引擎" andIconName:@"hota" andClass:nil];
+    NSNumber *searchKey = [[NSUserDefaults standardUserDefaults] objectForKey:kSearchEngineUserDefaultKey];
+    menuItem.value = [VcodeUtil searchName:[searchKey integerValue]];
+    row.value = menuItem;
     row.action.formSelector = @selector(searchEngineAction:);
     [section addFormRow:row];
     
@@ -86,29 +93,50 @@ row.cellStyle = UITableViewCellStyleValue1;
 }
 
 #pragma mark - 事件
-
--(void)searchEngineAction:(id)sender
+//搜索引擎事件
+-(void)searchEngineAction:(XLFormRowDescriptor *)sender
 {
+    @weakify(self);
     MMPopupItemHandler block = ^(NSInteger index){
-        NSLog(@"clickd %@ button",@(index));
+        @strongify(self);
+        MenuItem *menu = (MenuItem *)sender.value;
+        menu.value = [VcodeUtil searchName:index];
+        [self updateFormRow:sender];
+        [[NSUserDefaults standardUserDefaults] setObject:@(index) forKey:kSearchEngineUserDefaultKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     };
-    
-//    MMPopupCompletionBlock completeBlock = ^(MMPopupView *popupView, BOOL finished){
-//        NSLog(@"animation complete");
-//    };
-    
-    NSArray *items =
-    @[MMItemMake(@"Done", MMItemTypeNormal, block),
-      MMItemMake(@"Save", MMItemTypeHighlight, block),
-      MMItemMake(@"Cancel", MMItemTypeNormal, block)];
-    
-    MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:@"AlertView"
-                                                         detail:@"each button take one row if there are more than 2 items"
+    NSMutableArray *items = [[NSMutableArray alloc]init];
+    NSArray *array = @[@(SearchEngineGoogle),@(SearchEngineBaidu), @(SearchEngineBing),@(SearchEngineYahoo),@(SearchEngineHttp)];
+    for (NSNumber *ca in array) {
+        [items addObject:MMItemMake([VcodeUtil searchName:[ca integerValue]], MMItemTypeNormal, block)];
+    }
+    MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:@"设置常用搜索引擎"
+                                                         detail:@""
                                                           items:items];
-    //            alertView.attachedView = self.view;
-    alertView.attachedView.mm_dimBackgroundBlurEnabled = YES;
-    alertView.attachedView.mm_dimBackgroundBlurEffectStyle = UIBlurEffectStyleLight;
-    
+    alertView.attachedView.mm_dimBackgroundBlurEnabled = NO;
+    alertView.attachedView.mm_dimBackgroundBlurEffectStyle = UIBlurEffectStyleDark;
+    [alertView show];
+}
+
+//语言切换事件
+-(void)languageAction:(XLFormRowDescriptor *)sender
+{
+    @weakify(self);
+    MMPopupItemHandler block = ^(NSInteger index){
+        @strongify(self);
+        [VCThemeManager shareInstance].themeType = index;
+        MenuItem *menu = (MenuItem *)sender.value;
+        menu.value = [VCThemeManager shareInstance].themeType == VCThemeTypeCN?@"简体中文": @"英文";;
+        [self updateFormRow:sender];
+    };
+    NSMutableArray *items = [[NSMutableArray alloc]init];
+    [items addObject:MMItemMake(@"简体中文", MMItemTypeNormal, block)];
+    [items addObject:MMItemMake(@"英文", MMItemTypeNormal, block)];
+    MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:@"切换语言"
+                                                         detail:@""
+                                                          items:items];
+    alertView.attachedView.mm_dimBackgroundBlurEnabled = NO;
+    alertView.attachedView.mm_dimBackgroundBlurEffectStyle = UIBlurEffectStyleDark;
     [alertView show];
 }
 
