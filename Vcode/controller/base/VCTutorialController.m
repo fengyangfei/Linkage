@@ -20,15 +20,15 @@
     // Init the pages texts, and pictures.
     ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithTitle:@""
                                                             subTitle:@""
-                                                         pictureName:@"intro1"
+                                                         pictureName:@"start1"
                                                             duration:3.0];
     ICETutorialPage *layer2 = [[ICETutorialPage alloc] initWithTitle:@""
                                                             subTitle:@""
-                                                         pictureName:@"intro2"
+                                                         pictureName:@"start2"
                                                             duration:3.0];
     ICETutorialPage *layer3 = [[ICETutorialPage alloc] initWithTitle:@""
                                                             subTitle:@""
-                                                         pictureName:@"intro3"
+                                                         pictureName:@"start3"
                                                             duration:3.0];
     NSArray *tutorialLayers = @[layer1,layer2,layer3];
     

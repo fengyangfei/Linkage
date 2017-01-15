@@ -19,8 +19,6 @@
     NSInteger _lastDeleteItemIndexAsked;
 }
 @property (nonatomic, strong) UIView *titleView;
-@property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) UICollectionViewFlowLayout *collectionViewLayout;
 @property (nonatomic, strong) GMGridView *gmGridView;
 @property (nonatomic, strong) NSMutableArray *pages;
 @property (nonatomic, strong) TagViewDataSource *tagDataSource;
@@ -34,7 +32,6 @@
 
 @implementation VCTagView
 @synthesize titleView= _titleView;
-@synthesize collectionView = _collectionView;
 @synthesize gmGridView = _gmGridView;
 @synthesize pages = _pages;
 @synthesize tagDataSource = _tagDataSource;
