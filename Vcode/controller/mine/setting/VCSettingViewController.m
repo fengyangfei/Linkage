@@ -44,20 +44,20 @@ row.cellStyle = UITableViewCellStyleValue1;
     XLFormRowDescriptor * row;
     MenuItem *menuItem;
     
-    form = [XLFormDescriptor formDescriptorWithTitle:@"设置"];
+    form = [XLFormDescriptor formDescriptorWithTitle:VCThemeString(@"setting")];
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuInfo];
-    menuItem = [MenuItem createItemWithTitle:@"语言设置" andIconName:@"lan_setting" andClass:nil];
-    menuItem.value = [VCThemeManager shareInstance].themeType == VCThemeTypeCN?@"简体中文": @"英文";
+    menuItem = [MenuItem createItemWithTitle:VCThemeString(@"languageSetting") andIconName:@"lan_setting" andClass:nil];
+    menuItem.value = [VCThemeManager shareInstance].themeType == VCThemeTypeCN?@"简体中文": @"English";
     row.value = menuItem;
     row.action.formSelector = @selector(languageAction:);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuInfo];
-    menuItem = [MenuItem createItemWithTitle:@"常用搜索引擎" andIconName:@"hota" andClass:nil];
+    menuItem = [MenuItem createItemWithTitle:VCThemeString(@"searchToolsSetting") andIconName:@"hota" andClass:nil];
     NSNumber *searchKey = [[NSUserDefaults standardUserDefaults] objectForKey:kSearchEngineUserDefaultKey];
     menuItem.value = [VcodeUtil searchName:[searchKey integerValue]];
     row.value = menuItem;
@@ -69,14 +69,14 @@ row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuInfo];
-    menuItem = [MenuItem createItemWithTitle:@"清除缓存" andIconName:@"rubbish" andClass:nil];
+    menuItem = [MenuItem createItemWithTitle:VCThemeString(@"clearCache") andIconName:@"rubbish" andClass:nil];
     NSUInteger totalSize = [[SDImageCache sharedImageCache] getSize];
     menuItem.value = [NSString stringWithFormat:@"%.2fM",(unsigned long)totalSize/(1024.0*1024.0)];
     row.value = menuItem;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuInfo];
-    menuItem = [MenuItem createItemWithTitle:@"检查更新" andIconName:@"refresh" andClass:nil];
+    menuItem = [MenuItem createItemWithTitle:VCThemeString(@"checkUpdate") andIconName:@"refresh" andClass:nil];
     menuItem.value = [NSString stringWithFormat:@"V%@", MAIN_VERSION];
     row.value = menuItem;
     [section addFormRow:row];
@@ -127,7 +127,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     };
     NSMutableArray *items = [[NSMutableArray alloc]init];
     [items addObject:MMItemMake(@"简体中文", MMItemTypeNormal, block)];
-    [items addObject:MMItemMake(@"英文", MMItemTypeNormal, block)];
+    [items addObject:MMItemMake(@"English", MMItemTypeNormal, block)];
     MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:@"切换语言"
                                                          detail:@""
                                                           items:items];
