@@ -20,4 +20,5 @@ typedef NS_ENUM(NSUInteger, SearchEngine) {
 +(NSString *)searchImage:(SearchEngine)searchEngine;
 +(NSString *)searchName:(SearchEngine)searchEngine;
 +(NSString *)searchUrl:(SearchEngine)searchEngine;
++(void)refreshApp;
 @end

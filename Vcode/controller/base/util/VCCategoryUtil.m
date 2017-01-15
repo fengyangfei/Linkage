@@ -18,8 +18,8 @@
 {
     NSError *error;
     VCCategory *category = (VCCategory *)model;
-    if (category.title) {
-        VCCategoryModel *existModel = [self.managedObjectClass MR_findFirstByAttribute:@"title" withValue:category.title inContext:[NSManagedObjectContext MR_defaultContext]];
+    if (category.code) {
+        VCCategoryModel *existModel = [self.managedObjectClass MR_findFirstByAttribute:@"code" withValue:category.code inContext:[NSManagedObjectContext MR_defaultContext]];
         if (existModel) {
             [existModel MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
         }

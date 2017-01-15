@@ -7,6 +7,8 @@
 //
 
 #import "VcodeUtil.h"
+#import "VCTabBarController.h"
+#import "VcodeDelegate.h"
 #define kUUIDKey @"kUUIDKey"
 
 @implementation VcodeUtil
@@ -94,6 +96,13 @@
             return @"https://www.google.com/search?q=";
             break;
     }
+}
+
++(void)refreshApp
+{
+    UIViewController *rooViewController = [[VCTabBarController alloc]init];
+    VcodeDelegate *delegate = (VcodeDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.window.rootViewController = rooViewController;
 }
 
 @end

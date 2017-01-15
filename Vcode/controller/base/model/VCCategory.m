@@ -8,12 +8,22 @@
 
 #import "VCCategory.h"
 #import "VCCategoryModel.h"
+#import "VCThemeManager.h"
 
 @implementation VCCategory
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
     return keyDic;
+}
+
+-(NSString *)title
+{
+    if([VCThemeManager shareInstance].themeType == VCThemeTypeCN){
+        return _title;
+    }else{
+        return _code;
+    }
 }
 
 #pragma mark - MTLManagedObjectSerializing

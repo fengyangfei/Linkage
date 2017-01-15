@@ -121,13 +121,9 @@ row.cellStyle = UITableViewCellStyleValue1;
 //语言切换事件
 -(void)languageAction:(XLFormRowDescriptor *)sender
 {
-    @weakify(self);
     MMPopupItemHandler block = ^(NSInteger index){
-        @strongify(self);
         [VCThemeManager shareInstance].themeType = index;
-        MenuItem *menu = (MenuItem *)sender.value;
-        menu.value = [VCThemeManager shareInstance].themeType == VCThemeTypeCN?@"简体中文": @"英文";;
-        [self updateFormRow:sender];
+        [VcodeUtil refreshApp];
     };
     NSMutableArray *items = [[NSMutableArray alloc]init];
     [items addObject:MMItemMake(@"简体中文", MMItemTypeNormal, block)];
