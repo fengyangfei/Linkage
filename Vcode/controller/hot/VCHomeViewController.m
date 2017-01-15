@@ -101,7 +101,7 @@
 -(VCTagView *)tagView
 {
     if(!_tagView){
-        CGRect rect = CGRectMake(0, IPHONE_WIDTH * 0.6, IPHONE_WIDTH, self.view.bounds.size.height - IPHONE_WIDTH * 0.6 - 120);
+        CGRect rect = CGRectMake(0, IPHONE_WIDTH * 0.6, IPHONE_WIDTH, self.view.bounds.size.height - IPHONE_WIDTH * 0.6 - 140);
         _tagView = [[VCTagView alloc]initWithFrame:rect];
         _tagView.delegate = self;
     }

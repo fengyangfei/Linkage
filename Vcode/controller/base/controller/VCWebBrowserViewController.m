@@ -110,7 +110,7 @@
     VCPage *page = [[VCPage alloc]init];
     page.name = title;
     page.url = self.urlStr;
-    page.sortNumber = @(0);
+    page.sortNumber = @(-1);
     
     [VCPageUtil syncToDataBase:page completion:^{
         [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
