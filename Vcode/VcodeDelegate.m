@@ -41,9 +41,7 @@ static NSString *const kVcodeStoreName = @"vcode.sqlite";
     
 //    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:kPgyerAppKey];
 //    [[PgyUpdateManager sharedPgyManager] checkUpdate];
-    
-    [[VCThemeManager shareInstance] setThemeType:VCThemeTypeCN];
-    
+        
     [self setupDataBase];
 //    [self registerJPushWithOptions:launchOptions];
     

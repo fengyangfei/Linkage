@@ -110,7 +110,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     for (NSNumber *ca in array) {
         [items addObject:MMItemMake([VcodeUtil searchName:[ca integerValue]], MMItemTypeNormal, block)];
     }
-    MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:@"设置常用搜索引擎"
+    MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:VCThemeString(@"searchToolsSetting")
                                                          detail:@""
                                                           items:items];
     alertView.attachedView.mm_dimBackgroundBlurEnabled = NO;
