@@ -36,6 +36,7 @@
     _tapGesture.delegate = self;
     _tapGesture.numberOfTapsRequired = 1;
     _tapGesture.numberOfTouchesRequired = 1;
+    _tapGesture.cancelsTouchesInView = NO;
     [self.scrollView addGestureRecognizer:_tapGesture];
 }
 

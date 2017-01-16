@@ -31,13 +31,22 @@
                         placeholder:(NSString *)inputPlaceholder
                             handler:(MMPopupInputHandler)inputHandler
 {
+    return [self initWithInputTitle:title detail:detail inputText:nil placeholder:inputPlaceholder handler:inputHandler];
+}
+
+- (instancetype) initWithInputTitle:(NSString*)title
+                             detail:(NSString*)detail
+                          inputText:(NSString*)inputText
+                        placeholder:(NSString*)inputPlaceholder
+                            handler:(MMPopupInputHandler)inputHandler
+{
     MMAlertViewConfig *config = [MMAlertViewConfig globalConfig];
     
     NSArray *items =@[
                       MMItemMake(config.defaultTextCancel, MMItemTypeHighlight, nil),
                       MMItemMake(config.defaultTextConfirm, MMItemTypeHighlight, nil)
                       ];
-    return [self initWithTitle:title detail:detail items:items inputPlaceholder:inputPlaceholder inputHandler:inputHandler];
+    return [self initWithTitle:title detail:detail items:items inputText:inputText inputPlaceholder:inputPlaceholder inputHandler:inputHandler];
 }
 
 - (instancetype) initWithConfirmTitle:(NSString*)title
@@ -62,6 +71,16 @@
 - (instancetype)initWithTitle:(NSString *)title
                        detail:(NSString *)detail
                         items:(NSArray *)items
+             inputPlaceholder:(NSString *)inputPlaceholder
+                 inputHandler:(MMPopupInputHandler)inputHandler
+{
+    return [self initWithTitle:title detail:detail items:items inputText:nil inputPlaceholder:inputPlaceholder inputHandler:inputHandler];
+}
+
+- (instancetype)initWithTitle:(NSString *)title
+                       detail:(NSString *)detail
+                        items:(NSArray *)items
+                    inputText:(NSString *)inputText
              inputPlaceholder:(NSString *)inputPlaceholder
                  inputHandler:(MMPopupInputHandler)inputHandler
 {
@@ -144,6 +163,7 @@
             self.inputView.leftViewMode = UITextFieldViewModeAlways;
             self.inputView.clearButtonMode = UITextFieldViewModeWhileEditing;
             self.inputView.placeholder = inputPlaceholder;
+            self.inputView.text = inputText;
             
             lastAttribute = self.inputView.mas_bottom;
         }

@@ -20,6 +20,12 @@ typedef void(^MMPopupInputHandler)(NSString *text);
                         placeholder:(NSString*)inputPlaceholder
                             handler:(MMPopupInputHandler)inputHandler;
 
+- (instancetype) initWithInputTitle:(NSString*)title
+                             detail:(NSString*)detail
+                          inputText:(NSString*)inputText
+                        placeholder:(NSString*)inputPlaceholder
+                            handler:(MMPopupInputHandler)inputHandler;
+
 - (instancetype) initWithConfirmTitle:(NSString*)title
                                detail:(NSString*)detail;
 
