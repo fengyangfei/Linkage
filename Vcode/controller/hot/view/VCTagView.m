@@ -223,6 +223,7 @@
 #pragma mark - 事件
 -(void)editAction:(id)sender
 {
+    [self cancelEditing];
     if ([self.delegate respondsToSelector:@selector(VCTagView:sortTagOnClick:)]) {
         [self.delegate VCTagView:self sortTagOnClick:sender];
     }

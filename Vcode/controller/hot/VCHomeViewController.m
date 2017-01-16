@@ -16,10 +16,11 @@
 #import "UIViewController+WebBrowser.h"
 #import "VCTagSortViewController.h"
 
-@interface VCHomeViewController ()<SDCycleScrollViewDelegate,VCTagViewDelegate,VCTagSortViewControllerDelegate>
+@interface VCHomeViewController ()<SDCycleScrollViewDelegate,VCTagViewDelegate,VCTagSortViewControllerDelegate,UIGestureRecognizerDelegate>
 @property (nonatomic, readonly) SDCycleScrollView *scrollView;
 @property (nonatomic, readonly) VCTagView *tagView;
 @property (nonatomic, strong) VCIndex *homeIndex;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @end
 
 @implementation VCHomeViewController
@@ -30,6 +31,18 @@
     [super viewDidLoad];
     [self setupUI];
     [self setupData];
+    
+    _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureUpdated:)];
+    _tapGesture.delegate = self;
+    _tapGesture.numberOfTapsRequired = 1;
+    _tapGesture.numberOfTouchesRequired = 1;
+    [self.scrollView addGestureRecognizer:_tapGesture];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.tagView cancelEditing];
 }
 
 -(void)setupUI
@@ -84,6 +97,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+#pragma mark - tapGestureUpdated
+-(void)tapGestureUpdated:(UITapGestureRecognizer *)gesture
+{
+    [self.tagView cancelEditing];
+}
 
 #pragma mark - getter setter
 -(SDCycleScrollView *)scrollView
@@ -112,6 +130,7 @@
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
     NSLog(@"---点击了第%ld张图片", (long)index);
+    [self.tagView cancelEditing];
 }
 
 #pragma mark - TagViewDelegate
