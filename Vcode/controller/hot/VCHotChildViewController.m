@@ -18,27 +18,58 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface VCHotChildViewController ()
-@property(assign, nonatomic)NSInteger index;
+@property (assign, nonatomic) NSInteger index;
 @property (nonatomic, assign) RankType rankType;
+@property (nonatomic) NSUInteger currentPage;
+@property (nonatomic, strong) NSMutableArray *rows;
 @end
 
 @implementation VCHotChildViewController
 @synthesize tableView = _tableView;
+@synthesize rows = _rows;
 
 -(instancetype)initWithRankType:(RankType)rankType
 {
     self = [super init];
     if (self) {
         self.rankType = rankType;
+        self.currentPage = 1;
     }
     return self;
 }
 
--(void)viewDidLoad
+-(void)setupUI
 {
-    [super viewDidLoad];
+    @weakify(self);
+    self.tableView.sectionHeaderHeight = 20;
+    self.tableView.sectionFooterHeight = 0;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 0.1)];
     self.tableView.tableFooterView = [[UIView alloc] init];
+    [self.tableView setEditing:NO];
+    void(^headerLoadSuccess)(void) = ^() {
+        @strongify(self);
+        if([self.tableView.mj_header isRefreshing]){
+            [self.tableView.mj_header endRefreshing];
+        }
+    };
+    void(^footerLoadSuccess)(void) = ^() {
+        @strongify(self);
+        if([self.tableView.mj_footer isRefreshing]){
+            [self.tableView.mj_footer endRefreshing];
+        }
+    };
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self);
+        self.currentPage = 1;
+        [self queryDataFromServer:headerLoadSuccess];
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        @strongify(self);
+        self.currentPage += 1;
+        [self queryDataFromServer:footerLoadSuccess];
+    }];
+    
+    [self setupNavigationItem];
 }
 
 -(void)setupNavigationItem
@@ -53,7 +84,7 @@
 
 - (void)queryDataFromServer:(void(^)(void))block
 {
-    [self refreshTable];
+    [self refreshTable:block];
 }
 
 #pragma mark - ZJScrollPageViewChildVcDelegate
@@ -67,40 +98,44 @@
 }
 
 //刷新列表
--(void)refreshTable{
+-(void)refreshTable:(void(^)(void))completion{
     @weakify(self);
     void(^success)(NSArray *models) = ^(NSArray *models) {
         @strongify(self);
         [self initializeForm:models];
-        [self.tableView.mj_header endRefreshing];
+        if (completion) {
+            completion();
+        }
     };
     void(^failure)(NSError *error) = ^(NSError *error) {
-        @strongify(self);
-        [self.tableView.mj_header endRefreshing];
+        if (completion) {
+            completion();
+        }
         [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     };
     if (self.rankType == RankTypeCategory) {
         [VCCategoryUtil getModelByTitle:self.title completion:^(VCCategory *model) {
-            NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":model.code};
+            @strongify(self);
+            NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":model.code,@"page":@(self.currentPage)};
             [VCRankUtil queryCategoryRank:parameter completion:^(NSArray *models) {
                 success(models);
             } failure:failure];
         }];
     }
     else if (self.rankType == RankTypeLocal){
-        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"countryCode":self.title?:@"CN"};
+        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"countryCode":self.title?:@"CN",@"page":@(self.currentPage)};
         [VCRankUtil queryLocalRank:parameter completion:^(NSArray *models) {
             success(models);
         } failure:failure];
     }
     else if (self.rankType == RankTypeRecommend){
-        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID]};
+        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"page":@(self.currentPage)};
         [VCRankUtil queryRecommendRank:parameter completion:^(NSArray *models) {
             success(models);
         } failure:failure];
     }
     else if (self.rankType == RankTypeHot){
-        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID]};
+        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"page":@(self.currentPage)};
         [VCRankUtil queryHotRank:parameter completion:^(NSArray *models) {
             success(models);
         } failure:failure];
@@ -117,7 +152,11 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    for (id model in models) {
+    if (self.currentPage == 1) {
+        [self.rows removeAllObjects];
+    }
+    [self.rows addObjectsFromArray:models];
+    for (id model in self.rows) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:VCRankDescriporType];
         row.value = model;
         row.action.formSelector = @selector(gotoWebBrowser:);
@@ -145,6 +184,7 @@
 }
 
 
+#pragma mark - getter setter
 -(UITableView *)tableView
 {
     if (!_tableView) {
@@ -153,6 +193,14 @@
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
     return _tableView;
+}
+
+-(NSMutableArray *)rows
+{
+    if (!_rows) {
+        _rows = [[NSMutableArray alloc]init];
+    }
+    return _rows;
 }
 
 @end
