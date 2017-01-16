@@ -18,10 +18,12 @@
 @interface VCWebBrowserViewController ()
 @property (nonatomic, copy) NSString *urlStr;
 @property (nonatomic, readonly) UIButton *favorInnerButton;
+@property (nonatomic, readonly) UIButton *starInnerButton;
 @property (nonatomic, readonly) UIBarButtonItem *starButton;
 @property (nonatomic, strong) UIBarButtonItem *rocketButton;
 @property (nonatomic, strong) UIBarButtonItem *favorButton;
 @property (nonatomic) BOOL favorStatus;
+@property (nonatomic) BOOL starStatus;
 @end
 
 @implementation VCWebBrowserViewController
@@ -29,6 +31,7 @@
 @synthesize starButton = _starButton;
 @synthesize rocketButton = _rocketButton;
 @synthesize favorInnerButton = _favorInnerButton;
+@synthesize starInnerButton = _starInnerButton;
 
 -(instancetype)init
 {
@@ -44,6 +47,7 @@
     @weakify(self);
     if(self.wkWebView) {
         self.urlStr = self.wkWebView.URL.absoluteString;
+        //查询收藏状态
         [VCFavorUtil getModelByUrl:self.urlStr completion:^(id<MTLJSONSerializing> model) {
             @strongify(self);
             if (model) {
@@ -52,15 +56,36 @@
                 self.favorStatus = NO;
             }
         }];
+        //收藏
         [RACObserve(self, favorStatus) subscribeNext:^(id x) {
+            @strongify(self);
             if ([x boolValue]) {
                 UIImage *likeOffIcon = [UIImage imageNamed:@"like_icon_on"];
                 [self.favorInnerButton setImage:likeOffIcon forState:UIControlStateNormal];
-                [self.favorButton setImage:likeOffIcon];
             }else{
                 UIImage *likeOffIcon = [UIImage imageNamed:@"like_icon_off"];
                 [self.favorInnerButton setImage:likeOffIcon forState:UIControlStateNormal];
-                [self.favorButton setImage:likeOffIcon];
+            }
+        }];
+        
+        //查询标签状态
+        [VCPageUtil getModelByUrl:self.urlStr completion:^(id<MTLJSONSerializing> model) {
+            @strongify(self);
+            if (model) {
+                self.starStatus = YES;
+            }else{
+                self.starStatus = NO;
+            }
+        }];
+        //标签
+        [RACObserve(self, starStatus) subscribeNext:^(id x) {
+            @strongify(self);
+            if ([x boolValue]) {
+                UIImage *collectionIcon = [UIImage imageNamed:@"collect_icon_on"];
+                [self.starInnerButton setImage:collectionIcon forState:UIControlStateNormal];
+            }else{
+                UIImage *collectionIcon = [UIImage imageNamed:@"collect_icon_off"];
+                [self.starInnerButton setImage:collectionIcon forState:UIControlStateNormal];
             }
         }];
     }
@@ -93,12 +118,16 @@
 //添加到标签
 -(void)starButtonPressed:(id)sender
 {
+    @weakify(self);
     if (self.uiWebViewIsLoading) {
         [SVProgressHUD showErrorWithStatus:@"网页加载未完成"];
         return;
     }
     [self saveStar:^{
+        @strongify(self);
         [[NSNotificationCenter defaultCenter] postNotificationName:kPageUpdateNotification object:nil];
+        UIImage *collectionIcon = [UIImage imageNamed:@"collect_icon_on"];
+        [self.starInnerButton setImage:collectionIcon forState:UIControlStateNormal];
     }];
 }
 
@@ -222,10 +251,6 @@
 {
     if (!_favorButton) {
         _favorButton = [[UIBarButtonItem alloc]initWithCustomView:self.favorInnerButton];
-        UIImage *likeOffIcon = [UIImage imageNamed:@"like_icon_off"];
-
-        //_favorButton = [ui]
-        _favorButton = [[UIBarButtonItem alloc] initWithImage:likeOffIcon style:UIBarButtonItemStylePlain target:self action:@selector(likeButtonPressed:)];
     }
     return _favorButton;
 }
@@ -233,8 +258,7 @@
 -(UIBarButtonItem *)starButton
 {
     if (!_starButton) {
-        UIImage *starIcon = [UIImage imageNamed:@"collect_icon_off"];
-        _starButton = [[UIBarButtonItem alloc]initWithImage:starIcon style:UIBarButtonItemStylePlain target:self action:@selector(starButtonPressed:)];
+        _starButton = [[UIBarButtonItem alloc]initWithCustomView:self.starInnerButton];
     }
     return _starButton;
 }
@@ -255,9 +279,20 @@
         UIImage *likeOffIcon = [UIImage imageNamed:@"like_icon_off"];
         _favorInnerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 44)];
         [_favorInnerButton setImage:likeOffIcon forState:UIControlStateNormal];
-        [_favorInnerButton addTarget:self action:@selector(likeButtonPressed:) forControlEvents:UIControlEventTouchDragInside];
+        [_favorInnerButton addTarget:self action:@selector(likeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _favorInnerButton;
+}
+
+-(UIButton *)starInnerButton
+{
+    if (!_starInnerButton) {
+        UIImage *collectOffIcon = [UIImage imageNamed:@"collect_icon_off"];
+        _starInnerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 44)];
+        [_starInnerButton setImage:collectOffIcon forState:UIControlStateNormal];
+        [_starInnerButton addTarget:self action:@selector(starButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _starInnerButton;
 }
 
 @end
