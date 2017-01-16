@@ -205,13 +205,14 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
     _tintColor = tintColor;
     [self.progressView setTintColor:tintColor];
     [self.navigationController.navigationBar setTintColor:tintColor];
-    [self.navigationController.toolbar setTintColor:tintColor];
+    [self.navigationController.toolbar setTintColor:[UIColor blackColor]];
 }
 
 - (void)setBarTintColor:(UIColor *)barTintColor {
     _barTintColor = barTintColor;
     [self.navigationController.navigationBar setBarTintColor:barTintColor];
-    [self.navigationController.toolbar setBarTintColor:barTintColor];
+    [self.navigationController.toolbar setBarTintColor:[UIColor blackColor]];
+    [self.navigationController.toolbar setBarStyle:UIBarStyleBlack];
 }
 
 - (void)setActionButtonHidden:(BOOL)actionButtonHidden {
