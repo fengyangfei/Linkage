@@ -13,6 +13,7 @@
 #import "VCPageUtil.h"
 #import "VCIndex.h"
 #import "MMAlertView.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface VCWebBrowserViewController ()
 @property (nonatomic, copy) NSString *urlStr;
@@ -158,6 +159,7 @@
             [self saveFavor:favor completion:^{
                 @strongify(self);
                 self.favorStatus = YES;
+                [SVProgressHUD showSuccessWithStatus:@"收藏成功"];
             }];
         }];
         alertView.attachedView.mm_dimBackgroundBlurEnabled = NO;
@@ -167,6 +169,7 @@
         [self deleteFavor:^{
             @strongify(self);
             self.favorStatus = NO;
+            [SVProgressHUD showSuccessWithStatus:@"取消成功"];
         }];
     }
 }

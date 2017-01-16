@@ -17,6 +17,7 @@
 #import <IQKeyboardManager/KeyboardManager.h>
 #import <XLFormViewController.h>
 #import <PgyUpdate/PgyUpdateManager.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #import "JPUSHService.h"
 #import <AdSupport/AdSupport.h>
@@ -178,6 +179,9 @@ static NSString *const kVcodeStoreName = @"vcode.sqlite";
                                                          forBarMetrics:UIBarMetricsDefault];
     //设置tabBar属性
     [[UITabBar appearance] setSelectedImageTintColor:VHeaderColor];
+    
+    [SVProgressHUD setBackgroundColor:UIColorFromRGBAndAlpha(0x000000, 0.8)];
+    [SVProgressHUD setForegroundColor:UIColorFromRGB(0xFFFFFF)];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
