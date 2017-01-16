@@ -114,6 +114,9 @@
 //Allow for custom activities in the browser by populating this optional array
 @property (nonatomic, strong) NSArray *customActivityItems;
 
+//把属性对外开放
+@property (nonatomic, assign) BOOL uiWebViewIsLoading;
+
 #pragma mark - Public Interface
 
 

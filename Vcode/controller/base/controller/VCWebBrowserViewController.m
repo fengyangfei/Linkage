@@ -93,6 +93,10 @@
 //添加到标签
 -(void)starButtonPressed:(id)sender
 {
+    if (self.uiWebViewIsLoading) {
+        [SVProgressHUD showErrorWithStatus:@"网页加载未完成"];
+        return;
+    }
     [self saveStar:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:kPageUpdateNotification object:nil];
     }];
@@ -138,6 +142,10 @@
 
 //添加到收藏
 - (void)likeButtonPressed:(id)sender {
+    if (self.uiWebViewIsLoading) {
+        [SVProgressHUD showErrorWithStatus:@"网页加载未完成"];
+        return;
+    }
     @weakify(self);
     if(!self.favorStatus){
         NSString *title;
@@ -202,6 +210,11 @@
 - (void)webBrowser:(KINWebBrowserViewController *)webBrowser didStartLoadingURL:(NSURL *)URL
 {
     self.urlStr = URL.absoluteString;
+}
+
+- (void)webBrowser:(KINWebBrowserViewController *)webBrowser didFinishLoadingURL:(NSURL *)URL
+{
+    
 }
 
 #pragma mark - getter setter
