@@ -33,6 +33,10 @@
 {
     [super viewWillAppear:animated];
     [self setupData:nil];
+
+    UILongPressGestureRecognizer *longPressGr = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressAction:)];
+    longPressGr.minimumPressDuration = 1.0;
+    [self.tableView addGestureRecognizer:longPressGr];
 }
 
 - (void)setupData:(void(^)(NSArray *models))completion
@@ -74,6 +78,19 @@
     if (StringIsNotEmpty(favor.url)) {
         [self presentWebBrowser:favor.url];
     }
+}
+
+-(void)longPressAction:(UILongPressGestureRecognizer *)gesture
+{
+    if(gesture.state == UIGestureRecognizerStateBegan){
+        CGPoint point = [gesture locationInView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+        if (!indexPath) {
+            return;
+        }
+        NSLog(@"长按第%ld",indexPath.row);
+    }
+        
 }
 #pragma mark - helper
 -(void)performFormSelector:(SEL)selector withObject:(id)sender
