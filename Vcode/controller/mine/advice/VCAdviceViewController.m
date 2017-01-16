@@ -42,39 +42,29 @@
         make.height.equalTo(@(200));
     }];
     
-    /*
-     UIView *bottomView = [UIView new];
-     bottomView.backgroundColor = BackgroundColor;
-     [self.view addSubview:bottomView];
-     [bottomView makeConstraints:^(MASConstraintMaker *make) {
-     make.left.equalTo(self.view.left);
-     make.right.equalTo(self.view.right);
-     make.bottom.equalTo(self.view.bottom);
-     make.height.equalTo(54);
-     }];
-     
-     BFPaperButton *button = ({
-     BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
-     button.cornerRadius = 4;
-     [button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
-     [button setBackgroundImage:ButtonBgImage forState:UIControlStateHighlighted];
-     [button setBackgroundImage:ButtonDisableBgImage forState:UIControlStateDisabled];
-     [button setTitleFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.f]];
-     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-     [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
-     NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"电话" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:20]}];
-     [button setAttributedTitle:title forState:UIControlStateNormal];
-     [button addTarget:self action:@selector(forgetAction:) forControlEvents:UIControlEventTouchUpInside];
-     button;
-     });
-     [bottomView addSubview:button];
-     [button makeConstraints:^(MASConstraintMaker *make) {
-     make.left.equalTo(bottomView.left).offset(10);
-     make.right.equalTo(bottomView.right).offset(-10);
-     make.top.equalTo(bottomView.top).offset(5);
-     make.height.equalTo(@44);
-     }];
-     */
+    UILabel *phoneLabel = [UILabel new];
+    phoneLabel.backgroundColor = BackgroundColor;
+    phoneLabel.text = @"电话号码";
+    phoneLabel.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:phoneLabel];
+    [phoneLabel makeConstraints:^(MASConstraintMaker *make) {
+         make.left.equalTo(self.view.left).offset(8);
+         make.right.equalTo(self.view.right);
+         make.top.equalTo(self.textView.bottom);
+         make.height.equalTo(44);
+    }];
+    
+    UITextField *phoneTextField = [[UITextField alloc]init];
+    phoneTextField.backgroundColor = [UIColor whiteColor];
+    phoneTextField.placeholder = @"请输入电话号码";
+    phoneTextField.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:phoneTextField];
+    [phoneTextField makeConstraints:^(MASConstraintMaker *make) {
+         make.left.equalTo(self.view.left);
+         make.right.equalTo(self.view.right);
+         make.top.equalTo(phoneLabel.bottom);
+         make.height.equalTo(@44);
+    }];
 }
 
 

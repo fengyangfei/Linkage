@@ -57,6 +57,14 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
+    VCRank *rank = rowDescriptor.value;
+    if(StringIsEmpty(rank.introduction)){
+        return 90 - 32;
+    }else{
+        if(rank.introduction.length < 40){
+            return 90 - 16;
+        }
+    }
     return 90;
 }
 
@@ -135,7 +143,7 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
         _titleLabel.font = [UIFont boldSystemFontOfSize:20];
-        _titleLabel.textColor = [UIColor blackColor];
+        _titleLabel.textColor = HEXCOLOR(0x000000);
     }
     return _titleLabel;
 }
@@ -145,9 +153,8 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
     if (!_detailLabel) {
         _detailLabel = [UILabel new];
         _detailLabel.font = [UIFont systemFontOfSize:14];
-        _detailLabel.textColor = [UIColor lightGrayColor];
         _detailLabel.numberOfLines = 2;
-        _detailLabel.textColor = [UIColor lightGrayColor];
+        _detailLabel.textColor = HEXCOLOR(0x6e6e6e);
     }
     return _detailLabel;
 }
@@ -158,7 +165,7 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
         _subDetailLabel = [UILabel new];
         _subDetailLabel.font = [UIFont systemFontOfSize:12];
         _subDetailLabel.numberOfLines = 0;
-        _subDetailLabel.textColor = [UIColor lightGrayColor];
+        _subDetailLabel.textColor = HEXCOLOR(0x9b9b9b);
     }
     return _subDetailLabel;
 }

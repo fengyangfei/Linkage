@@ -24,7 +24,6 @@
 -(void)prepareForReuse
 {
     [super prepareForReuse];
-    self.backgroundColor = [UIColor redColor];
     [self setupUI];
 }
 
