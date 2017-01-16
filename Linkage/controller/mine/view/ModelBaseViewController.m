@@ -38,18 +38,30 @@ row.cellStyle = UITableViewCellStyleValue1;
 
 -(void)setupUI
 {
-    WeakSelf
+    @weakify(self);
     self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 18)];
     [self.tableView setEditing:NO];
+    void(^headerLoadSuccess)(void) = ^() {
+        @strongify(self);
+        if([self.tableView.mj_footer isRefreshing]){
+            [self.tableView.mj_footer endRefreshing];
+        }
+    };
+    void(^footerLoadSuccess)(void) = ^() {
+        @strongify(self);
+        if([self.tableView.mj_footer isRefreshing]){
+            [self.tableView.mj_footer endRefreshing];
+        }
+    };
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        StrongSelf
-        [weakSelf queryDataFromServer:^{
-            if([strongSelf.tableView.mj_header isRefreshing]){
-                [strongSelf.tableView.mj_header endRefreshing];
-            }
-        }];
+        @strongify(self);
+        [self queryDataFromServer:headerLoadSuccess];
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        @strongify(self);
+        [self queryDataFromServer:footerLoadSuccess];
     }];
     
     [self setupNavigationItem];

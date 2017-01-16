@@ -124,7 +124,7 @@
 //分类查询
 +(void)queryCategoryRank:(NSDictionary *)parameter completion:(void(^)(NSArray *models))completion failure:(void(^)(NSError *error))failure
 {
-    //NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":@"CN"};
+    //NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"categoryCode":@"CN",@"page":@"1",@"pageSize":10};
     [[YGRestClient sharedInstance] postForObjectWithUrl:CategoryRankUrl form:parameter success:^(id responseObject) {
         if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
             NSError *error;
