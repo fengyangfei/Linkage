@@ -19,8 +19,7 @@
     
     KINWebBrowserViewController *webBrowser = [webBrowserNavigationController rootWebBrowser];
     webBrowser.actionButtonHidden = YES;
-    webBrowser.barTintColor = [UIColor whiteColor];
-    webBrowser.showsURLInNavigationBar = YES;
+    webBrowser.showsURLInNavigationBar = NO;
     webBrowser.showsPageTitleInNavigationBar = NO;
     [webBrowser loadURLString:url];
 }

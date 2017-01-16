@@ -116,6 +116,7 @@
 
 //把属性对外开放
 @property (nonatomic, assign) BOOL uiWebViewIsLoading;
+@property (nonatomic, strong) NSURL *uiWebViewCurrentURL;
 
 #pragma mark - Public Interface
 

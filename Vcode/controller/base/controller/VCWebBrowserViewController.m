@@ -16,12 +16,14 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface VCWebBrowserViewController ()
+@property (nonatomic, assign) BOOL showsURLBar;
 @property (nonatomic, copy) NSString *urlStr;
 @property (nonatomic, readonly) UIButton *favorInnerButton;
 @property (nonatomic, readonly) UIButton *starInnerButton;
 @property (nonatomic, readonly) UIBarButtonItem *starButton;
 @property (nonatomic, strong) UIBarButtonItem *rocketButton;
 @property (nonatomic, strong) UIBarButtonItem *favorButton;
+@property (nonatomic, readonly) UITextField *urlTextField;
 @property (nonatomic) BOOL favorStatus;
 @property (nonatomic) BOOL starStatus;
 @end
@@ -32,12 +34,15 @@
 @synthesize rocketButton = _rocketButton;
 @synthesize favorInnerButton = _favorInnerButton;
 @synthesize starInnerButton = _starInnerButton;
+@synthesize urlTextField = _urlTextField;
 
 -(instancetype)init
 {
     self = [super init];
     if (self) {
         self.delegate = self;
+        self.showsURLInNavigationBar = NO;
+        self.showsURLBar = YES;
     }
     return self;
 }
@@ -95,6 +100,15 @@
 {
     NSArray *barButtonItems = [super bottomBarItems];
     
+    NSString *URLString;
+    if(self.wkWebView) {
+        URLString = [self.wkWebView.URL absoluteString];
+    }
+    else if(self.uiWebView) {
+        URLString = [self.uiWebViewCurrentURL absoluteString];
+    }
+    self.urlTextField.text = URLString;
+    
     UIBarButtonItem *fixedSeparator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSeparator.width = 50.0f;
     UIBarButtonItem *flexibleSeparator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -109,6 +123,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupData];
+    
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc]initWithCustomView:self.urlTextField];
+    self.navigationItem.leftBarButtonItem = searchItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -293,6 +310,20 @@
         [_starInnerButton addTarget:self action:@selector(starButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _starInnerButton;
+}
+
+-(UITextField *)urlTextField
+{
+    if (!_urlTextField) {
+        _urlTextField = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH - 84, 32)];
+        _urlTextField.backgroundColor = HEXCOLOR(0xf0f0f0);
+        _urlTextField.layer.cornerRadius = 5.0;
+        _urlTextField.layer.masksToBounds = YES;
+        _urlTextField.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 8, 0)];
+        _urlTextField.leftViewMode = UITextFieldViewModeAlways;
+        _urlTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    }
+    return _urlTextField;
 }
 
 @end

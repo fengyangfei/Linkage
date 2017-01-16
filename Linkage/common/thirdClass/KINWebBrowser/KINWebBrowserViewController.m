@@ -43,7 +43,6 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 @property (nonatomic, strong) UIBarButtonItem *backButton, *forwardButton, *refreshButton, *stopButton, *fixedSeparator, *flexibleSeparator;
 @property (nonatomic, strong) NSTimer *fakeProgressTimer;
 @property (nonatomic, strong) UIPopoverController *actionPopoverController;
-@property (nonatomic, strong) NSURL *uiWebViewCurrentURL;
 @property (nonatomic, strong) NSURL *URLToLaunchWithPermission;
 @property (nonatomic, strong) UIAlertView *externalAppPermissionAlertView;
 
@@ -153,8 +152,8 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [self.navigationController setToolbarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController setToolbarHidden:NO animated:NO];
     
     [self.navigationController.navigationBar addSubview:self.progressView];
     
@@ -205,13 +204,13 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
     _tintColor = tintColor;
     [self.progressView setTintColor:tintColor];
     [self.navigationController.navigationBar setTintColor:tintColor];
-    [self.navigationController.toolbar setTintColor:[UIColor blackColor]];
+    [self.navigationController.toolbar setTintColor:tintColor];
 }
 
 - (void)setBarTintColor:(UIColor *)barTintColor {
     _barTintColor = barTintColor;
     [self.navigationController.navigationBar setBarTintColor:barTintColor];
-    [self.navigationController.toolbar setBarTintColor:[UIColor blackColor]];
+    //[self.navigationController.toolbar setBarTintColor:barTintColor];
     [self.navigationController.toolbar setBarStyle:UIBarStyleBlack];
 }
 

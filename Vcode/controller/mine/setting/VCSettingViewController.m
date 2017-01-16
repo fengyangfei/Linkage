@@ -122,8 +122,10 @@ row.cellStyle = UITableViewCellStyleValue1;
 -(void)languageAction:(XLFormRowDescriptor *)sender
 {
     MMPopupItemHandler block = ^(NSInteger index){
-        [VCThemeManager shareInstance].themeType = index;
-        [VcodeUtil refreshApp];
+        if ([VCThemeManager shareInstance].themeType != index) {
+            [VCThemeManager shareInstance].themeType = index;
+            [VcodeUtil refreshApp];
+        }
     };
     NSMutableArray *items = [[NSMutableArray alloc]init];
     [items addObject:MMItemMake(@"简体中文", MMItemTypeNormal, block)];

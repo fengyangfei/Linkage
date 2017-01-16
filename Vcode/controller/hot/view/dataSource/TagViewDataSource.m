@@ -11,6 +11,7 @@
 #import "VCPageUtil.h"
 #import "VCPageModel.h"
 #import "VCIndex.h"
+#import "VcodeUtil.h"
 #import <QuartzCore/QuartzCore.h>
 #define TagCellID @"TagCellID"
 @interface TagViewDataSource()
@@ -88,7 +89,8 @@
     
     VCPage *page = (VCPage *)[self.pages objectAtIndex:index];
     //图片
-    NSString *imageIndex = [NSString stringWithFormat:@"%ld",(long) (index % 3 + 1)];
+    //NSString *imageIndex = [NSString stringWithFormat:@"%ld",(long) (index % 3 + 1)];
+    NSString *imageIndex = [VcodeUtil tagBackgroudImage:index];
     UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:imageIndex]];
     [cell.contentView addSubview:imageView];
     [imageView makeConstraints:^(MASConstraintMaker *make) {
