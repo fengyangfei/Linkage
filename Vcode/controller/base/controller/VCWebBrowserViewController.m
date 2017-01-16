@@ -12,6 +12,7 @@
 #import "VCFavorUtil.h"
 #import "VCPageUtil.h"
 #import "VCIndex.h"
+#import "MMAlertView.h"
 
 @interface VCWebBrowserViewController ()
 @property (nonatomic, copy) NSString *urlStr;
@@ -138,10 +139,30 @@
 - (void)likeButtonPressed:(id)sender {
     @weakify(self);
     if(!self.favorStatus){
-        [self saveFavor:^{
+        NSString *title;
+        if(self.wkWebView) {
+            title = self.wkWebView.title;
+            self.urlStr = self.wkWebView.URL.absoluteString;
+        }
+        else if(self.uiWebView) {
+            title = [self.uiWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
+        }
+        
+        MMAlertView *alertView = [[MMAlertView alloc] initWithInputTitle:@"是否添加到收藏？" detail:@"" inputText:title placeholder:@"自定义标题" handler:^(NSString *text) {
             @strongify(self);
-            self.favorStatus = YES;
+            VCFavor *favor = [[VCFavor alloc]init];
+            favor.title = text;
+            favor.url = self.urlStr;
+            favor.createdDate = [NSDate date];
+            @weakify(self);
+            [self saveFavor:favor completion:^{
+                @strongify(self);
+                self.favorStatus = YES;
+            }];
         }];
+        alertView.attachedView.mm_dimBackgroundBlurEnabled = NO;
+        alertView.attachedView.mm_dimBackgroundBlurEffectStyle = UIBlurEffectStyleDark;
+        [alertView show];
     }else{
         [self deleteFavor:^{
             @strongify(self);
@@ -150,22 +171,8 @@
     }
 }
 
-- (void)saveFavor:(void(^)(void))completion
+- (void)saveFavor:(VCFavor *)favor completion:(void(^)(void))completion
 {
-    NSString *title;
-    if(self.wkWebView) {
-        title = self.wkWebView.title;
-        self.urlStr = self.wkWebView.URL.absoluteString;
-    }
-    else if(self.uiWebView) {
-        title = [self.uiWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    }
-    
-    VCFavor *favor = [[VCFavor alloc]init];
-    favor.title = title;
-    favor.url = self.urlStr;
-    favor.createdDate = [NSDate date];
-    
     [VCFavorUtil syncToDataBase:favor completion:^{
         [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
             if (completion) {
