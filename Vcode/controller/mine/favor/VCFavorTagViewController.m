@@ -51,7 +51,9 @@
             [VCCategoryUtil getModelByTitle:category.title completion:^(VCCategory *model) {
                 model.favor = !model.favor;
                 [VCCategoryUtil syncToDataBase:model completion:^{
-                    
+                    [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+                        
+                    }];
                 }];
             }];
         };
