@@ -122,7 +122,6 @@
     //tag.borderColor = [UIColor redColor];
     tag.bgColor = VHeaderColor;
     tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
-    tag.bgColor = [UIColor whiteColor];
     tag.cornerRadius = 5;
     return tag;
 }
