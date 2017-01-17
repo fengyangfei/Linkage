@@ -112,6 +112,7 @@
     //url连接
     UILabel *titleLabel = [[UILabel alloc]init];
     titleLabel.font = [UIFont systemFontOfSize:12];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
     [cell.contentView addSubview:titleLabel];
     titleLabel.text = page.name?:@"";
     [titleLabel makeConstraints:^(MASConstraintMaker *make) {

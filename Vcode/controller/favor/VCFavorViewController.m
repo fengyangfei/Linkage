@@ -12,14 +12,20 @@
 #import "VCFavorUtil.h"
 #import "VCFavorFormDataSource.h"
 #import "UIViewController+WebBrowser.h"
+#import "MMAlertView.h"
+#import "VCPageUtil.h"
+#import "VCIndex.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface VCFavorViewController ()
 @property (nonatomic, readonly) UITableView           *tableView;
 @property (nonatomic, strong  ) VCFavorFormDataSource *dataSource;
+@property (nonatomic, strong  ) NSMutableArray *rows;
 @end
 
 @implementation VCFavorViewController
 @synthesize tableView = _tableView;
+@synthesize rows = _rows;
 
 -(void)setupUI
 {
@@ -62,7 +68,9 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    for (id model in models) {
+    [self.rows removeAllObjects];
+    [self.rows addObjectsFromArray:models];
+    for (id model in self.rows) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:VCFavorDescriporType];
         row.value = model;
         row.action.formSelector = @selector(gotoWebBrowser:);
@@ -88,7 +96,29 @@
         if (!indexPath) {
             return;
         }
-        NSLog(@"长按第%ld",indexPath.row);
+        VCFavor *favor = [self.rows objectAtIndex:indexPath.row];
+        
+        @weakify(favor);
+        MMPopupItemHandler block = ^(NSInteger index){
+            @strongify(favor);
+            VCPage *page = [[VCPage alloc]init];
+            page.name = favor.title;
+            page.url = favor.url;
+            page.sortNumber = @(-1);
+            [VCPageUtil syncToDataBase:page completion:^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:kPageUpdateNotification object:nil];
+                [SVProgressHUD showSuccessWithStatus:@"添加成功"];
+            }];
+        };
+        NSMutableArray *items = [[NSMutableArray alloc]init];
+        [items addObject:MMItemMake(VCThemeString(@"cancel"), MMItemTypeNormal, nil)];
+        [items addObject:MMItemMake(VCThemeString(@"ok"), MMItemTypeNormal, block)];
+        MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:@"添加标签页"
+                                                             detail:@""
+                                                              items:items];
+        alertView.attachedView.mm_dimBackgroundBlurEnabled = NO;
+        alertView.attachedView.mm_dimBackgroundBlurEffectStyle = UIBlurEffectStyleDark;
+        [alertView show];
     }
         
 }
@@ -125,6 +155,12 @@
     return _dataSource;
 }
 
-
+-(NSMutableArray *)rows
+{
+    if (!_rows) {
+        _rows = [[NSMutableArray alloc]init];
+    }
+    return _rows;
+}
 
 @end

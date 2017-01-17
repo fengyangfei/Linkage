@@ -69,7 +69,20 @@
         });
     }];
     
-    [self.tagView reloadData];
+    [VCPageUtil queryModelsFromDataBase:^(NSArray *models) {
+        @strongify(self);
+        if(!models || models.count == 0){
+            for (VCPage *page in [VCPageUtil initializtionPages]) {
+                [VCPageUtil syncToDataBase:page completion:nil];
+            }
+            [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+                @strongify(self);
+                [self.tagView reloadData];
+            }];
+        }else{
+            [self.tagView reloadData];
+        }
+    }];
     
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:kPageUpdateNotification object:nil] subscribeNext:^(id x) {
         @strongify(self);

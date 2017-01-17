@@ -84,4 +84,50 @@
         NSLog(@"error - %@", exception.reason);
     }
 }
+
++(NSArray *)initializtionPages
+{
+    VCPage *p1 = [[VCPage alloc]init];
+    p1.name = @"faceBook";
+    p1.url = @"www.facebook.com";
+    p1.sortNumber = @(0);
+    
+    VCPage *p2 = [[VCPage alloc]init];
+    p2.name = @"youtube";
+    p2.url = @"www.youtube.com";
+    p2.sortNumber = @(1);
+    
+    VCPage *p3 = [[VCPage alloc]init];
+    p3.name = @"twitter";
+    p3.url = @"www.twitter.com";
+    p3.sortNumber = @(2);
+
+    VCPage *p4 = [[VCPage alloc]init];
+    p4.name = @"cnn";
+    p4.url = @"www.cnn.com";
+    p4.sortNumber = @(3);
+    
+    VCPage *p5 = [[VCPage alloc]init];
+    p5.name = @"yelp";
+    p5.url = @"www.yelp.com";
+    p5.sortNumber = @(4);
+
+    VCPage *p6 = [[VCPage alloc]init];
+    p6.name = @"reddit";
+    p6.url = @"www.reddit.com";
+    p6.sortNumber = @(5);
+    
+    VCPage *p7 = [[VCPage alloc]init];
+    p7.name = @"stackoverflow";
+    p7.url = @"www.stackoverflow.com";
+    p7.sortNumber = @(6);
+
+    VCPage *p8 = [[VCPage alloc]init];
+    p8.name = @"ebay";
+    p8.url = @"www.ebay.com";
+    p8.sortNumber = @(8);
+    
+    return @[p1,p2,p3,p4,p5,p6,p7,p8];
+    
+}
 @end

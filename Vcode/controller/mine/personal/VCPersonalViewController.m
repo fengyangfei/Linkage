@@ -39,18 +39,22 @@
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"昵称"];
+    row.noValueDisplayText = @"请输入昵称";
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"电话"];
+    row.noValueDisplayText = @"请输入电话";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"性别"];
+    row.noValueDisplayText = @"男";
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"国家"];
+    row.noValueDisplayText = @"中国";
     [section addFormRow:row];
     
     self.form = form;
