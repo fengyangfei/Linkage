@@ -8,15 +8,17 @@
 
 #import "VCFavorTagViewController.h"
 #import "SKTagView.h"
+#import "VCCategory.h"
 #import "VCCategoryUtil.h"
 
 @interface VCFavorTagViewController ()
 @property (strong, nonatomic) SKTagView *tagView;
-@property (strong, nonatomic) NSArray *titles;
+@property (strong, nonatomic) NSMutableArray *categories;
 
 @end
 
 @implementation VCFavorTagViewController
+@synthesize categories = _categories;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,8 +42,18 @@
         view.didTapTagAtIndex = ^(NSUInteger index){
             @strongify(view);
             [view removeTagAtIndex:index];
-            NSString *title = [self.titles objectAtIndex:index];
-            [view insertTag:[self createHightLightTag:title] atIndex:index];
+            VCCategory *category = [self.categories objectAtIndex:index];
+            if (category.favor) {
+                [view insertTag:[self createNormalTag:category.title] atIndex:index];
+            }else{
+                [view insertTag:[self createHightLightTag:category.title] atIndex:index];
+            }
+            [VCCategoryUtil getModelByTitle:category.title completion:^(VCCategory *model) {
+                model.favor = !model.favor;
+                [VCCategoryUtil syncToDataBase:model completion:^{
+                    
+                }];
+            }];
         };
         view;
     });
@@ -53,12 +65,17 @@
         make.edges.equalTo(superView);
     }];
     
-    [VCCategoryUtil queryAllCategoryTitles:^(NSArray *titles) {
-        [titles enumerateObjectsUsingBlock: ^(NSString *text, NSUInteger idx, BOOL *stop) {
-            @strongify(self);
-            self.titles = titles;
-            [self.tagView addTag:[self createNormalTag:text]];
-        }];
+    [VCCategoryUtil queryAllCategories:^(NSArray *models) {
+        @strongify(self);
+        [self.categories removeAllObjects];
+        [self.categories addObjectsFromArray:models];
+        for (VCCategory *category in models) {
+            if (!category.favor) {
+                [self.tagView addTag:[self createNormalTag:category.title]];
+            }else{
+                [self.tagView addTag:[self createHightLightTag:category.title]];
+            }
+        }
     }];
 }
 
@@ -86,6 +103,14 @@
     tag.bgColor = [UIColor whiteColor];
     tag.cornerRadius = 5;
     return tag;
+}
+
+-(NSMutableArray *)categories
+{
+    if (!_categories) {
+        _categories = [[NSMutableArray alloc]init];
+    }
+    return _categories;
 }
 
 @end
