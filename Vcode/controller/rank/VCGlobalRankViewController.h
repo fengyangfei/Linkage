@@ -8,7 +8,8 @@
 
 #import "ModelBaseViewController.h"
 #import "ZJScrollPageViewDelegate.h"
+#import "VCHotChildViewController.h"
 
-@interface VCGlobalRankViewController : ModelBaseViewController<ZJScrollPageViewChildVcDelegate>
+@interface VCGlobalRankViewController : VCHotChildViewController
 
 @end

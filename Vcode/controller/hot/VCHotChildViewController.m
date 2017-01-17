@@ -140,6 +140,12 @@
             success(models);
         } failure:failure];
     }
+    else if (self.rankType == RankTypeGlobal){
+        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID],@"page":@(self.currentPage)};
+        [VCRankUtil queryGlobalRank:parameter completion:^(NSArray *models) {
+            success(models);
+        } failure:failure];
+    }
 }
 
 - (void)initializeForm:(NSArray *)models

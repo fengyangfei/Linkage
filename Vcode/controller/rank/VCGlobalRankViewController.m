@@ -16,6 +16,12 @@
 @end
 
 @implementation VCGlobalRankViewController
+-(instancetype)init
+{
+    return [super initWithRankType:RankTypeGlobal];
+}
+
+/*
 @synthesize tableView = _tableView;
 
 -(void)viewDidLoad
@@ -89,5 +95,6 @@
         [row.sectionDescriptor removeFormRowAtIndex:indexPath.row];
     }
 }
+ */
 
 @end
