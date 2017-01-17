@@ -14,4 +14,5 @@
 @property (nullable, nonatomic, copy) NSString *imageName;
 @property (nullable, nonatomic, retain) NSNumber *sort;
 @property (nonatomic) BOOL visible;
+@property (nonatomic) BOOL favor;
 @end

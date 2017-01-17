@@ -942,6 +942,7 @@
 		9A474FE21E1F435C00618A8E /* SKTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTagButton.m; sourceTree = "<group>"; };
 		9A474FE31E1F435C00618A8E /* SKTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTagView.h; sourceTree = "<group>"; };
 		9A474FE41E1F435C00618A8E /* SKTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTagView.m; sourceTree = "<group>"; };
+		9A4970471E2DD15A005AB218 /* VcodeModel3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VcodeModel3.xcdatamodel; sourceTree = "<group>"; };
 		9A49E6B61D07ACA600F51C2F /* HJFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFormCell.h; sourceTree = "<group>"; };
 		9A49E6B71D07ACA600F51C2F /* HJFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFormCell.m; sourceTree = "<group>"; };
 		9A5DD9451E29E7E400754655 /* VCThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCThemeManager.h; sourceTree = "<group>"; };
@@ -3680,10 +3681,11 @@
 		9A403E091E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				9A4970471E2DD15A005AB218 /* VcodeModel3.xcdatamodel */,
 				9A403E0C1E1B6ED600829EC4 /* VcodeModel2.xcdatamodel */,
 				9A403E0A1E1B6D8F00829EC4 /* VcodeModel.xcdatamodel */,
 			);
-			currentVersion = 9A403E0C1E1B6ED600829EC4 /* VcodeModel2.xcdatamodel */;
+			currentVersion = 9A4970471E2DD15A005AB218 /* VcodeModel3.xcdatamodel */;
 			path = VcodeModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

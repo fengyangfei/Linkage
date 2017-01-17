@@ -14,4 +14,5 @@
 @dynamic imageName;
 @dynamic sort;
 @dynamic visible;
+@dynamic favor;
 @end

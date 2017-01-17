@@ -40,17 +40,8 @@
         view.didTapTagAtIndex = ^(NSUInteger index){
             @strongify(view);
             [view removeTagAtIndex:index];
-            
             NSString *title = [self.titles objectAtIndex:index];
-            SKTag *tag = [SKTag tagWithText: title];
-            tag.textColor = [UIColor redColor];
-            tag.fontSize = 15;
-            tag.borderWidth = 1;
-            tag.borderColor = [UIColor redColor];
-            tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
-            tag.bgColor = [UIColor whiteColor];
-            tag.cornerRadius = 5;
-            [view insertTag:tag atIndex:index];
+            [view insertTag:[self createHightLightTag:title] atIndex:index];
         };
         view;
     });
@@ -66,17 +57,35 @@
         [titles enumerateObjectsUsingBlock: ^(NSString *text, NSUInteger idx, BOOL *stop) {
             @strongify(self);
             self.titles = titles;
-            SKTag *tag = [SKTag tagWithText: text];
-            tag.textColor = [UIColor blackColor];
-            tag.fontSize = 15;
-            tag.borderWidth = 1;
-            tag.borderColor = [UIColor blackColor];
-            tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
-            tag.bgColor = [UIColor whiteColor];
-            tag.cornerRadius = 5;
-            [self.tagView addTag:tag];
+            [self.tagView addTag:[self createNormalTag:text]];
         }];
     }];
+}
+
+-(SKTag *)createNormalTag:(NSString *)text
+{
+    SKTag *tag = [SKTag tagWithText: text];
+    tag.textColor = [UIColor blackColor];
+    tag.fontSize = 15;
+    tag.borderWidth = 1;
+    tag.borderColor = [UIColor blackColor];
+    tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
+    tag.bgColor = [UIColor whiteColor];
+    tag.cornerRadius = 5;
+    return tag;
+}
+
+-(SKTag *)createHightLightTag:(NSString *)text
+{
+    SKTag *tag = [SKTag tagWithText:text];
+    tag.textColor = [UIColor redColor];
+    tag.fontSize = 15;
+    tag.borderWidth = 1;
+    tag.borderColor = [UIColor redColor];
+    tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
+    tag.bgColor = [UIColor whiteColor];
+    tag.cornerRadius = 5;
+    return tag;
 }
 
 @end

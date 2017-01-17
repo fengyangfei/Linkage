@@ -108,7 +108,8 @@
 -(UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        CGRect frame = CGRectMake(0, 0, IPHONE_WIDTH, self.view.bounds.size.height- 64);
+        _tableView = [[UITableView alloc]initWithFrame:frame style:UITableViewStylePlain];
         _tableView.sectionFooterHeight = 0;
         _tableView.tableFooterView = [UIView new];
         _tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
