@@ -108,7 +108,7 @@
 -(SDCycleScrollView *)scrollView
 {
     if (!_scrollView) {
-        CGRect rect = CGRectMake(0, 0, IPHONE_WIDTH, IPHONE_WIDTH * 0.6);
+        CGRect rect = CGRectMake(0, 0, IPHONE_WIDTH, IPHONE_WIDTH * 0.4);
         _scrollView = [SDCycleScrollView cycleScrollViewWithFrame:rect delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
         _scrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
         _scrollView.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
@@ -120,7 +120,7 @@
 -(VCTagView *)tagView
 {
     if(!_tagView){
-        CGRect rect = CGRectMake(0, IPHONE_WIDTH * 0.6, IPHONE_WIDTH, self.view.bounds.size.height - IPHONE_WIDTH * 0.6 - 140);
+        CGRect rect = CGRectMake(0, IPHONE_WIDTH * 0.4, IPHONE_WIDTH, self.view.bounds.size.height - IPHONE_WIDTH * 0.4 - 140);
         _tagView = [[VCTagView alloc]initWithFrame:rect];
         _tagView.delegate = self;
     }

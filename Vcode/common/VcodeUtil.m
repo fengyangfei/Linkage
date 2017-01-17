@@ -38,7 +38,7 @@
     if ([categories containsObject:category]) {
         return category;
     }
-    return @"科学";
+    return @"default";
 }
 
 +(NSString *)searchImage:(SearchEngine)searchEngine
@@ -91,7 +91,7 @@
         case SearchEngineYahoo:
             return @"https://search.yahoo.com/search?p=";
         case SearchEngineHttp:
-            return @"https://www.baidu.com/s?wd=";
+            return @"";
         default:
             return @"https://www.google.com/search?q=";
             break;

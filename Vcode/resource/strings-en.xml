@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vcode</string>
+    <string name="tuijian">Index</string>
+    <string name="shoucang">Favorites</string>
+    <string name="paihang">Rankings</string>
+    <string name="wode">Personal</string>
+    <string name="sousuohiht">search for exactly what you want</string>
+    <string name="longbj">Long press to edit</string>
+    <string name="clickmore">Click to add</string>
+    <string name="my_wanshan">Please complete your personal information</string>
+    <string name="set">Setting</string>
+    <string name="yjfk">Advices</string>
+    <string name="bzsm">Help</string>
+    <string name="gywm">About Vcode</string>
+    <string name="tijiao">Submit</string>
+    <string name="tijiaotoast">Content should not be empty!</string>
+    <string name="language">Language setting</string>
+    <string name="search">Search tools setting</string>
+    <string name="clear_cache">Clear cache</string>
+    <string name="check_update">Check update</string>
+    <string name="languagetext">English</string>
+    <string name="update_now">update now</string>
+    <string name="update_to">current version：</string>
+    <string name="update_new">detected in version：</string>
+    <string name="update_data">Version update：</string>
+    <string name="quanqiu">Global</string>
+    <string name="diqu">Country</string>
+    <string name="leixing">Category</string>
+
+
+
+    <string name="inputwww">Enter URL</string>
+    <string name="gotos">No next page</string>
+    <string name="itok">save</string>
+    <string name="vpn">VPN</string>
+    <string name="head">Avatar</string>
+    <string name="nicheng">Nickname</string>
+    <string name="phonetext">Phone number</string>
+    <string name="sex">Sex</string>
+    <string name="country">Country</string>
+    <string name="nicheng_ed">Please enter a nickname</string>
+    <string name="phone_ed">Please enter your phone number</string>
+    <string name="sex_ed">Please choose sex</string>
+    <string name="country_ed">Please choose the country</string>
+    <string name="myinformation">Personal</string>
+    <string name="yjfk_text1">questions - advices</string>
+    <string name="yjfk_ed1">Please enter your questions and advices</string>
+    <string name="yjfk_text2">Phone number</string>
+    <string name="yjfk_ed2">Optional, convenient for us to contact you</string>
+    <string name="xihaotext">Please choose your favorite category</string>
+    <string name="xihao">Preference Tags</string>
+    <string name="startok">Start using</string>
+    <string name="cleanCache">To clear the cache</string>
+    <string name="laoding">Loading</string>
+    <string name="shaohoushoucanglaoding">Please wait.</string>
+    <string name="man">male</string>
+    <string name="woman">female</string>
+    <string name="delelt_ok">Deleted successfully!</string>
+    <string name="delelt_no">Deleted failed!</string>
+    <string name="error_text">Network anomaly!</string>
+    <string name="update_ok">Updated successfully!</string>
+    <string name="update_no">Updated failed!</string>
+    <string name="lable_ok">Set personal tags successfully!</string>
+    <string name="lable_no">Set personal tags failed!</string>
+
+
+    <string name="Games">Games</string>
+    <string name="Arts">Arts</string>
+    <string name="Business">Business</string>
+    <string name="Computers">Computers</string>
+    <string name="Health">Health</string>
+
+    <string name="Home">Home</string>
+    <string name="KidsAndTeens">Kids</string>
+    <string name="News">News</string>
+    <string name="Recreation">Recreation</string>
+    <string name="Reference">Reference</string>
+
+    <string name="Regional">Regional</string>
+    <string name="Science">Science</string>
+    <string name="Shopping">Shopping</string>
+    <string name="Society">Society</string>
+    <string name="Sports">Sports</string>
+
+
+    <!--VPN-->
+    <string name="pref_switch">Veno Service</string>
+    <string name="pref_switch_desc">Turn On/Off Veno service</string>
+    <string name="pref_profiles">Profile</string>
+    <string name="pref_cat_settings">Settings</string>
+    <string name="pref_url">URL</string>
+    <string name="pref_url_desc">Source URL for this profile</string>
+    <string name="pref_auto_start">Auto Start</string>
+    <string name="pref_auto_start_desc">Auto start Veno service on power up</string>
+    <string name="pref_auto_restart">Auto Restart</string>
+    <string name="pref_auto_restart_desc">Auto restart on network connectivity change</string>
+    <string name="pref_log_level">Log Level</string>
+    <string name="pref_log_level_desc">Control the verbosity of the log</string>
+    <string name="profile_default">Default</string>
+    <string name="profile_new">&lt;New&gt;</string>
+    <string name="profile_del">Delete</string>
+    <string name="profile_del_confirm">Delete this profile?</string>
+    <string name="profile_rename">Profile Rename</string>
+    <string name="msg_before_init">Initializing…</string>
+    <string name="msg_init_finished">Done</string>
+    <string name="msg_no_root">No root access</string>
+    <string name="msg_kitkat_no_root">No root access! IPv6 service is limited due system bug on Android KitKat (4.4.x) device.</string>
+    <string name="msg_waiting_root">Waiting for root access</string>
+    <string name="msg_init_failed">Initialization failed</string>
+    <string name="msg_stop_failed">Failed to stop service</string>
+    <string name="msg_halted">Veno service halted on error!</string>
+    <string name="msg_revoked">Veno service revoked by system!</string>
+    <string name="msg_suspended">Veno service suspended due to network interruption!</string>
+    <string name="msg_checking_update">Checking for update</string>
+    <string name="msg_no_update">No update</string>
+    <string name="msg_failed_update">Failed to check for update</string>
+    <string name="msg_failed_download_update">Failed to download update</string>
+    <string name="msg_new_update">New version available. Install now?</string>
+    <string name="msg_pending_update">Update is pending</string>
+    <string name="title_update">Veno Service Update</string>
+    <string name="pref_cat_auth">Authentication</string>
+    <string name="pref_username">Username</string>
+    <string name="pref_username_desc">User name for login</string>
+    <string name="pref_password">Password</string>
+    <string name="pref_password_desc"></string>
+    <string name="menu_reset">Reset</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_rename">Rename</string>
+    <string name="menu_about">About</string>
+    <string name="menu_clone">Clone</string>
+    <string name="menu_update">Update</string>
+    <string name="copy_rights">Veno Technology (Beijing) Copyright© 2015. All rights reserved.</string>
+    <string name="status_waiting">Waiting for network…</string>
+    <string name="status_started">Running</string>
+    <string name="status_idle">Idle</string>
+    <string name="status_halted">Halted</string>
+    <string name="status_revoked">Revoked</string>
+    <string name="status_restarting">Restarting…</string>
+    <string name="status_starting">Starting…</string>
+    <string name="status_stopped">Stopped</string>
+    <string name="status_suspended">Suspended</string>
+    <string name="switch_on">Press to Stop</string>
+    <string name="switch_off">Press to Start</string>
+    <string name="pref_stats">Statistics</string>
+    <string name="pref_need_root">Need root</string>
+    <string name="pref_need_root_desc">Request for root permission</string>
+    <string name="stats_unkonwn">Statistics: Unkonwn</string>
+    <string name="state_unknown">Unknown</string>
+    <string name="state_init">Initializing</string>
+    <string name="state_logging_in">Logging in</string>
+    <string name="state_active">Active</string>
+    <string name="state_retry">Retry login after %d seconds</string>
+    <string name="state_token_mismatch">Token mismatch</string>
+    <string name="state_token_reset">Token reset</string>
+    <string name="state_license_error">Failed to load license</string>
+    <string name="state_blocked">Blocked</string>
+    <string name="state_expired">Account expired</string>
+    <string name="state_overflow">Quota reached</string>
+    <string name="action_none">None</string>
+    <string name="action_login">Login</string>
+    <string name="action_license_check">License verification</string>
+    <string name="action_token_loading">Token loading</string>
+    <string name="action_message_read">Message reception</string>
+    <string name="action_keepalive">Keepalive</string>
+    <string name="action_forced_logout">Forced logout</string>
+    <string name="action_session_dropped">Session dropped</string>
+    <string name="action_timeout">Timed out</string>
+    <string name="action_failed">failed</string>
+    <string name="stats_limit">Rate limit</string>
+    <string name="stats_up">Up</string>
+    <string name="stats_down">Down</string>
+    <string name="stats_tcp">Tcp sessions</string>
+    <string name="stats_udp">Udp sessions</string>
+    <string name="stats_quota">Quota Left</string>
+    <string name="stats_expiration">Expiration Date</string>
+    <string name="device_id">Device ID</string>
+    <string name="socks_port">Veno service port</string>
+    <string name="title_system">Veno Service Message</string>
+    <string name="notice_logs">Logs has been saved to </string>
+    <string name="notice_logs_failed">Failed to save log files! Please make sure the external storage is not mounted by USB. </string>
+    <string name="notice_log_started">Start capturing logs! Select again to save. </string>
+    <string name="notice_running">Veno service is running. </string>
+    <string name="menu_logs">Start logging</string>
+    <string name="menu_save_logs">Save logs</string>
+    <string name="menu_send_log">Send logs</string>
+    <string name="dlg_desc">Description:</string>
+    <string name="ls_status_starting">Veno Tech starting...</string>
+    <string name="ls_status_suspended">Veno Tech suspended</string>
+    <string name="ls_status_restarting">Veno Tech restarting...</string>
+    <string name="ls_status_started">Veno Tech started</string>
+    <string name="ls_status_failed">Veno Tech failed to start</string>
+    <string name="ls_status_stoped">Veno Tech stoped</string>
+    <!--vpn-->
+
+    <string name="fwcs">Visits</string>
+    <string name="yestext">Yes</string>
+    <string name="notext">No</string>
+    <string name="setlable">Tags setting</string>
+    <string name="fzcg">Copy done</string>
+    <string name="qxsc">Remove</string>
+    <string name="qxsc_ok">Remove done</string>
+    <string name="sc_ok">Added successfully</string>
+    <string name="qxsc_no">Remove failed</string>
+    <string name="fzwz">Copy URL</string>
+    <string name="toasttext">Please input a valid string</string>
+    <string name="jiasu_ok">Speed-up on</string>
+    <string name="jiasu_no">Speed-up off</string>
+    <string name="xiugaititle">Add to favorites</string>
+    <string name="tianjia">Add</string>
+    <string name="quxiao">Cancel</string>
+    <string name="cz_ok">Save successful</string>
+    <string name="cz_no">Save failed</string>
+    <string name="service_error">Service exceptions</string>
+    <string name="add_sy">Add to home page</string>
+
+
+
+    <string name="baidu">Baidu</string>
+    <string name="bing">Bing</string>
+    <string name="yahoo">Yahoo</string>
+    <string name="google">Google</string>
+    <string name="queding">Determine</string>
+    <string name="shouye">Home</string>
+    <string name="zdtbq">Long press to delete</string>
+    <string name="bjpx">Sorting icons</string>
+    <string name="zdybq_px"> Long press to sort</string>
+    <string name="sybooks_yc">Confirm to remove ?</string>
+    <string name="px_ok">Saving data</string>
+    <string name="px_no">Updated field!</string>
+    <string name="sc_laoding">Updated successfully!</string>
+    <string name="gohome">Add to home page</string>
+    <string name="xczs">Next time</string>
+    <string name="yyxbb">Have a new version</string>
+    <string name="updatev">It is the latest version</string>
+    <string name="settingsearch">Search tools setting</string>
+    <string name="IPV6_Vcode">IPv6.Vcode</string>
+    <string name="soushit">Please enter the URL.</string>
+    <string name="http">URL</string>
+
+    <!--分享-->
+    <string name="share_d">Share to...</string>
+    <string name="share_no_text">Share failed</string>
+    <string name="share_yes_text">Share successfully</string>
+    <!--微信分享-->
+    <string name="wx_no">The wechat on this phone is not available</string>
+    <string name="wx_noq">Share to moments is not available for current version of wechat</string>
+    <!--微信分享-->
+    <!--QQ分享-->
+    <string name="qq_no">The QQ on this phone is not available</string>
+    <!--QQ分享-->
+    <!--分享-->
+
+    <!--登录-->
+    <string name="login">Login to Vcode</string>
+    <string name="login_wjmm"><u>Forget password</u></string>
+    <string name="login_username_hint">Mobile Phone</string>
+    <string name="login_password">Please enter login password</string>
+    <string name="login_regiter">Registration</string>
+    <string name="login_null_toast">The login name or password can not be null</string>
+    <string name="login_password_error">Invalid password</string>
+    <string name="login_username_error">The login name you entered does not exist</string>
+    <string name="login_z">Login...</string>
+    <string name="login_ok">Login successfully</string>
+    <string name="login_no">Login failed</string>
+    <string name="login_sc">Do you want to synchronize the subscriptions?</string>
+    <string name="login_regisrer">Register now</string>
+    <string name="login_Text">Register to learn more \n To build your exclusive Vcode</string>
+    <!--登录-->
+    <!--注册-->
+    <string name="regisrer">Register</string>
+    <string name="regisrer_z">Register...</string>
+    <string name="regisrer_phone_hint">Please enter your mobile phone number</string>
+    <string name="regisrer_code_hint">Please enter verification code</string>
+    <string name="regisrer_getcode">Get the verification code</string>
+    <string name="regisrer_password_hint">Please enter password</string>
+    <string name="regisrer_passwordtoo_hint">Please re-enter password</string>
+    <string name="regisrer_phone_null">The mobile phone number can not be null</string>
+    <string name="regisrer_phone_no">Invalid mobile phone number</string>
+    <string name="regisrer_getcodeOK">Get verification code successfully</string>
+    <string name="regisrer_getcodeNO">Get verification code failed</string>
+    <string name="regisrer_passwordnotoo">The retyped password must match the password you typed above</string>
+    <string name="regisrer_passwordnull">Password can not be null</string>
+    <string name="regisrer_codenull">Verification code can not be null</string>
+    <string name="regisrer_ok">Register successfully</string>
+    <string name="regisrer_no">Register failed</string>
+    <string name="regisrer_noed">The user already exist</string>
+    <string name="regisrer_code_error">Invalid verification code</string>
+    <!--注册-->
+    <!--忘记密码-->
+    <string name="szxmm">Password reset</string>
+    <string name="qsrxmm">Please enter new password</string>
+    <string name="qzcsrxmm">Please re-enter new password</string>
+    <string name="qsrzcsjh">Please enter your mobile phone number</string>
+    <string name="xmm_ok">Password reset successfully</string>
+    <string name="xmm_no">Password reset failed</string>
+    <string name="tj">Save</string>
+    <!--忘记密码-->
+    <!--支付-->
+    <string name="czjl">The records of Top-up</string>
+    <string name="czjl_null">No records</string>
+    <string name="zffs">Payment method </string>
+    <string name="wxzf">Wechat</string>
+    <string name="zfbzf">Alipay</string>
+    <!--支付-->
+    <string name="ytj">Added</string>
+    <string name="tjcg">Add successfully</string>
+
+    <string name="vbzh">Lucky （V coin）</string>
+    <string name="vip1">Gold</string>
+    <string name="vip2">Platinum</string>
+    <string name="vip3">Diamond</string>
+
+    <string name="fxhy">Share</string>
+    <string name="ytb">Sync</string>
+    <string name="dlfxzvb">Earn V coins by sharing after login</string>
+    <string name="srjmm">Please enter your old password</string>
+    <string name="xgmm">Change your password</string>
+    <string name="vip_hight">Membership grade</string>
+
+    <string name="cloud_start">Synchronize data started</string>
+    <string name="cloud_z">Synchronize ..</string>
+    <string name="cloud_no">Synchronize failed</string>
+    <string name="cloud_ok">Synchronize successfully</string>
+
+    <string name="topup">Top-up</string>
+    <string name="topup_qitsl">Other</string>
+    <string name="topup_no">Top-up failed</string>
+    <string name="topup_ok">Top-up successfully</string>
+    <string name="topup_sj">Price：</string>
+    <string name="topup_y">Yuan</string>
+    <string name="topup_vbye">V account balance：</string>
+    <string name="topup_g">coins</string>
+    <string name="vb">V coin</string>
+    <string name="ljzf">Pay now</string>
+    <string name="zf_no">Pay failed</string>
+
+    <string name="jmm_null">The old password can not be null</string>
+    <string name="xmm_null">The new password can not be null</string>
+    <string name="xgmm_ok">Password reset successfully</string>
+    <string name="xgmm_no">Password reset failed</string>
+    <string name="jmm_error">Invalid password</string>
+
+    <string name="f4login">Login to learn more</string>
+    <string name="venofw">Veno service</string>
+    <string name="code_error">You have been signed out because this account are signed in on other device.</string>
+    <string name="txl">Contacts</string>
+    <string name="txl_error">Get Contacts failed</string>
+    <string name="share_qx">Cancel</string>
+    <string name="yq_ok">Invitation sent successfully</string>
+    <string name="yq_no">Invitation sent failed</string>
+    <string name="txlyq_no">No contact</string>
+    <string name="wxz_lxr">Please choose contacts</string>
+    <string name="yq_yzc">Resitered</string>
+    <string name="outlogin">Sign out</string>
+    <string name="outlogin_ok">Sign out successfully</string>
+    <string name="shoucang_null">You do not have a collection of Web site.</string>
+
+    <string name="load_all">All data already been loaded</string>
+    <string name="load_null">No data</string>
+    <string name="regisrer_code_phoneerror">The mobile phone number has been registered by other user</string>
+    <string name="user_null">The mobile phone number is not registered yet</string>
+    <string name="phone_error">Invalid mobile phone number, Send verification code failed</string>
+    <string name="share_tille">Hi,Friends,we highly recommend a smart App for visiting IPv6 website</string>
+    <string name="share_content">Share Vcode to your friend to get 100 V coins. And your friends will get 200 V coins as well</string>
+    <string name="shouc_load">Page loading has not finished yet</string>
+    <string name="shouy_load">Page loading has not finished y</string>
+    <string name="mm_length">Requires a minimum password length of 6 characters</string>
+</resources>

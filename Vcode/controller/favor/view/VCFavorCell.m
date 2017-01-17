@@ -52,14 +52,18 @@ NSString *const VCFavorDescriporType = @"VCFavorDescriporType";
     MGSwipeButton *copy = [MGSwipeButton buttonWithTitle:@"复制网址" backgroundColor:[UIColor greenColor] callback:^BOOL(MGSwipeTableCell *sender) {
         @strongify(self);
         VCFavor *favor = self.rowDescriptor.value;
-        UIPasteboard *pab = [UIPasteboard generalPasteboard];
-        [pab setString:favor.url];
-        if (!pab) {
-            [SVProgressHUD showErrorWithStatus:@"复制失败"];
+        if(!favor.url){
+            return YES;
         }else{
-            [SVProgressHUD showSuccessWithStatus:@"已复制"];
+            UIPasteboard *pab = [UIPasteboard generalPasteboard];
+            [pab setString:favor.url];
+            if (!pab) {
+                [SVProgressHUD showErrorWithStatus:@"复制失败"];
+            }else{
+                [SVProgressHUD showSuccessWithStatus:@"已复制"];
+            }
+            return YES;
         }
-        return YES;
     }];
     self.rightButtons = @[cancel, copy];
 }

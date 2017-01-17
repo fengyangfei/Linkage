@@ -52,7 +52,7 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
     self.titleLabel.text = rank.name;
     self.detailLabel.text = rank.introduction;
     self.subDetailLabel.text = rank.url;
-    self.countLabel.text = [NSString stringWithFormat:@"%ld访问",[rank.visiteCount integerValue]];
+    self.countLabel.text = [NSString stringWithFormat:@"%ld访问",(long)[rank.visiteCount integerValue]];
 }
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
@@ -61,7 +61,8 @@ NSString *const VCRankDescriporType = @"VCRankDescriporType";
     if(StringIsEmpty(rank.introduction)){
         return 90 - 32;
     }else{
-        if(rank.introduction.length < 40){
+        CGSize size = [rank.introduction sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
+        if (size.width < IPHONE_WIDTH - 80) {
             return 90 - 16;
         }
     }
