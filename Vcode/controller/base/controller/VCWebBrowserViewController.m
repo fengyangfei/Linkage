@@ -15,7 +15,7 @@
 #import "MMAlertView.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
-@interface VCWebBrowserViewController ()
+@interface VCWebBrowserViewController ()<UITextFieldDelegate>
 @property (nonatomic, assign) BOOL showsURLBar;
 @property (nonatomic, copy) NSString *urlStr;
 @property (nonatomic, readonly) UIButton *favorInnerButton;
@@ -263,6 +263,13 @@
     
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    [self loadURLString:textField.text];
+    return YES;
+}
+
 #pragma mark - getter setter
 -(UIBarButtonItem *)favorButton
 {
@@ -322,6 +329,10 @@
         _urlTextField.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 8, 0)];
         _urlTextField.leftViewMode = UITextFieldViewModeAlways;
         _urlTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _urlTextField.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+        _urlTextField.keyboardType = UIKeyboardTypeURL;
+        _urlTextField.returnKeyType = UIReturnKeySearch;
+        _urlTextField.delegate = self;
     }
     return _urlTextField;
 }
