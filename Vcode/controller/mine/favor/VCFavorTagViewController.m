@@ -97,10 +97,11 @@
 -(SKTag *)createHightLightTag:(NSString *)text
 {
     SKTag *tag = [SKTag tagWithText:text];
-    tag.textColor = [UIColor redColor];
+    tag.textColor = [UIColor whiteColor];
     tag.fontSize = 15;
-    tag.borderWidth = 1;
-    tag.borderColor = [UIColor redColor];
+    //tag.borderWidth = 1;
+    //tag.borderColor = [UIColor redColor];
+    tag.bgColor = VHeaderColor;
     tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
     tag.bgColor = [UIColor whiteColor];
     tag.cornerRadius = 5;

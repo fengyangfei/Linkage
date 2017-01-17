@@ -40,3 +40,11 @@
 "questionsAdvices" = "Questions Advices";
 "pleaseEnterQuestions" = "Please Enter Questions";
 "phoneNumber" = "Phone Number";
+//1-17添加
+"baidu" = "baidu";
+"google" = "google";
+"bing" = "bing";
+"yahoo" = "yahoo";
+//common
+"cancel" = "cancel";
+"ok" = "ok";

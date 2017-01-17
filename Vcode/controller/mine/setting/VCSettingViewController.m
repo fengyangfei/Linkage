@@ -110,6 +110,9 @@ row.cellStyle = UITableViewCellStyleValue1;
     for (NSNumber *ca in array) {
         [items addObject:MMItemMake([VcodeUtil searchName:[ca integerValue]], MMItemTypeNormal, block)];
     }
+    [items addObject:MMItemMake(VCThemeString(@"cancel"), MMItemTypeNormal, ^(NSInteger index){
+        
+    })];
     MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:VCThemeString(@"searchToolsSetting")
                                                          detail:@""
                                                           items:items];
@@ -130,7 +133,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     NSMutableArray *items = [[NSMutableArray alloc]init];
     [items addObject:MMItemMake(@"简体中文", MMItemTypeNormal, block)];
     [items addObject:MMItemMake(@"English", MMItemTypeNormal, block)];
-    [items addObject:MMItemMake(@"取消", MMItemTypeNormal, ^(NSInteger index){
+    [items addObject:MMItemMake(VCThemeString(@"cancel"), MMItemTypeNormal, ^(NSInteger index){
         
     })];
     MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:@"切换语言"

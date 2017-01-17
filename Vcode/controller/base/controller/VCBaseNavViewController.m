@@ -100,7 +100,11 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-    searchBar.placeholder = @"搜索您感兴趣的内容";
+    if ([self.engine integerValue] == SearchEngineHttp) {
+        searchBar.placeholder = @"请输入网址";
+    }else{
+        searchBar.placeholder = @"搜索您感兴趣的内容";
+    }
     [[[UIApplication sharedApplication] keyWindow] addSubview:self.backgroundView];
 }
 

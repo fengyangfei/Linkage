@@ -35,9 +35,18 @@
 //mine->setting
 "languageSetting" = "语言设置";
 "searchToolsSetting" = "常用搜索引擎";
-"clearCache" = "消除缓存";
+"clearCache" = "清除缓存";
 "checkUpdate" = "检查更新";
 //mine->advices
 "questionsAdvices" = "问题";
 "pleaseEnterQuestions" = "请输入您的反馈建议";
 "phoneNumber" = "电话号码";
+//1-17添加
+"baidu" = "百度";
+"google" = "谷歌";
+"bing" = "必应";
+"yahoo" = "雅虎";
+//common
+"cancel" = "取消";
+"ok" = "确定";
+
