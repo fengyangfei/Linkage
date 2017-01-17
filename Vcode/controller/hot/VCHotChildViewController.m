@@ -13,6 +13,9 @@
 #import "VCCategoryUtil.h"
 #import "VCCategory.h"
 #import "VCRank.h"
+#import "MMAlertView.h"
+#import "VCPageUtil.h"
+#import "VCIndex.h"
 #import "UIViewController+WebBrowser.h"
 #import <MJRefresh/MJRefresh.h>
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -68,6 +71,10 @@
         self.currentPage += 1;
         [self queryDataFromServer:footerLoadSuccess];
     }];
+    
+    UILongPressGestureRecognizer *longPressGr = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressAction:)];
+    longPressGr.minimumPressDuration = 1.0;
+    [self.tableView addGestureRecognizer:longPressGr];
     
     [self setupNavigationItem];
 }
@@ -183,6 +190,39 @@
         NSLog(@"%@",error);
     }];
     [self presentWebBrowser:rank.url];
+}
+
+-(void)longPressAction:(UILongPressGestureRecognizer *)gesture
+{
+    if(gesture.state == UIGestureRecognizerStateBegan){
+        CGPoint point = [gesture locationInView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+        if (!indexPath) {
+            return;
+        }
+        VCRank *rank = [self.rows objectAtIndex:indexPath.row];
+        @weakify(rank);
+        MMPopupItemHandler block = ^(NSInteger index){
+            @strongify(rank);
+            VCPage *page = [[VCPage alloc]init];
+            page.name = rank.name;
+            page.url = rank.url;
+            page.sortNumber = @(-1);
+            [VCPageUtil syncToDataBase:page completion:^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:kPageUpdateNotification object:nil];
+                [SVProgressHUD showSuccessWithStatus:@"添加成功"];
+            }];
+        };
+        NSMutableArray *items = [[NSMutableArray alloc]init];
+        [items addObject:MMItemMake(VCThemeString(@"cancel"), MMItemTypeNormal, nil)];
+        [items addObject:MMItemMake(VCThemeString(@"ok"), MMItemTypeNormal, block)];
+        MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:@"添加标签页"
+                                                             detail:@""
+                                                              items:items];
+        alertView.attachedView.mm_dimBackgroundBlurEnabled = NO;
+        alertView.attachedView.mm_dimBackgroundBlurEffectStyle = UIBlurEffectStyleDark;
+        [alertView show];
+    }
 }
 
 //重写父类方法
