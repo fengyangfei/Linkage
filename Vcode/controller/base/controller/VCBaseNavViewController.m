@@ -118,6 +118,7 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
 //键盘的搜索按钮点击
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    [self searchAction:nil];
 }
 
 -(void)changeBrand:(id)sender
