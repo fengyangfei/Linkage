@@ -26,6 +26,7 @@
 @property (nonatomic, readonly) UITextField *urlTextField;
 @property (nonatomic) BOOL favorStatus;
 @property (nonatomic) BOOL starStatus;
+@property (nonatomic) BOOL completeLoading;
 @end
 
 @implementation VCWebBrowserViewController
@@ -36,9 +37,9 @@
 @synthesize starInnerButton = _starInnerButton;
 @synthesize urlTextField = _urlTextField;
 
--(instancetype)init
+- (id)initWithConfiguration:(WKWebViewConfiguration *)configuration
 {
-    self = [super init];
+    self = [super initWithConfiguration:configuration];
     if (self) {
         self.delegate = self;
         self.showsURLInNavigationBar = NO;
@@ -136,7 +137,7 @@
 -(void)starButtonPressed:(id)sender
 {
     @weakify(self);
-    if (self.uiWebViewIsLoading) {
+    if (!self.completeLoading) {
         [SVProgressHUD showErrorWithStatus:@"网页加载未完成"];
         return;
     }
@@ -188,7 +189,7 @@
 
 //添加到收藏
 - (void)likeButtonPressed:(id)sender {
-    if (self.uiWebViewIsLoading) {
+    if (!self.completeLoading) {
         [SVProgressHUD showErrorWithStatus:@"网页加载未完成"];
         return;
     }
@@ -256,13 +257,20 @@
 - (void)webBrowser:(KINWebBrowserViewController *)webBrowser didStartLoadingURL:(NSURL *)URL
 {
     self.urlStr = URL.absoluteString;
+    self.completeLoading = NO;
 }
 
 - (void)webBrowser:(KINWebBrowserViewController *)webBrowser didFinishLoadingURL:(NSURL *)URL
 {
-    
+    self.completeLoading = YES;
 }
 
+- (void)webBrowser:(KINWebBrowserViewController *)webBrowser didFailToLoadURL:(NSURL *)URL error:(NSError *)error
+{
+    self.completeLoading = NO;
+}
+
+#pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
