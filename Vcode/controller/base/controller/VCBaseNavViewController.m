@@ -18,12 +18,13 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
     return (__bridge_transfer  NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)string, NULL, (__bridge CFStringRef)kVCCharactersToBeEscapedInQueryString, CFStringConvertNSStringEncodingToEncoding(encoding));
 }
 
-@interface VCBaseNavViewController ()<UISearchBarDelegate>
+@interface VCBaseNavViewController ()<UISearchBarDelegate,UIGestureRecognizerDelegate>
 @property (nonatomic, readonly) UIButton *brandBtn;
 @property (nonatomic, readonly) UISearchBar *searchBar;
 @property (nonatomic, readonly) UIButton *searchBtn;
 @property (nonatomic, copy    ) NSString *searchKey;
 @property (nonatomic, strong  ) NSNumber *engine;
+@property (nonatomic, strong)   UIView * backgroundView;
 @end
 
 @implementation VCBaseNavViewController
@@ -94,8 +95,13 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    searchBar.placeholder = @"搜索您感兴趣的内容";
     return YES;
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    searchBar.placeholder = @"搜索您感兴趣的内容";
+    [[[UIApplication sharedApplication] keyWindow] addSubview:self.backgroundView];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
@@ -144,10 +150,21 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
 
 -(void)searchAction:(id)sender
 {
+    [self.backgroundView removeFromSuperview];
     NSNumber *key = [[NSUserDefaults standardUserDefaults] objectForKey:kSearchEngineUserDefaultKey];
     NSString *value = VCPercentEscapedQueryStringValueFromStringWithEncoding(self.searchKey, NSUTF8StringEncoding);
     NSString *url = [NSString stringWithFormat:@"%@%@",[VcodeUtil searchUrl:[key integerValue]], value];
     [self presentWebBrowser:url];
+}
+
+#pragma mark - onBackgroundViewTapped
+
+-(void)onBackgroundViewTapped:(UIGestureRecognizer *)gesture
+{
+    BOOL finished = [self.searchBar resignFirstResponder];
+    if (finished) {
+        [self.backgroundView removeFromSuperview];
+    }
 }
 
 #pragma mark - 属性
@@ -196,6 +213,20 @@ static NSString * VCPercentEscapedQueryStringValueFromStringWithEncoding(NSStrin
     }
     return _searchBtn;
 
+}
+
+-(UIView *)backgroundView
+{
+    if (!_backgroundView) {
+        CGRect frame = CGRectMake(0, 64, IPHONE_WIDTH, IPHONE_HEIGHT - 64);
+        _backgroundView = [[UIView alloc ]initWithFrame:frame];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onBackgroundViewTapped:)];
+        tap.delegate = self;
+        [_backgroundView addGestureRecognizer:tap];
+        _backgroundView.backgroundColor = [UIColor clearColor];
+        //_backgroundView.backgroundColor = [UIColor redColor];
+    }
+    return _backgroundView;
 }
 
 
