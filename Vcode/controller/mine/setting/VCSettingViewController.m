@@ -16,7 +16,9 @@
 #import "VcodeUtil.h"
 #import "VCBaseNavViewController.h"
 #import "VCThemeManager.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 #import <SDWebImage/SDImageCache.h>
+#import <PgyUpdate/PgyUpdateManager.h>
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
 row.cellStyle = UITableViewCellStyleValue1;
@@ -39,6 +41,7 @@ row.cellStyle = UITableViewCellStyleValue1;
 
 - (void)initializeForm
 {
+    @weakify(self);
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
@@ -73,11 +76,16 @@ row.cellStyle = UITableViewCellStyleValue1;
     NSUInteger totalSize = [[SDImageCache sharedImageCache] getSize];
     menuItem.value = [NSString stringWithFormat:@"%.2fM",(unsigned long)totalSize/(1024.0*1024.0)];
     row.value = menuItem;
+    row.action.formSelector = @selector(clearCacheAction:);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuInfo];
     menuItem = [MenuItem createItemWithTitle:VCThemeString(@"checkUpdate") andIconName:@"refresh" andClass:nil];
     menuItem.value = [NSString stringWithFormat:@"V%@", MAIN_VERSION];
+    row.action.formBlock = ^(XLFormRowDescriptor *sender){
+        @strongify(self);
+        [self updateAction:sender];
+    };
     row.value = menuItem;
     [section addFormRow:row];
     
@@ -93,6 +101,14 @@ row.cellStyle = UITableViewCellStyleValue1;
 }
 
 #pragma mark - 事件
+//检查更新
+-(void)updateAction:(XLFormRowDescriptor *)row
+{
+    [self deselectFormRow:row];
+    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:kVCodePgyerAppKey];
+    [[PgyUpdateManager sharedPgyManager] checkUpdate];
+}
+
 //搜索引擎事件
 -(void)searchEngineAction:(XLFormRowDescriptor *)sender
 {
@@ -154,7 +170,13 @@ row.cellStyle = UITableViewCellStyleValue1;
 -(void)clearCacheAction:(XLFormRowDescriptor *)row
 {
     [self deselectFormRow:row];
+    [SVProgressHUD show];
+    MenuItem *menuItem = row.value;
+    menuItem.value = @"0.00M";
     [self reloadFormRow:row];
+    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+        [SVProgressHUD dismiss];
+    }];
 }
 
 -(void)shareAction:(XLFormRowDescriptor *)row
@@ -162,10 +184,6 @@ row.cellStyle = UITableViewCellStyleValue1;
     [self deselectFormRow:row];
 }
 
--(void)updateAction:(XLFormRowDescriptor *)row
-{
-    [self deselectFormRow:row];
-}
 
 -(void)aboutUSAction:(XLFormRowDescriptor *)row
 {

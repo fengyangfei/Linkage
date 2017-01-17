@@ -80,4 +80,7 @@
 #define kVCodeQQAppId @"1105861191"
 #define kVCodeQQAppkey @"8c2Ua362TLmtZtvi"
 
+//蒲公英key
+#define kVCodePgyerAppKey @"6907fc28e91533ee527c6d7594466ea4"
+
 #endif

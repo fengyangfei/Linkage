@@ -49,4 +49,34 @@
 //common
 "cancel" = "取消";
 "ok" = "确定";
+//new
+"sousuohiht" = "搜索您感兴趣的内容";
+"longbj" = "长按进行编辑";
+//
+"head" = "头像";
+"nicheng" = "昵称";
+"phonetext" = "手机号码";
+"sex" = "性别";
+"country" = "所属国家";
+"nicheng_ed" = "请输入昵称";
+"phone_ed" = "请输入手机号码";
+"sex_ed" = "请选择性别";
+"country_ed" = "请选择所属国家";
+"myinformation" = "个人信息";
+"yjfk_text1" = "问题和意见";
+"yjfk_ed1" = "请简要描述您的问题和意见";
+"yjfk_text2" = "联系电话";
+"yjfk_ed2" = "选填，便于我们和您联系";
+"xihaotext" = "请选择您喜欢的分类，便于更好的为您推荐内容";
+"xihao" = "喜好标签";
+//
+"load_all" = "已加载全部数据";
+"load_null" = "暂无数据";
+"regisrer_code_phoneerror" = "该手机号已被注册";
+"user_null" = "手机号尚未注册";
+"phone_error" = "手机号不存在，验证码发送失败";
+"share_tille" = "Hi,朋友，推荐你一个可以访问IPv6网站的应用";
+"share_content" = "分享人每次分享成功可以获取100V币，接受分享并注册成功可以获得200V币~";
+"shouc_load" = "页面尚未加载完";
+"mm_length" = "密码长度不少于6位";
 

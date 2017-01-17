@@ -35,26 +35,26 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"头像"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"head")];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"昵称"];
-    row.noValueDisplayText = @"请输入昵称";
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"nicheng")];
+    row.noValueDisplayText = VCThemeString(@"nicheng_ed");
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"电话"];
-    row.noValueDisplayText = @"请输入电话";
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"phonetext")];
+    row.noValueDisplayText = VCThemeString(@"phone_ed");
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"性别"];
-    row.noValueDisplayText = @"男";
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"sex")];
+    row.noValueDisplayText = VCThemeString(@"sex_ed");
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:@"国家"];
-    row.noValueDisplayText = @"中国";
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"country")];
+    row.noValueDisplayText = VCThemeString(@"country_ed");
     [section addFormRow:row];
     
     self.form = form;
@@ -66,6 +66,11 @@
     self.tableView.sectionHeaderHeight = 20;
     self.tableView.sectionFooterHeight = 0;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 18)];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:VCThemeString(@"ok") style:UIBarButtonItemStylePlain target:self action:nil];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    self.view.backgroundColor = BackgroundColor;
+
 }
 
 @end

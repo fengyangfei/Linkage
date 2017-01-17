@@ -48,3 +48,33 @@
 //common
 "cancel" = "cancel";
 "ok" = "ok";
+//new
+"sousuohiht" = "search for exactly what you want";
+"longbj" = "Long press to edit";
+//
+"head" = "Avatar";
+"nicheng" = "Nickname";
+"phonetext" = "Phone number";
+"sex" = "Sex";
+"country" = "Country";
+"nicheng_ed" = "Please enter a nickname";
+"phone_ed" = "Please enter your phone number";
+"sex_ed" = "Please choose sex";
+"country_ed" = "Please choose the country";
+"myinformation" = "Personal";
+"yjfk_text1" = "questions - advices";
+"yjfk_ed1" = "Please enter your questions and advices";
+"yjfk_text2" = "Phone number";
+"yjfk_ed2" = "Optional, convenient for us to contact you";
+"xihaotext" = "Please choose your favorite category";
+"xihao" = "Preference Tags";
+//
+"load_all" = "All data already been loaded";
+"load_null" = "No data";
+"regisrer_code_phoneerror" = "The mobile phone number has been registered by other user";
+"user_null" = "The mobile phone number is not registered yet";
+"phone_error" = "Invalid mobile phone number, Send verification code failed";
+"share_tille" = "Hi,Friends,we highly recommend a smart App for visiting IPv6 website";
+"share_content" = "Share Vcode to your friend to get 100 V coins. And your friends will get 200 V coins as well";
+"shouc_load" = "Page loading has not finished yet";
+"mm_length" = "Requires a minimum password length of 6 characters";
