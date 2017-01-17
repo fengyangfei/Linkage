@@ -64,17 +64,17 @@
 {
     switch (searchEngine) {
         case SearchEngineGoogle:
-            return @"谷歌";
+            return VCThemeString(@"google");
         case SearchEngineBing:
-            return @"必应";
+            return VCThemeString(@"bing");
         case SearchEngineBaidu:
-            return @"百度";
+            return VCThemeString(@"baidu");
         case SearchEngineYahoo:
-            return @"雅虎";
+            return VCThemeString(@"yahoo");
         case SearchEngineHttp:
             return @"HTTP";
         default:
-            return @"谷歌";
+            return VCThemeString(@"google");
             break;
     }
 }
