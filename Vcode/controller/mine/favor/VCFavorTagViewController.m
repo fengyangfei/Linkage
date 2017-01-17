@@ -10,6 +10,7 @@
 #import "SKTagView.h"
 #import "VCCategory.h"
 #import "VCCategoryUtil.h"
+#import "VcodeUtil.h"
 
 @interface VCFavorTagViewController ()
 @property (strong, nonatomic) SKTagView *tagView;
@@ -23,6 +24,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTagView];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:VCThemeString(@"ok") style:UIBarButtonItemStylePlain target:self action:@selector(doneAction:)];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    self.view.backgroundColor = BackgroundColor;
+
 }
 
 -(void)dealloc
@@ -51,9 +57,7 @@
             [VCCategoryUtil getModelByTitle:category.title completion:^(VCCategory *model) {
                 model.favor = !model.favor;
                 [VCCategoryUtil syncToDataBase:model completion:^{
-                    [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
-                        
-                    }];
+                    
                 }];
             }];
         };
@@ -78,6 +82,21 @@
                 [self.tagView addTag:[self createHightLightTag:category.title]];
             }
         }
+    }];
+}
+
+-(void)doneAction:(id)sender
+{
+    [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
+        
+    }];
+    [VCCategoryUtil getFavorCategories:^(NSArray *models) {
+        NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID], @"url": @""};
+        [[YGRestClient sharedInstance] postForObjectWithUrl:AddVisitRecordUrl form:parameter success:^(id responseObject) {
+            NSLog(@"%@",responseObject);
+        } failure:^(NSError *error) {
+            NSLog(@"%@",error);
+        }];
     }];
 }
 

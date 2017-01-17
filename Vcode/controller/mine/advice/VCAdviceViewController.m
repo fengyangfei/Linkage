@@ -10,6 +10,7 @@
 #import "BFPaperButton.h"
 #import "LoginUser.h"
 #import "YGRestClient.h"
+#import "VcodeUtil.h"
 #import <IQKeyboardManager/KeyboardManager.h>
 #import <XLForm/XLFormTextView.h>
 #import <Mantle/NSDictionary+MTLJSONKeyPath.h>
@@ -30,7 +31,7 @@
     [super viewDidLoad];
     self.title = @"建议反馈";
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(doneAction)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:VCThemeString(@"ok") style:UIBarButtonItemStylePlain target:self action:@selector(doneAction)];
     self.navigationItem.rightBarButtonItem = rightItem;
     self.view.backgroundColor = BackgroundColor;
     
@@ -77,12 +78,12 @@
 {
     [self.textView resignFirstResponder];
     NSDictionary *paramter = @{
-                               @"content":self.textView.text,
-                               @"mobile":[LoginUser shareInstance].mobile ?:@"",
-                               @"email":[LoginUser shareInstance].email ?:@""
+                               @"deviceCode":[VcodeUtil UUID],
+                               @"feedback":self.textView.text,
+                               @"phoneNumber":@"123456789"
                                };
     paramter = [paramter mtl_dictionaryByAddingEntriesFromDictionary:[LoginUser shareInstance].baseHttpParameter];
-    [[YGRestClient sharedInstance] postForObjectWithUrl:AdviceUrl form:paramter success:^(id responseObject) {
+    [[YGRestClient sharedInstance] postForObjectWithUrl:FeedbackUrl form:paramter success:^(id responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"提交成功"];
     } failure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"提交失败"];

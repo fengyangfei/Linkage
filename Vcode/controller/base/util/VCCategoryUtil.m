@@ -112,6 +112,12 @@
     }];
 }
 
++(void)getFavorCategories:(void(^)(NSArray *models))completion
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"favor", @(YES)];
+    [self queryModelsFromDataBase:predicate completion:completion];
+}
+
 +(void)getVisibleCategories:(void(^)(NSArray *models))completion
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"visible", @(YES)];
