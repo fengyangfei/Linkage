@@ -183,7 +183,7 @@
 {
     VCRank *rank = row.value;
     //同步添加访问记录
-    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID], @"url": rank.url};
+    NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID], @"url": rank.url, @"id": rank.gid};
     [[YGRestClient sharedInstance] postForObjectWithUrl:AddVisitRecordUrl form:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
     } failure:^(NSError *error) {

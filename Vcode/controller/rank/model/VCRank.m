@@ -16,6 +16,7 @@
     NSDictionary *keyMap = @{
                              @"gid":@"id",
                              @"introduction":@"description",
+                             @"visiteCount":@"visitCount",
                              @"createdDate":@"createdDate"
                              };
     NSDictionary *keyDic = [NSDictionary mtl_identityPropertyMapWithModel:[self class]];
@@ -52,6 +53,19 @@
 }
 
 + (NSValueTransformer *)rankJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
+        if ([value isKindOfClass:[NSNumber class]]) {
+            return [NSString stringWithFormat:@"%ld", (long)[value integerValue]];
+        }else if ([value isKindOfClass:[NSString class]]) {
+            return value;
+        }else{
+            return @"";
+        }
+    }];
+}
+
++ (NSValueTransformer *)visiteCountJSONTransformer
 {
     return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError **error) {
         if ([value isKindOfClass:[NSNumber class]]) {
