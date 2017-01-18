@@ -15,6 +15,7 @@
 +(void)queryAllCategories:(void(^)(NSArray *models))completion;
 +(void)getModelByIndex:(NSInteger)index completion:(void(^)(id<MTLJSONSerializing> model))completion;
 +(void)getModelByTitle:(NSString *)title completion:(void(^)(id<MTLJSONSerializing> model))completion;
++(void)getModelByCode:(NSString *)code completion:(void(^)(id<MTLJSONSerializing> model))completion;
 +(void)getVisibleCategories:(void(^)(NSArray *models))completion;
 +(void)getFavorCategories:(void(^)(NSArray *models))completion;
 +(void)getHiddenCategories:(void(^)(NSArray *models))completion;

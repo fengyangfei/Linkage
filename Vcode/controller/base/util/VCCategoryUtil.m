@@ -142,6 +142,12 @@
     [self queryModelFromDataBase:predicate completion:completion];
 }
 
++(void)getModelByCode:(NSString *)code completion:(void(^)(id<MTLJSONSerializing> model))completion
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"code", code];
+    [self queryModelFromDataBase:predicate completion:completion];
+}
+
 +(void)queryModelFromDataBase:(NSPredicate *)predicate completion:(void(^)(id<MTLJSONSerializing> model))completion
 {
     VCCategoryModel *manageObj = [VCCategoryModel MR_findFirstWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];

@@ -38,6 +38,7 @@
 
 #pragma mark - Private
 - (void)setupTagView {
+    @weakify(self);
     self.tagView = ({
         SKTagView *view = [SKTagView new];
         view.backgroundColor = [UIColor whiteColor];
@@ -47,6 +48,7 @@
         @weakify(view);
         view.didTapTagAtIndex = ^(NSUInteger index){
             @strongify(view);
+            @strongify(self);
             [view removeTagAtIndex:index];
             VCCategory *category = [self.categories objectAtIndex:index];
             if (category.favor) {
@@ -54,23 +56,20 @@
             }else{
                 [view insertTag:[self createHightLightTag:category.title] atIndex:index];
             }
-            [VCCategoryUtil getModelByTitle:category.title completion:^(VCCategory *model) {
+            [VCCategoryUtil getModelByCode:category.code completion:^(VCCategory * model) {
                 model.favor = !model.favor;
                 [VCCategoryUtil syncToDataBase:model completion:^{
-                    
                 }];
             }];
         };
         view;
     });
     [self.view addSubview:self.tagView];
-    @weakify(self);
     [self.tagView mas_makeConstraints: ^(MASConstraintMaker *make) {
         @strongify(self);
         UIView *superView = self.view;
         make.edges.equalTo(superView);
     }];
-    
     [VCCategoryUtil queryAllCategories:^(NSArray *models) {
         @strongify(self);
         [self.categories removeAllObjects];
@@ -90,6 +89,7 @@
     [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
         
     }];
+    /*
     [VCCategoryUtil getFavorCategories:^(NSArray *models) {
         NSDictionary *parameter = @{@"deviceCode":[VcodeUtil UUID], @"url": @""};
         [[YGRestClient sharedInstance] postForObjectWithUrl:AddVisitRecordUrl form:parameter success:^(id responseObject) {
@@ -97,7 +97,7 @@
         } failure:^(NSError *error) {
             NSLog(@"%@",error);
         }];
-    }];
+    }];*/
 }
 
 -(SKTag *)createNormalTag:(NSString *)text
