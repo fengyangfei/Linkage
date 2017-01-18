@@ -61,11 +61,12 @@
             [self.tableView.mj_footer endRefreshing];
         }
     };
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    MJRefreshNormalHeader *mjRefreshHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self);
         self.currentPage = 1;
         [self queryDataFromServer:headerLoadSuccess];
     }];
+    self.tableView.mj_header = mjRefreshHeader;
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         @strongify(self);
         self.currentPage += 1;

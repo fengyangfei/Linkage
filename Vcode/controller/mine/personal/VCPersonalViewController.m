@@ -67,10 +67,14 @@
     self.tableView.sectionFooterHeight = 0;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_WIDTH, 18)];
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:VCThemeString(@"ok") style:UIBarButtonItemStylePlain target:self action:nil];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:VCThemeString(@"ok") style:UIBarButtonItemStylePlain target:self action:@selector(saveAction:)];
     self.navigationItem.rightBarButtonItem = rightItem;
     self.view.backgroundColor = BackgroundColor;
+}
 
+-(void)saveAction:(id)sender
+{
+    
 }
 
 @end
