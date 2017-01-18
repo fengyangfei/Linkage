@@ -17,6 +17,7 @@
 #import "VCPageUtil.h"
 #import "VCIndex.h"
 #import "UIViewController+WebBrowser.h"
+#import "MJRefreshComponent+InterNational.h"
 #import <MJRefresh/MJRefresh.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
@@ -61,12 +62,11 @@
             [self.tableView.mj_footer endRefreshing];
         }
     };
-    MJRefreshNormalHeader *mjRefreshHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self);
         self.currentPage = 1;
         [self queryDataFromServer:headerLoadSuccess];
     }];
-    self.tableView.mj_header = mjRefreshHeader;
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         @strongify(self);
         self.currentPage += 1;
