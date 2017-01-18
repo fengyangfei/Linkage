@@ -8,6 +8,14 @@
 
 #import "VCPersonalViewController.h"
 #import "VCLoginUser.h"
+#import "UIViewController+TRImagePicker.h"
+#import "ImageCacheManager.h"
+#import "LinkUtil.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
+#define RowUI row.cellStyle = UITableViewCellStyleValue1;\
+[row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\
+[row.cellConfig setObject:@(UITableViewCellSelectionStyleNone) forKey:@"selectionStyle"];
 
 @interface VCPersonalViewController ()
 
@@ -38,7 +46,9 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"head")];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:VCThemeString(@"head")];
+    RowUI
+    row.action.formSelector = @selector(uploadAvatar:);
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"nicheng" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"nicheng")];
@@ -77,6 +87,27 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:VCThemeString(@"ok") style:UIBarButtonItemStylePlain target:self action:@selector(saveAction:)];
     self.navigationItem.rightBarButtonItem = rightItem;
     self.view.backgroundColor = BackgroundColor;
+}
+
+-(void)uploadAvatar:(XLFormRowDescriptor *)row
+{
+    @weakify(row);
+    [self addSignalPhoto:^(UIImage *image, NSString *fileName) {
+        @strongify(row);
+        row.value = fileName;
+        [[ImageCacheManager sharedManger] diskImageExistsWithKey:fileName completion:^(BOOL isInCache) {
+            [LinkUtil uploadWithUrl:UpdateUserPicUrl image:UIImageJPEGRepresentation(image, 0.75) name:fileName success:^(id responseObject) {
+                //LoginUser *user = [VCLoginUser loginUserInstance];
+                //if (responseObject[@"result"][@"icon"]) {
+                //    user.icon = responseObject[@"result"][@"icon"];
+                //}
+                //[user save];
+            }];
+            if (!isInCache) {
+                [[ImageCacheManager sharedManger] storeImage:image forKey:fileName];
+            }
+        }];
+    }];
 }
 
 -(void)saveAction:(id)sender

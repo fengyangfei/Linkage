@@ -14,6 +14,9 @@
 #import "VCRankViewController.h"
 #import "VcodeUtil.h"
 
+#define UserDefault_hasShowLauguage @"hasShowLauguage"
+#define kNeedShowLauguage ![[NSUserDefaults standardUserDefaults] boolForKey:UserDefault_hasShowLauguage]
+
 @interface VCTabBarController ()
 
 @end
@@ -28,7 +31,10 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [VcodeUtil changeLanguage];
+    if (kNeedShowLauguage) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:UserDefault_hasShowLauguage];
+        [VcodeUtil changeLanguage];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

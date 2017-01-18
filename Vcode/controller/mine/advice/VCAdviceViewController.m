@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"建议反馈";
+    self.title = VCThemeString(@"advices");
     
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:VCThemeString(@"ok") style:UIBarButtonItemStylePlain target:self action:@selector(doneAction)];
     self.navigationItem.rightBarButtonItem = rightItem;
@@ -45,7 +45,7 @@
     
     UILabel *phoneLabel = [UILabel new];
     phoneLabel.backgroundColor = BackgroundColor;
-    phoneLabel.text = @"电话号码";
+    phoneLabel.text = VCThemeString(@"phonetext");
     phoneLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:phoneLabel];
     [phoneLabel makeConstraints:^(MASConstraintMaker *make) {
@@ -57,7 +57,7 @@
     
     UITextField *phoneTextField = [[UITextField alloc]init];
     phoneTextField.backgroundColor = [UIColor whiteColor];
-    phoneTextField.placeholder = @"请输入电话号码";
+    phoneTextField.placeholder = VCThemeString(@"phone_ed");
     phoneTextField.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:phoneTextField];
     [phoneTextField makeConstraints:^(MASConstraintMaker *make) {
@@ -100,7 +100,7 @@
 {
     if (!_textView) {
         _textView = [XLFormTextView new];
-        _textView.placeholder = @"请输入您的建议";
+        _textView.placeholder = VCThemeString(@"pleaseEnterQuestions");
         _textView.font = [UIFont systemFontOfSize:14];
         _textView.textColor = [UIColor blackColor];
         _textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
