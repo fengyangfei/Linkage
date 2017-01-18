@@ -51,10 +51,11 @@
             @strongify(self);
             [view removeTagAtIndex:index];
             VCCategory *category = [self.categories objectAtIndex:index];
+            category.favor = !category.favor;
             if (category.favor) {
-                [view insertTag:[self createNormalTag:category.title] atIndex:index];
-            }else{
                 [view insertTag:[self createHightLightTag:category.title] atIndex:index];
+            }else{
+                [view insertTag:[self createNormalTag:category.title] atIndex:index];
             }
             [VCCategoryUtil getModelByCode:category.code completion:^(VCCategory * model) {
                 model.favor = !model.favor;
