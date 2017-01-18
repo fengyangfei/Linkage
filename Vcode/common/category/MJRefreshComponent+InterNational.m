@@ -12,7 +12,7 @@
 @implementation MJRefreshComponent (InterNational)
 +(void)load
 {
-    [self exchangeInstanceMethod1:@selector(localizedStringForKey:) method2:@selector(vc_localizedStringForKey:)];
+    //[self exchangeInstanceMethod1:@selector(localizedStringForKey:) method2:@selector(vc_localizedStringForKey:)];
 }
 
 - (NSString *)vc_localizedStringForKey:(NSString *)key{

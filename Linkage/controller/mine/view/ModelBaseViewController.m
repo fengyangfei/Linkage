@@ -9,7 +9,7 @@
 #import "ModelBaseViewController.h"
 #import "ModelOperation.h"
 #import "FormDescriptorCell.h"
-#import <MJRefresh/MJRefresh.h>
+#import "MJRefresh.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 #define RowUI [row.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];\

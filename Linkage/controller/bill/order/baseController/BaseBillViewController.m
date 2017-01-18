@@ -9,7 +9,7 @@
 #import "BaseBillViewController.h"
 #import "UIColor+BFPaperColors.h"
 #import "OrderUtil.h"
-#import <MJRefresh/MJRefresh.h>
+#import "MJRefresh.h"
 
 @interface BaseBillViewController()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;

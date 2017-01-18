@@ -18,7 +18,7 @@
 #import "VCIndex.h"
 #import "UIViewController+WebBrowser.h"
 #import "MJRefreshComponent+InterNational.h"
-#import <MJRefresh/MJRefresh.h>
+#import "MJRefresh.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface VCHotChildViewController ()

@@ -47,7 +47,6 @@ PODS:
   - Mantle/extobjc (2.0.6)
   - Masonry (0.6.4)
   - MGSwipeTableCell (1.5.3)
-  - MJRefresh (3.1.0)
   - pop (1.0.9)
   - QBImagePickerController (2.6.0)
   - ReactiveCocoa (2.5):
@@ -75,7 +74,6 @@ DEPENDENCIES:
   - Mantle
   - Masonry
   - MGSwipeTableCell
-  - MJRefresh
   - pop
   - QBImagePickerController (= 2.6.0)
   - ReactiveCocoa
@@ -95,7 +93,6 @@ SPEC CHECKSUMS:
   Mantle: 299966b00759634931699f69cb6a30b9239b944d
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MGSwipeTableCell: 5ae3b9a15efda26b201adc8676b24040febe6ff6
-  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   QBImagePickerController: 095c2b2973de4da267334d2cfcac989c2eb5cdc2
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
@@ -104,6 +101,6 @@ SPEC CHECKSUMS:
   XLForm: c9ee7e0f859341279bfd894f9589a9d25c23e4df
   YLGIFImage: c0ae132fe80e5282b2762a97d14e23ba71a748ae
 
-PODFILE CHECKSUM: 770d26250a04266ac7e6c97b67a98945c1841ab1
+PODFILE CHECKSUM: e5de68ff1ee7bd02376fa34108ec9df594c024de
 
 COCOAPODS: 1.1.1

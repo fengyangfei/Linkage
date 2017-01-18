@@ -12,7 +12,7 @@
 #import "LoginUser.h"
 #import "Company.h"
 #import "CycleScrollCell.h"
-#import <MJRefresh/MJRefresh.h>
+#import "MJRefresh.h"
 #import "SearchCompanyViewController.h"
 #import "AppDelegate.h"
 #import "LATabBarController.h"

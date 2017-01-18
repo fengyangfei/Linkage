@@ -12,7 +12,7 @@
 #import "AddAddressViewController.h"
 #import "ModelOperation.h"
 #import "FormDescriptorCell.h"
-#import <MJRefresh/MJRefresh.h>
+#import "MJRefresh.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface AddressViewController()

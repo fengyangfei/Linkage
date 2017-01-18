@@ -10,7 +10,7 @@
 #import "OrderCell.h"
 #import "BillTypeViewController.h"
 #import "BillDetailViewController.h"
-#import <MJRefresh/MJRefresh.h>
+#import "MJRefresh.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <XLForm/XLForm.h>
 #import "LoginUser.h"

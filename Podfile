@@ -11,7 +11,6 @@ target 'Linkage' do
     pod 'BlocksKit', '2.2.5'
     pod 'pop'
     pod 'SVProgressHUD'
-    pod 'MJRefresh'
     pod 'IQKeyboardManager'
     pod 'SDWebImage'
     pod 'YLGIFImage'
