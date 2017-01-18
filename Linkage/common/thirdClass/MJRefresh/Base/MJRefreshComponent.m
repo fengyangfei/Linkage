@@ -135,7 +135,8 @@
 }
 
 - (NSString *)localizedStringForKey:(NSString *)key{
-    return [self localizedStringForKey:key withDefault:nil];
+    return VCThemeString(key);
+    //return [self localizedStringForKey:key withDefault:nil];
 }
 
 - (NSString *)localizedStringForKey:(NSString *)key withDefault:(NSString *)defaultString

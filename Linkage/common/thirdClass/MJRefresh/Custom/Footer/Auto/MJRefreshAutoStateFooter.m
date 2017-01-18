@@ -57,7 +57,7 @@
     [super prepare];
     
     // 初始化文字
-    [self setTitle:[self localizedStringForKey:MJRefreshAutoFooterIdleText] forState:MJRefreshStateIdle];
+    //[self setTitle:[self localizedStringForKey:MJRefreshAutoFooterIdleText] forState:MJRefreshStateIdle];
     [self setTitle:[self localizedStringForKey:MJRefreshAutoFooterRefreshingText] forState:MJRefreshStateRefreshing];
     [self setTitle:[self localizedStringForKey:MJRefreshAutoFooterNoMoreDataText] forState:MJRefreshStateNoMoreData];
     

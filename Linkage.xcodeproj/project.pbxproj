@@ -296,7 +296,6 @@
 		9A474FE71E1F435C00618A8E /* SKTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A474FE41E1F435C00618A8E /* SKTagView.m */; };
 		9A49704B1E2E0604005AB218 /* VCPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49704A1E2E0604005AB218 /* VCPersonalViewController.m */; };
 		9A49704E1E2EE999005AB218 /* VCLoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49704D1E2EE999005AB218 /* VCLoginUser.m */; };
-		9A4970551E2EF079005AB218 /* MJRefreshComponent+InterNational.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4970541E2EF079005AB218 /* MJRefreshComponent+InterNational.m */; };
 		9A4970581E2EF3DC005AB218 /* NSObject+Exchange.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4970571E2EF3DC005AB218 /* NSObject+Exchange.m */; };
 		9A4970881E2EFC78005AB218 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49705C1E2EFC78005AB218 /* MJRefreshAutoFooter.m */; };
 		9A4970891E2EFC78005AB218 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49705E1E2EFC78005AB218 /* MJRefreshBackFooter.m */; };
@@ -971,8 +970,6 @@
 		9A49704A1E2E0604005AB218 /* VCPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPersonalViewController.m; sourceTree = "<group>"; };
 		9A49704C1E2EE999005AB218 /* VCLoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLoginUser.h; sourceTree = "<group>"; };
 		9A49704D1E2EE999005AB218 /* VCLoginUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLoginUser.m; sourceTree = "<group>"; };
-		9A4970531E2EF079005AB218 /* MJRefreshComponent+InterNational.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MJRefreshComponent+InterNational.h"; sourceTree = "<group>"; };
-		9A4970541E2EF079005AB218 /* MJRefreshComponent+InterNational.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MJRefreshComponent+InterNational.m"; sourceTree = "<group>"; };
 		9A4970561E2EF3DC005AB218 /* NSObject+Exchange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Exchange.h"; sourceTree = "<group>"; };
 		9A4970571E2EF3DC005AB218 /* NSObject+Exchange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Exchange.m"; sourceTree = "<group>"; };
 		9A49705B1E2EFC78005AB218 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
@@ -2752,8 +2749,6 @@
 		9A49704F1E2EEF6C005AB218 /* category */ = {
 			isa = PBXGroup;
 			children = (
-				9A4970531E2EF079005AB218 /* MJRefreshComponent+InterNational.h */,
-				9A4970541E2EF079005AB218 /* MJRefreshComponent+InterNational.m */,
 				9A4970561E2EF3DC005AB218 /* NSObject+Exchange.h */,
 				9A4970571E2EF3DC005AB218 /* NSObject+Exchange.m */,
 			);
@@ -3530,7 +3525,6 @@
 				8B8638331E2B720200C05129 /* MMPopupWindow.m in Sources */,
 				8B44450F1C7C9EFE00160DC2 /* UIView+SDExtension.m in Sources */,
 				8BFEBF931E1BDCB6008A60D5 /* VCCategoryModel.m in Sources */,
-				9A4970551E2EF079005AB218 /* MJRefreshComponent+InterNational.m in Sources */,
 				8B44450C1C7C9EFE00160DC2 /* TAPageControl.m in Sources */,
 				9A4970881E2EFC78005AB218 /* MJRefreshAutoFooter.m in Sources */,
 				8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */,

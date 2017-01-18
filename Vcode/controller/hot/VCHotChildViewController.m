@@ -17,7 +17,6 @@
 #import "VCPageUtil.h"
 #import "VCIndex.h"
 #import "UIViewController+WebBrowser.h"
-#import "MJRefreshComponent+InterNational.h"
 #import "MJRefresh.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
