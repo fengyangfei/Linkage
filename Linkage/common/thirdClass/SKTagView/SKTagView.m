@@ -229,3 +229,57 @@
 }
 
 @end
+
+@implementation HJTagView
+
+- (void)layoutTags {
+    if (self.didSetup || !self.tags.count) {
+        return;
+    }
+    
+    NSArray *subviews = self.subviews;
+    UIView *previousView = nil;
+    CGFloat topPadding = self.padding.top;
+    CGFloat leftPadding = self.padding.left;
+    CGFloat rightPadding = self.padding.right;
+    CGFloat itemSpacing = self.interitemSpacing;
+    CGFloat lineSpacing = self.lineSpacing;
+    CGFloat currentX = leftPadding;
+    
+    if (!self.singleLine && self.preferredMaxLayoutWidth > 0) {
+        for (UIView *view in subviews) {
+            CGSize size = CGSizeMake(IPHONE_WIDTH / 3 - 20, view.intrinsicContentSize.height);
+            if (previousView) {
+                CGFloat width = size.width;
+                currentX += itemSpacing;
+                if (currentX + width + rightPadding <= self.preferredMaxLayoutWidth) {
+                    view.frame = CGRectMake(currentX, CGRectGetMinY(previousView.frame), size.width, size.height);
+                    currentX += size.width;
+                } else {
+                    CGFloat width = MIN(size.width, self.preferredMaxLayoutWidth - leftPadding - rightPadding);
+                    view.frame = CGRectMake(leftPadding, CGRectGetMaxY(previousView.frame) + lineSpacing, width, size.height);
+                    currentX = leftPadding + width;
+                }
+            } else {
+                CGFloat width = MIN(size.width, self.preferredMaxLayoutWidth - leftPadding - rightPadding);
+                view.frame = CGRectMake(leftPadding, topPadding, width, size.height);
+                currentX += width;
+            }
+            
+            previousView = view;
+        }
+    } else {
+        for (UIView *view in subviews) {
+            CGSize size = CGSizeMake(IPHONE_WIDTH / 3 - 20, view.intrinsicContentSize.height);
+            view.frame = CGRectMake(currentX, topPadding, size.width, size.height);
+            currentX += size.width;
+            currentX += itemSpacing;
+            
+            previousView = view;
+        }
+    }
+    
+    self.didSetup = YES;
+}
+
+@end

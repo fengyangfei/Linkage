@@ -13,7 +13,7 @@
 #import "VcodeUtil.h"
 
 @interface VCFavorTagViewController ()
-@property (strong, nonatomic) SKTagView *tagView;
+@property (strong, nonatomic) HJTagView *tagView;
 @property (strong, nonatomic) NSMutableArray *categories;
 
 @end
@@ -40,7 +40,7 @@
 - (void)setupTagView {
     @weakify(self);
     self.tagView = ({
-        SKTagView *view = [SKTagView new];
+        HJTagView *view = [HJTagView new];
         view.backgroundColor = [UIColor whiteColor];
         view.padding = UIEdgeInsetsMake(12, 12, 12, 12);
         view.interitemSpacing = 15;

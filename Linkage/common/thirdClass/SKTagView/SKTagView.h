@@ -25,3 +25,7 @@
 
 @end
 
+@interface HJTagView : SKTagView
+
+@end
+
