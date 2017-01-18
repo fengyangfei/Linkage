@@ -95,3 +95,8 @@
 "MJRefreshHeaderLastTimeText" = "Last update:";
 "MJRefreshHeaderDateTodayText" = "Today";
 "MJRefreshHeaderNoneLastDateText" = "No record";
+//common
+"add_sy" = "Add to home page";
+"updatev" = "It is the latest version";
+"xiugaititle" = "Add to favorites";
+"copy_rights" = "Veno Technology (Beijing) Copyright© 2015. All rights reserved.";

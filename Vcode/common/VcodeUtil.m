@@ -91,7 +91,7 @@
         case SearchEngineYahoo:
             return @"https://search.yahoo.com/search?p=";
         case SearchEngineHttp:
-            return @"";
+            return @"http://";
         default:
             return @"https://www.google.com/search?q=";
             break;

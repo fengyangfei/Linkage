@@ -216,7 +216,7 @@
         NSMutableArray *items = [[NSMutableArray alloc]init];
         [items addObject:MMItemMake(VCThemeString(@"cancel"), MMItemTypeNormal, nil)];
         [items addObject:MMItemMake(VCThemeString(@"ok"), MMItemTypeNormal, block)];
-        MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:@"添加标签页"
+        MMAlertView *alertView = [[MMAlertView alloc] initWithTitle:VCThemeString(@"add_sy")
                                                              detail:@""
                                                               items:items];
         alertView.attachedView.mm_dimBackgroundBlurEnabled = NO;

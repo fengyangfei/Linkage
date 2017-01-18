@@ -96,3 +96,8 @@
 "MJRefreshHeaderLastTimeText" = "最后更新：";
 "MJRefreshHeaderDateTodayText" = "今天";
 "MJRefreshHeaderNoneLastDateText" = "无记录";
+//common
+"add_sy" = "添加到首页";
+"updatev" = "已经是最新版本";
+"xiugaititle" = "添加到收藏夹";
+"copy_rights" = "©2015北京网能经委科技有限公司版权所有.";
