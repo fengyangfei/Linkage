@@ -57,7 +57,7 @@
 "nicheng" = "昵称";
 "phonetext" = "手机号码";
 "sex" = "性别";
-"country" = "所属国家";
+"country_belong" = "所属国家";
 "nicheng_ed" = "请输入昵称";
 "phone_ed" = "请输入手机号码";
 "sex_ed" = "请选择性别";

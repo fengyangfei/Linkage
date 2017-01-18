@@ -172,12 +172,6 @@
         </dict>
         <dict>
             <key>title</key>
-            <string>中国</string>
-            <key>code</key>
-            <string>CN</string>
-        </dict>
-        <dict>
-            <key>title</key>
             <string>加纳</string>
             <key>code</key>
             <string>GH</string>

@@ -8,6 +8,7 @@
 
 #import "VCCountryUtil.h"
 #import "VCCountry.h"
+#import "NSString+PingYinChar.h"
 
 #define kCountryIndex @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J",@"k", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", @"#"]
 
@@ -35,8 +36,8 @@
     NSMutableArray *countriesFromKey;
     for (int i =0 ; i < [array count]; i++) {
         VCCountry *country = [array objectAtIndex:i];
-        if (country.code && country.code.length > 1) {
-            NSString *k = [[country.code substringWithRange:NSMakeRange(0, 1)] uppercaseString];
+        if (country.title && country.title.length > 1) {
+            NSString *k = [[[country.title pinyinInitial] substringWithRange:NSMakeRange(0, 1)] uppercaseString];
             if ([k characterAtIndex:0] < 'A' || [k characterAtIndex:0] > 'Z') {
                 countriesFromKey = countryDic[@"#"];
             }else{

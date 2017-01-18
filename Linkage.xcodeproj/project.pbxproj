@@ -12,6 +12,7 @@
 		8B00603C1CABFABC001B0FC9 /* MTLManagedObjectAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0060391CABFABC001B0FC9 /* MTLManagedObjectAdapter.m */; };
 		8B0060411CAC08E3001B0FC9 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0060401CAC08E3001B0FC9 /* Order.m */; };
 		8B0254E11CA2C4E4005F5CA7 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0254DF1CA2C4E4005F5CA7 /* AddressModel.m */; };
+		8B09BB771E2F9E93009E4155 /* NSString+PingYinChar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B09BB761E2F9E93009E4155 /* NSString+PingYinChar.m */; };
 		8B10AD2D1C88744E00F5B0D6 /* PersonalSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */; };
 		8B1AACF51E1E84B8007BC604 /* VCMenuInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AACF41E1E84B8007BC604 /* VCMenuInfoCell.m */; };
 		8B2D18CF1D3101BC00A9183E /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2D18C31D3101BC00A9183E /* WXApiManager.m */; };
@@ -404,6 +405,8 @@
 		8B0060401CAC08E3001B0FC9 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		8B0254DE1CA2C4E4005F5CA7 /* AddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
 		8B0254DF1CA2C4E4005F5CA7 /* AddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
+		8B09BB751E2F9E93009E4155 /* NSString+PingYinChar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PingYinChar.h"; sourceTree = "<group>"; };
+		8B09BB761E2F9E93009E4155 /* NSString+PingYinChar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PingYinChar.m"; sourceTree = "<group>"; };
 		8B10AD2B1C88744E00F5B0D6 /* PersonalSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalSettingController.h; sourceTree = "<group>"; };
 		8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalSettingController.m; sourceTree = "<group>"; };
 		8B1AACF31E1E84B8007BC604 /* VCMenuInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMenuInfoCell.h; sourceTree = "<group>"; };
@@ -2751,6 +2754,8 @@
 			children = (
 				9A4970561E2EF3DC005AB218 /* NSObject+Exchange.h */,
 				9A4970571E2EF3DC005AB218 /* NSObject+Exchange.m */,
+				8B09BB751E2F9E93009E4155 /* NSString+PingYinChar.h */,
+				8B09BB761E2F9E93009E4155 /* NSString+PingYinChar.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -3531,6 +3536,7 @@
 				8B5DC63C1C79B8A700D29292 /* UIImage+TRTheme.m in Sources */,
 				8B5DC6221C79B8A700D29292 /* IFTTTEasingFunction.m in Sources */,
 				9A474FD61E1E2E7600618A8E /* VCBaseNavViewController.m in Sources */,
+				8B09BB771E2F9E93009E4155 /* NSString+PingYinChar.m in Sources */,
 				9A23A3241C7E900500FB5EB6 /* TutorialController.m in Sources */,
 				9A403DFF1E1B5CA900829EC4 /* VCHotViewController.m in Sources */,
 				9AEF89C61CA2907D00C5EB90 /* Address.m in Sources */,
