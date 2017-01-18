@@ -31,6 +31,8 @@
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
     
+    VCLoginUser *user = [VCLoginUser loginUserInstance];
+    
     form = [XLFormDescriptor formDescriptorWithTitle:VCThemeString(@"setting")];
     
     section = [XLFormSectionDescriptor formSection];
@@ -40,6 +42,7 @@
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"nicheng" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"nicheng")];
+    row.value = user.userName;
     row.noValueDisplayText = VCThemeString(@"nicheng_ed");
     [section addFormRow:row];
     
@@ -47,14 +50,17 @@
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phone" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"phonetext")];
+    row.value = user.mobile;
     row.noValueDisplayText = VCThemeString(@"phone_ed");
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sex" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"sex")];
+    row.value = user.gender == Female? @"男":@"女";
     row.noValueDisplayText = VCThemeString(@"sex_ed");
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"country" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"country")];
+    row.value = user.country;
     row.noValueDisplayText = VCThemeString(@"country_ed");
     [section addFormRow:row];
     
@@ -78,9 +84,9 @@
     NSDictionary *formValues = [self formValues];
     VCLoginUser *loginUser = [[VCLoginUser alloc]init];
     loginUser.mobile = formValues[@"phone"];
+    loginUser.gender = [formValues[@"sex"] integerValue];
     loginUser.userName = formValues[@"nicheng"];
     loginUser.country = formValues[@"country"];
-    loginUser.gender = Female;
     [loginUser save];
 }
 

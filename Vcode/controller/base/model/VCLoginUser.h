@@ -10,4 +10,5 @@
 
 @interface VCLoginUser : LoginUser
 @property (nonatomic,copy) NSString *country;
++(VCLoginUser *)loginUserInstance;
 @end
