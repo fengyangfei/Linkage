@@ -7,6 +7,7 @@
 //
 
 #import "VCPersonalViewController.h"
+#import "VCLoginUser.h"
 
 @interface VCPersonalViewController ()
 
@@ -38,22 +39,22 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"head")];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"nicheng")];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"nicheng" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"nicheng")];
     row.noValueDisplayText = VCThemeString(@"nicheng_ed");
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"phonetext")];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phone" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"phonetext")];
     row.noValueDisplayText = VCThemeString(@"phone_ed");
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"sex")];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sex" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"sex")];
     row.noValueDisplayText = VCThemeString(@"sex_ed");
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"country")];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"country" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"country")];
     row.noValueDisplayText = VCThemeString(@"country_ed");
     [section addFormRow:row];
     
@@ -74,7 +75,13 @@
 
 -(void)saveAction:(id)sender
 {
-    
+    NSDictionary *formValues = [self formValues];
+    VCLoginUser *loginUser = [[VCLoginUser alloc]init];
+    loginUser.mobile = formValues[@"phone"];
+    loginUser.userName = formValues[@"nicheng"];
+    loginUser.country = formValues[@"country"];
+    loginUser.gender = Female;
+    [loginUser save];
 }
 
 @end

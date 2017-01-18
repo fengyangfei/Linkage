@@ -9,5 +9,5 @@
 #import "LoginUser.h"
 
 @interface VCLoginUser : LoginUser
-
+@property (nonatomic,copy) NSString *country;
 @end
