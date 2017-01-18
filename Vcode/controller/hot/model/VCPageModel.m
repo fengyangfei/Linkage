@@ -13,4 +13,5 @@
 @dynamic name;
 @dynamic url;
 @dynamic sortNumber;
+@dynamic imageIndex;
 @end

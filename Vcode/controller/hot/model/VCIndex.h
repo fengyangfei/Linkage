@@ -25,4 +25,5 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, strong) NSNumber *sortNumber;
+@property (nonatomic, copy) NSString *imageIndex;
 @end

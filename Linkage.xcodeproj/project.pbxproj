@@ -407,6 +407,7 @@
 		8B0254DF1CA2C4E4005F5CA7 /* AddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
 		8B09BB751E2F9E93009E4155 /* NSString+PingYinChar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PingYinChar.h"; sourceTree = "<group>"; };
 		8B09BB761E2F9E93009E4155 /* NSString+PingYinChar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PingYinChar.m"; sourceTree = "<group>"; };
+		8B09BB781E2FA689009E4155 /* VcodeModel4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VcodeModel4.xcdatamodel; sourceTree = "<group>"; };
 		8B10AD2B1C88744E00F5B0D6 /* PersonalSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalSettingController.h; sourceTree = "<group>"; };
 		8B10AD2C1C88744E00F5B0D6 /* PersonalSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalSettingController.m; sourceTree = "<group>"; };
 		8B1AACF31E1E84B8007BC604 /* VCMenuInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMenuInfoCell.h; sourceTree = "<group>"; };
@@ -3897,11 +3898,12 @@
 		9A403E091E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				8B09BB781E2FA689009E4155 /* VcodeModel4.xcdatamodel */,
 				9A4970471E2DD15A005AB218 /* VcodeModel3.xcdatamodel */,
 				9A403E0C1E1B6ED600829EC4 /* VcodeModel2.xcdatamodel */,
 				9A403E0A1E1B6D8F00829EC4 /* VcodeModel.xcdatamodel */,
 			);
-			currentVersion = 9A4970471E2DD15A005AB218 /* VcodeModel3.xcdatamodel */;
+			currentVersion = 8B09BB781E2FA689009E4155 /* VcodeModel4.xcdatamodel */;
 			path = VcodeModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -89,8 +89,11 @@
     
     VCPage *page = (VCPage *)[self.pages objectAtIndex:index];
     //图片
-    //NSString *imageIndex = [NSString stringWithFormat:@"%ld",(long) (index % 3 + 1)];
-    NSString *imageIndex = [VcodeUtil tagBackgroudImage:index];
+    NSString *imageIndex = page.imageIndex;
+    if (StringIsEmpty(imageIndex)) {
+        imageIndex = [VcodeUtil tagBackgroudImage:index];
+        page.imageIndex = imageIndex;
+    }
     UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:imageIndex]];
     [cell.contentView addSubview:imageView];
     [imageView makeConstraints:^(MASConstraintMaker *make) {

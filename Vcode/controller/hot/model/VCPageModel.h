@@ -13,4 +13,5 @@
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *url;
 @property (nullable, nonatomic, retain) NSNumber *sortNumber;
+@property (nullable, nonatomic, retain) NSString *imageIndex;
 @end
