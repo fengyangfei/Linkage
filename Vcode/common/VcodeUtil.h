@@ -22,4 +22,5 @@ typedef NS_ENUM(NSUInteger, SearchEngine) {
 +(NSString *)searchUrl:(SearchEngine)searchEngine;
 +(NSString *)tagBackgroudImage:(NSInteger)x;
 +(void)refreshApp;
++(void)changeLanguage;
 @end

@@ -12,6 +12,7 @@
 #import "VCFavorViewController.h"
 #import "VCMineViewController.h"
 #import "VCRankViewController.h"
+#import "VcodeUtil.h"
 
 @interface VCTabBarController ()
 
@@ -27,6 +28,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [VcodeUtil changeLanguage];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
