@@ -8,6 +8,7 @@
 
 #import "VCMenuPersonalCell.h"
 NSString *const VCFormRowDescriptorTypePesonalHeader = @"vcMineHeaderRowCell";
+NSString *const VCFormRowDescriptorTypePesonalImageHeader = @"vcMineImageHeaderRowCell";
 @implementation VCMenuPersonalCell
 
 +(void)load
@@ -44,6 +45,55 @@ NSString *const VCFormRowDescriptorTypePesonalHeader = @"vcMineHeaderRowCell";
 -(void)update
 {
     self.titleLabel.text = VCThemeString(@"completeInfoHint");
+}
+
+-(UILabel *)titleLabel
+{
+    UILabel *label = [super titleLabel];
+    label.textColor = IndexTitleFontColor;
+    label.font = [UIFont systemFontOfSize:16];
+    return label;
+}
+
+@end
+
+
+@implementation VCPersonalImageCell
+
++(void)load
+{
+    NSDictionary *dic = @{
+                          VCFormRowDescriptorTypePesonalImageHeader:[self class]
+                          };
+    [XLFormViewController.cellClassesForRowDescriptorTypes addEntriesFromDictionary:dic];
+}
+
+-(void)configure
+{
+    @weakify(self);
+    [self.contentView addSubview:self.iconView];
+    [self.iconView makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.right.equalTo(self.contentView.right).offset(-16);
+        make.centerY.equalTo(self.contentView.centerY);
+        make.width.equalTo(@(64));
+        make.height.equalTo(@(64));
+    }];
+    
+    [self.contentView addSubview:self.titleLabel];
+    [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.left.equalTo(self.contentView.left).offset(18);
+        make.right.equalTo(self.contentView.right);
+        make.centerY.equalTo(self.contentView.centerY);
+    }];
+    
+}
+
+-(void)update
+{
+    self.titleLabel.text = VCThemeString(@"head");
+    self.iconView.image = [UIImage imageNamed:@"v_user"];
 }
 
 -(UILabel *)titleLabel

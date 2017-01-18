@@ -8,6 +8,11 @@
 
 #import "MenuCell.h"
 extern NSString *const VCFormRowDescriptorTypePesonalHeader;
+extern NSString *const VCFormRowDescriptorTypePesonalImageHeader;
 @interface VCMenuPersonalCell : MenuInfoCell
+
+@end
+
+@interface VCPersonalImageCell : MenuInfoCell
 
 @end

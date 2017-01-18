@@ -11,6 +11,7 @@
 #import "UIViewController+TRImagePicker.h"
 #import "ImageCacheManager.h"
 #import "LinkUtil.h"
+#import "VCMenuPersonalCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #define RowUI row.cellStyle = UITableViewCellStyleValue1;\
@@ -46,8 +47,7 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeButton title:VCThemeString(@"head")];
-    RowUI
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:VCFormRowDescriptorTypePesonalImageHeader title:VCThemeString(@"head")];
     row.action.formSelector = @selector(uploadAvatar:);
     [section addFormRow:row];
     
@@ -91,6 +91,7 @@
 
 -(void)uploadAvatar:(XLFormRowDescriptor *)row
 {
+    [self deselectFormRow:row];
     @weakify(row);
     [self addSignalPhoto:^(UIImage *image, NSString *fileName) {
         @strongify(row);
