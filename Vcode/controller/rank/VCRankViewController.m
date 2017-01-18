@@ -60,8 +60,7 @@
     return childVc;
 }
 
--(BOOL)shouldAutomaticallyForwardAppearanceMethods
-{
+-(BOOL)shouldAutomaticallyForwardAppearanceMethods{
     return NO;
 }
 
