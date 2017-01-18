@@ -155,7 +155,7 @@
 
 - (void)VCTagView:(VCTagView *)gridView didTapOnPage:(VCPage *)page
 {
-    if (page) {
+    if (page && page.url) {
         [self presentWebBrowser:page.url];
     }
 }
