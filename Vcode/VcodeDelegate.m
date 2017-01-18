@@ -40,9 +40,9 @@ static NSString *const kVcodeStoreName = @"vcode.sqlite";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-//    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:kPgyerAppKey];
-//    [[PgyUpdateManager sharedPgyManager] checkUpdate];
-        
+    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:kVCodePgyerAppKey];
+    [[PgyUpdateManager sharedPgyManager] checkUpdate];
+    
     [self setupDataBase];
 //    [self registerJPushWithOptions:launchOptions];
     

@@ -82,10 +82,7 @@ row.cellStyle = UITableViewCellStyleValue1;
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:FormRowDescriptorTypeMenuInfo];
     menuItem = [MenuItem createItemWithTitle:VCThemeString(@"checkUpdate") andIconName:@"refresh" andClass:nil];
     menuItem.value = [NSString stringWithFormat:@"V%@", MAIN_VERSION];
-    row.action.formBlock = ^(XLFormRowDescriptor *sender){
-        @strongify(self);
-        [self updateAction:sender];
-    };
+    row.action.formSelector = @selector(updateAction:);
     row.value = menuItem;
     [section addFormRow:row];
     
