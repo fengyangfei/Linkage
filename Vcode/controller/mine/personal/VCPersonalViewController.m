@@ -12,6 +12,7 @@
 #import "ImageCacheManager.h"
 #import "LinkUtil.h"
 #import "VCMenuPersonalCell.h"
+#import "VCCountryViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #define RowUI row.cellStyle = UITableViewCellStyleValue1;\
@@ -74,9 +75,10 @@
                             ];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"country" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"country")];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"country" rowType:XLFormRowDescriptorTypeSelectorPush title:VCThemeString(@"country")];
     row.value = user.country;
     row.noValueDisplayText = VCThemeString(@"country_ed");
+    row.action.viewControllerClass = [VCSelectCountryViewController class];
     [section addFormRow:row];
     
     self.form = form;

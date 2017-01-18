@@ -12,3 +12,7 @@
 @interface VCCountryViewController : FormOptionsViewController<ZJScrollPageViewChildVcDelegate>
 
 @end
+
+@interface VCSelectCountryViewController : VCCountryViewController
+
+@end

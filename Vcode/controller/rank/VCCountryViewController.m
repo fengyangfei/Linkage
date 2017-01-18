@@ -139,3 +139,25 @@
 }
 
 @end
+
+@implementation VCSelectCountryViewController
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *sectionKey = [self.keyIndexs objectAtIndex:indexPath.section];
+    VCCountry *country = [[self.countryMap objectForKey:sectionKey] objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    self.rowDescriptor.value = country;
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(UITableView *)tableView
+{
+    CGRect frame = CGRectMake(0, 0, IPHONE_WIDTH, self.view.bounds.size.height - 60);
+    UITableView *tableView = [super tableView];
+    tableView.frame = frame;
+    return tableView;
+}
+
+@end
