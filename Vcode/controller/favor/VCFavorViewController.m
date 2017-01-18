@@ -107,7 +107,7 @@
             page.sortNumber = @(-1);
             [VCPageUtil syncToDataBase:page completion:^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:kPageUpdateNotification object:nil];
-                [SVProgressHUD showSuccessWithStatus:@"添加成功"];
+                [SVProgressHUD showSuccessWithStatus:VCThemeString(@"tjcg")];
             }];
         };
         NSMutableArray *items = [[NSMutableArray alloc]init];

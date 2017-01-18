@@ -64,9 +64,14 @@
     row.noValueDisplayText = VCThemeString(@"phone_ed");
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sex" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"sex")];
-    row.value = user.gender == Female? @"男":@"女";
-    row.noValueDisplayText = VCThemeString(@"sex_ed");
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"gender" rowType:XLFormRowDescriptorTypeSelectorPush title:VCThemeString(@"sex")];
+    if (user) {
+        row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(user.gender) displayText:user.gender == Male ? @"男": @"女"];
+    }
+    row.selectorTitle = VCThemeString(@"sex");
+    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@"F" displayText:@"女"],
+                            [XLFormOptionsObject formOptionsObjectWithValue:@"M" displayText:@"男"]
+                            ];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"country" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"country")];
