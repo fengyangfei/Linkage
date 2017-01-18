@@ -6,8 +6,6 @@
 //  Copyright © 2017年 LA. All rights reserved.
 //
 
-#import "ModelBaseViewController.h"
-#import "ZJScrollPageViewDelegate.h"
 #import "VCHotChildViewController.h"
 
 @interface VCGlobalRankViewController : VCHotChildViewController
