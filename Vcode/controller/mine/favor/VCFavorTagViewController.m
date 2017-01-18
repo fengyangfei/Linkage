@@ -11,6 +11,7 @@
 #import "VCCategory.h"
 #import "VCCategoryUtil.h"
 #import "VcodeUtil.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface VCFavorTagViewController ()
 @property (strong, nonatomic) HJTagView *tagView;
@@ -88,7 +89,11 @@
 -(void)doneAction:(id)sender
 {
     [[NSManagedObjectContext MR_defaultContext] MR_saveWithOptions:MRSaveParentContexts | MRSaveSynchronously completion:^(BOOL contextDidSave, NSError * error) {
-        
+        if (contextDidSave) {
+            [SVProgressHUD showSuccessWithStatus:VCThemeString(@"cz_ok")];
+        }else{
+            [SVProgressHUD showErrorWithStatus:VCThemeString(@"cz_no")];
+        }
     }];
     /*
     [VCCategoryUtil getFavorCategories:^(NSArray *models) {

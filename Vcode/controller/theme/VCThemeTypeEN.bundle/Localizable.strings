@@ -100,3 +100,16 @@
 "updatev" = "It is the latest version";
 "xiugaititle" = "Add to favorites";
 "copy_rights" = "Veno Technology (Beijing) Copyright© 2015. All rights reserved.";
+//
+"cz_ok" = "Save successful";
+"cz_no" = "Save failed";
+"fzcg" = "Copy done";
+"qxsc" = "Remove";
+"sc_ok" = "Added successfully";
+"tianjia" = "Add";
+"quxiao" = "Cancel";
+"px_ok" = "Saving data";
+"px_no" = "Updated field!";
+"tjcg" = "Add successfully";
+"update_ok" = "Updated successfully!";
+"delelt_no" = "Updated failed!";
