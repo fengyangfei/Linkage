@@ -19,4 +19,5 @@ typedef NS_ENUM(NSUInteger, RankType) {
 @interface VCHotChildViewController : ModelBaseViewController<ZJScrollPageViewChildVcDelegate>
 @property (strong, nonatomic) NSArray *data;
 -(instancetype)initWithRankType:(RankType)rankType;
+-(instancetype)initWithRankType:(RankType)rankType frame:(CGRect)frame;
 @end

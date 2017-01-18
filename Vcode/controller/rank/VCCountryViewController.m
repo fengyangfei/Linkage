@@ -119,7 +119,7 @@
 {
     NSString *sectionKey = [self.keyIndexs objectAtIndex:indexPath.section];
     VCCountry *country = [[self.countryMap objectForKey:sectionKey] objectAtIndex:indexPath.row];
-    VCHotChildViewController *controller = [[VCHotChildViewController alloc]initWithRankType:RankTypeLocal];
+    VCHotChildViewController *controller = [[VCHotChildViewController alloc]initWithRankType:RankTypeLocal frame:CGRectZero];
     controller.title = country.code;
     [self.navigationController pushViewController:controller animated:YES];
 }

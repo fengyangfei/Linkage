@@ -47,7 +47,9 @@
     VCCategory *category = [self.categories objectAtIndex:indexPath.item];
     UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:category.title]];
     [cell.contentView addSubview:imageView];
+    @weakify(cell);
     [imageView makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(cell);
         make.width.equalTo(60);
         make.height.equalTo(60);
         make.centerX.equalTo(cell.centerX);
@@ -85,7 +87,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     VCCategory *category = [self.categories objectAtIndex:indexPath.item];
-    VCHotChildViewController *controller = [[VCHotChildViewController alloc]initWithRankType:RankTypeCategory];
+    VCHotChildViewController *controller = [[VCHotChildViewController alloc]initWithRankType:RankTypeCategory frame:CGRectZero];
     controller.title = category.title;
     [self.navigationController pushViewController:controller animated:YES];
 }

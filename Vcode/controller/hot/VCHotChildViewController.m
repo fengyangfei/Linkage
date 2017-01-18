@@ -25,6 +25,7 @@
 @property (nonatomic, assign) RankType rankType;
 @property (nonatomic) NSUInteger currentPage;
 @property (nonatomic, strong) NSMutableArray *rows;
+@property (nonatomic) CGRect frame;
 @end
 
 @implementation VCHotChildViewController
@@ -33,10 +34,16 @@
 
 -(instancetype)initWithRankType:(RankType)rankType
 {
+    return [self initWithRankType:rankType frame:CGRectInfinite];
+}
+
+-(instancetype)initWithRankType:(RankType)rankType frame:(CGRect)frame
+{
     self = [super init];
     if (self) {
         self.rankType = rankType;
         self.currentPage = 1;
+        self.frame = frame;
     }
     return self;
 }
@@ -242,6 +249,9 @@
 {
     if (!_tableView) {
         CGRect frame = CGRectMake(0, 0, IPHONE_WIDTH, self.view.bounds.size.height- 48);
+        if (CGRectEqualToRect(self.frame, CGRectZero)) {
+            frame = self.view.bounds;
+        }
         _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
