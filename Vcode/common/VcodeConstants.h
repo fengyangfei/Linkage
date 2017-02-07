@@ -16,7 +16,8 @@
 //UI
 #define VHeaderColor HEXCOLOR(0x1aad19)
 
-#define VBaseUrl @"http://120.24.49.7:8007"
+//#define VBaseUrl @"http://120.24.49.7:8007"
+#define VBaseUrl @"http://120.24.49.7:8006"
 //点赞
 #define AddLikeUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=like&op=addLike",VBaseUrl]
 //取消点赞
@@ -100,6 +101,20 @@
 #define VRegisterSMSVerifyCodeUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=getRegisterSMSVerifyCode",VBaseUrl]
 //获取忘记密码的验证码
 #define VSMSVerifyCodeUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=getSMSVerifyCode",VBaseUrl]
+
+/***********************URL的页面*********************************/
+//法律申明(中文)
+#define VLegalNoticesCNUrl [NSString stringWithFormat:@"%@/index.php?mod=mobile&name=shopwap&do=custom_page&op=legal_notices",VBaseUrl]
+//法律申明(英文)
+#define VLegalNoticesENUrl [NSString stringWithFormat:@"%@/index.php?mod=mobile&name=shopwap&do=custom_page&op=legal_notices_en",VBaseUrl]
+//关于我们(英文)
+#define VAboutusENUrl [NSString stringWithFormat:@"%@/index.php?mod=mobile&name=shopwap&do=custom_page&op=aboutus_en",VBaseUrl]
+//关于我们(中文)
+#define VAboutusCNUrl [NSString stringWithFormat:@"%@/index.php?mod=mobile&name=shopwap&do=custom_page&op=aboutus",VBaseUrl]
+//帮助文档(英文)
+#define VHelpENUrl [NSString stringWithFormat:@"%@/index.php?mod=mobile&name=shopwap&do=custom_page&op=help_en",VBaseUrl]
+//帮助文档(中文)
+#define VHelpCNUrl [NSString stringWithFormat:@"%@/index.php?mod=mobile&name=shopwap&do=custom_page&op=help",VBaseUrl]
 
 //微信key
 #define kVCodeWXAppId @"wxc67be6173b1fdd64"

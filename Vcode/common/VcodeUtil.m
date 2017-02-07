@@ -8,7 +8,7 @@
 
 #import "VcodeUtil.h"
 #import "VCTabBarController.h"
-#import "VcodeDelegate.h"0
+#import "VcodeDelegate.h"
 #import "MMAlertView.h"
 #define kUUIDKey @"kUUIDKey"
 
