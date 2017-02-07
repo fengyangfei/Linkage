@@ -194,7 +194,7 @@
         //注册按钮
         [self.view addSubview:self.registerButton];
         [self.registerButton makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.view.left);
+            make.left.equalTo(self.view.left).offset(38);
             make.right.equalTo(self.view.centerX);
             make.top.equalTo(self.loginButton.bottom).offset(20);
             make.height.equalTo(@44);
@@ -217,7 +217,7 @@
         [self.view addSubview:self.forgotPasswordButton];
         [self.forgotPasswordButton makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.view.centerX);
-            make.right.equalTo(self.view.right);
+            make.right.equalTo(self.view.right).offset(-38);
             make.top.equalTo(self.loginButton.bottom).offset(20);
             make.height.equalTo(@44);
         }];
@@ -247,6 +247,9 @@
         _nameTextField.layer.cornerRadius = 25;
         _nameTextField.layer.borderWidth = 1.0;
         _nameTextField.layer.borderColor = IndexTitleFontColor.CGColor;
+        //内边距
+        _nameTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 5)];
+        _nameTextField.leftViewMode = UITextFieldViewModeAlways;
         _nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入手机号" attributes:@{NSForegroundColorAttributeName: IndexTitleFontColor}];
         _nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _nameTextField.textColor = IndexTitleFontColor;
@@ -263,6 +266,9 @@
         _passwordTextField.layer.cornerRadius = 25;
         _passwordTextField.layer.borderWidth = 1.0;
         _passwordTextField.layer.borderColor = IndexTitleFontColor.CGColor;
+        //内边距
+        _passwordTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 5)];
+        _passwordTextField.leftViewMode = UITextFieldViewModeAlways;
         _passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入登录密码" attributes:@{NSForegroundColorAttributeName: IndexTitleFontColor}];
         _passwordTextField.secureTextEntry = YES;
         _passwordTextField.keyboardType = UIKeyboardTypeASCIICapable;
@@ -306,6 +312,7 @@
         NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"立即注册" attributes:@{NSForegroundColorAttributeName:IndexTitleFontColor,NSFontAttributeName:[UIFont systemFontOfSize:16],NSUnderlineStyleAttributeName:@1}];
         [_registerButton setAttributedTitle:title forState:UIControlStateNormal];
         [_registerButton addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
+        _registerButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     }
     return _registerButton;
 }
@@ -317,6 +324,7 @@
         NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"忘记密码" attributes:@{NSForegroundColorAttributeName:IndexTitleFontColor,NSFontAttributeName:[UIFont systemFontOfSize:16],NSUnderlineStyleAttributeName:@1}];
         [_forgotPasswordButton setAttributedTitle:title forState:UIControlStateNormal];
         [_forgotPasswordButton addTarget:self action:@selector(forgotPasswordAction:) forControlEvents:UIControlEventTouchUpInside];
+        _forgotPasswordButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     }
     return _forgotPasswordButton;
 }
