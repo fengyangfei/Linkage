@@ -156,6 +156,9 @@
 		8BB8FD5B1E1D232500243B33 /* VCTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD5A1E1D232500243B33 /* VCTagView.m */; };
 		8BB8FD5F1E1D3F5C00243B33 /* VLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB8FD5E1E1D3F5C00243B33 /* VLaunch.storyboard */; };
 		8BB8FD631E1D4A8C00243B33 /* VCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB8FD621E1D4A8C00243B33 /* VCSettingViewController.m */; };
+		8BBAFD141E4A122A0084016F /* VCLawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAFD131E4A122A0084016F /* VCLawViewController.m */; };
+		8BBAFD181E4A13F30084016F /* VCLoginBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAFD171E4A13F30084016F /* VCLoginBaseViewController.m */; };
+		8BBAFD1B1E4A150E0084016F /* VCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAFD1A1E4A150E0084016F /* VCLoginViewController.m */; };
 		8BBE05EA1C9E982B0018EB2A /* BillTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */; };
 		8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */; };
 		8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC624F91CA18EBC00C70325 /* AddressCell.m */; };
@@ -700,6 +703,12 @@
 		8BB8FD5E1E1D3F5C00243B33 /* VLaunch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VLaunch.storyboard; sourceTree = "<group>"; };
 		8BB8FD611E1D4A8C00243B33 /* VCSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSettingViewController.h; sourceTree = "<group>"; };
 		8BB8FD621E1D4A8C00243B33 /* VCSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSettingViewController.m; sourceTree = "<group>"; };
+		8BBAFD121E4A122A0084016F /* VCLawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLawViewController.h; sourceTree = "<group>"; };
+		8BBAFD131E4A122A0084016F /* VCLawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLawViewController.m; sourceTree = "<group>"; };
+		8BBAFD161E4A13F30084016F /* VCLoginBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLoginBaseViewController.h; sourceTree = "<group>"; };
+		8BBAFD171E4A13F30084016F /* VCLoginBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLoginBaseViewController.m; sourceTree = "<group>"; };
+		8BBAFD191E4A150E0084016F /* VCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLoginViewController.h; sourceTree = "<group>"; };
+		8BBAFD1A1E4A150E0084016F /* VCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLoginViewController.m; sourceTree = "<group>"; };
 		8BBE05E81C9E982B0018EB2A /* BillTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTypeViewController.h; sourceTree = "<group>"; };
 		8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTypeViewController.m; sourceTree = "<group>"; };
 		8BBE05EC1C9EA5670018EB2A /* CompanySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanySettingViewController.h; sourceTree = "<group>"; };
@@ -2064,6 +2073,24 @@
 			path = setting;
 			sourceTree = "<group>";
 		};
+		8BBAFD111E4A11730084016F /* law */ = {
+			isa = PBXGroup;
+			children = (
+				8BBAFD121E4A122A0084016F /* VCLawViewController.h */,
+				8BBAFD131E4A122A0084016F /* VCLawViewController.m */,
+			);
+			path = law;
+			sourceTree = "<group>";
+		};
+		8BBAFD151E4A13C70084016F /* login */ = {
+			isa = PBXGroup;
+			children = (
+				8BBAFD161E4A13F30084016F /* VCLoginBaseViewController.h */,
+				8BBAFD171E4A13F30084016F /* VCLoginBaseViewController.m */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
 		8BBE05EB1C9EA5150018EB2A /* company */ = {
 			isa = PBXGroup;
 			children = (
@@ -2631,6 +2658,7 @@
 		9A403DF51E1B5C1700829EC4 /* mine */ = {
 			isa = PBXGroup;
 			children = (
+				8BBAFD111E4A11730084016F /* law */,
 				9A4970481E2E05CF005AB218 /* personal */,
 				9A74CD791E1DD4CB0036C02D /* about */,
 				9A74CD7A1E1DD4CB0036C02D /* advice */,
@@ -2696,12 +2724,15 @@
 		9A403E1F1E1B782600829EC4 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				8BBAFD151E4A13C70084016F /* login */,
 				9A474FD31E1E2E4D00618A8E /* controller */,
 				9A74CD931E1DE6850036C02D /* view */,
 				8BFEBF941E1BDD17008A60D5 /* util */,
 				8BFEBF891E1BDAD2008A60D5 /* model */,
 				9A403E201E1B785300829EC4 /* VCTutorialController.h */,
 				9A403E211E1B785300829EC4 /* VCTutorialController.m */,
+				8BBAFD191E4A150E0084016F /* VCLoginViewController.h */,
+				8BBAFD1A1E4A150E0084016F /* VCLoginViewController.m */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -3388,6 +3419,7 @@
 				9A403E0B1E1B6D8F00829EC4 /* VcodeModel.xcdatamodeld in Sources */,
 				9A04D2CF1D0D5C90004C4FE1 /* CompanyInfoViewController.m in Sources */,
 				9A126DE71CD1DE9000648184 /* CarViewController.m in Sources */,
+				8BBAFD141E4A122A0084016F /* VCLawViewController.m in Sources */,
 				8B5DC6201C79B8A700D29292 /* IFTTTConstraintMultiplierAnimation.m in Sources */,
 				9A11F0711CD08894002E8F6F /* Task.m in Sources */,
 				9A49704B1E2E0604005AB218 /* VCPersonalViewController.m in Sources */,
@@ -3404,6 +3436,7 @@
 				8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */,
 				8BE6E5871E211DA800BD9AA6 /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */,
 				8BFEBF7E1E1BD2D6008A60D5 /* UIView+ZJFrame.m in Sources */,
+				8BBAFD1B1E4A150E0084016F /* VCLoginViewController.m in Sources */,
 				9A4970931E2EFC78005AB218 /* MJRefreshGifHeader.m in Sources */,
 				9AEF89D41CA518BA00C5EB90 /* ImageCacheManager.m in Sources */,
 				8B42211C1CA42AD600F58D77 /* FavoriteViewController.m in Sources */,
@@ -3642,6 +3675,7 @@
 				9A49709A1E2EFC78005AB218 /* UIScrollView+MJRefresh.m in Sources */,
 				8BE6E5881E211DA800BD9AA6 /* UIView+GMGridViewAdditions.m in Sources */,
 				8B7172E41CA0436C00DBEB9F /* AddressViewController.m in Sources */,
+				8BBAFD181E4A13F30084016F /* VCLoginBaseViewController.m in Sources */,
 				9A7D0E931CD885DA00EE005F /* MessageUtil.m in Sources */,
 				9A05C38D1CCA095D009BC8C9 /* OrderModel.m in Sources */,
 				8BB4FB161C7A0884003389F1 /* README.md in Sources */,
