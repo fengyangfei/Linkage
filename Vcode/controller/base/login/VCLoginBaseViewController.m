@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) UIButton *registerButton;
 @property (nonatomic, strong) UIButton *forgotPasswordButton;
+@property (nonatomic, strong) UIButton *dismissButton;
 @end
 
 @implementation VCLoginBaseViewController
@@ -34,17 +35,18 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 -(void)setupUI
 {
+    /*
     {
         //背景图
         UIView *backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"login_bg"]];
@@ -53,6 +55,8 @@
             make.edges.equalTo(self.view);
         }];
     }
+     */
+    self.view.backgroundColor = [UIColor whiteColor];
     UIView *allContentView = [[UIView alloc]init];
     {
         [self.view addSubview:self.logoImageView];
@@ -66,9 +70,10 @@
             make.left.equalTo(self.view.left).offset(38);
             make.right.equalTo(self.view.right).offset(-38);
             make.top.equalTo(self.logoImageView.bottom).offset(82);
-            make.height.equalTo(108);
+            make.height.equalTo(128);
         }];
         
+        /*
         UIImageView *contentImageView = ({
             UIImage *inputBgImage = [[UIImage imageNamed:@"login_input_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(56, 8, 56, 8) resizingMode:UIImageResizingModeStretch];
             UIImageView *imageView = [[UIImageView alloc]initWithImage:inputBgImage];
@@ -78,6 +83,7 @@
         [contentImageView makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(allContentView);
         }];
+         */
     }
     {
         //账号列
@@ -90,6 +96,7 @@
             make.height.equalTo(54);
         }];
         
+        /*
         UIImageView *imageView = ({
             UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"phone_icon"]];
             imageView;
@@ -116,10 +123,11 @@
             make.top.equalTo(nameContentView.top);
             make.bottom.equalTo(nameContentView.bottom);
         }];
+        */
         
         [nameContentView addSubview:self.nameTextField];
         [self.nameTextField makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(nameLabel.right);
+            make.left.equalTo(nameContentView.left);
             make.right.equalTo(nameContentView.right);
             make.top.equalTo(nameContentView.top);
             make.bottom.equalTo(nameContentView.bottom);
@@ -135,7 +143,7 @@
             make.bottom.equalTo(allContentView.bottom);
             make.height.equalTo(54);
         }];
-        
+        /*
         UIImageView *imageView = ({
             UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"password_icon"]];
             imageView;
@@ -162,10 +170,11 @@
             make.top.equalTo(passwordContentView.top);
             make.bottom.equalTo(passwordContentView.bottom);
         }];
+         */
         
         [passwordContentView addSubview:self.passwordTextField];
         [self.passwordTextField makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(passwordLabel.right);
+            make.left.equalTo(passwordContentView.left);
             make.right.equalTo(passwordContentView.right);
             make.top.equalTo(passwordContentView.top);
             make.bottom.equalTo(passwordContentView.bottom);
@@ -182,6 +191,7 @@
         }];
     }
     {
+        //注册按钮
         [self.view addSubview:self.registerButton];
         [self.registerButton makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.view.left);
@@ -203,12 +213,23 @@
             make.height.equalTo(18);
         }];
         
+        //忘记密码
         [self.view addSubview:self.forgotPasswordButton];
         [self.forgotPasswordButton makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.view.centerX);
             make.right.equalTo(self.view.right);
             make.top.equalTo(self.loginButton.bottom).offset(20);
             make.height.equalTo(@44);
+        }];
+    }
+    {
+        //右上角X关闭按钮
+        [self.view addSubview:self.dismissButton];
+        [self.dismissButton makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.view.right).offset(-20);
+            make.top.equalTo(self.view.top).offset(40);
+            make.width.equalTo(20);
+            make.height.equalTo(20);
         }];
     }
 }
@@ -222,9 +243,13 @@
 {
     if (!_nameTextField) {
         _nameTextField = [UITextField new];
-        _nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入手机号" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+        _nameTextField.layer.masksToBounds = YES;
+        _nameTextField.layer.cornerRadius = 25;
+        _nameTextField.layer.borderWidth = 1.0;
+        _nameTextField.layer.borderColor = IndexTitleFontColor.CGColor;
+        _nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入手机号" attributes:@{NSForegroundColorAttributeName: IndexTitleFontColor}];
         _nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _nameTextField.textColor = [UIColor whiteColor];
+        _nameTextField.textColor = IndexTitleFontColor;
         _nameTextField.keyboardDistanceFromTextField = 150.0;
     }
     return _nameTextField;
@@ -234,11 +259,15 @@
 {
     if(!_passwordTextField){
         _passwordTextField = [UITextField new];
-        _passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入登录密码" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+        _passwordTextField.layer.masksToBounds = YES;
+        _passwordTextField.layer.cornerRadius = 25;
+        _passwordTextField.layer.borderWidth = 1.0;
+        _passwordTextField.layer.borderColor = IndexTitleFontColor.CGColor;
+        _passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入登录密码" attributes:@{NSForegroundColorAttributeName: IndexTitleFontColor}];
         _passwordTextField.secureTextEntry = YES;
         _passwordTextField.keyboardType = UIKeyboardTypeASCIICapable;
         _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _passwordTextField.textColor = [UIColor whiteColor];
+        _passwordTextField.textColor = IndexTitleFontColor;
         _passwordTextField.keyboardDistanceFromTextField = 150.0 - 44.0;
     }
     return _passwordTextField;
@@ -249,12 +278,10 @@
     if (!_loginButton) {
         _loginButton = ({
             BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
-            button.cornerRadius = 10;
-            NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"登录Vcode" attributes:@{NSForegroundColorAttributeName:HeaderColor,NSFontAttributeName:[UIFont systemFontOfSize:20]}];
+            button.cornerRadius = 25;
+            NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"登录Vcode" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:20]}];
             [button setAttributedTitle:title forState:UIControlStateNormal];
-            //[button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
-            //[button setBackgroundImage:ButtonBgImage forState:UIControlStateHighlighted];
-            [button setBackgroundColor:[UIColor whiteColor]];
+            [button setBackgroundColor:VHeaderColor];
             button;
         });
         [_loginButton addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -276,7 +303,7 @@
 {
     if (!_registerButton) {
         _registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"立即注册" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:16]}];
+        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"立即注册" attributes:@{NSForegroundColorAttributeName:IndexTitleFontColor,NSFontAttributeName:[UIFont systemFontOfSize:16],NSUnderlineStyleAttributeName:@1}];
         [_registerButton setAttributedTitle:title forState:UIControlStateNormal];
         [_registerButton addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -287,11 +314,21 @@
 {
     if (!_forgotPasswordButton) {
         _forgotPasswordButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"忘记密码" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:16]}];
+        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"忘记密码" attributes:@{NSForegroundColorAttributeName:IndexTitleFontColor,NSFontAttributeName:[UIFont systemFontOfSize:16],NSUnderlineStyleAttributeName:@1}];
         [_forgotPasswordButton setAttributedTitle:title forState:UIControlStateNormal];
         [_forgotPasswordButton addTarget:self action:@selector(forgotPasswordAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _forgotPasswordButton;
+}
+
+-(UIButton *)dismissButton
+{
+    if (!_dismissButton) {
+        _dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_dismissButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+        [_dismissButton addTarget:self action:@selector(dismissAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _dismissButton;
 }
 
 -(void)loginAction:(id)sender
@@ -306,5 +343,12 @@
 -(void)registerAction:(id)sender
 {
     
+}
+
+-(void)dismissAction:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 @end

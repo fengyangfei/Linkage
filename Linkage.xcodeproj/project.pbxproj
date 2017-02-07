@@ -159,6 +159,7 @@
 		8BBAFD141E4A122A0084016F /* VCLawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAFD131E4A122A0084016F /* VCLawViewController.m */; };
 		8BBAFD181E4A13F30084016F /* VCLoginBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAFD171E4A13F30084016F /* VCLoginBaseViewController.m */; };
 		8BBAFD1B1E4A150E0084016F /* VCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAFD1A1E4A150E0084016F /* VCLoginViewController.m */; };
+		8BBAFD1E1E4A167D0084016F /* UINavigationController+LoginFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAFD1D1E4A167D0084016F /* UINavigationController+LoginFilter.m */; };
 		8BBE05EA1C9E982B0018EB2A /* BillTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */; };
 		8BBE05EE1C9EA5670018EB2A /* CompanySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE05ED1C9EA5670018EB2A /* CompanySettingViewController.m */; };
 		8BC624FA1CA18EBC00C70325 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC624F91CA18EBC00C70325 /* AddressCell.m */; };
@@ -709,6 +710,8 @@
 		8BBAFD171E4A13F30084016F /* VCLoginBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLoginBaseViewController.m; sourceTree = "<group>"; };
 		8BBAFD191E4A150E0084016F /* VCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLoginViewController.h; sourceTree = "<group>"; };
 		8BBAFD1A1E4A150E0084016F /* VCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLoginViewController.m; sourceTree = "<group>"; };
+		8BBAFD1C1E4A167D0084016F /* UINavigationController+LoginFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+LoginFilter.h"; sourceTree = "<group>"; };
+		8BBAFD1D1E4A167D0084016F /* UINavigationController+LoginFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+LoginFilter.m"; sourceTree = "<group>"; };
 		8BBE05E81C9E982B0018EB2A /* BillTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTypeViewController.h; sourceTree = "<group>"; };
 		8BBE05E91C9E982B0018EB2A /* BillTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTypeViewController.m; sourceTree = "<group>"; };
 		8BBE05EC1C9EA5670018EB2A /* CompanySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanySettingViewController.h; sourceTree = "<group>"; };
@@ -2746,6 +2749,8 @@
 				8BE6E51A1E20CCAB00BD9AA6 /* UIViewController+WebBrowser.m */,
 				8BE6E55D1E20DE8F00BD9AA6 /* VCWebBrowserViewController.h */,
 				8BE6E55E1E20DE8F00BD9AA6 /* VCWebBrowserViewController.m */,
+				8BBAFD1C1E4A167D0084016F /* UINavigationController+LoginFilter.h */,
+				8BBAFD1D1E4A167D0084016F /* UINavigationController+LoginFilter.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3511,6 +3516,7 @@
 				9A74CD661E1C96A50036C02D /* VCGlobalRankViewController.m in Sources */,
 				8B5DC6281C79B8A700D29292 /* IFTTTLayerStrokeEndAnimation.m in Sources */,
 				8B2D18D01D3101BC00A9183E /* WXApiRequestHandler.m in Sources */,
+				8BBAFD1E1E4A167D0084016F /* UINavigationController+LoginFilter.m in Sources */,
 				9A403E081E1B5DB200829EC4 /* VCRank.m in Sources */,
 				8B5DC6371C79B8A700D29292 /* TRThemeBaseViewController.m in Sources */,
 				9A4970991E2EFC78005AB218 /* UIScrollView+MJExtension.m in Sources */,
