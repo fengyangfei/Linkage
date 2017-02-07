@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vcode</string>
+    <string name="tuijian">主页</string>
+    <string name="shoucang">收藏</string>
+    <string name="paihang">排行</string>
+    <string name="wode">我的</string>
+    <string name="sousuohiht">搜索您感兴趣的内容</string>
+    <string name="longbj">长按进行编辑</string>
+    <string name="clickmore">点击添加更多类型导航</string>
+    <string name="my_wanshan">请完善您的个人资料</string>
+    <string name="set">设置</string>
+    <string name="yjfk">建议反馈</string>
+    <string name="bzsm">帮助说明</string>
+    <string name="gywm">关于Vcode</string>
+    <string name="tijiao">提交</string>
+    <string name="tijiaotoast">提交内容不可为空！</string>
+    <string name="language">语言设置</string>
+    <string name="search">常用搜索引擎</string>
+    <string name="clear_cache">清除缓存</string>
+    <string name="check_update">检查更新</string>
+    <string name="languagetext">简体中文</string>
+    <string name="update_now">立即更新</string>
+    <string name="update_to">当前版本：</string>
+    <string name="update_new">发现版本：</string>
+    <string name="update_data">版本更新内容：</string>
+    <string name="quanqiu">全球</string>
+    <string name="diqu">国家</string>
+    <string name="leixing">分类</string>
+
+    <string name="inputwww">请输入网址</string>
+    <string name="gotos">没有下一页</string>
+    <string name="itok">完成</string>
+    <string name="vpn">网络加速</string>
+    <string name="head">头像</string>
+    <string name="nicheng">昵称</string>
+    <string name="phonetext">手机号码</string>
+    <string name="sex">性别</string>
+    <string name="country">所属国家</string>
+    <string name="nicheng_ed">请输入昵称</string>
+    <string name="phone_ed">请输入手机号码</string>
+    <string name="sex_ed">请选择性别</string>
+    <string name="country_ed">请选择所属国家</string>
+    <string name="myinformation">个人信息</string>
+    <string name="yjfk_text1">问题和意见</string>
+    <string name="yjfk_ed1">请简要描述您的问题和意见</string>
+    <string name="yjfk_text2">联系电话</string>
+    <string name="yjfk_ed2">选填，便于我们和您联系</string>
+    <string name="xihaotext">请选择您喜欢的分类，便于更好的为您推荐内容</string>
+    <string name="xihao">喜好标签</string>
+
+    <string name="startok">开始启用</string>
+    <string name="cleanCache">是否清除缓存</string>
+    <string name="laoding">加载中</string>
+    <string name="shaohoushoucanglaoding">请稍候</string>
+    <string name="man">男</string>
+    <string name="woman">女</string>
+    <string name="delelt_ok">删除成功！</string>
+    <string name="delelt_no">删除失败！</string>
+    <string name="error_text">网络异常！</string>
+    <string name="update_ok">更新成功！</string>
+    <string name="update_no">更新失败！</string>
+    <string name="lable_ok">设置标签成功！</string>
+    <string name="lable_no">设置标签失败！</string>
+
+
+    <string name="Games">游戏</string>
+    <string name="Arts">艺术</string>
+    <string name="Business">商业</string>
+    <string name="Computers">计算机</string>
+    <string name="Health">健康</string>
+
+    <string name="Home">家庭</string>
+    <string name="KidsAndTeens">青少年</string>
+    <string name="News">新闻</string>
+    <string name="Recreation">娱乐</string>
+    <string name="Reference">参考</string>
+
+    <string name="Regional">地区性</string>
+    <string name="Science">科学</string>
+    <string name="Shopping">购物</string>
+    <string name="Society">社会</string>
+    <string name="Sports">体育</string>
+
+
+
+    <string name="pref_switch">Vcode服务</string>
+    <string name="pref_switch_desc">开启/关闭Vcode服务</string>
+    <string name="pref_profiles">当前配置</string>
+    <string name="pref_cat_settings">用户配置</string>
+    <string name="pref_url">URL地址</string>
+    <string name="pref_url_desc">配置文件的URL地址</string>
+    <string name="pref_auto_start">自动开启</string>
+    <string name="pref_auto_start_desc">开机自动启动IPv6服务</string>
+    <string name="pref_auto_restart">自动重启</string>
+    <string name="pref_auto_restart_desc">当网络连接改变是自动重启服务</string>
+    <string name="pref_log_level">日志级别</string>
+    <string name="pref_log_level_desc">控制日志输出的详略</string>
+    <string name="profile_default">默认</string>
+    <string name="profile_new">&lt;新建&gt;</string>
+    <string name="profile_del">删除</string>
+    <string name="profile_del_confirm">确认删除这个配置吗?</string>
+    <string name="profile_rename">配置更名</string>
+    <string name="msg_before_init">初始化…</string>
+    <string name="msg_init_finished">完成</string>
+    <string name="msg_no_root">无法获取root权限</string>
+    <string name="msg_kitkat_no_root">无法获得root权限。因为安卓4.4.x的系统错误,Vcode服务中的 IPv6功能使用受限</string>
+    <string name="msg_waiting_root">正在获取root权限</string>
+    <string name="msg_init_failed">初始化失败</string>
+    <string name="msg_stop_failed">终止服务失败</string>
+    <string name="msg_halted">Vcode服务启动失败!</string>
+    <string name="msg_revoked">Vcode服务被系统撤销!</string>
+    <string name="msg_suspended">Vcode因网络中断而暂停!</string>
+    <string name="msg_checking_update">正在检查更新</string>
+    <string name="msg_no_update">无更新</string>
+    <string name="msg_failed_update">检查更新失败</string>
+    <string name="msg_failed_download_update">更新下载失败</string>
+    <string name="msg_new_update">发现新的版本。是否更新？ </string>
+    <string name="msg_pending_update">等待更新…</string>
+    <string name="title_update">Vcode服务更新</string>
+    <string name="pref_cat_auth">认证</string>
+    <string name="pref_username">用户名</string>
+    <string name="pref_username_desc">登陆用户名</string>
+    <string name="pref_password">密码</string>
+    <string name="pref_password_desc">登陆密码</string>
+    <string name="menu_reset">重置</string>
+    <string name="menu_delete">删除</string>
+    <string name="menu_rename">更名</string>
+    <string name="menu_about">关于</string>
+    <string name="menu_clone">复制</string>
+    <string name="menu_update">更新</string>
+    <string name="copy_rights">©2015北京网能经委科技有限公司版权所有.</string>
+    <string name="status_waiting">等待网络连接…</string>
+    <string name="status_started">运行中</string>
+    <string name="status_idle">空闲</string>
+    <string name="status_halted">意外终止</string>
+    <string name="status_revoked">系统撤销</string>
+    <string name="status_restarting">正在重启…</string>
+    <string name="status_starting">启动中…</string>
+    <string name="status_stopped">终止</string>
+    <string name="status_suspended">暂停</string>
+    <string name="switch_on">点此关闭</string>
+    <string name="switch_off">点此开启</string>
+    <string name="pref_stats">统计数据</string>
+    <string name="pref_need_root">root权限</string>
+    <string name="pref_need_root_desc">请求root权限</string>
+    <string name="stats_unkonwn">统计数据：未知</string>
+    <string name="state_unknown">未知</string>
+    <string name="state_init">初始化…</string>
+    <string name="state_logging_in">正在登陆</string>
+    <string name="state_active">运行中</string>
+    <string name="state_retry">%d秒之后重试登陆</string>
+    <string name="state_token_mismatch">安全标识不符</string>
+    <string name="state_token_reset">安全标识重置</string>
+    <string name="state_license_error">无法加载许可证</string>
+    <string name="state_blocked">屏蔽</string>
+    <string name="state_expired">帐号过期</string>
+    <string name="state_overflow">流量用尽</string>
+    <string name="action_none">无</string>
+    <string name="action_login">登陆</string>
+    <string name="action_license_check">验证许可证</string>
+    <string name="action_token_loading">加载安全标识</string>
+    <string name="action_message_read">接收消息</string>
+    <string name="action_keepalive">保持连线</string>
+    <string name="action_forced_logout">强制下线</string>
+    <string name="action_session_dropped">会话中断</string>
+    <string name="action_timeout">超时</string>
+    <string name="action_failed">失败</string>
+    <string name="stats_limit">速率限制</string>
+    <string name="stats_up">上传</string>
+    <string name="stats_down">下载</string>
+    <string name="stats_tcp">Tcp会话</string>
+    <string name="stats_udp">Udp会话</string>
+    <string name="stats_quota">剩余流量</string>
+    <string name="stats_expiration">到期时间</string>
+    <string name="device_id">设备标识</string>
+    <string name="socks_port">Vcode服务端口</string>
+    <string name="title_system">Vcode服务消息</string>
+    <string name="notice_logs">日志保存在</string>
+    <string name="notice_logs_failed">无法保存日志！请确保内部存储没有被USB占用。</string>
+    <string name="notice_log_started">开始采集日志！再按一次保存。</string>
+    <string name="notice_running">Vcode服务运行中</string>
+    <string name="menu_logs">开启日志</string>
+    <string name="menu_save_logs">保存日志</string>
+    <string name="menu_send_log">发送日志</string>
+    <string name="dlg_desc">描述：</string>
+    <string name="ls_status_starting">Vcode启动中</string>
+    <string name="ls_status_suspended">Vcode中断了</string>
+    <string name="ls_status_restarting">Vcode重启中</string>
+    <string name="ls_status_started">Vcode启动成功</string>
+    <string name="ls_status_failed">Vcode启动失败</string>
+    <string name="ls_status_stoped">Vcode已关闭</string>
+    <!--<string name="ls_status_stoped">Vcode VPN已关闭</string>-->
+
+    <string name="fwcs">访问</string>
+    <string name="yestext">是</string>
+    <string name="notext">否</string>
+    <string name="setlable">标签设置</string>
+    <string name="fzcg">复制成功</string>
+    <string name="qxsc">取消收藏</string>
+    <string name="qxsc_ok">取消收藏成功</string>
+    <string name="qxsc_no">取消收藏失败</string>
+    <string name="fzwz">复制网址</string>
+    <string name="toasttext">输入不可为空</string>
+    <string name="jiasu_ok">加速打开</string>
+    <string name="jiasu_no">加速关闭</string>
+    <string name="sc_ok">收藏成功</string>
+    <string name="xiugaititle">添加到收藏夹</string>
+    <string name="tianjia">添加</string>
+    <string name="quxiao">取消</string>
+    <string name="cz_ok">操作成功</string>
+    <string name="cz_no">操作失败</string>
+    <string name="service_error">服务器异常</string>
+    <string name="updatev">已经是最新版本</string>
+    <string name="add_sy">添加到首页</string>
+
+    <string name="baidu">百度搜索</string>
+    <string name="bing">必应搜索</string>
+    <string name="yahoo">雅虎搜索</string>
+    <string name="google">谷歌搜索</string>
+    <string name="settingsearch">设置默认搜索引擎</string>
+    <string name="queding">确定</string>
+    <string name="shouye">首页</string>
+    <string name="gohome">添加到首页</string>
+    <string name="zdtbq">自定义标签    长按可删除</string>
+    <string name="bjpx">编辑排序</string>
+    <string name="zdybq_px">自定义标签    长按拖动排序</string>
+    <string name="sybooks_yc">是否移除该标签</string>
+    <string name="px_ok">排序成功</string>
+    <string name="px_no">排序失败</string>
+    <string name="sc_laoding">保存数据中</string>
+    <string name="xczs">下次再说</string>
+    <string name="yyxbb">已有新版本</string>
+    <string name="IPV6_Vcode">IPv6.Vcode</string>
+    <string name="soushit">请输入网址</string>
+    <string name="http">网址搜索</string>
+
+    <!--分享-->
+    <string name="share_d">分享到...</string>
+    <string name="share_no_text">分享失败</string>
+    <string name="share_yes_text">分享成功</string>
+    <!--微信分享-->
+    <string name="wx_no">你还没安装微信客户端</string>
+    <string name="wx_noq">当前微信版本不支持分享朋友圈</string>
+    <!--微信分享-->
+    <!--QQ分享-->
+    <string name="qq_no">你还没安装QQ客户端</string>
+    <!--QQ分享-->
+    <!--分享-->
+
+    <!--登录-->
+    <string name="login">登录Vcode</string>
+    <string name="login_wjmm"><u>忘记密码</u></string>
+    <string name="login_username_hint">手机号</string>
+    <string name="login_password">请输入登录密码</string>
+    <string name="login_regiter">注册</string>
+    <string name="login_null_toast">用户名或密码不可为空</string>
+    <string name="login_password_error">密码错误</string>
+    <string name="login_username_error">用户名不存在</string>
+    <string name="login_z">登录中</string>
+    <string name="login_ok">登录成功</string>
+    <string name="login_no">登录失败</string>
+    <string name="login_sc">是否同步收藏内容</string>
+    <string name="login_regisrer">立即注册</string>
+    <string name="login_Text">注册登录体验更多功能\n打造您的专属Vcode</string>
+    <!--登录-->
+    <!--注册-->
+    <string name="regisrer">注册</string>
+    <string name="regisrer_z">注册中</string>
+    <string name="regisrer_phone_hint">请输入手机号码</string>
+    <string name="regisrer_code_hint">请输入验证码</string>
+    <string name="regisrer_getcode">获取验证码</string>
+    <string name="regisrer_password_hint">请输入密码</string>
+    <string name="regisrer_passwordtoo_hint">请再次输入密码</string>
+    <string name="regisrer_phone_null">输入手机号不可为空</string>
+    <string name="regisrer_phone_no">输入手机号不合法</string>
+    <string name="regisrer_getcodeOK">获取验证码成功</string>
+    <string name="regisrer_getcodeNO">获取验证码失败</string>
+    <string name="regisrer_passwordnotoo">密码不一致，请重新输入</string>
+    <string name="regisrer_passwordnull">密码不可为空</string>
+    <string name="regisrer_codenull">验证码不可为空</string>
+    <string name="regisrer_ok">注册成功</string>
+    <string name="regisrer_no">注册失败</string>
+    <string name="regisrer_noed">用户已存在</string>
+    <string name="regisrer_code_error">验证码错误</string>
+    <!--注册-->
+    <!--忘记密码-->
+    <string name="szxmm">设置新密码</string>
+    <string name="qsrxmm">请输入新密码</string>
+    <string name="qzcsrxmm">请再次输入新密码</string>
+    <string name="qsrzcsjh">请输入注册的手机号码</string>
+    <string name="xmm_ok">新密码设置成功</string>
+    <string name="xmm_no">新密码设置失败</string>
+    <string name="tj">提交</string>
+    <!--忘记密码-->
+    <!--支付-->
+    <string name="czjl">充值记录</string>
+    <string name="czjl_null">您当前还没有充值记录</string>
+    <string name="zffs">支付方式  </string>
+    <string name="wxzf">微信</string>
+    <string name="zfbzf">支付宝</string>
+    <!--支付-->
+    <string name="ytj">已添加</string>
+    <string name="tjcg">添加成功</string>
+
+    <string name="vbzh">鸿运（V币）账户</string>
+    <string name="vip1">黄金会员</string>
+    <string name="vip2">铂金会员</string>
+    <string name="vip3">钻石会员</string>
+
+    <string name="fxhy">分享好友</string>
+    <string name="ytb">云同步</string>
+    <string name="dlfxzvb">登录分享赚V币</string>
+    <string name="srjmm">请输入旧密码</string>
+    <string name="xgmm">修改密码</string>
+    <string name="vip_hight">会员等级</string>
+
+    <string name="cloud_start">开始同步数据</string>
+    <string name="cloud_z">同步中</string>
+    <string name="cloud_no">同步失败</string>
+    <string name="cloud_ok">同步成功</string>
+
+    <string name="topup">充值</string>
+    <string name="topup_qitsl">其他数量</string>
+    <string name="topup_no">充值失败</string>
+    <string name="topup_ok">充值成功</string>
+    <string name="topup_sj">售价：</string>
+    <string name="topup_y">元</string>
+    <string name="topup_vbye">V币余额：</string>
+    <string name="topup_g">个</string>
+    <string name="vb">V 币</string>
+    <string name="ljzf">立即支付</string>
+    <string name="zf_no">支付失败</string>
+
+    <string name="jmm_null">旧密码不可为空</string>
+    <string name="xmm_null">新密码不可为空</string>
+    <string name="xgmm_ok">修改密码成功</string>
+    <string name="xgmm_no">修改密码失败</string>
+    <string name="jmm_error">旧密码错误</string>
+
+    <string name="f4login">登录体验更多功能</string>
+    <string name="venofw">Veno服务</string>
+    <string name="code_error">异地登录,强制下线！</string>
+    <string name="txl">通讯录</string>
+    <string name="txl_error">获取通讯录失败</string>
+    <string name="share_qx">取消</string>
+    <string name="yq_ok">邀请发送成功</string>
+    <string name="yq_no">邀请发送失败</string>
+    <string name="txlyq_no">暂无可邀请的联系人</string>
+    <string name="wxz_lxr">请选择联系人</string>
+    <string name="yq_yzc">已注册</string>
+    <string name="outlogin">退出登录</string>
+    <string name="outlogin_ok">退出登录成功</string>
+    <string name="shoucang_null">您暂无收藏网址!</string>
+   
+    <string name="load_all">已加载全部数据</string>
+    <string name="load_null">暂无数据</string>
+    <string name="regisrer_code_phoneerror">该手机号已被注册</string>
+    <string name="user_null">手机号尚未注册</string>
+    <string name="phone_error">手机号不存在，验证码发送失败</string>
+    <string name="share_tille">Hi,朋友，推荐你一个可以访问IPv6网站的应用</string>
+    <string name="share_content">分享人每次分享成功可以获取100V币，接受分享并注册成功可以获得200V币~</string>
+    <string name="shouc_load">页面尚未加载完</string>
+    <string name="shouy_load">页面尚未加载完</string>
+    <string name="mm_length">密码长度不少于6位</string>
+
+
+    <string name="report">举报</string>
+    <string name="report_ok">举报成功</string>
+    <string name="report_no">举报失败</string>
+    <string name="report_http">举报网站问题</string>
+    <string name="report_wf">违法和不良信息</string>
+    <string name="report_bk">暴恐有害信息</string>
+    <string name="report_zp">网络诈骗</string>
+    <string name="report_bt">商业网站标题党</string>
+    <string name="report_qt">其他</string>
+    <string name="report_cx">撤销</string>
+    <string name="report_yjb">已举报</string>
+    <string name="share_app">分享该APP</string>
+    <string name="txl_qx">全选</string>
+    <string name="zw_txl">暂无可选择联系人</string>
+    <string name="share">分享</string>
+    <string name="look_id">IPV4 and IPV6</string>
+    <string name="report_ed">请输入举报问题</string>
+    <string name="report_null">未输入举报内容</string>
+    <string name="jzsy">该用户已被禁止使用Vcode</string>
+    <string name="flsm">法律声明</string>
+</resources>
