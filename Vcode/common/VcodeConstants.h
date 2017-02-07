@@ -80,6 +80,26 @@
 #define VMultiInviteUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=invite&op=multiInvite",VBaseUrl]
 //获取已注册账户
 #define VRegisterAccountUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=invite&op=getRegisterAccount",VBaseUrl]
+//举报
+#define VReportUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=sys&op=reportUrl",VBaseUrl]
+//同步
+#define VSyncDataUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=syncData",VBaseUrl]
+//预支付信息接口
+#define VSubmitOrderUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=charge&op=submitOrder",VBaseUrl]
+//获取充值面额接口
+#define VChargeUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=sys&op=getCharge",VBaseUrl]
+//注册
+#define VRegisterUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=register",VBaseUrl]
+//登录
+#define VLoginUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=login",VBaseUrl]
+//修改密码
+#define VModifyPasswordUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=modifyPassword",VBaseUrl]
+//忘记密码
+#define VForgotPwdUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=sys&op=forgotPwd",VBaseUrl]
+//获取注册验证码
+#define VRegisterSMSVerifyCodeUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=getRegisterSMSVerifyCode",VBaseUrl]
+//获取忘记密码的验证码
+#define VSMSVerifyCodeUrl [NSString stringWithFormat:@"%@/index.php?mod=site&name=api&do=users&op=getSMSVerifyCode",VBaseUrl]
 
 //微信key
 #define kVCodeWXAppId @"wxc67be6173b1fdd64"
