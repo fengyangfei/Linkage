@@ -145,6 +145,7 @@
 		8BA3E3DD1CD487490047AC6B /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3E3DC1CD487490047AC6B /* Favorite.m */; };
 		8BA3E3E31CD489A50047AC6B /* FavoriteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3E3E11CD489A50047AC6B /* FavoriteModel.m */; };
 		8BA3E3E61CD489FA0047AC6B /* FavoriteUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3E3E51CD489FA0047AC6B /* FavoriteUtil.m */; };
+		8BAA93891E4ACDD600FDA5CC /* VCRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAA93881E4ACDD600FDA5CC /* VCRegisterViewController.m */; };
 		8BB039DE1C94591900A3BCF9 /* LoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB039DD1C94591900A3BCF9 /* LoginUser.m */; };
 		8BB17AB71C9AF60D002708C4 /* BillApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB17AB61C9AF60D002708C4 /* BillApplyViewController.m */; };
 		8BB4FB131C7A0884003389F1 /* GTMStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4FB0D1C7A0884003389F1 /* GTMStackTrace.m */; };
@@ -685,6 +686,8 @@
 		8BA3E3E11CD489A50047AC6B /* FavoriteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteModel.m; sourceTree = "<group>"; };
 		8BA3E3E41CD489FA0047AC6B /* FavoriteUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteUtil.h; sourceTree = "<group>"; };
 		8BA3E3E51CD489FA0047AC6B /* FavoriteUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteUtil.m; sourceTree = "<group>"; };
+		8BAA93871E4ACDD600FDA5CC /* VCRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRegisterViewController.h; sourceTree = "<group>"; };
+		8BAA93881E4ACDD600FDA5CC /* VCRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRegisterViewController.m; sourceTree = "<group>"; };
 		8BB039DC1C94591900A3BCF9 /* LoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUser.h; sourceTree = "<group>"; };
 		8BB039DD1C94591900A3BCF9 /* LoginUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUser.m; sourceTree = "<group>"; };
 		8BB17AB51C9AF60D002708C4 /* BillApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillApplyViewController.h; sourceTree = "<group>"; };
@@ -2015,6 +2018,15 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		8BAA93861E4ACD9A00FDA5CC /* register */ = {
+			isa = PBXGroup;
+			children = (
+				8BAA93871E4ACDD600FDA5CC /* VCRegisterViewController.h */,
+				8BAA93881E4ACDD600FDA5CC /* VCRegisterViewController.m */,
+			);
+			path = register;
+			sourceTree = "<group>";
+		};
 		8BB4FB0A1C7A0884003389F1 /* iConsole */ = {
 			isa = PBXGroup;
 			children = (
@@ -2727,6 +2739,7 @@
 		9A403E1F1E1B782600829EC4 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				8BAA93861E4ACD9A00FDA5CC /* register */,
 				8BBAFD151E4A13C70084016F /* login */,
 				9A474FD31E1E2E4D00618A8E /* controller */,
 				9A74CD931E1DE6850036C02D /* view */,
@@ -3436,6 +3449,7 @@
 				8B5DC6291C79B8A700D29292 /* IFTTTLayerStrokeStartAnimation.m in Sources */,
 				8BE25B101CC7D0540073BD8D /* Base64.m in Sources */,
 				8BFEBF811E1BD2D6008A60D5 /* ZJContentView.m in Sources */,
+				8BAA93891E4ACDD600FDA5CC /* VCRegisterViewController.m in Sources */,
 				8BE6E55A1E20D09800BD9AA6 /* TUSafariActivity.m in Sources */,
 				9A403E1B1E1B747E00829EC4 /* VCRankUtil.m in Sources */,
 				8BA130571C9D93E4007607F9 /* SOImageFormCell.m in Sources */,

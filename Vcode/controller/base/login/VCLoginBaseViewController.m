@@ -228,8 +228,8 @@
         [self.dismissButton makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.view.right).offset(-20);
             make.top.equalTo(self.view.top).offset(40);
-            make.width.equalTo(20);
-            make.height.equalTo(20);
+            make.width.equalTo(50);
+            make.height.equalTo(50);
         }];
     }
 }
@@ -341,6 +341,7 @@
         _dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_dismissButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
         [_dismissButton addTarget:self action:@selector(dismissAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_dismissButton setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     }
     return _dismissButton;
 }

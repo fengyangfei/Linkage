@@ -177,3 +177,35 @@
 "login_sc" = "Do you want to synchronize the subscriptions?";
 "login_regisrer" = "Register now";
 "login_text" = "Register to learn more \n To build your exclusive Vcode";
+//register
+"regisrer" = "Register";
+"regisrer_z" = "Register...";
+"regisrer_code_hint" = "Please enter your mobile phone number";
+"regisrer_getcode" = "Please enter verification code";
+"regisrer_password_hint" = "Please enter password";
+"regisrer_passwordtoo_hint" = "Please re-enter password";
+"regisrer_phone_null" = "The mobile phone number can not be null";
+"regisrer_phone_no" = "Invalid mobile phone number";
+"regisrer_getcode_ok" = "Get verification code successfully";
+"regisrer_getcode_no" = "Get verification code failed";
+"regisrer_passwordnotoo" = "The retyped password must match the password you typed above";
+"regisrer_passwordnull" = "Password can not be null";
+"regisrer_codenull" = "Verification code can not be null";
+"regisrer_ok" = "Register successfully";
+"regisrer_no" = "Register failed";
+"regisrer_noed" = "The user already exist";
+"regisrer_code_error" = "Invalid verification code";
+//fotgotpassword
+"szxmm" = "Password reset";
+"qsrxmm" = "Please enter new password";
+"qzcsrxmm" = "Please re-enter new password";
+"qsrzcsjh" = "Please enter your mobile phone number";
+"xmm_ok" = "Password reset successfully";
+"xmm_no" = "Password reset failed";
+"tj" = "Save";
+//pay
+"czjl" = "The records of Top-up";
+"czjl_null" = "No records";
+"zffs" = "Payment method";
+"wxzf" = "Wechat";
+"zfbzf" = "Alipay";
