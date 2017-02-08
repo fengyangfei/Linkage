@@ -161,3 +161,19 @@
 "report_null" = "No report content entered";
 "jzsy" = "This account has been disabled to use Vcode";
 "flsm" = "Legal Notice";
+
+//login
+"login" = "Login to Vcode";
+"login_wjmm" = "Forget password";
+"login_username_hint" = "Mobile Phone";
+"login_password" = "Please enter login password";
+"login_regiter" = "Registration";
+"login_null_toast" = "The login name or password can not be null";
+"login_password_error" = "Invalid password";
+"login_username_error" = "The login name you entered does not exist";
+"login_z" = "Login...";
+"login_ok" = "Login successfully";
+"login_no" = "Login failed";
+"login_sc" = "Do you want to synchronize the subscriptions?";
+"login_regisrer" = "Register now";
+"login_text" = "Register to learn more \n To build your exclusive Vcode";

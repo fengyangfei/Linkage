@@ -162,3 +162,19 @@
 "report_null" = "未输入举报内容";
 "jzsy" = "该用户已被禁止使用Vcode";
 "flsm" = "法律声明";
+
+//login
+"login" = "登录Vcode";
+"login_wjmm" = "忘记密码";
+"login_username_hint" = "手机号";
+"login_password" = "请输入登录密码";
+"login_regiter" = "注册";
+"login_null_toast" = "用户名或密码不可为空";
+"login_password_error" = "密码错误";
+"login_username_error" = "用户名不存在";
+"login_z" = "登录中";
+"login_ok" = "登录成功";
+"login_no" = "登录失败";
+"login_sc" = "是否同步收藏内容";
+"login_regisrer" = "立即注册";
+"login_text" = "注册登录体验更多功能\n打造您的专属Vcode";
