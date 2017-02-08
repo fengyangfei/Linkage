@@ -195,6 +195,10 @@
 "regisrer_no" = "Register failed";
 "regisrer_noed" = "The user already exist";
 "regisrer_code_error" = "Invalid verification code";
+"regisrer_phone" = "Phone Num";
+"regisrer_code" = "Code";
+"regisrer_password" = "Password";
+"regisrer_password_again" = "Re-Password";
 //fotgotpassword
 "szxmm" = "Password reset";
 "qsrxmm" = "Please enter new password";

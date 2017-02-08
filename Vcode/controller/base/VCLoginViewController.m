@@ -7,6 +7,7 @@
 //
 
 #import "VCLoginViewController.h"
+#import "VCRegisterViewController.h"
 
 @interface VCLoginViewController ()
 
@@ -30,7 +31,7 @@
 
 -(void)registerAction:(id)sender
 {
-    UIViewController *registerViewController = [[UIViewController alloc]init];
+    VCRegisterViewController *registerViewController = [[VCRegisterViewController alloc]init];
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:registerViewController];
     [self presentViewController:navController animated:YES completion:nil];
 }

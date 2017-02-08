@@ -47,33 +47,20 @@
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeText title:@"公司名称"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeText title:VCThemeString(@"regisrer_phone")];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"name" rowType:XLFormRowDescriptorTypeText title:@"注册人姓名"];
-    row.required = YES;
-    [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"gender" rowType:XLFormRowDescriptorTypeSelectorPush title:@"性别"];
-    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"女"],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"男"]
-                            ];
-    [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"phoneNum" rowType:XLFormRowDescriptorTypeText title:@"手机"];
-    [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"verifyCode" rowType:XLFormRowDescriptorTypeTextAndButton title:@"验证码"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"verifyCode" rowType:XLFormRowDescriptorTypeTextAndButton title:VCThemeString(@"regisrer_code")];
     row.action.formBlock = ^(XLFormRowDescriptor *sender){
         [weakSelf generateVerifyCode:sender];
     };
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"password" rowType:XLFormRowDescriptorTypePassword title:@"密码"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"password" rowType:XLFormRowDescriptorTypePassword title:VCThemeString(@"regisrer_password")];
     row.required = YES;
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"confirmPassword" rowType:XLFormRowDescriptorTypePassword title:@"确认密码"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"confirmPassword" rowType:XLFormRowDescriptorTypePassword title:VCThemeString(@"regisrer_password_again")];
     row.required = YES;
     [section addFormRow:row];
     
@@ -82,15 +69,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"注册";
+    self.title = VCThemeString(@"regisrer");
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.top);
         make.left.equalTo(self.view.left);
         make.right.equalTo(self.view.right);
         make.bottom.equalTo(self.view.bottom).offset(-54);
     }];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
-    //self.navigationItem.titleView = self.segementedControl;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"backbutton"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
     
     UIView *bottomView = [UIView new];
     bottomView.backgroundColor = self.tableView.backgroundColor;
@@ -105,13 +91,11 @@
     BFPaperButton *button = ({
         BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
         button.cornerRadius = 4;
-        [button setBackgroundImage:ButtonBgImage forState:UIControlStateNormal];
-        [button setBackgroundImage:ButtonBgImage forState:UIControlStateHighlighted];
-        [button setBackgroundImage:ButtonDisableBgImage forState:UIControlStateDisabled];
+        [button setBackgroundColor:VHeaderColor];
         [button setTitleFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.f]];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
-        [button setTitle:@"注 册" forState:UIControlStateNormal];
+        [button setTitle:VCThemeString(@"regisrer") forState:UIControlStateNormal];
         [button addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
         button;
     });
@@ -122,15 +106,6 @@
         make.top.equalTo(bottomView.top).offset(5);
         make.height.equalTo(@44);
     }];
-}
-
--(UISegmentedControl *)segementedControl
-{
-    if (!_segementedControl) {
-        _segementedControl = [[UISegmentedControl alloc]initWithItems:@[@"厂商",@"承运商"]];
-        _segementedControl.selectedSegmentIndex = 0;
-    }
-    return _segementedControl;
 }
 
 -(void)backAction:(id)sender
@@ -150,7 +125,7 @@
     }
     
     if(![formValues[@"password"] isEqualToString:formValues[@"confirmPassword"]]){
-        [SVProgressHUD showErrorWithStatus:@"两次填入密码不一致"];
+        [SVProgressHUD showErrorWithStatus:VCThemeString(@"regisrer_passwordnotoo")];
         return;
     }
     
@@ -162,7 +137,8 @@
                                @"ctype":[formValues[@"ctype"] valueData],
                                @"verify_code":NilStringWrapper(formValues[@"verifyCode"])};
     [[YGRestClient sharedInstance] postForObjectWithUrl:Register4AdminUrl form:paramter success:^(id responseObject) {
-        [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+        //注册成功
+        [SVProgressHUD showSuccessWithStatus:VCThemeString(@"regisrer_ok")];
         [weakSelf.navigationController dismissViewControllerAnimated:YES completion:^{
             
         }];
@@ -178,7 +154,8 @@
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", PhoneNumRegex];
     BOOL isMatch = [pred evaluateWithObject:photoNum];
     if (!isMatch) {
-        [SVProgressHUD showErrorWithStatus:@"请填写正确的手机号码"];
+        //输入手机号不合法
+        [SVProgressHUD showErrorWithStatus:VCThemeString(@"regisrer_phone_no")];
         return;
     }
     
@@ -187,16 +164,6 @@
         return;
     }
     
-    FormTextFieldAndButtonCell *cell = (FormTextFieldAndButtonCell *)[row cellForFormController:nil];
-    __weak FormTextFieldAndButtonCell *weakCell = cell;
-    [TimerManager shareInstance].block = ^(NSInteger second){
-        if (second > 0) {
-            NSString *title = [NSString stringWithFormat:@"(%ld)后重新获取", (long)second];
-            [weakCell.button setTitle:title forState:UIControlStateNormal];
-        }else{
-            [weakCell.button setTitle:@"获取验证码" forState:UIControlStateNormal];
-        }
-    };
     NSDictionary *paramter = @{@"mobile": photoNum};
     [[YGRestClient sharedInstance] postForObjectWithUrl:VerifycodeUrl form:paramter success:^(id responseObject) {
         [[TimerManager shareInstance] fire];

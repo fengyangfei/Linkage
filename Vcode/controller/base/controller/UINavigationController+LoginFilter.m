@@ -31,6 +31,7 @@ static inline void af_swizzleSelector(Class class, SEL originalSelector, SEL swi
     //“个人信息”、“V币账户”和“云同步”时，如果用户未登录，调整到登陆页面
     if ([viewController isKindOfClass:[VCPersonalViewController class]] && ![VCLoginUser loginUserInstance]) {
         VCLoginViewController *loginVC = [[VCLoginViewController alloc]init];
+        //UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:loginVC];
         [self presentViewController:loginVC animated:YES completion:^{
             
         }];

@@ -70,16 +70,20 @@ NSString *const XLFormRowDescriptorTypeTextAndButton = @"textAndButton";
 
 -(UIButton *)button
 {
-    WeakSelf
+    @weakify(self);
     if (!_button) {
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         _button.translatesAutoresizingMaskIntoConstraints = NO;
-        NSString *title = [NSString stringWithFormat:@"获取验证码"];
+        _button.layer.cornerRadius = 4;
+        _button.layer.masksToBounds = YES;
+        NSString *title = [NSString stringWithFormat:VCThemeString(@"regisrer_getcode")];
         [_button setTitle:title forState:UIControlStateNormal];
-        [_button setBackgroundImage:CodeButtonImage forState:UIControlStateNormal];
+        [_button setBackgroundColor:VHeaderColor];
+        //[_button setBackgroundImage:CodeButtonImage forState:UIControlStateNormal];
         [_button bk_addEventHandler:^(id sender) {
-            if (weakSelf.rowDescriptor.action.formBlock) {
-                weakSelf.rowDescriptor.action.formBlock(weakSelf.rowDescriptor);
+            @strongify(self);
+            if (self.rowDescriptor.action.formBlock) {
+                self.rowDescriptor.action.formBlock(self.rowDescriptor);
             }
         } forControlEvents:UIControlEventTouchUpInside];
     }

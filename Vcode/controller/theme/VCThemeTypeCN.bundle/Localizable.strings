@@ -196,6 +196,10 @@
 "regisrer_no" = "注册失败";
 "regisrer_noed" = "用户已存在";
 "regisrer_code_error" = "验证码错误";
+"regisrer_phone" = "手机号";
+"regisrer_code" = "验证码";
+"regisrer_password" = "密码";
+"regisrer_password_again" = "再次输入密码";
 //fotgotpassword
 "szxmm" = "设置新密码";
 "qsrxmm" = "请输入新密码";
