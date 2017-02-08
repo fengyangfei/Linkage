@@ -17,7 +17,7 @@
 #define SINGLE_LINE_WIDTH (2 / [UIScreen mainScreen].scale)
 
 @interface VCLoginBaseViewController ()
-@property (nonatomic, strong) UIImageView *logoImageView;
+@property (nonatomic, strong) UIView *logoImageView;
 
 @property (nonatomic, strong) UIButton *registerButton;
 @property (nonatomic, strong) UIButton *forgotPasswordButton;
@@ -69,7 +69,7 @@
         [allContentView makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.view.left).offset(38);
             make.right.equalTo(self.view.right).offset(-38);
-            make.top.equalTo(self.logoImageView.bottom).offset(82);
+            make.top.equalTo(self.logoImageView.bottom).offset(42);
             make.height.equalTo(128);
         }];
         
@@ -248,9 +248,9 @@
         _nameTextField.layer.borderWidth = 1.0;
         _nameTextField.layer.borderColor = IndexTitleFontColor.CGColor;
         //内边距
-        _nameTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 5)];
+        _nameTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 1)];
         _nameTextField.leftViewMode = UITextFieldViewModeAlways;
-        _nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入手机号" attributes:@{NSForegroundColorAttributeName: IndexTitleFontColor}];
+        _nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:VCThemeString(@"login_username_hint") attributes:@{NSForegroundColorAttributeName: IndexTitleFontColor}];
         _nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _nameTextField.textColor = IndexTitleFontColor;
         _nameTextField.keyboardDistanceFromTextField = 150.0;
@@ -267,9 +267,9 @@
         _passwordTextField.layer.borderWidth = 1.0;
         _passwordTextField.layer.borderColor = IndexTitleFontColor.CGColor;
         //内边距
-        _passwordTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 5)];
+        _passwordTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 1)];
         _passwordTextField.leftViewMode = UITextFieldViewModeAlways;
-        _passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入登录密码" attributes:@{NSForegroundColorAttributeName: IndexTitleFontColor}];
+        _passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:VCThemeString(@"login_password") attributes:@{NSForegroundColorAttributeName: IndexTitleFontColor}];
         _passwordTextField.secureTextEntry = YES;
         _passwordTextField.keyboardType = UIKeyboardTypeASCIICapable;
         _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -285,7 +285,7 @@
         _loginButton = ({
             BFPaperButton *button = [[BFPaperButton alloc]initWithRaised:NO];
             button.cornerRadius = 25;
-            NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"登录Vcode" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:20]}];
+            NSAttributedString *title = [[NSAttributedString alloc]initWithString:VCThemeString(@"login") attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:20]}];
             [button setAttributedTitle:title forState:UIControlStateNormal];
             [button setBackgroundColor:VHeaderColor];
             button;
@@ -295,12 +295,18 @@
     return _loginButton;
 }
 
--(UIImageView *)logoImageView
+-(UIView *)logoImageView
 {
     if (!_logoImageView) {
-        //UIImage *logoImage = [UIImage imageNamed:@"logo"];
-        //_logoImageView = [[UIImageView alloc]initWithImage:logoImage];
-        _logoImageView = [[UIImageView alloc]init];
+        _logoImageView = ({
+            UILabel *view = [UILabel new];
+            view.numberOfLines = 0;
+            view.textColor = IndexTitleFontColor;
+            view.textAlignment = NSTextAlignmentCenter;
+            view.font = [UIFont systemFontOfSize:22];
+            view.text = VCThemeString(@"login_text");
+            view;
+        });
     }
     return _logoImageView;
 }
@@ -309,7 +315,7 @@
 {
     if (!_registerButton) {
         _registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"立即注册" attributes:@{NSForegroundColorAttributeName:IndexTitleFontColor,NSFontAttributeName:[UIFont systemFontOfSize:16],NSUnderlineStyleAttributeName:@1}];
+        NSAttributedString *title = [[NSAttributedString alloc]initWithString:VCThemeString(@"login_regisrer") attributes:@{NSForegroundColorAttributeName:IndexTitleFontColor,NSFontAttributeName:[UIFont systemFontOfSize:16],NSUnderlineStyleAttributeName:@1}];
         [_registerButton setAttributedTitle:title forState:UIControlStateNormal];
         [_registerButton addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
         _registerButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -321,7 +327,7 @@
 {
     if (!_forgotPasswordButton) {
         _forgotPasswordButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSAttributedString *title = [[NSAttributedString alloc]initWithString:@"忘记密码" attributes:@{NSForegroundColorAttributeName:IndexTitleFontColor,NSFontAttributeName:[UIFont systemFontOfSize:16],NSUnderlineStyleAttributeName:@1}];
+        NSAttributedString *title = [[NSAttributedString alloc]initWithString:VCThemeString(@"login_wjmm") attributes:@{NSForegroundColorAttributeName:IndexTitleFontColor,NSFontAttributeName:[UIFont systemFontOfSize:16],NSUnderlineStyleAttributeName:@1}];
         [_forgotPasswordButton setAttributedTitle:title forState:UIControlStateNormal];
         [_forgotPasswordButton addTarget:self action:@selector(forgotPasswordAction:) forControlEvents:UIControlEventTouchUpInside];
         _forgotPasswordButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
